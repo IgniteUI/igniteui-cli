@@ -19,31 +19,23 @@ The Ignite UI for React Input is a component where the user can enter data.
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrInput } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class InputOverview extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);     
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="sample">
-                <IgrInput type="email" label="Subscribe" placeholder="john.doe@mail.com">
-                    <span slot="prefix">Email</span>
-                </IgrInput>
-            </div>
-        );
-    }
+export default function InputOverview() {
+    return (
+        <div className="sample">
+            <IgrInput type="email" label="Subscribe" placeholder="john.doe@mail.com">
+                <span slot="prefix">Email</span>
+            </IgrInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<InputOverview/>);
 ```
 
@@ -75,7 +67,6 @@ With `prefix` and `suffix` slots we can add different content before and after t
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrInput, IgrIcon, registerIconFromText } from 'igniteui-react';
@@ -83,29 +74,21 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const phoneIconText = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
 
-export default class InputPrefixSuffix extends React.Component<any, any> {
+registerIconFromText("phone", phoneIconText, "material");
 
-    public phoneIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);     
-        registerIconFromText("phone", phoneIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="sample">
-                <IgrInput type="tel" label="Phone" placeholder="888 123456">
-                    <span slot="prefix">+359</span>
-                    <IgrIcon slot="suffix" collection="material" name="phone" />
-                </IgrInput>
-            </div>
-        );
-    }
+export default function InputPrefixSuffix() {
+    return (
+        <div className="sample">
+            <IgrInput type="tel" label="Phone" placeholder="888 123456">
+                <span slot="prefix">+359</span>
+                <IgrIcon slot="suffix" collection="material" name="phone" />
+            </IgrInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<InputPrefixSuffix/>);
 ```
 
@@ -118,7 +101,6 @@ The `helper-text` slot provides a hint placed below the Input. We recommend usin
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrInput, IgrIcon, registerIconFromText } from 'igniteui-react';
@@ -126,30 +108,22 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const phoneIconText = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
 
-export default class InputHelperText extends React.Component<any, any> {
+registerIconFromText("phone", phoneIconText, "material");
 
-    public phoneIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);     
-        registerIconFromText("phone", phoneIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="sample">
-                <IgrInput type="tel" label="Phone">
-                    <span slot="prefix">+359</span>
-                    <IgrIcon name="phone" />
-                    <span slot="helper-text">Ex.: +359 888 123 456</span>
-                </IgrInput>
-            </div>
-        );
-    }
+export default function InputHelperText() {
+    return (
+        <div className="sample">
+            <IgrInput type="tel" label="Phone">
+                <span slot="prefix">+359</span>
+                <IgrIcon name="phone" />
+                <span slot="helper-text">Ex.: +359 888 123 456</span>
+            </IgrInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<InputHelperText/>);
 ```
 
@@ -186,48 +160,40 @@ We can allow the user to change the size of the [`IgrInput`](mcp:get_api_referen
 }
 ```
 ```tsx
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './InputSizeStyling.css';
-import { IgrInput, IgrRadio, IgrRadioGroup } from 'igniteui-react';
+import { IgrInput, IgrRadio, IgrRadioGroup, type IgrRadioChangeEventArgs } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class InputSize extends React.Component<any, any> {
+export default function InputSize() {
+    const [size, setSize] = useState("medium");
 
-    constructor(props: any) {
-        super(props);
-        this.onRadioChange = this.onRadioChange.bind(this);
-        this.state = { size: "medium" };
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div id="radioGroup">
-                    <IgrRadioGroup alignment="horizontal">
-                        <IgrRadio name="size" value="small" labelPosition="after" checked={this.state.size === "small"} onChange={this.onRadioChange}><span>Small</span></IgrRadio>
-                        <IgrRadio name="size" value="medium" labelPosition="after" checked={this.state.size === "medium"} onChange={this.onRadioChange}><span>Medium</span></IgrRadio>
-                        <IgrRadio name="size" value="large" labelPosition="after" checked={this.state.size === "large"} onChange={this.onRadioChange}><span>Large</span></IgrRadio>
-                    </IgrRadioGroup>
-                </div>
-                <IgrInput className={'size-' + this.state.size} type="text" label="Required" value="This input is required" required={true} />
-                <IgrInput className={'size-' + this.state.size} type="text" label="Disabled" value="This input is disabled" disabled={true} />
-                <IgrInput className={'size-' + this.state.size} type="text" label="Readonly" value="This input is readonly" readOnly={true} />
-            </div>
-        );
-    }
-
-    public onRadioChange(e: any) {
+    function onRadioChange(e: IgrRadioChangeEventArgs) {
         if (e.detail.checked == true) {
-            this.setState({ size: e.detail.value });
+            setSize(e.detail.value!);
         }
     }
 
+    return (
+        <div className="container sample">
+            <div id="radioGroup">
+                <IgrRadioGroup alignment="horizontal">
+                    <IgrRadio name="size" value="small" labelPosition="after" checked={size === "small"} onChange={onRadioChange}><span>Small</span></IgrRadio>
+                    <IgrRadio name="size" value="medium" labelPosition="after" checked={size === "medium"} onChange={onRadioChange}><span>Medium</span></IgrRadio>
+                    <IgrRadio name="size" value="large" labelPosition="after" checked={size === "large"} onChange={onRadioChange}><span>Large</span></IgrRadio>
+                </IgrRadioGroup>
+            </div>
+            <IgrInput className={'size-' + size} type="text" label="Required" value="This input is required" required={true} />
+            <IgrInput className={'size-' + size} type="text" label="Disabled" value="This input is disabled" disabled={true} />
+            <IgrInput className={'size-' + size} type="text" label="Readonly" value="This input is readonly" readOnly={true} />
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<InputSize />);
 ```
 
@@ -290,7 +256,6 @@ igc-input::part(suffix){
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrInput, IgrIcon, registerIconFromText } from 'igniteui-react';
@@ -298,30 +263,22 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import './InputStyling.css';
 const phoneIconText = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
 
-export default class InputStyling extends React.Component<any, any> {
+registerIconFromText("phone", phoneIconText, "material");
 
-    public phoneIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);     
-        registerIconFromText("phone", phoneIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="sample">
-                <IgrInput type="tel" label="Phone">
-                    <span slot="prefix">+359</span>
-                    <IgrIcon slot="suffix" collection="material" name="phone" />
-                    <span slot="helper-text">Ex.: +359 888 123 456</span>
-                </IgrInput>
-            </div>
-        );
-    }
+export default function InputStyling() {
+    return (
+        <div className="sample">
+            <IgrInput type="tel" label="Phone">
+                <span slot="prefix">+359</span>
+                <IgrIcon slot="suffix" collection="material" name="phone" />
+                <span slot="helper-text">Ex.: +359 888 123 456</span>
+            </IgrInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<InputStyling/>);
 ```
 

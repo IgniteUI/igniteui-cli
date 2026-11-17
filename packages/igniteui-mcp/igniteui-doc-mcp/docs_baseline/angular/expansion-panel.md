@@ -151,9 +151,11 @@ export class ExpansionPanelComponent {
 <igx-expansion-panel>
     <igx-expansion-panel-header>
         Golden Retriever
-        <igx-expansion-panel-description *ngIf="panel.collapsed">
-            Medium-large gun dog
-        </igx-expansion-panel-description>
+        @if (panel.collapsed) {
+            <igx-expansion-panel-description>
+                Medium-large gun dog
+            </igx-expansion-panel-description>
+        }
     </igx-expansion-panel-header>
     ...
 </igx-expansion-panel>
@@ -257,8 +259,11 @@ We can do that by passing content in an `igx-expansion-panel-icon` tag:
     <igx-expansion-panel-header [iconPosition]="'right'">
         ...
         <igx-expansion-panel-icon>
-            <span class="example-icon" *ngIf="panel.collapsed">Show More</span>
-            <span class="example-icon" *ngIf="!panel.collapsed">Show Less</span>
+            @if (panel.collapsed) {
+                <span class="example-icon">Show More</span>
+            } @else {
+                <span class="example-icon">Show Less</span>
+            }
         </igx-expansion-panel-icon>
     </igx-expansion-panel-header>   
     ...
@@ -267,7 +272,7 @@ We can do that by passing content in an `igx-expansion-panel-icon` tag:
 
 Our Angular Expansion Panel will now render "Show More" when the panel is collapsed and "Show Less" once it's fully expanded.
 
-The `IgxExpansionPanel` control allows all sorts of content to be added inside of the `igx-expansion-panel-body`. It can render [`IgxGrid`](/grid/grid)s, [`IgxCombo`](/combo), charts and even other expansion panels!
+The `IgxExpansionPanel` control allows all sorts of content to be added inside of the `igx-expansion-panel-body`. It can render [`IgxGrid`](/grid/grid)s, [`IgxCombo`](/inputs/combo/overview), charts and even other expansion panels!
 
 For the sake of simplicity let's add some basic markup to the body of our expansion panel.
 
@@ -527,7 +532,7 @@ $custom-panel-theme: expansion-panel-theme(
 
 ### Styling with Tailwind
 
-You can style the expansion panel using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the expansion panel using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "ScatterSeries", "ScatterLineSeries", "ScatterSpli
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Scatter Chart belongs to a group of charts that show the relationship among items in distinct series of data or to plot data items using numeric x and y coordinates."
+platformType: xplat
 _tocName: Scatter Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Web Components Scatter Chart belongs to a group of charts that
 
 ## Web Components Scatter Marker Chart
 
-Web Components Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent), as shown in the example below:
+Web Components Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent), as shown in the example below:
 
 ```typescript
 export class CountryDemographicAfricanItem {
@@ -81,7 +82,7 @@ export class CountryDemographicEurope extends Array<CountryDemographicEuropeItem
 
 ## Web Components Scatter Line Chart
 
-Web Components Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent), as shown in the example below:
+Web Components Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HealthDataForFranceItem {
@@ -146,7 +147,7 @@ export class HealthDataForGermany extends Array<HealthDataForGermanyItem> {
 
 ## Web Components Scatter Spline Chart
 
-Web Components Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterSplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSplineSeriesComponent), as shown in the example below:
+Web Components Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSplineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HealthDataForFranceItem {
@@ -211,7 +212,7 @@ export class HealthDataForGermany extends Array<HealthDataForGermanyItem> {
 
 ## Web Components Scatter High Density Chart
 
-Use the Web Components Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcHighDensityScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent), as shown in the example below:
+Use the Web Components Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent), as shown in the example below:
 
 ```typescript
 export class SampleDensityData {
@@ -271,7 +272,7 @@ export class SampleDensityData {
 
 ## Web Components Scatter Area Chart
 
-Web Components Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterAreaSeriesComponent), as shown in the example below:
+Web Components Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterAreaSeriesComponent), as shown in the example below:
 
 ```typescript
 export class SampleScatterData {
@@ -322,7 +323,7 @@ export class SampleScatterData {
 
 ## Web Components Scatter Contour Chart
 
-Web Components Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterContourSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterContourSeriesComponent), as shown in the example below:
+Web Components Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcScatterContourSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterContourSeriesComponent), as shown in the example below:
 
 ```typescript
 export class SampleScatterData {
@@ -386,9 +387,9 @@ The following table lists API members mentioned in the above sections:
 
  |Chart Type                  | Control Name   | API Members |
  |----------------------------|----------------|------------------------ |
- |Scatter Marker              | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent) |
- |Scatter Line                | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent) |
- |Scatter Spline              | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterSplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSplineSeriesComponent) |
- |High Density Scatter        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcHighDensityScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
- |Scatter Area                | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterAreaSeriesComponent) |
- |Scatter Contour             | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterContourSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterContourSeriesComponent) |
+ |Scatter Marker              | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent) |
+ |Scatter Line                | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent) |
+ |Scatter Spline              | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSplineSeriesComponent) |
+ |High Density Scatter        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
+ |Scatter Area                | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterAreaSeriesComponent) |
+ |Scatter Contour             | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcScatterContourSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterContourSeriesComponent) |

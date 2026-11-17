@@ -237,9 +237,9 @@ Different export formats have different file extensions and value delimiters. Th
 
 | Format | File Extension | Default Delimiter |
 | :--- | :--- | :--- |
-| [`IgxCsvFileTypes.CSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=CSV) | .csv | Comma |
-| [`IgxCsvFileTypes.TAB`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TAB) | .tab | Tab |
-| [`IgxCsvFileTypes.TSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TSV) | .tsv | Tab |
+| [`CsvFileTypes.CSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=CSV) | .csv | Comma |
+| [`CsvFileTypes.TAB`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TAB) | .tab | Tab |
+| [`CsvFileTypes.TSV`](mcp:get_api_reference?platform=angular&component=CsvFileTypes&member=TSV) | .tsv | Tab |
 
 <hr/>
 
@@ -247,7 +247,7 @@ You can also specify a custom delimiter using the [`IgxCsvExporterOptions`](mcp:
 
 ## Customizing the Exported Content
 
-In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`IgxIRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
+In the above examples the CSV Exporter service was exporting all available data. There are situations in which you may want to skip exporting a row or even an entire column. To achieve this you may hook to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxCsvExporterService&member=rowexporting) events which are fired respectively for each column and/or each row and cancel the respective event by setting the event argument object's [`IRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example will exclude a column from the export if its name is "Age" and if its index is 1:
 

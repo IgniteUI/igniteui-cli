@@ -7,6 +7,7 @@ mentionedTypes: ["GeographicMap", "Series"]
 namespace: Infragistics.Controls.Maps
 llms:
   description: "With the Ignite UI for Web Components map, you can plot geographic data loaded from various file types."
+platformType: xplat
 _tocName: Binding JSON File
 _premium: true
 ---
@@ -26,63 +27,61 @@ Here is an example of data from JSON file:
 
 ```json
 [
-   { "name": "Sydney Island", "lat": -16.68972, "lon": 139.45917 },
-   { "name": "Sydney Creek",  "lat": -16.3,     "lon": 128.95 },
-   { "name": "Mount Sydney",  "lat": -21.39864, "lon": 121.193 },
+    { "cap": false, "pop":  0.47, "lat":  68.96, "lon":   33.09, "country": "Russia" ,    "name": "Murmansk" },
+    { "cap": true,  "pop":  1.65, "lat":  53.90, "lon":   27.58, "country": "Byelarus" ,  "name": "Minsk" },
+    { "cap": true,  "pop":  0.58, "lat":  54.69, "lon":   25.28, "country": "Lithuania" , "name": "Vilnius" },
  // ...
 ]
 ```
 
 ## Code Snippet
-The following code loads and binds `IgcGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded JSON file with geographic locations:
+The following code loads and binds `IgcGeographicHighDensityScatterSeriesComponent` in the map component to an array of objects created from loaded JSON file with geographic locations:
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igc-geographic-map>
 ```
 
 ```ts
-connectedCallback() {
-    const url = "../data/WorldCities.json";
-
-    fetch(url)
-        .then((response) => response.json())
-        .then(data => this.onDataLoaded(data));
-}
-
-onDataLoaded(jsonData: any[]) {
-    const geoLocations: any[] = [];
-    for (const jsonItem of jsonData) {
-        if (jsonItem.cap) {
-            const location = {
-                latitude: jsonItem.lat,
-                longitude: jsonItem.lon,
-                population: jsonItem.pop,
-                city: jsonItem.name,
-                country: jsonItem.country
-            };
-            geoLocations.push(location);
+var map = this.geoMap;
+var url = "https://static.infragistics.com/xplatform/data/WorldCities.json";
+fetch(url)
+    .then((response) => response.json())
+    .then((data: any[]) => {
+        var geoLocations: any[] = [];
+        // parsing JSON data and using only cities that are capitals
+        for (var item of data) {
+            if (!item.cap) continue;
+            // the series binds to member names, so each item is projected onto them --
+            // the shape the other platforms give a type of its own
+            geoLocations.push({
+                latitude: item.lat,
+                longitude: item.lon,
+                population: item.pop,
+                city: item.name,
+                country: item.country
+            });
         }
-    }
-
-    let geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent;
-    let geoSeries : IgcGeographicSymbolSeriesComponent = new IgcGeographicSymbolSeriesComponent();
-    geoSeries.dataSource = geoLocations;
-    geoSeries.markerType = MarkerType.Circle;
-    geoSeries.latitudeMemberPath  = "latitude";
-    geoSeries.longitudeMemberPath = "longitude";
-    geoSeries.markerBrush = "LightGray";
-    geoSeries.markerOutline = "Black";
-
-    geoMap.series.add(geoSeries);
-}
+        var series = new IgcGeographicSymbolSeriesComponent();
+        series.dataSource = geoLocations;
+        series.latitudeMemberPath = "latitude";
+        series.longitudeMemberPath = "longitude";
+        series.markerBrush = "rgba(255, 255, 255, 1.0)";
+        series.markerOutline = "rgba(135, 5, 255, 1.0)";
+        series.markerThickness = 1;
+        series.markerType = MarkerType.Circle;
+        map.series.add(series);
+    });
 ```
 
 ## API References
-`IgcGeographicHighDensityScatterSeries`
-`IgcGeographicSymbolSeries`
-`IgcGeographicMap`
-`DataSource`
-`LatitudeMemberPath`
-`LongitudeMemberPath`
+`IgcGeographicHighDensityScatterSeriesComponent`
+`IgcGeographicSymbolSeriesComponent`
+`IgcGeographicMapComponent`
+`dataSource`
+`latitudeMemberPath`
+`longitudeMemberPath`

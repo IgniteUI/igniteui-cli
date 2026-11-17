@@ -221,7 +221,7 @@ To get started with the Blazor Data Grid, first you need to install the IgniteUI
 
 Please refer to these topics on adding the IgniteUI.Blazor package:
 
-- [Getting Started](../general-getting-started-blazor-client.md)
+- [Getting Started](../general-getting-started.md)
 - [Adding Nuget Package](../general-nuget-feed.md)
 
 You also need to include the following CSS link in the index.html file of your application to provide the necessary styles to the grid:
@@ -238,14 +238,15 @@ Afterwards, you may start implementing the control by adding the following names
 
 ### Component Modules
 
-The [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid) requires the following modules:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbGridModule));
-
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbGridModule`](mcp:get_api_reference?platform=blazor&component=IgbGridModule), the client resource module of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&component=IgbGrid), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbGridModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 ## Usage
 
@@ -1019,7 +1020,8 @@ Keyboard navigation of the [`IgbGrid`](mcp:get_api_reference?platform=blazor&com
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./grid/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](./grid/theming.md).
+In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```razor
  <IgbGrid Class="grid"></IgbGrid>

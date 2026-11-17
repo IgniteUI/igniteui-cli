@@ -24,26 +24,28 @@ The following Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&compo
 
 <div class="container vertical">
     <div style="width: 25rem; border: 1px solid gainsboro;">
-        <IgbCalendar />
+        <IgbCalendar @bind-Value="date" />
     </div>
 </div>
 
 @code {
-
+    private DateTime date = DateTime.Today;
 }
 ```
 
 ## How To Create a Calendar in Blazor with Ignite UI
 
-Before using the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbCalendarModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbCalendarModule`](mcp:get_api_reference?platform=blazor&component=IgbCalendarModule), the client resource module of the [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbCalendarModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the Ignite UI for Blazor [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -71,12 +73,12 @@ Users can choose from three different selection modes - single selection, multip
 
 <div class="container vertical">
     <div style="width: 25rem; border: 1px solid gainsboro;">
-        <IgbCalendar Selection="@CalendarSelection.Multiple"/>
+        <IgbCalendar @bind-Values="dates" Selection="@CalendarSelection.Multiple"/>
     </div>
 </div>
 
 @code {
-
+    private DateTime[] dates = [];
 }
 ```
 
@@ -94,12 +96,12 @@ Following the same approach, we can switch [`IgbCalendar.selection`](mcp:get_api
 
 <div class="container vertical">
     <div style="width: 25rem; border: 1px solid gainsboro;">
-        <IgbCalendar Selection="@CalendarSelection.Range" />
+        <IgbCalendar @bind-Values="dates" Selection="@CalendarSelection.Range" />
     </div>
 </div>
 
 @code {
-
+    private DateTime[] dates = [];
 }
 ```
 
@@ -135,14 +137,14 @@ The following sample demonstrates the above configuration:
 
 <div class="container vertical">
     <div style="width: 31.25rem; border: 1px solid gainsboro;">
-        <IgbCalendar Selection="@CalendarSelection.Range" HeaderOrientation="@CalendarHeaderOrientation.Vertical" HasHeader="true">
+        <IgbCalendar @bind-Values="dates" Selection="@CalendarSelection.Range" HeaderOrientation="@CalendarHeaderOrientation.Vertical" HasHeader="true">
             <span slot="title">Trip dates</span>
         </IgbCalendar>
     </div>
 </div>
 
 @code {
-
+    private DateTime[] dates = [];
 }
 ```
 
@@ -198,12 +200,12 @@ These configurations should have the following result:
 
 <div class="container vertical">
     <div style="border: 1px solid gainsboro;">
-        <IgbCalendar @ref="CalendarRef" DisabledDates="@DisabledDateDescriptor" />
+        <IgbCalendar @bind-Value="date" DisabledDates="@DisabledDateDescriptor" />
     </div>
 </div>
 
 @code {
-    public IgbCalendar CalendarRef { get; set; }
+    private DateTime date = DateTime.Today;
 
     public IgbDateRangeDescriptor[] DisabledDateDescriptor { get; set; }
 
@@ -266,13 +268,14 @@ The following demo illustrates a Calendar with a vacation request option:
 
 <div class="container vertical">
     <div style="width: 25rem; border: 1px solid gainsboro;">
-        <IgbCalendar SpecialDates="@CalendarSpecialDates"/>
+        <IgbCalendar @bind-Value="date" SpecialDates="@CalendarSpecialDates"/>
     </div>
 </div>
 
 @code {
 
     private IgbDateRangeDescriptor[] CalendarSpecialDates { get; set; }
+    private DateTime date = DateTime.Today;
 
     protected override void OnInitialized()
     {
@@ -304,12 +307,12 @@ The following demo illustrates a Calendar with enabled week numbers:
 
 <div class="container vertical">
     <div style="width: 400px; border: 1px solid gainsboro;">
-        <IgbCalendar ShowWeekNumbers="true"></IgbCalendar>
+        <IgbCalendar @bind-Value="date" ShowWeekNumbers="true"></IgbCalendar>
     </div>
 </div>
 
 @code {
-
+    private DateTime date = DateTime.Today;
 }
 ```
 
@@ -331,12 +334,12 @@ The following sample demonstrates the multiple months configuration:
 
 <div class="container vertical">
     <div style="width: 37.5rem; border: 1px solid gainsboro;">
-        <IgbCalendar VisibleMonths="2" HideOutsideDays="true"/>
+        <IgbCalendar @bind-Value="date" VisibleMonths="2" HideOutsideDays="true"/>
     </div>
 </div>
 
 @code {
-
+    private DateTime date = DateTime.Today;
 }
 ```
 
@@ -349,24 +352,20 @@ You could control the size and spacing of the calendar inner elements using the 
 
 
 <div class="container vertical">
-    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
-        <IgbRadio name="size" Value="Small" label-position="after" Change="OnRadioOptionClick">Small</IgbRadio>
-        <IgbRadio name="size" Value="Medium" label-position="after" Checked="true" Change="OnRadioOptionClick">Medium</IgbRadio>
-        <IgbRadio name="size" Value="Large" label-position="after" Change="OnRadioOptionClick">Large</IgbRadio>
+    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal" @bind-Value="CalendarSize">
+        <IgbRadio name="size" Value="@("size-small")">Small</IgbRadio>
+        <IgbRadio name="size" Value="@("size-medium")">Medium</IgbRadio>
+        <IgbRadio name="size" Value="@("size-large")">Large</IgbRadio>
     </IgbRadioGroup>
 
     <div style="width: 25rem; border: 1px solid gainsboro;">
-        <IgbCalendar class="@CalendarSize"/>
+        <IgbCalendar @bind-Value="SelectedDate" class="@CalendarSize"/>
     </div>
 </div>
 
 @code {
     private string CalendarSize = "size-medium";
-
-    public void OnRadioOptionClick(IgbRadioChangeEventArgs e)
-    {
-        this.CalendarSize = $"size-{e.Detail.Value.ToLower()}";
-    }
+    private DateTime SelectedDate = DateTime.Today;
 }
 ```
 
@@ -545,12 +544,12 @@ The following sample demonstrates the above CSS configuration:
         }
     </style>
     <div>
-        <IgbCalendar />
+        <IgbCalendar @bind-Value="date" />
     </div>
 </div>
 
 @code {
-
+    private DateTime date = DateTime.Today;
 }
 ```
 

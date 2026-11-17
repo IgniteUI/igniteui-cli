@@ -255,7 +255,7 @@ export class GridEditingSampleComponent implements OnInit, AfterViewInit {
 ```
 
 **Note:** 
-By using `igxCellEditor` with any type of editor component, the keyboard navigation flow will be disrupted. The same applies to direct editing of the custom cell that enters edit mode. This is because the `focus` will remain on the `cell element`, not on the editor component that we've added - [`igxSelect`](/select), [`igxCombo`](/combo), etc. This is why we should take leverage of the `igxFocus` directive, which will move the focus directly in the in-cell component and will preserve `a fluent editing flow` of the cell/row.
+By using `igxCellEditor` with any type of editor component, the keyboard navigation flow will be disrupted. The same applies to direct editing of the custom cell that enters edit mode. This is because the `focus` will remain on the `cell element`, not on the editor component that we've added - [`igxSelect`](/select), [`igxCombo`](/inputs/combo/overview), etc. This is why we should take leverage of the `igxFocus` directive, which will move the focus directly in the in-cell component and will preserve `a fluent editing flow` of the cell/row.
 
 ## Cell Editing
 
@@ -429,7 +429,7 @@ The cell template [`igxCell`](/grid/grid#cell-template) controls how a column's 
 The cell editing template directive `igxCellEditor`, handles how a column's cells in edit mode are displayed and controls the edited cell's edit value.
 
 **Note:** 
-By using `igxCellEditor` with any type of editor component, the keyboard navigation flow will be disrupted. The same applies to direct editing of the custom cell that enters edit mode. This is because the `focus` will remain on the `cell element`, not on the editor component that we've added - [`igxSelect`](/select), [`igxCombo`](/combo), etc. This is why we should take leverage of the `igxFocus` directive, which will move the focus directly in the in-cell component and will preserve `a fluent editing flow` of the cell/row.
+By using `igxCellEditor` with any type of editor component, the keyboard navigation flow will be disrupted. The same applies to direct editing of the custom cell that enters edit mode. This is because the `focus` will remain on the `cell element`, not on the editor component that we've added - [`igxSelect`](/select), [`igxCombo`](/inputs/combo/overview), etc. This is why we should take leverage of the `igxFocus` directive, which will move the focus directly in the in-cell component and will preserve `a fluent editing flow` of the cell/row.
 
 For more information on how to configure columns and their templates, you can see the documentation for [Grid Columns configuration](/grid/grid#angular-grid-column-configuration).
 
@@ -920,7 +920,7 @@ igx-grid {
 
 ### Demo
 
-In addition to the steps above, we can also style the controls that are used for the cells' editing templates: [`input-group`](/input-group#styling), [`datepicker`](/date-picker#styling) & [`checkbox`](/checkbox#styling)
+In addition to the steps above, we can also style the controls that are used for the cells' editing templates: [`input-group`](/input-group#styling), [`datepicker`](/date-picker#styling) & [`checkbox`](/inputs/checkbox#styling)
 
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -989,7 +989,8 @@ $gray: #efefef;
 $color-palette: palette(
   $primary: $white,
   $secondary: $blue,
-  $surface: $gray
+  $surface: $gray,
+  $generator: 'legacy'
 );
 
 $grid-theme: grid-theme(
@@ -1044,7 +1045,7 @@ _[`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
 - `IgxDatePickerComponent Styles`
 - [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 - `IgxCheckboxComponent Styles`
-- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - `IgxOverlay Styles`
 ## Additional Resources
 

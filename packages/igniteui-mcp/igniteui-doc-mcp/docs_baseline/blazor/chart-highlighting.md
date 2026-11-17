@@ -4,9 +4,11 @@ description: Infragistics' Blazor Chart Highlighting
 keywords: Blazor Charts, Highlighting, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All Blazor Charts support a variety of highlighting options."
+platformType: xplat
 _tocName: Chart Highlighting
 _premium: true
 ---
@@ -132,9 +134,9 @@ public class TemperatureAnnotatedData
 
 # Blazor Chart Highlighting Modes & Behaviors
 
-All Blazor Charts support a variety of highlighting options. [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`HighlightingBehavior`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls and they have the same API for using the highlighting feature.
+All Blazor Charts support a variety of highlighting options. [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`HighlightingBehavior`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=HighlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls and they have the same API for using the highlighting feature.
 
-The following example demonstrates the [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightingMode) Blazor chart.
+The following example demonstrates the [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=HighlightingMode) Blazor chart.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -237,7 +239,7 @@ public class TemperatureAnnotatedData
 }
 ```
 
-The following example demonstrates the [`HighlightingBehavior`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=highlightingBehavior) Blazor chart.
+The following example demonstrates the [`HighlightingBehavior`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=HighlightingBehavior) Blazor chart.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -343,7 +345,7 @@ public class TemperatureAnnotatedData
 
 # Blazor Chart Legend Highlighting
 
-All Blazor Charts support legend highlighting. [`LegendHighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls and they have the same API for using the highlighting feature.
+All Blazor Charts support legend highlighting. [`LegendHighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=LegendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart), and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls and they have the same API for using the highlighting feature.
 
 The following example demonstrates the legend series highlighting Blazor chart.
 
@@ -443,11 +445,11 @@ public class HighestGrossingMovies
 
 The Ignite UI for Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) can enable three types of highlighting when hovering over data items.
 
-1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`IsSeriesHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=isSeriesHighlightingEnabled) property to true.
+1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`IsSeriesHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IsSeriesHighlightingEnabled) property to true.
 
-2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`IsItemHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=isItemHighlightingEnabled) property to true.
+2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`IsItemHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IsItemHighlightingEnabled) property to true.
 
-3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`IsCategoryHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=isCategoryHighlightingEnabled) property to true.
+3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`IsCategoryHighlightingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=IsCategoryHighlightingEnabled) property to true.
 
 The following example demonstrates the different highlighting layers that are available on the Blazor chart.
 

@@ -253,7 +253,7 @@ igx-carousel {
     overflow: hidden;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 :host ::ng-deep {
@@ -280,7 +280,7 @@ igx-carousel {
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
     color: var(--ig-gray-900);
-    background: color-mix(in srgb, var(--ig-surface-500) 88%, transparent);
+    background: color-mix(in srgb, var(--ig-surface-base) 88%, transparent);
     box-shadow: 0 14px 34px rgb(0 0 0 / 0.14);
 }
 
@@ -506,7 +506,7 @@ igx-carousel {
     overflow: hidden;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 :host ::ng-deep {
@@ -565,7 +565,7 @@ igx-carousel {
     padding: 22px 24px;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: color-mix(in srgb, var(--ig-surface-500) 86%, transparent);
+    background: color-mix(in srgb, var(--ig-surface-base) 86%, transparent);
     box-shadow: 0 14px 34px rgb(0 0 0 / 0.14);
 }
 
@@ -608,7 +608,7 @@ igx-carousel {
     border: 1px solid var(--ig-gray-300);
     border-radius: 999px;
     color: var(--ig-gray-700);
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
     font-size: 14px;
 }
 
@@ -626,7 +626,7 @@ igx-carousel {
 .amenity-visual span {
     display: block;
     border-radius: 8px;
-    background: color-mix(in srgb, var(--ig-surface-500) 72%, transparent);
+    background: color-mix(in srgb, var(--ig-surface-base) 72%, transparent);
     box-shadow: 0 10px 24px rgb(0 0 0 / 0.12);
 }
 
@@ -643,7 +643,7 @@ igx-carousel {
     padding: 10px 12px;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 .event-date {
@@ -709,7 +709,7 @@ igx-carousel {
 .amenity-visual { display: grid; width: 120px; height: 180px; align-content: center; gap: 12px; }
 .amenity-visual span { height: 44px; border-radius: 12px; }
 .amenity-visual span:nth-child(1) { width: 78%; }
-.amenity-visual span:nth-child(2) { width: 100%; background: color-mix(in srgb, var(--ig-surface-500) 90%, transparent); }
+.amenity-visual span:nth-child(2) { width: 100%; background: color-mix(in srgb, var(--ig-surface-base) 90%, transparent); }
 .amenity-visual span:nth-child(3) { width: 62%; justify-self: end; }
 
 @media (max-width: 720px) {
@@ -871,7 +871,7 @@ igx-carousel {
     overflow: hidden;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 :host ::ng-deep igx-carousel .igx-carousel__arrow--prev,
@@ -926,7 +926,7 @@ igx-carousel {
     padding: 10px 14px;
     border: 1px solid var(--ig-gray-300);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--ig-surface-500) 72%, transparent);
+    background: color-mix(in srgb, var(--ig-surface-base) 72%, transparent);
 }
 
 .slide-details span { color: var(--ig-gray-700); }
@@ -1086,7 +1086,7 @@ igx-carousel {
 
 **When to use:** Use Carousel when the interface needs to show a compact set of related visual or mixed-content slides that users browse one at a time.
 
-**When not to use:** Do not use Carousel for primary navigation, long sequential workflows, or content users must compare side by side. Use [Tabs](../tabs.md) for switching between named sections, or [Stepper](../stepper.md) for guided sequential tasks.
+**When not to use:** Do not use Carousel for primary navigation, long sequential workflows, or content users must compare side by side. Use [Tabs](./tabs.md) for switching between named sections, or [Stepper](../stepper.md) for guided sequential tasks.
 
 <div class="table-responsive">
 <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
@@ -1226,7 +1226,7 @@ export class CarouselStylingComponent {
     overflow: hidden;
     border: 1px solid var(--ig-gray-300);
     border-radius: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 :host ::ng-deep {
@@ -1429,7 +1429,7 @@ export class CarouselTailwindStylingComponent {
 ```
 ```html
 <div class="container sample center">
-  <igx-carousel class="styled-carousel h-[430px] w-full overflow-hidden rounded-lg border border-[var(--ig-gray-300)] bg-[var(--ig-surface-500)]">
+  <igx-carousel class="styled-carousel h-[430px] w-full overflow-hidden rounded-lg border border-[var(--ig-gray-300)] bg-[var(--ig-surface-base)]">
     <ng-template igxCarouselPrevButton>
       <span class="carousel-navigation-button inline-grid h-5 w-5 place-items-center leading-none"><igx-icon>chevron_left</igx-icon></span>
     </ng-template>
@@ -1444,7 +1444,7 @@ export class CarouselTailwindStylingComponent {
       <igx-slide>
         <article class="m-0 grid h-full w-full overflow-hidden bg-[var(--ig-gray-100)] md:grid-cols-[1.15fr_0.85fr]">
           <img class="h-52 w-full object-cover md:h-full" [src]="slide.image" [alt]="slide.alt" />
-          <section class="grid content-center gap-5 bg-[var(--ig-surface-500)] py-10 pl-8 pr-24 text-[var(--ig-gray-900)]">
+          <section class="grid content-center gap-5 bg-[var(--ig-surface-base)] py-10 pl-8 pr-24 text-[var(--ig-gray-900)]">
             <div>
               <span class="mb-2 block text-xs font-bold leading-none text-[var(--ig-primary-600)]">{{ slide.label }} / ITINERARY</span>
               <h3 class="m-0 !text-2xl !leading-tight">{{ slide.title }}</h3>
@@ -1598,7 +1598,7 @@ Use these resources for broader product support and source information.
 
 Use these related layout components when Carousel is not the best match for the interaction model.
 
-- [Tabs](../tabs.md) - Use Tabs when users need to switch between named sections without slide-style navigation.
+- [Tabs](./tabs.md) - Use Tabs when users need to switch between named sections without slide-style navigation.
 - [Stepper](../stepper.md) - Use Stepper when users need to complete a guided sequence of steps.
 
 ## FAQ

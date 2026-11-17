@@ -13,7 +13,7 @@ The Ignite UI for Angular List component displays rows of items and supports one
 
 ## Angular List Example
 
-The following example represents a list populated with contacts with a _name_ and a _phone number_ properties. The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component uses [`igx-avatar`](layouts/avatar.md) and [`igx-icon`](/icon) to enrich the user experience and expose the capabilities of setting avatar picture and different icon for _favorite a contact_. In addition, the List View expose sorting capabilities achieved by using our filtering pipe.
+The following example represents a list populated with contacts with a _name_ and a _phone number_ properties. The [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component uses [`igx-avatar`](layouts/avatar.md) and [`igx-icon`](/layouts/icon) to enrich the user experience and expose the capabilities of setting avatar picture and different icon for _favorite a contact_. In addition, the List View expose sorting capabilities achieved by using our filtering pipe.
 
 ```typescript
 import { Component, HostBinding, OnInit } from '@angular/core';
@@ -514,7 +514,7 @@ export class ListSample3Component {
 
 ### Adding Avatar and Icons
 
-We can use some of our other components in conjunction with the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add a star icon to the right of them to allow the user to favorite a contact. To do that let's grab the [**IgxAvatar**](layouts/avatar.md) and [**IgxIcon**](/icon) modules and import them in our app.module.ts file.
+We can use some of our other components in conjunction with the [`IgxList`](mcp:get_api_reference?platform=angular&component=IgxListComponent) component to enrich the experience and add some functionality. We can have a nice picture avatar to the left of the name and phone values. Additionally, we can add a star icon to the right of them to allow the user to favorite a contact. To do that let's grab the [**IgxAvatar**](layouts/avatar.md) and [**IgxIcon**](/layouts/icon) modules and import them in our app.module.ts file.
 
 ```typescript
 // app.module.ts
@@ -591,7 +591,7 @@ This component uses Material Icons. Add the following link to your `index.html`:
 - `igxListAction` is meant to be used for list items that have some kind of action or metadata, for example, switch, radio-button, checkbox, etc. In our case the action is will be represented by an `igx-icon`. Again, the directive will wrap the target element in a container that will have the correct position and spacing.
 - `igxListLine` is meant to be used if we need some text in-between `igxListThumbnail` and `igxListAction` the directive will make sure that the text position, spacing and alignment will look great with the other two directives around.
 
-Next we listen for a click event on the [**IgxIcon**](/icon) component to toggle the _isFavorite_ property in our contact object.
+Next we listen for a click event on the [**IgxIcon**](/layouts/icon) component to toggle the _isFavorite_ property in our contact object.
 
 ```typescript
 // contacts.component.ts
@@ -1103,9 +1103,11 @@ Let's add an input field to the top in our Angular component template first and 
         <igx-icon>search</igx-icon>
     </igx-prefix>
     <input #search igxInput placeholder="Search Contacts" [(ngModel)]="searchContact"/>
-    <igx-suffix *ngIf="search.value.length > 0" (click)="searchContact = null">
-        <igx-icon>clear</igx-icon>
-    </igx-suffix>
+    @if (search.value.length > 0) {
+        <igx-suffix (click)="searchContact = null">
+            <igx-icon>clear</igx-icon>
+        </igx-suffix>
+    }
 </igx-input-group>
 ```
 
@@ -1834,7 +1836,7 @@ For full list of parameters that you can change for the list component please re
 
 ### Styling with Tailwind
 
-You can style the list using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the list using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

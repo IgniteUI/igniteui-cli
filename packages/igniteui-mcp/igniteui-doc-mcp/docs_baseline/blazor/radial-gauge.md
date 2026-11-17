@@ -7,12 +7,13 @@ mentionedTypes: ["RadialGauge", "RadialGaugeRange"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Blazor radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale."
+platformType: xplat
 _tocName: Radial Gauge
 _premium: true
 ---
 # Blazor Radial Gauge Overview
 
-The Blazor radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge) also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=transitionDuration) property.
+The Blazor radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge) also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TransitionDuration) property.
 
 ## Blazor Radial Gauge Example
 
@@ -507,37 +508,40 @@ Afterwards you may start implementing the control by adding the following namesp
 
 ## Component Modules
 
-The [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge) requires the following modules:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbRadialGaugeModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbRadialGaugeModule`](mcp:get_api_reference?platform=blazor&component=IgbRadialGaugeModule), the client resource module of the [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbRadialGaugeModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](general-getting-started.md#component-modules)).
 
 ## Usage
 
 The following code demonstrates how create a radial gauge containing a needle and three comparative ranges on the scale.
 
 ```razor
-<IgbRadialGauge Height="100%" Width="100%"
-      MinimumValue="0" Value="25"
-      MaximumValue="100" Interval="5" >
+<IgbRadialGauge
+    Height="400px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="25"
+    Interval="5">
     <IgbRadialGaugeRange
-          StartValue="0"
-          EndValue="30"
-          Brush="red">
-    </IgbRadialGaugeRange>
+        StartValue="0"
+        EndValue="30"
+        Brush="Red" />
     <IgbRadialGaugeRange
-          StartValue="30"
-          EndValue="60"
-          Brush="Yellow" >
-    </IgbRadialGaugeRange>
+        StartValue="30"
+        EndValue="60"
+        Brush="Yellow" />
     <IgbRadialGaugeRange
-          StartValue="60"
-          EndValue="100"
-          Brush="Green">
-    </IgbRadialGaugeRange>
+        StartValue="60"
+        EndValue="100"
+        Brush="Green" />
 </IgbRadialGauge>
 ```
 
@@ -547,26 +551,26 @@ The radial gauge component comes with a backing shape drawn behind the scale tha
 
 The backing element represents background and border of the radial gauge component. It is always the first element rendered and all the rest of elements such as needle, labels, and tick marks are overlay on top of it.
 
-The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the [`ScaleStartAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleEndAngle) properties. This can be set by setting the [`BackingShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=backingShape) property.
+The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the [`ScaleStartAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleEndAngle) properties. This can be set by setting the [`BackingShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=BackingShape) property.
 
 ```razor
- <IgbRadialGauge Height="100%" Width="100%"
+<IgbRadialGauge
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
     BackingShape="RadialGaugeBackingShape.Fitted"
-    BackingBrush="#FCFCFC"
+    BackingBrush="rgba(252, 252, 252, 1)"
     BackingOutline="DodgerBlue"
     BackingOversweep="5"
     BackingCornerRadius="10"
     BackingStrokeThickness="5"
     BackingOuterExtent="0.8"
     BackingInnerExtent="0.15"
-
     ScaleStartAngle="135"
-    ScaleEndAngle="45"
-    MinimumValue="0"
-    MaximumValue="80"
-    Value="50"
-    Interval="10">
-</IgbRadialGauge>
+    ScaleEndAngle="45" />
 ```
 
 ```razor
@@ -604,23 +608,24 @@ The backing can be circular or fitted. A circular shape creates a 360 degree cir
 
 ## Scale
 
-The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=maximumValue) values. Together with backing, it defines overall shape of gauge. The [`ScaleStartAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleEndAngle) properties define bounds of arc of the scale. While, the [`ScaleSweepDirection`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`ScaleBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleBrush), [`ScaleStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleStartExtent), and [`ScaleEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=scaleEndExtent) properties.
+The scale is visual element that highlights full range of values in the gauge which can be created by supplying [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MaximumValue) values. Together with backing, it defines overall shape of gauge. The [`ScaleStartAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleStartAngle) and [`ScaleEndAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleEndAngle) properties define bounds of arc of the scale. While, the [`ScaleSweepDirection`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleSweepDirection) property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting [`ScaleBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleBrush), [`ScaleStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleStartExtent), and [`ScaleEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=ScaleEndExtent) properties.
 
 ```razor
 <IgbRadialGauge
-  ScaleStartAngle="135"
-  ScaleEndAngle="45"
-  ScaleBrush="DodgerBlue"
-  ScaleSweepDirection="SweepDirection.Clockwise"
-  ScaleOversweep="1"
-  ScaleOversweepShape="RadialGaugeScaleOversweepShape.Fitted"
-  ScaleStartExtent="0.45"
-  ScaleEndExtent="0.575"
-  MinimumValue="0"
-  MaximumValue="80"
-  Value="50"
-  Interval="10">
-</IgbRadialGauge>
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
+    ScaleStartAngle="135"
+    ScaleEndAngle="45"
+    ScaleBrush="DodgerBlue"
+    ScaleSweepDirection="SweepDirection.Clockwise"
+    ScaleOversweep="1"
+    ScaleOversweepShape="RadialGaugeScaleOversweepShape.Fitted"
+    ScaleStartExtent="0.45"
+    ScaleEndExtent="0.575" />
 ```
 
 ```razor
@@ -654,22 +659,22 @@ The scale is visual element that highlights full range of values in the gauge wh
 
 ## Labels and Titles
 
-The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=maximumValue) properties. You can position labels by setting the [`LabelExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=labelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`FontBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=fontBrush) and [`Font`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=font).
+The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MaximumValue) properties. You can position labels by setting the [`LabelExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=LabelExtent) property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as [`FontBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=FontBrush) and [`IgbRadialGauge.Font`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=Font).
 
-Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as [`TitleExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=titleExtent), [`TitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=titleAngle), `SubtitleFontSize`, [`HighlightLabelBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=highlightLabelBrush).
+Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as [`TitleExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TitleExtent), [`TitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TitleAngle), [`SubtitleFontSize`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=SubtitleFontSize), [`HighlightLabelBrush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=HighlightLabelBrush).
 
 ```razor
 <IgbRadialGauge
-  Height="100%" Width="100%"
-  LabelInterval="10"
-  LabelInterval="10"
-  Font="11px Verdana"
-  FontBrush="DodgerBlue"
-  MinimumValue="0"
-  MaximumValue="80"
-  Value="50"
-  Interval="10">
-</IgbRadialGauge>
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
+    LabelInterval="10"
+    LabelExtent="0.65"
+    Font="11px Verdana"
+    FontBrush="DodgerBlue" />
 ```
 
 ```razor
@@ -700,20 +705,19 @@ Each of these labels for the needle have various styling attributes you can appl
 
 ## Title & Subtitle
 
-[`TitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=titleText) and [`SubtitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=subtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`TitleDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=titleDisplaysValue) and [`SubtitleDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=subtitleDisplaysValue), when set to true, will let display the needle's value and override [`TitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=titleText) and [`SubtitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=subtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
+[`TitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TitleText) and [`SubtitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=SubtitleText) properties are available and can both be used to display custom text for the needle. Alternatively, [`TitleDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TitleDisplaysValue) and [`SubtitleDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=SubtitleDisplaysValue), when set to true, will let display the needle's value and override [`TitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TitleText) and [`SubtitleText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=SubtitleText). So you can occupy custom text for the title but show the value via the subtitle and vice versa.
 
-If the highlight needle is shown, as explained below, then custom text can be shown via  [`HighlightLabelText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=highlightLabelText), otherwise [`HighlightLabelDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=highlightLabelDisplaysValue) can be enabled and display it's value.
+If the highlight needle is shown, as explained below, then custom text can be shown via  [`HighlightLabelText`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=HighlightLabelText), otherwise [`HighlightLabelDisplaysValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=HighlightLabelDisplaysValue) can be enabled and display it's value.
 
 ```razor
 <IgbRadialGauge
-  TitleText="Global Sales"
-  SubTitleText="2024">
-</IgbRadialGauge>
+    TitleText="Global Sales"
+    SubtitleText="2024" />
 ```
 
 ## Optical Scaling
 
-The radial gauge's labels and titles can change it's scaling. To enable this, first set [`OpticalScalingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=opticalScalingEnabled) to true. Then you can set [`OpticalScalingSize`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=opticalScalingSize) which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
+The radial gauge's labels and titles can change it's scaling. To enable this, first set [`OpticalScalingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=OpticalScalingEnabled) to true. Then you can set [`OpticalScalingSize`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=OpticalScalingSize) which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -744,7 +748,6 @@ The radial gauge's labels and titles can change it's scaling. To enable this, fi
 
 @code {
     private IgbRadialGauge gauge1 { get; set; }
-    private IgbSlider slider1 { get; set; }
     private bool OpticalScalingToggle { get; set; } = true;
     private string gaugeWidth { get; set; } = "100%";
     private string gaugeHeight { get; set; } = "100%";
@@ -767,24 +770,25 @@ The radial gauge's labels and titles can change it's scaling. To enable this, fi
 
 ## Tick Marks
 
-Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=interval) between the [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=maximumValue) properties. Use the [`MinorTickCount`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`TickStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=tickStartExtent), [`TickEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=tickEndExtent), [`MinorTickStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minorTickStartExtent), and [`MinorTickEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minorTickEndExtent) properties.
+Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the [`IgbRadialGauge.Interval`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=Interval) between the [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MaximumValue) properties. Use the [`MinorTickCount`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinorTickCount) property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to [`TickStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TickStartExtent), [`TickEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=TickEndExtent), [`MinorTickStartExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinorTickStartExtent), and [`MinorTickEndExtent`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinorTickEndExtent) properties.
 
 ```razor
- <IgbRadialGauge Height="100%" Width="100%"
-    TickStartExtent="0.5"
-    TickEndExtent="0.57"
-    TickStrokeThickness="2"
-    TickBrush="DodgerBlue"
-    MinorTickCount="4"
-    MinorTickEndExtent="0.520"
-    MinorTickStartExtent="0.57"
-    MinorTickStrokeThickness="1"
-    MinorTickBrush="DarkViolet"
+<IgbRadialGauge
+    Height="300px"
+    Width="300px"
     MinimumValue="0"
     MaximumValue="80"
     Value="50"
-    Interval="10">
-</IgbRadialGauge>
+    Interval="10"
+    TickStartExtent="0.45"
+    TickEndExtent="0.575"
+    TickStrokeThickness="2"
+    TickBrush="DodgerBlue"
+    MinorTickCount="4"
+    MinorTickStartExtent="0.575"
+    MinorTickEndExtent="0.5"
+    MinorTickStrokeThickness="1"
+    MinorTickBrush="DarkViolet" />
 ```
 
 ```razor
@@ -820,28 +824,30 @@ Tick marks are thin lines radiating from the center of the radial gauge. There a
 
 ## Ranges
 
-A range highlights a set of continuous values bound by a specified [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=maximumValue) properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGaugeRange&member=brush) and [`Outline`](mcp:get_api_reference?platform=blazor&component=IgbRadialGaugeRange&member=outline). Alternatively, you can set [`RangeBrushes`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=rangeBrushes) and [`RangeOutlines`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=rangeOutlines) properties to a list of colors for the ranges.
+A range highlights a set of continuous values bound by a specified [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MaximumValue) properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as [`IgbRadialGaugeRange.Brush`](mcp:get_api_reference?platform=blazor&component=IgbRadialGaugeRange&member=Brush) and [`IgbRadialGaugeRange.Outline`](mcp:get_api_reference?platform=blazor&component=IgbRadialGaugeRange&member=Outline). Alternatively, you can set [`RangeBrushes`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=RangeBrushes) and [`RangeOutlines`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=RangeOutlines) properties to a list of colors for the ranges.
 
 ```razor
-<IgbRadialGauge Height="100%" Width="100%"
-      MinimumValue="0" Value="50"
-      MaximumValue="80" Interval="10"
-      RangeBrushes="#A4BD29, #F86232"
-      RangeOutlines="#A4BD29, #F86232">
-    <IgbRadialGaugeRange StartValue="10"
-          EndValue="25"
-          InnerStartExtent="0.50"
-          InnerEndExtent="0.50"
-          OuterStartExtent="0.57"
-          OuterEndExtent="0.57">
-    </IgbRadialGaugeRange>
-    <IgbRadialGaugeRange StartValue="25"
-          EndValue="40"
-          InnerStartExtent="0.50"
-          InnerEndExtent="0.50"
-          OuterStartExtent="0.57"
-          OuterEndExtent="0.57">
-    </IgbRadialGaugeRange>
+<IgbRadialGauge
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
+    RangeBrushes="Red Yellow Green"
+    RangeOutlines="Red Yellow Green">
+    <IgbRadialGaugeRange
+        StartValue="5"
+        EndValue="15"
+        Brush="Red" />
+    <IgbRadialGaugeRange
+        StartValue="15"
+        EndValue="35"
+        Brush="Yellow" />
+    <IgbRadialGaugeRange
+        StartValue="35"
+        EndValue="45"
+        Brush="Green" />
 </IgbRadialGauge>
 ```
 
@@ -883,12 +889,18 @@ A range highlights a set of continuous values bound by a specified [`MinimumValu
 
 Radial gauge needles are visual elements used to signify a gauge set value. Needles are available in one of the several predefined shapes. The needle can have a pivot shape, which is placed in the center of the gauge. The pivot shape also takes one of the predefined shapes. Pivot shapes that include an overlay or an underlay can have a separate pivot brush applied to the shape.
 
-The supported needle shapes and caps are set using the [`NeedleShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=needleShape) and [`NeedlePivotShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=needlePivotShape) properties.
+The supported needle shapes and caps are set using the [`NeedleShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=NeedleShape) and [`NeedlePivotShape`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=NeedlePivotShape) properties.
 
-You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=isNeedleDraggingEnabled) property) and the end-user will be able to change value by dragging the needle between values of [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=minimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=maximumValue) properties.
+You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=IsNeedleDraggingEnabled) property) and the end-user will be able to change value by dragging the needle between values of [`MinimumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MinimumValue) and [`MaximumValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=MaximumValue) properties.
 
 ```razor
-<IgbRadialGauge Height="100%" Width="100%"
+<IgbRadialGauge
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
     IsNeedleDraggingEnabled="true"
     IsNeedleDraggingConstrained="true"
     NeedleShape="RadialGaugeNeedleShape.NeedleWithBulb"
@@ -897,15 +909,10 @@ You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled
     NeedleEndExtent="0.475"
     NeedleStrokeThickness="1"
     NeedlePivotShape="RadialGaugePivotShape.CircleOverlay"
-    NeedlePivotBrush="#9F9FA0"
-    NeedlePivotOutline="#9F9FA0"
+    NeedlePivotBrush="rgba(159, 159, 160, 1)"
+    NeedlePivotOutline="rgba(159, 159, 160, 1)"
     NeedlePivotWidthRatio="0.2"
-    NeedlePivotStrokeThickness="1"
-    Value="50"
-    MinimumValue="0"
-    MaximumValue="80"
-    Interval="10">
-</IgbRadialGauge>
+    NeedlePivotStrokeThickness="1" />
 ```
 
 ```razor
@@ -945,22 +952,23 @@ You can enable an interactive mode of the gauge (using [`IsNeedleDraggingEnabled
 
 ## Highlight Needle
 
-The radial gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=highlightValue).
+The radial gauge can be modified to show a second needle. This will make the main needle's [`IgbRadialGauge.Value`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge&member=HighlightValue).
 
 ```razor
-<IgbRadialGauge Height="80px" Width="100%"
+<IgbRadialGauge
+    Height="100%"
+    Width="100%"
     MinimumValue="0"
     MaximumValue="100"
     Value="30"
     Interval="10"
     LabelInterval="10"
     LabelExtent="0.65"
+    IsHighlightNeedleDraggingEnabled="true"
+    HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
     HighlightValue="50"
-    HighlightValueDisplayMode=HighlightedValueDisplayMode.Overlay
-    HighlightLabelDisplaysValue=true
-    HighlightLabelSnapsToNeedlePivot=true
-    IsHighlightNeedleDraggingEnabled=true>
-</IgbRadialGauge>
+    HighlightLabelDisplaysValue="true"
+    HighlightLabelSnapsToNeedlePivot="true" />
 ```
 
 ```razor
@@ -996,73 +1004,75 @@ The radial gauge can be modified to show a second needle. This will make the mai
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the radial gauge with all features and visuals enabled.
 
 ```razor
-<IgbRadialGauge Height="100%" Width="100%"
-             MinimumValue="0"
-             MaximumValue="80"
-             Value="50"
-             Interval="10"
-
-             ScaleStartAngle="135"
-             ScaleEndAngle="45"
-             ScaleBrush="DodgerBlue"
-             ScaleSweepDirection="SweepDirection.Clockwise"
-             ScaleOversweep="1"
-             ScaleOversweepShape="RadialGaugeScaleOversweepShape.Fitted"
-             ScaleStartExtent="0.45"
-             ScaleEndExtent="0.575"
-
-             IsNeedleDraggingEnabled="true"
-             IsNeedleDraggingConstrained="true"
-             NeedleShape="RadialGaugeNeedleShape.NeedleWithBulb"
-             NeedleBrush="DodgerBlue"
-             NeedleOutline="DodgerBlue"
-             NeedleEndExtent="0.475"
-             NeedleStrokeThickness="1"
-             NeedlePivotShape="RadialGaugePivotShape.CircleOverlay"
-             NeedlePivotBrush="#9F9FA0"
-             NeedlePivotOutline="#9F9FA0"
-             NeedlePivotWidthRatio="0.2"
-             NeedlePivotStrokeThickness="1"
-             TickStartExtent="0.5"
-             TickEndExtent="0.57"
-             TickStrokeThickness="2"
-             TickBrush="DodgerBlue"
-
-             MinorTickCount="4"
-             MinorTickEndExtent="0.520"
-             MinorTickStartExtent="0.57"
-             MinorTickStrokeThickness="1"
-             MinorTickBrush="DarkViolet"
-
-             LabelExtent="0.65"
-             LabelInterval="10"
-             Font="11px Verdana"
-             FontBrush="Black"
-             BackingShape="RadialGaugeBackingShape.Fitted"
-             BackingBrush="#FCFCFC"
-             BackingOutline="DodgerBlue"
-             BackingOversweep="5"
-             BackingCornerRadius="10"
-             BackingStrokeThickness="5"
-             BackingOuterExtent="0.8"
-             BackingInnerExtent="0.15"
-
-             RangeBrushes="#A4BD29, #F86232"
-             RangeOutlines="#A4BD29, #F86232">
-    <IgbRadialGaugeRange StartValue="20"
-        EndValue="40"
-        InnerStartExtent="0.50"
-        InnerEndExtent="0.50"
-        OuterStartExtent="0.57"
-        OuterEndExtent="0.57">
-    </IgbRadialGaugeRange>
-    <IgbRadialGaugeRange StartValue="40"
-        EndValue="60"
-        InnerStartExtent="0.50"
-        InnerEndExtent="0.50"
-        OuterStartExtent="0.57"
-        OuterEndExtent="0.57">
-    </IgbRadialGaugeRange>
+<IgbRadialGauge
+    Height="300px"
+    Width="300px"
+    MinimumValue="0"
+    MaximumValue="80"
+    Value="50"
+    Interval="10"
+    TitleText="Global Sales"
+    SubtitleText="2024"
+    BackingShape="RadialGaugeBackingShape.Fitted"
+    BackingBrush="rgba(252, 252, 252, 1)"
+    BackingOutline="DodgerBlue"
+    BackingOversweep="5"
+    BackingCornerRadius="10"
+    BackingStrokeThickness="5"
+    BackingOuterExtent="0.8"
+    BackingInnerExtent="0.15"
+    ScaleStartAngle="135"
+    ScaleEndAngle="45"
+    ScaleBrush="DodgerBlue"
+    ScaleSweepDirection="SweepDirection.Clockwise"
+    ScaleOversweep="1"
+    ScaleOversweepShape="RadialGaugeScaleOversweepShape.Fitted"
+    ScaleStartExtent="0.45"
+    ScaleEndExtent="0.575"
+    LabelInterval="10"
+    LabelExtent="0.65"
+    Font="11px Verdana"
+    FontBrush="DodgerBlue"
+    TickStartExtent="0.45"
+    TickEndExtent="0.575"
+    TickStrokeThickness="2"
+    TickBrush="DodgerBlue"
+    MinorTickCount="4"
+    MinorTickStartExtent="0.575"
+    MinorTickEndExtent="0.5"
+    MinorTickStrokeThickness="1"
+    MinorTickBrush="DarkViolet"
+    IsNeedleDraggingEnabled="true"
+    IsNeedleDraggingConstrained="true"
+    NeedleShape="RadialGaugeNeedleShape.NeedleWithBulb"
+    NeedleBrush="DodgerBlue"
+    NeedleOutline="DodgerBlue"
+    NeedleEndExtent="0.475"
+    NeedleStrokeThickness="1"
+    NeedlePivotShape="RadialGaugePivotShape.CircleOverlay"
+    NeedlePivotBrush="rgba(159, 159, 160, 1)"
+    NeedlePivotOutline="rgba(159, 159, 160, 1)"
+    NeedlePivotWidthRatio="0.2"
+    NeedlePivotStrokeThickness="1"
+    IsHighlightNeedleDraggingEnabled="true"
+    HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
+    HighlightValue="50"
+    HighlightLabelDisplaysValue="true"
+    HighlightLabelSnapsToNeedlePivot="true"
+    RangeBrushes="Red Yellow Green"
+    RangeOutlines="Red Yellow Green">
+    <IgbRadialGaugeRange
+        StartValue="5"
+        EndValue="15"
+        Brush="Red" />
+    <IgbRadialGaugeRange
+        StartValue="15"
+        EndValue="35"
+        Brush="Yellow" />
+    <IgbRadialGaugeRange
+        StartValue="35"
+        EndValue="45"
+        Brush="Green" />
 </IgbRadialGauge>
 ```
 

@@ -16,6 +16,14 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+export interface DocSearchEntry {
+  /** Doc name `getDoc` takes. */
+  name: string;
+  title: string;
+  summary?: string;
+  excerpt?: string;
+}
+
 export class LocalDocsProvider implements DocsProvider {
   private db: Database | null = null;
   private dbPath: string;
@@ -216,6 +224,28 @@ export class LocalDocsProvider implements DocsProvider {
   }
 
   async searchDocs(framework: string, query: string): Promise<string> {
+    const entries = await this.searchDocEntries(framework, query);
+    const displayQuery = query.replace(/["*]/g, '').replace(/\s+/g, ' ').trim();
+
+    if (entries.length === 0) {
+      return `No results found for "${displayQuery}" in ${framework} docs.`;
+    }
+
+    const lines = entries.map((entry) =>
+      [
+        `- **${entry.title}** (\`${entry.name}\`)`,
+        entry.summary ? `  ${entry.summary}` : "",
+        entry.excerpt ? `  > ${entry.excerpt}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n")
+    );
+
+    return `Found ${entries.length} results for "${displayQuery}" in **${framework}**:\n\n${lines.join("\n")}`;
+  }
+
+  /** The ranked rows `searchDocs` renders; hits in `excerpt` sit between `>>>` and `<<<`. */
+  async searchDocEntries(framework: string, query: string): Promise<DocSearchEntry[]> {
     const db = this.ensureDb();
 
     const stmt = db.prepare(
@@ -234,12 +264,6 @@ export class LocalDocsProvider implements DocsProvider {
       rawRows.push(stmt.getAsObject());
     }
     stmt.free();
-
-    const displayQuery = query.replace(/["*]/g, '').replace(/\s+/g, ' ').trim();
-
-    if (rawRows.length === 0) {
-      return `No results found for "${displayQuery}" in ${framework} docs.`;
-    }
 
     // Field-weighted re-ranking: FTS4 BM25 treats all columns equally and ranks
     // by raw term frequency across the corpus. This causes dedicated feature docs
@@ -274,17 +298,14 @@ export class LocalDocsProvider implements DocsProvider {
       .slice(0, 20)
       .map((x) => x.row);
 
-    const lines = top20.map((r) => {
+    return top20.map((r) => {
       const name = (r.filename as string).replace(/\.md$/, "");
-      return [
-        `- **${r.toc_name || name}** (\`${name}\`)`,
-        r.summary ? `  ${r.summary}` : "",
-        r.excerpt ? `  > ${r.excerpt}` : "",
-      ]
-        .filter(Boolean)
-        .join("\n");
+      return {
+        name,
+        title: (r.toc_name as string) || name,
+        ...(r.summary ? { summary: r.summary as string } : {}),
+        ...(r.excerpt ? { excerpt: r.excerpt as string } : {}),
+      };
     });
-
-    return `Found ${top20.length} results for "${displayQuery}" in **${framework}**:\n\n${lines.join("\n")}`;
   }
 }

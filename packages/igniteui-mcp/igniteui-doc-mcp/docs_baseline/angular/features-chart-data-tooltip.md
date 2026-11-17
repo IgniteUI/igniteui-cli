@@ -4,19 +4,21 @@ description: Use Infragistics Ignite UI for Angular chart with the data tooltip 
 keywords: Angular charts, chart legend, legend, legend types, Ignite UI for Angular, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "Legend", "CategoryChart", "FinancialChart", "DataLegend", "DataToolTipLayer", "DataAbbreviationMode", "DataLegendSeriesValueType", "DataToolTipLayerGroupingMode", "DataLegendLayoutMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for Angular, the DataToolTip displays values and titles of series as well as legend badges of series in a tooltip."
+platformType: xplat
 _tocName: Chart Data Tooltip
 _premium: true
 ---
 # Angular Chart Data Tooltip
 
-In Ignite UI for Angular, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the `IgxDataLegend` for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` components.
+In Ignite UI for Angular, the **DataToolTip** displays values and titles of series as well as legend badges of series in a tooltip. In addition, it provides many configuration properties of the [`IgxDataLegendComponent`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent) for filtering series rows and values columns, styling, and formatting values. This tooltip type updates while moving the mouse inside of the plot area of the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) components.
 
 ## Angular Data Tooltip Properties
 
-All properties of `IgxDataToolTipLayer` are prefixed with **DataToolTip** and exposed on API of `IgxCategoryChart` and `IgxFinancialChart` components. However, you will need to create an instance of `IgxDataToolTipLayer` and add it to series collection of `IgxDataChart` component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
+All properties of [`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent) are prefixed with **DataToolTip** and exposed on API of [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) components. However, you will need to create an instance of [`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent) and add it to series collection of [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) component if you want to use it with Radial Charts, Polar Charts, Scatter Charts.
 
 ## Angular Data Tooltip Elements
 
@@ -26,11 +28,11 @@ The **DataToolTip** displays content using a set of three types of rows and four
 
 The rows of the **DataToolTip** include the header row, series row(s), and the summary row.
 
-The header row displays the axis label of the point that is hovered, and can be changed using the `DataToolTipHeaderText` property.
+The header row displays the axis label of the point that is hovered, and can be changed using the [`dataToolTipHeaderText`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipHeaderText) property.
 
 The series row can actually be a set of rows corresponding to each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol and unit, if specified.
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the `DataToolTipSummaryTitleText` property of the legend. Also, you can use the `DataToolTipSummaryType` property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`dataToolTipSummaryTitleText`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipSummaryTitleText) property of the legend. Also, you can use the [`dataToolTipSummaryType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
 
 The following example demonstrates the data tooltip with a summary applied:
 
@@ -134,15 +136,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ### Angular Data Tooltip Columns
 
-The columns of the `IgxDataToolTipLayer` include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the `DataToolTipIncludedColumns` or `DataToolTipExcludedColumns` collections of the chart.
+The columns of the [`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipExcludedColumns) collections of the chart.
 
-The title column displays legend badges and series titles, which come from the `Title` property of the different `Series` plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`chartTitle`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=chartTitle) property of the different [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) plotted in the chart.
 
-The label column displays the name or abbreviation of the different property paths in the `DataToolTipIncludedColumns` or `DataToolTipExcludedColumns` collections of the tooltip.
+The label column displays the name or abbreviation of the different property paths in the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipIncludedColumns) or [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipExcludedColumns) collections of the tooltip.
 
-The value column displays series values as abbreviated text which can be formatted using the `DataToolTipValueFormatAbbreviation` property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the `DataToolTipValueFormatMinFractions` and `DataToolTipValueFormatMaxFractions` for minimum and maximum digits, respectively.
+The value column displays series values as abbreviated text which can be formatted using the [`dataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`DataAbbreviationMode.Auto`](mcp:get_api_reference?platform=angular&component=DataAbbreviationMode&member=Auto) or [`Shared`](mcp:get_api_reference?platform=angular&component=DataAbbreviationMode&member=Shared). Alternatively, a user can select other abbreviations such as [`Independent`](mcp:get_api_reference?platform=angular&component=DataAbbreviationMode&member=Independent), [`Kilo`](mcp:get_api_reference?platform=angular&component=DataAbbreviationMode&member=Kilo), [`Million`](mcp:get_api_reference?platform=angular&component=DataAbbreviationMode&member=Million), etc. Precision of abbreviated values is controlled using the [`dataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
 
-The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the `DataToolTipUnitsText` for all columns or using the following properties on each series in the chart:
+The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`dataToolTipUnitsText`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
 
 - Category Series (e.g. ColumnSeries)
   - ValueMemberAsLegendUnit="K"
@@ -162,7 +164,7 @@ The units column displays an abbreviation symbol and/or unit text, which can be 
 
 For the above-listed properties, there are corresponding properties ending with **MemberAsLegendLabel** to determine the text in the label columns mentioned previously.
 
-The columns included in the `DataToolTipIncludedColumns` and `DataToolTipExcludedColumns` collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
+The columns included in the [`dataToolTipIncludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipIncludedColumns) and [`dataToolTipExcludedColumns`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the [`High`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=High), [`Low`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=Low), [`Open`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=Open), and [`Close`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=Close) paths that are required for the financial series to plot correctly. You have the ability to show [`TypicalPrice`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=TypicalPrice), [`Change`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=Change), and [`Volume`](mcp:get_api_reference?platform=angular&component=DataLegendSeriesValueType&member=Volume) options within the tooltip.
 
 The following example demonstrates a data tooltip with the added columns of Open, High, Low, Close, and Change:
 
@@ -260,8 +262,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Data Tooltip Grouping for Data Chart
 
-`DataLegendGroup` can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the `GroupRowVisible` property to true. `GroupingMode` should be set to "Grouped" and `LabelDisplayMode` should be set to "Visible" on the Data Tooltip Layer.
+[`dataLegendGroup`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`groupRowVisible`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupRowVisible) property to true. [`groupingMode`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupingMode) should be set to "Grouped" and [`labelDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=labelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -425,7 +427,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
-You can set `DataToolTipGroupingMode` property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the `DataToolTipGroupedPositionModeX` and `DataToolTipGroupedPositionModeY` properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
+You can set [`dataToolTipGroupingMode`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipGroupingMode) property to either [`Grouped`](mcp:get_api_reference?platform=angular&component=DataToolTipLayerGroupingMode&member=Grouped) or [`Individual`](mcp:get_api_reference?platform=angular&component=DataToolTipLayerGroupingMode&member=Individual) to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the [`Grouped`](mcp:get_api_reference?platform=angular&component=DataToolTipLayerGroupingMode&member=Grouped) mode, you can customize where the tooltip is shown by setting the [`dataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipGroupedPositionModeX) and [`dataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
 
 The following example demonstrates a data tooltip positioned to the top-right of the chart:
 
@@ -587,7 +589,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Data Tooltip Value Formatting
 
-The **DataToolTip** provides automatic abbreviation of large numbers using its `DataToolTipValueFormatAbbreviation` property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the `DataToolTipValueFormatMinFractions` and `DataToolTipValueFormatMaxFractions`. This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The **DataToolTip** provides automatic abbreviation of large numbers using its [`dataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`dataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatMinFractions) and [`dataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 
 The following example demonstrates a **DataToolTip** with the minimum and maximum fractions set:
 
@@ -692,7 +694,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Data Tooltip Value Mode
 
-You can change the default decimal display of values within the **DataToolTip** to be currency by changing the `DataToolTipValueFormatMode` property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its `DataToolTipValueFormatCulture` property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the `DataToolTipValueFormatCulture` set to "en-GB":
+You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`dataToolTipValueFormatMode`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`dataToolTipValueFormatCulture`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`dataToolTipValueFormatCulture`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueFormatCulture) set to "en-GB":
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -790,13 +792,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the `LayoutMode` property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`layoutMode`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=layoutMode) property. The default value is [`Table`](mcp:get_api_reference?platform=angular&component=DataLegendLayoutMode&member=Table), which retains the same look and feel as seen in previous releases.
 
 eg.
 
 ## Angular Data Tooltip Styling
 
-The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the `DataToolTipTitleTextColor`, `DataToolTipLabelTextColor`, `DataToolTipValueTextColor`, and `DataToolTipUnitsTextColor` properties.
+The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`dataToolTipTitleTextColor`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipTitleTextColor), [`dataToolTipLabelTextColor`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipLabelTextColor), [`dataToolTipValueTextColor`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipValueTextColor), and [`dataToolTipUnitsTextColor`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=dataToolTipUnitsTextColor) properties.
 
 The following example demonstrates usage of the styling properties mentioned above:
 
@@ -899,23 +901,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Several properties are exposed including grouping portions of the tooltip.
 
-- `GroupTextMargin`
-- `GroupTextColor`
-- `GroupTextFontSize`
-- `GroupTextFontFamily`
-- `GroupTextFontStyle`
-- `GroupTextFontStretch`
-- `GroupTextFontWeight`
-- `HeaderTextMargin`
-- `HeaderTextColor`
-- `HeaderTextFontSize`
-- `HeaderTextFontFamily`
-- `HeaderTextFontStyle`
-- `HeaderTextFontStretch`
-- `HeaderTextFontWeight`
+- [`groupTextMarginLeft`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextMarginLeft)/[`groupTextMarginTop`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextMarginTop)/[`groupTextMarginRight`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextMarginRight)/[`groupTextMarginBottom`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextMarginBottom)
+- [`groupTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextColor)
+- [`groupTextStyle`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=groupTextStyle)
+- [`headerTextMarginLeft`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextMarginLeft)/[`headerTextMarginTop`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextMarginTop)/[`headerTextMarginRight`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextMarginRight)/[`headerTextMarginBottom`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextMarginBottom)
+- [`headerTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextColor)
+- [`headerTextStyle`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=headerTextStyle)
 
 ## API References
-`IgxDataToolTipLayer`
-`IgxCategoryChart`
-`IgxFinancialChart`
-`IgxDataChart`
+[`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent)
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

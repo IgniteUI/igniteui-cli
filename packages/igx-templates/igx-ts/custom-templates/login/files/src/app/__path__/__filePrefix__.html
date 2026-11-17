@@ -15,7 +15,7 @@
       <label igxLabel for="password">Password</label>
       <input igxInput id="password" name="password" type="password" formControlName="password" />
     </igx-input-group>
-    <button igxButton="raised" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
+    <button igxButton="contained" type="submit" igxRipple [disabled]="!loginForm.valid">LOG IN</button>
     <a (click)="showRegistrationForm()">Register</a>
   </form>
 }
@@ -43,7 +43,7 @@
       <input igxInput id="newPassword" name="newPassword" type="password" formControlName="newPassword" />
       <label igxLabel for="newPassword">Password</label>
     </igx-input-group>
-    <button igxButton="raised" type="submit" igxRipple [disabled]="!registrationForm.valid">SIGN UP</button>
+    <button igxButton="contained" type="submit" igxRipple [disabled]="!registrationForm.valid">SIGN UP</button>
     <a (click)="showLoginForm()">Log in</a>
   </form>
 }

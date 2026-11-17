@@ -21,7 +21,6 @@ The following Ignite UI for React Tile Manager Example shows the component in ac
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
@@ -35,182 +34,174 @@ registerIconFromText("home", home, "material");
 registerIconFromText("search", search, "material");
 registerIconFromText("favorite", favorite, "material");
 
-export default class Overview extends React.Component<any, any> {
-
-  constructor(props: any) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <IgrTileManager id="tile-manager1" columnCount={3} gap="20px" resizeMode="always" dragMode="tile-header">
-          <IgrTile rowSpan={3}>
-            <span slot="title">Order info</span>
-            <IgrList className="list">
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
-                  <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>OrderID</p>
-                  <p>10293</p>
-                </div>
-              </IgrListItem>
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
-                  <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>Customer Name</p>
-                  <p>Tortuga Restaurante</p>
-                </div>
-              </IgrListItem>
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
-                  <IgrIcon name="calendar" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>Order Date</p>
-                  <p>August 29, 1996</p>
-                </div>
-              </IgrListItem>
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
+export default function Overview() {
+  return (
+    <div className="container sample center">
+      <IgrTileManager id="tile-manager1" columnCount={3} gap="20px" resizeMode="always" dragMode="tile-header">
+        <IgrTile rowSpan={3}>
+          <span slot="title">Order info</span>
+          <IgrList className="list">
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
+                <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>OrderID</p>
+                <p>10293</p>
+              </div>
+            </IgrListItem>
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
+                <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>Customer Name</p>
+                <p>Tortuga Restaurante</p>
+              </div>
+            </IgrListItem>
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
                 <IgrIcon name="calendar" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>Shipped Date</p>
-                  <p>September 11, 1996</p>
-                </div>
-              </IgrListItem>
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
-                  <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>Product Name</p>
-                  <p>Carnavon Tigers</p>
-                </div>
-              </IgrListItem>
-              <IgrListItem>
-                <IgrAvatar slot="start" shape="circle" className="avatar">
-                  <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
-                </IgrAvatar>
-                <div slot="title" className="content">
-                  <p>Ship Country</p>
-                  <p>Mexico</p>
-                </div>
-              </IgrListItem>
-            </IgrList>
-          </IgrTile>
-          <IgrTile col-span="2" row-span="2">
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>Order Date</p>
+                <p>August 29, 1996</p>
+              </div>
+            </IgrListItem>
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
+              <IgrIcon name="calendar" collection="material" className="material-icons"></IgrIcon>
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>Shipped Date</p>
+                <p>September 11, 1996</p>
+              </div>
+            </IgrListItem>
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
+                <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>Product Name</p>
+                <p>Carnavon Tigers</p>
+              </div>
+            </IgrListItem>
+            <IgrListItem>
+              <IgrAvatar slot="start" shape="circle" className="avatar">
+                <IgrIcon name="list" collection="material" className="material-icons"></IgrIcon>
+              </IgrAvatar>
+              <div slot="title" className="content">
+                <p>Ship Country</p>
+                <p>Mexico</p>
+              </div>
+            </IgrListItem>
+          </IgrList>
+        </IgrTile>
+        <IgrTile col-span="2" row-span="2">
 
-            <span slot="title">Order Line Items</span>
-            <div className="group">
-              <IgrCard className="card">
-                <div className="group_1">
-                  <IgrCardHeader>
-                    <div slot="thumbnail">
-                      <IgrAvatar shape="circle">
-                        <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
-                      </IgrAvatar>
-                    </div>
-                    <span slot="title">Carnavon Tigers</span>
-                  </IgrCardHeader>
-                  <IgrCardContent className="column">
-                    <div className="body-content">
-                      <span>Quantity</span> <span>12</span>
-                    </div>
-                    <div className="body-content">
-                      <span>Unit Price</span> <span>$50</span>
-                    </div>
-                  </IgrCardContent>
-                </div>
-              </IgrCard>
-              <IgrCard className="card">
-                <div className="group_1">
-                  <IgrCardHeader>
-                    <div slot="thumbnail">
-                      <IgrAvatar shape="circle">
-                        <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
-                      </IgrAvatar>
-                    </div>
-                    <span slot="title">Guarana Fantastica</span>
-                  </IgrCardHeader>
-                  <IgrCardContent className="column">
-                    <div className="body-content">
-                      <span>Quantity</span> <span>10</span>
-                    </div>
-                    <div className="body-content">
-                      <span>Unit Price</span> <span>$4</span>
-                    </div>
-                  </IgrCardContent>
-                </div>
-              </IgrCard>
-              <IgrCard className="card">
-                <div className="group_1">
-                  <IgrCardHeader>
-                    <div slot="thumbnail">
-                      <IgrAvatar shape="circle">
-                        <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
-                      </IgrAvatar>
-                    </div>
-                    <span slot="title">Vegie-spread</span>
-                  </IgrCardHeader>
-                  <IgrCardContent className="column">
-                    <div className="body-content">
-                      <span>Quantity</span> <span>5</span>
-                    </div>
-                    <div className="body-content">
-                      <span>Unit Price</span> <span>$35</span>
-                    </div>
-                  </IgrCardContent>
-                </div>
-              </IgrCard>
-              <IgrCard className="card">
-                <div className="group_1">
-                  <IgrCardHeader>
-                    <div slot="thumbnail">
-                      <IgrAvatar shape="circle">
-                        <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
-                      </IgrAvatar>
-                    </div>
-                    <span slot="title">Rhonbrau Klosterbier</span>
-                  </IgrCardHeader>
-                  <IgrCardContent className="column">
-                    <div className="body-content">
-                      <span>Quantity</span> <span>7</span>
-                    </div>
-                    <div className="body-content">
-                      <span>Unit Price</span> <span>$6</span>
-                    </div>
-                  </IgrCardContent>
-                </div>
-              </IgrCard>
-            </div>
-          </IgrTile>
-          <IgrTile >
-            <span slot="title">Order Value</span>
-            <div className="string">
-              <h1>$8.66K</h1>
-            </div>
-          </IgrTile>
-          <IgrTile >
-            <span slot="title">Item quantity</span>
-            <div className="string">
-              <h1>4</h1>
-            </div>
-          </IgrTile>
-        </IgrTileManager>
-      </div>
-    );
-  }
-
+          <span slot="title">Order Line Items</span>
+          <div className="group">
+            <IgrCard className="card">
+              <div className="group_1">
+                <IgrCardHeader>
+                  <div slot="thumbnail">
+                    <IgrAvatar shape="circle">
+                      <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
+                    </IgrAvatar>
+                  </div>
+                  <span slot="title">Carnavon Tigers</span>
+                </IgrCardHeader>
+                <IgrCardContent className="column">
+                  <div className="body-content">
+                    <span>Quantity</span> <span>12</span>
+                  </div>
+                  <div className="body-content">
+                    <span>Unit Price</span> <span>$50</span>
+                  </div>
+                </IgrCardContent>
+              </div>
+            </IgrCard>
+            <IgrCard className="card">
+              <div className="group_1">
+                <IgrCardHeader>
+                  <div slot="thumbnail">
+                    <IgrAvatar shape="circle">
+                      <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
+                    </IgrAvatar>
+                  </div>
+                  <span slot="title">Guarana Fantastica</span>
+                </IgrCardHeader>
+                <IgrCardContent className="column">
+                  <div className="body-content">
+                    <span>Quantity</span> <span>10</span>
+                  </div>
+                  <div className="body-content">
+                    <span>Unit Price</span> <span>$4</span>
+                  </div>
+                </IgrCardContent>
+              </div>
+            </IgrCard>
+            <IgrCard className="card">
+              <div className="group_1">
+                <IgrCardHeader>
+                  <div slot="thumbnail">
+                    <IgrAvatar shape="circle">
+                      <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
+                    </IgrAvatar>
+                  </div>
+                  <span slot="title">Vegie-spread</span>
+                </IgrCardHeader>
+                <IgrCardContent className="column">
+                  <div className="body-content">
+                    <span>Quantity</span> <span>5</span>
+                  </div>
+                  <div className="body-content">
+                    <span>Unit Price</span> <span>$35</span>
+                  </div>
+                </IgrCardContent>
+              </div>
+            </IgrCard>
+            <IgrCard className="card">
+              <div className="group_1">
+                <IgrCardHeader>
+                  <div slot="thumbnail">
+                    <IgrAvatar shape="circle">
+                      <IgrIcon name="product" collection="material" className="material-icons"></IgrIcon>
+                    </IgrAvatar>
+                  </div>
+                  <span slot="title">Rhonbrau Klosterbier</span>
+                </IgrCardHeader>
+                <IgrCardContent className="column">
+                  <div className="body-content">
+                    <span>Quantity</span> <span>7</span>
+                  </div>
+                  <div className="body-content">
+                    <span>Unit Price</span> <span>$6</span>
+                  </div>
+                </IgrCardContent>
+              </div>
+            </IgrCard>
+          </div>
+        </IgrTile>
+        <IgrTile >
+          <span slot="title">Order Value</span>
+          <div className="string">
+            <h1>$8.66K</h1>
+          </div>
+        </IgrTile>
+        <IgrTile >
+          <span slot="title">Item quantity</span>
+          <div className="string">
+            <h1>4</h1>
+          </div>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<Overview/>);
 ```
 ```css
@@ -369,22 +360,18 @@ We also have properties for setting the minimum width of the columns ([`MinColum
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
+import { useRef } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
-import { IgrTileManager, IgrTile, IgrInput } from "igniteui-react";
+import { IgrTileManager, IgrTile, IgrInput, IgrComponentValueChangedEventArgs } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class ColumnGap extends React.Component<any, any> {
+export default function ColumnGap() {
+  const tileManagerRef = useRef<IgrTileManager>(null);
 
-  private tileManagerRef = React.createRef<IgrTileManager>();
-  constructor(props: any) {
-    super(props);
-  }
-
-  private onInputChange = (event: CustomEvent) => {    
-    const tileManager = this.tileManagerRef.current;
+  function onInputChange(event: IgrComponentValueChangedEventArgs) {
+    const tileManager = tileManagerRef.current!;
     const input = event.target as IgrInput;
     switch (input.label) {
       case 'Columns Number': tileManager.columnCount = parseInt(input.value);
@@ -394,53 +381,50 @@ export default class ColumnGap extends React.Component<any, any> {
     }
   }
 
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <div className="inputWrapper">
-          <IgrInput label="Columns Number" id="rowIn" onChange={this.onInputChange}></IgrInput>
-          <IgrInput label="Gap Size" placeholder="10px" onChange={this.onInputChange}></IgrInput>
-        </div>
-        <IgrTileManager id="tile-manager1" gap="10px" ref={this.tileManagerRef}>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1048/998" alt="picture" />
-            </div>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1049/999" alt="picture" />
-            </div>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1050/1000" alt="picture" />
-            </div>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1051/1001" alt="picture" />
-            </div>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1052/1002" alt="picture" />
-            </div>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <div className="picture">
-              <img src="https://picsum.photos/1053/1003" alt="picture" />
-            </div>
-          </IgrTile>
-        </IgrTileManager>
+  return (
+    <div className="container sample center">
+      <div className="inputWrapper">
+        <IgrInput label="Columns Number" id="rowIn" onChange={onInputChange}></IgrInput>
+        <IgrInput label="Gap Size" placeholder="10px" onChange={onInputChange}></IgrInput>
       </div>
-    );
-  }
-
+      <IgrTileManager id="tile-manager1" gap="10px" ref={tileManagerRef}>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1048/998" alt="picture" />
+          </div>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1049/999" alt="picture" />
+          </div>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1050/1000" alt="picture" />
+          </div>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1051/1001" alt="picture" />
+          </div>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1052/1002" alt="picture" />
+          </div>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <div className="picture">
+            <img src="https://picsum.photos/1053/1003" alt="picture" />
+          </div>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColumnGap/>);
 ```
 ```css
@@ -539,32 +523,28 @@ You also have the option to disable both action buttons and create custom ones a
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
+import type { MouseEvent } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
 import { IgrTileManager, IgrTile, IgrIconButton, registerIconFromText } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class Actions extends React.Component<any, any> {
+const northEast =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>';
+registerIconFromText('north_east', northEast, 'material');
+const southWest =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-200v-400h80v264l464-464 56 56-464 464h264v80H200Z"/></svg>';
+registerIconFromText('south_west', southWest, 'material');
+const more =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>';
+registerIconFromText('more', more, 'material');
+const chart =
+  '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>';
+registerIconFromText('chart', chart, 'material');
 
-  constructor(props: any) {
-    super(props);
-    const northEast =
-      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>';
-    registerIconFromText('north_east', northEast, 'material');
-    const southWest =
-      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M200-200v-400h80v264l464-464 56 56-464 464h264v80H200Z"/></svg>';
-    registerIconFromText('south_west', southWest, 'material');
-    const more =
-      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>';
-    registerIconFromText('more', more, 'material');
-    const chart =
-      '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z"/></svg>';
-    registerIconFromText('chart', chart, 'material');
-  }
-
-  private onCustomOneClick = (event: React.MouseEvent) => {
+export default function Actions() {
+  function onCustomOneClick(event: MouseEvent<IgrIconButton>) {
 
     const tile = (event.currentTarget as HTMLElement).closest('igc-tile');
 
@@ -609,9 +589,9 @@ export default class Actions extends React.Component<any, any> {
         }
       }
     }
-  };
+  }
 
-  private onCustomTwoClick = (event: React.MouseEvent) => {
+  function onCustomTwoClick(event: MouseEvent<IgrIconButton>) {
       const tile = (event.currentTarget as HTMLElement).closest('igc-tile');
 
       if (tile) {
@@ -632,47 +612,44 @@ export default class Actions extends React.Component<any, any> {
           }
         }
       }
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <IgrTileManager id="tile-manager1" columnCount={2} gap="20px">
-          <IgrTile>
-            <span slot="title">Default Actions</span>
-            <p>This tile has default actions and title.</p>
-          </IgrTile>
-          <IgrTile disableFullscreen>
-            <span slot="title">No Fullscreen Action</span>
-            <p>Fullscreen is disabled via property.</p>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <span slot="title">Custom Actions</span>
-            <IgrIconButton id="customOne" onClick={this.onCustomOneClick} slot="actions" variant="flat" collection="material" name="north_east"
-            aria-label="north_east"></IgrIconButton>
-            <p>Replace the default actions with custom ones, and include extra actions when the tile is maximized.</p>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <IgrIconButton id="customTwo" onClick={this.onCustomTwoClick} slot="actions" variant="flat" collection="material"
-            name="north_east" aria-label="north_east"></IgrIconButton>
-            <p>Display only custom actions in the header.</p>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <span slot="title">Only title</span>
-            <p>Display only title in the header.</p>
-          </IgrTile>
-          <IgrTile disableFullscreen disableMaximize>
-            <p>Content only.</p>
-          </IgrTile>
-        </IgrTileManager>
-      </div>
-    );
   }
 
+  return (
+    <div className="container sample center">
+      <IgrTileManager id="tile-manager1" columnCount={2} gap="20px">
+        <IgrTile>
+          <span slot="title">Default Actions</span>
+          <p>This tile has default actions and title.</p>
+        </IgrTile>
+        <IgrTile disableFullscreen>
+          <span slot="title">No Fullscreen Action</span>
+          <p>Fullscreen is disabled via property.</p>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <span slot="title">Custom Actions</span>
+          <IgrIconButton id="customOne" onClick={onCustomOneClick} slot="actions" variant="flat" collection="material" name="north_east"
+          aria-label="north_east"></IgrIconButton>
+          <p>Replace the default actions with custom ones, and include extra actions when the tile is maximized.</p>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <IgrIconButton id="customTwo" onClick={onCustomTwoClick} slot="actions" variant="flat" collection="material"
+          name="north_east" aria-label="north_east"></IgrIconButton>
+          <p>Display only custom actions in the header.</p>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <span slot="title">Only title</span>
+          <p>Display only title in the header.</p>
+        </IgrTile>
+        <IgrTile disableFullscreen disableMaximize>
+          <p>Content only.</p>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<Actions/>);
 ```
 ```css
@@ -738,28 +715,23 @@ You can see the difference between the three states in the example below:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
+import { useRef } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
-import { IgrTileManager, IgrTile, IgrRadio, IgrRadioGroup, IgrInput } from "igniteui-react";
+import { IgrTileManager, IgrTile, IgrRadio, IgrRadioGroup, IgrInput, IgrRadioChangeEventArgs, IgrComponentValueChangedEventArgs, TileManagerResizeMode } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
-import { IgcRadioChangeEventArgs } from "igniteui-webcomponents/components/radio/radio";
 
-export default class Actions extends React.Component<any, any> {
+export default function Actions() {
+  const tileManagerRef = useRef<IgrTileManager>(null);
 
-  private tileManagerRef = React.createRef<IgrTileManager>();
-  constructor(props: any) {
-    super(props);
+  function onRadioChange(event: IgrRadioChangeEventArgs) {
+      const radio = event.target as IgrRadio;
+      tileManagerRef.current!.resizeMode = radio.value as TileManagerResizeMode;
   }
 
-  private onRadioChange = (event: CustomEvent<IgcRadioChangeEventArgs>) => {
-      const radio = event.target as IgrRadio;
-      (this.tileManagerRef.current as IgrTileManager).resizeMode = radio.value as any;
-  };
-
-  private onInputChange = (event: CustomEvent) => {
-    const tileManager = this.tileManagerRef.current;
+  function onInputChange(event: IgrComponentValueChangedEventArgs) {
+    const tileManager = tileManagerRef.current!;
     const input = event.target as IgrInput;
     switch (input.label) {
       case 'Minimum Column Width': tileManager.minColumnWidth = input.value;
@@ -769,44 +741,41 @@ export default class Actions extends React.Component<any, any> {
     }
   }
 
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <div className="inputWrapper">
-          <IgrRadioGroup id="resize" alignment="horizontal" onChange={this.onRadioChange}>
-            <IgrRadio name="resize" value="always" checked>Always</IgrRadio>
-            <IgrRadio name="resize" value="hover">Hover</IgrRadio>
-            <IgrRadio name="resize" value="none">None</IgrRadio>
-          </IgrRadioGroup>
-          <IgrInput label="Minimum Column Width" placeholder="200px" type={"text"} onChange={this.onInputChange}></IgrInput>
-          <IgrInput label="Minimum Row Height" placeholder="200px" type={"text"} onChange={this.onInputChange}></IgrInput>
-        </div>
-        <IgrTileManager resize-mode="always" gap="20px" ref={this.tileManagerRef}>
-          <IgrTile>
-            <span slot="title">Tile 1 header</span>
-            <p>Content for Tile 1</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 2 header</span>
-            <p>Content for Tile 2</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 3 header</span>
-            <p>Content for Tile 3</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 4 header</span>
-            <p>Content for Tile 4</p>
-          </IgrTile>
-        </IgrTileManager>
+  return (
+    <div className="container sample center">
+      <div className="inputWrapper">
+        <IgrRadioGroup id="resize" alignment="horizontal" onChange={onRadioChange}>
+          <IgrRadio name="resize" value="always" checked>Always</IgrRadio>
+          <IgrRadio name="resize" value="hover">Hover</IgrRadio>
+          <IgrRadio name="resize" value="none">None</IgrRadio>
+        </IgrRadioGroup>
+        <IgrInput label="Minimum Column Width" placeholder="200px" type={"text"} onChange={onInputChange}></IgrInput>
+        <IgrInput label="Minimum Row Height" placeholder="200px" type={"text"} onChange={onInputChange}></IgrInput>
       </div>
-    );
-  }
-
+      <IgrTileManager resize-mode="always" gap="20px" ref={tileManagerRef}>
+        <IgrTile>
+          <span slot="title">Tile 1 header</span>
+          <p>Content for Tile 1</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 2 header</span>
+          <p>Content for Tile 2</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 3 header</span>
+          <p>Content for Tile 3</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 4 header</span>
+          <p>Content for Tile 4</p>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<Actions/>);
 ```
 ```css
@@ -887,63 +856,54 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
+import { useRef } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
-import { IgrTileManager, IgrTile, IgrRadio, IgrRadioGroup } from "igniteui-react";
+import { IgrTileManager, IgrTile, IgrRadio, IgrRadioGroup, IgrRadioChangeEventArgs, TileManagerDragMode } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
-import { IgcRadioChangeEventArgs } from "igniteui-webcomponents/components/radio/radio";
 
-export default class DragNDrop extends React.Component<any, any> {
+export default function DragNDrop() {
+  const tileManagerRef = useRef<IgrTileManager>(null);
 
-  private tileManagerRef = React.createRef<IgrTileManager>();
-
-  constructor(props: any) {
-    super(props);
-  }
-
-  private onRadioChange = (event: CustomEvent<IgcRadioChangeEventArgs>) => {
+  function onRadioChange(event: IgrRadioChangeEventArgs) {
       const radio = event.target as IgrRadio;
-      this.tileManagerRef.current.dragMode = radio.value as any;
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <div className="radioWrapper">
-        <IgrRadioGroup id="dragMode" alignment="horizontal" onChange={this.onRadioChange}>
-          <IgrRadio name="dragMode" value="tile-header" checked>Tile-header</IgrRadio>
-          <IgrRadio name="dragMode" value="tile">Tile</IgrRadio>
-          <IgrRadio name="dragMode" value="none">None</IgrRadio>
-        </IgrRadioGroup>
-        </div>
-        <IgrTileManager drag-mode="tile-header" drag-action="slide" column-count="2" gap="20px" ref={this.tileManagerRef}>
-          <IgrTile>
-          <span slot="title">Tile 1 header</span>
-            <p>Content for Tile 1</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 2 header</span>
-            <p>Content for Tile 2</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 3 header</span>
-            <p>Content for Tile 3</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 4 header</span>
-            <p>Content for Tile 4</p>
-          </IgrTile>
-        </IgrTileManager>
-      </div>
-    );
+      tileManagerRef.current!.dragMode = radio.value as TileManagerDragMode;
   }
 
+  return (
+    <div className="container sample center">
+      <div className="radioWrapper">
+      <IgrRadioGroup id="dragMode" alignment="horizontal" onChange={onRadioChange}>
+        <IgrRadio name="dragMode" value="tile-header" checked>Tile-header</IgrRadio>
+        <IgrRadio name="dragMode" value="tile">Tile</IgrRadio>
+        <IgrRadio name="dragMode" value="none">None</IgrRadio>
+      </IgrRadioGroup>
+      </div>
+      <IgrTileManager drag-mode="tile-header" drag-action="slide" column-count="2" gap="20px" ref={tileManagerRef}>
+        <IgrTile>
+        <span slot="title">Tile 1 header</span>
+          <p>Content for Tile 1</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 2 header</span>
+          <p>Content for Tile 2</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 3 header</span>
+          <p>Content for Tile 3</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 4 header</span>
+          <p>Content for Tile 4</p>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<DragNDrop/>);
 ```
 ```css
@@ -991,72 +951,63 @@ The Tile Manager provides methods that help manage the layout of tiles:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React, { Component, createRef } from "react";
+import { useRef, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
 import { IgrTileManager, IgrTile, IgrButton } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class Layout extends Component<any, any> {
+export default function Layout() {
+  const tileManagerRef = useRef<IgrTileManager>(null);
+  const [serializedData, setSerializedData] = useState('');
 
-  private tileManagerRef = createRef<IgrTileManager>();
-  state = {
-    serializedData: '',
-  };
-  constructor(props: any) {
-    super(props);
-  }
-
-  private onAddTileClick = () => {
+  function onAddTileClick() {
     const newTile = document.createElement("igc-tile");  
     const contentHeader = document.createElement('span');
     const content = document.createElement('p');
-    const index = this.tileManagerRef.current.tiles.length + 1;
+    const index = tileManagerRef.current!.tiles.length + 1;
     contentHeader.textContent = `Tile ${index} header`;
     content.textContent = `Content for Tile ${index}`;
     contentHeader.setAttribute('slot', 'title');
     newTile.position = 0;
     newTile.append(contentHeader);
     newTile.append(content);
-    (this.tileManagerRef.current as IgrTileManager).appendChild(newTile);
+    tileManagerRef.current!.appendChild(newTile);
   }
 
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <div className="btnWrapper">
-          <IgrButton id="saveL" onClick={() => this.setState({ serializedData: this.tileManagerRef?.current.saveLayout()})}>Save Layout</IgrButton>
-          <IgrButton id="loadL" onClick={() => this.tileManagerRef.current.loadLayout(this.state.serializedData)}>Load Layout</IgrButton>
-          <IgrButton id="addT" onClick={this.onAddTileClick}>Add Tile</IgrButton>
-          <IgrButton id="remT" onClick={()=> this.tileManagerRef.current.querySelector('igc-tile:first-of-type')?.remove()}>Remove Tile</IgrButton>
-        </div>
-        <IgrTileManager ref={this.tileManagerRef} resize-mode="always" drag-mode="tile" column-count="2" gap="20px">
-          <IgrTile>
-            <span slot="title">Tile 1 header</span>
-            <p>Content for Tile 1</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 2 header</span>
-            <p>Content for Tile 2</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 3 header</span>
-            <p>Content for Tile 3</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 4 header</span>
-            <p>Content for Tile 4</p>
-          </IgrTile>
-        </IgrTileManager>
+  return (
+    <div className="container sample center">
+      <div className="btnWrapper">
+        <IgrButton id="saveL" onClick={() => setSerializedData(tileManagerRef.current!.saveLayout())}>Save Layout</IgrButton>
+        <IgrButton id="loadL" onClick={() => tileManagerRef.current!.loadLayout(serializedData)}>Load Layout</IgrButton>
+        <IgrButton id="addT" onClick={onAddTileClick}>Add Tile</IgrButton>
+        <IgrButton id="remT" onClick={()=> tileManagerRef.current!.querySelector('igc-tile:first-of-type')?.remove()}>Remove Tile</IgrButton>
       </div>
-    );
-  }
-
+      <IgrTileManager ref={tileManagerRef} resize-mode="always" drag-mode="tile" column-count="2" gap="20px">
+        <IgrTile>
+          <span slot="title">Tile 1 header</span>
+          <p>Content for Tile 1</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 2 header</span>
+          <p>Content for Tile 2</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 3 header</span>
+          <p>Content for Tile 3</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 4 header</span>
+          <p>Content for Tile 4</p>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<Layout/>);
 ```
 ```css
@@ -1144,7 +1095,6 @@ You can also change the icon of the adorners to a custom one using the `side-ado
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./layout.css";
@@ -1152,48 +1102,41 @@ import "./styles.css";
 import { IgrTileManager, IgrTile, IgrIcon, registerIconFromText } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class Styling extends React.Component<any, any> {
+const indicatorIcon =
+  '<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M3.993 12.508V.765h-.979v11.743h.979ZM1.54 10.06V3.21H.56v6.85h.98Z" fill="#09F"/></svg>';
 
-  constructor(props: any) {
-    super(props);
-    const indicatorIcon =
-      '<svg xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M3.993 12.508V.765h-.979v11.743h.979ZM1.54 10.06V3.21H.56v6.85h.98Z" fill="#09F"/></svg>';
+registerIconFromText('indicator', indicatorIcon);
 
-    registerIconFromText('indicator', indicatorIcon);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <IgrTileManager column-count="2" gap="20px" resize-mode="always">
-          <IgrTile>
-            <IgrIcon slot="side-adorner" className="side" name="indicator"></IgrIcon>
-            <IgrIcon slot="corner-adorner" className="corner" name="indicator"></IgrIcon>
-            <IgrIcon slot="bottom-adorner" className="bottom" name="indicator"></IgrIcon>
-            <span slot="title">Tile 1 header</span>
-            <p>Content for Tile 1</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 2 header</span>
-            <p>Content for Tile 2</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 3 header</span>
-            <p>Content for Tile 3</p>
-          </IgrTile>
-          <IgrTile>
-            <span slot="title">Tile 4 header</span>
-            <p>Content for Tile 4</p>
-          </IgrTile>
-        </IgrTileManager>
-      </div>
-    );
-  }
-
+export default function Styling() {
+  return (
+    <div className="container sample center">
+      <IgrTileManager column-count="2" gap="20px" resize-mode="always">
+        <IgrTile>
+          <IgrIcon slot="side-adorner" className="side" name="indicator"></IgrIcon>
+          <IgrIcon slot="corner-adorner" className="corner" name="indicator"></IgrIcon>
+          <IgrIcon slot="bottom-adorner" className="bottom" name="indicator"></IgrIcon>
+          <span slot="title">Tile 1 header</span>
+          <p>Content for Tile 1</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 2 header</span>
+          <p>Content for Tile 2</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 3 header</span>
+          <p>Content for Tile 3</p>
+        </IgrTile>
+        <IgrTile>
+          <span slot="title">Tile 4 header</span>
+          <p>Content for Tile 4</p>
+        </IgrTile>
+      </IgrTileManager>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<Styling/>);
 ```
 ```css

@@ -285,18 +285,6 @@ What if we would like to filter and sort our [`IgbGrid`](mcp:get_api_reference?p
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right.
 
-To do this, let's go and grab the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput), [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) and the [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip) modules.
-
-```csharp
-// eg. Program.cs register the following:
-builder.Services.AddIgniteUIBlazor(
-    typeof(IgbGridModule),
-    typeof(IgbInputModule),
-    typeof(IgbIconButtonModule),
-    typeof(IgbIconModule)
-);
-```
-
 ```razor
 @code {
     private IgbIcon searchIconRef { get; set; }

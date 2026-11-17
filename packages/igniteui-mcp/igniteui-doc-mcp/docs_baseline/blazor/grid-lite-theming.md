@@ -15,24 +15,24 @@ The Grid Lite comes with four distinct themes - Bootstrap, Material, Fluent and 
 
 ## Loading a Base Themes
 
-Depending on your project type, setup and build configuration the method of how to include one of the files below will vary. If you are using a framework/build tool refer to its documentation on how to add external styles to your output bundle.
+If the app also uses the `IgniteUI.Blazor.Lite` or `IgniteUI.Blazor` package, keep that package's [theme stylesheet](../themes/overview.md). It styles the grid too, so the app doesn't need the stylesheets below.
 
-As a rule of thumb, you can always copy the `themes` folder to your assets directory and link the theme from there in your index.html.
+An app that uses only the Grid Lite links one of the themes the `IgniteUI.Blazor.GridLite` package ships, in the host page: **Components/App.razor** in a Blazor Web App, or **wwwroot/index.html** in a standalone Blazor WebAssembly app.
 
 ```html
-<link rel="stylesheet" href="./assets/themes/light/bootstrap.css">
+<link href="_content/IgniteUI.Blazor.GridLite/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
-| Theme     | Variant | Path                                                           |
-| --------- | ------- | -------------------------------------------------------------- |
-| Bootstrap | Light   | node_modules/igniteui-webcomponents/themes/light/bootstrap.css |
-| Bootstrap | Dark    | node_modules/igniteui-webcomponents/themes/dark/bootstrap.css  |
-| Material  | Light   | node_modules/igniteui-webcomponents/themes/light/material.css  |
-| Material  | Dark    | node_modules/igniteui-webcomponents/themes/dark/material.css   |
-| Fluent    | Light   | node_modules/igniteui-webcomponents/themes/light/fluent.css    |
-| Fluent    | Dark    | node_modules/igniteui-webcomponents/themes/dark/fluent.css     |
-| Indigo    | Light   | node_modules/igniteui-webcomponents/themes/light/indigo.css    |
-| Indigo    | Dark    | node_modules/igniteui-webcomponents/themes/dark/indigo.css     |
+| Theme     | Variant | Path                                                       |
+| --------- | ------- | ---------------------------------------------------------- |
+| Bootstrap | Light   | _content/IgniteUI.Blazor.GridLite/themes/light/bootstrap.css |
+| Bootstrap | Dark    | _content/IgniteUI.Blazor.GridLite/themes/dark/bootstrap.css  |
+| Material  | Light   | _content/IgniteUI.Blazor.GridLite/themes/light/material.css  |
+| Material  | Dark    | _content/IgniteUI.Blazor.GridLite/themes/dark/material.css   |
+| Fluent    | Light   | _content/IgniteUI.Blazor.GridLite/themes/light/fluent.css    |
+| Fluent    | Dark    | _content/IgniteUI.Blazor.GridLite/themes/dark/fluent.css     |
+| Indigo    | Light   | _content/IgniteUI.Blazor.GridLite/themes/light/indigo.css    |
+| Indigo    | Dark    | _content/IgniteUI.Blazor.GridLite/themes/dark/indigo.css     |
 
 In the sample below, you can preview all the default base themes.
 
@@ -46,19 +46,12 @@ In the sample below, you can preview all the default base themes.
 
 <div class="container">
 
-    <div class="theme-selector">
-        <label>Theme: </label>
-        <select @onchange="ChangeTheme" class="theme-dropdown">
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/light/bootstrap.css">Light Bootstrap</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/light/material.css">Light Material</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/light/fluent.css">Light Fluent</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/light/indigo.css">Light Indigo</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/dark/bootstrap.css">Dark Bootstrap</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/dark/material.css">Dark Material</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/dark/fluent.css">Dark Fluent</option>
-            <option value="_content/IgniteUI.Blazor.GridLite/css/themes/dark/indigo.css">Dark Indigo</option>
-        </select>
-    </div>
+    <IgbSelect class="theme-selector" Label="Theme" @bind-Value="currentTheme">
+        @foreach (var theme in themes)
+        {
+            <IgbSelectItem Value="@theme.Path">@theme.Name</IgbSelectItem>
+        }
+    </IgbSelect>
 
     @if (products != null)
     {
@@ -76,25 +69,32 @@ In the sample below, you can preview all the default base themes.
 
 @code {
     private List<ProductInfo> products;
-    private string currentTheme = "_content/IgniteUI.Blazor.GridLite/css/themes/light/bootstrap.css";
+    private string currentTheme = "_content/IgniteUI.Blazor/themes/light/bootstrap.css";
+
+    private readonly List<ThemeOption> themes = new()
+    {
+        new("Light Bootstrap", "_content/IgniteUI.Blazor/themes/light/bootstrap.css"),
+        new("Light Material", "_content/IgniteUI.Blazor/themes/light/material.css"),
+        new("Light Fluent", "_content/IgniteUI.Blazor/themes/light/fluent.css"),
+        new("Light Indigo", "_content/IgniteUI.Blazor/themes/light/indigo.css"),
+        new("Dark Bootstrap", "_content/IgniteUI.Blazor/themes/dark/bootstrap.css"),
+        new("Dark Material", "_content/IgniteUI.Blazor/themes/dark/material.css"),
+        new("Dark Fluent", "_content/IgniteUI.Blazor/themes/dark/fluent.css"),
+        new("Dark Indigo", "_content/IgniteUI.Blazor/themes/dark/indigo.css"),
+    };
 
     protected override void OnInitialized()
     {
         products = MockDataGenerator.CreateProducts(50);
     }
 
-    private void ChangeTheme(ChangeEventArgs e)
-    {
-        currentTheme = e.Value?.ToString() ?? "light/bootstrap";
-    }
+    private record ThemeOption(string Name, string Path);
 }
 ```
 
 ## Creating Custom Themes
 
 Aside from the default themes shipped with the Grid Lite package, you can further customize the look and feel of your data grid by using an alternate set of CSS custom properties.
-
-Refer to the [theming topic](../grids/grid/theming-grid.md) for more details.
 
 ```css
 .grid-sample {
@@ -107,7 +107,7 @@ Refer to the [theming topic](../grids/grid/theming-grid.md) for more details.
 ```
 
 ```razor
- <IgbGridLite class="grid-lite-sample" />
+<IgbGridLite class="grid-sample" />
 ```
 
 Here is an example showcasing the custom theming from above.
@@ -158,4 +158,4 @@ Here is an example showcasing the custom theming from above.
 
 Our community is active and always welcoming to new ideas.
 
-- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Grid.OSS)
+- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Blazor.GridLite)

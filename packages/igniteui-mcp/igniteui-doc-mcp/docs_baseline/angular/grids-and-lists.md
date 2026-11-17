@@ -1132,7 +1132,7 @@ Full support for exporting data grids to XLSX, XLS, TSV or CSV. The Ignite UI fo
 - [Grid-level Searching](/grid/search)
 - [Export to Excel, CSV, TSV](/exporter-excel)
 - [Multi-Column Headers](/grid/multi-column-headers)
-- [Combo Box/Dropdown](/combo)
+- [Combo Box/Dropdown](/inputs/combo/overview)
 - [Virtualization and Performance](/grid/virtualization)
 - [Remote Data Load on Demand](/grid/virtualization#remote-virtualization)
 - [Cell Templates](/grid/grid#cell-template)

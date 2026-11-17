@@ -85,9 +85,10 @@ This index records what each component's documentation covers today. **Not docum
 | [Card](../layouts/card.md) | Not documented yet | Not documented yet | — |
 | [Carousel](../layouts/carousel.md#accessibility) | Documented | Documented | [Accessibility](../layouts/carousel.md#accessibility) |
 | [Checkbox](../inputs/checkbox.md) | Not documented yet | Not documented yet | — |
-| [Chip](../inputs/chip.md) | Not documented yet | Not documented yet | — |
+| [Chip](../inputs/chip.md#accessibility) | Documented | Documented | [Accessibility](../inputs/chip.md#accessibility) |
 | [Circular Progress](../inputs/circular-progress.md) | Not documented yet | Not documented yet | — |
-| [Combo](../inputs/combo/overview.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/combo/overview.md#keyboard-navigation) |
+| [Combo](../inputs/combo/overview.md#accessibility) | Documented | Documented | [Accessibility](../inputs/combo/overview.md#accessibility) |
+| [Combo Single Selection](../inputs/combo/single-selection.md#accessibility) | Documented | Documented | [Accessibility](../inputs/combo/single-selection.md#accessibility) |
 | [Date Time Input](../inputs/date-time-input.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/date-time-input.md#keyboard-navigation) |
 | [Date Picker](../scheduling/date-picker.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../scheduling/date-picker.md#keyboard-navigation) |
 | [Dialog](../notifications/dialog.md) | Not documented yet | Not documented yet | — |
@@ -95,20 +96,20 @@ This index records what each component's documentation covers today. **Not docum
 | [Dock Manager](../layouts/dock-manager.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/dock-manager.md#keyboard-navigation) |
 | [Dropdown](../inputs/dropdown.md) | Not documented yet | Not documented yet | — |
 | [Expansion Panel](../layouts/expansion-panel.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/expansion-panel.md#keyboard-navigation) |
-| [Icon](../layouts/icon.md) | Not documented yet | Not documented yet | — |
+| [Icon](../layouts/icon.md#accessibility) | Documented | Documented | [Accessibility](../layouts/icon.md#accessibility) |
 | [Icon Button](../inputs/icon-button.md) | Not documented yet | Not documented yet | — |
 | [Input](../inputs/input.md) | Not documented yet | Not documented yet | — |
 | [Linear Progress](../inputs/linear-progress.md) | Not documented yet | Not documented yet | — |
 | [Navbar](../menus/navbar.md) | Not documented yet | Not documented yet | — |
 | [Navigation Drawer](../menus/navigation-drawer.md) | Not documented yet | Not documented yet | — |
-| [Radio](../inputs/radio.md) | Not documented yet | Not documented yet | — |
-| [Rating](../inputs/rating.md) | Not documented yet | Not documented yet | — |
+| [Radio](../inputs/radio.md#accessibility) | Documented | Documented | [Accessibility](../inputs/radio.md#accessibility) |
+| [Rating](../inputs/rating.md#accessibility) | Documented | Documented | [Accessibility](../inputs/rating.md#accessibility) |
 | [Select](../inputs/select.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../inputs/select.md#keyboard-navigation) |
 | [Slider](../inputs/slider.md) | Not documented yet | Not documented yet | — |
 | [Snackbar](../notifications/snackbar.md) | Not documented yet | Not documented yet | — |
 | [Stepper](../layouts/stepper.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/stepper.md#keyboard-navigation) |
 | [Switch](../inputs/switch.md) | Not documented yet | Not documented yet | — |
-| [Tabs](../layouts/tabs.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../layouts/tabs.md#keyboard-navigation) |
+| [Tabs](../layouts/tabs.md#accessibility) | Documented | Documented | [Accessibility](../layouts/tabs.md#accessibility) |
 | [Text Area](../inputs/text-area.md) | Not documented yet | Not documented yet | — |
 | [Toast](../notifications/toast.md) | Not documented yet | Not documented yet | — |
 | [Tooltip](../inputs/tooltip.md#accessibility--aria-support) | Documented | Documented | [Accessibility](../inputs/tooltip.md#accessibility--aria-support) |

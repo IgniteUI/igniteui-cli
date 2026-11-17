@@ -1,5 +1,5 @@
 ---
-title: "Button Component"
+title: "Button"
 description: Get started with the React Button Component. Select button variants, configure sizes, define styling, and gain flexibility through the React Button OnClick event.
 keywords: "React, UI controls, web widgets, UI widgets, React Button Components, Infragistics"
 mentionedTypes: ["Button", "ButtonBase"]
@@ -860,29 +860,21 @@ igc-button {
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class ButtonDownload extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                 <IgrButton href="" variant="contained" download="url" target="_blank">Download</IgrButton>
-            </div>
-        );
-    }
+export default function ButtonDownload() {
+    return (
+        <div className="container sample">
+             <IgrButton href="" variant="contained" download="url" target="_blank">Download</IgrButton>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<ButtonDownload/>);
 ```
 

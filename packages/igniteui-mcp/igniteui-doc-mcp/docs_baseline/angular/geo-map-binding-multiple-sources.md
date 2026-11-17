@@ -1,17 +1,18 @@
 ---
 title: "Angular Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
-description: Use Infragistics' Angular JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Angular map tutorials!
+description: Use Infragistics' Angular map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Angular map tutorials!
 keywords: "Angular map, geographic series, Ignite UI for Angular, Infragistics, data binding"
 license: commercial
 mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
 llms:
   description: "In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
+platformType: xplat
 _tocName: Binding Multiple Sources
 _premium: true
 ---
 # Angular Binding Multiple Data Sources
 
-In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgxGeographicSymbolSeries` for plotting geographic locations of airports, the `IgxGeographicPolylineSeries` for plotting flights between airports, and 2nd `IgxGeographicPolylineSeries` for plotting gridlines of major geographic coordinates.
+In the Ignite UI for Angular map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) for plotting geographic locations of airports, the [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) for plotting flights between airports, and 2nd [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) for plotting gridlines of major geographic coordinates.
 
 ## Angular Binding Multiple Data Sources Example
 
@@ -157,9 +158,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- `IgxGeographicSymbolSeries` – displays locations of major airports
-- `IgxGeographicPolylineSeries` – displays flights between airports
-- `IgxGeographicPolylineSeries` – displays gridlines of major coordinates
+- [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) – displays locations of major airports
+- [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) – displays flights between airports
+- [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
@@ -168,92 +169,56 @@ You can use geographic series in this or other combinations to plot desired data
 Create data sources for all geographic series that you want to display in the Ignite UI for Angular map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
 ```html
-<div class="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
-</div>
-
-<ng-template let-series="series" let-item="item" #polylineTooltipTemplate>
-        <div>
-            <span>
-            Arrival: {{item.origin.country}}
-            </span>
-            <br/>
-            <span>
-            Destination: {{item.dest.country}}
-            </span>
-            <br/>
-            <span>
-            Distance: {{item.distance}} miles
-            </span>
-        </div>
-    </ng-template>
-
-    <ng-template let-series="series" let-item="item" #pointTooltipTemplate>
-            <div>
-                <span>
-                {{item?.country}}
-                </span>
-                <br />
-                <span>
-                {{item?.name}}
-                </span>
-                <br />
-                <span>
-                Population: {{item.pop}} M
-                </span>
-                <br/>
-                <span>
-                Flights: {{item.flights}}
-                </span>
-            </div>
-        </ng-template>
+<igx-geographic-map
+    #geoMap
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igx-geographic-map>
 ```
 
 ## Overlaying Flights
 
-Create first `IgxGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for Angular map.
+Create first [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Angular map.
 
 ```html
-<igx-geographic-polyline-series  #polylineSeries
-        [tooltipTemplate]="polylineTooltipTemplate"
-                name="polylineSeries"
-                shapeMemberPath="points"
-                shapeStroke="rgba(147, 15, 180, 0.5)"
-                thickness={3.0} >
+<igx-geographic-polyline-series
+    #lineSeries
+    [dataSource]="worldFlights"
+    shapeMemberPath="points"
+    shapeStroke="rgba(196, 14, 14, 0.05)"
+    shapeStrokeThickness=4>
 </igx-geographic-polyline-series>
 ```
 
 ## Overlaying Gridlines
 
-Create second `IgxGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for Angular map.
+Create second [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) object with geographic gridlines and add it to the Series collection of the Ignite UI for Angular map.
 
 ```html
-  <igx-geographic-polyline-series  #polylineSeries
-            [tooltipTemplate]="polylineTooltipTemplate"
-                 datasource = worldFlights
-                 name="polylineSeries"
-                 shapeMemberPath="points"
-                 shapeStroke="rgba(196, 14, 14,0.05)"
-                 thickness={3.0} >
-    </igx-geographic-polyline-series>
+<igx-geographic-polyline-series
+    #gridSeries
+    [dataSource]="worldGridlines"
+    shapeMemberPath="points"
+    shapeStroke="Gray"
+    shapeStrokeThickness=1>
+</igx-geographic-polyline-series>
 ```
 
 ## Overlaying Airports
 
-Create `IgxGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for Angular map.
+Create [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) object with airport points and add it to the Series collection of the geographic Ignite UI for Angular map.
 
 ```html
-<igx-geographic-symbol-series  #symbolSeries
-    name="symbolSeries"
-    longitudeMemberPath="longitude"
-    latitudeMemberPath="latitude"
+<igx-geographic-symbol-series
+    #symbolSeries
+    [dataSource]="worldAirports"
+    latitudeMemberPath="lat"
+    longitudeMemberPath="lon"
     markerType="Circle"
-    markerOutline="rgb(73, 73, 73)"
-    markerBrush="White" >
+    markerBrush="rgba(170, 211, 223, 1)"
+    markerOutline="rgba(73, 73, 73, 1)"
+    thickness=1>
 </igx-geographic-symbol-series>
 ```
 
@@ -262,80 +227,42 @@ Create `IgxGeographicSymbolSeries` object with airport points and add it to the 
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
 ```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { MarkerType } from 'igniteui-angular-charts';
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxGeographicPolylineSeriesComponent } from "igniteui-angular-maps";
-import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
-import { WorldConnections } from "../../utilities/WorldConnections";
+import { IgxGeographicMapComponent, IgxGeographicPolylineSeriesComponent, IgxGeographicSymbolSeriesComponent } from 'igniteui-angular-maps';
+```
 
-@Component({
-  selector: "app-map-binding-multiple-data-sources",
-  styleUrls: ["./map-binding-multiple-data-sources.component.scss"],
-  templateUrl: "./map-binding-multiple--data-sources.component.html"
-})
-
-export class MapBindingMultipleSourcesComponent implements AfterViewInit {
-
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-
-    @ViewChild("polylineTooltipTemplate")
-    public polylineTooltipTemplate: TemplateRef<object>;
-
-    @ViewChild("pointTooltipTemplate")
-    public pointTooltipTemplate: TemplateRef<object>;
-
-    public data: any;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
-      this.map.windowRect = { left: 0.195, top: 0.1, width: 0.5, height: 0.5 };
-
-      const worldFlights = WorldConnections.getFlights();
-      const worldAirports = WorldConnections.getAirports();
-      const worldGridlines = WorldConnections.getGridlines();
-
-      this.addPolylineSeriesWith(worldFlights);
-      this.addGridlineSeriesWith(worldGridlines);
-      this.addSymbolSeriesWith(worldAirports);
-    }
-
-    public addGridlineSeriesWith(data: any[]) {
-        const gridSeries = new IgxGeographicPolylineSeriesComponent();
-        gridSeries.dataSource = data;
-        gridSeries.shapeMemberPath = "points";
-        gridSeries.shapeStroke = "Gray";
-        gridSeries.shapeStrokeThickness = 1;
-        this.map.series.add(gridSeries);
-    }
-
-    public addPolylineSeriesWith(data: any[]) {
-        const lineSeries = new IgxGeographicPolylineSeriesComponent ();
-        lineSeries.dataSource = data;
-        lineSeries.shapeMemberPath = "points";
-        lineSeries.shapeStroke = "rgba(196, 14, 14,0.05)";
-        lineSeries.shapeStrokeThickness = 4;
-        lineSeries.tooltipTemplate = this.polylineTooltipTemplate;
-        this.map.series.add(lineSeries);
-    }
-
-    public addSymbolSeriesWith(data: any[]) {
-        const symbolSeries = new IgxGeographicSymbolSeriesComponent ();
-        symbolSeries.dataSource = data;
-        symbolSeries.markerType = MarkerType.Circle;
-        symbolSeries.latitudeMemberPath = "lat";
-        symbolSeries.longitudeMemberPath = "lon";
-        symbolSeries.markerBrush = "#aad3df";
-        symbolSeries.markerOutline = "rgb(73, 73, 73)";
-        symbolSeries.thickness = 1;
-        symbolSeries.tooltipTemplate = this.pointTooltipTemplate;
-        this.map.series.add(symbolSeries);
-    }
-}
+```html
+<igx-geographic-map
+    #geoMap
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igx-geographic-polyline-series
+        #lineSeries
+        [dataSource]="worldFlights"
+        shapeMemberPath="points"
+        shapeStroke="rgba(196, 14, 14, 0.05)"
+        shapeStrokeThickness=4>
+    </igx-geographic-polyline-series>
+    <igx-geographic-polyline-series
+        #gridSeries
+        [dataSource]="worldGridlines"
+        shapeMemberPath="points"
+        shapeStroke="Gray"
+        shapeStrokeThickness=1>
+    </igx-geographic-polyline-series>
+    <igx-geographic-symbol-series
+        #symbolSeries
+        [dataSource]="worldAirports"
+        latitudeMemberPath="lat"
+        longitudeMemberPath="lon"
+        markerType="Circle"
+        markerBrush="rgba(170, 211, 223, 1)"
+        markerOutline="rgba(73, 73, 73, 1)"
+        thickness=1>
+    </igx-geographic-symbol-series>
+</igx-geographic-map>
 ```
 
 ## API References
-`IgxGeographicPolylineSeries`
-`IgxGeographicSymbolSeries`
+[`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent)
+[`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent)

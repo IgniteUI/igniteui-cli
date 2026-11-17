@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "SplineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "Series", "CategoryChartType"]
 llms:
   description: "The Ignite UI for Blazor Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline."
+platformType: xplat
 _tocName: Spline Chart
 _premium: true
 ---
@@ -15,7 +16,7 @@ The Ignite UI for Blazor Spline Chart belongs to a group of Category Charts that
 
 ## Blazor Spline Chart Example
 
-The following example shows how to create Blazor Spline Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline) enum.
+The following example shows how to create Blazor Spline Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline) enum.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -110,7 +111,7 @@ public class CountryRenewableElectricity
 
 The Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period for Europe, as shown in the example below.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -192,7 +193,7 @@ public class CountryRenewableElectricity
 
 Since the Spline Chart allows you to combine multiple series and compare or see how they change over time. All we need to do is bind to a data source containing the data for China and the USA, and the chart will automatically update to fit the additional data.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -287,7 +288,7 @@ public class CountryRenewableElectricity
 
 If you need a Spline Chart with more features such as composite other series, you can configure the markers, marker brushes, marker outlines, series brushes and series outlines as demonstrated below.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -757,7 +758,7 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members |
 | --------------------|--------------------|-------------------------- |
-| Spline              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline) |
+| Spline              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = [`Spline`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Spline) |
 | Stacked Spline      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStackedSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineSeries) |
 | Stacked 100% Spline | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStacked100SplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineSeries) |
 

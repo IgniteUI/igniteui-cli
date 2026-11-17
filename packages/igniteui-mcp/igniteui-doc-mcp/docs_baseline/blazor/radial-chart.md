@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "RadialLineSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Radial Chart takes data and render it as collection of data points wrapped around a circle (rather than stretching along a horizontal line)."
+platformType: xplat
 _tocName: Radial Chart
 _premium: true
 ---
@@ -739,7 +740,7 @@ public class FootballPlayerStats
 
 ## Blazor Radial Chart Settings
 
-In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the [`LabelMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis&member=labelMode) property for the [`IgbCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis).
+In addition, the labels can be configured to appear near or wide from the chart. This can be configured with the [`IgbCategoryAngleAxis.LabelMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis&member=LabelMode) property for the [`IgbCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis).
 
 ## Additional Resources
 

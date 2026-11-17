@@ -284,9 +284,9 @@ public class SingersData
 ```
 
 ## Setup
-In order to setup row selection in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), you just need to set the [`IgbHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowSelection) property. This property accepts [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), you just need to set the [`IgbHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
 
-[`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

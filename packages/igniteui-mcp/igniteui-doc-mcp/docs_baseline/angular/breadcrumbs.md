@@ -101,6 +101,10 @@ The Angular Breadcrumbs component is a pair of elements - a container that manag
     --igd-anatomy-padding: 0px;
   }
 
+  [id^="cw-"][id*="breadcrumbs-dropdown"][id$="-example"] .igd-sample-frame {
+    height: 90%;
+  }
+
   [id^="cw-"][id*="breadcrumbs-states"][id$="-example"] .igd-sample-frame {
     width: 90%;
   }
@@ -423,6 +427,122 @@ igc-breadcrumbs {
 
 In Right-to-Left layouts, the separator icon is mirrored automatically without additional configuration, so a right-pointing chevron becomes left-pointing without changing the icon name.
 
+### Dropdown integration
+
+The Breadcrumbs component can be used in conjunction with the [Dropdown](../drop-down.md) component to provide additional navigation options for each breadcrumb item. This allows users to quickly access related pages or actions directly from the breadcrumb trail.
+
+```typescript
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { defineComponents, IgcBreadcrumbComponent, IgcBreadcrumbsComponent, IgcDropdownComponent, IgcDropdownItemComponent, IgcIconComponent, registerIconFromText } from 'igniteui-webcomponents';
+
+defineComponents(IgcBreadcrumbsComponent, IgcBreadcrumbComponent, IgcDropdownComponent, IgcDropdownItemComponent, IgcIconComponent);
+
+const threeDotsIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"></path></svg>';
+
+const folderIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"></path></svg>';
+
+if (typeof window !== 'undefined') {
+    registerIconFromText('three-dots', threeDotsIcon);
+    registerIconFromText('folder', folderIcon);
+}
+
+@Component({
+    selector: 'app-breadcrumbs-dropdown',
+    styleUrls: ['./breadcrumbs-dropdown.component.scss'],
+    templateUrl: './breadcrumbs-dropdown.component.html',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+
+export class BreadcrumbsDropdownComponent { }
+```
+```html
+<nav aria-label="Breadcrumb">
+    <igc-breadcrumbs>
+        <igc-breadcrumb>
+            <a href="/my-drive" (click)="$event.preventDefault()">My drive</a>
+        </igc-breadcrumb>
+        <igc-breadcrumb>
+            <igc-dropdown distance="10">
+                <igc-icon slot="target" name="three-dots"></igc-icon>
+                <igc-dropdown-item>
+                    <igc-icon name="folder" slot="prefix"></igc-icon>Projects
+                </igc-dropdown-item>
+                <igc-dropdown-item>
+                    <igc-icon name="folder" slot="prefix"></igc-icon>Website redesign
+                </igc-dropdown-item>
+            </igc-dropdown>
+        </igc-breadcrumb>
+        <igc-breadcrumb>
+            <a href="/my-drive/assets" (click)="$event.preventDefault()">Assets</a>
+        </igc-breadcrumb>
+        <igc-breadcrumb current>
+            <a href="/my-drive/assets/icons" (click)="$event.preventDefault()">Icons</a>
+        </igc-breadcrumb>
+    </igc-breadcrumbs>
+</nav>
+```
+```scss
+:host {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+}
+
+igc-breadcrumbs {
+    --ig-size: var(--ig-size-medium);
+}
+
+[slot="target"] {
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--hover-text-color);
+        cursor: pointer;
+    }
+
+    &:focus {
+        color: var(--focus-text-color);
+    }
+}
+
+igc-dropdown-item[selected] {
+    background: var(--background-color);
+    outline: none;
+    color: var(--item-text-color);
+
+    igc-icon {
+        color: var(--item-icon-color);
+    }
+
+    &:hover {
+        background: var(--hover-item-background);
+        color: var(--hover-item-text-color);
+
+        igc-icon {
+            color: var(--hover-item-icon-color);
+        }
+    }
+}
+
+igc-icon {
+    --ig-size: 2;
+}
+
+@layer base {
+    a {
+        color: revert-layer;
+    }
+
+    * {
+        padding: revert-layer;
+        margin: revert-layer;
+    }
+}
+```
+
 ### Size
 
 Control the Breadcrumbs size by setting the `--ig-size` variable to one of three options: `--ig-size-small`, `--ig-size-medium`, or `--ig-size-large`. This can be used to adjust the text and icon sizes within the breadcrumbs, along with their paddings.
@@ -496,6 +616,7 @@ export class BreadcrumbsSizesComponent { }
     height: 100%;
     align-items: center;
     overflow: auto;
+    font-family: var(--ig-font-family);
 }
 
 .small {
@@ -633,6 +754,7 @@ export class BreadcrumbsStatesComponent { }
     max-height: 15rem;
     padding-block-start: 1rem;
     overflow: auto;
+    font-family: var(--ig-font-family);
 }
 
 igc-breadcrumbs {
@@ -656,7 +778,6 @@ igc-breadcrumbs {
 
     a {
         color: var(--focus-text-color);
-        text-decoration: underline var(--focus-underline-color);
     }
 }
 
@@ -677,7 +798,6 @@ igc-breadcrumbs {
 
     a {
         color: var(--focus-hover-text-color);
-        text-decoration: underline var(--focus-hover-underline-color);
     }
 }
 
@@ -688,7 +808,6 @@ igc-breadcrumbs {
 
     a {
         color: var(--focus-pressed-text-color);
-        text-decoration: underline var(--focus-pressed-underline-color);
     }
 }
 
@@ -699,6 +818,44 @@ igc-breadcrumbs {
 
     a {
         color: var(--disabled-text-color);
+    }
+}
+
+[data-igd-theme="material"] {
+    .state-focused-pressed a,
+    .state-focused-hover a,
+    .state-focused a {
+        text-decoration: underline var(--focus-pressed-underline-color);
+    }
+} 
+
+[data-igd-theme="fluent"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) { 
+        outline: .0625rem solid var(--focus-border-color);
+    }
+}
+
+[data-igd-theme="bootstrap"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) {
+        outline: .25rem solid var(--focus-border-color);
+        border-radius: 0.25rem;
+    }
+}
+
+[data-igd-theme="indigo"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) {
+        outline: .1875rem solid var(--focus-border-color);
+        border-radius: 2rem;
+    }
+
+    .state-disabled igc-icon {
+        opacity: 0.2;
     }
 }
 
@@ -726,6 +883,12 @@ igc-breadcrumbs:nth-of-type(-n+3) {
 
 igc-breadcrumbs:nth-of-type(n+4) {
     grid-row: 2;
+}
+
+@layer base {
+    a {
+        color: revert-layer;
+    }
 }
 
 @media (width < 510px) {
@@ -899,6 +1062,22 @@ The Angular Breadcrumbs appearance is controlled through CSS variables, CSS part
 | `label` | The container wrapping the prefix, default, and suffix slots. |
 | `separator` | The container wrapping the separator slot content. |
 
+### CSS Variables
+
+Set component CSS variables directly when you need local styling without a Sass build step.
+
+```css
+igc-breadcrumbs {
+  --ig-breadcrumb-text-color: var(--ig-primary-50);
+  --ig-breadcrumb-icon-color: var(--ig-primary-200);
+  --ig-breadcrumb-separator-color: var(--ig-gray-200);
+}
+
+igc-breadcrumb::part(label) {
+  padding-inline: 0.25rem;
+}
+```
+
 ### Sass Theming
 
 Use the `breadcrumb-theme` function for customizing the appearance of the Breadcrumbs through Sass.
@@ -913,22 +1092,6 @@ $my-breadcrumb-theme: breadcrumb-theme(
 
 :root {
   @include tokens($my-breadcrumb-theme);
-}
-```
-
-### CSS Variables
-
-Set component CSS variables directly when you need local styling without a Sass build step.
-
-```css
-igc-breadcrumbs {
-  --ig-breadcrumb-text-color: var(--ig-primary-50);
-  --ig-breadcrumb-icon-color: var(--ig-primary-200);
-  --ig-breadcrumb-separator-color: var(--ig-gray-200);
-}
-
-igc-breadcrumb::part(label) {
-  padding-inline: 0.25rem;
 }
 ```
 

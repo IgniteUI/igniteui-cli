@@ -114,7 +114,7 @@ The built-in row pinning UI is enabled by adding an `igxActionStrip` component w
 
 ## Row Pinning API
 
-Row pinning is controlled through the `pinned` input of the [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType). Pinned rows are rendered at the top of the Tree Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Tree Grid body.
+Row pinning is controlled through the `pinned` input of the [`RowType`](mcp:get_api_reference?platform=angular&component=RowType). Pinned rows are rendered at the top of the Tree Grid by default and stay fixed through vertical scrolling of the unpinned rows in the Tree Grid body.
 
 ```typescript
 this.treeGrid.getRowByIndex(0).pinned = true;
@@ -129,7 +129,7 @@ this.treeGrid.unpinRow('ALFKI');
 
 Note that the row ID is the primary key value, defined by the [`primaryKey`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=primaryKey) of the grid, or the record instance itself. Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the row is already in the desired state.
 
-A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowPinning) event and changing the [`IgxIPinRowEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinRowEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+A row is pinned below the last pinned row. Changing the order of the pinned rows can be done by subscribing to the [`rowPinning`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowPinning) event and changing the [`IPinRowEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinRowEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
 ```html
 <igx-tree-grid #treeGrid [data]="data" primaryKey="ID" foreignKey="ParentID" [autoGenerate]="true" (rowPinning)="rowPinning($event)">
@@ -435,7 +435,7 @@ The sample will not be affected by the selected global theme from `Change Theme`
 - [`IgxGridRow`](mcp:get_api_reference?platform=angular&component=IgxGridRow)
 - [`IgxTreeGridRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow)
 - [`IgxHierarchicalGridRow`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridRow)
-- [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType)
+- [`RowType`](mcp:get_api_reference?platform=angular&component=RowType)
 - `IgxTreeGridComponent Styles`
 ## Additional Resources
 

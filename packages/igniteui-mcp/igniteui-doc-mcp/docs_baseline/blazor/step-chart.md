@@ -3,10 +3,11 @@ title: "Blazor Step Chart | Data Visualization | Infragistics"
 description: Infragistics' Blazor Step Chart
 keywords: "Blazor Charts, Step Chart, Step Area Chart, Step Line Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series", "CategoryChartType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Step Chart belongs to a group of category charts that render as a collection of points connected by continuous vertical and horizontal lines."
+platformType: xplat
 _tocName: Step Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Blazor Step Chart belongs to a group of category charts that r
 
 ## Blazor Step Area Chart
 
-You can create Blazor Step Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
+You can create Blazor Step Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -117,7 +118,7 @@ public class CountryRenewableElectricity
 
 The Blazor Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`StepLine`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepLine) value, as shown in the example below.
+You can create Step Line Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`StepLine`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepLine) value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -213,7 +214,7 @@ public class CountryRenewableElectricity
 
 ## Blazor Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=markerTypes), [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=markerBrushes), [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=markerOutlines), lines' [`Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=brushes), and lines' [`Outlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=outlines) properties on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerTypes), [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerBrushes), [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerOutlines), lines' [`IgbDomainChart.Brushes`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Brushes), and lines' [`IgbDomainChart.Outlines`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Outlines) properties on the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as demonstrated below.
 
 ```razor
 @using IgniteUI.Blazor.Controls

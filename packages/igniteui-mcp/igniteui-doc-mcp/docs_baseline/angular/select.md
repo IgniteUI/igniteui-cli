@@ -165,9 +165,11 @@ The Select component supports the following directives applicable to the [Input 
     <igx-prefix>
         <span class="bio-prefix">BIO</span>
     </igx-prefix>
-    <igx-suffix *ngIf="selected">
-        <igx-icon (click)="clearSelection($event)">clear</igx-icon>
-    </igx-suffix>
+    @if (selected) {
+        <igx-suffix>
+            <igx-icon (click)="clearSelection($event)">clear</igx-icon>
+        </igx-suffix>
+    }
     <igx-hint>Choose a banana</igx-hint>
     <igx-select-item *ngFor="let item of items" [value]="item">
         {{item}}
@@ -238,13 +240,11 @@ Then in your template file you can iterate over the objects and access their ite
     <igx-select-item-group *ngFor="let group of greengrocery" [label]="group.label">
         <igx-select-item *ngFor="let item of group.items" [value]="item.type" [text]="item.type">
             {{item.type}}
-            <igx-icon
-                title="Local product"
-                *ngIf="item.origin === 'local'; else templateImport"
-            >local_shipping</igx-icon>
-            <ng-template #templateImport>
+            @if (item.origin === 'local') {
+                <igx-icon title="Local product">local_shipping</igx-icon>
+            } @else {
                 <igx-icon title="Import product">flight</igx-icon>
-            </ng-template>
+            }
         </igx-select-item>
     </igx-select-item-group>
 </igx-select>
@@ -648,7 +648,7 @@ You can also try out the [drag and drop App Builder™](https://www.infragistics
 
 ## Custom Overlay Settings
 
-You can create custom [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). To do this you first define your template like so:
+You can create custom [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). To do this you first define your template like so:
 
 ```html
 <igx-select [overlaySettings]="customOverlaySettings">
@@ -689,7 +689,7 @@ export class MyClass implements OnInit {
 }
 ```
 
-You can see that we create a [`IgxPositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings) object that is directly passed to our [`IgxConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy), it is not required to do it, but since we want to define a custom positioning, we use them to override the strategy's default settings.
+You can see that we create a [`PositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings) object that is directly passed to our [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy), it is not required to do it, but since we want to define a custom positioning, we use them to override the strategy's default settings.
 
 - You can set all settings inside of the [_ngOnInit_](https://angular.io/api/core/OnInit) hook and this will automatically affect your template upon the component's generation.
 
@@ -752,7 +752,7 @@ export class SelectSample4Component implements OnInit {
 }
 ```
 
-You can also pass in a customized [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object to the [`IgxSelectComponent`](mcp:get_api_reference?platform=angular&component=IgxSelectComponent&member=open)'s open function, where your template should look like this:
+You can also pass in a customized [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object to the [`IgxSelectComponent`](mcp:get_api_reference?platform=angular&component=IgxSelectComponent&member=open)'s open function, where your template should look like this:
 
 ```html
 <igx-select>
@@ -894,7 +894,7 @@ $custom-select-theme: select-theme(
 
 ### Styling with Tailwind
 
-You can style the select using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the select using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -989,11 +989,11 @@ export class SelectTailwindStylingComponent implements OnInit {
 - [`IgxSelectItem`](mcp:get_api_reference?platform=angular&component=IgxSelectItemComponent)
 - [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
 - [`IgxDropDownItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent)
-- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
-- [`IgxConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy)
+- [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy)
 - [`GlobalPositionStrategy`](mcp:get_api_reference?platform=angular&component=GlobalPositionStrategy&member=constructor)
-- [`IgxAbsoluteScrollStrategy`](mcp:get_api_reference?platform=angular&component=AbsoluteScrollStrategy)
-- [`IgxPositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings)
+- [`AbsoluteScrollStrategy`](mcp:get_api_reference?platform=angular&component=AbsoluteScrollStrategy)
+- [`PositionSettings`](mcp:get_api_reference?platform=angular&component=PositionSettings)
 
 ## Theming Dependencies
 

@@ -27,9 +27,9 @@ The sample below demonstrates the three types of [`IgcHierarchicalGrid`](mcp:get
 ```
 
 ## Setup
-In order to setup row selection in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), you just need to set the [`IgcHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowSelection) property. This property accepts [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgcHierarchicalGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent), you just need to set the [`IgcHierarchicalGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcHierarchicalGridComponent&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
 
-[`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

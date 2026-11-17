@@ -34,15 +34,17 @@ The Ignite UI for Blazor Input is a component where the user can enter data.
 
 ## Dependencies
 
-To get started with the Input component, you first need to register its module.
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbInputModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbInputModule`](mcp:get_api_reference?platform=blazor&component=IgbInputModule), the Input component's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbInputModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -134,10 +136,10 @@ We can allow the user to change the size of the [`IgbInput`](mcp:get_api_referen
         }
     </style>
 
-    <IgbRadioGroup id="radioGroup" Alignment="@ContentOrientation.Horizontal">
-        <IgbRadio name="size" Value="Small" LabelPosition="@ToggleLabelPosition.After" Change="@OnRadioOptionClick">Small</IgbRadio>
-        <IgbRadio name="size" Value="Medium" LabelPosition="@ToggleLabelPosition.After" Checked="true" Change="@OnRadioOptionClick">Medium</IgbRadio>
-        <IgbRadio name="size" Value="Large" LabelPosition="@ToggleLabelPosition.After" Change="@OnRadioOptionClick">Large</IgbRadio>
+    <IgbRadioGroup id="radioGroup" Alignment="@ContentOrientation.Horizontal" @bind-Value="InputSize">
+        <IgbRadio name="size" Value="@("size-small")">Small</IgbRadio>
+        <IgbRadio name="size" Value="@("size-medium")">Medium</IgbRadio>
+        <IgbRadio name="size" Value="@("size-large")">Large</IgbRadio>
     </IgbRadioGroup>
 
     <IgbInput class="@InputSize" DisplayType="@InputType.Text" Label="Required" Value="This input is required" Required="true" />
@@ -148,11 +150,6 @@ We can allow the user to change the size of the [`IgbInput`](mcp:get_api_referen
 @code {
 
     private string InputSize { get; set; } = "size-medium";
-
-    public void OnRadioOptionClick(IgbRadioChangeEventArgs e)
-    {
-        this.InputSize = $"size-{e.Detail.Value.ToLower()}";
-    }
 }
 ```
 

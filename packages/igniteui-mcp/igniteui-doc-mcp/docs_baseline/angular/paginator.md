@@ -238,7 +238,7 @@ Paging can also be done programmatically through the Paging API /which is descri
 
 With only a few lines of code you can easily localize all strings part of the Paging component. In order to localize a given Paging instance use the input property [`resourceStrings`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=resourceStrings). You can use this
 
-**Step 1** - Import `IPaginatorResourceStrings` interface and [`Igxchangei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function:
+**Step 1** - Import `IPaginatorResourceStrings` interface and [`changei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function:
 
 ```ts
 import { IPaginatorResourceStrings, changei18n } from "igniteui-angular/core";
@@ -258,7 +258,7 @@ private paginatorResourceStrings: IPaginatorResourceStrings = {
 ```
 
 
-**Step 3** - Pass the object to the [`Igxchangei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function as a parameter in order to change the global i18n for the component on app.module level. This will change the resource string of all Paging components part of your application:
+**Step 3** - Pass the object to the [`changei18n`](mcp:get_api_reference?platform=angular&component=changei18n) function as a parameter in order to change the global i18n for the component on app.module level. This will change the resource string of all Paging components part of your application:
 
 ```ts
 public ngOnInit(): void {

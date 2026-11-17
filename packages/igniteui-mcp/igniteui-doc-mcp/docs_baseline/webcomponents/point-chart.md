@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", 
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Point Chart renders a collection of points."
+platformType: xplat
 _tocName: Point Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Web Components Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Web Components Point Chart Example
-You can create the Web Components Point Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
+You can create the Web Components Point Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`dataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -158,7 +159,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 ```
 
 ## Advanced Types of Point Charts
-You can create more advanced types of Web Components Point Charts using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by following these topics:
+You can create more advanced types of Web Components Point Charts using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#web-components-scatter-marker-chart)
@@ -173,5 +174,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

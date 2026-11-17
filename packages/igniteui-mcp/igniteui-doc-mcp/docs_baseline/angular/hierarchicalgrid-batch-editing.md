@@ -12,7 +12,7 @@ _premium: true
 
 The Batch Editing feature of the IgxHierarchicalGrid is based on the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxTransactionService` and details how it is implemented.
 
-In order to use the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService).
+In order to use the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService) with [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent), but have it accumulating separate transaction logs for each island, a service factory should be provided instead. One is exported and ready for use as [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService).
 
 Below is a detailed example of how is Batch Editing enabled for the Hierarchical Grid component.
 
@@ -411,7 +411,7 @@ Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxHi
 
 ## API References
 
-- [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService)
+- [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService)
 
 ## Additional Resources
 

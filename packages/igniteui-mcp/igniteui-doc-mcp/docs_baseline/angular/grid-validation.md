@@ -158,6 +158,21 @@ Validation will be triggered in the following scenarios:
 **Note:** 
 Validation will not trigger for records that have not been edited via user input or via the editing API. Visual indicators on the cell will only shown if the related input is considered touched - either via user interaction or via the `markAsTouched` API of the validation service.
 
+### Error tooltip trigger
+
+The Grid's [`validationTooltipTrigger`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=validationTooltipTrigger) input controls when the error tooltip of an invalid cell is shown. It does not change when validation runs.
+
+| Value | When the error tooltip is shown |
+| --- | --- |
+| `active` (default) | When an invalid cell becomes active, when the active cell becomes invalid, and while the user hovers the error icon. |
+| `hover` | Only while the user hovers the error icon. |
+
+Use `hover` to keep the tooltip from covering grid content while the user edits or navigates. Invalid cells still show the error icon and the invalid styles:
+
+```html
+<igx-grid [data]="data" validationTooltipTrigger="hover"></igx-grid>
+```
+
 ## Angular Grid Validation Customization Options
 
 ### Set a custom validator
@@ -196,9 +211,11 @@ This is useful in scenarios where you want to add your own custom error message 
   <ng-template igxCellValidationError let-cell='cell' let-defaultErr="defaultErrorTemplate">
       <ng-container *ngTemplateOutlet="defaultErr">
       </ng-container>
-      <div *ngIf="cell.validation.errors?.['phoneFormat']">
-        Please enter correct phone format
-      </div>
+      @if (cell.validation.errors?.['phoneFormat']) {
+        <div>
+          Please enter correct phone format
+        </div>
+      }
   </ng-template>
 </igx-column>
 ```
@@ -207,7 +224,7 @@ This is useful in scenarios where you want to add your own custom error message 
 
 In some cases you may want to disallow submitting an invalid value in the data.
 In that scenarios you can use the [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) or [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit) events and cancel the event in case the new value is invalid.
-Both events' arguments have a [`IgxIGridEditEventArgs.valid`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs&member=valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
+Both events' arguments have a [`IGridEditEventArgs.valid`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs&member=valid) property and can be canceled accordingly. How it is used can be seen in the [Cross-field Validation example](#cross-field-example)
 
 ```html
 <igx-grid (cellEdit)='cellEdit($event)' ...>
@@ -485,12 +502,15 @@ The different errors are displayed in a templated cell that combines all errors 
 ```html
 <igx-column field="row_valid" header=" " [editable]="false" [pinned]="true" [width]="'50px'">
     <ng-template igxCell let-cell="cell">
-        <div *ngIf="isRowValid(cell)" [igxTooltipTarget]="tooltipRef"  style="margin-right: '-10px';">
-            <img width="18" src="assets/images/grid/active.png"/>
-        </div>
-        <div *ngIf="!isRowValid(cell)" [igxTooltipTarget]="tooltipRef" style="margin-right: '-10px';">
-            <img width="18" src="assets/images/grid/expired.png"/>
-        </div>
+        @if (isRowValid(cell)) {
+            <div [igxTooltipTarget]="tooltipRef"  style="margin-right: '-10px';">
+                <img width="18" src="assets/images/grid/active.png"/>
+            </div>
+        } @else {
+            <div [igxTooltipTarget]="tooltipRef" style="margin-right: '-10px';">
+                <img width="18" src="assets/images/grid/expired.png"/>
+            </div>
+        }
         <div #tooltipRef="tooltip" igxTooltip [style.width]="'max-content'">
             <div *ngFor="let message of stateMessage(cell)">
                 {{message}}

@@ -15,35 +15,7 @@ Use the Ignite UI for Angular Dialog Window component to display messages or pre
 
 ## Angular Dialog Window Example
 
-```typescript
-import { Component } from '@angular/core';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxDialogComponent } from 'igniteui-angular/dialog';
-
-@Component({
-    selector: 'app-dialog-sample-1',
-    styleUrls: ['./dialog-sample-1.component.scss'],
-    templateUrl: './dialog-sample-1.component.html',
-    imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent]
-})
-export class DialogSample1Component { }
-```
-```html
-<button igxButton="contained" igxRipple="white" (click)="alert.open()">Show Alert Dialog</button>
-
-<igx-dialog #alert
-    title="Notification"
-    message="Your email has been sent successfully!"
-    leftButtonLabel="OK"
-    (leftButtonSelect)="alert.close()">
-</igx-dialog>
-```
-```scss
-:host {
-    display: block;
-    padding: 16px;
-}
-```
+<code-view iframe-src="{environment:demosBaseUrl}/interactions/dialog-sample-1" github-src="interactions/dialog-sample-1" alt="Angular Dialog Window Example"></code-view>
 
 <hr/>
 
@@ -152,43 +124,7 @@ To create a standard dialog, in the template of our file manager component, we a
 </igx-dialog>
 ```
 
-```typescript
-import { Component } from '@angular/core';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxDialogComponent } from 'igniteui-angular/dialog';
-
-@Component({
-    selector: 'app-dialog-sample-2',
-    styleUrls: ['./dialog-sample-2.component.scss'],
-    templateUrl: './dialog-sample-2.component.html',
-    imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent]
-})
-export class DialogSample2Component {
-
-    constructor() { }
-
-    public onDialogOKSelected(event) {
-        event.dialog.close();
-    }
-}
-```
-```html
-<button igxButton="contained" igxRipple="white" (click)="dialog.open()">Show Confirmation Dialog</button>
-
-<igx-dialog #dialog title="Confirmation"
-    leftButtonLabel="Cancel"
-    (leftButtonSelect)="dialog.close()"
-    rightButtonLabel="OK"
-    (rightButtonSelect)="onDialogOKSelected($event)"
-    message="Are you sure you want to delete the Annual_Report_2016.pdf and Annual_Report_2017.pdf files?">
-</igx-dialog>
-```
-```scss
-:host {
-    display: block;
-    padding: 16px;
-}
-```
+<code-view iframe-src="{environment:demosBaseUrl}/interactions/dialog-sample-2" github-src="interactions/dialog-sample-2"></code-view>
 
 <hr/>
 
@@ -238,83 +174,7 @@ Sign In
 </igx-dialog>
 ```
 
-```typescript
-import { Component } from '@angular/core';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxDialogActionsDirective, IgxDialogComponent, IgxDialogTitleDirective } from 'igniteui-angular/dialog';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-import { IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective } from 'igniteui-angular/input-group';
-import { FormsModule } from '@angular/forms';
-
-@Component({
-    selector: 'app-dialog-sample-3',
-    styleUrls: ['./dialog-sample-3.component.scss'],
-    templateUrl: './dialog-sample-3.component.html',
-    imports: [IgxButtonDirective, IgxRippleDirective, IgxDialogComponent, IgxDialogTitleDirective, IgxIconComponent, FormsModule, IgxInputGroupComponent, IgxPrefixDirective, IgxLabelDirective, IgxInputDirective, IgxDialogActionsDirective]
-})
-export class DialogSample3Component {
-
-    constructor() { }
-
-    public signIn(event) {
-        event.dialog.close();
-    }
-}
-```
-```html
-<button igxButton="contained" igxRipple="white" (click)="form.open()">Show Custom Dialog</button>
-
-<igx-dialog #form [closeOnOutsideSelect]="true">
-    <igx-dialog-title>
-        <div class="title-container">
-            <igx-icon>vpn_key</igx-icon>
-            <div class="dialog-title">Sign In</div>
-        </div>
-    </igx-dialog-title>
-
-    <form class="signInForm">
-        <igx-input-group>
-            <igx-prefix>
-                <igx-icon>person</igx-icon>
-            </igx-prefix>
-            <label igxLabel for="username">Username</label>
-            <input igxInput id="username" type="text" />
-        </igx-input-group>
-        <igx-input-group>
-            <igx-prefix>
-                <igx-icon>lock</igx-icon>
-            </igx-prefix>
-            <label igxLabel>Password</label>
-            <input igxInput id="password" type="password" />
-        </igx-input-group>
-    </form>
-
-    <div igxDialogActions>
-        <button igxButton (click)="form.close()">CANCEL</button>
-        <button igxButton (click)="form.close()">SIGN IN</button>
-    </div>
-</igx-dialog>
-```
-```scss
-:host {
-    display: block;
-    padding: 16px;
-}
-
-.signInForm {
-    igx-input-group + igx-input-group {
-        margin-top: 24px;
-    }
-}
-
-.title-container{
-    display: flex;
-
-    igx-icon {
-        margin-right: 8px;
-    }
-}
-```
+<code-view iframe-src="{environment:demosBaseUrl}/interactions/dialog-sample-3" github-src="interactions/dialog-sample-3"></code-view>
 
 <hr/>
 
@@ -322,7 +182,7 @@ export class DialogSample3Component {
 
 There are two ways to change the position at which the `igx-dialog` will be shown:
 
-- Using [`open`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=open) method and pass a valid [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). Example:
+- Using [`open`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent&member=open) method and pass a valid [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings). Example:
 
 ```typescript
 import { PositionSettings, OverlaySettings, GlobalPositionStrategy, NoOpScrollStrategy, HorizontalAlignment, VerticalAlignment } from 'igniteui-angular/core';
@@ -478,91 +338,7 @@ In some component templates, Emulated View Encapsulation can still prevent the g
 
 ### Demo
 
-```typescript
-import { useAnimation } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CloseScrollStrategy, GlobalPositionStrategy, IgxOverlayOutletDirective, PositionSettings } from 'igniteui-angular/core';
-import { IgxDialogActionsDirective, IgxDialogComponent, IgxDialogTitleDirective } from 'igniteui-angular/dialog';
-import { IgxButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-import { slideInBottom, slideOutTop } from 'igniteui-angular/animations';
-
-@Component({
-    selector: 'app-dialog-styling-sample',
-    styleUrls: ['./dialog-styling-sample.component.scss'],
-    templateUrl: './dialog-styling-sample.component.html',
-    imports: [IgxOverlayOutletDirective, IgxButtonDirective, IgxRippleDirective, IgxDialogComponent, IgxDialogTitleDirective, IgxIconComponent, IgxDialogActionsDirective]
-})
-export class DialogStylingSampleComponent implements OnInit {
-
-    @ViewChild(IgxOverlayOutletDirective, { static: true })
-    public outlet: IgxOverlayOutletDirective;
-
-    @ViewChild('dialog1', { read: IgxDialogComponent, static: true })
-    public dialog: IgxDialogComponent;
-
-    private _animaitonSettings: PositionSettings = {
-        openAnimation: useAnimation(slideInBottom, { params: { fromPosition: 'translateY(100%)' } }),
-        closeAnimation: useAnimation(slideOutTop, { params: { toPosition: 'translateY(-100%)' } })
-    };
-
-    private _dialogOverlaySettings2;
-
-    public openDialog() {
-        this._dialogOverlaySettings2.outlet = this.outlet;
-        this.dialog.open(this._dialogOverlaySettings2);
-    }
-
-    public ngOnInit() {
-        this._dialogOverlaySettings2 = {
-            modal: true,
-            outlet: this.outlet,
-            scrollStrategy: new CloseScrollStrategy(),
-            positionStrategy: new GlobalPositionStrategy(this._animaitonSettings)
-        };
-    }
-}
-```
-```html
-<div igxOverlayOutlet class="dialog-wrapper">
-    <button igxButton="contained" igxRipple="white" (click)="openDialog()">Show Styled Dialog</button>
-    <igx-dialog #dialog1 message="This will create a new social media account.">
-        <igx-dialog-title>
-            <div class="dialog-container">
-                <igx-icon>account_box</igx-icon>
-                <div class="dialog-title">Create a new account?</div>
-            </div>
-        </igx-dialog-title>
-        <div  igxDialogActions class="dialog-container dialog-actions">
-            <button igxButton="contained" igxRipple="white" (click)="dialog.close()">CREATE</button>
-            <button igxButton="contained" igxRipple="white" (click)="dialog.close()">CANCEL</button>
-        </div>
-    </igx-dialog>
-</div>
-```
-```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
-
-$my-dialog-theme: dialog-theme(
-  $background: #011627,
-  $title-color: #ecaa53,
-  $border-radius: 5px,
-);
-
-$custom-button: contained-button-theme(
-  $background: #ecaa53,
-  $foreground: #011627,
-);
-
-.dialog-container {
-  @include tokens($custom-button);
-}
-
-:host {
-    @include tokens($my-dialog-theme);
-}
-```
+<code-view iframe-src="{environment:demosBaseUrl}/interactions/dialog-styling-sample" github-src="interactions/dialog-styling-sample"></code-view>
 
 <hr/>
 
@@ -570,7 +346,7 @@ $custom-button: contained-button-theme(
 <hr/>
 - [`IgxDialog`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent)
 - `IgxDialogComponent Styles`
-- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - `IgxOverlay Styles`
 ## Theming Dependencies
 

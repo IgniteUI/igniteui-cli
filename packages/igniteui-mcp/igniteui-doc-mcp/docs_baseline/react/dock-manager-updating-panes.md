@@ -585,7 +585,7 @@ export default class WorldUtils {
 }
 ```
 ```tsx
-import React from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './DockManagerStyles.css';
@@ -595,7 +595,7 @@ import { IgrGeographicMap, IgrGeographicMapModule } from "igniteui-react-maps";
 import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
 import { IgrArcGISOnlineMapImagery } from 'igniteui-react-maps';
 import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { IgrDataContext } from 'igniteui-react-core';
+import type { IChartTooltipProps, IgRect } from 'igniteui-react-core';
 import { IgrCategoryChartModule, MarkerType, ToolTipType, YAxisLabelLocation } from "igniteui-react-charts";
 import { IgrCategoryChart, CategoryTransitionInMode, CategoryChartType } from "igniteui-react-charts";
 import { IgrLegendModule } from "igniteui-react-charts";
@@ -606,125 +606,97 @@ IgrGeographicMapModule.register();
 IgrDataChartInteractivityModule.register();
 IgrLegendModule.register();
 
-export default class DockManagerUpdatingPanes extends React.Component<any, any> {
-    private chart: IgrCategoryChart;
-    private map: IgrGeographicMap;
-    private dockManager: IgrDockManager;
-    private employeesDatabase = DockManagerSharedData.getEmployees(60);
+// Fields of DockManagerSharedData.getEmployees() items this sample reads
+interface Employee {
+    ID: string;
+    Name: string;
+    Photo: string;
+    City: string;
+    CountryFlag: string;
+    Latitude: number;
+    Longitude: number;
+    Productivity: object[];
+}
 
-    private employeeListContainer: HTMLDivElement;
-    private employeeListPane: IgrContentPane;
-    private employeesList: HTMLDivElement[] = [];
-
-    private productivityChart: IgrCategoryChart;
-    private productivityChartPane: IgrContentPane;
-    private productivityChartContainer: HTMLDivElement;
-
-    private geoLocationMap: IgrGeographicMap;
-    private geoLocationMapPane: IgrContentPane;
-    private geoLocationMapContainer: HTMLDivElement;
-    private geoLocationSeries: IgrGeographicSymbolSeries;
-
-    constructor(props: any) {
-        super(props);
-
-        this.mapRef = this.mapRef.bind(this);
-        this.chartRef = this.chartRef.bind(this);
-        this.dockManagerRef = this.dockManagerRef.bind(this);
-
-        this.createEmployeeList = this.createEmployeeList.bind(this);
-        this.createLocationMapTooltip = this.createLocationMapTooltip.bind(this);
-        this.createProductivityChart = this.createProductivityChart.bind(this);
-
-        this.createLocationMap = this.createLocationMap.bind(this);
-        this.onEmployeeClick = this.onEmployeeClick.bind(this);
+function createLocationMapTooltip(tooltipProps: IChartTooltipProps) {
+    const dataContext = tooltipProps.dataContext;
+    if (!dataContext) {
+        return null;
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDockManager id="dockManager" ref={this.dockManagerRef}>
-                    <div
-                        className="dockManagerContent"
-                        slot="employeeListContainer"
-                        id="employeeListContainer"/>
-                    <div
-                        className="dockManagerContent"
-                        slot="productivityChartContainer"
-                        id="productivityChartContainer">
-                            <IgrCategoryChart
-                                key="productivityChart"
-                                ref={this.chartRef}
-                                width="calc(100% - 2rem)"
-                                height="100%"/>
-                    </div>
-                    <div
-                        className="dockManagerContent"
-                        slot="geoLocationMapContainer"
-                        id="geoLocationMapContainer" >
-                            <IgrGeographicMap
-                                ref={this.mapRef}
-                                key="geoLocationMap"
-                                width="100%"
-                                height="100%"/>
-                    </div>
-                </IgrDockManager>
+    const dataItem = dataContext.item as Employee;
+    if (!dataItem) {
+        return null;
+    }
+
+    const lbl = dataItem.City;
+    const scr = dataItem.CountryFlag;
+    const lat = WorldUtils.toStringLat(dataItem.Latitude);
+    const lon = WorldUtils.toStringLon(dataItem.Longitude);
+
+    return <div className="tooltipHorizontal">
+        <img className="tooltipFlagImage" src={scr}/>
+        <div className="tooltipBox">
+            <div className="tooltipRow">
+                <div className="tooltipLbl">Latitude:</div>
+                <div className="tooltipVal">{lat}</div>
             </div>
-        );
-    }
+            <div className="tooltipRow">
+                <div className="tooltipLbl">Longitude:</div>
+                <div className="tooltipVal">{lon}</div>
+            </div>
+            <div className="tooltipRow">
+                <div className="tooltipLbl">City: </div>
+                <div className="tooltipVal">{lbl}</div>
+            </div>
+        </div>
+    </div>
+}
 
-    private chartRef(chart: IgrCategoryChart) {
-        this.chart = chart;
-        if (this.chart && this.map && this.dockManager) {
-            this.onReady();
-        }
-    }
+export default function DockManagerUpdatingPanes() {
+    const chartRef = useRef<IgrCategoryChart>(null);
+    const mapRef = useRef<IgrGeographicMap>(null);
+    const dockManagerRef = useRef<IgrDockManager>(null);
 
-    private mapRef(map: IgrGeographicMap) {
-        this.map = map;
-        if (this.chart && this.map && this.dockManager) {
-            this.onReady();
-        }
-    }
+    const [employeesDatabase] = useState<Employee[]>(() => DockManagerSharedData.getEmployees(60));
+    const employeesList = useRef<HTMLDivElement[]>([]);
+    const geoLocationSeries = useRef<IgrGeographicSymbolSeries | null>(null);
 
-    private dockManagerRef(dockManager: IgrDockManager) {
-        this.dockManager = dockManager;
-        if (this.chart && this.map && this.dockManager) {
-            this.onReady();
-        }
-    }
+    // Layout effect: runs in the same commit that attaches the refs, like the
+    // callback refs that used to trigger onReady
+    useLayoutEffect(() => {
+        onReady();
+    }, []);
 
-    private onReady() {
-        this.createEmployeeList();
-        this.createLocationMap();
-        this.createProductivityChart();
+    function onReady() {
+        createEmployeeList();
+        createLocationMap();
+        createProductivityChart();
 
-        this.employeeListContainer = document.getElementById("employeeListContainer") as HTMLDivElement;
-        this.geoLocationMapContainer = document.getElementById("geoLocationMapContainer") as HTMLDivElement;
-        this.productivityChartContainer = document.getElementById("productivityChartContainer") as HTMLDivElement;
-        this.productivityChartContainer.style.overflow = "hidden";
+        const productivityChartContainer = document.getElementById("productivityChartContainer") as HTMLDivElement;
+        productivityChartContainer.style.overflow = "hidden";
 
-        this.productivityChartPane = {
+        const productivityChartPane: IgrContentPane = {
             size: 150,
             header: "EMPLOYEE PRODUCTIVITY",
             type: IgrDockManagerPaneType.contentPane,
             contentId: "productivityChartContainer"
         };
 
-        this.geoLocationMapPane = {
+        const geoLocationMapPane: IgrContentPane = {
             size: 150,
             header: "EMPLOYEE LOCATIONS",
             type: IgrDockManagerPaneType.contentPane,
             contentId: "geoLocationMapContainer"
         };
 
-        this.employeeListPane = {
+        const employeeListPane: IgrContentPane = {
             header: "EMPLOYEE LIST",
             type: IgrDockManagerPaneType.contentPane,
             contentId: "employeeListContainer"
         };
 
-        this.dockManager.layout = {
+        dockManagerRef.current!.layout = {
             rootPane: {
                 type: IgrDockManagerPaneType.splitPane,
                 orientation: IgrSplitPaneOrientation.horizontal,
@@ -733,45 +705,45 @@ export default class DockManagerUpdatingPanes extends React.Component<any, any> 
                         type: IgrDockManagerPaneType.splitPane,
                         orientation: IgrSplitPaneOrientation.vertical,
                         size: 100,
-                        panes: [this.employeeListPane]
+                        panes: [employeeListPane]
                     },
                     {
                         type: IgrDockManagerPaneType.splitPane,
                         orientation: IgrSplitPaneOrientation.vertical,
                         size: 300,
-                        panes: [this.productivityChartPane, this.geoLocationMapPane]
+                        panes: [productivityChartPane, geoLocationMapPane]
                     }
                 ]
             }
         };
 
-        this.onEmployeeClick(this.employeesDatabase[0]);
+        onEmployeeClick(employeesDatabase[0]);
     }
 
-    public createProductivityChart() {
-        this.productivityChart = this.chart;
-        this.productivityChart.includedProperties = ["Value", "Month"];
-        this.productivityChart.chartType = CategoryChartType.Column;
-        this.productivityChart.thickness = 1;
-        this.productivityChart.yAxisLabelLocation = YAxisLabelLocation.OutsideRight;
-        this.productivityChart.yAxisLabelRightMargin = 20;
-        this.productivityChart.yAxisMinimumValue = 25;
-        this.productivityChart.yAxisMaximumValue = 100;
-        this.productivityChart.yAxisInterval = 25;
-        this.productivityChart.xAxisInterval = 1;
-        this.productivityChart.width = "100%";
-        this.productivityChart.height = "100%";
-        this.productivityChart.transitionDuration = 100;
-        this.productivityChart.transitionInDuration = 1000;
-        this.productivityChart.isSeriesHighlightingEnabled = true;
-        this.productivityChart.crosshairsAnnotationEnabled = true;
-        this.productivityChart.crosshairsSnapToData = true;
-        this.productivityChart.toolTipType = ToolTipType.Item;
+    function createProductivityChart() {
+        const productivityChart = chartRef.current!;
+        productivityChart.includedProperties = ["Value", "Month"];
+        productivityChart.chartType = CategoryChartType.Column;
+        productivityChart.thickness = 1;
+        productivityChart.yAxisLabelLocation = YAxisLabelLocation.OutsideRight;
+        productivityChart.yAxisLabelRightMargin = 20;
+        productivityChart.yAxisMinimumValue = 25;
+        productivityChart.yAxisMaximumValue = 100;
+        productivityChart.yAxisInterval = 25;
+        productivityChart.xAxisInterval = 1;
+        productivityChart.width = "100%";
+        productivityChart.height = "100%";
+        productivityChart.transitionDuration = 100;
+        productivityChart.transitionInDuration = 1000;
+        productivityChart.isSeriesHighlightingEnabled = true;
+        productivityChart.crosshairsAnnotationEnabled = true;
+        productivityChart.crosshairsSnapToData = true;
+        productivityChart.toolTipType = ToolTipType.Item;
 
-        this.productivityChart.transitionInMode = CategoryTransitionInMode.AccordionFromBottom;
+        productivityChart.transitionInMode = CategoryTransitionInMode.AccordionFromBottom;
     }
 
-    public createEmployeeList() {
+    function createEmployeeList() {
 
         let employeeListContainer = document.getElementById("employeeListContainer") as HTMLDivElement;
         employeeListContainer.style.width = "calc(100% - 1rem)";
@@ -780,7 +752,7 @@ export default class DockManagerUpdatingPanes extends React.Component<any, any> 
         employeeListContainer.style.display = "flex";
         employeeListContainer.style.flexDirection = "column";
 
-        for (const employee of this.employeesDatabase) {
+        for (const employee of employeesDatabase) {
             let employeeName = document.createElement("div");
             employeeName.style.paddingLeft = "1rem";
             employeeName.textContent = employee.Name;
@@ -804,106 +776,109 @@ export default class DockManagerUpdatingPanes extends React.Component<any, any> 
             employeeListItem.style.cursor = "pointer";
             employeeListItem.appendChild(employeePhoto);
             employeeListItem.appendChild(employeeName);
-            employeeListItem.addEventListener("click", e =>
-                this.onEmployeeClick(employee)
+            employeeListItem.addEventListener("click", () =>
+                onEmployeeClick(employee)
             );
             // employeeListItem.appendChild(employeeSurname);
 
             employeeListContainer.appendChild(employeeListItem);
-            this.employeesList.push(employeeListItem);
+            employeesList.current.push(employeeListItem);
         }
     }
 
-    public createLocationMap() {
+    function createLocationMap() {
         let allLocationSeries = new IgrGeographicSymbolSeries({
             name: "symbolSeries1"
         });
         allLocationSeries.latitudeMemberPath = "Latitude";
         allLocationSeries.longitudeMemberPath = "Longitude";
-        allLocationSeries.dataSource = this.employeesDatabase;
+        allLocationSeries.dataSource = employeesDatabase;
         allLocationSeries.markerType = MarkerType.Circle;
         allLocationSeries.markerBrush = "white";
         allLocationSeries.markerOutline = "Red";
-        allLocationSeries.tooltipTemplate = this.createLocationMapTooltip;
+        allLocationSeries.tooltipTemplate = createLocationMapTooltip;
 
-        this.geoLocationSeries = new IgrGeographicSymbolSeries({
+        const series = new IgrGeographicSymbolSeries({
             name: "symbolSeries2"
         });
-        this.geoLocationSeries.latitudeMemberPath = "Latitude";
-        this.geoLocationSeries.longitudeMemberPath = "Longitude";
-        this.geoLocationSeries.dataSource = [];
-        this.geoLocationSeries.markerType = MarkerType.Circle;
-        this.geoLocationSeries.markerBrush = "white";
-        this.geoLocationSeries.markerOutline = "LimeGreen";
-        this.geoLocationSeries.tooltipTemplate = this.createLocationMapTooltip;
+        series.latitudeMemberPath = "Latitude";
+        series.longitudeMemberPath = "Longitude";
+        series.dataSource = [];
+        series.markerType = MarkerType.Circle;
+        series.markerBrush = "white";
+        series.markerOutline = "LimeGreen";
+        series.tooltipTemplate = createLocationMapTooltip;
+        geoLocationSeries.current = series;
 
         const tileSource = new IgrArcGISOnlineMapImagery();
         tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer";
 
-        this.geoLocationMap = this.map;
-        this.geoLocationMap.height = "100%";
-        this.geoLocationMap.width = "100%";
-        this.geoLocationMap.series.add(allLocationSeries);
-        this.geoLocationMap.series.add(this.geoLocationSeries);
-        this.geoLocationMap.backgroundContent = tileSource;
+        const geoLocationMap = mapRef.current!;
+        geoLocationMap.height = "100%";
+        geoLocationMap.width = "100%";
+        geoLocationMap.series.add(allLocationSeries);
+        geoLocationMap.series.add(series);
+        geoLocationMap.backgroundContent = tileSource;
     }
 
-    public createLocationMapTooltip(tooltipProps: any) {
-        const dataContext = tooltipProps.dataContext as IgrDataContext;
-        if (!dataContext) return null;
+    function onEmployeeClick(employee: Employee) {
 
-        const dataItem = dataContext.item as any;
-        if (!dataItem) return null;
-
-        const lbl = dataItem.City;
-        const scr = dataItem.CountryFlag;
-        const lat = WorldUtils.toStringLat(dataItem.Latitude);
-        const lon = WorldUtils.toStringLon(dataItem.Longitude);
-
-        return <div className="tooltipHorizontal">
-            <img className="tooltipFlagImage" src={scr}/>
-            <div className="tooltipBox">
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Latitude:</div>
-                    <div className="tooltipVal">{lat}</div>
-                </div>
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Longitude:</div>
-                    <div className="tooltipVal">{lon}</div>
-                </div>
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">City: </div>
-                    <div className="tooltipVal">{lbl}</div>
-                </div>
-            </div>
-        </div>
-    }
-
-    public onEmployeeClick(employee: any) {
-
-        for (const employeeListItem of this.employeesList) {
+        for (const employeeListItem of employeesList.current) {
             if (employeeListItem.id !== employee.ID) {
                 employeeListItem.style.background = "transparent";
             } else {
                 employeeListItem.style.background = "#a8d3fd";
 
-                this.geoLocationSeries.dataSource = [employee];
-                this.productivityChart.dataSource = employee.Productivity;
+                geoLocationSeries.current!.dataSource = [employee];
+                chartRef.current!.dataSource = employee.Productivity;
 
-                let geoZoom: any = {};
-                geoZoom.width = 50;
-                geoZoom.height = 25;
-                geoZoom.left = employee.Longitude - geoZoom.width / 2;
-                geoZoom.top = employee.Latitude - geoZoom.height / 2;
-                this.geoLocationMap.zoomToGeographic(geoZoom);
+                const width = 50;
+                const height = 25;
+                const geoZoom: IgRect = {
+                    width,
+                    height,
+                    left: employee.Longitude - width / 2,
+                    top: employee.Latitude - height / 2,
+                };
+                mapRef.current!.zoomToGeographic(geoZoom);
             }
         }
     }
 
+    return (
+        <div className="container sample">
+            <IgrDockManager id="dockManager" ref={dockManagerRef}>
+                <div
+                    className="dockManagerContent"
+                    slot="employeeListContainer"
+                    id="employeeListContainer"/>
+                <div
+                    className="dockManagerContent"
+                    slot="productivityChartContainer"
+                    id="productivityChartContainer">
+                        <IgrCategoryChart
+                            key="productivityChart"
+                            ref={chartRef}
+                            width="calc(100% - 2rem)"
+                            height="100%"/>
+                </div>
+                <div
+                    className="dockManagerContent"
+                    slot="geoLocationMapContainer"
+                    id="geoLocationMapContainer" >
+                        <IgrGeographicMap
+                            ref={mapRef}
+                            key="geoLocationMap"
+                            width="100%"
+                            height="100%"/>
+                </div>
+            </IgrDockManager>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DockManagerUpdatingPanes/>);
 ```
 ```typescript

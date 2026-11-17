@@ -92,11 +92,17 @@ igc-accordion                    // host - manages a set of expansion panels
 
 Use the accordion with the Ignite UI for Blazor version installed in your application. Complete the shared [Getting Started](../general-getting-started.md) topic before adding framework-specific imports or registration.
 
-Register the accordion module in `Program.cs` and add the theme stylesheet to your host page.
+Register the Ignite UI for Blazor services:
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule));
+// in Program.cs file
+
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbAccordionModule`](mcp:get_api_reference?platform=blazor&component=IgbAccordionModule), the accordion's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbAccordionModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+Add the theme stylesheet to your host page.
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -258,10 +264,10 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
                 <span slot="subtitle">Filter by review score</span>
                 <span>
                     <p class="panel-description">Choose the lowest rating you want to include in the results.</p>
-                    <IgbRadioGroup class="rating-options">
+                    <IgbRadioGroup class="rating-options" @bind-Value="SelectedRatingId">
                         @foreach (var rating in Ratings)
                         {
-                            <IgbRadio class="rating-option" name="rating" Value="@rating.Id" Change="OnRadioChange">
+                            <IgbRadio name="rating" class="rating-option" Value="@rating.Id">
                                 <IgbRating Label="@rating.Label" Value="@rating.Value" Max="5" class="rating-control size-small" ReadOnly="true"></IgbRating>
                             </IgbRadio>
                         }
@@ -274,7 +280,7 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
                 <span slot="subtitle">Set the latest arrival time</span>
                 <span>
                     <p class="panel-description">Pick the latest acceptable arrival time for your trip.</p>
-                    <IgbDateTimeInput @ref="DateTimeInputRef" InputFormat="hh:mm tt" Label="Arrive before" class="time-input size-small" Change="OnTimeChange">
+                    <IgbDateTimeInput @bind-Value="LatestArrival" InputFormat="hh:mm tt" Label="Arrive before" class="time-input size-small">
                         <IgbIcon IconName="clock" Collection="material" slot="prefix"></IgbIcon>
                         <IgbIcon IconName="clear" Collection="material" slot="suffix" @onclick="OnTimeClear"></IgbIcon>
                     </IgbDateTimeInput>
@@ -288,11 +294,10 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
 
 @code {
     private IgbIcon? RegisterIconRef;
-    private IgbDateTimeInput? DateTimeInputRef;
     private double SliderLower = 200;
     private double SliderUpper = 800;
-    private string SelectedRating = string.Empty;
-    private string ArrivalTime = "Any time";
+    private string SelectedRatingId = string.Empty;
+    private DateTime? LatestArrival;
 
     private List<Category> Categories { get; } = [
         new() { Id = "0", Label = "Bike" },
@@ -313,6 +318,10 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
         ? $"Transportation: {string.Join(", ", selected)}"
         : "Transportation";
 
+    private string SelectedRating => Ratings.FirstOrDefault(item => item.Id == SelectedRatingId)?.Label ?? string.Empty;
+
+    private string ArrivalTime => LatestArrival?.ToLocalTime().ToShortTimeString() ?? "Any time";
+
     private string RatingTitle => string.IsNullOrEmpty(SelectedRating) ? "Minimum Rating" : $"Minimum Rating: {SelectedRating}";
 
     private string ArrivalTimeTitle => ArrivalTime == "Any time" ? "Arrival Time" : $"Arrival Time: {ArrivalTime}";
@@ -331,7 +340,7 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
 
     private void OnCategoryChange(IgbCheckboxChangeEventArgs args)
     {
-        var id = (args.Parent as IgbCheckbox)?.Value;
+        var id = args.Detail.Value;
         var category = Categories.FirstOrDefault(item => item.Id == id);
         if (category is not null)
         {
@@ -348,30 +357,9 @@ Customize the panel headers and content through the underlying [`IgbExpansionPan
         }
     }
 
-    private void OnRadioChange(IgbRadioChangeEventArgs args)
+    private void OnTimeClear()
     {
-        var id = (args.Parent as IgbRadio)?.Value;
-        var rating = Ratings.FirstOrDefault(item => item.Id == id);
-        if (rating is not null)
-        {
-            SelectedRating = rating.Label;
-        }
-    }
-
-    private Task OnTimeChange(IgbComponentDateValueChangedEventArgs args)
-    {
-        ArrivalTime = args.Detail.ToShortTimeString();
-        return Task.CompletedTask;
-    }
-
-    private async Task OnTimeClear()
-    {
-        if (DateTimeInputRef is not null)
-        {
-            await DateTimeInputRef.ClearAsync();
-        }
-
-        ArrivalTime = "Any time";
+        LatestArrival = null;
     }
 
     private sealed class Category

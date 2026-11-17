@@ -3,10 +3,11 @@ title: "React Donut Chart | Data Visualization | Infragistics"
 description: Infragistics' React Donut Chart
 keywords: "React Charts, Donut Chart, Donut Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DoughnutChart", "DoughnutChart"]
+mentionedTypes: ["DoughnutChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Donut Chart is similar to the Pie Chart, proportionally illustrating the occurrences of a variable."
+platformType: xplat
 _tocName: Donut Chart
 _premium: true
 ---
@@ -172,7 +173,7 @@ The React Donut Chart includes interactive features that give the viewer tools t
 - You have negative data, as this can not be represented in a donut chart.
 
 ## React Donut Chart - Slice Selection
-The React Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The `SliceClick` event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
+The React Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The `sliceClick` event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
 
 ```tsx
 import React from 'react';

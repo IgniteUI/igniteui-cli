@@ -15,33 +15,23 @@ The Ignite UI for React Divider allows the content author to easily create a hor
 ## React Divider Example
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrDividerModule, IgrDivider } from 'igniteui-react';
+import { IgrDivider } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrDividerModule.register();
-
-export default class DividerOverview extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <p>First paragraph</p>
-                <IgrDivider key="divider"></IgrDivider>
-                <p>Second paragraph</p>
-            </div>
-        );
-    }
+export default function DividerOverview() {
+    return (
+        <div className="container sample">
+            <p>First paragraph</p>
+            <IgrDivider key="divider"></IgrDivider>
+            <p>Second paragraph</p>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DividerOverview />);
 ```
 
@@ -61,8 +51,6 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 IgrDividerModule.register();
 ```
-
-Before using the [`IgrDivider`](mcp:get_api_reference?platform=react&component=IgrDivider), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -92,49 +80,39 @@ p{
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrDividerModule, IgrDivider } from 'igniteui-react';
+import { IgrDivider } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrDividerModule.register();
-
-export default class DividerVertical extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div className="content">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa officiis
-                        suscipit veniam vitae. Ab ad, dolores iure nostrum quo ratione rerum
-                        sapiente ullam. Adipisci alias architecto eligendi est, expedita,
-                        explicabo fugiat iure laudantium minima molestiae molestias nam
-                        obcaecati placeat provident, quam repellendus vitae! Cupiditate eveniet,
-                        facere harum hic quisquam sed.
-                    </p>
-                    <IgrDivider key="divider" vertical></IgrDivider>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa officiis
-                        suscipit veniam vitae. Ab ad, dolores iure nostrum quo ratione rerum
-                        sapiente ullam. Adipisci alias architecto eligendi est, expedita,
-                        explicabo fugiat iure laudantium minima molestiae molestias nam
-                        obcaecati placeat provident, quam repellendus vitae! Cupiditate eveniet,
-                        facere harum hic quisquam sed.
-                    </p>
-                </div>
+export default function DividerVertical() {
+    return (
+        <div className="container sample">
+            <div className="content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa officiis
+                    suscipit veniam vitae. Ab ad, dolores iure nostrum quo ratione rerum
+                    sapiente ullam. Adipisci alias architecto eligendi est, expedita,
+                    explicabo fugiat iure laudantium minima molestiae molestias nam
+                    obcaecati placeat provident, quam repellendus vitae! Cupiditate eveniet,
+                    facere harum hic quisquam sed.
+                </p>
+                <IgrDivider key="divider" vertical></IgrDivider>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa officiis
+                    suscipit veniam vitae. Ab ad, dolores iure nostrum quo ratione rerum
+                    sapiente ullam. Adipisci alias architecto eligendi est, expedita,
+                    explicabo fugiat iure laudantium minima molestiae molestias nam
+                    obcaecati placeat provident, quam repellendus vitae! Cupiditate eveniet,
+                    facere harum hic quisquam sed.
+                </p>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DividerVertical />);
 ```
 
@@ -147,35 +125,23 @@ The [`Type`](mcp:get_api_reference?platform=react&component=IgrDivider&member=ty
 ```
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrDividerModule, IgrDivider } from 'igniteui-react';
+import { IgrDivider } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrDividerModule.register();
-
-export default class DividerDashed extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);  
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <p>First paragraph</p>
-                <IgrDivider key="divider" type="dashed"></IgrDivider>
-                <p>Second paragraph</p>
-            </div>
-        );
-    }
-
-    
+export default function DividerDashed() {
+    return (
+        <div className="container sample">
+            <p>First paragraph</p>
+            <IgrDivider key="divider" type="dashed"></IgrDivider>
+            <p>Second paragraph</p>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DividerDashed/>);
 ```
 
@@ -229,42 +195,32 @@ p {
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrDividerModule, IgrDivider } from 'igniteui-react';
+import { IgrDivider } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrDividerModule.register();
-
-export default class DividerMiddle extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <div className="parent">
-                    <div className="content">
-                        <h4 className="mb">Both sides inset.</h4>
-                        <IgrDivider key="divider2" className="withInset" middle={true}></IgrDivider>
-                        <p className="mt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias at consectetur dolor magnam maiores nihil quasi quod repudiandae similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, culpa delectus eius fuga ipsa iste laborum nemo, numquam omnis perferendis soluta sunt. Animi asperiores aspernatur assumenda doloribus eligendi.</p>
-                    </div>
-                    <div className="content">
-                        <h4 className="mb">Left side only(default).</h4>
-                        <IgrDivider key="divider2" className="withInset"></IgrDivider>
-                        <p className="mt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias at consectetur dolor magnam maiores nihil quasi quod repudiandae similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, culpa delectus eius fuga ipsa iste laborum nemo, numquam omnis perferendis soluta sunt. Animi asperiores aspernatur assumenda doloribus eligendi.</p>
-                    </div>
+export default function DividerMiddle() {
+    return (
+        <div className="container sample center">
+            <div className="parent">
+                <div className="content">
+                    <h4 className="mb">Both sides inset.</h4>
+                    <IgrDivider key="divider2" className="withInset" middle={true}></IgrDivider>
+                    <p className="mt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias at consectetur dolor magnam maiores nihil quasi quod repudiandae similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, culpa delectus eius fuga ipsa iste laborum nemo, numquam omnis perferendis soluta sunt. Animi asperiores aspernatur assumenda doloribus eligendi.</p>
+                </div>
+                <div className="content">
+                    <h4 className="mb">Left side only(default).</h4>
+                    <IgrDivider key="divider2" className="withInset"></IgrDivider>
+                    <p className="mt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias at consectetur dolor magnam maiores nihil quasi quod repudiandae similique. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, culpa delectus eius fuga ipsa iste laborum nemo, numquam omnis perferendis soluta sunt. Animi asperiores aspernatur assumenda doloribus eligendi.</p>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DividerMiddle />);
 ```
 
@@ -283,45 +239,30 @@ The following sample illustrates how the [`IgrDivider`](mcp:get_api_reference?pl
 ```
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
-    IgrDividerModule,
     IgrDivider,
-    IgrSelectModule,
-    IgrSelectItemModule,
     IgrSelect,
     IgrSelectItem,
 } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrDividerModule.register();
-IgrSelectModule.register();
-IgrSelectItemModule.register();
-
-export default class DividerSelect extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrSelect key="select">
-                    <IgrSelectItem key="item1"><span>Item 1</span></IgrSelectItem>
-                    <IgrSelectItem key="item2"><span>Item 2</span></IgrSelectItem>
-                    <IgrDivider key="divider"></IgrDivider>
-                    <IgrSelectItem key="item3"><span>Item 3</span></IgrSelectItem>
-                </IgrSelect>
-            </div>
-        );
-    }
+export default function DividerSelect() {
+    return (
+        <div className="container sample">
+            <IgrSelect key="select">
+                <IgrSelectItem key="item1"><span>Item 1</span></IgrSelectItem>
+                <IgrSelectItem key="item2"><span>Item 2</span></IgrSelectItem>
+                <IgrDivider key="divider"></IgrDivider>
+                <IgrSelectItem key="item3"><span>Item 3</span></IgrSelectItem>
+            </IgrSelect>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DividerSelect />);
 ```
 

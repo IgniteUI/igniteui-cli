@@ -432,7 +432,7 @@ $custom-toast-theme: toast-theme(
 
 ### Styling with Tailwind
 
-You can style the toast using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
+You can style the toast using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/tailwind.md) first.
 
 Along with the Tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

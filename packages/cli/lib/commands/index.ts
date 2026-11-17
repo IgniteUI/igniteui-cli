@@ -3,6 +3,7 @@ export { default as aiConfig } from "./ai-config";
 export { default as build } from "./build";
 export { default as config } from "./config";
 export { default as doc } from "./doc";
+export { default as doctor } from "./doctor";
 export { default as generate } from "./generate";
 export { default as list } from "./list";
 export { default as mcp } from "./mcp";

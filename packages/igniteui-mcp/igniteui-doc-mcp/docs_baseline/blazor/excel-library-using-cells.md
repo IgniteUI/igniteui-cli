@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "WorkbookStyleCollection", "IWorksheetCellFormat", "WorkbookColorInfo", "DisplayOptions"]
 llms:
   description: "The WorksheetCell objects in an Excel worksheet is the object that holds your actual data values for the worksheet."
+platformType: xplat-unmapped
 _tocName: Using Cells
 _premium: true
 ---
 # Blazor Using Cells
 
-The [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) objects in an Excel worksheet is the object that holds your actual data values for the worksheet. This topic goes over the many operations that you can perform on these cells, such as accessing them and their regions by name, adding formulas and comments to the cells, and merging and formatting them.
+The [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) objects in an Excel worksheet is the object that holds your actual data values for the worksheet. This topic goes over the many operations that you can perform on these cells, such as accessing them and their regions by name, adding formulas and comments to the cells, and merging and formatting them.
 
 ## Blazor Using Cells Example
 
@@ -363,7 +364,7 @@ namespace Infragistics.Samples
 
 ## Referencing Cells and Regions
 
-You can access a [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object or a [`IgbWorksheetRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetRegion) object by calling the [`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object’s [`GetCell`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getCell) or [`GetRegion`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getRegion) methods, respectively. Both methods accept a string parameter that references a cell. Getting a reference to a cell is useful when applying formats or working with formulas and cell contents.
+You can access a [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object or a [`WorksheetRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetRegion) object by calling the [`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object’s [`GetCell`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getCell) or [`GetRegion`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getRegion) methods, respectively. Both methods accept a string parameter that references a cell. Getting a reference to a cell is useful when applying formats or working with formulas and cell contents.
 
 The following example code demonstrates how to reference cells and regions:
 
@@ -391,7 +392,7 @@ var region = worksheet.GetRegion("G1:G10");
 
 In Microsoft Excel, individual cells, as well as cell regions can have names assigned to them. The name of a cell or region can be used to reference that cell or region instead of their address.
 
-The Infragistics Blazor Excel Library supports the referencing of cells and regions by name through the [`GetCell`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getCell) and [`GetRegion`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getRegion) methods of the [`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object. You refer to the cell or region using the [`IgbNamedReference`](mcp:get_api_reference?platform=blazor&component=NamedReference) instance that refers to that cell or region.
+The Infragistics Blazor Excel Library supports the referencing of cells and regions by name through the [`GetCell`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getCell) and [`GetRegion`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=getRegion) methods of the [`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object. You refer to the cell or region using the [`NamedReference`](mcp:get_api_reference?platform=blazor&component=NamedReference) instance that refers to that cell or region.
 
 You can use the following code snippet as an example for naming a cell or region:
 
@@ -425,7 +426,7 @@ var region = worksheet.GetRegion("myRegion");
 
 ## Adding a Comment to a Cell
 
-A comment allows you to display hints or notes for a cell when the end user’s mouse hovers over a cell. The comments display as a tooltip-like callout that contains text. The Infragistics Blazor Excel Library allows you to add comments to a cell by setting a [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`Comment`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=comment) property.
+A comment allows you to display hints or notes for a cell when the end user’s mouse hovers over a cell. The comments display as a tooltip-like callout that contains text. The Infragistics Blazor Excel Library allows you to add comments to a cell by setting a [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`Comment`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=comment) property.
 
 The following example code demonstrates how to add a comment to a cell:
 
@@ -453,7 +454,7 @@ worksheet.Rows[0].Cells[0].Comment = cellComment;
 
 ## Adding a Formula to a Cell
 
-The Infragistics Blazor Excel Library allows you to add Microsoft Excel formulas to a cell or group of cells in a worksheet. You can do this using the [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`ApplyFormula`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=applyFormula) method or by instantiating a [`IgbFormula`](mcp:get_api_reference?platform=blazor&component=Formula) object and applying it to a cell. Regardless of the manner in which you apply a formula to a cell, you can access the [`IgbFormula`](mcp:get_api_reference?platform=blazor&component=Formula) object using the [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`Formula`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=formula) property. If you need the value, use the cell’s [`Value`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=value) property.
+The Infragistics Blazor Excel Library allows you to add Microsoft Excel formulas to a cell or group of cells in a worksheet. You can do this using the [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`ApplyFormula`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=applyFormula) method or by instantiating a [`Formula`](mcp:get_api_reference?platform=blazor&component=Formula) object and applying it to a cell. Regardless of the manner in which you apply a formula to a cell, you can access the [`Formula`](mcp:get_api_reference?platform=blazor&component=Formula) object using the [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`Formula`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=formula) property. If you need the value, use the cell’s [`Value`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=value) property.
 
 The following code shows you how to add a formula to a cell.
 
@@ -478,7 +479,7 @@ sumFormula.ApplyTo(worksheet.Rows[5].Cells[0]);
 ```
 
 ## Copying a Cell’s Format
-Cells can have different formatting, including background color, format string, and font style. If you need a cell to have the same format as a previously formatted cell, instead of individually setting each option exposed by the [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property, you can call the [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object’s [`SetFormatting`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=setFormatting) method and pass it a [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object to copy. This will copy every format setting from the first cell to the second cell. You can also do this for a row, merged cell region, or column.
+Cells can have different formatting, including background color, format string, and font style. If you need a cell to have the same format as a previously formatted cell, instead of individually setting each option exposed by the [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) object’s [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property, you can call the [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object’s [`SetFormatting`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=setFormatting) method and pass it a [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object to copy. This will copy every format setting from the first cell to the second cell. You can also do this for a row, merged cell region, or column.
 
 The following code shows you how to copy the format of the 2nd column to the 4th column:
 
@@ -508,7 +509,7 @@ worksheet.Columns[3].CellFormat.SetFormatting(worksheet.Columns[1].CellFormat);
 
 ## Formatting a Cell
 
-The Infragistics Blazor Excel Library allows you to customize the look and behavior of a cell. You can customize a cell by setting properties exposed by the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property of the [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell), [`IgbWorksheetRow`](mcp:get_api_reference?platform=blazor&component=WorksheetRow), [`IgbWorksheetColumn`](mcp:get_api_reference?platform=blazor&component=WorksheetColumn), or [`IgbWorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) objects.
+The Infragistics Blazor Excel Library allows you to customize the look and behavior of a cell. You can customize a cell by setting properties exposed by the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property of the [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell), [`WorksheetRow`](mcp:get_api_reference?platform=blazor&component=WorksheetRow), [`WorksheetColumn`](mcp:get_api_reference?platform=blazor&component=WorksheetColumn), or [`WorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) objects.
 
 You can customize every aspect of a cell’s appearance. You can set a cell’s font, background, and borders, as well as text alignment and rotation. You can even apply a different format on a character-by-character basis for a cell’s text.
 
@@ -534,27 +535,27 @@ worksheet.Columns[2].CellFormat.FormatString = "\"$\"#,##0.00";
 
 The color palette is analogous to the color dialog in Microsoft Excel 2007 UI. You can open this color dialog by navigating to Excel Options => Save => Colors.
 
-You can create all possible fill types using static properties and methods on the [`IgbCellFill`](mcp:get_api_reference?platform=blazor&component=CellFill) class. They are as follows:
+You can create all possible fill types using static properties and methods on the [`CellFill`](mcp:get_api_reference?platform=blazor&component=CellFill) class. They are as follows:
 
-- `NoColor` - A property that represents a fill with no color, which allows a background image of the worksheet, if any, to show through.
+- [`Workbook.NoColor`](mcp:get_api_reference?platform=blazor&component=Workbook&member=NoColor) - A property that represents a fill with no color, which allows a background image of the worksheet, if any, to show through.
 
-- `CreateSolidFill` - Returns a [`IgbCellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) instance which has a pattern style of `Solid` and a background color set to the [`Color`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=color) or [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) specified in the method.
+- [`Workbook.CreateSolidFill`](mcp:get_api_reference?platform=blazor&component=Workbook&member=CreateSolidFill) - Returns a [`CellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) instance which has a pattern style of [`Workbook.Solid`](mcp:get_api_reference?platform=blazor&component=Workbook&member=Solid) and a background color set to the [`Color`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=color) or [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) specified in the method.
 
-- `CreatePatternFill` - Returns a [`IgbCellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) instance which has the specified pattern style and the [`Color`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=color) or [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) values, specified for the background and pattern colors.
+- [`Workbook.CreatePatternFill`](mcp:get_api_reference?platform=blazor&component=Workbook&member=CreatePatternFill) - Returns a [`CellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) instance which has the specified pattern style and the [`Color`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=color) or [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) values, specified for the background and pattern colors.
 
-- `CreateLinearGradientFill` - Returns a [`IgbCellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient) instance with the specified angle and gradient stops.
+- [`Workbook.CreateLinearGradientFill`](mcp:get_api_reference?platform=blazor&component=Workbook&member=CreateLinearGradientFill) - Returns a [`CellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient) instance with the specified angle and gradient stops.
 
-- `CreateRectangularGradientFill` - Returns a [`IgbCellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient) instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
+- [`Workbook.CreateRectangularGradientFill`](mcp:get_api_reference?platform=blazor&component=Workbook&member=CreateRectangularGradientFill) - Returns a [`CellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient) instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
 
 The derived types, representing the various fills which can be created, are as follows:
 
-- [`IgbCellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) - A pattern that represents a cell fill of no color, a solid color, or a pattern fill for a cell. It has background color info and a pattern color info which correspond directly to the color sections in the Fill tab of the Format Cells dialog of Excel.
+- [`CellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern) - A pattern that represents a cell fill of no color, a solid color, or a pattern fill for a cell. It has background color info and a pattern color info which correspond directly to the color sections in the Fill tab of the Format Cells dialog of Excel.
 
-- [`IgbCellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient) - Represents a linear gradient fill. It has an angle, which is degrees clockwise of the left to right linear gradient, and a gradients stops collection which describes two or more color transitions along the length of the gradient.
+- [`CellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient) - Represents a linear gradient fill. It has an angle, which is degrees clockwise of the left to right linear gradient, and a gradients stops collection which describes two or more color transitions along the length of the gradient.
 
-- [`IgbCellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient) - Represents a rectangular gradient fill. It has top, left, right, and bottom values, which describe, in relative coordinates, the inner rectangle from which the gradient starts and goes out to the cell edges. It also has a gradient stops collection which describes two or more color transitions along the path from the inner rectangle to the cell edges.
+- [`CellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient) - Represents a rectangular gradient fill. It has top, left, right, and bottom values, which describe, in relative coordinates, the inner rectangle from which the gradient starts and goes out to the cell edges. It also has a gradient stops collection which describes two or more color transitions along the path from the inner rectangle to the cell edges.
 
-The following code snippet demonstrates how to create a solid fill in a [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell):
+The following code snippet demonstrates how to create a solid fill in a [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell):
 
 ```ts
 var workbook = new Workbook();
@@ -612,11 +613,11 @@ Each workbook has 12 associated theme colors. They are the following:
 
 - There are default values when a workbook is created, which can be customized via Excel.
 
-Colors are defined by the [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) class, which is a sealed immutable class. The class has a static `Automatic` property, which returns the automatic color, and there are various constructors which allow you to create a [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) instance with a color or a theme value and an optional tint.
+Colors are defined by the [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) class, which is a sealed immutable class. The class has a static [`Workbook.Automatic`](mcp:get_api_reference?platform=blazor&component=Workbook&member=Automatic) property, which returns the automatic color, and there are various constructors which allow you to create a [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) instance with a color or a theme value and an optional tint.
 
-The [`GetResolvedColor`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=getResolvedColor) method on [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) allows you to determine what color will actually be seen by the user when they open the file in Excel.
+The [`GetResolvedColor`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo&member=getResolvedColor) method on [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) allows you to determine what color will actually be seen by the user when they open the file in Excel.
 
-If the [`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) represents a theme color, you must pass in a Workbook instance to the method so it can get the theme color’s RGB value from the workbook.
+If the [`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo) represents a theme color, you must pass in a Workbook instance to the method so it can get the theme color’s RGB value from the workbook.
 
 When saving out in the newer file formats such as .xlsx, the newer color information is saved directly into the file. When saving out in an older file format such as .xls, the index to the closest color in the palette will be saved out. In addition, the older formats have future feature records that can be saved out to indicate the newer color information.
 
@@ -624,9 +625,9 @@ When the older formats are opened in Microsoft Excel 2003 and earlier versions, 
 
 ## Excel Format Support
 
-You can set a host of different formats on a [`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) by using the [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object returned by the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property of that cell. This [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object enables you to style many different aspects of the cell such as borders, font, fill, alignments, and whether or not the cell should shrink to fit or be locked.
+You can set a host of different formats on a [`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell) by using the [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object returned by the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property of that cell. This [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object enables you to style many different aspects of the cell such as borders, font, fill, alignments, and whether or not the cell should shrink to fit or be locked.
 
-You can also access the built-in styles to Microsoft Excel 2007 using the [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection of the [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object. The full list of styles in Excel can be found in the Cell Styles gallery of the Home tab of Microsoft Excel 2007.
+You can also access the built-in styles to Microsoft Excel 2007 using the [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection of the [`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object. The full list of styles in Excel can be found in the Cell Styles gallery of the Home tab of Microsoft Excel 2007.
 
 There is a special type of style on the workbook’s [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection known as the "normal" style, which can be accessed using that collection’s [`NormalStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=normalStyle) property, or by indexing into the collection with the name "Normal".
 
@@ -634,7 +635,7 @@ The [`NormalStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyl
 
 You can clear the [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection or reset it to its predefined state by using the [`Clear`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=clear) and [`Reset`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=reset) methods, respectively. Both of these will remove all user-defined styles, but [`Clear`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=clear) will clear the [`Styles`](mcp:get_api_reference?platform=blazor&component=Workbook&member=styles) collection entirely.
 
-With this feature, a [`Style`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=style) property has been added to the [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object. This is a reference to a [`IgbWorkbookStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyle) instance, representing the parent style of the format. For formats of a style, this property will always be null, because styles cannot have a parent style. For row, column, and cell formats, the [`Style`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=style) property always returns the [`NormalStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=normalStyle) by default.
+With this feature, a [`Style`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=style) property has been added to the [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) object. This is a reference to a [`WorkbookStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyle) instance, representing the parent style of the format. For formats of a style, this property will always be null, because styles cannot have a parent style. For row, column, and cell formats, the [`Style`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=style) property always returns the [`NormalStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=normalStyle) by default.
 
 If the [`Style`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat&member=style) property is set to null, it will revert back to the [`NormalStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyleCollection&member=normalStyle). If it is set to another style in the styles collection, that style will now hold the defaults for all unset properties on the cell format.
 
@@ -644,17 +645,17 @@ When a format option flag is removed from a format, all associated properties ar
 
 You can determine what would really be seen in cells by using the [`GetResolvedCellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=getResolvedCellFormat) method on classes which represent a row, column, cell, and merged cell.
 
-This method returns a [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) instance which refers back to the associated [`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) on which it is based. So subsequent changes to the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property will be reflected in the instance returned from a [`GetResolvedCellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=getResolvedCellFormat) call.
+This method returns a [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) instance which refers back to the associated [`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat) on which it is based. So subsequent changes to the [`CellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=cellFormat) property will be reflected in the instance returned from a [`GetResolvedCellFormat`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=getResolvedCellFormat) call.
 
 ## Merging Cells
 
 Aside from setting the value or format of cells, you can also merge cells to make two or more cells appear as one. If you merge cells, they must be in a rectangular region.
 
-When you merge cells, each cell in the region will have the same value and cell format. The merged cells will also be associated with the same [`IgbWorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) object, accessible from their [`AssociatedMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=associatedMergedCellsRegion) property. The resultant [`IgbWorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) object will also have the same value and cell format as the cells.
+When you merge cells, each cell in the region will have the same value and cell format. The merged cells will also be associated with the same [`WorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) object, accessible from their [`AssociatedMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetCell&member=associatedMergedCellsRegion) property. The resultant [`WorksheetMergedCellsRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetMergedCellsRegion) object will also have the same value and cell format as the cells.
 
 Setting the value (or cell format) of the region or any cell in the region will change the value of all cells and the region. If you un-merge cells, all of the previously merged cells will retain the shared cell format they had before they were unmerged. However, only the top-left cell of the region will retain the shared value.
 
-In order to create a merged cell region, you must add a range of cells to the [`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object’s [`MergedCellsRegions`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=mergedCellsRegions) collection. This collection exposes an `Add` method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
+In order to create a merged cell region, you must add a range of cells to the [`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet) object’s [`MergedCellsRegions`](mcp:get_api_reference?platform=blazor&component=Worksheet&member=mergedCellsRegions) collection. This collection exposes an [`Workbook.Add`](mcp:get_api_reference?platform=blazor&component=Workbook&member=Add) method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
 
 ```ts
 var workbook = new Workbook();
@@ -757,17 +758,17 @@ var cellText = worksheet.Rows[0].Cells[0].GetText();
 ```
 
 ## API References
-[`IgbCellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient)
-[`IgbCellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern)
-[`IgbCellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient)
-[`IgbCellFill`](mcp:get_api_reference?platform=blazor&component=CellFill)
-[`IgbIWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat)
-[`IgbFormula`](mcp:get_api_reference?platform=blazor&component=Formula)
-[`IgbWorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo)
-[`IgbWorkbookStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyle)
-[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)
-[`IgbWorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell)
-[`IgbWorksheetColumn`](mcp:get_api_reference?platform=blazor&component=WorksheetColumn)
-[`IgbWorksheetRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetRegion)
-[`IgbWorksheetRow`](mcp:get_api_reference?platform=blazor&component=WorksheetRow)
-[`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet)
+[`CellFillLinearGradient`](mcp:get_api_reference?platform=blazor&component=CellFillLinearGradient)
+[`CellFillPattern`](mcp:get_api_reference?platform=blazor&component=CellFillPattern)
+[`CellFillRectangularGradient`](mcp:get_api_reference?platform=blazor&component=CellFillRectangularGradient)
+[`CellFill`](mcp:get_api_reference?platform=blazor&component=CellFill)
+[`IWorksheetCellFormat`](mcp:get_api_reference?platform=blazor&component=IWorksheetCellFormat)
+[`Formula`](mcp:get_api_reference?platform=blazor&component=Formula)
+[`WorkbookColorInfo`](mcp:get_api_reference?platform=blazor&component=WorkbookColorInfo)
+[`WorkbookStyle`](mcp:get_api_reference?platform=blazor&component=WorkbookStyle)
+[`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook)
+[`WorksheetCell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell)
+[`WorksheetColumn`](mcp:get_api_reference?platform=blazor&component=WorksheetColumn)
+[`WorksheetRegion`](mcp:get_api_reference?platform=blazor&component=WorksheetRegion)
+[`WorksheetRow`](mcp:get_api_reference?platform=blazor&component=WorksheetRow)
+[`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet)

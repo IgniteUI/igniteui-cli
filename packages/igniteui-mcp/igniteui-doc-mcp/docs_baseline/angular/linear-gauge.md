@@ -7,16 +7,17 @@ mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Ignite UI for Angular linear gauge component allows for visualizing data in the form of a linear gauge."
+platformType: xplat
 _tocName: Linear Gauge
 _premium: true
 ---
 # Angular Linear Gauge Overview
 
-The Ignite UI for Angular linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgxLinearGauge`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Angular linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Angular Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same [`IgxLinearGauge`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) can transform it to completely different linear gauge.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -372,20 +373,18 @@ npm install --save igniteui-angular-gauges
 
 ## Component Modules
 
-The [`IgxLinearGauge`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) requires the following modules:
+The [`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent) requires the following modules:
 
 ```ts
-// app.module.ts
 import { IgxLinearGaugeModule } from 'igniteui-angular-gauges';
-
+// ...
+// app.module.ts
 @NgModule({
     imports: [
-        // ...
-        IgxLinearGaugeModule
-        // ...
+    IgxLinearGaugeModule
     ]
 })
-export class AppModule {}
+export class AppModule { }
 ```
 
 ## Usage
@@ -393,24 +392,28 @@ export class AppModule {}
 The following code demonstrates how create a linear gauge containing a needle and three comparative ranges on the scale.
 
 ```html
- <igx-linear-gauge width="700px"
-                   height="30px"
-                   minimumValue = "5"
-                   maximumValue = "55"
-                   value = "43">
-    <igx-linear-graph-range startValue="0"
-                            endValue="15"
-                            brush="red">
+<igx-linear-gauge
+    height="30px"
+    width="700px"
+    minimumValue=5
+    maximumValue=55
+    value=43>
+    <igx-linear-graph-range
+        startValue=0
+        endValue=15
+        brush="Red">
     </igx-linear-graph-range>
-    <igx-linear-graph-range startValue="15"
-                            endValue="30"
-                            brush="yellow">
+    <igx-linear-graph-range
+        startValue=15
+        endValue=30
+        brush="Yellow">
     </igx-linear-graph-range>
-    <igx-linear-graph-range startValue="30"
-                            endValue="55"
-                            brush="green">
+    <igx-linear-graph-range
+        startValue=30
+        endValue=55
+        brush="Green">
     </igx-linear-graph-range>
- </igx-linear-gauge>
+</igx-linear-gauge>
 ```
 
 ## Needle
@@ -418,12 +421,14 @@ The following code demonstrates how create a linear gauge containing a needle an
 This is the primary measure displayed by the linear gauge component and is visualized as a bar or you can customize it to show almost any shape as is demonstrated below.
 
 ```html
- <igx-linear-gauge
-    height="80px" width="400px"
+<igx-linear-gauge
+    height="80px"
+    width="400px"
     minimumValue=0
-    maximumValue=100 interval=10
+    maximumValue=100
     value=50
-    isNeedleDraggingEnabled=true
+    interval=10
+    isNeedleDraggingEnabled="true"
     needleShape="Custom"
     needleBrush="DodgerBlue"
     needleOutline="DodgerBlue"
@@ -521,16 +526,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's [`IgxLinearGaugeComponent.value`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=value) appear with a lower opacity. To enable this first set [`highlightValueDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValueDisplayMode) to Overlay and then apply a [`highlightValue`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=highlightValue).
 
 ```html
 <igx-linear-gauge
-    #linearGauge
     height="80px"
     width="400px"
-    value=70
     minimumValue=0
     maximumValue=100
+    value=50
     interval=10
     labelInterval=10
     labelExtent=0.025
@@ -539,7 +543,7 @@ The linear gauge can be modified to show a second needle. This will make the mai
     needleBrush="Blue"
     highlightValueDisplayMode="Overlay"
     highlightValue=25
-    isHighlightNeedleDraggingEnabled=true>
+    isHighlightNeedleDraggingEnabled="true">
 </igx-linear-gauge>
 ```
 
@@ -622,20 +626,29 @@ The ranges are visual elements that highlight a specified range of values on a s
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
-    minimumValue=0 value=50
-    maximumValue=100 interval=10
-    rangeBrushes="#a4bd29, #F86232"
-    rangeOutlines="#a4bd29, #F86232" >
+    height="80px"
+    width="400px"
+    minimumValue=0
+    maximumValue=100
+    value=50
+    interval=10
+    rangeBrushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    rangeOutlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
     <igx-linear-graph-range
-        startValue=0 endValue=50
-        innerStartExtent=0.075 innerEndExtent=0.075
-        outerStartExtent=0.25 outerEndExtent=0.4>
+        startValue=0
+        endValue=50
+        innerStartExtent=0.075
+        innerEndExtent=0.075
+        outerStartExtent=0.25
+        outerEndExtent=0.4>
     </igx-linear-graph-range>
     <igx-linear-graph-range
-        startValue=50 endValue=100
-        innerStartExtent=0.075 innerEndExtent=0.075
-        outerStartExtent=0.4 outerEndExtent=0.55>
+        startValue=50
+        endValue=100
+        innerStartExtent=0.075
+        innerEndExtent=0.075
+        outerStartExtent=0.4
+        outerEndExtent=0.55>
     </igx-linear-graph-range>
 </igx-linear-gauge>
 ```
@@ -727,9 +740,11 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
-    minimumValue=0 value=50
+    height="80px"
+    width="400px"
+    minimumValue=0
     maximumValue=100
+    value=50
     interval=10
     tickBrush="DodgerBlue"
     ticksPreTerminal=0
@@ -739,8 +754,8 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
     tickEndExtent=0.05
     minorTickCount=4
     minorTickBrush="DarkViolet"
-    minorTickEndExtent=0.05
     minorTickStartExtent=0.15
+    minorTickEndExtent=0.05
     minorTickStrokeThickness=1>
 </igx-linear-gauge>
 ```
@@ -827,9 +842,12 @@ The labels indicate the measures on the scale.
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
-    minimumValue=0 value=50
-    maximumValue=100 interval=10
+    height="80px"
+    width="400px"
+    minimumValue=0
+    maximumValue=100
+    value=50
+    interval=10
     labelInterval=10
     labelExtent=0.025
     labelsPreTerminal=0
@@ -915,10 +933,13 @@ The backing element represents background and border of the linear gauge compone
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
-    minimumValue=0 value=50
-    maximumValue=100 interval=10
-    backingBrush="#bddcfc"
+    height="80px"
+    width="400px"
+    minimumValue=0
+    maximumValue=100
+    value=50
+    interval=10
+    backingBrush="rgba(189, 220, 252, 1)"
     backingOutline="DodgerBlue"
     backingStrokeThickness=4
     backingInnerExtent=0
@@ -996,14 +1017,17 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`isScaleInverted`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
-    minimumValue=0 value=50
-    maximumValue=100 interval=10
-    isScaleInverted=false
+    height="80px"
+    width="400px"
+    minimumValue=0
+    maximumValue=100
+    value=50
+    interval=10
+    isScaleInverted="false"
     scaleBrush="DodgerBlue"
     scaleOutline="DarkViolet"
     scaleStrokeThickness=1
@@ -1092,36 +1116,46 @@ For your convenience, all above code snippets are combined into one code block b
 
 ```html
 <igx-linear-gauge
-    height="80px" width="400px"
+    height="80px"
+    width="400px"
     minimumValue=0
     maximumValue=100
-
+    value=50
+    interval=10
+    isScaleInverted="false"
+    scaleBrush="DodgerBlue"
+    scaleOutline="DarkViolet"
+    scaleStrokeThickness=1
+    scaleInnerExtent=0.05
+    scaleOuterExtent=0.65
+    scaleStartExtent=0.05
+    scaleEndExtent=0.95
+    backingBrush="rgba(189, 220, 252, 1)"
+    backingOutline="DodgerBlue"
+    backingStrokeThickness=4
+    backingInnerExtent=0
+    backingOuterExtent=1
     labelInterval=10
     labelExtent=0.025
     labelsPreTerminal=0
     labelsPostInitial=0
-    fontBrush="Black"
+    fontBrush="DodgerBlue"
     font="11px Verdana"
-
-    interval=10
-    tickBrush="Black"
+    tickBrush="DodgerBlue"
     ticksPreTerminal=0
     ticksPostInitial=0
     tickStrokeThickness=2
     tickStartExtent=0.25
     tickEndExtent=0.05
-
     minorTickCount=4
-    minorTickBrush="Black"
-    minorTickEndExtent=0.05
+    minorTickBrush="DarkViolet"
     minorTickStartExtent=0.15
+    minorTickEndExtent=0.05
     minorTickStrokeThickness=1
-
-    value=50
-    isNeedleDraggingEnabled=true
+    isNeedleDraggingEnabled="true"
     needleShape="Custom"
-    needleBrush="Black"
-    needleOutline="Black"
+    needleBrush="DodgerBlue"
+    needleOutline="DodgerBlue"
     needleStrokeThickness=1
     needleBreadth=15
     needleInnerExtent=0.35
@@ -1132,40 +1166,33 @@ For your convenience, all above code snippets are combined into one code block b
     needleOuterPointWidth=0.3
     needleInnerBaseWidth=0
     needleOuterBaseWidth=0.07
-
-    isScaleInverted=false
-    scaleBrush="Gray"
-    scaleOutline="Gray"
-    scaleStrokeThickness=1
-    scaleInnerExtent=0.05
-    scaleOuterExtent=0.65
-    scaleStartExtent=0.05
-    scaleEndExtent=0.95
-
-    backingBrush="#cecece"
-    backingOutline="#cecece"
-    backingStrokeThickness=4
-    backingInnerExtent=0
-    backingOuterExtent=1
-
-    rangeBrushes ="#C62828, #F96232, #FF9800"
-    rangeOutlines="#C62828, #F96232, #FF9800">
+    highlightValueDisplayMode="Overlay"
+    highlightValue=25
+    isHighlightNeedleDraggingEnabled="true"
+    rangeBrushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    rangeOutlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
     <igx-linear-graph-range
-        startValue=0 endValue=50
-        innerStartExtent=0.075 innerEndExtent=0.075
-        outerStartExtent=0.25 outerEndExtent=0.4>
+        startValue=0
+        endValue=50
+        innerStartExtent=0.075
+        innerEndExtent=0.075
+        outerStartExtent=0.25
+        outerEndExtent=0.4>
     </igx-linear-graph-range>
     <igx-linear-graph-range
-        startValue=50 endValue=100
-        innerStartExtent=0.075 innerEndExtent=0.075
-        outerStartExtent=0.4 outerEndExtent=0.55>
+        startValue=50
+        endValue=100
+        innerStartExtent=0.075
+        innerEndExtent=0.075
+        outerStartExtent=0.4
+        outerEndExtent=0.55>
     </igx-linear-graph-range>
 </igx-linear-gauge>
 ```
 
 ## API References
-[`IgxLinearGauge`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent)
-[`IgxLinearGraphRange`](mcp:get_api_reference?platform=angular&component=IgxLinearGraphRangeComponent)
+[`IgxLinearGaugeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGaugeComponent)
+[`IgxLinearGraphRangeComponent`](mcp:get_api_reference?platform=angular&component=IgxLinearGraphRangeComponent)
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:

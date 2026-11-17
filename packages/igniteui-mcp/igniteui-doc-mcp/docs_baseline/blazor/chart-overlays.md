@@ -4,9 +4,11 @@ description: Use Infragistics Ignite UI for Blazor chart control's value overlay
 keywords: Blazor charts, data chart, value overlay, Ignite UI for Blazor, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "ValueOverlay", "CategoryChart", "FinancialChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Blazor DataChart allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the ValueOverlay."
+platformType: xplat
 _tocName: Chart Overlays
 _premium: true
 ---
@@ -77,25 +79,25 @@ The following example depicts a [Column Chart](../types/column-chart.md) with a 
 
 ## Blazor Value Overlay Properties
 
-Unlike other series types that use a [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=dataSource) for data binding, the value overlay uses a [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=valueMemberPath) property to bind a single numeric value. In addition, the value overlay requires you to define a single [`Axis`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
+Unlike other series types that use a [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=DataSource) for data binding, the value overlay uses a [`Value`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Value) property to bind a single numeric value. In addition, the value overlay requires you to define a single [`IgbValueOverlay.Axis`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
 
-When using a numeric X or Y axis, the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=valueMemberPath) property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=valueMemberPath) should reflect the index of the category at which you want the value overlay to appear.
+When using a numeric X or Y axis, the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Value) property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Value) should reflect the index of the category at which you want the value overlay to appear.
 
 When using the value overlay with a numeric angle axis, it will appear as a line from the center of the chart and when using a numeric radius axis, it will appear as a circle.
 
-[`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay) appearance properties are inherited from [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) and so [`Brush`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=brush) and [`Thickness`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=thickness) for example are available and work the same way they do with other types of series.
+[`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay) appearance properties are inherited from [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) and so [`IgbValueOverlay.Brush`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Brush) and [`IgbValueOverlay.Thickness`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=Thickness) for example are available and work the same way they do with other types of series.
 
-It is also possible to show an axis annotation on a [`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay) to show the value of the overlay on the owning axis. In order to show this, you can set the [`IsAxisAnnotationEnabled`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=isAxisAnnotationEnabled) property to true.
+It is also possible to show an axis annotation on a [`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay) to show the value of the overlay on the owning axis. In order to show this, you can set the [`IsAxisAnnotationEnabled`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay&member=IsAxisAnnotationEnabled) property to true.
 
 ## Blazor Value Layer
 
 The Blazor charting components also expose the ability to use value lines to call out different focal points of your data, such as minimum, maximum, and average values.
 
-Applying the [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components is done by setting the [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=valueLines) property on the chart. This property takes a collection of the [`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumeration. You can mix and match multiple value layers in the same chart by adding multiple [`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumerations to the [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=valueLines) collection of the chart.
+Applying the [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) components is done by setting the [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ValueLines) property on the chart. This property takes a collection of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumeration. You can mix and match multiple value layers in the same chart by adding multiple [`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumerations to the [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ValueLines) collection of the chart.
 
-In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), this is done by adding a [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) to the [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection of the chart and then setting the [`ValueMode`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) property to one of the [`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumerations. Each of these enumerations and what they mean is listed below:
+In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart), this is done by adding a [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) to the [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) collection of the chart and then setting the [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) property to one of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumerations. Each of these enumerations and what they mean is listed below:
 
-- [`Auto`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Auto): The default value mode of the [`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumeration.
+- [`Auto`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Auto): The default value mode of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) enumeration.
 - [`Average`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Average): Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
 - [`GlobalAverage`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=GlobalAverage): Applies a single value line to call out the average of all of the series values in the chart.
 - [`GlobalMaximum`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=GlobalMaximum): Applies a single value line to call out the absolute maximum value of all of the series values in the chart.
@@ -103,9 +105,9 @@ In the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataC
 - [`Maximum`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Maximum): Applies potentially multiple value lines to call out the maximum value of each series plotted in the chart.
 - [`Minimum`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Minimum): Applies potentially multiple value lines to call out the minimum value of each series plotted in the chart.
 
-If you want to prevent any particular series from being taken into account when using the [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) element, you can set the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer&member=targetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) elements within a single [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) as you want.
+If you want to prevent any particular series from being taken into account when using the [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) element, you can set the [`TargetSeries`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer&member=TargetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) elements within a single [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) as you want.
 
-The following sample demonstrates usage of the different [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=valueLines) in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart):
+The following sample demonstrates usage of the different [`ValueLines`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ValueLines) in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart):
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -446,23 +448,28 @@ This code example shows how to style and customize Overlay Text on
 the [`IgbDataAnnotationSliceLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataAnnotationSliceLayer), [`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay), and [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer).
 
 ```razor
-public Series StylingOverlayText()
-{
-    var annoLayer = new IgbDataAnnotationSliceLayer();
-
-    // styling optional overlay text
-    annoLayer.OverlayTextColor = Brushes.White;
-    annoLayer.OverlayTextBackground = Brushes.Green;
-    annoLayer.OverlayTextBorderColor = Brushes.Black;
-    annoLayer.OverlayTextBorderThickness = 1;
-    annoLayer.OverlayTextBorderRadius = 4;
-    annoLayer.OverlayTextHorizontalMargin = 5;
-    annoLayer.OverlayTextHorizontalPadding = 2;
-    annoLayer.OverlayTextVerticalMargin = 5;
-    annoLayer.OverlayTextVerticalPadding = 2;
-
-    return annoLayer;
-}
+var AnnoLayer = new IgbDataAnnotationSliceLayer();
+this.AnnoLayer = AnnoLayer;
+AnnoLayer.Name = "AnnoLayer";
+AnnoLayer.DataSource = AnnotationSliceMultiOverlayData;
+AnnoLayer.TargetAxisName = "yAxis";
+AnnoLayer.Brush = "Green";
+AnnoLayer.Thickness = 2;
+AnnoLayer.AnnotationTextColor = "White";
+AnnoLayer.AnnotationLabelMemberPath = "Label";
+AnnoLayer.AnnotationValueMemberPath = "Value";
+AnnoLayer.OverlayText = "OverlayText on DataAnnotationSliceLayer";
+AnnoLayer.OverlayTextMemberPath = "Label";
+AnnoLayer.OverlayTextLocation = OverlayTextLocation.OutsideBottomCenter;
+AnnoLayer.OverlayTextColor = "Red";
+AnnoLayer.OverlayTextBackground = "Green";
+AnnoLayer.OverlayTextBorderColor = "Black";
+AnnoLayer.OverlayTextBorderThickness = 1;
+AnnoLayer.OverlayTextBorderRadius = 4;
+AnnoLayer.OverlayTextHorizontalMargin = 0;
+AnnoLayer.OverlayTextHorizontalPadding = 2;
+AnnoLayer.OverlayTextVerticalMargin = 20;
+AnnoLayer.OverlayTextVerticalPadding = 2;
 ```
 
 ## Additional Resources
@@ -478,6 +485,6 @@ You can find more information about related chart types in these topics:
 [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)
 [`IgbValueOverlay`](mcp:get_api_reference?platform=blazor&component=IgbValueOverlay)
 [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer)
-[`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode)
+[`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode)
 [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)
 [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart)

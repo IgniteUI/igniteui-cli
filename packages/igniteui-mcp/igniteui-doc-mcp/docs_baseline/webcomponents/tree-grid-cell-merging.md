@@ -67,7 +67,7 @@ Cell merging in the grid is controlled at two levels:
 
 ### Grid Merge Mode
 
-The grid exposes a [`IgcTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellMergeMode) property that accepts values from the [`IgcGridCellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=GridCellMergeMode) enum:
+The grid exposes a [`IgcTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellMergeMode) property that accepts values from the [`GridCellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=GridCellMergeMode) enum:
 - `always` - Merges any adjacent cells that meet the merging condition, regardless of sort state.
 - `onSort` - Merges adjacent cells only when the column is sorted **(default value)**.
 
@@ -453,7 +453,7 @@ If a merged cell is clicked, the closest cell from the merge sequence will becom
 ## API References
 [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent)
 [`CellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=cellMergeMode)
-[`IgcGridCellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=GridCellMergeMode)
+[`GridCellMergeMode`](mcp:get_api_reference?platform=webcomponents&component=GridCellMergeMode)
 [`IgcGridMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcGridMergeStrategy)
 [`IgcDefaultMergeStrategy`](mcp:get_api_reference?platform=webcomponents&component=IgcDefaultMergeStrategy)
 ## Additional Resources

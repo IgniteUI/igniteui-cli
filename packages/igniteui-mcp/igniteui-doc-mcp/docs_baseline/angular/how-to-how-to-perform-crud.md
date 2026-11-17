@@ -153,6 +153,7 @@ See the demo that was built following the guidance. Play around with it and try 
 ```typescript
 import { ChangeDetectorRef, Component, OnInit, ViewChild, OnDestroy, inject } from '@angular/core';
 import { GridPagingMode, IGridEditDoneEventArgs, IRowDataEventArgs, IgxColumnComponent, IgxGridEditingActionsComponent, IgxGridRow } from 'igniteui-angular/grids/core';
+import { takeUntil } from 'rxjs/operators';
 import { IgxGridComponent } from 'igniteui-angular/grids/grid';
 import { IgxSnackbarComponent } from 'igniteui-angular/snackbar';
 import { NoopFilteringStrategy, NoopSortingStrategy } from 'igniteui-angular/core';
@@ -196,13 +197,17 @@ export class CRUDSampleComponent implements OnInit, OnDestroy {
     public ngOnInit(): void {
         this.remoteData$ = this._crudService.data$;
         this._crudService.getData(this.page * this.perPage, this.perPage);
-        this._crudService.getDataLength().subscribe((length) => {
-            this.totalCount = length;
-        });
-        this.remoteData$.subscribe((data: any) => {
-            this.data = data;
-            this.grid.isLoading = false;
-        });
+        this._crudService.totalCount$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(count => {
+                this.totalCount = count;
+            });
+        this.remoteData$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe((data: any) => {
+                this.data = data;
+                this.grid.isLoading = false;
+            });
     }
 
     public rowAdded(event: IRowDataEventArgs): void {
@@ -420,14 +425,14 @@ The grid exposes a wide array of events that provide greater control over the ed
 
 | Event                                                                                      | Description                                                                                                                                               | Arguments                                                                                    | Cancellable |
 | :----------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :---------- |
-| [`rowEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditEnter) | If `rowEditing` is enabled, fires when a row enters edit mode | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditDone) | If value is changed, fires **after** a cell has been edited and cell's value is **committed** | [`IgxIGridEditDoneEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditDoneEventArgs) | `false` |
-| [`cellEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditExit) | Fires when a cell **exits edit mode** | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
-| [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit) | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`rowEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditDone) | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**. | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
-| [`rowEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditExit) | If `rowEditing` is enabled, fires when a row **exits edit mode** | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditEnter) | If `rowEditing` is enabled, fires when a row enters edit mode | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEditEnter`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEdit) | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditDone) | If value is changed, fires **after** a cell has been edited and cell's value is **committed** | [`IGridEditDoneEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditDoneEventArgs) | `false` |
+| [`cellEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=cellEditExit) | Fires when a cell **exits edit mode** | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEdit) | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`rowEditDone`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditDone) | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**. | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEditExit`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=rowEditExit) | If `rowEditing` is enabled, fires when a row **exits edit mode** | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
 
 Go to [Events](/grid/editing#event-arguments-and-sequence) for more details and demo samples.
 

@@ -105,7 +105,7 @@ If all went well, you should see an export button. When pressed, it will trigger
 
 ## Customizing the Exported Content
 
-In the above examples, the PDF Exporter service exports all available data. However, there are situations where you may want to skip exporting a row or an entire column. To achieve this, you can subscribe to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=rowexporting) events, which are fired for each column and/or each row respectively. You can then cancel the export by setting the event argument object's [`IgxIRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
+In the above examples, the PDF Exporter service exports all available data. However, there are situations where you may want to skip exporting a row or an entire column. To achieve this, you can subscribe to the [`columnExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=columnexporting) and/or [`rowExporting`](mcp:get_api_reference?platform=angular&component=IgxPdfExporterService&member=rowexporting) events, which are fired for each column and/or each row respectively. You can then cancel the export by setting the event argument object's [`IRowExportingEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IRowExportingEventArgs&member=cancel) property to `true`.
 
 The following example excludes a column from the export if its header is "Age" and its index is 1:
 

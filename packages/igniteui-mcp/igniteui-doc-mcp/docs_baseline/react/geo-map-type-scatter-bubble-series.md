@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "In React map component, you can use the GeographicProportionalSymbolSeries to plot bubbles or proportional markers at the geographic locations specified by the data in your application."
+platformType: xplat
 _tocName: Geographic Bubble Map
 _premium: true
 ---
@@ -1011,82 +1012,50 @@ root.render(<MapTypeScatterBubbleSeries/>);
 The demo above shows the `IgrGeographicProportionalSymbolSeries` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
 
 ## Configuration Summary
-Similar to other types of scatter series in the map control, the `IgrGeographicProportionalSymbolSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns. The `RadiusScale` and `RadiusMemberPath` will settings configures the radius for the bubbles.
+Similar to other types of scatter series in the map control, the `IgrGeographicProportionalSymbolSeries` series has the `dataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `longitudeMemberPath` and `latitudeMemberPath` properties to map these data columns. The `radiusScale` and `radiusMemberPath` will settings configures the radius for the bubbles.
 
-The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
+The following table summarizes the `IgrGeographicProportionalSymbolSeries` series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `DataSource`|any|Gets or sets the items source |
-| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
-| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
-| `RadiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
-| `RadiusScale`|`IgrSizeScale`|Gets or sets the radius scale property for the current bubble series. |
-| `MinimumValue`|any|Configure the minimum value for calculating value sub ranges. |
-| `MaximumValue`|any|Configure the maximum value for calculating value sub ranges. |
+| `dataSource`|any|Gets or sets the items source |
+| `longitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `latitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `radiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
+| `radiusScale`|`IgrSizeScale`|Gets or sets the radius scale property for the current bubble series. |
+| `minimumValue`|any|Configure the minimum value for calculating value sub ranges. |
+| `maximumValue`|any|Configure the maximum value for calculating value sub ranges. |
 
 ## Code Snippet
 
 ```tsx
-import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrGeographicProportionalSymbolSeries } from 'igniteui-react-maps';
-import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { IgrValueBrushScale } from 'igniteui-react-charts';
-import { IgrSizeScale } from 'igniteui-react-charts';
-import { IgrDataContext } from 'igniteui-react-core';
-import { MarkerType } from 'igniteui-react-charts';
-
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
-// ...
-
-public render() {
-    return (
-    <IgrGeographicMap
-        ref={this.onMapReferenced}
-        width="600px"
-        height="600px"
-        zoomable="true" />
-    );
-}
-```
-
-```ts
-public onMapReferenced(map: IgrGeographicMap) {
-    this.map = map;
-
-    const sizeScale = new IgrSizeScale({});
-    sizeScale.minimumValue = 4;
-    sizeScale.maximumValue = 60;
-
-    const brushes = [
-        "rgba(14, 194, 14, 0.4)",  // semi-transparent green
-        "rgba(252, 170, 32, 0.4)", // semi-transparent orange
-        "rgba(252, 32, 32, 0.4)",  // semi-transparent red
-    ];
-
-    const brushScale = new IgrValueBrushScale({});
-    brushScale.brushes = brushes;
-    brushScale.minimumValue = 0;
-    brushScale.maximumValue = 30;
-
-   const geoSeries = new IgrGeographicProportionalSymbolSeries ( { name: "symbolSeries" });
-    geoSeries.dataSource = locations;
-    geoSeries.markerType = MarkerType.Circle;
-    geoSeries.radiusScale = sizeScale;
-    geoSeries.fillScale = brushScale;
-    geoSeries.fillMemberPath = "pop";
-    geoSeries.radiusMemberPath = "pop";
-    geoSeries.latitudeMemberPath = "lat";
-    geoSeries.longitudeMemberPath = "lon";
-    geoSeries.markerOutline = "rgba(0,0,0,0.3)";
-
-    this.map.series.add(geoSeries);
-}
+<IgrGeographicMap
+    ref={this.mapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicProportionalSymbolSeries
+        name="WorldCitiesSeries"
+        ref={ref => { this.worldCitiesSeries = ref; }}
+        dataSource={this.worldCities}
+        markerType="Circle"
+        fillMemberPath="population"
+        radiusMemberPath="population"
+        latitudeMemberPath="y"
+        longitudeMemberPath="x"
+        markerOutline="rgba(0, 0, 0, 0.3)">
+        <IgrSizeScale
+            minimumValue={4}
+            maximumValue={60} />
+        <IgrValueBrushScale
+            brushes="rgba(14, 194, 14, 0.4) rgba(252, 170, 32, 0.4) rgba(252, 32, 32, 0.4)"
+            minimumValue={0}
+            maximumValue={30} />
+    </IgrGeographicProportionalSymbolSeries>
+</IgrGeographicMap>
 ```
 
 ## API References
 
 `IgrGeographicProportionalSymbolSeries`<br />
-`RadiusScale`<br />
+`radiusScale`<br />

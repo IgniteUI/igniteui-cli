@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", 
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Point Chart renders a collection of points."
+platformType: xplat
 _tocName: Point Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Angular Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Angular Point Chart Example
-You can create the Angular Point Chart in the `IgxCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Point** enum, as shown in the example below.
+You can create the Angular Point Chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data to [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) property and setting [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to **Point** enum, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -436,7 +437,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Advanced Types of Point Charts
-You can create more advanced types of Angular Point Charts using the `IgxDataChart` control instead of `IgxCategoryChart` control by following these topics:
+You can create more advanced types of Angular Point Charts using the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control instead of [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by following these topics:
 
 - [Scatter Bubble Chart](bubble-chart.md)
 - [Scatter Marker Chart](scatter-chart.md#angular-scatter-marker-chart)
@@ -451,5 +452,5 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-`IgxCategoryChart`
-`IgxDataChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

@@ -1,12 +1,13 @@
 ---
 title: "React Pie Charts and Graphs | Ignite UI for React"
-description: The Ignite UI for React pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+description: The Ignite UI for React pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Download free trial.
 keywords: "React charts, pie chart, Ignite UI for React, Infragistics, data binding, slice selection, slice explosion, animation"
 license: commercial
-mentionedTypes: ["PieChart", "DataChart"]
+mentionedTypes: ["PieChart", "DataChart", "SliceSelectionMode", "SelectedItemChangingEventArgs"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
+platformType: xplat
 _tocName: Pie Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for React Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value. Categories are rendered as sections in a circular, or pie-shaped graph. Each section, or pie slice, has an arc length proportional to its underlying data value. Categories are shown in proportion to other categories based on their value percentage to the total value being analyzed, as parts of 100 or 100%.
 
 ## React Pie Chart Example
-You can create the React Pie Chart in the [`IgrPieChart`](mcp:get_api_reference?platform=react&component=IgrPieChart) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
+You can create the React Pie Chart in the `IgrPieChart` by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -171,9 +172,9 @@ Do Not Use Pie Chart When:
 ## React Pie Chart Legend
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`Legend`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legend) property. The [`LegendLabelMemberPath`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `IgrPieChart.legend` property. The `legendLabelMemberPath` can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`LegendItemTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemTemplate) and [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the `legendItemTemplate` and `legendItemBadgeTemplate` properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -292,9 +293,9 @@ root.render(<Sample/>);
 ## React Pie Chart Others Category
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`OthersCategoryThreshold`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryThreshold) is set to 2, and [`OthersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the `othersCategoryThreshold` is set to 2, and `othersCategoryType` is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`OthersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) to Percent, then [`OthersCategoryThreshold`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=othersCategoryType) is most appropriate for your application.
+If you set `othersCategoryType` to Percent, then `othersCategoryThreshold` will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever `othersCategoryType` is most appropriate for your application.
 
 ```typescript
 export class EnergyGlobalDemandItem {
@@ -414,7 +415,7 @@ root.render(<Sample/>);
 ```
 
 ## React Pie Chart Explosion
-The pie chart supports explosion of individual pie slices as well as a `SliceClick` event that allows you to modify selection states and implement custom logic
+The pie chart supports explosion of individual pie slices as well as a `sliceClick` event that allows you to modify selection states and implement custom logic
 
 ```tsx
 import React from 'react';
@@ -511,9 +512,9 @@ root.render(<PieChartExplosion/>);
 ```
 
 ## React Pie Chart Selection
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=selectedItems) property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the `selectedItems` property. The selected slices are then highlighted.
 
-There is a property called [`SelectionMode`](mcp:get_api_reference?platform=react&component=IgrPieChart&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called `selectionMode` which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
 
 The pie chart supports three different selection modes.
 
@@ -527,7 +528,7 @@ The pie chart has 4 events associated with selection:
 - SelectedItemsChanging
 - SelectedItemsChanged
 
-The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
+The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property `cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
 
 For scenarios where you click on the Others slice, the pie chart will return an object called `IgrPieSliceOthersContext`. This object contains a list of the data items contained within the Others slice.
 
@@ -1025,4 +1026,4 @@ root.render(<Sample/>);
 - [Radial Chart](radial-chart.md)
 
 ## API References
-[`IgrPieChart`](mcp:get_api_reference?platform=react&component=IgrPieChart)
+`IgrPieChart`

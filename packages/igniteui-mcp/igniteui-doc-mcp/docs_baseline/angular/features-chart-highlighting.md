@@ -4,9 +4,11 @@ description: Infragistics' Angular Chart Highlighting
 keywords: Angular Charts, Highlighting, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All Angular Charts support a variety of highlighting options."
+platformType: xplat
 _tocName: Chart Highlighting
 _premium: true
 ---
@@ -160,9 +162,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 # Angular Chart Highlighting Modes & Behaviors
 
-All Angular Charts support a variety of highlighting options. `HighlightingMode` can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. `HighlightingBehavior` can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls and they have the same API for using the highlighting feature.
+All Angular Charts support a variety of highlighting options. [`highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) controls and they have the same API for using the highlighting feature.
 
-The following example demonstrates the `HighlightingMode` Angular chart.
+The following example demonstrates the [`highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingMode) Angular chart.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -294,7 +296,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The following example demonstrates the `HighlightingBehavior` Angular chart.
+The following example demonstrates the [`highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingBehavior) Angular chart.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -429,7 +431,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 # Angular Chart Legend Highlighting
 
-All Angular Charts support legend highlighting. `LegendHighlightingMode` can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls and they have the same API for using the highlighting feature.
+All Angular Charts support legend highlighting. [`legendHighlightingMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) controls and they have the same API for using the highlighting feature.
 
 The following example demonstrates the legend series highlighting Angular chart.
 
@@ -540,13 +542,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Highlight Layers
 
-The Ignite UI for Angular `IgxCategoryChart` can enable three types of highlighting when hovering over data items.
+The Ignite UI for Angular [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) can enable three types of highlighting when hovering over data items.
 
-1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the `IsSeriesHighlightingEnabled` property to true.
+1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`isSeriesHighlightingEnabled`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=isSeriesHighlightingEnabled) property to true.
 
-2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the `IsItemHighlightingEnabled` property to true.
+2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`isItemHighlightingEnabled`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=isItemHighlightingEnabled) property to true.
 
-3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the `IsCategoryHighlightingEnabled` property to true.
+3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`isCategoryHighlightingEnabled`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=isCategoryHighlightingEnabled) property to true.
 
 The following example demonstrates the different highlighting layers that are available on the Angular chart.
 
@@ -726,6 +728,6 @@ You can find more information about related chart features in these topics:
 - [Chart Tooltips](chart-tooltips.md)
 
 ## API References
-`IgxCategoryChart`
-`IgxDataChart`
-`IgxFinancialChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)

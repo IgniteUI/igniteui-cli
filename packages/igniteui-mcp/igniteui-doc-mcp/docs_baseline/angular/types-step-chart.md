@@ -3,10 +3,11 @@ title: "Angular Step Chart | Data Visualization | Infragistics"
 description: Infragistics' Angular Step Chart
 keywords: "Angular Charts, Step Chart, Step Area Chart, Step Line Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series", "CategoryChartType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Step Chart belongs to a group of category charts that render as a collection of points connected by continuous vertical and horizontal lines."
+platformType: xplat
 _tocName: Step Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Step Chart belongs to a group of category charts that 
 
 ## Angular Step Area Chart
 
-You can create Angular Step Area Chart in the `IgxCategoryChart` control by setting `CategoryChart.ChartType` property to `StepArea` enum, as shown in the example below.
+You can create Angular Step Area Chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by setting [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=StepArea) enum, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -130,7 +131,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Angular Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the `IgxCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `StepLine` value, as shown in the example below.
+You can create Step Line Chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`StepLine`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=StepLine) value, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -239,7 +240,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the `MarkerTypes`, `MarkerBrushes`, `MarkerOutlines`, lines' `Brushes`, and lines' `Outlines` properties on the `IgxCategoryChart` control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the [`markerTypes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerTypes), [`markerBrushes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerBrushes), [`markerOutlines`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerOutlines), lines' [`IgxDomainChartComponent.brushes`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=brushes), and lines' [`IgxDomainChartComponent.outlines`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=outlines) properties on the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control as demonstrated below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -358,4 +359,4 @@ You can find more information about related chart types in these topics:
 - [Chart Markers](../features/chart-markers.md)
 
 ## API References
-`IgxCategoryChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)

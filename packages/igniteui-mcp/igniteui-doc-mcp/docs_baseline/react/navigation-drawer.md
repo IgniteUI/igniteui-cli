@@ -17,7 +17,7 @@ The Ignite UI for React Navigation Drawer provides side navigation that can be e
 This sample demonstrates how to create [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer) component.
 
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem, IgrIcon, IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -27,84 +27,65 @@ const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const homeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
 const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>';
 
-export default class NavDrawerAddDrawerItems extends React.Component<any, any> {
-    private navDrawer: IgrNavDrawer;
+registerIconFromText("home", homeIcon, "material");
+registerIconFromText("search", searchIcon, "material");
+registerIconFromText("menu", menuIcon, "material");
 
-    constructor(props: any) {
-        super(props);
-        this.onNavDrawerClick = this.onNavDrawerClick.bind(this);
-        this.toggleDrawer = this.toggleDrawer.bind(this);
-        this.navDrawerRef = this.navDrawerRef.bind(this);
+export default function NavDrawerAddDrawerItems() {
+    const navDrawer = useRef<IgrNavDrawer>(null);
 
-        registerIconFromText("home", homeIcon, "material");
-        registerIconFromText("search", searchIcon, "material");
-        registerIconFromText("menu", menuIcon, "material");
+    function toggleDrawer() {
+        navDrawer.current?.toggle();
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrIconButton style={{ margin: "10px" }}
-                    onClick={this.toggleDrawer}
-                    name="menu"
-                    collection="material"
-                    variant="flat">
-                </IgrIconButton>
-                <div onClick={this.onNavDrawerClick}>
-                    <IgrNavDrawer open={true} ref={this.navDrawerRef}>
-                        <IgrNavDrawerHeaderItem>
-                            <span>Sample Drawer</span>
-                        </IgrNavDrawerHeaderItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="home" collection="material" />
-                            </div>
-                            <span slot="content">Home</span>
-                        </IgrNavDrawerItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="search" collection="material" />
-                            </div>
-                            <span slot="content">Search</span>
-                        </IgrNavDrawerItem>
-                    </IgrNavDrawer>
-                </div>
-            </div>
-        );
-    }
-
-    public navDrawerRef(navDrawer: IgrNavDrawer) {
-        if (!navDrawer) { return; }
-        this.navDrawer = navDrawer;
-    }
-
-    public toggleDrawer() {
-        if (this.navDrawer) {
-            this.navDrawer.toggle();
-        }
-    }
-
-    public onNavDrawerClick(e: any) {
-        const drawerItem: any = e.target.closest('igc-nav-drawer-item') ??
-            (e.target.parentElement?.closest('igc-nav-drawer-item') ??
-                null)
-
+    // Mark the clicked item active and its siblings inactive
+    function onNavDrawerClick(e: MouseEvent<HTMLDivElement>) {
+        const drawerItem = (e.target as Element).closest<IgrNavDrawerItem>('igc-nav-drawer-item');
         if (!drawerItem) { return; }
 
         drawerItem.active = true;
-        const navDrawer = drawerItem.parentElement;
-        Array.from(navDrawer.querySelectorAll('igc-nav-drawer-item'))
-            .filter((item: any) => item !== drawerItem)
-            .forEach((child: any) => child.active = false);
+        const parent = drawerItem.parentElement!;
+        Array.from(parent.querySelectorAll<IgrNavDrawerItem>('igc-nav-drawer-item'))
+            .filter(item => item !== drawerItem)
+            .forEach(child => child.active = false);
     }
 
+    return (
+        <div className="container sample">
+            <IgrIconButton style={{ margin: "10px" }}
+                onClick={toggleDrawer}
+                name="menu"
+                collection="material"
+                variant="flat">
+            </IgrIconButton>
+            <div onClick={onNavDrawerClick}>
+                <IgrNavDrawer open={true} ref={navDrawer}>
+                    <IgrNavDrawerHeaderItem>
+                        <span>Sample Drawer</span>
+                    </IgrNavDrawerHeaderItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="home" collection="material" />
+                        </div>
+                        <span slot="content">Home</span>
+                    </IgrNavDrawerItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="search" collection="material" />
+                        </div>
+                        <span slot="content">Search</span>
+                    </IgrNavDrawerItem>
+                </IgrNavDrawer>
+            </div>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<NavDrawerAddDrawerItems />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<NavDrawerAddDrawerItems/>);
 ```
 
 ## Usage
@@ -121,8 +102,6 @@ You will then need to import the [`IgrNavDrawer`](mcp:get_api_reference?platform
 import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
-
-Before using the [`IgrNavDrawer`](mcp:get_api_reference?platform=react&component=IgrNavDrawer), you need to register it as follows:
 
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
@@ -153,7 +132,7 @@ The simplest way to start using the [`IgrNavDrawer`](mcp:get_api_reference?platf
 If all went well, you should see the following in your browser:
 
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem, IgrIcon, IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -163,84 +142,65 @@ const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const homeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
 const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>';
 
-export default class NavDrawerAddDrawerItems extends React.Component<any, any> {
-    private navDrawer: IgrNavDrawer;
+registerIconFromText("home", homeIcon, "material");
+registerIconFromText("search", searchIcon, "material");
+registerIconFromText("menu", menuIcon, "material");
 
-    constructor(props: any) {
-        super(props);
-        this.onNavDrawerClick = this.onNavDrawerClick.bind(this);
-        this.toggleDrawer = this.toggleDrawer.bind(this);
-        this.navDrawerRef = this.navDrawerRef.bind(this);
+export default function NavDrawerAddDrawerItems() {
+    const navDrawer = useRef<IgrNavDrawer>(null);
 
-        registerIconFromText("home", homeIcon, "material");
-        registerIconFromText("search", searchIcon, "material");
-        registerIconFromText("menu", menuIcon, "material");
+    function toggleDrawer() {
+        navDrawer.current?.toggle();
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrIconButton style={{ margin: "10px" }}
-                    onClick={this.toggleDrawer}
-                    name="menu"
-                    collection="material"
-                    variant="flat">
-                </IgrIconButton>
-                <div onClick={this.onNavDrawerClick}>
-                    <IgrNavDrawer open={true} ref={this.navDrawerRef}>
-                        <IgrNavDrawerHeaderItem>
-                            <span>Sample Drawer</span>
-                        </IgrNavDrawerHeaderItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="home" collection="material" />
-                            </div>
-                            <span slot="content">Home</span>
-                        </IgrNavDrawerItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="search" collection="material" />
-                            </div>
-                            <span slot="content">Search</span>
-                        </IgrNavDrawerItem>
-                    </IgrNavDrawer>
-                </div>
-            </div>
-        );
-    }
-
-    public navDrawerRef(navDrawer: IgrNavDrawer) {
-        if (!navDrawer) { return; }
-        this.navDrawer = navDrawer;
-    }
-
-    public toggleDrawer() {
-        if (this.navDrawer) {
-            this.navDrawer.toggle();
-        }
-    }
-
-    public onNavDrawerClick(e: any) {
-        const drawerItem: any = e.target.closest('igc-nav-drawer-item') ??
-            (e.target.parentElement?.closest('igc-nav-drawer-item') ??
-                null)
-
+    // Mark the clicked item active and its siblings inactive
+    function onNavDrawerClick(e: MouseEvent<HTMLDivElement>) {
+        const drawerItem = (e.target as Element).closest<IgrNavDrawerItem>('igc-nav-drawer-item');
         if (!drawerItem) { return; }
 
         drawerItem.active = true;
-        const navDrawer = drawerItem.parentElement;
-        Array.from(navDrawer.querySelectorAll('igc-nav-drawer-item'))
-            .filter((item: any) => item !== drawerItem)
-            .forEach((child: any) => child.active = false);
+        const parent = drawerItem.parentElement!;
+        Array.from(parent.querySelectorAll<IgrNavDrawerItem>('igc-nav-drawer-item'))
+            .filter(item => item !== drawerItem)
+            .forEach(child => child.active = false);
     }
 
+    return (
+        <div className="container sample">
+            <IgrIconButton style={{ margin: "10px" }}
+                onClick={toggleDrawer}
+                name="menu"
+                collection="material"
+                variant="flat">
+            </IgrIconButton>
+            <div onClick={onNavDrawerClick}>
+                <IgrNavDrawer open={true} ref={navDrawer}>
+                    <IgrNavDrawerHeaderItem>
+                        <span>Sample Drawer</span>
+                    </IgrNavDrawerHeaderItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="home" collection="material" />
+                        </div>
+                        <span slot="content">Home</span>
+                    </IgrNavDrawerItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="search" collection="material" />
+                        </div>
+                        <span slot="content">Search</span>
+                    </IgrNavDrawerItem>
+                </IgrNavDrawer>
+            </div>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<NavDrawerAddDrawerItems />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<NavDrawerAddDrawerItems/>);
 ```
 
 ## Navbar Integration
@@ -316,122 +276,101 @@ public onMenuIconClick() {
 If all goes well, your component should now look like this:
 
 ```tsx
-import React from 'react';
+import { useRef, useState, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrNavbar, IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem, IgrIcon, IgrRadioGroup, IgrRadio, registerIconFromText, IgrRadioChangeEventArgs } from 'igniteui-react';
+import { IgrNavbar, IgrNavDrawer, IgrNavDrawerHeaderItem, IgrNavDrawerItem, IgrIcon, IgrRadioGroup, IgrRadio, registerIconFromText, IgrRadioChangeEventArgs, type NavDrawerPosition } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
 const homeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
 const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>';
 
-export default class NavDrawerAddPositionsNavbar extends React.Component<any, any> {
+registerIconFromText("home", homeIcon, "material");
+registerIconFromText("search", searchIcon, "material");
+registerIconFromText("menu", menuIcon, "material");
 
-    public navDrawer: IgrNavDrawer;
+export default function NavDrawerAddPositionsNavbar() {
+    const navDrawer = useRef<IgrNavDrawer>(null);
+    const [drawerPosition, setDrawerPosition] = useState<NavDrawerPosition>("start");
+    const [title, setTitle] = useState<string | null>("Home");
 
-    constructor(props: any) {
-        super(props);
-
-        this.state = { drawerPosition: "start", title: "Home" };
-
-        registerIconFromText("home", homeIcon, "material");
-        registerIconFromText("search", searchIcon, "material");
-        registerIconFromText("menu", menuIcon, "material");
-
-        this.navDrawerRef = this.navDrawerRef.bind(this);
-        this.onMenuIconClick = this.onMenuIconClick.bind(this);
-        this.onNavDrawerClick = this.onNavDrawerClick.bind(this);
-        this.onRadioChange = this.onRadioChange.bind(this);
+    function onMenuIconClick() {
+        navDrawer.current?.show();
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div onClick={this.onNavDrawerClick}>
-                    <IgrNavDrawer ref={this.navDrawerRef} position={this.state.drawerPosition}>
-                        <IgrNavDrawerHeaderItem>
-                            <span>Sample Drawer</span>
-                        </IgrNavDrawerHeaderItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="home" collection="material" />
-                            </div>
-                            <span slot="content">Home</span>
-                        </IgrNavDrawerItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="search" collection="material" />
-                            </div>
-                            <span slot="content">Search</span>
-                        </IgrNavDrawerItem>
-                    </IgrNavDrawer>
-                </div>
-                <div>
-                    <IgrRadioGroup alignment="horizontal" style={{ marginBottom: '10px' }}>
-                        <IgrRadio name="position" value="start" labelPosition="after" checked={this.state.drawerPosition === "start"} onChange={this.onRadioChange}>
-                            <span>Start</span>
-                        </IgrRadio>
-                        <IgrRadio name="position" value="end" labelPosition="after" checked={this.state.drawerPosition === "end"} onChange={this.onRadioChange}>
-                            <span>End</span>
-                        </IgrRadio>
-                        <IgrRadio name="position" value="top" labelPosition="after" checked={this.state.drawerPosition === "top"} onChange={this.onRadioChange}>
-                            <span>Top</span>
-                        </IgrRadio>
-                        <IgrRadio name="position" value="bottom" labelPosition="after" checked={this.state.drawerPosition === "bottom"} onChange={this.onRadioChange}>
-                            <span>Bottom</span>
-                        </IgrRadio>
-                    </IgrRadioGroup>
-                    <IgrNavbar>
-                        <div slot="start" onClick={this.onMenuIconClick}>
-                            <IgrIcon name="menu" collection="material" />
-                        </div>
-                        <h2>{this.state.title}</h2>
-                    </IgrNavbar>
-                </div>
-            </div>
-        );
-    }
-
-    public onMenuIconClick() {
-        if (this.navDrawer) {
-            this.navDrawer.show();
-        }
-    }
-
-    public onNavDrawerClick(e: any) {
-        const drawerItem: any = e.target.closest('igc-nav-drawer-item') ??
-            (e.target.parentElement?.closest('igc-nav-drawer-item') ??
-                null)
-
+    // Mark the clicked item active and its siblings inactive
+    function onNavDrawerClick(e: MouseEvent<HTMLDivElement>) {
+        const drawerItem = (e.target as Element).closest<IgrNavDrawerItem>('igc-nav-drawer-item');
         if (!drawerItem) { return; }
 
         drawerItem.active = true;
-        const navDrawer = drawerItem.parentElement;
-        Array.from(navDrawer.querySelectorAll('igc-nav-drawer-item'))
-            .filter((item: any) => item !== drawerItem)
-            .forEach((child: any) => child.active = false);
+        const parent = drawerItem.parentElement!;
+        Array.from(parent.querySelectorAll<IgrNavDrawerItem>('igc-nav-drawer-item'))
+            .filter(item => item !== drawerItem)
+            .forEach(child => child.active = false);
 
-        this.setState({ title: drawerItem.textContent });
+        setTitle(drawerItem.textContent);
     }
 
-    public navDrawerRef(navDrawer: IgrNavDrawer) {
-        if (!navDrawer) { return; }
-        this.navDrawer = navDrawer;
-    }
-
-    public onRadioChange(e: IgrRadioChangeEventArgs) {
+    function onRadioChange(e: IgrRadioChangeEventArgs) {
         if (e.detail.checked) {
-            this.setState({ drawerPosition: e.detail.value });
+            setDrawerPosition(e.detail.value as NavDrawerPosition);
         }
     }
+
+    return (
+        <div className="container sample">
+            <div onClick={onNavDrawerClick}>
+                <IgrNavDrawer ref={navDrawer} position={drawerPosition}>
+                    <IgrNavDrawerHeaderItem>
+                        <span>Sample Drawer</span>
+                    </IgrNavDrawerHeaderItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="home" collection="material" />
+                        </div>
+                        <span slot="content">Home</span>
+                    </IgrNavDrawerItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="search" collection="material" />
+                        </div>
+                        <span slot="content">Search</span>
+                    </IgrNavDrawerItem>
+                </IgrNavDrawer>
+            </div>
+            <div>
+                <IgrRadioGroup alignment="horizontal" style={{ marginBottom: '10px' }}>
+                    <IgrRadio name="position" value="start" labelPosition="after" checked={drawerPosition === "start"} onChange={onRadioChange}>
+                        <span>Start</span>
+                    </IgrRadio>
+                    <IgrRadio name="position" value="end" labelPosition="after" checked={drawerPosition === "end"} onChange={onRadioChange}>
+                        <span>End</span>
+                    </IgrRadio>
+                    <IgrRadio name="position" value="top" labelPosition="after" checked={drawerPosition === "top"} onChange={onRadioChange}>
+                        <span>Top</span>
+                    </IgrRadio>
+                    <IgrRadio name="position" value="bottom" labelPosition="after" checked={drawerPosition === "bottom"} onChange={onRadioChange}>
+                        <span>Bottom</span>
+                    </IgrRadio>
+                </IgrRadioGroup>
+                <IgrNavbar>
+                    <div slot="start" onClick={onMenuIconClick}>
+                        <IgrIcon name="menu" collection="material" />
+                    </div>
+                    <h2>{title}</h2>
+                </IgrNavbar>
+            </div>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<NavDrawerAddPositionsNavbar />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<NavDrawerAddPositionsNavbar/>);
 ```
 
 ## Mini Variant
@@ -474,7 +413,7 @@ With the mini variant, the Navigation Drawer changes its width instead of closin
 And here's the result:
 
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrNavDrawer, IgrNavDrawerItem, IgrIcon, IgrButton, registerIconFromText } from 'igniteui-react';
@@ -483,105 +422,84 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
 const homeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
 
-export default class NavDrawerAddMini extends React.Component<any, any> {
-    public navDrawer: IgrNavDrawer;
+registerIconFromText("home", homeIcon, "material");
+registerIconFromText("search", searchIcon, "material");
 
-    constructor(props: any) {
-        super(props);
-        this.onNavDrawerClick = this.onNavDrawerClick.bind(this);
-        this.navDrawerRef = this.navDrawerRef.bind(this);
-        this.onButtonClick = this.onButtonClick.bind(this);
+export default function NavDrawerAddMini() {
+    const navDrawer = useRef<IgrNavDrawer>(null);
 
-        registerIconFromText("home", homeIcon, "material");
-        registerIconFromText("search", searchIcon, "material");
+    // Mark the clicked item active and its siblings inactive
+    function onNavDrawerClick(e: MouseEvent<HTMLDivElement>) {
+        const drawerItem = (e.target as Element).closest<IgrNavDrawerItem>('igc-nav-drawer-item');
+        if (!drawerItem) { return; }
+
+        drawerItem.active = true;
+        const parent = drawerItem.parentElement!;
+        Array.from(parent.querySelectorAll<IgrNavDrawerItem>('igc-nav-drawer-item'))
+            .filter(item => item !== drawerItem)
+            .forEach(child => child.active = false);
+
+        // Sync the matching item in the other variant (main <-> mini)
+        const iconName = drawerItem.querySelector<IgrIcon>('igc-icon')!.name;
+        const icons = document.querySelectorAll<IgrIcon>('igc-icon');
+
+        icons.forEach(icon => {
+            const parentItem = icon.parentElement!.closest<IgrNavDrawerItem>('igc-nav-drawer-item');
+            if (!parentItem) { return; }
+
+            parentItem.active = icon.name === iconName;
+        });
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div style={{ width: '100%' }}>
-                    <IgrButton onClick={this.onButtonClick} style={{ marginLeft: '70px' }}>
-                        <span>Toggle</span>
-                    </IgrButton>
-                </div>
-                <div onClick={this.onNavDrawerClick}>
-                    <IgrNavDrawer ref={this.navDrawerRef}>
-                        <IgrNavDrawerItem >
+    function onButtonClick() {
+        navDrawer.current?.toggle();
+    }
+
+    return (
+        <div className="container sample">
+            <div style={{ width: '100%' }}>
+                <IgrButton onClick={onButtonClick} style={{ marginLeft: '70px' }}>
+                    <span>Toggle</span>
+                </IgrButton>
+            </div>
+            <div onClick={onNavDrawerClick}>
+                <IgrNavDrawer ref={navDrawer}>
+                    <IgrNavDrawerItem >
+                        <div slot="icon">
+                            <IgrIcon name="home" collection="material" />
+                        </div>
+                        <span slot="content">Home</span>
+                    </IgrNavDrawerItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="search" collection="material" />
+                        </div>
+                        <span slot="content">Search</span>
+                    </IgrNavDrawerItem>
+
+                    <div slot="mini">
+                        <IgrNavDrawerItem>
                             <div slot="icon">
                                 <IgrIcon name="home" collection="material" />
                             </div>
-                            <span slot="content">Home</span>
                         </IgrNavDrawerItem>
 
                         <IgrNavDrawerItem>
                             <div slot="icon">
                                 <IgrIcon name="search" collection="material" />
                             </div>
-                            <span slot="content">Search</span>
                         </IgrNavDrawerItem>
-
-                        <div slot="mini">
-                            <IgrNavDrawerItem>
-                                <div slot="icon">
-                                    <IgrIcon name="home" collection="material" />
-                                </div>
-                            </IgrNavDrawerItem>
-
-                            <IgrNavDrawerItem>
-                                <div slot="icon">
-                                    <IgrIcon name="search" collection="material" />
-                                </div>
-                            </IgrNavDrawerItem>
-                        </div>
-                    </IgrNavDrawer>
-                </div>
+                    </div>
+                </IgrNavDrawer>
             </div>
-        );
-    }
-
-    public navDrawerRef(navDrawer: IgrNavDrawer) {
-        if (!navDrawer) { return; }
-        this.navDrawer = navDrawer;
-    }
-
-    public onNavDrawerClick(e: any) {
-        const drawerItem: any = e.target.closest('igc-nav-drawer-item') ??
-            (e.target.parentElement?.closest('igc-nav-drawer-item') ??
-                null)
-
-        if (!drawerItem) { return; }
-
-        drawerItem.active = true;
-        const navDrawer = drawerItem.parentElement;
-        Array.from(navDrawer.querySelectorAll('igc-nav-drawer-item'))
-            .filter((item: any) => item !== drawerItem)
-            .forEach((child: any) => child.active = false);
-
-        const iconName = drawerItem.querySelector('igc-icon')!.name;
-        const icons = document.querySelectorAll(`igc-icon`);
-
-        icons.forEach((icon: any) => {
-            const parentItem = icon.parentElement!.closest('igc-nav-drawer-item') as IgrNavDrawerItem;
-            if (!parentItem) { return; }
-
-            if (icon.name === iconName) {
-                parentItem.active = true;
-            } else {
-                parentItem.active = false;
-            }
-        });
-    }
-
-    public onButtonClick() {
-        if (this.navDrawer) {
-            this.navDrawer.toggle();
-        }
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<NavDrawerAddMini />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<NavDrawerAddMini/>);
 ```
 
 ## Styling
@@ -642,7 +560,7 @@ igc-icon-button::part(icon) {
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './NavDrawerStyling.css';
@@ -653,83 +571,65 @@ const searchIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const homeIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>';
 const menuIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>';
 
-export default class NavDrawerStyling extends React.Component<any, any> {
-    private navDrawer: IgrNavDrawer;
+registerIconFromText("home", homeIcon, "material");
+registerIconFromText("search", searchIcon, "material");
+registerIconFromText("menu", menuIcon, "material");
 
-    constructor(props: any) {
-        super(props);
-        this.onNavDrawerClick = this.onNavDrawerClick.bind(this);
-        this.navDrawerRef = this.navDrawerRef.bind(this);
-        this.toggleDrawer = this.toggleDrawer.bind(this);
+export default function NavDrawerStyling() {
+    const navDrawer = useRef<IgrNavDrawer>(null);
 
-        registerIconFromText("home", homeIcon, "material");
-        registerIconFromText("search", searchIcon, "material");
-        registerIconFromText("menu", menuIcon, "material");
+    function toggleDrawer() {
+        navDrawer.current?.toggle();
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrIconButton style={{ margin: "10px" }}
-                    onClick={this.toggleDrawer}
-                    name="menu"
-                    collection="material"
-                    variant="flat">
-                </IgrIconButton>
-                <div onClick={this.onNavDrawerClick}>
-                    <IgrNavDrawer open={true} ref={this.navDrawerRef}>
-                        <IgrNavDrawerHeaderItem>
-                            <span>Sample Drawer</span>
-                        </IgrNavDrawerHeaderItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="home" collection="material" />
-                            </div>
-                            <span slot="content">Home</span>
-                        </IgrNavDrawerItem>
-
-                        <IgrNavDrawerItem>
-                            <div slot="icon">
-                                <IgrIcon name="search" collection="material" />
-                            </div>
-                            <span slot="content">Search</span>
-                        </IgrNavDrawerItem>
-                    </IgrNavDrawer>
-                </div>
-            </div>
-        );
-    }
-
-    public toggleDrawer() {
-        if (this.navDrawer) {
-            this.navDrawer.toggle();
-        }
-    }
-
-    public onNavDrawerClick(e: any) {
-        const drawerItem: any = e.target.closest('igc-nav-drawer-item') ??
-            (e.target.parentElement?.closest('igc-nav-drawer-item') ??
-                null)
-
+    // Mark the clicked item active and its siblings inactive
+    function onNavDrawerClick(e: MouseEvent<HTMLDivElement>) {
+        const drawerItem = (e.target as Element).closest<IgrNavDrawerItem>('igc-nav-drawer-item');
         if (!drawerItem) { return; }
 
         drawerItem.active = true;
-        const navDrawer = drawerItem.parentElement;
-        Array.from(navDrawer.querySelectorAll('igc-nav-drawer-item'))
-            .filter((item: any) => item !== drawerItem)
-            .forEach((child: any) => child.active = false);
+        const parent = drawerItem.parentElement!;
+        Array.from(parent.querySelectorAll<IgrNavDrawerItem>('igc-nav-drawer-item'))
+            .filter(item => item !== drawerItem)
+            .forEach(child => child.active = false);
     }
 
-    public navDrawerRef(navDrawer: IgrNavDrawer) {
-        if (!navDrawer) { return; }
-        this.navDrawer = navDrawer;
-    }
+    return (
+        <div className="container sample">
+            <IgrIconButton style={{ margin: "10px" }}
+                onClick={toggleDrawer}
+                name="menu"
+                collection="material"
+                variant="flat">
+            </IgrIconButton>
+            <div onClick={onNavDrawerClick}>
+                <IgrNavDrawer open={true} ref={navDrawer}>
+                    <IgrNavDrawerHeaderItem>
+                        <span>Sample Drawer</span>
+                    </IgrNavDrawerHeaderItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="home" collection="material" />
+                        </div>
+                        <span slot="content">Home</span>
+                    </IgrNavDrawerItem>
+
+                    <IgrNavDrawerItem>
+                        <div slot="icon">
+                            <IgrIcon name="search" collection="material" />
+                        </div>
+                        <span slot="content">Search</span>
+                    </IgrNavDrawerItem>
+                </IgrNavDrawer>
+            </div>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<NavDrawerStyling />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<NavDrawerStyling/>);
 ```
 
 ## API References

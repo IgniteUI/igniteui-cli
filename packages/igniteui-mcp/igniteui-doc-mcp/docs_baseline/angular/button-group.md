@@ -104,10 +104,13 @@ igx-buttongroup {
 }
 
 .album-title {
-    @include type-style('body-2');
-
-    margin-block: 0 rem(8px);
-    color: var(--ig-primary-500);
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+    margin: rem(8px);
 }
 
 .album-photos {
@@ -1222,7 +1225,7 @@ $custom-button-group: button-group-theme(
 
 ### Styling with Tailwind
 
-You can style the Angular Button Group with the Ignite UI Tailwind utility classes. First, [set up Tailwind](/themes/misc/tailwind-classes), then import the utility file in the global stylesheet:
+You can style the Angular Button Group with the Ignite UI Tailwind utility classes. First, [set up Tailwind](/themes/tailwind), then import the utility file in the global stylesheet:
 
 ```scss
 @import "tailwindcss";

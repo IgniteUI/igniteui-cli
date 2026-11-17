@@ -95,15 +95,17 @@ Button Group
 
 To use the Blazor Button Group, follow the [Ignite UI for Blazor Getting Started](../general-getting-started.md) topic for the basic project setup, then register the component for your target platform.
 
-For Blazor using the **IgniteUI.Blazor** package, register the Button Group module as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbButtonGroupModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-Then link the additional CSS file in the **wwwroot/index.html** file for a **Blazor WebAssembly** project or in the **Pages/_Host.cshtml** file for a **Blazor Server** project:
+Registering [`IgbButtonGroupModule`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroupModule), the Button Group's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbButtonGroupModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+Then link the additional CSS file in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -423,10 +425,12 @@ Each button can use text, an icon, or both. Keep the content style consistent ac
 
 For Blazor, use individual Toggle Buttons to create a custom Button Group. Each button can define its own value, icon, label, selected state, and disabled state.
 
-Register the Button Group module in `Program.cs`:
+Register the Ignite UI for Blazor services:
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(typeof(IgbButtonGroupModule));
+// in Program.cs file
+
+builder.Services.AddIgniteUIBlazor();
 ```
 
 Then define the custom buttons in Razor markup:

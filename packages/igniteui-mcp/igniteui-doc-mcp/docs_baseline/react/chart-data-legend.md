@@ -3,20 +3,21 @@ title: "React Chart Data Legend | Data Visualization Tools | Infragistics"
 description: Use Infragistics Ignite UI for React chart with the data legend!
 keywords: "React charts, chart legend, legend, legend types, Ignite UI for React, Infragistics"
 license: commercial
-mentionedTypes: ["CategoryChart", "DataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode" ]
+mentionedTypes: ["CategoryChart", "DataLegend", "Series", "DataLegendSummaryType", "DataAbbreviationMode", "DataLegendLayoutMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for React, the DataLegend is highly-customizable version of the Legend, that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values."
+platformType: xplat
 _tocName: Chart Data Legend
 _premium: true
 ---
 # React Data Legend
 
-In Ignite UI for React, the `IgrDataLegend` is highly-customizable version of the `Legend`, that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart`. Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
+In Ignite UI for React, the `IgrDataLegend` is highly-customizable version of the `IgrLegend`, that shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values. This legend updates when moving the mouse inside of the plot area of the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart`. Also, it has a persistent state that remembers the last hovered point when the user's mouse pointer exits the plot area. It displays this content using a set of three type of rows (header, series, summary) and four types of columns (title, label, value, unit).
 
 ## React Data Legend Rows
 
-The rows of the `IgrDataLegend` include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the `HeaderText` property.
+The rows of the `IgrDataLegend` include the header row, series row(s), and the summary row. The header row displays the axis label of the point that is hovered, and can be changed using the `headerText` property.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -136,19 +137,21 @@ root.render(<Sample/>);
 
 ### Header Row
 
-The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use `HeaderFormatDate` and `HeaderFormatTime` properties to format date and time in the `IgrDataLegend` if the x-axis shows dates. For other types of series, the `IgrDataLegend` does not render the header row.
+The header row displays the current label of x-axis when hovering mouse over category series and financial series. You can use `headerFormatDate` and `headerFormatTime` properties to format date and time in the `IgrDataLegend` if the x-axis shows dates. For other types of series, the `IgrDataLegend` does not render the header row.
 
 ### Series Row
 
-The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting `IncludedSeries` or `ExcludedSeries` properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
+The series row represents each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol or unit of measurement, if specified. You can filter series rows by setting `includedSeries` or `excludedSeries` properties to a collection of series' indexes (1, 2, 3) or series' titles (Tesla, Microsoft).
 
 ### Summary Row
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the `SummaryTitleText` property of the legend. Also, you can use the `SummaryType` property to customize whether you display the `Total`, `Min`, `Max`, or `Average` of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the `summaryTitleText` property of the legend. Also, you can use the `summaryType` property to customize whether you display the `Total`, `Min`, `Max`, or `Average` of series values in the summary row.
 
 ## React Data Legend Columns
 
-The columns of the `IgrDataLegend` include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units. For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the `IgrDataLegend` using the `IncludedColumns` or `ExcludedColumns` properties.
+The columns of the `IgrDataLegend` include the series title, label, value of data column, and optional unit associated with the value. Some series in the chart can have multiple columns for label, value, and units.
+
+For example, financial price series has **High**, **Low**, **Open**, and **Close** data columns which can be filtered in the `IgrDataLegend` using the `includedColumns` or `excludedColumns` properties.
 
 ```typescript
 //begin async data
@@ -343,7 +346,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-Setting values on the `IncludedColumns` and `ExcludedColumns` properties, depends on type of series and how many data columns they support. For example, you can set `IncludedColumns` property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
+Setting values on the `includedColumns` and `excludedColumns` properties, depends on type of series and how many data columns they support. For example, you can set `includedColumns` property to a collection of **Open** and **Close** strings and the legend will show only open and close values for stock prices when the chart is plotting financial series. The following table lists all column names that can be use to filter columns in data legend.
 
 |  Type of Series  | Column Names |
 | -----------------|-------------- |
@@ -359,19 +362,19 @@ Where the **TypicalPrice** and percentage **Change** of OHLC prices are automati
 
 ### Title Column
 
-The title column displays legend badges and series titles, which come from the `Title` property of the different `IgrSeries` plotted in the chart.
+The title column displays legend badges and series titles, which come from the `chartTitle` property of the different `IgrSeries` plotted in the chart.
 
 ### Label Column
 
-The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the `LabelDisplayMode` property.
+The label column displays short name on the left side of value column, e.g. "O" for **Open** stock price. You can toggle visibility of this column using the `labelDisplayMode` property.
 
 ### Value Column
 
-The value column displays values of series as abbreviated text which can be formatted using the `ValueFormatAbbreviation` property to apply the same abbreviation for all numbers by setting this property to `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the `ValueFormatMinFractions` and `ValueFormatMaxFractions` for minimum and maximum digits, respectively.
+The value column displays values of series as abbreviated text which can be formatted using the `valueFormatAbbreviation` property to apply the same abbreviation for all numbers by setting this property to `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the `valueFormatMinFractions` and `valueFormatMaxFractions` for minimum and maximum digits, respectively.
 
 ### Unit Column
 
-The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the `ValueFormatAbbreviation` property, e.g. "M" for the `Million` abbreviation.
+The unit column displays an abbreviation symbol on the right side of value column. The unit symbol depends on the `valueFormatAbbreviation` property, e.g. "M" for the `Million` abbreviation.
 
 ### Customizing Columns
 
@@ -385,17 +388,19 @@ You can customize text displayed in the **Label** and **Unit** columns using  pr
 | Range Series | HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" |
 | Financial Series | OpenMemberAsLegendLabel="O:" <br /> OpenMemberAsLegendUnit="K" <br /> HighMemberAsLegendLabel="H:" <br /> HighMemberAsLegendUnit="K" <br /> LowMemberAsLegendLabel="L:" <br /> LowMemberAsLegendUnit="K" <br /> CloseMemberAsLegendLabel="C:" <br /> CloseMemberAsLegendUnit="K" <br /> |
 
-Also, you can use the `UnitText` property on the `IgrDataLegend` to change text displayed in all Unit columns.
+Also, you can use the `unitsText` property on the `IgrDataLegend` to change text displayed in all Unit columns.
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the `LayoutMode` property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the `layoutMode` property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
 
 eg.
 
 ## React Data Legend Styling
 
-The `IgrDataLegend` provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the `TitleTextColor`, `LabelTextColor`, `ValueTextColor`, and `UnitsTextColor` properties. The following example demonstrates a utilization of the styling properties mentioned above:
+The `IgrDataLegend` provides properties for styling each type of column. Each of these properties begins with **Title**, **Label**, **Value**, or **Units**. You can style the text's color, font, and margin. For example, if you wanted to set the text color of all columns, you would set the `titleTextColor`, `labelTextColor`, `valueTextColor`, and `unitsTextColor` properties.
+
+The following example demonstrates a utilization of the styling properties mentioned above:
 
 ```typescript
 //begin data
@@ -1490,7 +1495,7 @@ root.render(<Sample/>);
 
 ## React Data Legend Value Formatting
 
-The `IgrDataLegend` provides automatic abbreviation of large numbers using its `ValueFormatAbbreviation` property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the `ValueFormatMinFractions` and `ValueFormatMaxFractions`. This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The `IgrDataLegend` provides automatic abbreviation of large numbers using its `valueFormatAbbreviation` property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the `valueFormatMinFractions` and `valueFormatMaxFractions`. This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 The following example demonstrates how to use those properties:
 
 ```typescript
@@ -1615,7 +1620,9 @@ root.render(<Sample/>);
 
 ## React Data Legend Value Mode
 
-You have the ability to change the default decimal display of values within the `IgrDataLegend` to a currency by changing the `ValueFormatMode` property. Also, you can change the culture of the displayed currency symbol by setting the `ValueFormatCulture` property a culture tag. For example, the following example data legend with the `ValueFormatCulture` set to "en-GB" to display British Pounds (£) symbol:
+You have the ability to change the default decimal display of values within the `IgrDataLegend` to a currency by changing the `valueFormatMode` property. Also, you can change the culture of the displayed currency symbol by setting the `valueFormatCulture` property a culture tag.
+
+For example, the following example data legend with the `valueFormatCulture` set to "en-GB" to display British Pounds (£) symbol:
 
 ```typescript
 //begin async data
@@ -1818,8 +1825,8 @@ root.render(<Sample/>);
 
 ## React Data Legend Grouping
 
-`DataLegendGroup` can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the `GroupRowVisible` property to true.
+`dataLegendGroup` can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the `groupRowVisible` property to true.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {
@@ -1994,34 +2001,26 @@ root.render(<Sample/>);
 
 Several properties are exposed including grouping portions of the legend.
 
-- `GroupRowMargin`
-- `GroupTextMargin`
-- `GroupTextColor`
-- `GroupTextFontSize`
-- `GroupTextFontFamily`
-- `GroupTextFontStyle`
-- `GroupTextFontStretch`
-- `GroupTextFontWeight`
-- `HeaderTextMargin`
-- `HeaderTextColor`
-- `HeaderTextFontSize`
-- `HeaderTextFontFamily`
-- `HeaderTextFontStyle`
-- `HeaderTextFontStretch`
-- `HeaderTextFontWeight`
+- `groupRowMarginLeft`/`groupRowMarginTop`/`groupRowMarginRight`/`groupRowMarginBottom`
+- `groupTextMarginLeft`/`groupTextMarginTop`/`groupTextMarginRight`/`groupTextMarginBottom`
+- `groupTextColor`
+- `groupTextStyle`
+- `headerTextMarginLeft`/`headerTextMarginTop`/`headerTextMarginRight`/`headerTextMarginBottom`
+- `headerTextColor`
+- `headerTextStyle`
 
 The `IgrDataLegend` has several events that fire when rendering their corresponding row, even during mouse interactions where the values are updating. These events are listed below with a description of what they are designed to be used for:
 
-- `StyleGroupRow`: This event fires for each group to style text displayed in group rows.
-- `StyleHeaderRow`: This event fires when rendering the header row.
-- `StyleSeriesRow`: This event fires once for each series row, which allows conditional styling of the values of the series.
-- `StyleSeriesColumn`: This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
-- `StyleSummaryRow`: This event fires once when rendering the summary row.
-- `StyleSummaryColumn`: This event fires once when rendering the summary column.
+- `styleGroupRow`: This event fires for each group to style text displayed in group rows.
+- `styleHeaderRow`: This event fires when rendering the header row.
+- `styleSeriesRow`: This event fires once for each series row, which allows conditional styling of the values of the series.
+- `styleSeriesColumn`: This event fires once for each series column, which allows conditional styling of the different columns for the series in the chart.
+- `styleSummaryRow`: This event fires once when rendering the summary row.
+- `styleSummaryColumn`: This event fires once when rendering the summary column.
 
-Some of the events exposes a `IgrDataLegendStylingRowEventArgs` parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `StyleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
+Some of the events exposes a `IgrDataLegendStylingRowEventArgs` parameter as its arguments, which lets you customize each item's text, text color, and the overall visibility of the row. The event arguments also expose event-specific properties. For example, since the `styleSeriesRow` event fires for each series, the event arguments will return the series index and series title for the row that represents the series.
 
-`StyleSummaryColumn` and `SeriesStyleColumn` events expose a `IgrDataLegendStylingColumnEventArgs` parameter as its arguments, for customizing each field in the series. The event arguments also expose event-specific properties such as column index and value member related properties about the columns.
+`styleSummaryColumn` and `styleSeriesColumn` events expose a `IgrDataLegendStylingColumnEventArgs` parameter as its arguments, for customizing each field in the series. The event arguments also expose event-specific properties such as column index and value member related properties about the columns.
 
 ```typescript
 export class OlympicMedalsTopCountriesWithTotalsItem {

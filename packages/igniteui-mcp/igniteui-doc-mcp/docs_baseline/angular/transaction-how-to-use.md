@@ -11,7 +11,7 @@ _premium: true
 
 You may get advantage of the [`Transaction Service`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) when using any component that needs to preserve the state of its data source and to commit many transactions at once.
 
-When working with the Ignite UI for Angular grid components, you may use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
+When working with the Ignite UI for Angular grid components, you may use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService) that are integrated with the grids and provide batch editing out of the box. However, if you need to use transactions with any other Ignite UI for Angular or custom component, you may again use the [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) and implement similar behavior.
 
 ## Angular How to use the Transaction service Example
 
@@ -252,7 +252,7 @@ export class TransactionBaseComponent { }
 
 ### Inject Transaction Service in component
 
-In our `ts` file, we should import [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) from the `igniteui-angular` library, as well as the [`IgxState`](mcp:get_api_reference?platform=angular&component=State) and [`IgxTransaction`](mcp:get_api_reference?platform=angular&component=Transaction) interfaces and the [`IgxTransactionType`](mcp:get_api_reference?platform=angular&component=TransactionType) enum, which will be needed by our application:
+In our `ts` file, we should import [`IgxTransactionService`](mcp:get_api_reference?platform=angular&component=IgxTransactionService) from the `igniteui-angular` library, as well as the [`State`](mcp:get_api_reference?platform=angular&component=State) and [`Transaction`](mcp:get_api_reference?platform=angular&component=Transaction) interfaces and the [`TransactionType`](mcp:get_api_reference?platform=angular&component=TransactionType) enum, which will be needed by our application:
 
 ```typescript
 import { IgxTransactionService, State, Transaction, TransactionType } from 'igniteui-angular/core';
@@ -276,8 +276,12 @@ In our html template, we define an [`igxList`](mcp:get_api_reference?platform=an
         [ngClass]="{ deleted: isDeleted(item.id), edited: isEdited(item.id) }">
         <p igxListLineTitle>{{item.name}}</p>
         <p igxListLineSubTitle>Costs: {{item.price}}</p>
-        <igx-icon igxListAction (click)="onEdit()" *ngIf="item.id === 1 && item.price !== '$999'">edit</igx-icon>
-        <igx-icon igxListAction (click)="onDelete()" *ngIf="item.id === 2 && !isDeleted(item.id)">delete</igx-icon>
+        @if (item.id === 1 && item.price !== '$999') {
+            <igx-icon igxListAction (click)="onEdit()">edit</igx-icon>
+        }
+        @if (item.id === 2 && !isDeleted(item.id)) {
+            <igx-icon igxListAction (click)="onDelete()">delete</igx-icon>
+        }
     </igx-list-item>
     <button igxButton (click)="onAdd()" [disabled]="itemAdded(4)">Add New</button>
 </igx-list>
@@ -341,7 +345,9 @@ export class TransactionBasePipe implements PipeTransform {
 The second list item contains an edit button, which updates the item's data.
 
 ```html
-<igx-icon igxListAction (click)="onEdit()" *ngIf="item.id === 1 && item.price !== '$999'">edit</igx-icon>
+@if (item.id === 1 && item.price !== '$999') {
+    <igx-icon igxListAction (click)="onEdit()">edit</igx-icon>
+}
 ```
 
 When the button is pressed, inside the `onEdit` event handler, an 'UPDATE' transaction is created:
@@ -375,7 +381,9 @@ public isEdited(id): boolean {
 The third list item contains a delete button, which deletes the item's data.
 
 ```html
-<igx-icon igxListAction (click)="onDelete()" *ngIf="item.id === 2 && !isDeleted(item.id)">delete</igx-icon>
+@if (item.id === 2 && !isDeleted(item.id)) {
+    <igx-icon igxListAction (click)="onDelete()">delete</igx-icon>
+}
 ```
 
 When the button is pressed, inside `onDelete` event handler, a 'DELETE' transaction is created:
@@ -485,7 +493,7 @@ public onCommit(): void {
 
 ```
 
-If we are using the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
+If we are using the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService) we can also use an overload of the [`commit`](mcp:get_api_reference?platform=angular&component=IgxTransactionService&member=commit) method which expects primaryKey and childDataKey as arguments.
 
 ```typescript
 public onCommit(): void {

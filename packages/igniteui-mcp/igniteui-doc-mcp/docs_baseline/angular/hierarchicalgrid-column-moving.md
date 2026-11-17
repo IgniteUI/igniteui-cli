@@ -243,7 +243,7 @@ export class HGridColumnMovingSampleComponent {
 
 In addition to the drag and drop functionality, the Column Moving feature also provides two API methods to allow moving a column/reordering columns programmatically:
 
-[`moveColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`IgxDropPosition`](mcp:get_api_reference?platform=angular&component=DropPosition) value), which determines whether to place the column before or after the target column.
+[`moveColumn`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `position` (representing a [`DropPosition`](mcp:get_api_reference?platform=angular&component=DropPosition) value), which determines whether to place the column before or after the target column.
 
 ```typescript
 // Move the ID column after the Name column

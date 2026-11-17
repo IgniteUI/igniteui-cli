@@ -1,858 +1,1718 @@
 ---
-title: Angular Card Component – Ignite UI for Angular - MIT license 
-description: With Angular Card component you can present users with dashboards and engaging text, images, icons or buttons as an entry point for detailed information. Try it now.
-keywords: Angular Card component, Angular Card control, Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Angular UI Components, Native Angular Components Library
+title: "Angular Card Component"
+description: "Angular Card organizes related media, text, and actions in one flexible content container."
+keywords: "Angular Card, card component, content container, media card, Ignite UI for Angular, Infragistics"
 license: MIT
+last_updated: "2026-07-30"
+mentionedTypes: ["Card", "CardActions", "CardContent", "CardHeader", "CardMedia", "Avatar", "Button", "Icon", "IconButton", "Ripple"]
+relatedComponents: ["Grid", "List"]
 llms:
-  description: "Angular Card represents a flexible container that has different elements like title text, descriptions, image styles, call to action buttons, links and others."
+  description: "The Ignite UI for Angular Card organizes related media, text, and actions in one flexible content container."
 _tocName: Card
 ---
-# Angular Card Component Overview
+# Card
 
-<div class="highlight">
+The Ignite UI for Angular Card organizes related media, text, and actions in one flexible content container.
 
-Angular Card represents a flexible container that has different elements like title text, descriptions, image styles, call to action buttons, links and others. In order to represent a given scenario/content in the best possible way, it offers various display options, headers, footers, as well as background colors, animations, and more.  
+Use the card to group content about a single subject, such as a product, article, contact, location, or dashboard item.
 
-This lightweight Angular Card component is used for creating all sorts of cards, some of them can be – business cards, material flipping cards, stacked cards.
-</div>
-
-## Angular Card Example
-
-Below you can see a basic sample of a well-crafted Ignite UI for Angular Card with main card sections like image, title, subtitle, primary card content, container for a button.
+## Live Demo
 
 ```typescript
 import { Component } from '@angular/core';
-import { Card } from './card.blueprint';
-import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxButtonDirective, IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardContentDirective,
+    IgxCardHeaderComponent,
+    IgxCardHeaderSubtitleDirective,
+    IgxCardHeaderTitleDirective,
+    IgxCardMediaDirective,
+    IgxCardThumbnailDirective
+} from 'igniteui-angular/card';
+import { IgxButtonDirective, IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
-
+import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { IgxSwitchComponent } from 'igniteui-angular/switch';
 
 @Component({
-    selector: 'app-card',
-    styleUrls: ['./card.component.scss'],
-    templateUrl: './card.component.html',
-    imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxPrefixDirective, IgxIconButtonDirective, IgxSuffixDirective, IgxIconComponent]
+    selector: 'app-card-overview',
+    styleUrls: ['./card-overview.component.scss'],
+    templateUrl: './card-overview.component.html',
+    imports: [
+        IgxAvatarComponent,
+        IgxButtonDirective,
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardContentDirective,
+        IgxCardHeaderComponent,
+        IgxCardHeaderSubtitleDirective,
+        IgxCardHeaderTitleDirective,
+        IgxCardMediaDirective,
+        IgxCardThumbnailDirective,
+        IgxIconButtonDirective,
+        IgxIconComponent,
+        IgxPrefixDirective,
+        IgxSuffixDirective,
+        IgxSwitchComponent
+    ]
 })
-export class CardComponent {
-    public card = new Card({
-        buttons: ['read more'],
-        content: `New York City comprises 5 boroughs sitting where the
-                  Hudson River meets the Atlantic Ocean. At its core is Manhattan,
-                  a densely populated borough that's among the world's major commercial,
-                  financial and cultural centers.`,
-        icons: ['favorite', 'share'],
-        imageUrl: 'assets/images/card/media/ny.jpg',
-        subtitle: 'City in New York',
-        title: 'New York City'
-    });
+export class CardOverviewComponent {
+    public media = true;
+    public header = true;
+    public content = true;
+    public actions = true;
 }
 ```
 ```html
-<div class="sample-column card-wrapper">
-  <igx-card elevated>
-    <igx-card-media height="180px">
-      <img [src]="card.imageUrl">
-    </igx-card-media>
+<div class="card-options">
+    <igx-switch labelPosition="before" [checked]="media" (change)="media = $event.checked">
+        <span>Media</span>
+    </igx-switch>
+    <igx-switch labelPosition="before" [checked]="header" (change)="header = $event.checked">
+        <span>Header</span>
+    </igx-switch>
+    <igx-switch labelPosition="before" [checked]="content" (change)="content = $event.checked">
+        <span>Content</span>
+    </igx-switch>
+    <igx-switch labelPosition="before" [checked]="actions" (change)="actions = $event.checked">
+        <span>Actions</span>
+    </igx-switch>
+</div>
 
-    <igx-card-header>
-      <h3 igxCardHeaderTitle>{{ card.title }}</h3>
-      <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
-    </igx-card-header>
-
-    <igx-card-content>
-      <p>{{ card.content }}</p>
-    </igx-card-content>
-
-    <igx-card-actions>
-      @for (button of card.buttons; track button) {
-        <button igxButton igxRipple igxStart>{{ button }}</button>
-      }
-      @for (icon of card.icons; track icon) {
-        <button igxIconButton="flat"
-          igxRipple
-          [igxRippleCentered]="true"
-          igxEnd>
-          <igx-icon>{{icon}}</igx-icon>
-        </button>
-      }
-    </igx-card-actions>
-
-  </igx-card>
+<div class="card-container">
+    <igx-card>
+        @if (media) {
+            <igx-card-media>
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=640&amp;q=50"
+                    alt="Mountain range above the clouds at sunset" />
+            </igx-card-media>
+        }
+        @if (header) {
+            <igx-card-header>
+                <igx-avatar
+                    igxCardThumbnail
+                    shape="circle"
+                    src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
+                    alt="profile picture">
+                </igx-avatar>
+                <span igxCardHeaderTitle>Title</span>
+                <span igxCardHeaderSubtitle>Subtitle</span>
+            </igx-card-header>
+        }
+        @if (content) {
+            <igx-card-content>
+                <p>
+                    A paragraph is a self-contained unit of a discourse in writing
+                    dealing with a particular point or idea.
+                </p>
+            </igx-card-content>
+        }
+        @if (actions) {
+            <igx-card-actions>
+                <button igxButton="flat" igxStart>Button</button>
+                <button igxButton="flat" igxStart>Button</button>
+                <button igxIconButton="flat" igxEnd>
+                    <igx-icon>add</igx-icon>
+                </button>
+                <button igxIconButton="flat" igxEnd>
+                    <igx-icon>add</igx-icon>
+                </button>
+                <button igxIconButton="flat" igxEnd>
+                    <igx-icon>add</igx-icon>
+                </button>
+            </igx-card-actions>
+        }
+    </igx-card>
 </div>
 ```
 ```scss
-.card-wrapper {
-    max-width: 320px;
-    min-width: 220px;
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100vh;
+    gap: rem(72px);
+    padding: rem(56px) rem(24px);
+}
+
+.card-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: rem(32px);
+}
+
+.card-container {
+    --ig-size: var(--ig-size-small);
+
+    width: 100%;
+    max-width: rem(360px);
+    min-width: rem(220px);
+
+    igx-card-media img {
+        width: 100%;
+        aspect-ratio: 15 / 8;
+        object-fit: cover;
+    }
+
+    igx-card-content p {
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
+        font-size: rem(14px);
+        line-height: 1.5;
+    }
 }
 ```
 
-<hr/>
+## Anatomy
 
-## Getting Started with Ignite UI for Angular Card
+The card is a container whose standard building blocks are header, media, content, and actions.
 
-To get started with the Ignite UI for Angular Card component, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
+**Angular Card anatomy anatomy:** The card anatomy labels the header, media, content, and actions regions.
+
+<div class="card-anatomy-legend ig-typography__body-2">
+  <div>
+    <strong>A - Media Container</strong>
+    <span>1. Image (optional)</span>
+  </div>
+  <div>
+    <strong>B - Card Header</strong>
+    <span>2. Title</span>
+    <span>3. Avatar (optional)</span>
+    <span>4. Subtitle</span>
+  </div>
+  <div>
+    <strong>C - Content area</strong>
+    <span>5. Paragraph</span>
+  </div>
+  <div>
+    <strong>D - Card Footer</strong>
+    <span>6. Action Buttons, Icon Buttons</span>
+  </div>
+</div>
+
+<style>{`
+  .card-anatomy {
+    --igd-anatomy-padding: 8px;
+  }
+
+  .card-anatomy .igd-anatomy__image {
+    max-width: 800px;
+  }
+
+  .card-anatomy-legend {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 48px;
+    margin-bottom: 24px;
+  }
+
+  .card-anatomy-legend div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-anatomy-legend strong {
+    margin-bottom: 12px;
+  }
+
+  .card-anatomy-legend span {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .card-anatomy-legend {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-anatomy-legend {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>
+
+```text
+igx-card                         // host - groups related content
+|- igx-card-media                 // optional media region
+|  `- default content             // image, video, or other media content
+|- igx-card-header                // optional header region
+|  |- [igxCardThumbnail]          // optional avatar, icon, or small image
+|  |- [igxCardHeaderTitle]        // card title
+|  `- [igxCardHeaderSubtitle]     // optional card subtitle
+|- igx-card-content               // optional body region
+|  `- default content             // text, lists, or custom content
+`- igx-card-actions               // optional action region
+   |- [igxStart]                  // leading actions
+   `- [igxEnd]                    // trailing actions
+```
+
+## Getting Started
+
+To use the Angular Card, follow the [Ignite UI for Angular Getting Started](../general/getting-started.md) topic for the basic project setup, then register the component for your target platform.
+
+For Angular using the **igniteui-angular** package, install the package:
 
 ```cmd
-ng add igniteui-angular
+npm install igniteui-angular
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
+Then import the `IGX_CARD_DIRECTIVES` token in the component `imports` collection. The token brings in the card together with all of its supporting components and directives.
 
-The next step is to import the `IgxCardModule` inside your **app.module.ts** file.
-
-```typescript
-// app.module.ts
-...
-import { IgxCardModule } from 'igniteui-angular/card';
-// import { IgxCardModule } from '@infragistics/igniteui-angular'; for licensed package
-
-@NgModule({
-    ...
-    imports: [..., IgxCardModule],
-    ...
-})
-export class AppModule {}
-```
-
-Alternatively, as of `16.0.0` you can import the [`IgxCardComponent`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) as a standalone dependency, or use the [`IGX_CARD_DIRECTIVES`](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/card/src/card/public_api.ts) token to import the component and all of its supporting components and directives.
-
-```typescript
-// home.component.ts
-
+```ts
 import { IGX_CARD_DIRECTIVES } from 'igniteui-angular/card';
-// import { IGX_CARD_DIRECTIVES } from '@infragistics/igniteui-angular'; for licensed package
+```
+
+Import any other directives your card content uses, such as `IgxButtonDirective`, `IgxIconButtonDirective`, `IgxIconComponent`, and `IgxRippleDirective`, from `igniteui-angular`.
+
+The simplest way to start using the [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent) is as follows:
+
+```html
+<igx-card>
+  <igx-card-header>
+    <h3 igxCardHeaderTitle>Title</h3>
+  </igx-card-header>
+  <igx-card-content>
+    <p>Content</p>
+  </igx-card-content>
+</igx-card>
+```
+
+## Usage
+
+Compose a card from the card container and whichever sub-components your content needs.
+
+### Media
+
+Use [`IgxCardMediaDirective`](mcp:get_api_reference?platform=angular&component=IgxCardMediaDirective) to place images, video, or other media content in the card.
+
+```html
+<igx-card-media height="196px">
+  <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50" alt="New York city skyline" />
+</igx-card-media>
+```
+
+```typescript
+import { Component, inject } from '@angular/core';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardHeaderComponent,
+    IgxCardHeaderSubtitleDirective,
+    IgxCardHeaderTitleDirective,
+    IgxCardMediaDirective
+} from 'igniteui-angular/card';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
+import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { pinRightIcon } from './icons';
 
 @Component({
-    selector: 'app-home',
-    template: `
-    <igx-card>
-        <igx-card-media height="196px">
-            <img [src]="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50">
+    selector: 'app-card-media',
+    styleUrls: ['./card-media.component.scss'],
+    templateUrl: './card-media.component.html',
+    imports: [
+        IgxButtonDirective,
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardHeaderComponent,
+        IgxCardHeaderSubtitleDirective,
+        IgxCardHeaderTitleDirective,
+        IgxCardMediaDirective,
+        IgxIconComponent,
+        IgxPrefixDirective,
+        IgxSuffixDirective
+    ]
+})
+export class CardMediaComponent {
+    private iconService = inject(IgxIconService);
+
+    constructor() {
+        this.iconService.addSvgIconFromText('pin-right', pinRightIcon, 'material');
+    }
+}
+```
+```html
+<igx-card class="media-card">
+    <igx-card-media height="6.5rem">
+        <img
+            src="https://dl.infragistics.com/x/img/card/card-2.png"
+            alt="A meeting room with a long table and chairs" />
+    </igx-card-media>
+    <igx-card-header>
+        <span igxCardHeaderTitle>Book your meeting room</span>
+        <span igxCardHeaderSubtitle>Max 15 seats / 10 m2</span>
+    </igx-card-header>
+    <igx-card-actions>
+        <div igxStart class="media-card__icons">
+            <igx-icon>videocam</igx-icon>
+            <igx-icon>bluetooth</igx-icon>
+            <igx-icon>volume_off</igx-icon>
+        </div>
+        <button igxButton="flat" igxEnd class="media-card__action">Book now</button>
+    </igx-card-actions>
+</igx-card>
+
+<igx-card class="media-card">
+    <igx-card-media height="6.5rem">
+        <img
+            src="https://dl.infragistics.com/x/img/card/card-map-1.png"
+            alt="A street map with the event space marked" />
+    </igx-card-media>
+    <igx-card-header>
+        <span igxCardHeaderTitle>Main Event Space</span>
+        <span igxCardHeaderSubtitle>Floor 4, Suite 402</span>
+    </igx-card-header>
+    <igx-card-actions>
+        <div igxStart class="media-card__icons">
+            <igx-icon>directions_bus</igx-icon>
+            <igx-icon>directions_car</igx-icon>
+            <igx-icon>flight</igx-icon>
+        </div>
+        <button igxButton="flat" igxEnd class="media-card__action">Get directions</button>
+    </igx-card-actions>
+</igx-card>
+
+<igx-card class="media-card">
+    <igx-card-media height="6.5rem">
+        <img
+            src="https://dl.infragistics.com/x/img/card/card-map-2.png"
+            alt="A map of Europe showing the sales region" />
+    </igx-card-media>
+    <igx-card-header>
+        <span igxCardHeaderTitle>View your coverage area</span>
+        <span igxCardHeaderSubtitle>Sales region</span>
+    </igx-card-header>
+    <igx-card-actions>
+        <div igxStart class="media-card__icons">
+            <igx-icon>place</igx-icon>
+            <igx-icon name="pin-right" family="material"></igx-icon>
+        </div>
+        <button igxButton="flat" igxEnd class="media-card__action">See details</button>
+    </igx-card-actions>
+</igx-card>
+```
+```scss
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    gap: rem(20px);
+    padding: rem(32px) rem(8px);
+}
+
+.media-card {
+    --ig-card-border-radius: #{rem(4px)};
+
+    flex: 1 1 rem(240px);
+    max-width: rem(256px);
+
+    igx-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    igx-card-header {
+        padding: rem(16px) rem(16px) 0;
+    }
+
+    [igxCardHeaderTitle] {
+        margin-block-end: 0;
+        color: var(--ig-gray-900);
+        font-size: rem(18px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.15px);
+    }
+
+    [igxCardHeaderSubtitle] {
+        color: var(--ig-gray-900);
+        font-size: rem(14px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
+    }
+
+    igx-card-actions {
+        flex-wrap: nowrap;
+        padding: rem(24px) rem(16px) rem(12px);
+    }
+}
+
+.media-card__icons {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(4px);
+    color: var(--ig-gray-900);
+
+    igx-icon {
+        --ig-icon-size: #{rem(16px)};
+    }
+}
+
+.media-card__action {
+    --ig-size: var(--ig-size-small);
+
+    padding: 0;
+    background: transparent;
+    font-size: rem(13px);
+    font-weight: 600;
+    letter-spacing: rem(0.25px);
+    text-transform: uppercase;
+}
+```
+
+### Position
+
+Place the media above or below the header. The card renders its regions in the order you add them, so the element order in your markup sets the media position.
+
+```typescript
+import { Component } from '@angular/core';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardHeaderComponent,
+    IgxCardHeaderSubtitleDirective,
+    IgxCardHeaderTitleDirective,
+    IgxCardMediaDirective
+} from 'igniteui-angular/card';
+import { IgxButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+
+@Component({
+    selector: 'app-card-position',
+    styleUrls: ['./card-position.component.scss'],
+    templateUrl: './card-position.component.html',
+    imports: [
+        IgxButtonDirective,
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardHeaderComponent,
+        IgxCardHeaderSubtitleDirective,
+        IgxCardHeaderTitleDirective,
+        IgxCardMediaDirective,
+        IgxIconComponent,
+        IgxPrefixDirective,
+        IgxSuffixDirective
+    ]
+})
+export class CardPositionComponent {
+    public roomImage = 'https://dl.infragistics.com/x/img/card/card-2.png';
+}
+```
+```html
+<div class="card-item">
+    <span class="card-item__label">Media before header</span>
+
+    <igx-card class="position-card">
+        <igx-card-media height="6.5rem">
+            <img [src]="roomImage" alt="A meeting room with a long table and chairs" />
         </igx-card-media>
-
         <igx-card-header>
-            <h3 igxCardHeaderTitle>New York</h3>
-            <h5 igxCardHeaderSubtitle>City in New York</h5>
+            <span igxCardHeaderTitle>Book your meeting room</span>
+            <span igxCardHeaderSubtitle>Max 15 seats / 10 m2</span>
         </igx-card-header>
-
-        <igx-card-content>
-            <p>New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers.</p>
-        </igx-card-content>
-
         <igx-card-actions>
-            <button igxButton igxRipple>Read More</button>
-            <button igxIconButton="flat" igxRipple igxRippleCentered="true">
-                <igx-icon>favorite</igx-icon>
-            </button>
-            <button igxIconButton="flat" igxRipple igxRippleCentered="true">
-                <igx-icon>share</igx-icon>
-            </button>
+            <div igxStart class="position-card__icons">
+                <igx-icon>videocam</igx-icon>
+                <igx-icon>bluetooth</igx-icon>
+                <igx-icon>volume_off</igx-icon>
+            </div>
+            <button igxButton="flat" igxEnd class="position-card__action">Book now</button>
         </igx-card-actions>
     </igx-card>
-    `,
-    styleUrls: ['home.component.scss'],
-    standalone: true,
-    imports: [IGX_CARD_DIRECTIVES]
-    /* or imports: [IgxCardComponent,
-        IgxCardHeaderComponent,
-        IgxCardMediaDirective,
-        IgxCardContentDirective,
-        IgxCardActionsComponent,
-        IgxCardFooterDirective,
-        IgxCardHeaderTitleDirective,
-        IgxCardHeaderSubtitleDirective,
-        IgxCardThumbnailDirective,
-        IgxButtonDirective,
-        IgxRippleDirective] */
-})
-export class HomeComponent {}
-```
-
-**Note:** 
-This component uses Material Icons. Add the following link to your `index.html`: `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
-
-Now that you have the Ignite UI for Angular Card module or directives imported, you can start using the `igx-card` component.
-
-## Using the Angular Card Component
-
-Then to represent the demo card template we can add the following code.
-
-```html
-{/*card.component.html>*/}
-
-<igx-card>
-    <igx-card-media height="196px">
-        <img [src]="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=50">
-    </igx-card-media>
-
-    <igx-card-header>
-        <h3 igxCardHeaderTitle>New York</h3>
-        <h5 igxCardHeaderSubtitle>City in New York</h5>
-    </igx-card-header>
-
-    <igx-card-content>
-        <p>New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers.</p>
-    </igx-card-content>
-
-    <igx-card-actions>
-        <button igxButton igxRipple>Read More</button>
-        <button igxIconButton="flat" igxRipple igxRippleCentered="true">
-            <igx-icon>favorite</igx-icon>
-        </button>
-        <button igxIconButton="flat" igxRipple igxRippleCentered="true">
-            <igx-icon>share</igx-icon>
-        </button>
-    </igx-card-actions>
-</igx-card>
-```
-
-You will notice a few things above. First when we want to _tag_ an elements as a header title, like the `h3` heading, we place it between the `igx-card-header` tags and attach the `igxCardHeaderTitle` directive to the element. Conversely, if we wanted to make another heading element a `subtitle` we would attach the `igxCardHeaderSubtitle` to it.
-
-Any image or video we want to show in the Angular Card, we wrap inside the `igx-card-media` tags. The `igx-card-media` allows us to size the content placed inside via the `width` and `height` attributes. In the example above we provided just `height`, which would leave the width to `auto`, thus allowing the image to stretch across the entire card surface, while maintaining the set height.
-
-You can place anything inside the `igx-card-content` tags. Usually text goes there.
-
-Finally, the `igx-card-actions` is where you'd place any actionable items, like buttons. If you use the `igxButton` directive on an element, it will automatically be placed correctly according to the material design spec inside the area.
-
-### Media, Thumbs, and Avatars
-
-If you want to show an image or icon in the card header next to the title and subtitle, you can do it by using the `igxCardThumbnail` directive.
-
-Taking the card above as an example, we can edit the contents of the `igx-card-header` and add a `igxCardThumbnail` container to hold an icon:
-
-```html
-<igx-card-header>
-    <div igxCardThumbnail>
-        <igx-icon>place</igx-icon>
-    
 </div>
-    
-    <h3 igxCardHeaderTitle>Title</h3>
-    <h5 igxCardHeaderSubtitle>Subtitle</h5>
-</igx-card-header>
-```
 
-The above example will show the icon alongside the title and subtitle in the card header.
+<div class="card-item">
+    <span class="card-item__label">Media after header</span>
 
-We also automatically detect the presence of `igx-avatar` or `igx-card-media` placed in the card header. They will appear as if they were card thumbnails. So you can do:
-
-```html
-<igx-card-header>
-    <igx-avatar>
-        <igx-icon>place</igx-icon>
-    </igx-avatar>
-
-    <h3 igxCardHeaderTitle>Title</h3>
-    <h5 igxCardHeaderSubtitle>Subtitle</h5>
-</igx-card-header>
-```
-
-or, even this:
-
-```html
-<igx-card-header>
-    <igx-card-media width="40px" height="40px">
-        <img src="https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=50">
-    </igx-card-media>
-
-    <h3 igxCardHeaderTitle>Title</h3>
-    <h5 igxCardHeaderSubtitle>Subtitle</h5>
-</igx-card-header>
-```
-
-### Outlined cards
-
-The card has a `type` attribute you can set to either `default` (set automatically if omitted), or `outlined`. The `outlined` type removes any shadows from the card, replacing them with a thin border to separate the card from the background.
-
-### Angular Card Horizontal Layout
-
-By default all sections of the card (header, content, media, actions) are laid out vertically. This is nice when we have a lot of vertical space. Say we wanted to lay out all the sections in the card horizontally. We can use the `horizontal` attribute of the card to set its layout.
-
-Here's an example of an outlined horizontal card:
-
-```html
-<igx-card type="outlined" [horizontal]="horizontal">
-    <div class="h-sample-column">
-
+    <igx-card class="position-card">
         <igx-card-header>
-            <h5 igxCardHeaderTitle>{{card.title}}</h5>
-            <h5 igxCardHeaderSubtitle>{{card.subtitle}}</h5>
-            <igx-card-media width="64px" height="64px">
-                <img [src]="card.imageUrl">
-            </igx-card-media>
+            <span igxCardHeaderTitle>Book your meeting room</span>
+            <span igxCardHeaderSubtitle>Max 15 seats / 10 m2</span>
         </igx-card-header>
-
-        <igx-card-content>
-            <p>{{card.content}}</p>
-        </igx-card-content>
-    
-</div>
-
-    <igx-divider [vertical]="horizontal"></igx-divider>
-
-    <igx-card-actions layout="justify">
-        <button *ngFor="let icon of card.icons;" igxIconButton="flat" igxRipple igxRippleCentered="true">
-            <igx-icon>{{icon}}</igx-icon>
-        </button>
-    </igx-card-actions>
-</igx-card>
-```
-
-We are using the `.h-sample-column` class to bundle the `igx-card-header` and `igx-card-content` together, keeping them aligned vertically, while other sections in the card align horizontally.
-
-The styles that `.h-sample-column` class applies are:
-
-```scss
-.h-sample-column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1 1 0%;
-
-  igx-card-header {
-      padding-bottom: 0;
-  }
-}
-```
-
-Notice how the buttons in the `igx-card-actions` have now switched to a `vertical` layout. The `igx-card-actions` has an `inverse` layout relationship with its parent. So whenever the card's `horizontal` attribute is set to `true` the actions `vertical` property will be set to `true` and vice versa.
-
-You can set the `vertical` attribute of he actions area explicitly, thus overriding this default behavior.
-
-```html
-<igx-card-actions layout="justify" [vertical]="false">
-    <button *ngFor="let icon of card.icons;" igxIconButton="flat" igxRipple igxRippleCentered="true">
-        <igx-icon>{{icon}}</igx-icon>
-    </button>
-</igx-card-actions>
-```
-
-If everything went well, our card should look like this:
-
-```typescript
-import { Component } from '@angular/core';
-import { Card } from '../card.blueprint';
-import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxDividerComponent, IgxFlexDirective, IgxIconButtonDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxSuffixDirective } from 'igniteui-angular/input-group';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
-
-@Component({
-    selector: 'app-card-sample-2',
-    styleUrls: ['./card-sample-2.component.scss'],
-    templateUrl: './card-sample-2.component.html',
-    imports: [IgxCardComponent, IgxLayoutDirective, IgxFlexDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardMediaDirective, IgxCardContentDirective, IgxDividerComponent, IgxCardActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxSuffixDirective, IgxIconComponent]
-})
-export class CardSample2Component {
-    public card = new Card({
-        content: `As I have always said: I write what's real and what's true,
-        even if it means throwing myself under the bus.`,
-        icons: ['skip_previous', 'play_arrow', 'skip_next'],
-        imageUrl: 'assets/images/card/media/ROZES-Under-the-Grave.jpg',
-        subtitle: 'Under the Grave (2016)',
-        title: 'Rozes'
-    });
-
-    public horizontal = true;
-}
-```
-```html
-<div class="sample-column card-wrapper">
-  <igx-card  [horizontal]="horizontal">
-    <div igxLayout igxLayoutDir="column" igxFlex [igxFlexGrow]="1">
-      <igx-card-header>
-        <h5 igxCardHeaderTitle>{{card.title}}</h5>
-        <h5 igxCardHeaderSubtitle>{{card.subtitle}}</h5>
-        <igx-card-media width="64px" height="64px">
-          <img [src]="card.imageUrl">
+        <igx-card-media height="6.5rem">
+            <img [src]="roomImage" alt="A meeting room with a long table and chairs" />
         </igx-card-media>
-      </igx-card-header>
-
-      <igx-card-content>
-        <p>{{card.content}}</p>
-      </igx-card-content>
-    </div>
-
-    <igx-divider [vertical]="horizontal"></igx-divider>
-
-    <igx-card-actions layout="justify">
-      @for (icon of card.icons; track icon) {
-        <button igxIconButton="flat" igxRipple [igxRippleCentered]="true" igxEnd>
-          <igx-icon>{{icon}}</igx-icon>
-        </button>
-      }
-    </igx-card-actions>
-  </igx-card>
+        <igx-card-actions>
+            <div igxStart class="position-card__icons">
+                <igx-icon>videocam</igx-icon>
+                <igx-icon>bluetooth</igx-icon>
+                <igx-icon>volume_off</igx-icon>
+            </div>
+            <button igxButton="flat" igxEnd class="position-card__action">Book now</button>
+        </igx-card-actions>
+    </igx-card>
 </div>
 ```
 ```scss
-.card-wrapper {
-    max-width: 400px;
-    min-width: 250px;
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    gap: rem(56px);
+    padding: rem(32px) rem(16px);
+}
+
+.card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(20px);
+}
+
+.card-item__label {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+}
+
+.position-card {
+    --ig-card-border-radius: #{rem(4px)};
+
+    width: rem(256px);
+
+    igx-card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    igx-card-header {
+        padding: rem(16px) rem(16px) 0;
+    }
+
+    [igxCardHeaderTitle] {
+        margin-block-end: 0;
+        color: var(--ig-gray-900);
+        font-size: rem(18px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.15px);
+    }
+
+    [igxCardHeaderSubtitle] {
+        color: var(--ig-gray-900);
+        font-size: rem(14px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
+    }
+
+    igx-card-actions {
+        flex-wrap: nowrap;
+        padding: rem(24px) rem(24px) rem(8px);
+    }
+
+    igx-card-header + igx-card-media {
+        margin-block-start: rem(8px);
+    }
+
+    igx-card-media + igx-card-actions {
+        padding-block-start: rem(16px);
+    }
+}
+
+.position-card__icons {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(6px);
+    color: var(--ig-gray-900);
+
+    igx-icon {
+        --ig-icon-size: #{rem(16px)};
+    }
+}
+
+.position-card__action {
+    --ig-size: var(--ig-size-small);
+
+    padding: 0;
+    background: transparent;
+    font-size: rem(13px);
+    font-weight: 600;
+    letter-spacing: rem(0.25px);
+    text-transform: uppercase;
 }
 ```
 
-### Alternative layouts
+### Header Slots
 
-You can get even more creative with the layout of the `igx-card`.
-
-Below is an example showing how you can create a semi-horizontal card, where we have every section of the card laid out vertically, while the `igx-card-media` appears alongside the vertical sections of the card.
+Use the header slots to define thumbnail, title, subtitle, and additional header content.
 
 ```html
-<igx-card [horizontal]="horizontal">
-    <div igxLayout igxLayoutDir="column" igxFlex igxFlexGrow="1">
-        <igx-card-header>
-            <igx-avatar [src]="card.avatarUrl"></igx-avatar>
-            <h5 igxCardHeaderTitle>{{card.title}}</h5>
-            <h5 igxCardHeaderSubtitle>{{card.subtitle}}</h5>
-        </igx-card-header>
+<igx-card-header>
+  <div igxCardThumbnail>
+    <igx-icon>place</igx-icon>
+  </div>
+  <h3 igxCardHeaderTitle>Title</h3>
+  <span igxCardHeaderSubtitle>Subtitle</span>
+</igx-card-header>
+```
 
-        <igx-card-content>
-            <p>{{card.content}}</p>
-        </igx-card-content>
+Apply `igxCardHeaderTitle` to a heading element, such as `<h3>`, so the card takes its place in the document outline, and apply `igxCardHeaderSubtitle` to a neutral inline element such as `<span>`.
 
-        <igx-card-actions [vertical]="false">
-            <button *ngFor="let button of card.buttons;" igxButton="flat" igxRipple>
-                {{button}}
-            </button>
-        </igx-card-actions>
-    
-</div>
+### Content
 
-    <igx-card-media width="96px">
-        <img [src]="card.imageUrl">
-    </igx-card-media>
+Use [`IgxCardContentDirective`](mcp:get_api_reference?platform=angular&component=IgxCardContentDirective) for the card body text, lists, or custom content.
+
+```html
+<igx-card-content>
+  <p>New York City comprises five boroughs where the Hudson River meets the Atlantic Ocean.</p>
+</igx-card-content>
+```
+
+### Elevated
+
+Set [`elevated`](mcp:get_api_reference?platform=angular&component=IgxCardComponent&member=elevated) when the card should use the elevated visual treatment.
+
+```html
+<igx-card elevated>
+  ...
 </igx-card>
 ```
 
-```typescript
-import { Component } from '@angular/core';
-import { Card } from '../card.blueprint';
-import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxButtonDirective, IgxFlexDirective, IgxLayoutDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxPrefixDirective } from 'igniteui-angular/input-group';
+### Actions Slots
 
-
-@Component({
-    selector: 'app-card-sample-3',
-    styleUrls: ['./card-sample-3.component.scss'],
-    templateUrl: './card-sample-3.component.html',
-    imports: [IgxCardComponent, IgxLayoutDirective, IgxFlexDirective, IgxCardHeaderComponent, IgxAvatarComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxButtonDirective, IgxRippleDirective, IgxPrefixDirective, IgxCardMediaDirective]
-})
-export class CardSample3Component {
-    public horizontal = true;
-
-    public card = new Card({
-        avatarUrl: 'assets/images/card/avatars/mellow_d.jpg',
-        buttons: ['play album'],
-        content: `Far far away, behind the word mountains,
-        far from the countries Vokalia and Consonantia,
-        there live the blind texts.`,
-        imageUrl: 'assets/images/card/media/here_media.jpg',
-        subtitle: 'by Mellow D',
-        title: 'HERE'
-    });
-}
-```
-```html
-<div class="sample-column card-wrapper">
-  <igx-card [horizontal]="horizontal" elevated>
-    <div igxLayout igxLayoutDir="column" igxFlex [igxFlexGrow]="1">
-      <igx-card-header>
-        <igx-avatar [src]="card.avatarUrl"></igx-avatar>
-        <h5 igxCardHeaderTitle>{{card.title}}</h5>
-        <h5 igxCardHeaderSubtitle>{{card.subtitle}}</h5>
-      </igx-card-header>
-
-      <igx-card-content>
-        <p>{{card.content}}</p>
-      </igx-card-content>
-
-      <igx-card-actions [vertical]="false">
-        @for (button of card.buttons; track button) {
-          <button igxButton="flat" igxRipple igxStart>
-            {{button}}
-          </button>
-        }
-      </igx-card-actions>
-    </div>
-
-    <igx-card-media width="96px">
-      <img [src]="card.imageUrl">
-    </igx-card-media>
-  </igx-card>
-</div>
-```
-```scss
-.card-wrapper {
-    max-width: 400px;
-    min-width: 250px;
-}
-```
-
-### Angular Card Actions
-
-The Angular Card actions area allows additional configuration to what we have already mentioned.
-
-You can position elements in the card actions area either in the start or the end by using the `igxStart` or `igxEnd` directives.
+Use the actions slots to place leading, centered, and trailing actions in [`IgxCardActions`](mcp:get_api_reference?platform=angular&component=IgxCardActionsComponent).
 
 ```html
 <igx-card-actions>
-    <button igxIconButton="flat" igxStart>
-        <igx-icon>drag_indicator</igx-icon>
-    </button>
-    <button igxIconButton="flat" igxEnd>
-        <igx-icon>favorite</igx-icon>
-    </button>
+  <button igxButton igxStart>Like</button>
+  <button igxButton>Comment</button>
+  <button igxIconButton="flat" igxEnd>
+    <igx-icon>more_vert</igx-icon>
+  </button>
 </igx-card-actions>
 ```
 
-You can justify the buttons so that they are laid out across the entire axis, not at the opposite ends. To do that, use the `layout` attribute and set its value to `justify`, like below:
+### Actions Orientation
+
+Set `vertical` on `igx-card-actions` when the actions should be arranged vertically.
 
 ```html
-<igx-card-actions layout="justify">
-    <button igxButton>Button</button>
-
-    <button igxIconButton="flat">
-        <igx-icon>star</igx-icon>
-    </button>
+<igx-card-actions [vertical]="true">
+  <button igxButton>Like</button>
+  <button igxButton>Share</button>
+  <button igxIconButton="flat">
+    <igx-icon>more_vert</igx-icon>
+  </button>
 </igx-card-actions>
 ```
-
-## Styling
-
-### Card Theme Property Map
-
-Changing the `$background` property automatically updates the following dependent properties:
-
-| Primary Property | Dependent Property | Description |
-| --- | --- | --- |
-| **$background** | $header-text-color | The text color of the card title. |
-|  | $subtitle-text-color | The text color of the card subtitle. |
-|  | $content-text-color | The text color of the card content. |
-|  | $actions-text-color | The text color of the card buttons. |
-
-To get started with styling the card, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
-
-```scss
-@use "igniteui-angular/theming" as *;
-
-// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-```
-
-Following the simplest approach, we create a new theme that extends the `card-theme` and providing just a few styling parameters. If you only specify the `$background` parameter, the appropriate foreground colors will be automatically chosen, either black or white, based on which offers better contrast with the background.
-
-```scss
-$custom-card-theme: card-theme(
-    $background: #011627,
-    $subtitle-text-color: #ecaa53,
-);
-```
-
-As seen, the `card-theme` exposes some useful parameters for basic styling of its items.
-
-Finally, **include** the custom theme in your application:
-
-```scss
-:host {
-    @include tokens($custom-card-theme);
-}
-```
-
-In the sample below, you can see how using the card component with customized CSS variables allows you to create a design that visually resembles the card used in the [`Ant`](https://ant.design/components/card?theme=light#card-demo-meta) design system.
 
 ```typescript
-import { Component, inject, OnInit } from '@angular/core';
-import { Card } from '../card.blueprint';
-import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxDividerModule, IgxIconButtonDirective } from 'igniteui-angular/directives';
-import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
+import { Component, inject } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
-import { IgxChipComponent } from 'igniteui-angular/chips';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardContentDirective,
+    IgxCardHeaderComponent,
+    IgxCardHeaderSubtitleDirective,
+    IgxCardHeaderTitleDirective,
+    IgxCardThumbnailDirective
+} from 'igniteui-angular/card';
+import { IgxIconButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
+import { IgxSuffixDirective } from 'igniteui-angular/input-group';
+import { linkedinIcon } from './icons';
 
 @Component({
-  selector: 'app-card-styling-sample',
-  templateUrl: './card-styling-sample.component.html',
-  styleUrls: ['./card-styling-sample.component.scss'],
-  imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent,
-		IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective,
-		IgxCardContentDirective, IgxCardActionsComponent, IgxIconButtonDirective,
-		IgxIconComponent, IgxAvatarComponent, IgxDividerModule, IgxChipComponent]
+    selector: 'app-card-actions',
+    styleUrls: ['./card-actions.component.scss'],
+    templateUrl: './card-actions.component.html',
+    imports: [
+        IgxAvatarComponent,
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardContentDirective,
+        IgxCardHeaderComponent,
+        IgxCardHeaderSubtitleDirective,
+        IgxCardHeaderTitleDirective,
+        IgxCardThumbnailDirective,
+        IgxIconButtonDirective,
+        IgxIconComponent,
+        IgxSuffixDirective
+    ]
 })
-export class CardStylingSampleComponent implements OnInit {
-  private iconService = inject(IgxIconService)
-  public ngOnInit() {
-    this.iconService.addSvgIconFromText('settings-custom', '<svg viewBox="64 64 896 896" focusable="false" data-icon="setting" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M924.8 625.7l-65.5-56c3.1-19 4.7-38.4 4.7-57.8s-1.6-38.8-4.7-57.8l65.5-56a32.03 32.03 0 009.3-35.2l-.9-2.6a443.74 443.74 0 00-79.7-137.9l-1.8-2.1a32.12 32.12 0 00-35.1-9.5l-81.3 28.9c-30-24.6-63.5-44-99.7-57.6l-15.7-85a32.05 32.05 0 00-25.8-25.7l-2.7-.5c-52.1-9.4-106.9-9.4-159 0l-2.7.5a32.05 32.05 0 00-25.8 25.7l-15.8 85.4a351.86 351.86 0 00-99 57.4l-81.9-29.1a32 32 0 00-35.1 9.5l-1.8 2.1a446.02 446.02 0 00-79.7 137.9l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.3 56.6c-3.1 18.8-4.6 38-4.6 57.1 0 19.2 1.5 38.4 4.6 57.1L99 625.5a32.03 32.03 0 00-9.3 35.2l.9 2.6c18.1 50.4 44.9 96.9 79.7 137.9l1.8 2.1a32.12 32.12 0 0035.1 9.5l81.9-29.1c29.8 24.5 63.1 43.9 99 57.4l15.8 85.4a32.05 32.05 0 0025.8 25.7l2.7.5a449.4 449.4 0 00159 0l2.7-.5a32.05 32.05 0 0025.8-25.7l15.7-85a350 350 0 0099.7-57.6l81.3 28.9a32 32 0 0035.1-9.5l1.8-2.1c34.8-41.1 61.6-87.5 79.7-137.9l.9-2.6c4.5-12.3.8-26.3-9.3-35zM788.3 465.9c2.5 15.1 3.8 30.6 3.8 46.1s-1.3 31-3.8 46.1l-6.6 40.1 74.7 63.9a370.03 370.03 0 01-42.6 73.6L721 702.8l-31.4 25.8c-23.9 19.6-50.5 35-79.3 45.8l-38.1 14.3-17.9 97a377.5 377.5 0 01-85 0l-17.9-97.2-37.8-14.5c-28.5-10.8-55-26.2-78.7-45.7l-31.4-25.9-93.4 33.2c-17-22.9-31.2-47.6-42.6-73.6l75.5-64.5-6.5-40c-2.4-14.9-3.7-30.3-3.7-45.5 0-15.3 1.2-30.6 3.7-45.5l6.5-40-75.5-64.5c11.3-26.1 25.6-50.7 42.6-73.6l93.4 33.2 31.4-25.9c23.7-19.5 50.2-34.9 78.7-45.7l37.9-14.3 17.9-97.2c28.1-3.2 56.8-3.2 85 0l17.9 97 38.1 14.3c28.7 10.8 55.4 26.2 79.3 45.8l31.4 25.8 92.8-32.9c17 22.9 31.2 47.6 42.6 73.6L781.8 426l6.5 39.9zM512 326c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm79.2 255.2A111.6 111.6 0 01512 614c-29.9 0-58-11.7-79.2-32.8A111.6 111.6 0 01400 502c0-29.9 11.7-58 32.8-79.2C454 401.6 482.1 390 512 390c29.9 0 58 11.6 79.2 32.8A111.6 111.6 0 01624 502c0 29.9-11.7 58-32.8 79.2z"></path></svg>')
-    this.iconService.addSvgIconFromText('edit-custom', '<svg viewBox="64 64 896 896" focusable="false" data-icon="edit" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"></path></svg>');
-    this.iconService.addSvgIconFromText('dots', '<svg viewBox="64 64 896 896" focusable="false" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg>');
-  };
-  public card = new Card({
-    icons: ['settings-custom', 'edit-custom', 'dots'],
-    subtitle: 'This is the description',
-    title: 'Card title'
-  });
+export class CardActionsComponent {
+    private iconService = inject(IgxIconService);
+
+    constructor() {
+        this.iconService.addSvgIconFromText('linkedin', linkedinIcon, 'material');
+    }
 }
 ```
 ```html
-<div class="sample-column card-wrapper">
-  <igx-card elevated>
-    <igx-card-media height="180px">
-      <img src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png">
-    </igx-card-media>
-    <div class="border">
-      <igx-card-header>
-        <igx-avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8"></igx-avatar>
-        <div>
-          <h6 igxCardHeaderTitle>{{ card.title }}</h6>
-          <p igxCardHeaderSubtitle>{{ card.subtitle }}</p>
+<div class="card-item">
+    <span class="card-item__label">Horizontal actions (default)</span>
+
+    <igx-card class="post-card">
+        <igx-card-header>
+            <igx-avatar
+                igxCardThumbnail
+                shape="circle"
+                src="https://dl.infragistics.com/x/img/avatars/avatar-profile-06.png"
+                alt="A profile photo of Lena Fischer.">
+            </igx-avatar>
+            <span igxCardHeaderTitle>Lena Fischer</span>
+            <span igxCardHeaderSubtitle>&#64;lena &middot; 2h ago</span>
+        </igx-card-header>
+        <igx-card-content>
+            <p>
+                Just shipped our new design system &#128640; Six months of tokens,
+                components, and documentation &mdash; and it&rsquo;s finally live.
+                So proud of the team.
+            </p>
+        </igx-card-content>
+        <igx-card-actions [vertical]="false">
+            <button igxIconButton="flat" igxEnd aria-label="Like">
+                <igx-icon>favorite_border</igx-icon>
+            </button>
+            <button igxIconButton="flat" igxEnd aria-label="Save">
+                <igx-icon>bookmark</igx-icon>
+            </button>
+            <button igxIconButton="flat" igxEnd aria-label="Share on LinkedIn">
+                <igx-icon name="linkedin" family="material"></igx-icon>
+            </button>
+        </igx-card-actions>
+    </igx-card>
+</div>
+
+<div class="card-item">
+    <span class="card-item__label">Vertical actions</span>
+
+    <igx-card class="post-card post-card--vertical" [horizontal]="true">
+        <div class="post-card__body">
+            <igx-card-header>
+                <igx-avatar
+                    igxCardThumbnail
+                    shape="circle"
+                    src="https://dl.infragistics.com/x/img/avatars/avatar-profile-06.png"
+                    alt="A profile photo of Lena Fischer.">
+                </igx-avatar>
+                <span igxCardHeaderTitle>Lena Fischer</span>
+                <span igxCardHeaderSubtitle>&#64;lena &middot; 2h ago</span>
+            </igx-card-header>
+            <igx-card-content>
+                <p>
+                    Just shipped our new design system &#128640; Six months of tokens,
+                    components, and documentation &mdash; and it&rsquo;s finally live.
+                    So proud of the team.
+                </p>
+            </igx-card-content>
         </div>
-      </igx-card-header>
-      <igx-card-content>
-        <igx-chip>#artic</igx-chip>
-        <igx-chip>#fox</igx-chip>
-        <igx-chip>#card</igx-chip>
-        <igx-divider></igx-divider>
-      </igx-card-content>
-      <igx-card-actions>
-        @for (icon of card.icons; track icon; let i = $index) {
-          <button igxIconButton="flat">
-            <igx-icon name={{icon}}></igx-icon>
-          </button>
-          @if (i < 2) { <igx-divider [vertical]="true">
-            </igx-divider>
-          }
-        }
-      </igx-card-actions>
-    </div>
-  </igx-card>
+
+        <igx-card-actions [vertical]="true">
+            <div class="post-card__actions">
+                <button igxIconButton="flat" aria-label="Like">
+                    <igx-icon>favorite_border</igx-icon>
+                </button>
+                <button igxIconButton="flat" aria-label="Save">
+                    <igx-icon>bookmark</igx-icon>
+                </button>
+                <button igxIconButton="flat" aria-label="Share on LinkedIn">
+                    <igx-icon name="linkedin" family="material"></igx-icon>
+                </button>
+            </div>
+        </igx-card-actions>
+    </igx-card>
 </div>
 ```
 ```scss
-@use "layout.scss";
-@use "igniteui-angular/theming" as *;
+@use "igniteui-theming/sass/typography" as *;
 
-// CSS variables approach
+:host {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    gap: rem(48px);
+    padding: rem(40px) rem(24px);
+}
 
+.card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(20px);
+}
+
+.card-item__label {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
+}
+
+.post-card {
+    --ig-card-border-radius: #{rem(8px)};
+
+    width: rem(310px);
+
+    igx-card-header {
+        padding: rem(16px) rem(16px) 0;
+    }
+
+    [igxCardHeaderTitle] {
+        color: var(--ig-gray-900);
+        font-size: rem(20px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.15px);
+    }
+
+    [igxCardHeaderSubtitle] {
+        color: var(--ig-gray-600);
+        font-size: rem(14px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
+    }
+
+    igx-card-content {
+        padding: rem(24px) rem(16px) 0;
+        overflow: visible;
+
+        p {
+            margin: 0;
+            color: var(--ig-gray-700);
+            font-size: rem(14px);
+            font-weight: 400;
+            line-height: rem(20px);
+            letter-spacing: rem(0.25px);
+        }
+    }
+
+    igx-card-actions {
+        padding: rem(12px) rem(16px) rem(8px);
+    }
+
+    [igxIconButton] {
+        --ig-size: var(--ig-size-small);
+        --ig-flat-icon-button-foreground: var(--ig-gray-900);
+    }
+}
+
+.post-card--vertical {
+    width: rem(390px);
+
+    igx-card-content {
+        padding-block-end: rem(16px);
+    }
+
+    igx-card-actions {
+        justify-content: flex-start;
+        padding: rem(16px) rem(16px) rem(16px) 0;
+    }
+}
+
+.post-card__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.post-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8px);
+}
+```
+
+### Layout
+
+Use layout wrappers when card sections need to be arranged horizontally or split between media and content areas.
+
+For a horizontal card, group the header and content in one wrapper, add the actions beside that wrapper, and apply a flex row to the card content.
+
+```html
+<igx-card [horizontal]="true">
+  <div igxLayout igxLayoutDir="column" igxFlex [igxFlexGrow]="1">
+    <igx-card-header>
+      <h5 igxCardHeaderTitle>Rozes</h5>
+      <h5 igxCardHeaderSubtitle>Under the Grave (2016)</h5>
+      <igx-card-media width="64px" height="64px">
+        <img src="https://dl.infragistics.com/x/img/music/rozes.jpg" alt="Rozes album cover" />
+      </igx-card-media>
+    </igx-card-header>
+    <igx-card-content>
+      <p>As I have always said: I write what's real and what's true, even if it means throwing myself under the bus.</p>
+    </igx-card-content>
+  </div>
+  <igx-divider [vertical]="true"></igx-divider>
+  <igx-card-actions layout="justify">
+    <button igxIconButton="flat" igxRipple [igxRippleCentered]="true" igxEnd aria-label="Previous track">
+      <igx-icon>skip_previous</igx-icon>
+    </button>
+    <button igxIconButton="flat" igxRipple [igxRippleCentered]="true" igxEnd aria-label="Play">
+      <igx-icon>play_arrow</igx-icon>
+    </button>
+    <button igxIconButton="flat" igxRipple [igxRippleCentered]="true" igxEnd aria-label="Next track">
+      <igx-icon>skip_next</igx-icon>
+    </button>
+  </igx-card-actions>
+</igx-card>
+```
+
+```css
+.card-wrapper {
+  max-width: 400px;
+  min-width: 250px;
+}
+```
+
+For a semi-horizontal card, keep the header, content, and actions stacked in one column, then place the media section beside that column.
+
+```html
+<igx-card [horizontal]="true" elevated>
+  <div igxLayout igxLayoutDir="column" igxFlex [igxFlexGrow]="1">
+    <igx-card-header>
+      <igx-avatar src="https://dl.infragistics.com/x/img/music/singer_with_mic.jpg"></igx-avatar>
+      <h5 igxCardHeaderTitle>HERE</h5>
+      <h5 igxCardHeaderSubtitle>by Mellow D</h5>
+    </igx-card-header>
+    <igx-card-content>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+    </igx-card-content>
+    <igx-card-actions [vertical]="false">
+      <button igxButton="flat" igxRipple igxStart>Play Album</button>
+    </igx-card-actions>
+  </div>
+  <igx-card-media width="96px">
+    <img src="https://dl.infragistics.com/x/img/music/singer_female.jpg" alt="Singer" />
+  </igx-card-media>
+</igx-card>
+```
+
+```css
+.card-wrapper {
+  max-width: 400px;
+  min-width: 250px;
+}
+```
+
+### Do/Don't
+
+The card usually works as an overview UI and an entry point for more detailed information. Avoid clogging it with too much information, and as you create dashboards with it, size and arrange the cards consistently in order to form a layout grid with equal horizontal and vertical gaps between cards.
+
+<div class="card-guidance">
+  <figure class="card-guidance__item">
+    
+    <figcaption>
+      <span class="card-guidance__do">Do</span>
+      <span class="card-guidance__text">Keep body text brief and focused on essential information for quick readability.</span>
+    </figcaption>
+  </figure>
+  <figure class="card-guidance__item">
+    
+    <figcaption>
+      <span class="card-guidance__not">Don't</span>
+      <span class="card-guidance__text">Avoid overloading the card body with long paragraphs or unnecessary detail.</span>
+    </figcaption>
+  </figure>
+</div>
+
+<style>{`
+  .card-guidance {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .card-guidance__item {
+    margin: 0;
+  }
+
+  .card-guidance__item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #d3d3d3;
+  }
+
+  .card-guidance figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 12px;
+    text-align: start;
+    font: inherit;
+    color: inherit;
+  }
+
+  .card-guidance__do,
+  .card-guidance__not {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .card-guidance__do {
+    color: #0f8a3d;
+  }
+
+  .card-guidance__not {
+    color: #d0273c;
+  }
+
+  @media (max-width: 600px) {
+    .card-guidance {
+      grid-template-columns: 1fr;
+    }
+  }
+`}</style>
+
+## Properties
+
+The card API exposes container appearance, action-layout, and media sizing controls.
+
+| Name | Type | Default | Description |
+| -- | -- | -- | -- |
+| [`elevated`](mcp:get_api_reference?platform=angular&component=IgxCardComponent&member=elevated) | `boolean` | `false` | Sets the card to use an elevated appearance with shadow. |
+| [`horizontal`](mcp:get_api_reference?platform=angular&component=IgxCardComponent&member=horizontal) | `boolean` | `false` | Aligns the card sections horizontally. |
+| [`vertical`](mcp:get_api_reference?platform=angular&component=IgxCardActionsComponent&member=vertical) | `boolean` | Value of the card `horizontal` input | Arranges the actions vertically. When it is not set, it follows the `horizontal` input of the parent card. |
+| [`layout`](mcp:get_api_reference?platform=angular&component=IgxCardActionsComponent&member=layout) | `"start" \| "justify"` | `"start"` | Sets how the actions are distributed. `justify` spaces them evenly along the actions axis. |
+| [`width`](mcp:get_api_reference?platform=angular&component=IgxCardMediaDirective&member=width) | `string` | `"auto"` | Sets the `width` and `min-width` of the media container. |
+| [`height`](mcp:get_api_reference?platform=angular&component=IgxCardMediaDirective&member=height) | `string` | `"auto"` | Sets the `height` of the media container. |
+
+## Styling
+
+The card appearance is controlled through theme variables.
+
+| Variable | What it changes |
+| -- | -- |
+| `--ig-card-background` | Card background color. |
+| `--ig-card-outline-color` | Card outline color. |
+| `--ig-card-header-text-color` | Card title text color. |
+| `--ig-card-subtitle-text-color` | Card subtitle text color. |
+| `--ig-card-content-text-color` | Card content text color. |
+| `--ig-card-actions-text-color` | Card actions text color. |
+| `--ig-card-resting-shadow` | Card shadow in its resting state. |
+| `--ig-card-hover-shadow` | Card shadow in its hover state. |
+| `--ig-card-border-radius` | Card border radius. |
+
+### Sass Theming
+
+Use the `card-theme` function when your application customizes Ignite UI themes through Sass.
+
+```scss
+@use "igniteui-theming/sass/themes" as *;
+
+$custom-card-theme: card-theme(
+  $background: #1f2937,
+  $border-radius: 12px,
+  $header-text-color: #ffffff,
+  $content-text-color: #e5e7eb
+);
+
+:root {
+  @include tokens($custom-card-theme);
+}
+```
+
+### CSS Variables
+
+Set component CSS variables directly when you need local styling without a Sass build step.
+
+```css
 igx-card {
-    --border-radius: #{rem(8px)};
-    --outline-color: #f0f0f0;
-    --resting-shadow: none;
-    --hover-shadow: none;
-    --header-text-color: rgba(0, 0, 0, 0.88);
+  --background: var(--ig-secondary-900);
+  --header-text-color: var(--ig-secondary-900-contrast);
+  --content-text-color: var(--ig-secondary-900-contrast);
 }
 
-igx-avatar {
-    --background: transparent;
-    --size: #{rem(30px)};
+igx-card-header {
+  --subtitle-text-color: var(--ig-warn-500);
 }
+```
 
-igx-chip {
-    --border-radius: #{rem(4px)};
-    --background: #fafafa;
-    --border-color: #d9d9d9;
-    --hover-background: #d9d9d9;
-    --focus-background: #d9d9d9;
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardContentDirective,
+    IgxCardHeaderComponent,
+    IgxCardHeaderTitleDirective,
+    IgxCardMediaDirective
+} from 'igniteui-angular/card';
+import { IgxChipComponent } from 'igniteui-angular/chips';
+import { IgxIconButtonDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
+import { IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+
+@Component({
+    selector: 'app-card-styling',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./card-styling.component.scss'],
+    templateUrl: './card-styling.component.html',
+    imports: [
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardContentDirective,
+        IgxCardHeaderComponent,
+        IgxCardHeaderTitleDirective,
+        IgxCardMediaDirective,
+        IgxChipComponent,
+        IgxIconButtonDirective,
+        IgxIconComponent,
+        IgxPrefixDirective,
+        IgxSuffixDirective
+    ]
+})
+export class CardStylingComponent { }
+```
+```html
+<igx-card class="balance-card">
+    <igx-chip class="trend-chip">
+        <igx-icon igxPrefix>trending_up</igx-icon>
+        <span>+12.4%</span>
+    </igx-chip>
+    <igx-card-header>
+        <span igxCardHeaderTitle>Total balance</span>
+    </igx-card-header>
+    <igx-card-content>
+        <span class="balance-amount">$24,860</span>
+    </igx-card-content>
+    <igx-card-actions>
+        <div igxEnd class="balance-actions">
+            <button igxIconButton="flat" aria-label="Copy account link">
+                <igx-icon>link</igx-icon>
+            </button>
+            <button igxIconButton="flat" aria-label="More options">
+                <igx-icon>more_vert</igx-icon>
+            </button>
+        </div>
+    </igx-card-actions>
+</igx-card>
+
+<igx-card class="support-card">
+    <igx-chip class="support-tag">Support</igx-chip>
+    <igx-card-media class="support-media" height="124px">
+        <img
+            src="https://dl.infragistics.com/x/img/card/card-3.png"
+            alt="Support agent reviewing system dashboards on a laptop" />
+    </igx-card-media>
+    <igx-card-header>
+        <span igxCardHeaderTitle>Review the issue and check system logs</span>
+    </igx-card-header>
+    <igx-card-actions>
+        <span class="support-link">Find out more</span>
+    </igx-card-actions>
+</igx-card>
+```
+```scss
+@use "igniteui-theming/sass/typography" as *;
+@import url("https://use.typekit.net/bng2zgw.css");
+
+// The design brings its own palette and typeface, so the colors below are
+// literal instead of theme tokens - the sample keeps its look in every theme.
+// aktiv-grotesk is the typekit family name loaded above.
+app-card-styling {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    gap: rem(60px);
+    padding: rem(40px) rem(24px);
+
+    .balance-card {
+        --ig-card-border-radius: #{rem(16px)};
+        --ig-card-outline-color: #99c9ff;
+
+        position: relative;
+        width: rem(312px);
+        padding: rem(8px);
+        background: #e6f2ff;
+
+        igx-card-header {
+            padding: rem(16px) rem(16px) 0;
+        }
+
+        [igxCardHeaderTitle] {
+            color: #004699;
+            font-family: "aktiv-grotesk", "Aktiv Grotesk", Arial, sans-serif;
+            font-size: rem(14px);
+            font-weight: 500;
+            line-height: rem(24px);
+            letter-spacing: rem(0.1px);
+        }
+
+        igx-card-content {
+            padding: 0 rem(16px);
+            overflow: visible;
+        }
+
+        igx-card-actions {
+            padding: rem(16px);
+        }
+    }
+
+    .trend-chip {
+        position: absolute;
+        inset-block-start: rem(24px);
+        inset-inline-end: rem(24px);
+        z-index: 1;
+
+        .igx-chip__item {
+            box-sizing: border-box;
+            height: rem(24px);
+            padding: rem(2px) rem(6px);
+            border: none;
+            border-radius: rem(16px);
+            background: #cce4ff;
+            color: #004699;
+            font-family: "Titillium Web", Verdana, Tahoma, sans-serif;
+            font-size: rem(14px);
+            font-weight: 400;
+            line-height: rem(20px);
+            letter-spacing: rem(0.25px);
+        }
+
+        .igx-chip__start {
+            color: #004699;
+        }
+
+        igx-icon {
+            --ig-icon-size: #{rem(20px)};
+        }
+    }
+
+    .balance-amount {
+        display: block;
+        color: #0176ff;
+        font-family: "aktiv-grotesk", "Aktiv Grotesk", Arial, sans-serif;
+        font-size: rem(32px);
+        font-weight: 600;
+        line-height: rem(40px);
+        letter-spacing: 0;
+    }
+
+    .balance-actions {
+        display: inline-flex;
+        gap: rem(8px);
+
+        [igxIconButton] {
+            --ig-flat-icon-button-foreground: #004699;
+
+            width: rem(36px);
+            height: rem(36px);
+            border-radius: 50%;
+            background: #ffffff;
+        }
+    }
+
+    .support-card {
+        --ig-card-border-radius: #{rem(16px)};
+        --ig-card-outline-color: #e5ebf3;
+
+        position: relative;
+        width: rem(246px);
+        padding: rem(8px);
+        background: #ffffff;
+
+        igx-card-header {
+            padding: rem(16px) rem(16px) 0;
+        }
+
+        [igxCardHeaderTitle] {
+            margin-block-end: 0;
+            color: #004699;
+            font-family: "aktiv-grotesk", "Aktiv Grotesk", Arial, sans-serif;
+            font-size: rem(16px);
+            font-weight: 700;
+            line-height: rem(20px);
+            letter-spacing: 0;
+        }
+
+        igx-card-actions {
+            padding: rem(16px) rem(16px) rem(8px);
+        }
+    }
+
+    .support-media {
+        box-sizing: border-box;
+        padding: rem(16px);
+        border-radius: rem(16px);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .support-tag {
+        position: absolute;
+        inset-block-start: rem(12px);
+        inset-inline-start: rem(16px);
+        z-index: 1;
+
+        .igx-chip__item {
+            box-sizing: border-box;
+            height: rem(24px);
+            padding: rem(2px) rem(10px);
+            border: none;
+            border-radius: rem(16px);
+            background: #e6f2ff;
+            color: #004699;
+            font-family: "Titillium Web", Verdana, Tahoma, sans-serif;
+            font-size: rem(14px);
+            font-weight: 400;
+            line-height: rem(20px);
+            letter-spacing: rem(0.25px);
+        }
+    }
+
+    .support-link {
+        color: #7d91ab;
+        font-family: "aktiv-grotesk", "Aktiv Grotesk", Arial, sans-serif;
+        font-size: rem(12px);
+        font-weight: 600;
+        line-height: rem(16px);
+        letter-spacing: rem(0.15px);
+    }
 }
-
-.igx-icon-button--flat {
-    --foreground: #00000073;
-    --hover-foreground: #1677ff;
-    --hover-background: none;
-}
-
-igx-divider {
-    --color: #f0f0f0
-}
-
-// Sass theme approach
-
-// $custom-card-theme: card-theme(
-//     $border-radius: rem(8px),
-//     $outline-color: #f0f0f0,
-//     $resting-shadow: none,
-//     $hover-shadow: none,
-//     $header-text-color: #000000e0,
-// );
-
-// $custom-avatar-theme: avatar-theme(
-//     $background: transparent,
-//     $size: rem(30px)
-// );
-
-// $custom-chip-theme: chip-theme(
-//     $border-radius: rem(4px),
-//     $background: #fafafa,
-//     $border-color: #d9d9d9,
-//     $hover-background: #d9d9d9,
-//     $focus-background: #d9d9d9,
-// );
-
-// $custom-icon-button-theme: flat-icon-button-theme(
-//     $foreground: #00000073,
-//     $hover-foreground: #1677ff,
-//     $hover-background: none,
-// );
-
-// $custom-divider-theme: divider-theme(
-//     $color: #f0f0f0
-// );
-
-// :host {
-//     @include tokens($custom-card-theme);
-//     @include tokens($custom-avatar-theme);
-//     @include tokens($custom-chip-theme);
-//     @include tokens($custom-divider-theme);
-//     @include tokens($custom-icon-button-theme);
-// }
 ```
 
 ### Styling with Tailwind
 
-You can style the `card` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
-
-Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
-
-```scss
-@import "tailwindcss";
-...
-@use 'igniteui-theming/tailwind/utilities/material.css';
-```
-
-The utility file includes both `light` and `dark` theme variants.
-
-- Use `light-*` classes for the light theme.
-- Use `dark-*` classes for the dark theme.
-- Append the component name after the prefix, e.g., `light-card`, `dark-card`.
-
-Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
-
-You can find the full list of properties in the `card-theme`. The syntax is as follows:
-
-```html
-<igx-card
-class="!light-card
-![--background:#193625]
-![--subtitle-text-color:#ECAA53]"
-elevated>
-...
-</igx-card>
-```
-
-**Note:** 
-The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
-
-At the end your card should look like this:
+Use Tailwind utility classes when your Angular application already styles Ignite UI components through Tailwind.
 
 ```typescript
-import { Component } from '@angular/core';
-import { Card } from '../card.blueprint';
-import { IgxCardActionsComponent, IgxCardComponent, IgxCardContentDirective, IgxCardHeaderComponent, IgxCardHeaderSubtitleDirective, IgxCardHeaderTitleDirective, IgxCardMediaDirective } from 'igniteui-angular/card';
-import { IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
-import { IgxSuffixDirective } from 'igniteui-angular/input-group';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
+import { Component, inject } from '@angular/core';
+import { IgxAvatarComponent } from 'igniteui-angular/avatar';
+import { IgxButtonDirective, IgxDividerComponent, IgxIconButtonDirective, IgxRippleDirective } from 'igniteui-angular/directives';
+import {
+    IgxCardActionsComponent,
+    IgxCardComponent,
+    IgxCardContentDirective,
+    IgxCardHeaderComponent,
+    IgxCardHeaderTitleDirective,
+    IgxCardMediaDirective,
+    IgxCardThumbnailDirective
+} from 'igniteui-angular/card';
+import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
+import { berealIcon, instagramIcon, plusIcon, threadsIcon } from './icons';
 
 @Component({
-    selector: 'app-card-tailwind-styling-sample',
-    templateUrl: './card-tailwind-styling-sample.component.html',
-    styleUrls: ['./card-tailwind-styling-sample.component.scss'],
-    imports: [IgxCardComponent, IgxCardMediaDirective, IgxCardHeaderComponent, IgxCardHeaderTitleDirective, IgxCardHeaderSubtitleDirective, IgxCardContentDirective, IgxCardActionsComponent, IgxIconButtonDirective, IgxRippleDirective, IgxSuffixDirective, IgxIconComponent]
+    selector: 'app-card-tailwind-styling',
+    styleUrls: ['./card-tailwind-styling.component.scss'],
+    templateUrl: './card-tailwind-styling.component.html',
+    imports: [
+        IgxAvatarComponent,
+        IgxButtonDirective,
+        IgxCardActionsComponent,
+        IgxCardComponent,
+        IgxCardContentDirective,
+        IgxCardHeaderComponent,
+        IgxCardHeaderTitleDirective,
+        IgxCardMediaDirective,
+        IgxCardThumbnailDirective,
+        IgxDividerComponent,
+        IgxIconButtonDirective,
+        IgxIconComponent,
+        IgxRippleDirective
+    ]
 })
-export class CardTailwindStylingSampleComponent {
-    public card = new Card({
-        content: `Hi! I'm Jane, photographer and filmmaker.
-        Photography is a way of feeling, of touching,
-        of loving. What you have caught on film is captured forever...
-        it remembers little things, long after you have
-        forgotten everything.`,
-        icons: ['person', 'favorite', 'share'],
-        imageUrl: 'https://images.unsplash.com/'
-        + 'photo-1541516160071-4bb0c5af65ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-        subtitle: 'Professional Photographer',
-        title: 'Jane Doe'
-    });
+export class CardTailwindStylingComponent {
+    private iconService = inject(IgxIconService);
+
+    public profileStats = [
+        { value: '23.9K', label: 'Likes' },
+        { value: '163', label: 'Posts' },
+        { value: '23.9K', label: 'Views' }
+    ];
+
+    constructor() {
+        this.iconService.addSvgIconFromText('instagram', instagramIcon, 'material');
+        this.iconService.addSvgIconFromText('bereal', berealIcon, 'material');
+        this.iconService.addSvgIconFromText('threads', threadsIcon, 'material');
+        this.iconService.addSvgIconFromText('plus', plusIcon, 'material');
+    }
 }
 ```
 ```html
-<div class="sample-column card-wrapper">
-  <igx-card class="!light-card ![--background:#193625] ![--subtitle-text-color:#ECAA53]" elevated>
-    <igx-card-media height="180px">
-      <img [src]="card.imageUrl">
+<igx-card class="[--ig-card-border-radius:30px] [--ig-card-outline-color:transparent]">
+    <igx-card-media class="h-[189px]">
+        <img
+        class="object-cover"
+        src="https://dl.infragistics.com/x/img/avatars/image-bg4.png"
+        alt="Cafe interior" />
     </igx-card-media>
-
     <igx-card-header>
-      <h3 igxCardHeaderTitle>{{ card.title }}</h3>
-      <h5 igxCardHeaderSubtitle>{{ card.subtitle }}</h5>
+        <igx-avatar
+            igxCardThumbnail
+            shape="circle"
+            size="medium"
+            src="https://dl.infragistics.com/x/img/avatars/avatar-profile-09.png"
+            alt="A profile photo of Kate Thompson.">
+        </igx-avatar>
+        <span igxCardHeaderTitle>Kate Thompson</span>
+        <p class="card-sample-custom-subtitle">3D Artist. Turning polygons into worlds and immersive digital realities</p>
+
     </igx-card-header>
-
     <igx-card-content>
-      <p>{{ card.content }}</p>
+        <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr]">
+            @for (stat of profileStats; track stat.label; let isLast = $last) {
+                <div class="flex min-w-0 flex-col items-center gap-1 px-3">
+                    <span class="stats-title">{{ stat.value }}</span>
+                    <span class="stats-subtitle">{{ stat.label }}</span>
+                </div>
+                @if (!isLast) {
+                    <igx-divider class="h-12" vertical></igx-divider>
+                }
+            }
+        </div>
     </igx-card-content>
-
     <igx-card-actions>
-      @for (icon of card.icons; track icon) {
-        <button igxIconButton="flat"
-          igxRipple
-          [igxRippleCentered]="true"
-          igxEnd>
-          <igx-icon [style.color]="'#ECAA53'">{{icon}}</igx-icon>
+        <button
+            igxButton="contained"
+            class="[--ig-contained-button-active-background:var(--ig-gray-400)] [--ig-contained-button-background:var(--ig-gray-200)] [--ig-contained-button-border-radius:16px] [--ig-contained-button-focus-background:var(--ig-gray-300)] [--ig-contained-button-hover-background:var(--ig-gray-300)] [--ig-size:var(--ig-size-small)]">
+            <span class="inline-flex items-center gap-1">
+                FOLLOW
+                <igx-icon name="plus" collection="material"></igx-icon>
+            </span>
         </button>
-      }
+        <div igxEnd class="inline-flex gap-1">
+            <button igxIconButton="flat" igxRipple aria-label="Open Instagram profile">
+                <igx-icon name="instagram" collection="material"></igx-icon>
+            </button>
+            <button igxIconButton="flat" igxRipple aria-label="Open BeReal profile">
+                <igx-icon name="bereal" collection="material"></igx-icon>
+            </button>
+            <button igxIconButton="flat" igxRipple aria-label="Open Threads profile">
+                <igx-icon name="threads" collection="material"></igx-icon>
+            </button>
+        </div>
     </igx-card-actions>
+</igx-card>
 
-  </igx-card>
-</div>
+<igx-card class="[--ig-card-border-radius:30px] [--ig-card-outline-color:transparent]">
+    <igx-card-header>
+        <span igxCardThumbnail
+            class="inline-flex rounded-full p-[5px] bg-[linear-gradient(40deg,#D2F586,#A0C9FF)]">
+            <igx-avatar
+                size="medium"
+                shape="circle"
+                src="https://dl.infragistics.com/x/img/avatars/avatar-profile-09.png"
+                alt="A profile photo of Kate Thompson.">
+            </igx-avatar>
+        </span>
+        <span igxCardHeaderTitle>Kate Thompson</span>
+        <p class="card-sample-custom-subtitle">3D Artist. Turning polygons into worlds and immersive digital realities</p>
+    </igx-card-header>
+    <igx-card-content>
+        <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr]">
+            @for (stat of profileStats; track stat.label; let isLast = $last) {
+                <div class="flex min-w-0 flex-col items-center gap-1 px-3">
+                    <span class="stats-title">{{ stat.value }}</span>
+                    <span class="stats-subtitle">{{ stat.label }}</span>
+                </div>
+                @if (!isLast) {
+                    <igx-divider vertical></igx-divider>
+                }
+            }
+        </div>
+    </igx-card-content>
+    <igx-card-actions >
+        <button
+            igxButton="contained"
+            class="[--ig-contained-button-active-background:var(--ig-gray-400)] [--ig-contained-button-background:var(--ig-gray-200)] [--ig-contained-button-border-radius:16px] [--ig-contained-button-focus-background:var(--ig-gray-300)] [--ig-contained-button-hover-background:var(--ig-gray-300)] [--ig-size:var(--ig-size-small)]">
+            <span class="inline-flex items-center gap-1">
+                <span>FOLLOW</span>
+                <igx-icon name="plus" collection="material"></igx-icon>
+            </span>
+        </button>
+        <div igxEnd class="inline-flex items-center gap-1">
+            <button igxIconButton="flat" igxRipple aria-label="Open Instagram profile">
+                <igx-icon name="instagram" collection="material"></igx-icon>
+            </button>
+            <button igxIconButton="flat" igxRipple aria-label="Open BeReal profile">
+                <igx-icon name="bereal" collection="material"></igx-icon>
+            </button>
+            <button igxIconButton="flat" igxRipple aria-label="Open Threads profile">
+                <igx-icon name="threads" collection="material"></igx-icon>
+            </button>
+        </div>
+    </igx-card-actions>
+</igx-card>
 ```
 ```scss
-@use "layout.scss";
+@use "igniteui-theming/sass/typography" as *;
+
+:host {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, rem(344px));
+    gap: rem(40px);
+    place-content: center;
+    height: 100vh;
+}
+
+igx-card:nth-of-type(2) {
+    align-self: center;
+}
+
+.card-sample-custom-subtitle {
+    display: block;
+    color: var(--ig-gray-700);
+
+    @include type-style("body-2") {
+        margin-block-start: rem(8px);
+    };
+}
+
+.stats-title {
+    color: var(--ig-gray-900);
+
+    @include type-style("subtitle-1") {
+        font-weight: 600;
+    };
+}
+
+.stats-subtitle {
+    color: var(--ig-gray-500);
+
+    @include type-style("body-2");
+}
 ```
 
-### Summary
+## Accessibility
 
-In this article we covered a lot of ground with the card component. First, we created a very simple card with text content only. Then added some images to make the card a bit more appealing. We used some additional Ignite UI for Angular components inside our card, avatar, buttons and icons, to enrich the experience and add some functionality. And finally, we changed the card's theme by setting some exposed theme colors, creating custom palettes and extending schemas.
-The card component is capable of displaying more different layouts worth exploring in the Card Demo in the beginning of this article.
+The card is a container. Grouping and media semantics come from the card regions, while keyboard operability and accessible names come from the content you place inside them.
 
-## API and Style References
+### Keyboard Interaction
 
-For more detailed information regarding the card's API, refer to the following links:
+The card and its header, media, content, and actions regions declare no key handlers and are not in the tab order. Focus moves through the focusable content you place inside them, in DOM order.
 
-- [`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
+| Key | Action |
+| -- | -- |
+| <kbd>Tab</kbd> | Moves focus to the next focusable element inside the card, such as a button or link in the content or actions area. |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous focusable element inside the card. |
 
-The following built-in CSS styles helped us achieve this card layout:
+The actions area always renders its leading region, then its centered content, then its trailing region. Switching the actions to a vertical layout restyles them without reordering the DOM, so keyboard and screen reader order stay the same.
 
-- `IgxCardComponent Styles`
+### Screen Readers / ARIA
 
-Additional components and/or directives that were used:
+- The card host renders `role="group"` and a generated `id` in the form `igx-card-1`. Set the `role` input when a different grouping role fits your information architecture, and reference the card title with `aria-labelledby` so the group has an accessible name.
+- `igx-card-media` renders `role="img"`, which exposes the whole media region as a single image and makes its children presentational, so an `alt` attribute on the inner image does not name it. Name the region itself with `aria-label` or `aria-labelledby`, or set its `role` input to `presentation` when the media is decorative.
+- The header, title, subtitle, content, and actions members add styling classes only. They contribute no roles and no `aria-*` attributes.
+- Give icon-only buttons in the actions area an accessible name; the icon alone provides none.
+- Use a single interactive element when the whole card triggers one action, rather than attaching a click handler to the container, so the action keeps a role and a name.
 
-- [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
-- [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- [`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
-- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+### Accessibility Compliance
 
-Styles:
+Infragistics documents Ignite UI for Angular accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic.
 
-- `IgxAvatarComponent Styles`
-- `IgxIconComponent Styles`
-- `IgxButtonDirective Styles`
+| Criterion | How the component complies |
+| -- | -- |
+| [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html) | The card exposes its host as a group, and the card regions project their content without rewriting it, so headings, text, lists, media, and controls keep their native semantics. |
+| [2.1.1 Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html) | The card adds no key handling and no focus traps of its own, so keyboard-operable content inside it stays operable. |
+| [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html) | The actions area renders its leading, centered, and trailing regions in a fixed DOM order that the vertical layout does not change. |
+| [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html) | The card host exposes `role="group"` and the media region exposes `role="img"`. Neither sets an accessible name, so name the card with `aria-labelledby` that points to its title, and name the media region with `aria-label` or `aria-labelledby`, or set its `role` to `presentation` when it is decorative. |
 
-<igc-divider></igc-divider>
+Your responsibilities:
 
-## Theming Dependencies
+- Pass a real heading element to the title so the card takes its place in the document outline, and keep the subtitle as plain text.
+- Provide alternative text for meaningful media, and give the media region an accessible name wherever it is exposed as an image.
+- Give icon-only action buttons an accessible name.
+- Keep DOM order and visual order aligned when you build horizontal or split card layouts with CSS.
+- Keep sufficient contrast when overriding card colors.
 
-- `IgxButton Theme`
-- `IgxAvatar Theme`
-- `IgxIconTheme`
+## API References
+
+Use these API references for the complete card, card section, and supporting component APIs.
+
+[`IgxCard`](mcp:get_api_reference?platform=angular&component=IgxCardComponent)
+[`IgxCardActions`](mcp:get_api_reference?platform=angular&component=IgxCardActionsComponent)
+[`IgxCardContentDirective`](mcp:get_api_reference?platform=angular&component=IgxCardContentDirective)
+[`IgxCardHeader`](mcp:get_api_reference?platform=angular&component=IgxCardHeaderComponent)
+[`IgxCardMediaDirective`](mcp:get_api_reference?platform=angular&component=IgxCardMediaDirective)
+[`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent)
+[`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective)
+[`IgxIconButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective)
+[`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
+[`IgxRippleDirective`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective)
+
+## Dependencies
+
+The card uses its own header, media, content, and actions sub-components. Cards that include thumbnails, actions, icons, or ripples also depend on the corresponding [`IgxAvatar`](mcp:get_api_reference?platform=angular&component=IgxAvatarComponent), [`IgxButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxButtonDirective), [`IgxIconButtonDirective`](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective), [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent), and [`IgxRippleDirective`](mcp:get_api_reference?platform=angular&component=IgxRippleDirective) components and directives.
 
 ## Additional Resources
 
-<hr/>
-Our community is active and always welcoming to new ideas.
+Use these resources to continue with Ignite UI for Angular Card support, source, and related layout guidance.
 
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+
+## Related Components
+
+Use the [Grid](../grid/grid.md) when users need dense tabular data with sorting, filtering, and column-level interaction. Use the [List](../list.md) when repeated items should remain compact and primarily vertical.
+
+## FAQ
+
+  **Q: How do I make an entire card clickable without breaking screen readers?**
+
+    The card is a plain container and adds no interactive behavior, so wrapping the whole card in a link is a common but harmful shortcut: the accessible name of that link becomes every piece of text in the card. Put a real link or button on the card title instead, then stretch it over the card with an absolutely positioned pseudo-element that covers the card box. The title stays the accessible name, the whole rectangle stays clickable, and text selection and middle-click keep working.
+  
+  **Q: How do I make cards in a row or grid the same height?**
+
+    The card sizes itself from its content and does not equalize heights across siblings. Lay the cards out in a CSS grid or a flex row so each card stretches to the row height, give the media region a fixed height or `aspect-ratio`, and clamp the title and body to a set number of lines with `-webkit-line-clamp`. Unequal card heights almost always come from letting each image and each paragraph decide its own height.
+  
+  **Q: Why is my card image cropped, and how do I control its size?**
+
+    The card media region controls the dimensions of the media it contains, so size the region rather than the image. Set the `height` and `width` inputs on `igx-card-media`, and use a consistent aspect ratio across cards so rows of cards stay aligned.
+  
+  **Q: Why do my card actions appear in a different region than the one I placed them in?**
+
+    The card actions area projects content by selector, not by author order. An element with `igxButton` and without `igxEnd` goes to the leading region, and an element with `igxIconButton`, or an `igx-icon`, without `igxStart` goes to the trailing region; only content matching neither selector stays centered. Set `igxStart` or `igxEnd` explicitly to place an action where you want it.
+  
+  **Q: When should I use Grid or List instead of Card?**
+
+    Use Grid when the data is dense and tabular and readers need to scan, sort, or compare across columns, and use List when many short, uniform rows must fit in a small space. Use Card when each item deserves its own media, longer text, and its own actions. A long scroll of cards is usually a list in disguise.
+  
+

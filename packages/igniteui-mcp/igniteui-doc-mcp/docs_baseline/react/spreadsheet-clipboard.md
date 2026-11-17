@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction", "SpreadsheetCommandType", "Command"]
 llms:
   description: "Explains how to copy, cut, and paste cells in the React Spreadsheet by using its clipboard commands and API."
+platformType: xplat-unmapped
 _tocName: Clipboard
 _premium: true
 ---

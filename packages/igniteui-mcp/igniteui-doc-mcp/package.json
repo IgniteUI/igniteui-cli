@@ -13,6 +13,7 @@
   "main": "dist/index.js",
   "exports": {
     ".": "./dist/index.js",
+    "./docs": "./dist/docs-api.js",
     "./package.json": "./package.json"
   },
   "bin": {

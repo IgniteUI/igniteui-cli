@@ -3,9 +3,10 @@ title: Angular Spreadsheet | Activation | Infragistics
 description: Learn how to use the activation feature of the  Angular spreadsheet control which is split between the cells, panes and worksheets. Check out the Ignite UI for Angular spreadsheet demos!
 keywords: Excel Spreadsheet, activation, Ignite UI for Angular, Infragistics
 license: commercial
-
+mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The Angular Spreadsheet component exposes properties that allow you to determine the currently active cell, pane, and worksheet in the control."
+platformType: xplat-unmapped
 _tocName: Activation
 _premium: true
 ---
@@ -99,15 +100,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Activation Overview
 
-The activation of the Angular `IgxSpreadsheet` control is split up between the cells, panes, and worksheets of the current `IgxWorkbook` of the spreadsheet. The three "active" properties are described below:
+The activation of the Angular [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) control is split up between the cells, panes, and worksheets of the current [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) of the spreadsheet. The three "active" properties are described below:
 
-- `ActiveCell`: Returns or sets the active cell in the spreadsheet. To set it, you must create a new instance of `IgxSpreadsheetCell` and pass in information about that cell, such as the column and row or the string address of the cell.
-- `ActivePane`: Returns the active pane in the currently active worksheet of the spreadsheet control.
-- `ActiveWorksheet`: Returns or sets the active worksheet in the `IgxWorkbook` of the spreadsheet control. This can be set by setting it to an existing worksheet in the `IgxWorkbook` attached to the spreadsheet.
+- [`ActiveCell`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent&member=activeCell): Returns or sets the active cell in the spreadsheet. To set it, you must create a new instance of [`SpreadsheetCell`](mcp:get_api_reference?platform=angular&component=SpreadsheetCell) and pass in information about that cell, such as the column and row or the string address of the cell.
+- [`ActivePane`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent&member=activePane): Returns the active pane in the currently active worksheet of the spreadsheet control.
+- [`ActiveWorksheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent&member=activeWorksheet): Returns or sets the active worksheet in the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) of the spreadsheet control. This can be set by setting it to an existing worksheet in the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) attached to the spreadsheet.
 
 ## Code Snippet
 
-The following code snippet shows setting activation of the cell and worksheet in the `IgxSpreadsheet` control:
+The following code snippet shows setting activation of the cell and worksheet in the [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) control:
 
 ```ts
 this.spreadsheet.activeWorksheet = this.spreadsheet.workbook.worksheets(1);
@@ -117,7 +118,7 @@ this.spreadsheet.activeCell = new SpreadsheetCell("C5");
 
 ## API References
 
-`IgxSpreadsheetCell`
+[`SpreadsheetCell`](mcp:get_api_reference?platform=angular&component=SpreadsheetCell)
 <br />
-`IgxSpreadsheet`<br />
-`IgxWorkbook`<br />
+[`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent)<br />
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)<br />

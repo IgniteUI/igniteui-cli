@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "GeographicShapeSeriesBase", "Series"]
 llms:
   description: "Before plotting geo-spatial data in the control, one should get familiar with the following resources which provide general information about maps and geo-spatial data."
+platformType: xplat
 _tocName: Shape Files Reference
 _premium: true
 ---

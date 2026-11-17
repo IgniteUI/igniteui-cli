@@ -5,9 +5,11 @@ keywords: "Angular charts, chart data, selection, data selection, Ignite UI for 
 license: commercial
 _language: en
 
+mentionedTypes: ["DataChart", "Legend", "CategoryChart", "FinancialChart", "DataLegend", "DataToolTipLayer", "SeriesSelectionMode", "SeriesSelectionBehavior", "HorizontalAnchoredCategorySeries"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular selection feature in Angular Data Chart allows users to interactively select, highlight, outline and vice-versa deselect single or multiple series within a chart."
+platformType: xplat
 _tocName: Chart Data Selection
 _premium: true
 ---
@@ -17,7 +19,7 @@ The Ignite UI for Angular selection feature in Angular Data Chart allows users t
 
 ## Configuring Selection
 
-The default behavior `SelectionMode` turned off and requires opting into one of the following options. There are several selection modes available in the `IgxDataChart`:
+The default behavior [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectionMode) turned off and requires opting into one of the following options. There are several selection modes available in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent):
 
 - **Auto**
 - **None**
@@ -32,11 +34,11 @@ The default behavior `SelectionMode` turned off and requires opting into one of 
 - **SelectionColorFill**
 - **ThickOutline**
 
-`Brighten` will fade the selected item while `FadeOthers` will cause the opposite effect occur.
-`GrayscaleOthers` will behave similarly to `FadeOthers` but instead show a gray color to the rest of the series. Note this will override any `SelectionBrush` setting.
-`SelectionColorOutline` and `SelectionColorThickOutline` will draw a border around the series.
+[`Brighten`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=Brighten) will fade the selected item while [`FadeOthers`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FadeOthers) will cause the opposite effect occur.
+[`GrayscaleOthers`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=GrayscaleOthers) will behave similarly to [`FadeOthers`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FadeOthers) but instead show a gray color to the rest of the series. Note this will override any [`selectionBrush`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectionBrush) setting.
+[`SelectionColorOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorOutline) and [`SelectionColorThickOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorThickOutline) will draw a border around the series.
 
-In conjunction, a `SelectionBehavior` is available to provide greater control on which items get selected. The default behavior for Auto is `PerSeriesAndDataItemMultiSelect`.
+In conjunction, a [`selectionBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectionBehavior) is available to provide greater control on which items get selected. The default behavior for Auto is [`PerSeriesAndDataItemMultiSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerSeriesAndDataItemMultiSelect).
 
 - **Auto**
 - **PerDataItemMultiSelect**
@@ -49,7 +51,7 @@ In conjunction, a `SelectionBehavior` is available to provide greater control on
 
 ## Configuring Selection via Color Fill
 
-The following example shows the combination of both `SelectionColorFill` and `Auto` selection behavior aka `PerSeriesAndDataItemMultiSelect`. Color Fills provide a useful visual cue as it changes the entire series item's back color. By clicking each item you'll see the item change from green to purple.
+The following example shows the combination of both [`SelectionColorFill`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorFill) and [`SeriesSelectionBehavior.Auto`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=Auto) selection behavior aka [`PerSeriesAndDataItemMultiSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerSeriesAndDataItemMultiSelect). Color Fills provide a useful visual cue as it changes the entire series item's back color. By clicking each item you'll see the item change from green to purple.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -151,8 +153,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Configuring Multiple Selection
 
-Other selection modes offer various methods of selection. For example using `SelectionBehavior` with `PerDataItemMultiSelect` will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to `PerDataItemSingleSelect`, only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
-`PerSeriesAndDataItemGlobalSingleSelect` allows single series selection across all categories at a time.
+Other selection modes offer various methods of selection. For example using [`selectionBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectionBehavior) with [`PerDataItemMultiSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerDataItemMultiSelect) will affect all series in entire category when multiple series are present while allowing selection across categories. Compared to [`PerDataItemSingleSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerDataItemSingleSelect), only a single category of items can be selected at a time. This is useful if multiple series are bound to different datasources and provides greater control of selection between categories.
+[`PerSeriesAndDataItemGlobalSingleSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerSeriesAndDataItemGlobalSingleSelect) allows single series selection across all categories at a time.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -313,11 +315,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Configuring Outline Selection
 
-When `FocusBrush` is applied, selected series will appear with a border when the `SelectionMode` property is set to one of the focus options.
+When [`focusBrush`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=focusBrush) is applied, selected series will appear with a border when the [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectionMode) property is set to one of the focus options.
 
 ## Radial Series Selection
 
-This example demonstrates another series type via the `IgxDataChart` where each radial series can be selected with different colors.
+This example demonstrates another series type via the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) where each radial series can be selected with different colors.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -470,9 +472,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Programmatic Selection
-Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the `SelectedSeriesCollection` of the `IgxCategoryChart`. The `Matcher` property of the `IgxChartSelection` object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the `ValueMemberPath` that the series would be.
+Chart Selection can also be configured in code where selected items in the chart can be seen on startup or runtime. This can be achieved by adding items to the [`selectedSeriesItems`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectedSeriesItems) of the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent). The [`IgxChartSelection.matcher`](mcp:get_api_reference?platform=angular&component=IgxChartSelection&member=matcher) property of the [`IgxChartSelection`](mcp:get_api_reference?platform=angular&component=IgxChartSelection) object allows for selecting a series based on a "matcher", ideal when you do not have access to the actual series from the chart. If you know the properties that your datasource contains, you can use the [`valueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=valueMemberPath) that the series would be.
 
-The matcher is ideal for using in charts, such as the `IgxCategoryChart` when you do not have access to the actual series, like the `IgxDataChart`. In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the `SelectedSeriesItems` collection using a matcher with the following properties set
+The matcher is ideal for using in charts, such as the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) when you do not have access to the actual series, like the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent). In this case you if you know the properties that your datasource contained you can surmise the ValueMemberPaths that the series would have. For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to highlight the series bound to Solar values, you can add a ChartSelection object to the [`selectedSeriesItems`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=selectedSeriesItems) collection using a matcher with the following properties set
 
 For example, if you datasource has numeric properties Nuclear, Coal, Oil, Solar then you know there are series created for each of these properties. If you want to select the series bound to Solar values, you can add a ChartSelection object to the SelectedSeriesItems collection using a matcher with the following properties set.
 
@@ -632,6 +634,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The following is a list of API members mentioned in the above sections:
 
-| `IgxCategoryChart` Properties                    | `IgxDataChart` Properties |
+| [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) Properties                    | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) Properties |
 | ----------------------------------------------|---------------------------|
 |                                               |                           |

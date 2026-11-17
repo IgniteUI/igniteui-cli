@@ -350,7 +350,7 @@ export default function CarouselConfiguration() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<CarouselConfiguration />);
 ```
 
@@ -1682,7 +1682,7 @@ export default function CarouselStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<CarouselStyling />);
 ```
 
@@ -1875,7 +1875,7 @@ export default function CarouselTailwindStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<CarouselTailwindStyling />);
 ```
 

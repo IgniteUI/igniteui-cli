@@ -122,7 +122,7 @@ export class HierarchicalGridColumnSelectionComponent implements OnInit, AfterVi
 
 ## Basic usage
 
-The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection) input, which takes [`IgxGridSelectionMode`](mcp:get_api_reference?platform=angular&component=GridSelectionMode) values.
+The column selection feature can be enabled through the [`columnSelection`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=columnSelection) input, which takes [`GridSelectionMode`](mcp:get_api_reference?platform=angular&component=GridSelectionMode) values.
 
 ## Interactions
 

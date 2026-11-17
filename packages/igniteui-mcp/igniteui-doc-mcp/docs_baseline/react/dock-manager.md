@@ -58,96 +58,84 @@ This example shows most functionalities and docking options of the [`IgrDockMana
 }
 ```
 ```tsx
-import React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './DockManagerStyles.css';
-import {  IgrDockManager, IgrDockManagerPaneType, IgrSplitPaneOrientation } from 'igniteui-react-dockmanager';
+import {
+    IgrContentPane,
+    IgrDockManager,
+    IgrDockManagerPane,
+    IgrDockManagerPaneType,
+    IgrDocumentHost,
+    IgrSplitPane,
+    IgrSplitPaneOrientation
+} from 'igniteui-react-dockmanager';
 
-export default class DockManagerOverview extends React.Component {
+function createContentPane(contentID: string, paneHeader: string): IgrContentPane {
+    const pane: IgrContentPane = {
+        // size: 150,
+        header: paneHeader,
+        type: IgrDockManagerPaneType.contentPane,
+        contentId: contentID
+    };
+    return pane;
+}
 
-    public dockManager: IgrDockManager;
+function createSplitPane(orientation: IgrSplitPaneOrientation, contentPanes: IgrDockManagerPane[], size?: number): IgrSplitPane {
+    const pane: IgrSplitPane =  {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: orientation,
+        panes: contentPanes,
+        size: size
+    };
+    return pane;
+}
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDockManager id="dockManager">
-                    <div slot="content1" className="dockManagerContent">Content 1</div>
-                    <div slot="content2" className="dockManagerContent">Content 2</div>
-                    <div slot="content3" className="dockManagerContent">Content 3</div>
-                    <div slot="content4" className="dockManagerContent">Content 4</div>
-                    <div slot="content5" className="dockManagerContent">Content 5</div>
-                    <div slot="content6" className="dockManagerContent">Content 6</div>
-                    <div slot="content7" className="dockManagerContent">Content 7</div>
-                    <div slot="content8" className="dockManagerContent">Content 8</div>
-                    <div slot="content9" className="dockManagerContent">Content 9</div>
-                </IgrDockManager>
-            </div>
-        );
-    }
-
-    public createContentPane(contentID: string, paneHeader: string): any {
-        const pane = {
-            // size: 150,
-            header: paneHeader,
-            type: IgrDockManagerPaneType.contentPane,
-            contentId: contentID
-        };
-        return pane;
-    }
-
-    public createSplitPane(orientation: IgrSplitPaneOrientation, contentPanes: any[], size?: number): any {
-        const pane =  {
+function createTabPane(orientation: IgrSplitPaneOrientation, contentPanes: IgrContentPane[], size?: number): IgrDocumentHost {
+    const pane: IgrDocumentHost =  {
+        type: IgrDockManagerPaneType.documentHost,
+        size: size,
+        rootPane: {
             type: IgrDockManagerPaneType.splitPane,
             orientation: orientation,
-            panes: contentPanes,
-            size: size
-        };
-        return pane;
-    }
+            panes: [
+                {
+                    type: IgrDockManagerPaneType.tabGroupPane,
+                    panes: contentPanes
+                }
+            ]
+        }
+    };
+    return pane;
+}
 
-    public createTabPane(orientation: IgrSplitPaneOrientation, contentPanes: any[], size?: number): any {
-        const pane =  {
-            type: IgrDockManagerPaneType.documentHost,
-            size: size,
-            rootPane: {
-                type: IgrDockManagerPaneType.splitPane,
-                orientation: orientation,
-                panes: [
-                    {
-                        type: IgrDockManagerPaneType.tabGroupPane,
-                        panes: contentPanes
-                    }
-                ]
-            }
-        };
-        return pane;
-    }
+export default function DockManagerOverview() {
+    const dockManagerRef = useRef<IgrDockManager>(null);
 
-    public componentDidMount() {
-
-        const pane1 = this.createContentPane('content1', 'Content Pane 1');
-        const pane2 = this.createContentPane('content2', 'Unpinned Pane 1');
+    // Before paint, like componentDidMount: no empty dock manager frame.
+    useLayoutEffect(() => {
+        const pane1 = createContentPane('content1', 'Content Pane 1');
+        const pane2 = createContentPane('content2', 'Unpinned Pane 1');
         pane2.isPinned = false;
 
-        const pane3 = this.createContentPane('content3', 'Document 1');
-        const pane4 = this.createContentPane('content4', 'Document 2');
+        const pane3 = createContentPane('content3', 'Document 1');
+        const pane4 = createContentPane('content4', 'Document 2');
 
-        const contentPane5 = this.createContentPane('content5', 'Unpinned Pane 2');
+        const contentPane5 = createContentPane('content5', 'Unpinned Pane 2');
         contentPane5.isPinned = false;
 
-        const pane6 = this.createContentPane('content6', 'Tab 1');
-        const pane7 = this.createContentPane('content7', 'Tab 2');
-        const pane8 = this.createContentPane('content8', 'Content Pane 2');
-        const pane9 = this.createContentPane('content9', 'Floating Pane');
+        const pane6 = createContentPane('content6', 'Tab 1');
+        const pane7 = createContentPane('content7', 'Tab 2');
+        const pane8 = createContentPane('content8', 'Content Pane 2');
+        const pane9 = createContentPane('content9', 'Floating Pane');
 
-        const tabPane1 = this.createTabPane(IgrSplitPaneOrientation.horizontal, [ pane3, pane4 ], 200);
+        const tabPane1 = createTabPane(IgrSplitPaneOrientation.horizontal, [ pane3, pane4 ], 200);
 
-        const splitPane1 = this.createSplitPane(IgrSplitPaneOrientation.vertical, [ pane1, pane2 ]);
-        const splitPane2 = this.createSplitPane(IgrSplitPaneOrientation.vertical, [ tabPane1, contentPane5 ], 200);
+        const splitPane1 = createSplitPane(IgrSplitPaneOrientation.vertical, [ pane1, pane2 ]);
+        const splitPane2 = createSplitPane(IgrSplitPaneOrientation.vertical, [ tabPane1, contentPane5 ], 200);
 
-        this.dockManager = document.getElementById("dockManager") as IgrDockManager;
-        this.dockManager.layout = {
+        dockManagerRef.current!.layout = {
             rootPane: {
                 type: IgrDockManagerPaneType.splitPane,
                 orientation: IgrSplitPaneOrientation.horizontal,
@@ -193,12 +181,27 @@ export default class DockManagerOverview extends React.Component {
                 }
             ]
         };
-    }
+    }, []);
 
+    return (
+        <div className="container sample">
+            <IgrDockManager id="dockManager" ref={dockManagerRef}>
+                <div slot="content1" className="dockManagerContent">Content 1</div>
+                <div slot="content2" className="dockManagerContent">Content 2</div>
+                <div slot="content3" className="dockManagerContent">Content 3</div>
+                <div slot="content4" className="dockManagerContent">Content 4</div>
+                <div slot="content5" className="dockManagerContent">Content 5</div>
+                <div slot="content6" className="dockManagerContent">Content 6</div>
+                <div slot="content7" className="dockManagerContent">Content 7</div>
+                <div slot="content8" className="dockManagerContent">Content 8</div>
+                <div slot="content9" className="dockManagerContent">Content 9</div>
+            </IgrDockManager>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DockManagerOverview/>);
 ```
 
@@ -667,96 +670,84 @@ igc-dockmanager::part(pane-header-maximize-button) {
 }
 ```
 ```tsx
-import React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './DockManagerStyles.css';
-import { IgrDockManager, IgrDockManagerPaneType, IgrSplitPaneOrientation } from 'igniteui-react-dockmanager';
+import {
+    IgrContentPane,
+    IgrDockManager,
+    IgrDockManagerPane,
+    IgrDockManagerPaneType,
+    IgrDocumentHost,
+    IgrSplitPane,
+    IgrSplitPaneOrientation
+} from 'igniteui-react-dockmanager';
 
-export default class DockManagerOverview extends React.Component {
+function createContentPane(contentID: string, paneHeader: string): IgrContentPane {
+    const pane: IgrContentPane = {
+        // size: 150,
+        header: paneHeader,
+        type: IgrDockManagerPaneType.contentPane,
+        contentId: contentID
+    };
+    return pane;
+}
 
-    public dockManager: IgrDockManager;
+function createSplitPane(orientation: IgrSplitPaneOrientation, contentPanes: IgrDockManagerPane[], size?: number): IgrSplitPane {
+    const pane: IgrSplitPane =  {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: orientation,
+        panes: contentPanes,
+        size: size
+    };
+    return pane;
+}
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDockManager id="dockManager">
-                    <div slot="content1" className="dockManagerContent">Content 1</div>
-                    <div slot="content2" className="dockManagerContent">Content 2</div>
-                    <div slot="content3" className="dockManagerContent">Content 3</div>
-                    <div slot="content4" className="dockManagerContent">Content 4</div>
-                    <div slot="content5" className="dockManagerContent">Content 5</div>
-                    <div slot="content6" className="dockManagerContent">Content 6</div>
-                    <div slot="content7" className="dockManagerContent">Content 7</div>
-                    <div slot="content8" className="dockManagerContent">Content 8</div>
-                    <div slot="content9" className="dockManagerContent">Content 9</div>
-                </IgrDockManager>
-            </div>
-        );
-    }
-
-    public createContentPane(contentID: string, paneHeader: string): any {
-        const pane = {
-            // size: 150,
-            header: paneHeader,
-            type: IgrDockManagerPaneType.contentPane,
-            contentId: contentID
-        };
-        return pane;
-    }
-
-    public createSplitPane(orientation: IgrSplitPaneOrientation, contentPanes: any[], size?: number): any {
-        const pane =  {
+function createTabPane(orientation: IgrSplitPaneOrientation, contentPanes: IgrContentPane[], size?: number): IgrDocumentHost {
+    const pane: IgrDocumentHost =  {
+        type: IgrDockManagerPaneType.documentHost,
+        size: size,
+        rootPane: {
             type: IgrDockManagerPaneType.splitPane,
             orientation: orientation,
-            panes: contentPanes,
-            size: size
-        };
-        return pane;
-    }
+            panes: [
+                {
+                    type: IgrDockManagerPaneType.tabGroupPane,
+                    panes: contentPanes
+                }
+            ]
+        }
+    };
+    return pane;
+}
 
-    public createTabPane(orientation: IgrSplitPaneOrientation, contentPanes: any[], size?: number): any {
-        const pane =  {
-            type: IgrDockManagerPaneType.documentHost,
-            size: size,
-            rootPane: {
-                type: IgrDockManagerPaneType.splitPane,
-                orientation: orientation,
-                panes: [
-                    {
-                        type: IgrDockManagerPaneType.tabGroupPane,
-                        panes: contentPanes
-                    }
-                ]
-            }
-        };
-        return pane;
-    }
+export default function DockManagerOverview() {
+    const dockManagerRef = useRef<IgrDockManager>(null);
 
-    public componentDidMount() {
-
-        const pane1 = this.createContentPane('content1', 'Content Pane 1');
-        const pane2 = this.createContentPane('content2', 'Unpinned Pane 1');
+    // Before paint, like componentDidMount: no empty dock manager frame.
+    useLayoutEffect(() => {
+        const pane1 = createContentPane('content1', 'Content Pane 1');
+        const pane2 = createContentPane('content2', 'Unpinned Pane 1');
         pane2.isPinned = false;
 
-        const pane3 = this.createContentPane('content3', 'Document 1');
-        const pane4 = this.createContentPane('content4', 'Document 2');
+        const pane3 = createContentPane('content3', 'Document 1');
+        const pane4 = createContentPane('content4', 'Document 2');
 
-        const contentPane5 = this.createContentPane('content5', 'Unpinned Pane 2');
+        const contentPane5 = createContentPane('content5', 'Unpinned Pane 2');
         contentPane5.isPinned = false;
 
-        const pane6 = this.createContentPane('content6', 'Tab 1');
-        const pane7 = this.createContentPane('content7', 'Tab 2');
-        const pane8 = this.createContentPane('content8', 'Content Pane 2');
-        const pane9 = this.createContentPane('content9', 'Floating Pane');
+        const pane6 = createContentPane('content6', 'Tab 1');
+        const pane7 = createContentPane('content7', 'Tab 2');
+        const pane8 = createContentPane('content8', 'Content Pane 2');
+        const pane9 = createContentPane('content9', 'Floating Pane');
 
-        const tabPane1 = this.createTabPane(IgrSplitPaneOrientation.horizontal, [ pane3, pane4 ], 200);
+        const tabPane1 = createTabPane(IgrSplitPaneOrientation.horizontal, [ pane3, pane4 ], 200);
 
-        const splitPane1 = this.createSplitPane(IgrSplitPaneOrientation.vertical, [ pane1, pane2 ]);
-        const splitPane2 = this.createSplitPane(IgrSplitPaneOrientation.vertical, [ tabPane1, contentPane5 ], 200);
+        const splitPane1 = createSplitPane(IgrSplitPaneOrientation.vertical, [ pane1, pane2 ]);
+        const splitPane2 = createSplitPane(IgrSplitPaneOrientation.vertical, [ tabPane1, contentPane5 ], 200);
 
-        this.dockManager = document.getElementById("dockManager") as IgrDockManager;
-        this.dockManager.layout = {
+        dockManagerRef.current!.layout = {
             rootPane: {
                 type: IgrDockManagerPaneType.splitPane,
                 orientation: IgrSplitPaneOrientation.horizontal,
@@ -802,12 +793,27 @@ export default class DockManagerOverview extends React.Component {
                 }
             ]
         };
-    }
+    }, []);
 
+    return (
+        <div className="container sample">
+            <IgrDockManager id="dockManager" ref={dockManagerRef}>
+                <div slot="content1" className="dockManagerContent">Content 1</div>
+                <div slot="content2" className="dockManagerContent">Content 2</div>
+                <div slot="content3" className="dockManagerContent">Content 3</div>
+                <div slot="content4" className="dockManagerContent">Content 4</div>
+                <div slot="content5" className="dockManagerContent">Content 5</div>
+                <div slot="content6" className="dockManagerContent">Content 6</div>
+                <div slot="content7" className="dockManagerContent">Content 7</div>
+                <div slot="content8" className="dockManagerContent">Content 8</div>
+                <div slot="content9" className="dockManagerContent">Content 9</div>
+            </IgrDockManager>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DockManagerOverview/>);
 ```
 
@@ -851,8 +857,8 @@ The following table describes all CSS variables used for styling the dock-manage
 | `--igc-tab-text-active`                | The text color of the selected tab header component. |
 | `--igc-tab-background-active`          | The background color of the selected tab header component. |
 | `--igc-tab-border-color-active`        | The border color of the selected tab header component. |
-| `--igc-pinned-header-background`       | The background color of the unpinned pane header component. |
-| `--igc-pinned-header-text`             | The text color of the unpinned pane header component. |
+| `--igc-unpinned-header-background`     | The background color of the unpinned pane header component. |
+| `--igc-unpinned-header-text`           | The text color of the unpinned pane header component. |
 | `--igc-splitter-background`            | The background color of the splitter component. |
 | `--igc-splitter-handle`                | The background color of the splitter handle. |
 | `--igc-button-text`                    | The color of the buttons inside the pane header actions part. |
@@ -1143,7 +1149,7 @@ igc-card-content {
 }
 ```
 ```tsx
-import React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './DockManagerStyles.css';
@@ -1151,6 +1157,7 @@ import {
     IgrDockManager,
     IgrContentPane,
     IgrDockManagerLayout,
+    IgrDockManagerPane,
     IgrDockManagerPaneType,
     IgrSplitPane,
     IgrSplitPaneOrientation,
@@ -1162,776 +1169,772 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 const arrowDown = "<svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M7 10l5 5 5-5H7z'/></svg>";
 const arrowUp = "<svg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M7 14l5-5 5 5H7z'/></svg>";
 
-export default class DockManagerStyling extends React.Component {
+registerIconFromText("arrow-down", arrowDown, "material");
+registerIconFromText("arrow-up", arrowUp, "material");
 
-    public dockManager: IgrDockManager;
-    public layouts: any[];
+// Split pane whose `panes` is never null, so the layout builders can push to it
+type SplitPane = IgrSplitPane & { panes: IgrDockManagerPane[] };
 
-    constructor(props: any){        
-        super(props);        
-        this.onSampleResize = this.onSampleResize.bind(this);   
-        registerIconFromText("arrow-down", arrowDown, "material");
-        registerIconFromText("arrow-up", arrowUp, "material");
+function getContentPane(header: string, contentId: string, headerId: string, floatingHeaderId: string): IgrContentPane {
+    const pane: IgrContentPane = {
+        type: IgrDockManagerPaneType.contentPane,
+        header: header,
+        contentId: contentId,
+        headerId: headerId,
+        floatingHeaderId: floatingHeaderId,
+        isPinned: true,
+        allowMaximize: false,
+        allowPinning: false,
+        allowClose: false
+    };
+            
+    return pane;
+}
+
+function getLayout1() : IgrDockManagerLayout{
+
+    const accountPane = getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
+    const topMoversPane = getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");        
+    const transactionsPane = getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
+    const popularStocksPane = getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
+    const cardsPane = getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");        
+
+    const splitPane1: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        panes: []
+    };        
+
+    const splitPane2: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []
+    };
+
+    const splitPane3: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        size: 300,
+        panes: []
+    };
+
+    //AccountPane, CardsPane
+    const splitPane4: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []                 
+    };
+
+    //TransactionsPane
+    const splitPane5: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []
+    };
+
+    //Top Movers
+    const splitPane6: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        size: 130,
+        panes: []
+    };
+
+    //Popular Stocks
+    const splitPane7: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 200,
+        panes: []
+    };
+
+    splitPane4.panes.push(accountPane);
+    splitPane4.panes.push(cardsPane);
+
+    splitPane5.panes.push(transactionsPane);
+
+    splitPane6.panes.push(topMoversPane);
+
+    splitPane7.panes.push(popularStocksPane);
+
+    splitPane3.panes.push(splitPane4);
+    splitPane3.panes.push(splitPane5);
+
+    splitPane2.panes.push(splitPane3);
+    splitPane2.panes.push(splitPane6);
+
+    splitPane1.panes.push(splitPane2);
+    splitPane1.panes.push(splitPane7);
+
+    const layout: IgrDockManagerLayout = {
+        rootPane: splitPane1
     }
 
-    public render(): JSX.Element {
-        return (
-            <div id="sampleContainer" className="container sample">
-                <IgrDockManager id="dockManager" style={{height: "100%", width: "100%"}}>
-                    <div slot="accountHeader" className="header">
-                        <span>ACCOUNTS</span>
-                        {/* <menu-component></menu-component> */}
-                    </div>
-                    <div slot="accountFloatingHeader" className="floatingHeader">
-                        <span>ACCOUNTS</span>
-                        <button id="close" className="closeButton">
-                            <IgrIcon name="close" />
-                        </button>
-                    </div>
-                    <div className="dockManagerFull" slot="content1">
-                        <IgrCard className="auto-y-overflow" elevated>
-                            <IgrCardContent>
-                                <div className="account-content">
-                                    <div>
-                                        <h1>$2980.00</h1>
-                                        <span className="usd-caption">United States Dollar</span>
-                                    </div>
+    return layout;
+}
 
-                                    <IgrAvatar className="margin-avatar size-medium" src="https://dl.infragistics.com/x/img/flags/USA.png" shape="rounded">
-                                            <span>USA</span>
-                                    </IgrAvatar>
+function getLayout2() : IgrDockManagerLayout
+{
+    const accountPane = getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
+    const topMoversPane = getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");        
+    const transactionsPane = getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
+    const popularStocksPane = getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
+    const cardsPane = getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");        
+
+
+    const splitPane1: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        panes: []
+    };
+
+    const splitPane2: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []
+    };
+
+    const splitPane3: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        size: 300,
+        panes: []
+    };
+
+    //Transactions Pane, TGP1
+    const splitPane4: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []
+    };
+
+    //Popular Stocks Pane
+    const splitPane5: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        size: 300,
+        panes: []
+    };
+
+    //Top Movers
+    const splitPane6: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.horizontal,
+        size: 130,
+        panes: []
+    };
+
+    //AccountPane, CardsPane
+    const tabGroupPane1: IgrTabGroupPane =
+    {
+        type: IgrDockManagerPaneType.tabGroupPane,
+        size: 100,
+        panes: []
+    };
+
+    tabGroupPane1.panes.push(accountPane);
+    tabGroupPane1.panes.push(cardsPane);
+
+    splitPane4.panes.push(tabGroupPane1);
+    splitPane4.panes.push(transactionsPane);
+
+    splitPane5.panes.push(popularStocksPane);
+
+    splitPane6.panes.push(topMoversPane);
+
+    splitPane3.panes.push(splitPane4);
+    splitPane3.panes.push(splitPane5);
+
+    splitPane2.panes.push(splitPane3);
+    splitPane2.panes.push(splitPane6);
+
+    splitPane1.panes.push(splitPane2);
+
+    const layout: IgrDockManagerLayout = {
+        rootPane: splitPane1
+    };        
+
+    return layout;
+}
+
+function getLayout3() : IgrDockManagerLayout
+{
+    const accountPane = getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
+    const topMoversPane = getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");
+    const transactionsPane = getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
+    const popularStocksPane = getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
+    const cardsPane = getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");
+
+    const splitPane1: SplitPane =
+    {
+        type: IgrDockManagerPaneType.splitPane,
+        orientation: IgrSplitPaneOrientation.vertical,
+        panes: []
+    };
+
+    const tabGroupPane1: IgrTabGroupPane =
+    {
+        type: IgrDockManagerPaneType.tabGroupPane,
+        size: 200,
+        panes: []
+    };
+
+    const tabGroupPane2: IgrTabGroupPane =
+    {
+        type: IgrDockManagerPaneType.tabGroupPane,
+        size: 300,
+        panes: []
+    };
+
+    tabGroupPane1.panes.push(accountPane);
+    tabGroupPane1.panes.push(cardsPane);
+    tabGroupPane1.panes.push(transactionsPane);
+
+    tabGroupPane2.panes.push(popularStocksPane);
+    tabGroupPane2.panes.push(topMoversPane);
+
+    splitPane1.panes.push(tabGroupPane1);
+    splitPane1.panes.push(tabGroupPane2);
+
+    const layout: IgrDockManagerLayout = {
+        rootPane: splitPane1
+    };        
+
+    return layout;
+}
+
+export default function DockManagerStyling() {
+    const dockManagerRef = useRef<IgrDockManager>(null);
+
+    // Before paint, like componentDidMount: no empty dock manager frame.
+    useLayoutEffect(() => {
+
+        const layout1: IgrDockManagerLayout = getLayout1();
+        const layout2: IgrDockManagerLayout = getLayout2();
+        const layout3: IgrDockManagerLayout = getLayout3();
+        const layouts = [layout1, layout2, layout3];
+
+        const dockManager = dockManagerRef.current!;
+
+        // Picks a layout per sample width breakpoint
+        function onSampleResize() {
+            const width = dockManager.offsetWidth;
+
+            if (width > 1200) {
+                dockManager.layout = layouts[0];
+            }
+            if (width <= 1200) {
+                dockManager.layout = layouts[1];
+            }
+            if (width <= 800) {
+                dockManager.layout = layouts[2];
+            }
+        }
+
+        window.onresize = onSampleResize;
+
+        dockManager.layout = layout1;
+    }, []);
+
+    return (
+        <div id="sampleContainer" className="container sample">
+            <IgrDockManager id="dockManager" ref={dockManagerRef} style={{height: "100%", width: "100%"}}>
+                <div slot="accountHeader" className="header">
+                    <span>ACCOUNTS</span>
+                    {/* <menu-component></menu-component> */}
+                </div>
+                <div slot="accountFloatingHeader" className="floatingHeader">
+                    <span>ACCOUNTS</span>
+                    <button id="close" className="closeButton">
+                        <IgrIcon name="close" />
+                    </button>
+                </div>
+                <div className="dockManagerFull" slot="content1">
+                    <IgrCard className="auto-y-overflow" elevated>
+                        <IgrCardContent>
+                            <div className="account-content">
+                                <div>
+                                    <h1>$2980.00</h1>
+                                    <span className="usd-caption">United States Dollar</span>
                                 </div>
-                            </IgrCardContent>
 
-                            <IgrCardActions>
-                                <div style={{display: "flex"}}>
-                                    <div slot="start">
-                                        <IgrButton className="size-medium" variant="fab">
-                                            <span>Add Money</span>
-                                        </IgrButton>
-                                    </div>
-                                    <div slot="start">
-                                        <IgrButton className="size-medium" variant="fab">
-                                            <span>Send</span>
-                                        </IgrButton>
-                                    </div>
+                                <IgrAvatar className="margin-avatar size-medium" src="https://dl.infragistics.com/x/img/flags/USA.png" shape="rounded">
+                                        <span>USA</span>
+                                </IgrAvatar>
+                            </div>
+                        </IgrCardContent>
+
+                        <IgrCardActions>
+                            <div style={{display: "flex"}}>
+                                <div slot="start">
+                                    <IgrButton className="size-medium" variant="fab">
+                                        <span>Add Money</span>
+                                    </IgrButton>
                                 </div>
-                            </IgrCardActions>
-                        </IgrCard>
-                    </div>
+                                <div slot="start">
+                                    <IgrButton className="size-medium" variant="fab">
+                                        <span>Send</span>
+                                    </IgrButton>
+                                </div>
+                            </div>
+                        </IgrCardActions>
+                    </IgrCard>
+                </div>
 
-                    <div slot="todayTopMovers" className="header">
-                        <span>TODAY&apos;S TOP MOVERS</span>
-                        {/* <menu-component></menu-component> */}
+                <div slot="todayTopMovers" className="header">
+                    <span>TODAY&apos;S TOP MOVERS</span>
+                    {/* <menu-component></menu-component> */}
+                </div>
+                <div slot="todayTopMoversFloatingHeader" className="floatingHeader">
+                    <span>TODAY&apos;S TOP MOVERS </span>
+                    <button id="close" className="closeButton">
+                        <IgrIcon name="close" />
+                    </button>
+                </div>
+                <div className="dockManagerFull" style={{overflowY: "scroll"}} slot="content2">
+                    <div className="top-movers-content size-large">
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/TSLA.png" shape="circle">
+                                <span>TSLA</span>
+                            </IgrAvatar>
+                            <span>1017,08$</span>
+                            <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,54%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMC.png" shape="circle">
+                                <span>AMC</span>
+                            </IgrAvatar>
+                            <span>39,33$</span>
+                            <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,72%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GOEV.png" shape="circle">
+                                <span>GOEV</span>
+                            </IgrAvatar>
+                            <span>12,33$</span>
+                            <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>45,92%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/LCID.png" shape="circle">
+                                <span>LCID</span>
+                            </IgrAvatar>
+                            <span>58,14$</span>
+                            <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>29,42%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/NIO.png" shape="circle">
+                                <span>NIO</span>
+                            </IgrAvatar>
+                            <span>21,67$</span>
+                            <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>7,25%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/STNE.png" shape="circle">
+                                <span>STNE</span>
+                            </IgrAvatar>
+                            <span>22,48$</span>
+                            <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>28,68%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/ROKU.png" shape="circle">
+                                <span>ROKU</span>
+                            </IgrAvatar>
+                            <span>249,35$</span>
+                            <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>9,5%</div>
+                        </div>
+                        <div className="top-move-stock-item">
+                            <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/MAXR.png" shape="circle">
+                                <span>MAXR</span>
+                            </IgrAvatar>
+                            <span>33,14$</span>
+                            <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>8,12%</div>
+                        </div>
                     </div>
-                    <div slot="todayTopMoversFloatingHeader" className="floatingHeader">
-                        <span>TODAY&apos;S TOP MOVERS </span>
-                        <button id="close" className="closeButton">
-                            <IgrIcon name="close" />
-                        </button>
-                    </div>
-                    <div className="dockManagerFull" style={{overflowY: "scroll"}} slot="content2">
-                        <div className="top-movers-content size-large">
-                            <div className="top-move-stock-item">
+                </div>
+                <div slot="transactionsHeader" className="header">
+                    <span>TRANSACTIONS</span>
+                    {/* <menu-component></menu-component> */}
+                </div>
+                <div slot="transactionsFloatingHeader" className="floatingHeader">
+                    <span>TRANSACTIONS</span>
+                    <button id="close" className="closeButton">
+                        <IgrIcon name="close" />
+                    </button>
+                </div>
+                <div className="dockManagerFull" slot="content3" >
+                    <IgrList id="list" className="auto-y-overflow">
+                        <IgrListItem>
+                            <div slot="start" >
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-2.svg" shape="circle">
+                                    <span>AMZN</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Money added via **0000</h2>
+                            <span slot="subtitle">14:40</span>
+                            <div slot="end" className="stock-price">
+                                <span>+ 2000$</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-only.svg" shape="circle">
+                                    <span>SET</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Sports Event Tickets</h2>
+                            <span slot="subtitle">Jun 21, 06:15, Declined because your card is inactive</span>
+                            <div slot="end" className="stock-price">
+                                <span className="line-through">1017,08 $</span>
+                                <span className="light-gray-caption">900,08 $</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start" >
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-only.svg" shape="circle">
+                                    <span>AT</span>
+                                </IgrAvatar>
+                            </div>                                
+                            <h2 slot="title">Airplane Tickets</h2>
+                            <span slot="subtitle">Jun 21, 06:15, Declined because your card is inactive</span>
+                            <div slot="end" className="stock-price">
+                                <span className="line-through">985,00 $</span>
+                                <span className="light-gray-caption">980,00 $</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start" >
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/building.svg" shape="circle">
+                                    <span>H</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Hotel</h2>
+                            <span slot="subtitle">Jun 21, 06:15</span>
+                            <div slot="end" className="stock-price">
+                                <span>- 400,00 $</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/atm.svg" shape="circle">
+                                    <span>ATM</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Cash at ATM 000000</h2>
+                            <span slot="subtitle">14:40</span>
+                            <div slot="end" className="stock-price">
+                                <span>- 140$</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-1.svg" shape="circle">
+                                    <span>U</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Utilities</h2>
+                            <span slot="subtitle">21/06/2021 16:00</span>
+                            <div slot="end" className="stock-price">
+                                <span>- 200$</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/atm.svg" shape="circle">
+                                    <span>ATM</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Cash at ATM 000001</h2>
+                            <span slot="subtitle">10:10</span>
+                            <div slot="end" className="stock-price">
+                                <span>- 280$</span>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start" >
+                                <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-2.svg" shape="circle">
+                                    <span>MA</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Money added via **0000</h2>
+                            <span slot="subtitle">14:40</span>
+                            <div slot="end" className="stock-price">
+                                <span>+ 2000$</span>
+                            </div>
+                        </IgrListItem>
+                    </IgrList>
+                </div>
+
+                <div slot="popularStocksHeader" className="header">
+                    <span>POPULAR STOCKS</span>
+                    {/* <menu-component></menu-component> */}
+                </div>
+                <div slot="popularStocksFloatingHeader" className="floatingHeader">
+                    <span>POPULAR STOCKS</span>
+                    <button id="close" className="closeButton">
+                        <IgrIcon name="close" />
+                    </button>
+                </div>
+                <div className="dockManagerFull" slot="content4">
+                    <IgrList id="list" className="auto-y-overflow">
+                        <IgrListItem>
+                            <div slot="start">
                                 <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/TSLA.png" shape="circle">
                                     <span>TSLA</span>
                                 </IgrAvatar>
-                                <span>1017,08$</span>
+                            </div>
+                            <h2 slot="title">Tesla</h2>
+                            <span slot="subtitle">TSLA - Electric Vehicles</span>
+                            <div slot="end" className="stock-price">
+                                <span>1017,08 $</span>
                                 <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,54%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMC.png" shape="circle">
-                                    <span>AMC</span>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/APPL.png" shape="circle">
+                                    <span>APPL</span>
                                 </IgrAvatar>
-                                <span>39,33$</span>
-                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,72%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GOEV.png" shape="circle">
-                                    <span>GOEV</span>
-                                </IgrAvatar>
-                                <span>12,33$</span>
-                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>45,92%</div>
+                            <h2 slot="title">Apple</h2>
+                            <span slot="subtitle">APPL - iPhones and Macs</span>
+                            <div slot="end" className="stock-price">
+                                <span>150,47 $</span>
+                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>0,2%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/LCID.png" shape="circle">
-                                    <span>LCID</span>
-                                </IgrAvatar>
-                                <span>58,14$</span>
-                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>29,42%</div>
-                            </div>
-                            <div className="top-move-stock-item">
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
                                 <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/NIO.png" shape="circle">
                                     <span>NIO</span>
                                 </IgrAvatar>
-                                <span>21,67$</span>
+                            </div>
+                            <h2 slot="title">NIO</h2>
+                            <span slot="subtitle">NIO - Electric Vehicles</span>
+                            <div slot="end" className="stock-price">
+                                <span>40,07 $</span>
                                 <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>7,25%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/STNE.png" shape="circle">
-                                    <span>STNE</span>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMZN.png" shape="circle">
+                                    <span>AMZN</span>
                                 </IgrAvatar>
-                                <span>22,48$</span>
-                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>28,68%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/ROKU.png" shape="circle">
-                                    <span>ROKU</span>
+                            <h2 slot="title">Amazon</h2>
+                            <span slot="subtitle">AMZN - E-Commerce</span>
+                            <div slot="end" className="stock-price">
+                                <span>3582,32 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>2,68%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GME.png" shape="circle">
+                                    <span>GME</span>
                                 </IgrAvatar>
-                                <span>249,35$</span>
-                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>9,5%</div>
                             </div>
-                            <div className="top-move-stock-item">
-                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/MAXR.png" shape="circle">
-                                    <span>MAXR</span>
+                            <h2 slot="title">Game Stop</h2>
+                            <span slot="subtitle">GME - Video Games Retail</span>
+                            <div slot="end" className="stock-price">
+                                <span>205,60 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>5,96%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMC.png" shape="circle">
+                                    <span>AMC</span>
                                 </IgrAvatar>
-                                <span>33,14$</span>
-                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>8,12%</div>
                             </div>
-                        </div>
-                    </div>
-                    <div slot="transactionsHeader" className="header">
-                        <span>TRANSACTIONS</span>
-                        {/* <menu-component></menu-component> */}
-                    </div>
-                    <div slot="transactionsFloatingHeader" className="floatingHeader">
-                        <span>TRANSACTIONS</span>
-                        <button id="close" className="closeButton">
-                            <IgrIcon name="close" />
-                        </button>
-                    </div>
-                    <div className="dockManagerFull" slot="content3" >
-                        <IgrList id="list" className="auto-y-overflow">
-                            <IgrListItem>
-                                <div slot="start" >
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-2.svg" shape="circle">
-                                        <span>AMZN</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Money added via **0000</h2>
-                                <span slot="subtitle">14:40</span>
-                                <div slot="end" className="stock-price">
-                                    <span>+ 2000$</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-only.svg" shape="circle">
-                                        <span>SET</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Sports Event Tickets</h2>
-                                <span slot="subtitle">Jun 21, 06:15, Declined because your card is inactive</span>
-                                <div slot="end" className="stock-price">
-                                    <span className="line-through">1017,08 $</span>
-                                    <span className="light-gray-caption">900,08 $</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start" >
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-only.svg" shape="circle">
-                                        <span>AT</span>
-                                    </IgrAvatar>
-                                </div>                                
-                                <h2 slot="title">Airplane Tickets</h2>
-                                <span slot="subtitle">Jun 21, 06:15, Declined because your card is inactive</span>
-                                <div slot="end" className="stock-price">
-                                    <span className="line-through">985,00 $</span>
-                                    <span className="light-gray-caption">980,00 $</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start" >
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/building.svg" shape="circle">
-                                        <span>H</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Hotel</h2>
-                                <span slot="subtitle">Jun 21, 06:15</span>
-                                <div slot="end" className="stock-price">
-                                    <span>- 400,00 $</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/atm.svg" shape="circle">
-                                        <span>ATM</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Cash at ATM 000000</h2>
-                                <span slot="subtitle">14:40</span>
-                                <div slot="end" className="stock-price">
-                                    <span>- 140$</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-1.svg" shape="circle">
-                                        <span>U</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Utilities</h2>
-                                <span slot="subtitle">21/06/2021 16:00</span>
-                                <div slot="end" className="stock-price">
-                                    <span>- 200$</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/atm.svg" shape="circle">
-                                        <span>ATM</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Cash at ATM 000001</h2>
-                                <span slot="subtitle">10:10</span>
-                                <div slot="end" className="stock-price">
-                                    <span>- 280$</span>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start" >
-                                    <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/cash-2.svg" shape="circle">
-                                        <span>MA</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Money added via **0000</h2>
-                                <span slot="subtitle">14:40</span>
-                                <div slot="end" className="stock-price">
-                                    <span>+ 2000$</span>
-                                </div>
-                            </IgrListItem>
-                        </IgrList>
-                    </div>
+                            <h2 slot="title">AMC</h2>
+                            <span slot="subtitle">AMC - Entertainment</span>
+                            <div slot="end" className="stock-price">
+                                <span>39,33 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,72%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/MSFT.png" shape="circle">
+                                    <span>MSFT</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Microsoft</h2>
+                            <span slot="subtitle">MSFT - Tech Giant</span>
+                            <div slot="end" className="stock-price">
+                                <span>335,66 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,39%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/SPCE.png" shape="circle">
+                                    <span>SPCE</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Virgin Galactic</h2>
+                            <span slot="subtitle">SPCE - Space Tourism</span>
+                            <div slot="end" className="stock-price">
+                                <span>18,90 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>1,66%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/PFE.png" shape="circle">
+                                    <span>PFE</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Pfizer</h2>
+                            <span slot="subtitle">PFE - Pharmaceuticals</span>
+                            <div slot="end" className="stock-price">
+                                <span>49,43 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,60%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GOOGL.png" shape="circle">
+                                    <span>GOOGL</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Alpabet (Class A)</h2>
+                            <span slot="subtitle">GOOGL - Tech Giant</span>
+                            <div slot="end" className="stock-price">
+                                <span>2972,88 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,02%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/META.png" shape="circle">
+                                    <span>META</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Meta Platforms</h2>
+                            <span slot="subtitle">FB - Tech Giant</span>
+                            <div slot="end" className="stock-price">
+                                <span>347,86 $</span>
+                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>2,04%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/PLTR.png" shape="circle">
+                                    <span>PLTR</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Palantir</h2>
+                            <span slot="subtitle">PLTR - Data Analytics</span>
+                            <div slot="end" className="stock-price">
+                                <span>23,30 $</span>
+                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>2,06%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AAL.png" shape="circle">
+                                    <span>AAL</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">American Airlines</h2>
+                            <span slot="subtitle">AAL - Airline Service</span>
+                            <div slot="end" className="stock-price">
+                                <span>20,45 $</span>
+                                <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>0.79%</div>
+                            </div>
+                        </IgrListItem>
+                        <IgrListItem>
+                            <div slot="start">
+                                <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/NFLX.png" shape="circle">
+                                    <span>NFLX</span>
+                                </IgrAvatar>
+                            </div>
+                            <h2 slot="title">Netflix</h2>
+                            <span slot="subtitle">NFLX - TV Streaming</span>
+                            <div slot="end" className="stock-price">
+                                <span>679,39 $</span>
+                                <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,47%</div>
+                            </div>
+                        </IgrListItem>
+                    </IgrList>
+                </div>
 
-                    <div slot="popularStocksHeader" className="header">
-                        <span>POPULAR STOCKS</span>
-                        {/* <menu-component></menu-component> */}
-                    </div>
-                    <div slot="popularStocksFloatingHeader" className="floatingHeader">
-                        <span>POPULAR STOCKS</span>
-                        <button id="close" className="closeButton">
-                            <IgrIcon name="close" />
-                        </button>
-                    </div>
-                    <div className="dockManagerFull" slot="content4">
-                        <IgrList id="list" className="auto-y-overflow">
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/TSLA.png" shape="circle">
-                                        <span>TSLA</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Tesla</h2>
-                                <span slot="subtitle">TSLA - Electric Vehicles</span>
-                                <div slot="end" className="stock-price">
-                                    <span>1017,08 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,54%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/APPL.png" shape="circle">
-                                        <span>APPL</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Apple</h2>
-                                <span slot="subtitle">APPL - iPhones and Macs</span>
-                                <div slot="end" className="stock-price">
-                                    <span>150,47 $</span>
-                                    <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>0,2%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/NIO.png" shape="circle">
-                                        <span>NIO</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">NIO</h2>
-                                <span slot="subtitle">NIO - Electric Vehicles</span>
-                                <div slot="end" className="stock-price">
-                                    <span>40,07 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>7,25%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMZN.png" shape="circle">
-                                        <span>AMZN</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Amazon</h2>
-                                <span slot="subtitle">AMZN - E-Commerce</span>
-                                <div slot="end" className="stock-price">
-                                    <span>3582,32 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>2,68%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GME.png" shape="circle">
-                                        <span>GME</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Game Stop</h2>
-                                <span slot="subtitle">GME - Video Games Retail</span>
-                                <div slot="end" className="stock-price">
-                                    <span>205,60 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>5,96%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AMC.png" shape="circle">
-                                        <span>AMC</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">AMC</h2>
-                                <span slot="subtitle">AMC - Entertainment</span>
-                                <div slot="end" className="stock-price">
-                                    <span>39,33 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>12,72%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/MSFT.png" shape="circle">
-                                        <span>MSFT</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Microsoft</h2>
-                                <span slot="subtitle">MSFT - Tech Giant</span>
-                                <div slot="end" className="stock-price">
-                                    <span>335,66 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,39%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/SPCE.png" shape="circle">
-                                        <span>SPCE</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Virgin Galactic</h2>
-                                <span slot="subtitle">SPCE - Space Tourism</span>
-                                <div slot="end" className="stock-price">
-                                    <span>18,90 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>1,66%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/PFE.png" shape="circle">
-                                        <span>PFE</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Pfizer</h2>
-                                <span slot="subtitle">PFE - Pharmaceuticals</span>
-                                <div slot="end" className="stock-price">
-                                    <span>49,43 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,60%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/GOOGL.png" shape="circle">
-                                        <span>GOOGL</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Alpabet (Class A)</h2>
-                                <span slot="subtitle">GOOGL - Tech Giant</span>
-                                <div slot="end" className="stock-price">
-                                    <span>2972,88 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,02%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/META.png" shape="circle">
-                                        <span>META</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Meta Platforms</h2>
-                                <span slot="subtitle">FB - Tech Giant</span>
-                                <div slot="end" className="stock-price">
-                                    <span>347,86 $</span>
-                                    <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>2,04%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/PLTR.png" shape="circle">
-                                        <span>PLTR</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Palantir</h2>
-                                <span slot="subtitle">PLTR - Data Analytics</span>
-                                <div slot="end" className="stock-price">
-                                    <span>23,30 $</span>
-                                    <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>2,06%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/AAL.png" shape="circle">
-                                        <span>AAL</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">American Airlines</h2>
-                                <span slot="subtitle">AAL - Airline Service</span>
-                                <div slot="end" className="stock-price">
-                                    <span>20,45 $</span>
-                                    <div className="stock-item-movement-up"><IgrIcon name="arrow-up" collection="material"></IgrIcon>0.79%</div>
-                                </div>
-                            </IgrListItem>
-                            <IgrListItem>
-                                <div slot="start">
-                                    <IgrAvatar src="https://dl.infragistics.com/x/img/logo/company/NFLX.png" shape="circle">
-                                        <span>NFLX</span>
-                                    </IgrAvatar>
-                                </div>
-                                <h2 slot="title">Netflix</h2>
-                                <span slot="subtitle">NFLX - TV Streaming</span>
-                                <div slot="end" className="stock-price">
-                                    <span>679,39 $</span>
-                                    <div className="stock-item-movement-down"><IgrIcon name="arrow-down" collection="material"></IgrIcon>0,47%</div>
-                                </div>
-                            </IgrListItem>
-                        </IgrList>
-                    </div>
+                <div slot="cardsHeader" className="header">
+                    <span>PHYSICAL CARDS</span>
+                    {/* <menu-component></menu-component> */}
+                </div>
+                <div slot="cardsFloatingHeader" className="floatingHeader">
+                    <span>TODAY&apos;S TOP MOVERS</span>
+                    <button id="close" className="closeButton">
+                        <IgrIcon name="close" />
+                    </button>
+                </div>
+                <div className="dockManagerFull" slot="content5">
+                    <IgrCard className="auto-y-overflow" elevated>
+                        <IgrCardContent>                                
+                            <IgrButton className="add-card-btn size-small" variant="flat">
+                                <span>+ Add Card</span>
+                            </IgrButton>                                
+                            <IgrList id="list" className="auto-y-overflow">
+                                <IgrListItem>
+                                    <div slot="start">
+                                        <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/mastercard.svg" shape="circle">
+                                            <span>MC</span>
+                                        </IgrAvatar>
+                                    </div>
+                                    <h2 slot="title">Standard **0000</h2>
+                                    <span slot="subtitle">Expires on 11/26</span>
+                                </IgrListItem>
+                                <IgrListItem>
+                                    <div slot="start">
+                                        <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/visa.svg" shape="circle">
+                                            <span>VISA</span>
+                                        </IgrAvatar>
+                                    </div>
+                                    <h2 slot="title">Rose gold **0000</h2>
+                                    <span slot="subtitle">Expires on 11/24</span>
+                                </IgrListItem>
+                                <IgrListItem>
+                                    <div slot="start" >
+                                        <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/visa.svg" shape="circle">
+                                            <span>VISA</span>
+                                        </IgrAvatar>
+                                    </div>
+                                    <h2 slot="title">Virtual card **0000</h2>
+                                    <span slot="subtitle">Expires on 10/22</span>
+                                </IgrListItem>
+                            </IgrList>
+                        </IgrCardContent>
 
-                    <div slot="cardsHeader" className="header">
-                        <span>PHYSICAL CARDS</span>
-                        {/* <menu-component></menu-component> */}
-                    </div>
-                    <div slot="cardsFloatingHeader" className="floatingHeader">
-                        <span>TODAY&apos;S TOP MOVERS</span>
-                        <button id="close" className="closeButton">
-                            <IgrIcon name="close" />
-                        </button>
-                    </div>
-                    <div className="dockManagerFull" slot="content5">
-                        <IgrCard className="auto-y-overflow" elevated>
-                            <IgrCardContent>                                
-                                <IgrButton className="add-card-btn size-small" variant="flat">
-                                    <span>+ Add Card</span>
-                                </IgrButton>                                
-                                <IgrList id="list" className="auto-y-overflow">
-                                    <IgrListItem>
-                                        <div slot="start">
-                                            <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/mastercard.svg" shape="circle">
-                                                <span>MC</span>
-                                            </IgrAvatar>
-                                        </div>
-                                        <h2 slot="title">Standard **0000</h2>
-                                        <span slot="subtitle">Expires on 11/26</span>
-                                    </IgrListItem>
-                                    <IgrListItem>
-                                        <div slot="start">
-                                            <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/visa.svg" shape="circle">
-                                                <span>VISA</span>
-                                            </IgrAvatar>
-                                        </div>
-                                        <h2 slot="title">Rose gold **0000</h2>
-                                        <span slot="subtitle">Expires on 11/24</span>
-                                    </IgrListItem>
-                                    <IgrListItem>
-                                        <div slot="start" >
-                                            <IgrAvatar src="https://raw.githubusercontent.com/IgniteUI/material-icons-extended/363c7f3e2da72df5fc2eb63b762a4e69f6fbc603/src/svgs/visa.svg" shape="circle">
-                                                <span>VISA</span>
-                                            </IgrAvatar>
-                                        </div>
-                                        <h2 slot="title">Virtual card **0000</h2>
-                                        <span slot="subtitle">Expires on 10/22</span>
-                                    </IgrListItem>
-                                </IgrList>
-                            </IgrCardContent>
-
-                        </IgrCard>
-                    </div>
-                </IgrDockManager>
-            </div>
-        );
-    }
-
-    public getContentPane(header: string, contentId: string, headerId: string, floatingHeaderId: string): IgrContentPane {
-        const pane: IgrContentPane = {
-            type: IgrDockManagerPaneType.contentPane,
-            header: header,
-            contentId: contentId,
-            headerId: headerId,
-            floatingHeaderId: floatingHeaderId,
-            isPinned: true,
-            allowMaximize: false,
-            allowPinning: false,
-            allowClose: false
-        };
-                
-        return pane;
-    }
-
-    public getLayout1() : IgrDockManagerLayout{
-
-        const accountPane = this.getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
-        const topMoversPane = this.getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");        
-        const transactionsPane = this.getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
-        const popularStocksPane = this.getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
-        const cardsPane = this.getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");        
-
-        const splitPane1: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            panes: []
-        };        
-
-        const splitPane2: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []
-        };
-
-        const splitPane3: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            size: 300,
-            panes: []
-        };
-
-        //AccountPane, CardsPane
-        const splitPane4: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []                 
-        };
-
-        //TransactionsPane
-        const splitPane5: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []
-        };
-
-        //Top Movers
-        const splitPane6: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            size: 130,
-            panes: []
-        };
-
-        //Popular Stocks
-        const splitPane7: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 200,
-            panes: []
-        };
-
-        splitPane4.panes.push(accountPane);
-        splitPane4.panes.push(cardsPane);
-
-        splitPane5.panes.push(transactionsPane);
-
-        splitPane6.panes.push(topMoversPane);
-
-        splitPane7.panes.push(popularStocksPane);
-
-        splitPane3.panes.push(splitPane4);
-        splitPane3.panes.push(splitPane5);
-
-        splitPane2.panes.push(splitPane3);
-        splitPane2.panes.push(splitPane6);
-
-        splitPane1.panes.push(splitPane2);
-        splitPane1.panes.push(splitPane7);
-
-        const layout: IgrDockManagerLayout = {
-            rootPane: splitPane1
-        }
-
-        return layout;
-    }
-
-    public getLayout2() : IgrDockManagerLayout
-    {
-        const accountPane = this.getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
-        const topMoversPane = this.getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");        
-        const transactionsPane = this.getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
-        const popularStocksPane = this.getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
-        const cardsPane = this.getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");        
-
-
-        const splitPane1: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            panes: []
-        };
-
-        const splitPane2: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []
-        };
-
-        const splitPane3: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            size: 300,
-            panes: []
-        };
-
-        //Transactions Pane, TGP1
-        const splitPane4: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []
-        };
-
-        //Popular Stocks Pane
-        const splitPane5: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            size: 300,
-            panes: []
-        };
-
-        //Top Movers
-        const splitPane6: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.horizontal,
-            size: 130,
-            panes: []
-        };
-
-        //AccountPane, CardsPane
-        const tabGroupPane1: IgrTabGroupPane =
-        {
-            type: IgrDockManagerPaneType.tabGroupPane,
-            size: 100,
-            panes: []
-        };
-
-        tabGroupPane1.panes.push(accountPane);
-        tabGroupPane1.panes.push(cardsPane);
-
-        splitPane4.panes.push(tabGroupPane1);
-        splitPane4.panes.push(transactionsPane);
-
-        splitPane5.panes.push(popularStocksPane);
-
-        splitPane6.panes.push(topMoversPane);
-
-        splitPane3.panes.push(splitPane4);
-        splitPane3.panes.push(splitPane5);
-
-        splitPane2.panes.push(splitPane3);
-        splitPane2.panes.push(splitPane6);
-
-        splitPane1.panes.push(splitPane2);
-
-        const layout: IgrDockManagerLayout = {
-            rootPane: splitPane1
-        };        
-
-        return layout;
-    }
-
-    public getLayout3() : IgrDockManagerLayout
-    {
-        const accountPane = this.getContentPane("ACCOUNTS", "content1", "accountHeader", "accountFloatingHeader");
-        const topMoversPane = this.getContentPane("TODAY'S TOP MOVERS", "content2", "todayTopMovers", "todayTopMoversFloatingHeader");
-        const transactionsPane = this.getContentPane("TRANSACTIONS", "content3", "transactionsHeader", "transactionsFloatingHeader");
-        const popularStocksPane = this.getContentPane("POPULAR STOCKS", "content4", "popularStocksHeader", "popularStocksFloatingHeader");
-        const cardsPane = this.getContentPane("PHYSICAL CARDS", "content5", "cardsHeader", "cardsFloatingHeader");
-
-        const splitPane1: IgrSplitPane =
-        {
-            type: IgrDockManagerPaneType.splitPane,
-            orientation: IgrSplitPaneOrientation.vertical,
-            panes: []
-        };
-
-        const tabGroupPane1: IgrTabGroupPane =
-        {
-            type: IgrDockManagerPaneType.tabGroupPane,
-            size: 200,
-            panes: []
-        };
-
-        const tabGroupPane2: IgrTabGroupPane =
-        {
-            type: IgrDockManagerPaneType.tabGroupPane,
-            size: 300,
-            panes: []
-        };
-
-        tabGroupPane1.panes.push(accountPane);
-        tabGroupPane1.panes.push(cardsPane);
-        tabGroupPane1.panes.push(transactionsPane);
-
-        tabGroupPane2.panes.push(popularStocksPane);
-        tabGroupPane2.panes.push(topMoversPane);
-
-        splitPane1.panes.push(tabGroupPane1);
-        splitPane1.panes.push(tabGroupPane2);
-
-        const layout: IgrDockManagerLayout = {
-            rootPane: splitPane1
-        };        
-
-        return layout;
-    }
-
-    public onSampleResize() {        
-        const width = this.dockManager.offsetWidth;
-
-        if (width > 1200) {
-            this.dockManager.layout = this.layouts[0];
-        }
-        if (width <= 1200) {
-            this.dockManager.layout = this.layouts[1];
-        }
-        if (width <= 800) {
-            this.dockManager.layout = this.layouts[2];
-        }
-    }
-
-    public componentDidMount() {
-
-        const layout1: IgrDockManagerLayout = this.getLayout1();
-        const layout2: IgrDockManagerLayout = this.getLayout2();
-        const layout3: IgrDockManagerLayout = this.getLayout3();
-
-        this.dockManager = document.getElementById("dockManager") as IgrDockManager;
-
-        window.onresize = this.onSampleResize;
-
-        this.dockManager.layout = layout1;
-
-        this.layouts = [layout1, layout2, layout3];
-    }
+                    </IgrCard>
+                </div>
+            </IgrDockManager>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DockManagerStyling/>);
 ```
 

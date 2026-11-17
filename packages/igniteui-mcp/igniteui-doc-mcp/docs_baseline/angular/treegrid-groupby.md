@@ -24,7 +24,7 @@ The `treeGridGrouping` pipe groups the data based on the provided parameters and
 
 The pipe arguments are the following:
 
-- groupingExpressions - an array of [`IgxIGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
+- groupingExpressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains information about the fields used to generate the hierarchy and the sorting details for each group
 - groupKey - a string value for the name of the generated hierarchy column
 - childDataKey - a string value for the field where the child collection of the generated parent rows is stored
 - grid - `IgxTreeGridComponent` that is used for the grouping
@@ -43,7 +43,7 @@ The UI component with selector `igx-tree-grid-group-by-area` handles the UI inte
 The component's inputs are the following:
 
 - grid - `IgxTreeGridComponent` that is used for the grouping
-- expressions - an array of [`IgxIGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains the fields used to generate the hierarchy
+- expressions - an array of [`IGroupingExpression`](mcp:get_api_reference?platform=angular&component=IGroupingExpression) objects which contains the fields used to generate the hierarchy
 - hideGroupedColumns - a boolean value indicating whether to hide the columns by which grouping was performed
 - dropAreaTemplate - a template for the drop area that can be used to override the default drop area template
 - dropAreaMessage - a string that can be used to override the default message for the default drop area template

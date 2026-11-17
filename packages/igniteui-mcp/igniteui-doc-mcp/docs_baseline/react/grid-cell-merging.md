@@ -251,7 +251,7 @@ Cell merging in the grid is controlled at two levels:
 
 ### Grid Merge Mode
 
-The grid exposes a [`IgrGrid.cellMergeMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellMergeMode) property that accepts values from the [`IgrGridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode) enum:
+The grid exposes a [`IgrGrid.cellMergeMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellMergeMode) property that accepts values from the [`GridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode) enum:
 - `always` - Merges any adjacent cells that meet the merging condition, regardless of sort state.
 - `onSort` - Merges adjacent cells only when the column is sorted **(default value)**.
 
@@ -632,7 +632,7 @@ If a merged cell is clicked, the closest cell from the merge sequence will becom
 ## API References
 [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid)
 [`CellMergeMode`](mcp:get_api_reference?platform=react&component=IgrGrid&member=cellMergeMode)
-[`IgrGridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode)
+[`GridCellMergeMode`](mcp:get_api_reference?platform=react&component=GridCellMergeMode)
 [`IgrGridMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrGridMergeStrategy)
 [`IgrDefaultMergeStrategy`](mcp:get_api_reference?platform=react&component=IgrDefaultMergeStrategy)
 ## Additional Resources

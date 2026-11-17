@@ -18,28 +18,32 @@ The Ignite UI for Blazor Select component allows a single selection from a list 
 @using IgniteUI.Blazor.Controls
 
 <div class="container sample center">
-    <IgbSelect>
-        <IgbSelectItem Value="orange">Orange</IgbSelectItem>
-        <IgbSelectItem Value="appple">Apple</IgbSelectItem>
-        <IgbSelectItem Value="banana">Banana</IgbSelectItem>
-        <IgbSelectItem Value="mango">Mango</IgbSelectItem>
+    <IgbSelect @bind-Value="fruit">
+        <IgbSelectItem Value="@("orange")">Orange</IgbSelectItem>
+        <IgbSelectItem Value="@("appple")">Apple</IgbSelectItem>
+        <IgbSelectItem Value="@("banana")">Banana</IgbSelectItem>
+        <IgbSelectItem Value="@("mango")">Mango</IgbSelectItem>
     </IgbSelect>
 </div>
 
-@code { }
+@code {
+    private string fruit;
+}
 ```
 
 ## Usage
 
-Before using the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component, you need to register it together with its additional components:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbSelectModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbSelectModule`](mcp:get_api_reference?platform=blazor&component=IgbSelectModule), the client resource module of the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbSelectModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`Select`](mcp:get_api_reference?platform=blazor&component=IgbInput&member=select) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -81,16 +85,16 @@ You can predefine a selected item by setting the [`Selected`](mcp:get_api_refere
 @using IgniteUI.Blazor.Controls
 
 <div class="container sample center">
-    <IgbSelect>
-        <IgbSelectItem>
+    <IgbSelect @bind-Value="place">
+        <IgbSelectItem Value="@("hotel")">
             <IgbIcon @ref="IconRef" slot="prefix" name="hotel" collection="material"></IgbIcon>
             Hotel
         </IgbSelectItem>
-        <IgbSelectItem disabled>
+        <IgbSelectItem Value="@("grocery")" disabled>
             <IgbIcon slot="prefix" name="grocery" collection="material"></IgbIcon>
             Grocery
         </IgbSelectItem>
-        <IgbSelectItem selected>
+        <IgbSelectItem Value="@("restaurant")">
             <IgbIcon slot="prefix" name="restaurant" collection="material"></IgbIcon>
             Restaurant
         </IgbSelectItem>
@@ -99,6 +103,7 @@ You can predefine a selected item by setting the [`Selected`](mcp:get_api_refere
 
 @code {
     private IgbIcon IconRef { get; set; }
+    private string place = "restaurant";
     private string hotelSvg = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm12-3h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm2 8h-8V9h6c1.1 0 2 .9 2 2v4z'/></svg>";
     private string grocerySvg = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-1.45-5c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6z'/></svg>";
     private string restaurantSvg = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M16 6v8h3v8h2V2c-2.76 0-5 2.24-5 4zm-5 3H9V2H7v7H5V2H3v7c0 2.21 1.79 4 4 4v9h2v-9c2.21 0 4-1.79 4-4V2h-2v7z'/></svg>";
@@ -122,16 +127,18 @@ You can use the [`IgbSelectHeader`](mcp:get_api_reference?platform=blazor&compon
 @using IgniteUI.Blazor.Controls
 
 <div class="container sample center">
-    <IgbSelect>
+    <IgbSelect @bind-Value="task">
         <IgbSelectHeader>Tasks</IgbSelectHeader>
-        <IgbSelectItem Value="spec" Selected>Specification</IgbSelectItem>
-        <IgbSelectItem Value="implement">Implementation</IgbSelectItem>
-        <IgbSelectItem Value="test" Disabled>Testing</IgbSelectItem>
-        <IgbSelectItem Value="docs">Documentation</IgbSelectItem>
+        <IgbSelectItem Value="@("spec")">Specification</IgbSelectItem>
+        <IgbSelectItem Value="@("implement")">Implementation</IgbSelectItem>
+        <IgbSelectItem Value="@("test")" Disabled>Testing</IgbSelectItem>
+        <IgbSelectItem Value="@("docs")">Documentation</IgbSelectItem>
     </IgbSelect>
 </div>
 
-@code { }
+@code {
+    private string task = "spec";
+}
 ```
 
 ```razor
@@ -151,23 +158,23 @@ Keep in mind that if a select group is disabled, you cannot enable separate item
 @using IgniteUI.Blazor.Controls
 
 <div class="container sample center">
-    <IgbSelect>
+    <IgbSelect @bind-Value="country">
         <IgbSelectGroup>
             <span slot="label">Europe</span>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("germany")">
               <IgbIcon @ref="IconRef" slot="prefix" name="place" collection="material"></IgbIcon>
               Germany
               <span slot="suffix">DE</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("france")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               France
               <span slot="suffix">FR</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("spain")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               Spain
               <span slot="suffix">ES</span>
@@ -177,25 +184,25 @@ Keep in mind that if a select group is disabled, you cannot enable separate item
         <IgbSelectGroup disabled>
             <span slot="label">Asia</span>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("china")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               China
               <span slot="suffix">CN</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("japan")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               Japan
               <span slot="suffix">JP</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("india")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               India
               <span slot="suffix">IN</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("thailand")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               Thailand
               <span slot="suffix">TH</span>
@@ -205,19 +212,19 @@ Keep in mind that if a select group is disabled, you cannot enable separate item
         <IgbSelectGroup>
             <span slot="label">North America</span>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("usa")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               USA
               <span slot="suffix">US</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("canada")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               Canada
               <span slot="suffix">CA</span>
             </IgbSelectItem>
 
-            <IgbSelectItem>
+            <IgbSelectItem Value="@("mexico")">
               <IgbIcon slot="prefix" name="place" collection="material"></IgbIcon>
               Mexico
               <span slot="suffix">MX</span>
@@ -229,6 +236,7 @@ Keep in mind that if a select group is disabled, you cannot enable separate item
 
 @code {
     private IgbIcon IconRef { get; set; }
+    private string country;
     private string placeSvg = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14 4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2 0 3.32-2.67 7.25-8 11.8-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z'/></svg>";
 
     protected override async Task OnAfterRenderAsync(bool firstRender) {

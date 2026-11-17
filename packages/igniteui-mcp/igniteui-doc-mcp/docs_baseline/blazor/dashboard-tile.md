@@ -3,9 +3,10 @@ title: "Blazor Dashboard Tile Component | Ignite UI for Blazor"
 description: See how you can easily get started with Blazor Dashboard Tile Component.
 keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Dashboard components, Blazor Dashboard Tile controls"
 license: commercial
-mentionedTypes: ["Toolbar", "CategoryChart", "DataChart", "RadialGauge", "LinearGauge", "GeographicMap"]
+mentionedTypes: ["Toolbar", "CategoryChart", "DataChart", "RadialGauge", "LinearGauge", "GeographicMap", "DashboardTile"]
 llms:
   description: "The Blazor Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display."
+platformType: xplat
 _tocName: Charting in Dashboards
 _premium: true
 ---
@@ -1000,24 +1001,23 @@ Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 @using IgniteUI.Blazor.Controls
 ```
 
-The following modules are suggested when using the Dashboard Tile component:
+The [`IgbDashboardTile`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile) shows each kind of visualization through its own module, which no component requests on its own. Register the modules of the kinds your tiles show, at startup or later with their `Register` method (see [Component Modules](general-getting-started.md#component-modules)).
 
-```csharp
+```razor
 // in Program.cs file
-
 builder.Services.AddIgniteUIBlazor(
+    typeof(IgbDashboardTileModule),
     typeof(IgbDataChartDashboardTileModule),
-    typeof(IgbRadialGaugeDashboardTileModule),
-    typeof(IgbLinearGaugeDashboardTileModule),
     typeof(IgbGeographicMapDashboardTileModule),
+    typeof(IgbLinearGaugeDashboardTileModule),
     typeof(IgbPieChartDashboardTileModule),
-    typeof(IgbDashboardTileModule)
+    typeof(IgbRadialGaugeDashboardTileModule)
 );
 ```
 
 ## Usage
 
-Depending on what you bind the Dashboard Tile's [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for Blazor toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
+Depending on what you bind the Dashboard Tile's [`IgbDashboardTile.DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=DataSource) property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for Blazor toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
 
 - [IgbCategoryChart](./charts/chart-overview.md)
 - [IgbDataChart](./charts/chart-overview.md)
@@ -1026,9 +1026,15 @@ Depending on what you bind the Dashboard Tile's [`IgbDataSource`](mcp:get_api_re
 - [IgbLinear Gauge](./linear-gauge.md)
 - [IgbRadialGauge](./radial-gauge.md)
 
-The data visualization that is chosen by default is mainly dependent on the schema and the count of the [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) that you have bound. For example, if you bind a single numeric value, you will get a [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a [`IgbDataPieChart`](mcp:get_api_reference?platform=blazor&component=IgbDataPieChart). If you bind an [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) that has more value paths, you will receive a [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) or data the appears to contain geographic points to receive a [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap).
+The data visualization that is chosen by default is mainly dependent on the schema and the count of the [`IgbDashboardTile.DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=DataSource) that you have bound. For example, if you bind a single numeric value, you will get a [`IgbRadialGauge`](mcp:get_api_reference?platform=blazor&component=IgbRadialGauge), but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a [`IgbDataPieChart`](mcp:get_api_reference?platform=blazor&component=IgbDataPieChart). If you bind an [`IgbDashboardTile.DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=DataSource) that has more value paths, you will receive a [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a [`IgbShapeDataSource`](mcp:get_api_reference?platform=blazor&component=IgbShapeDataSource) or data the appears to contain geographic points to receive a [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap).
 
-You are not locked into a single visualization when you bind the [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource), and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
+You are not locked into a single visualization when you bind the [`IgbDashboardTile.DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=DataSource), and you can tell the control that you want to see a particular visualization by setting its [`VisualizationType`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=VisualizationType) property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
+
+```razor
+<IgbDashboardTile
+    @ref="dashboard"
+    VisualizationType="DashboardTileVisualizationType.LineChart" />
+```
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1092,10 +1098,10 @@ The visualization or properties of the visualization are also configurable using
 
 From left to right:
 
-- The first tool will show a data grid with the [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
+- The first tool will show a data grid with the [`IgbDashboardTile.DataSource`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=DataSource) provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
 - The second tool allows you to configure the settings of the current data visualization.
-- The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `VisualizationType` property, mentioned above.
-- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=includedProperties) or [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=excludedProperties) collection on the control.
+- The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the [`VisualizationType`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=VisualizationType) property, mentioned above.
+- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=IncludedProperties) or [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile&member=ExcludedProperties) collection on the control.
 
 This demo demonstrates dashboard tile integration with the Blazor Pie Chart. The toolbar options at the top right provides access to styling and changing the data visualization.
 

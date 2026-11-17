@@ -7,6 +7,7 @@ mentionedTypes: ["BulletGraph"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Blazor bullet graph component allows for a linear and concise view of measures compared against a scale."
+platformType: xplat
 _tocName: Bullet Graph
 _premium: true
 ---
@@ -380,36 +381,45 @@ The following sample demonstrates how setting multiple properties on the same [`
 }
 ```
 
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=transitionDuration) property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=TransitionDuration) property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Component Modules
 
-The [`IgbBulletGraph`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph) requires the following modules:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbBulletGraphModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbBulletGraphModule`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraphModule), the client resource module of the [`IgbBulletGraph`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbBulletGraphModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](general-getting-started.md#component-modules)).
 
 ## Usage
 
 The following code walks through creating a bullet graph component, and configuring a performance bar, comparative measure marker, and three comparative ranges on the scale.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-MinimumValue="5" Value="35"
-MaximumValue="55" TargetValue="43">
-<IgbLinearGraphRange StartValue="0"
-  EndValue="15"
-  Brush="#828181" />
-<IgbLinearGraphRange StartValue="15"
-  EndValue="30"
-  Brush="#AAAAAA" />
-<IgbLinearGraphRange StartValue="30"
-  EndValue="55"
-  Brush="#D0D0D0" />
+<IgbBulletGraph
+    Height="100px"
+    Width="300px"
+    MinimumValue="5"
+    MaximumValue="55"
+    Value="35"
+    TargetValue="43">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="15"
+        Brush="#828181" />
+    <IgbLinearGraphRange
+        StartValue="15"
+        EndValue="30"
+        Brush="#AAAAAA" />
+    <IgbLinearGraphRange
+        StartValue="30"
+        EndValue="55"
+        Brush="#D0D0D0" />
 </IgbBulletGraph>
 ```
 
@@ -419,24 +429,23 @@ The bullet graph can show two measures: performance value and target value.
 Performance value is the primary measure displayed by the component and it is visualized as a bar that stretches along the length of the whole graph. The target value is a measure which the performance value compares against. It is displayed as a small block that runs perpendicular to the orientation of the performance bar.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
     MinimumValue="0"
     MaximumValue="100"
-
     Value="50"
     ValueBrush="DodgerBlue"
     ValueStrokeThickness="1"
     ValueInnerExtent="0.5"
     ValueOuterExtent="0.65"
-
     TargetValue="80"
     TargetValueBreadth="10"
     TargetValueBrush="LimeGreen"
     TargetValueOutline="LimeGreen"
     TargetValueStrokeThickness="1"
     TargetValueInnerExtent="0.3"
-    TargetValueOuterExtent="0.85">
-</IgbBulletGraph>
+    TargetValueOuterExtent="0.85" />
 ```
 
 ```razor
@@ -478,20 +487,23 @@ Performance value is the primary measure displayed by the component and it is vi
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=value) appear with a lower opacity. A good example is if [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=value) is 50 and  [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=highlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`TargetValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=targetValue) is set to. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=highlightValue) to something lower than [`Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=value).
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the [`IgbBulletGraph.Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value) appear with a lower opacity. A good example is if [`IgbBulletGraph.Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value) is 50 and [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValue) is set to 25. This would represent a performance of 50% regardless of what the value of [`TargetValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=TargetValue) is set to. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=HighlightValue) to something lower than [`IgbBulletGraph.Value`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=Value).
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
     MinimumValue="0"
-    Value="70"
+    MaximumValue="100"
+    Value="50"
     TargetValue="90"
     Interval="10"
-    MaximumValue="100"
     LabelInterval="10"
     LabelExtent="0.025"
+    LabelsPreTerminal="0"
+    LabelsPostInitial="0"
     HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
-    HighlightValue=25>
-</IgbBulletGraph>
+    HighlightValue="25" />
 ```
 
 ```razor
@@ -525,34 +537,37 @@ The bullet graph's performance value can be further modified to show progress re
 The ranges are visual elements that highlight a specified range of values on a scale. Their purpose is to visually communicate the qualitative state of the performance bar measure, illustrating at the same time the degree to which it resides within that state.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-  MinimumValue="0" Value="80" Interval="10"
-  MaximumValue="100" TargetValue="90"
-  RangeBrushes="#C62828,#F96232,#FF9800"
-  RangeOutlines="#C62828,#F96232,#FF9800">
-<IgbLinearGraphRange
-  StartValue="0"
-  EndValue="40"
-  InnerStartExtent="0.075"
-  InnerEndExtent="0.075"
-  OuterStartExtent="0.95"
-  OuterEndExtent="0.95">
-</IgbLinearGraphRange>
-<IgbLinearGraphRange
-  StartValue="40"
-  EndValue="70"
-  InnerStartExtent="0.075"
-  InnerEndExtent="0.075"
-  OuterStartExtent="0.95"
-  OuterEndExtent="0.95">
-</IgbLinearGraphRange>
-<IgbLinearGraphRange StartValue="70"
-  EndValue="100"
-  InnerStartExtent="0.075"
-  InnerEndExtent="0.075"
-  OuterStartExtent="0.95"
-  OuterEndExtent="0.95">
-</IgbLinearGraphRange>
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="80"
+    Interval="10"
+    TargetValue="90"
+    RangeBrushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    RangeOutlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="40"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
+    <IgbLinearGraphRange
+        StartValue="40"
+        EndValue="70"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
+    <IgbLinearGraphRange
+        StartValue="70"
+        EndValue="100"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
 </IgbBulletGraph>
 ```
 
@@ -594,23 +609,25 @@ The tick marks serve as a visual division of the scale into intervals in order t
 - Minor tick marks – The minor tick marks represent helper tick marks, which might be used to additionally improve the readability of the scale and can be customized in a way similar to the major ones.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-    MinimumValue="0" Value="70" Interval="10"
-    MaximumValue="100" TargetValue="90"
-
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="70"
+    TargetValue="90"
+    Interval="10"
     TickBrush="DodgerBlue"
     TicksPreTerminal="0"
     TicksPostInitial="0"
     TickStrokeThickness="2"
     TickStartExtent="0.2"
     TickEndExtent="0.075"
-
     MinorTickCount="4"
     MinorTickBrush="DarkViolet"
-    MinorTickEndExtent="0.1"
     MinorTickStartExtent="0.2"
-    MinorTickStrokeThickness="1">
-</IgbBulletGraph>
+    MinorTickEndExtent="0.1"
+    MinorTickStrokeThickness="1" />
 ```
 
 ```razor
@@ -648,16 +665,20 @@ The tick marks serve as a visual division of the scale into intervals in order t
 The labels indicate the measures on the scale.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-  MinimumValue="0" Value="70" Interval="10"
-  MaximumValue="100" TargetValue="90"
-  LabelInterval="10"
-  LabelExtent="0.025"
-  LabelsPreTerminal="0"
-  LabelsPostInitial="0"
-  FontBrush="DodgerBlue"
-  Font="11px Verdana">
-</IgbBulletGraph>
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="70"
+    TargetValue="90"
+    Interval="10"
+    LabelInterval="10"
+    LabelExtent="0.025"
+    LabelsPreTerminal="0"
+    LabelsPostInitial="0"
+    FontBrush="DodgerBlue"
+    Font="11px Verdana" />
 ```
 
 ```razor
@@ -688,15 +709,19 @@ The labels indicate the measures on the scale.
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-  MinimumValue="0" Value="70" Interval="10"
-  MaximumValue="100" TargetValue="90"
-  BackingBrush="#BDDCFC"
-  BackingOutline="DodgerBlue"
-  BackingStrokeThickness="4"
-  BackingInnerExtent="0"
-  BackingOuterExtent="1">
-</IgbBulletGraph>
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="70"
+    TargetValue="90"
+    Interval="10"
+    BackingBrush="rgba(189, 220, 252, 1)"
+    BackingOutline="DodgerBlue"
+    BackingStrokeThickness="4"
+    BackingInnerExtent="0"
+    BackingOuterExtent="1" />
 ```
 
 ```razor
@@ -723,19 +748,23 @@ The backing element represents background and border of the bullet graph compone
 ```
 
 ## Scale
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbBulletGraph&member=IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-  MinimumValue="0" Value="70" Interval="10"
-  MaximumValue="100" TargetValue="90"
-  IsScaleInverted="false"
-  ScaleBackgroundBrush="DodgerBlue"
-  ScaleBackgroundOutline="Red"
-  ScaleBackgroundThickness="2"
-  ScaleStartExtent="0.05"
-  ScaleEndExtent="0.95">
-</IgbBulletGraph>
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="70"
+    TargetValue="90"
+    Interval="10"
+    IsScaleInverted="false"
+    ScaleBackgroundBrush="DodgerBlue"
+    ScaleBackgroundOutline="DarkViolet"
+    ScaleBackgroundThickness="2"
+    ScaleStartExtent="0.05"
+    ScaleEndExtent="0.95" />
 ```
 
 ```razor
@@ -766,36 +795,39 @@ The scale is visual element that highlights the full range of values in the gaug
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the bullet graph with all features and visuals enabled.
 
 ```razor
-<IgbBulletGraph Height="80px" Width="100%"
-    MinimumValue="0" Value="50" Interval="10"
-    MaximumValue="100" TargetValue="90"
+<IgbBulletGraph
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Interval="10"
     IsScaleInverted="false"
     ScaleBackgroundBrush="DodgerBlue"
-    ScaleBackgroundOutline="Red"
+    ScaleBackgroundOutline="DarkViolet"
     ScaleBackgroundThickness="2"
     ScaleStartExtent="0.05"
     ScaleEndExtent="0.95"
-
-    ValueBrush="Black"
+    Value="50"
+    ValueBrush="DodgerBlue"
     ValueStrokeThickness="1"
     ValueInnerExtent="0.5"
     ValueOuterExtent="0.65"
     TargetValue="80"
-    TargetValueBreadth="7.5"
-    TargetValueBrush="Black"
-    TargetValueOutline="Black"
+    TargetValueBreadth="10"
+    TargetValueBrush="LimeGreen"
+    TargetValueOutline="LimeGreen"
     TargetValueStrokeThickness="1"
     TargetValueInnerExtent="0.3"
     TargetValueOuterExtent="0.85"
-
+    HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
+    HighlightValue="25"
     LabelInterval="10"
     LabelExtent="0.025"
     LabelsPreTerminal="0"
     LabelsPostInitial="0"
     FontBrush="DodgerBlue"
     Font="11px Verdana"
-
-    BackingBrush="#BDDCFC"
+    BackingBrush="rgba(189, 220, 252, 1)"
     BackingOutline="DodgerBlue"
     BackingStrokeThickness="4"
     BackingInnerExtent="0"
@@ -806,27 +838,34 @@ For your convenience, all above code snippets are combined into one code block b
     TickStrokeThickness="2"
     TickStartExtent="0.2"
     TickEndExtent="0.075"
-
     MinorTickCount="4"
     MinorTickBrush="DarkViolet"
-    MinorTickEndExtent="0.1"
     MinorTickStartExtent="0.2"
+    MinorTickEndExtent="0.1"
     MinorTickStrokeThickness="1"
-
-    RangeBrushes="#C62828,#F96232,#FF9800"
-    RangeOutlines="#C62828,#F96232,#FF9800">
-    <IgbLinearGraphRange StartValue="20" EndValue="40"
-        InnerStartExtent="0.025" InnerEndExtent="0.025"
-        OuterStartExtent="0.9" OuterEndExtent="0.9">
-    </IgbLinearGraphRange>
-    <IgbLinearGraphRange StartValue="40" EndValue="60"
-        InnerStartExtent="0.025" InnerEndExtent="0.025"
-        OuterStartExtent="0.9" OuterEndExtent="0.9">
-    </IgbLinearGraphRange>
-    <IgbLinearGraphRange StartValue="60" EndValue="90"
-        InnerStartExtent="0.025" InnerEndExtent="0.025"
-        OuterStartExtent="0.9" OuterEndExtent="0.9">
-    </IgbLinearGraphRange>
+    RangeBrushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    RangeOutlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="40"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
+    <IgbLinearGraphRange
+        StartValue="40"
+        EndValue="70"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
+    <IgbLinearGraphRange
+        StartValue="70"
+        EndValue="100"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.95"
+        OuterEndExtent="0.95" />
 </IgbBulletGraph>
 ```
 

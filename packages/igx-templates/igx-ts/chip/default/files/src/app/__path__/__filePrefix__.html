@@ -16,7 +16,7 @@
     </igx-chips-area>
   </div>
   <div class="chips">
-    <button #openButton igxButton="raised" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown">Talks</button>
+    <button #openButton igxButton="contained" (click)="toggleDropDown($event)" [igxDropDownItemNavigation]="dropdown">Talks</button>
     <igx-drop-down #dropdown (selectionChanging)="itemSelection($event)">
       @for (item of dropDownList; track item.id) {
         <igx-drop-down-item [value]="item.name">

@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook"]
 llms:
   description: "The Infragistics Angular Excel Engine enables you to save data to and load data from Microsoft® Excel®."
+platformType: xplat-unmapped
 _tocName: Using Workbooks
 _premium: true
 ---
@@ -374,7 +375,7 @@ export class AppComponent implements OnInit {
 
 ## Change Default Font
 
-First create a new instance of `IgxIWorkbookFont`. Next, add the new font to the `Styles` collection of the `IgxWorkbook`. This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
+First create a new instance of [`IWorkbookFont`](mcp:get_api_reference?platform=angular&component=IWorkbookFont). Next, add the new font to the [`Styles`](mcp:get_api_reference?platform=angular&component=Workbook&member=styles) collection of the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook). This style contains the default properties for all cells in the workbook, unless otherwise specified on a row, column, or cell. Changing properties of the style will change the default cell format properties in the workbook.
 
 ```ts
 var workbook = new Workbook();
@@ -386,25 +387,25 @@ font.height = 16 * 20;
 
 ## Setting Workbook Properties
 
-Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Angular Excel Library to set these properties using the `IgxWorkbook` object’s `DocumentProperties` property. The available properties are:
+Microsoft Excel® document properties provide information to help organize and keep track of your documents. You can use the Infragistics Angular Excel Library to set these properties using the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) object’s [`DocumentProperties`](mcp:get_api_reference?platform=angular&component=Workbook&member=documentProperties) property. The available properties are:
 
-- `Author`
+- [`Author`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=author)
 
-- `Title`
+- [`Title`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=title)
 
-- `Subject`
+- [`Subject`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=subject)
 
-- `Keywords`
+- [`Keywords`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=keywords)
 
-- `Category`
+- [`Category`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=category)
 
-- `Status`
+- [`Status`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=status)
 
-- `Comments`
+- [`Comments`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=comments)
 
-- `Company`
+- [`Company`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=company)
 
-- `Manager`
+- [`Manager`](mcp:get_api_reference?platform=angular&component=DocumentProperties&member=manager)
 
 The following code demonstrates how to create a workbook and set its `title` and `status` document properties.
 
@@ -422,11 +423,11 @@ The protection is not enforced via the Infragistics Excel Engine's object model.
 
 Protection is applied to a workbook by invoking its `protect` method.
 
-When a `IgxWorkbook` is protected without a password, the end user may unprotect the `IgxWorkbook` in Excel without having to supply a password. To programmatically unprotect a `IgxWorkbook`, one may use the `unprotect` method.
+When a [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) is protected without a password, the end user may unprotect the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) in Excel without having to supply a password. To programmatically unprotect a [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook), one may use the `unprotect` method.
 
-When a `IgxWorkbook` is protected, the values of the properties of the `IgxWorkbookProtection` instance from this `IgxWorkbook`'s `protection` property indicate the disabled operations.
+When a [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) is protected, the values of the properties of the [`WorkbookProtection`](mcp:get_api_reference?platform=angular&component=WorkbookProtection) instance from this [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)'s `protection` property indicate the disabled operations.
 
-If `IsProtected` is already true, the `protect` method will be ignored.
+If [`IsProtected`](mcp:get_api_reference?platform=angular&component=Workbook&member=isProtected) is already true, the `protect` method will be ignored.
 
 ```ts
 var workbook = new Workbook();
@@ -448,6 +449,6 @@ var protection = workbook.protection;
 ```
 
 ## API References
-`IgxDocumentProperties`
-`IgxWorkbookProtection`
-`IgxWorkbook`
+[`DocumentProperties`](mcp:get_api_reference?platform=angular&component=DocumentProperties)
+[`WorkbookProtection`](mcp:get_api_reference?platform=angular&component=WorkbookProtection)
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)

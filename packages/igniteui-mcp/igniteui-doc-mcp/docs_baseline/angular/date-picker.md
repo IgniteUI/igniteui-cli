@@ -327,7 +327,7 @@ The `IgxDatePicker` now supports IME input. When composition ends, the control c
 
 ### Increment and decrement
 
-The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) exposes [`increment`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=decrement) methods. Both of which come from the  [`IgxDateTimeEditorDirective`](/date-time-editor#increment-decrement) and can be used for incrementing and decrementing a specific [`IgxDatePart`](mcp:get_api_reference?platform=angular&component=DatePart) of the currently set date.
+The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) exposes [`increment`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=increment) and [`decrement`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=decrement) methods. Both of which come from the  [`IgxDateTimeEditorDirective`](/date-time-editor#increment-decrement) and can be used for incrementing and decrementing a specific [`DatePart`](mcp:get_api_reference?platform=angular&component=DatePart) of the currently set date.
 
 ```html
 <igx-date-picker #datePicker>
@@ -501,9 +501,22 @@ export class DateTimePickerRFSampleComponent {
 
 The [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) uses the [`IgxCalendarComponent`](/calendar) and you can modify some of its settings via the properties that the date picker exposes. Some of these include [`displayMonthsCount`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=displayMonthsCount) which allows more than one calendar to be displayed when the picker expands, [`weekStart`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=weekStart) which determines the starting day of the week, [`showWeekNumbers`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=showWeekNumbers) which shows the number for each week in the year and more.
 
+To customize the content of the calendar day cells, for example to show event indicators, add an `ng-template` marked with the `igxCalendarDay` directive inside the `igx-date-picker`. The date picker passes the template to its calendar. The directive is included in `IGX_DATE_PICKER_DIRECTIVES`, or you can import `IgxCalendarDayTemplateDirective` on its own. For the template context and the behavior of the day cells, see [Day template](/calendar#day-template) in the calendar topic.
+
+```html
+<igx-date-picker [value]="date">
+    <ng-template igxCalendarDay let-date>
+        {{ date.getDate() }}
+        @if (hasEvents(date)) {
+            <span class="day__dot"></span>
+        }
+    </ng-template>
+</igx-date-picker>
+```
+
 ## Internationalization
 
-The localization of the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=locale) input. Additionally, using the `igxCalendarHeader` and the `igxCalendarSubheader` templates, provided by the [`IgxCalendar`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), you can specify the look of your header and subheader. More information on how to use these templates can be found in the [**IgxCalendarComponent**](/calendar) topic.
+The localization of the [`IgxDatePicker`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent) can be controlled through its [`locale`](mcp:get_api_reference?platform=angular&component=IgxDatePickerComponent&member=locale) input. Additionally, using the `igxCalendarHeader` and the `igxCalendarSubheader` templates, provided by the [`IgxCalendar`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent), you can specify the look of your header and subheader. More information on how to use these templates can be found in the [Templating](/calendar#templating) section of the calendar topic.
 
 Here is how an Angular Date Picker with Japanese locale definition would look like:
 

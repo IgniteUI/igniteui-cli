@@ -783,7 +783,8 @@ Keyboard navigation of the [`IgcGrid`](mcp:get_api_reference?platform=webcompone
 > **Note**:
 > The grid uses **css grid layout**, which is **not supported in IE without prefixing**, consequently it will not render properly.
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./grid/theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](./grid/theming.md).
+In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```html
 <igc-grid class="grid"></igc-grid>

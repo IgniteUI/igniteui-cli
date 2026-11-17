@@ -22,15 +22,13 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](mcp:get_api_reference
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDateRangePicker @ref="DateRangePicker" Value="@Range" Label="Date Range" />
+        <IgbDateRangePicker Value="@Range" Label="Date Range" />
     </div>
 </div>
 
 @code {
 
-    public IgbDateRangePicker DateRangePicker { get; set; }
-
-    public IgbDateRangeValue Range = new IgbDateRangeValue()
+    public IgbDateRangeValue<DateTime?> Range = new IgbDateRangeValue<DateTime?>()
     {
         Start = DateTime.Today,
         End = DateTime.Today.AddDays(3)
@@ -40,15 +38,17 @@ Below is a sample demonstrating the [`IgbDateRangePicker`](mcp:get_api_reference
 
 ### Getting Started
 
-To get started with the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component, first we need to register its module as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbDateRangePickerModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/_Host.cshtml file in a Blazor Server project:
+Registering [`IgbDateRangePickerModule`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePickerModule), the client resource module of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbDateRangePickerModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -83,11 +83,9 @@ To switch the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&compo
 In addition to being selected or typed by the user, the range value of the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) can also be set using the [`IgbDateRangePicker.value`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker&member=value) property. It's important to note that the value must follow the format: **`{ start: startDate, end: endDate }`**, where `startDate` and `endDate` are `Date` objects representing the selected range.
 
 ```razor
- <IgbDateRangePicker @ref="DateRangePicker" Value="@Range" Label="Date Range"/>
+ <IgbDateRangePicker Value="@Range" Label="Date Range"/>
 
  @code {
-    public IgbDateRangePicker DateRangePicker { get; set; }
-
     public IgbDateRangeValue Range = new IgbDateRangeValue()
     {
         Start = DateTime.Today,
@@ -261,28 +259,27 @@ Now, when you click the newly created **"Next 7 days"** chip in the calendar pop
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDateRangePicker @ref="DateRangePicker" CustomRanges="@CustomRanges" Mode="PickerMode.Dialog" UsePredefinedRanges="true" Label="Custom Ranges" />
+        <IgbDateRangePicker @bind-Value="@dpValue" CustomRanges="@CustomRanges" Mode="PickerMode.Dialog" UsePredefinedRanges="true" Label="Custom Ranges" />
     </div>
 </div>
 
 @code {
+    public IgbDateRangeValue<DateTime?>? dpValue;
 
-    public IgbDateRangePicker DateRangePicker { get; set; }
-
-    public IgbCustomDateRange[] CustomRanges = [
-            new IgbCustomDateRange()
+    public IgbCustomDateRange<DateTime?>[] CustomRanges = [
+            new IgbCustomDateRange<DateTime?>()
             {
                 Label = "Previous 7 Days",
-                DateRange = new IgbDateRangeValue()
+                DateRange = new IgbDateRangeValue<DateTime?>()
                 {
                     Start = DateTime.Today.AddDays(-7),
                     End = DateTime.Today
                 }
             },
-            new IgbCustomDateRange()
+            new IgbCustomDateRange<DateTime?>()
             {
                 Label = "Next 7 Days",
-                DateRange = new IgbDateRangeValue()
+                DateRange = new IgbDateRangeValue<DateTime?>()
                 {
                     Start = DateTime.Today,
                     End = DateTime.Today.AddDays(7)
@@ -333,12 +330,12 @@ The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDa
 
 <div class="container vertical">
     <div class="container vertical">
-        <form @ref="Form" @onsubmit="@HandleSubmit">
+        <form @onsubmit="HandleSubmit" @onreset="HandleReset">
             <fieldset class="vertical">
-                <IgbDateRangePicker @ref="DateRangePicker" bind-Value="@Range" Label="Date Range" Required="true" Min="@Min" Change="HandleDateRangeChange" />
+                <IgbDateRangePicker @bind-Value="Range" Label="Date Range" Required="true" Min="@Min" />
                 <div class="buttons horizontal">
-                    <IgbButton Type="submit" Variant="ButtonVariant.Outlined"><span>Submit</span></IgbButton>
-                    <IgbButton Type="reset" Variant="ButtonVariant.Outlined"><span>Reset</span></IgbButton>
+                    <IgbButton DisplayType="ButtonBaseType.Submit" Variant="ButtonVariant.Outlined"><span>Submit</span></IgbButton>
+                    <IgbButton DisplayType="ButtonBaseType.Reset" Variant="ButtonVariant.Outlined"><span>Reset</span></IgbButton>
                 </div>
             </fieldset>
         </form>
@@ -353,28 +350,19 @@ The [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDa
 </div>
 
 @code {
-    private ElementReference Form { get; set; }
-    public IgbDateRangePicker DateRangePicker { get; set; }
     public DateTime Min = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-    public IgbDateRangeValue Range { get; set; }
+    public IgbDateRangeValue<DateTime?> Range { get; set; }
     public IgbDialog DialogRef;
 
-    private void HandleDateRangeChange(IgbDateRangeValueEventArgs e)
-    {
-        this.Range = new IgbDateRangeValue
-        {
-            Start = e.Detail.Start,
-            End = e.Detail.End
-        };
-    }
-
-    public async void HandleSubmit()
+    public async Task HandleSubmit()
     {
         if (this.DialogRef != null)
         {
             await this.DialogRef.ShowAsync();
         }
     }
+
+    private void HandleReset() => Range = null;
 
     public async Task OnDialogHide()
     {
@@ -438,9 +426,13 @@ In two-input mode, you can also customize the default “to” text between the 
 The `actions` slot allows you to insert a custom action button with your own logic. For example, the button below toggles the week numbers column in the calendar. We recommend using the [`<igc-button>`](../inputs/button.md) component when adding content to the `actions` slot.
 
 ```razor
-<IgbDateRangePicker Mode="PickerMode.Dialog" @ref="ActionsDateRange">
-    <IgbButton slot="actions" @onclick="() => ActionsDateRange.ShowWeekNumbers = !ActionsDateRange.ShowWeekNumbers">Toggle week numbers</IgbButton>
+<IgbDateRangePicker Mode="PickerMode.Dialog" ShowWeekNumbers="@ShowWeekNumbers">
+    <IgbButton slot="actions" @onclick="() => ShowWeekNumbers = !ShowWeekNumbers">Toggle week numbers</IgbButton>
 </IgbDateRangePicker>
+
+@code {
+    private bool ShowWeekNumbers;
+}
 ```
 
 In addition to the slots we've already covered, the following slots are also available in the [`IgbDateRangePicker`](mcp:get_api_reference?platform=blazor&component=IgbDateRangePicker) component:
@@ -469,34 +461,34 @@ And for the `clear-icon-` and `calendar-icon-` type slots, we recommend using a 
 <div class="container vertical">
     <div class="container vertical">
         <h3>Actions</h3>
-        <IgbDateRangePicker Mode="PickerMode.Dialog" @ref="ActionsDateRange">
-            <IgbButton slot="actions" @onclick="() => ActionsDateRange.ShowWeekNumbers = !ActionsDateRange.ShowWeekNumbers">Toggle week numbers</IgbButton>
+        <IgbDateRangePicker Value="@dpValue1" Mode="PickerMode.Dialog" ShowWeekNumbers="@ShowWeekNumbers">
+            <IgbButton slot="actions" @onclick="() => ShowWeekNumbers = !ShowWeekNumbers">Toggle week numbers</IgbButton>
         </IgbDateRangePicker>
 
         <h3>Custom separator</h3>
-        <IgbDateRangePicker UseTwoInputs="true">
+        <IgbDateRangePicker Value="@dpValue2" UseTwoInputs="true">
             <span slot="separator">till</span>
         </IgbDateRangePicker>
 
         <h3>Helper text</h3>
-        <IgbDateRangePicker>
+        <IgbDateRangePicker Value="@dpValue3">
             <span slot="helper-text">Helper text goes here.</span>
         </IgbDateRangePicker>
 
         <h3>Prefix & Suffix</h3>
-        <IgbDateRangePicker>
+        <IgbDateRangePicker Value="@dpValue4">
             <IgbIcon @ref="DropDownIcon" slot="prefix" IconName="dropdown" Collection="material"></IgbIcon>
             <IgbIcon @ref="UploadIcon" slot="suffix" IconName="upload" Collection="material"></IgbIcon>
         </IgbDateRangePicker>
 
         <h3>Clear & Calendar icons</h3>
-        <IgbDateRangePicker>
+        <IgbDateRangePicker Value="@dpValue5">
             <IgbIcon slot="clear-icon" @ref="ClearIcon" IconName="bin" Collection="material"></IgbIcon>
             <IgbIcon slot="calendar-icon" @ref="CalendarIcon" IconName="apps" Collection="material"></IgbIcon>
         </IgbDateRangePicker>
 
         <h3>Custom calendar header + title</h3>
-        <IgbDateRangePicker Mode="PickerMode.Dialog">
+        <IgbDateRangePicker Value="@dpValue6" Mode="PickerMode.Dialog">
             <span slot="title">Custom calendar title goes here.</span>
             <span slot="header-date">Custom content instead of date goes here.</span>
         </IgbDateRangePicker>
@@ -504,7 +496,14 @@ And for the `clear-icon-` and `calendar-icon-` type slots, we recommend using a 
 </div>
 
 @code {
-    public IgbDateRangePicker ActionsDateRange { get; set; }
+    public IgbDateRangeValue<DateTime?>? dpValue1;
+    public IgbDateRangeValue<DateTime?>? dpValue2;
+    public IgbDateRangeValue<DateTime?>? dpValue3;
+    public IgbDateRangeValue<DateTime?>? dpValue4;
+    public IgbDateRangeValue<DateTime?>? dpValue5;
+    public IgbDateRangeValue<DateTime?>? dpValue6;
+
+    private bool ShowWeekNumbers;
     private IgbIcon DropDownIcon { get; set; }
     private IgbIcon UploadIcon { get; set; }
     private IgbIcon ClearIcon { get; set; }
@@ -646,7 +645,7 @@ igc-date-range-picker::part(clear-icon-end) {
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDateRangePicker @ref="DateRangePicker" UseTwoInputs="true" LabelStart="Departure date" LabelEnd="Arrival date">
+        <IgbDateRangePicker @bind-Value="@dpValue" UseTwoInputs="true" LabelStart="Departure date" LabelEnd="Arrival date">
             <IgbIcon @ref="UpPlane" slot="calendar-icon-start" IconName="up-plane" Collection="material"></IgbIcon>
             <IgbIcon @ref="DownPlane" slot="calendar-icon-end" IconName="down-plane" Collection="material"></IgbIcon>
         </IgbDateRangePicker>
@@ -655,7 +654,8 @@ igc-date-range-picker::part(clear-icon-end) {
 
 @code {
 
-    public IgbDateRangePicker DateRangePicker { get; set; }
+    public IgbDateRangeValue<DateTime?>? dpValue;
+
     private IgbIcon UpPlane { get; set; }
     private IgbIcon DownPlane { get; set; }
 

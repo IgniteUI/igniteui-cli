@@ -88,15 +88,17 @@ To use the Blazor Switch, follow the [Ignite UI for Blazor Getting Started](../g
 
 At its core, the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component allows for toggling between on/off states. The default styling is done according to the selection controls specification in the Material Design guidelines.
 
-For Blazor using the **IgniteUI.Blazor** package, register the Switch module as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbSwitchModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-Then link the additional CSS file in the **wwwroot/index.html** file for a **Blazor WebAssembly** project or in the **Pages/_Host.cshtml** file for a **Blazor Server** project:
+Registering [`IgbSwitchModule`](mcp:get_api_reference?platform=blazor&component=IgbSwitchModule), the Switch's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbSwitchModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+Then link the additional CSS file in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -410,16 +412,17 @@ igc-switch {
             <span class="option__hint">Extra sign-in verification</span>
         </div>
         <IgbSwitch slot="indicator" Checked="IsOpen" />
-        <IgbRadioGroup Alignment="ContentOrientation.Vertical">
-            <IgbRadio Name="method" Value="app" Checked="true">Authenticator app</IgbRadio>
-            <IgbRadio Name="method" Value="key">Security key</IgbRadio>
-            <IgbRadio Name="method" Value="codes">Backup codes</IgbRadio>
+        <IgbRadioGroup Alignment="ContentOrientation.Vertical" @bind-Value="method">
+            <IgbRadio Name="method" Value="@("app")">Authenticator app</IgbRadio>
+            <IgbRadio Name="method" Value="@("key")">Security key</IgbRadio>
+            <IgbRadio Name="method" Value="@("codes")">Backup codes</IgbRadio>
         </IgbRadioGroup>
     </IgbExpansionPanel>
 </div>
 
 @code {
     private bool IsOpen { get; set; } = true;
+    private string method = "app";
 
     private void OnOpened(IgbExpansionPanelComponentEventArgs args)
     {
@@ -526,14 +529,13 @@ The Blazor Switch requires a theme stylesheet to apply its visual styling. See t
 
 Use the following Blazor resources for API details, examples, and project support:
 
-- [Lists - Design System Pattern](https://www.infragistics.com/products/indigo-design/help/patterns/lists)
+- [Switch - Design System Component](https://www.infragistics.com/products/indigo-design/help/components/switch)
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
 - [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)
 
 ## Related Components
 
 - [Checkbox](./checkbox.md) - Use Checkbox when users select one or more options, especially as part of a form.
-
 - [Button](./button.md) - Use Button when the control represents a command or action rather than a setting.
 
 ## FAQ

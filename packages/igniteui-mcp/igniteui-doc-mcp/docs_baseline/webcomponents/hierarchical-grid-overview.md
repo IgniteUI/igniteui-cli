@@ -251,7 +251,7 @@ The Selection and Navigation features work globally for the whole Hierarchical G
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
 ## Styling
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](./theming.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```html
 <igc-hierarchical-grid class="grid"></igc-hierarchical-grid>

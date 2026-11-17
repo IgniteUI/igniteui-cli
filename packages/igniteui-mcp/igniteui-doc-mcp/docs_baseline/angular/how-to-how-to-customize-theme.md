@@ -161,7 +161,7 @@ Then our theme definition will go in the general scope, which we will use for th
   /* Grid Toolbar override for light color scheme */
   igx-grid-toolbar {
     --background: #{$primary-light};
-    --title-text-color: #{text-contrast($primary-light)};
+    --title-text-color: #{adaptive-contrast($primary-light)};
   }
   /* END Grid Toolbar */
 }
@@ -177,7 +177,7 @@ Then our theme definition will go in the general scope, which we will use for th
   /* Grid Toolbar override for dark color scheme */
   igx-grid-toolbar {
     --background: #{$primary-dark};
-    --title-text-color: #{text-contrast($primary-dark)};
+    --title-text-color: #{adaptive-contrast($primary-dark)};
   }
   /* END Grid Toolbar */
 }

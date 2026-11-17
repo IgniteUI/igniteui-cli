@@ -17,7 +17,7 @@ Many Ignite UI components have predefined minimum and maximum border-radius valu
 When you set `--ig-radius-factor` to 0, the component uses its minimum border-radius and will appear more block-like with sharp corners. When set to 1, the component uses its maximum predefined border-radius and will appear rounded.
 
 Here is a list of the components that have predefined minimum and maximum border-radius values and can be modified using the `--ig-radius-factor` variable: <br/>
-• [Action Strip](/action-strip) • [Button](inputs/button) • [Button Group](/inputs/button-group) • [Calendar](/calendar) • [Card](/card) • [Carousel](/layouts/carousel) • [Checkbox](/checkbox) • [Chip](/chip) • [Combo](/combo) • [Date Picker](/date-picker) • [Date Range Picker](/date-range-picker) • [Grid](/grid/grid) • [Input Group](/input-group) • [Linear Progress](/linear-progress) • [List](/list) • [Month Picker](/month-picker) • [Navigation Drawer](/navdrawer) • [Radio](/radio-button) • [Ripple](/ripple) • [Snackbar](/snackbar) • [Switch](inputs/switch) • [Toast](/toast)
+• [Action Strip](/action-strip) • [Button](inputs/button) • [Button Group](/inputs/button-group) • [Calendar](/calendar) • [Card](/layouts/card) • [Carousel](/layouts/carousel) • [Checkbox](/inputs/checkbox) • [Chip](/inputs/chip) • [Combo](/inputs/combo/overview) • [Date Picker](/date-picker) • [Date Range Picker](/date-range-picker) • [Grid](/grid/grid) • [Input Group](/input-group) • [Linear Progress](/linear-progress) • [List](/list) • [Month Picker](/month-picker) • [Navigation Drawer](/navdrawer) • [Radio](/inputs/radio) • [Ripple](/ripple) • [Snackbar](/snackbar) • [Switch](inputs/switch) • [Toast](/toast)
 
 ## Usage
 
@@ -29,7 +29,7 @@ igx-chip {
 }
 ```
 
-This will apply the minimum predefined border-radius, resulting in the [Chip](/chip) component having straight corners.
+This will apply the minimum predefined border-radius, resulting in the [Chip](/inputs/chip) component having straight corners.
 
 ```css
 igx-chip {
@@ -37,7 +37,7 @@ igx-chip {
 }
 ```
 
-And by setting the value to 1, the maximum predefined border-radius is applied, resulting in rounded corners for the [Chip](/chip) component.
+And by setting the value to 1, the maximum predefined border-radius is applied, resulting in rounded corners for the [Chip](/inputs/chip) component.
 
 If you want the border-radius to be somewhere between the defined minimum and maximum values, you can set the `--ig-radius-factor` variable to a decimal value between 0 and 1.
 For example, setting it to `0.5` will apply a border-radius that is 50% of the component's maximum allowed value.

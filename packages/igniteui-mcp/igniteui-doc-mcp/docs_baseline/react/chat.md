@@ -303,10 +303,10 @@ The ctx parameter provides different contextual data depending on what is being 
 
 | Context Type                | Provided Data                                                                                                          |
 | --------------------------- | -----------------------------------------------------------------------------------------------------------------------|
-| [`IgrChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext)       | `instance` (the chat component instance).                                                |
-| [`IgrChatInputRenderContext`](mcp:get_api_reference?platform=react&component=ChatInputRenderContext)      | Inherits [`IgrChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext) and adds `attachments` (array of [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment)) and `value` (current input text). |
-| [`IgrChatMessageRenderContext`](mcp:get_api_reference?platform=react&component=ChatMessageRenderContext)    | Inherits [`IgrChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext) and adds [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) (the [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) being rendered).                                      |
-| [`IgrChatAttachmentRenderContext`](mcp:get_api_reference?platform=react&component=ChatAttachmentRenderContext) | Inherits [`IgrChatMessageRenderContext`](mcp:get_api_reference?platform=react&component=ChatMessageRenderContext) and adds `attachment` (the [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment) being rendered).                      |
+| [`ChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext)       | `instance` (the chat component instance).                                                |
+| [`ChatInputRenderContext`](mcp:get_api_reference?platform=react&component=ChatInputRenderContext)      | Inherits [`ChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext) and adds `attachments` (array of [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment)) and `value` (current input text). |
+| [`ChatMessageRenderContext`](mcp:get_api_reference?platform=react&component=ChatMessageRenderContext)    | Inherits [`ChatRenderContext`](mcp:get_api_reference?platform=react&component=ChatRenderContext) and adds [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) (the [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage) being rendered).                                      |
+| [`ChatAttachmentRenderContext`](mcp:get_api_reference?platform=react&component=ChatAttachmentRenderContext) | Inherits [`ChatMessageRenderContext`](mcp:get_api_reference?platform=react&component=ChatMessageRenderContext) and adds `attachment` (the [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment) being rendered).                      |
 
 #### Available Renderers
 
@@ -792,8 +792,8 @@ igc-chat::part(suggestion) {
 - [`IgrChatOptions`](mcp:get_api_reference?platform=react&component=IgrChatOptions)
 - [`IgrChatMessage`](mcp:get_api_reference?platform=react&component=IgrChatMessage)
 - [`IgrChatMessageAttachment`](mcp:get_api_reference?platform=react&component=IgrChatMessageAttachment)
-- [`IgrChatRenderers`](mcp:get_api_reference?platform=react&component=ChatRenderers)
-- [`IgrChatTemplateRenderer`](mcp:get_api_reference?platform=react&component=ChatTemplateRenderer)
+- [`ChatRenderers`](mcp:get_api_reference?platform=react&component=ChatRenderers)
+- [`ChatTemplateRenderer`](mcp:get_api_reference?platform=react&component=ChatTemplateRenderer)
 - [Styling & Themes](../themes/overview.md)
 
 ## Additional Resources

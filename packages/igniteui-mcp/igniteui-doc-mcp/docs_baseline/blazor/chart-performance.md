@@ -3,10 +3,11 @@ title: "Blazor Chart Performance | Data Visualization | Infragistics"
 description: Infragistics' Blazor Chart Performance
 keywords: "Blazor Charts, Performance, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType", "FinancialChartYAxisMode", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "Blazor charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds."
+platformType: xplat
 _tocName: Chart Performance
 _premium: true
 ---
@@ -256,7 +257,7 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`ItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although Blazor charts support rendering of multiple data sources by binding array of arrays of data points to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
 ```csharp
 this.CategoryChart.DataSource = FlattenDataSource.Create();
@@ -275,13 +276,13 @@ public static class FlattenDataSource
     {
         public int USA { get; set; }
         public int CHN { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
     }
 }
 // instead of this data structure:
 public static class MultiDataSources
 {
-    public static List<MultiDataItem> Create() {
+    public static List<List<MultiDataItem>> Create() {
         var dataSource1 = new List<MultiDataItem>() {
             new MultiDataItem { Year = "1996", Value = 148 },
             new MultiDataItem { Year = "2000", Value = 142 },
@@ -298,25 +299,25 @@ public static class MultiDataSources
     public class MultiDataItem
     {
         public int Value { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
     }
 }
 ```
 
 ### Data Filtering
 
-Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=includedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=excludedProperties) to filter only those data columns that you actually want to render. For example,
+Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) and the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IncludedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ExcludedProperties) to filter only those data columns that you actually want to render. For example,
 
 ```razor
 this.Chart.IncludedProperties = new string[] { "Year", "USA", "RUS" };
-this.Chart.ExcludedProperties = new string[] { "CHN",  "FRN", "GER" };
+this.Chart.ExcludedProperties = new string[] { "CHN", "FRN", "GER" };
 ```
 
 ## Chart Performance Guidelines
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property of Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property of Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) or the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
@@ -360,25 +361,27 @@ This code snippet shows how to remove markers from the Blazor charts.
 
 ```razor
 // on CategoryChart or FinancialChart
-this.Chart.MarkerTypes.Clear();
-this.Chart.MarkerTypes.Add(MarkerType.None);
+this.Chart.MarkerTypes = new MarkerType[] { MarkerType.None };
+```
 
+```razor
 // on LineSeries of DataChart
 this.LineSeries.MarkerType = MarkerType.None;
 ```
 
 ### Chart Resolution
 
-Setting the [`Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the [`IgbDomainChart.Resolution`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=Resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the Blazor charts.
 
 ```razor
-// on CategoryChart or FinancialChart:
+// on CategoryChart
 this.Chart.Resolution = 10;
-this.Chart.Resolution = 10;
+```
 
-// on LineSeries of DataChart:
+```razor
+// on LineSeries of DataChart
 this.LineSeries.Resolution = 10;
 ```
 
@@ -400,16 +403,17 @@ The [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCate
 This code snippet shows how to ordinal/category x-axis in the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) and [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) controls.
 
 ```razor
-<IgbFinancialChart XAxisMode="FinancialChartXAxisMode.Ordinal"/>
-
-<IgbDataChart >
-    <IgbCategoryXAxis Label="Time" />
+<IgbFinancialChart
+    XAxisMode="FinancialChartXAxisMode.Ordinal" />
+<IgbDataChart>
+    <IgbCategoryXAxis
+        Label="Time" />
 </IgbDataChart>
 ```
 
 ### Axis Intervals
 
-By default, Blazor charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, Blazor charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
 **Note:** 
 We do not recommend setting axis minor interval as it will decrease chart performance.
@@ -417,19 +421,26 @@ We do not recommend setting axis minor interval as it will decrease chart perfor
 This code snippet shows how to set axis major interval in the Blazor charts.
 
 ```razor
-<IgbCategoryChart  XAxisInterval="5" YAxisInterval="50"/>
+<IgbCategoryChart
+    XAxisInterval="5"
+    YAxisInterval="50" />
 
-<IgbFinancialChart XAxisInterval="5" YAxisInterval="50"/>
+<IgbFinancialChart
+    YAxisInterval="50" />
 
-<IgbDataChart >
-    <IgbCategoryXAxis Name="xAxis" Interval="5" />
-    <IgbNumericYAxis  Name="yAxis" Interval="50" />
+<IgbDataChart>
+    <IgbCategoryXAxis
+        @ref="xAxis"
+        Interval="5" />
+    <IgbNumericYAxis
+        @ref="yAxis"
+        Interval="50" />
 </IgbDataChart>
 ```
 
 ### Axis Scale
 
-Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -440,33 +451,38 @@ This code snippet shows how to hide axis labels in the Blazor charts.
 ```razor
 <IgbCategoryChart
     XAxisLabelVisibility="Visibility.Collapsed"
-    YAxisLabelVisibility="Visibility.Collapsed">
-</IgbCategoryChart>
+    YAxisLabelVisibility="Visibility.Collapsed" />
 
 <IgbFinancialChart
     XAxisLabelVisibility="Visibility.Collapsed"
-    YAxisLabelVisibility="Visibility.Collapsed">
-</IgbFinancialChart>
+    YAxisLabelVisibility="Visibility.Collapsed" />
 
 <IgbDataChart>
-    <IgbCategoryXAxis Name="xAxis" LabelVisibility="Visibility.Collapsed" />
-    <IgbNumericYAxis  Name="yAxis" LabelVisibility="Visibility.Collapsed" />
+    <IgbCategoryXAxis
+        @ref="xAxis"
+        LabelVisibility="Visibility.Collapsed" />
+    <IgbNumericYAxis
+        @ref="yAxis"
+        LabelVisibility="Visibility.Collapsed" />
 </IgbDataChart>
 ```
 
 ### Axis Labels Abbreviation
 
-Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitle) to a string that represents factor used used to abbreviate your data values.
+Although, the Blazor charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTitle) to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the Blazor charts.
 
 ```razor
-<IgbCategoryChart  YAxisTitle="In millions of Dollars"/>
+<IgbCategoryChart
+    YAxisTitle="In millions of Dollars" />
 
-<IgbFinancialChart YAxisTitle="In millions of Dollars"/>
+<IgbFinancialChart
+    YAxisTitle="In millions of Dollars" />
 
-<IgbDataChart >
-    <IgbNumericYAxis Title="In millions of Dollars" />
+<IgbDataChart>
+    <IgbNumericYAxis
+        Title="In millions of Dollars" />
 </IgbDataChart>
 ```
 
@@ -477,13 +493,21 @@ At runtime, the Blazor charts adjust extent of labels on y-axis based on a label
 The following code snippet shows how to set a fixed extent for labels on y-axis in the Blazor charts.
 
 ```razor
-<IgbCategoryChart  XAxisLabelExtent="50" YAxisLabelExtent="50"/>
+<IgbCategoryChart
+    XAxisExtent="50"
+    YAxisExtent="50" />
 
-<IgbFinancialChart XAxisLabelExtent="50" YAxisLabelExtent="50"/>
+<IgbFinancialChart
+    XAxisExtent="50"
+    YAxisExtent="50" />
 
 <IgbDataChart>
-    <IgbCategoryXAxis Name="xAxis" LabelExtent="50" />
-    <IgbNumericYAxis  Name="yAxis" LabelExtent="50" />
+    <IgbCategoryXAxis
+        @ref="xAxis"
+        LabelExtent="50" />
+    <IgbNumericYAxis
+        @ref="yAxis"
+        LabelExtent="50" />
 </IgbDataChart>
 ```
 
@@ -495,25 +519,25 @@ For example, changing these properties on the [`IgbCategoryChart`](mcp:get_api_r
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisInterval)<br />  [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisInterval)<br />  [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorInterval) |
-| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickStroke) <br />  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickStrokeThickness)<br />  [`XAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTickLength)<br />  | [`YAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickStroke) <br />  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickStrokeThickness)<br />  [`YAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTickLength)<br /> |
-| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMajorStroke)<br />  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMajorStrokeThickness)<br />   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMajorStroke)<br />  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMajorStrokeThickness)<br /> |
-| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorStroke)<br />  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMinorStrokeThickness)<br />   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorStroke)<br />  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMinorStrokeThickness)<br /> |
-| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStroke)<br />  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStrokeThickness)<br />   | [`YAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStroke)<br />  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStrokeThickness)<br /> |
-| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTitle)<br />  [`XAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisTitleAngle)<br />    | [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitle)<br />  [`YAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisTitleAngle)<br /> |
-| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisStrip)<br />   | [`YAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisStrip)<br /> |
+| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisInterval)<br />  [`XAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=XAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisInterval)<br />  [`YAxisMinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMinorInterval) |
+| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisTickStroke) <br />  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisTickStrokeThickness)<br />  [`XAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisTickLength)<br />  | [`YAxisTickStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTickStroke) <br />  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTickStrokeThickness)<br />  [`YAxisTickLength`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTickLength)<br /> |
+| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMajorStroke)<br />  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMajorStrokeThickness)<br />   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMajorStroke)<br />  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMajorStrokeThickness)<br /> |
+| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMinorStroke)<br />  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisMinorStrokeThickness)<br />   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMinorStroke)<br />  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMinorStrokeThickness)<br /> |
+| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisStroke)<br />  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisStrokeThickness)<br />   | [`YAxisStroke`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisStroke)<br />  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisStrokeThickness)<br /> |
+| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisTitle)<br />  [`XAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisTitleAngle)<br />    | [`YAxisTitle`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTitle)<br />  [`YAxisTitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisTitleAngle)<br /> |
+| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=XAxisStrip)<br />   | [`YAxisStrip`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisStrip)<br /> |
 
 Or changing properties of an [`IgbAxis`](mcp:get_api_reference?platform=blazor&component=IgbAxis) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
-| All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | [`TickStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickStroke) , [`TickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickStrokeThickness), [`TickLength`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=tickLength) |
-| Axis Major Gridlines | [`MajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=majorStroke), [`MajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=majorStrokeThickness) |
-| Axis Minor Gridlines | [`MinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=minorStroke), [`MinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=minorStrokeThickness) |
-| Axis Main Line       | [`Stroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=stroke), [`StrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=strokeThickness) |
-| Axis Titles          | [`Title`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=chartTitle), `TitleAngle` |
-| Axis Strips          | [`Strip`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=strip) |
+| All Axis Visuals     | [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericAxisBase&member=Interval), [`MinorInterval`](mcp:get_api_reference?platform=blazor&component=IgbNumericAxisBase&member=MinorInterval) |
+| Axis Tickmarks       | [`TickStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=TickStroke), [`TickStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=TickStrokeThickness), [`TickLength`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=TickLength) |
+| Axis Major Gridlines | [`MajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=MajorStroke), [`MajorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=MajorStrokeThickness) |
+| Axis Minor Gridlines | [`MinorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=MinorStroke), [`MinorStrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=MinorStrokeThickness) |
+| Axis Main Line       | [`IgbAxis.Stroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=Stroke), [`StrokeThickness`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=StrokeThickness) |
+| Axis Titles          | [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ChartTitle), [`TitleAngle`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=TitleAngle) |
+| Axis Strips          | [`IgbAxis.Strip`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=Strip) |
 
 ## Performance in Financial Chart
 
@@ -521,19 +545,19 @@ In addition to above performance guidelines, the Blazor [`IgbFinancialChart`](mc
 
 ### Y-Axis Mode
 
-Setting the [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=yAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using [`PercentChange`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries&member=percentChange) mode.
+Setting the [`YAxisMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=YAxisMode) option to [`Numeric`](mcp:get_api_reference?platform=blazor&component=FinancialChartYAxisMode&member=Numeric) is recommended for higher performance, as fewer operations are needed than using [`IgbLineSeries.PercentChange`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries&member=PercentChange) mode.
 
 ### Chart Panes
 
-Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=indicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=overlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=IndicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=OverlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=zoomSliderType) option to [`None`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=ZoomSliderType) option to [`None`](mcp:get_api_reference?platform=blazor&component=FinancialChartZoomSliderType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=volumeType) property can have the following impact on chart performance:
+Setting the [`VolumeType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=VolumeType) property can have the following impact on chart performance:
 
 - [`None`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=None) - is the least expensive since it does not display the volume pane.
 - [`Line`](mcp:get_api_reference?platform=blazor&component=FinancialChartVolumeType&member=Line) - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
@@ -550,7 +574,7 @@ Adding too many axis to the [`Axes`](mcp:get_api_reference?platform=blazor&compo
 
 ### Series Collection
 
-Also, adding a lot of series to the [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) collection of the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
+Also, adding a lot of series to the [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) collection of the Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
 | Slower Performance Scenario | Faster Scenario with Conditional Styling |
 | ----------------------------|---------------------------------------- |

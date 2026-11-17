@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
 llms:
   description: "In Angular map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
+platformType: xplat
 _tocName: Geographic Symbol Map
 _premium: true
 ---
 # Angular Geographic Symbol Map
 
-In Angular map component, you can use the `IgxGeographicSymbolSeries` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
+In Angular map component, you can use the [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
 
 ## Angular Geographic Symbol Map Example
 
@@ -119,86 +120,38 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Data Requirements
-Similarly to other types of geographic series in the map component, the `IgxGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) has the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent&member=dataSource) property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the [`latitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent&member=latitudeMemberPath) and [`longitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent&member=longitudeMemberPath) properties. The [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-The following code shows how to bind the `IgxGeographicSymbolSeries` to locations of cities loaded from a shape file using the [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord).
+The following code shows how to bind the [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) to locations of cities loaded from a shape file using the [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord).
 
 ```html
-<div class="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
-  </div>
-
-<ng-template let-series="series" let-item="item" #template>
-        <div>
-            <div *ngIf="item.org;then hasOrg; else notOrg" ></div>
-            <span [style.color]="series.brush">
-                {{item.name}}
-            </span>
-            <br/>
-            <span>
-                Population {{item.pop}} M
-            </span>
-        </div>
-        <ng-template #hasOrg>
-            <span>
-                Population {{item.pop}} M
-            </span>
-            <br />
-        </ng-template>
-         <ng-template #notOrg>
-            <span>
-            </span>
-         </ng-template>
-</ng-template>
-```
-
-```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { MarkerType } from 'igniteui-angular-charts';
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
-import { WorldLocations } from "../../utilities/WorldLocations";
-
-@Component({
-  selector: "app-map-geographic-scatter-symbol-series",
-  styleUrls: ["./map-geographic-scatter-symbol-series.component.scss"],
-  templateUrl: "./map-geographic-scatter-symbol-series.component.html"
-})
-
-export class MapTypeScatterSymbolSeriesComponent implements AfterViewInit {
-
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    @ViewChild("template")
-    public tooltip: TemplateRef<object>;
-
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
-      this.addSeriesWith(WorldLocations.getCities(), "Gray");
-      this.addSeriesWith(WorldLocations.getCapitals(), "rgb(32, 146, 252)");
-    }
-
-    public addSeriesWith(locations: any[], brush: string) {
-        const symbolSeries = new IgxGeographicSymbolSeriesComponent ();
-        symbolSeries.dataSource = locations;
-        symbolSeries.markerType = MarkerType.Circle;
-        symbolSeries.latitudeMemberPath = "lat";
-        symbolSeries.longitudeMemberPath = "lon";
-        symbolSeries.markerBrush  = "White";
-        symbolSeries.markerOutline = brush;
-        symbolSeries.tooltipTemplate = this.tooltip;
-        this.map.series.add(symbolSeries);
-    }
-}
+<igx-geographic-map
+    #geoMap
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igx-geographic-symbol-series
+        #citiesSeries
+        [dataSource]="worldCities"
+        markerType="Circle"
+        latitudeMemberPath="y"
+        longitudeMemberPath="x"
+        markerBrush="White"
+        markerOutline="Gray">
+    </igx-geographic-symbol-series>
+    <igx-geographic-symbol-series
+        #capitalsSeries
+        [dataSource]="worldCapitals"
+        markerType="Circle"
+        latitudeMemberPath="y"
+        longitudeMemberPath="x"
+        markerBrush="White"
+        markerOutline="rgba(32, 146, 252, 1)">
+    </igx-geographic-symbol-series>
+</igx-geographic-map>
 ```
 
 ## API References
-`IgxGeographicSymbolSeries`
+[`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent)
 [`IgxShapefileRecord`](mcp:get_api_reference?platform=angular&component=IgxShapefileRecord)

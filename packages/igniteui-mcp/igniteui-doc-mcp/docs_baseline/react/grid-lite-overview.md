@@ -55,6 +55,7 @@ return (
 ```
 
 ## Grid Lite in Action
+
 ```typescript
 export type UserSimple = {
   id: string;
@@ -432,7 +433,7 @@ All the core interactive features your users expect: column filtering, column hi
 
 ## Beautiful UX & Branding
 
-Built-in theme support for Bootstrap, Material & Fluent, plus endless branding options in color palettes, fonts, elevation, display density & more.
+Built-in theme support for Bootstrap, Material, Fluent & Indigo, plus endless branding options in color palettes, fonts, elevation, display density & more.
 
 ## Rich Keyboard Navigation
 

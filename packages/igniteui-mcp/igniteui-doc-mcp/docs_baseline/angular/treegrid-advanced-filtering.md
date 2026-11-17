@@ -73,7 +73,7 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_ref
 </igx-tree-grid>
 ```
 
-The advanced filtering generates a [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
 
 ```typescript
 ngAfterViewInit(): void {

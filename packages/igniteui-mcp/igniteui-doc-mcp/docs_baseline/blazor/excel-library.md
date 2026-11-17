@@ -6,11 +6,12 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "Cell", "Formula"]
 llms:
   description: "The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like Workbook, Worksheet, Cell, Formula and many more."
+platformType: xplat-unmapped
 _tocName: Excel Library
 ---
 # Blazor Excel Library Overview
 
-The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook), [`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet), [`Cell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell), [`IgbFormula`](mcp:get_api_reference?platform=blazor&component=Formula) and many more. The Infragistics Blazor Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
+The Infragistics Blazor Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook), [`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet), [`Cell`](mcp:get_api_reference?platform=blazor&component=WorksheetCell), [`Formula`](mcp:get_api_reference?platform=blazor&component=Formula) and many more. The Infragistics Blazor Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
 
 ## Blazor Excel Library Example
 
@@ -356,7 +357,7 @@ The Excel Library does not support the Excel Binary Workbook (.xlsb) format at t
 
 Now that the Excel Library package is installed, next step is to load a workbook.
 
-In order to load and save [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) objects, you can utilize the `Save` method of the actual [`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object, as well as its static `Load` method.
+In order to load and save [`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook) objects, you can utilize the [`Workbook.Save`](mcp:get_api_reference?platform=blazor&component=Workbook&member=Save) method of the actual [`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook) object, as well as its static [`Workbook.Load`](mcp:get_api_reference?platform=blazor&component=Workbook&member=Load) method.
 
 ```csharp
 protected override void OnInitialized()
@@ -379,5 +380,5 @@ private void SaveFile(byte[] bytes, string fileName, string mime)
 ```
 
 ## API References
-[`IgbWorksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet)
-[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)
+[`Worksheet`](mcp:get_api_reference?platform=blazor&component=Worksheet)
+[`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook)

@@ -1393,7 +1393,7 @@ Now that you have the Angular Stepper module or directives imported, you can sta
 
 ## Using the Angular Stepper
 
-[`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStep) is the representation of every step that belongs to the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper). Steps provide [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid), [`active`](mcp:get_api_reference?platform=angular&component=IgxStep&member=active), [`optional`](mcp:get_api_reference?platform=angular&component=IgxStep&member=optional), [`disabled`](mcp:get_api_reference?platform=angular&component=IgxStep&member=disabled) and [`completed`](mcp:get_api_reference?platform=angular&component=IgxStep&member=completed) properties, which give you the ability to configure the step states according to your business requirement.
+[`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStepComponent) is the representation of every step that belongs to the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). Steps provide [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid), [`active`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active), [`optional`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional), [`disabled`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) and [`completed`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) properties, which give you the ability to configure the step states according to your business requirement.
 
 ### Declaring a Stepper
 
@@ -1452,16 +1452,16 @@ For each step the user has the ability to configure indicator, title, subtitle a
 
 ### Changing the Stepper Orientation
 
-You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
+You can customize the stepper orientation through the exposed [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property. It takes a member of the `IgxStepperOrientation` enum - `Horizontal` _(default value)_ or `Vertical`.
 
 **Horizontal Stepper Orientation**
 
-`horizontal` is the default value for the `igx-stepper` [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property.
-When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) [`contentTop`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
+`horizontal` is the default value for the `igx-stepper` [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property.
+When the stepper is horizontally orientated you have the opportunity to determine whether the steps’ content would be displayed above or below the steps’ headers. This could be achieved by setting the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) [`contentTop`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=contentTop) boolean property, which default value is `false`. In case it is enabled the steps’ content would be displayed above the steps’ headers.
 
 **Vertical Stepper Orientation**
 
-You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) property to `vertical`.
+You can easily switch from the horizontal to vertical layout. In order to change the default orientation you should set the [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) property to `vertical`.
 
 ```html
 <igx-stepper [orientation]="'vertical'">
@@ -1475,7 +1475,7 @@ You can easily switch from the horizontal to vertical layout. In order to change
 </igx-stepper>
 ```
 
-The sample below demonstrates how stepper [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=orientation) and [titles position](/stepper#customizing-the-steps) could be changed runtime.
+The sample below demonstrates how stepper [`orientation`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=orientation) and [titles position](/stepper#customizing-the-steps) could be changed runtime.
 
 ```typescript
 import { Component } from '@angular/core';
@@ -1595,21 +1595,21 @@ $sample-gap: 20px;
 
 ### Step States
 
-[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) supports four steps states and each of them apply different styles by default:
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) supports four steps states and each of them apply different styles by default:
 
-- [`**active**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
-- [`**disabled**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
-- [`**optional**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
-- [`**completed**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed `CSS variables`.
+- [`**active**`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=active) - Determines whether the step is the currently displayed. By design, if the user does not explicitly set some step’s active attribute to `true`, the initial active step would be the first non-disabled step.
+- [`**disabled**`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=disabled) - Determines whether the step is interactable. By default, the disabled attribute of a step is set to `false`.
+- [`**optional**`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=optional) - By default, the optional attribute of a step is set to `false`. If validity of a step in linear stepper is not required, then the optional attribute can be enabled in order to be able to move forward independently from the step validity.
+- [`**completed**`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=completed) - By default, the completed attribute of a step returns `false`. The user, however, can override this default completed behavior by setting the completed attribute as needed. When step is marked as completed not only that the style of the step header is changed by default, but also the style of the progress line between the completed step and the next one. Both styles could be modified using the exposed `CSS variables`.
 
-The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) gives you the opportunity to set validation logic for each step through the two-way bindable [`**isValid**`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
-By default, the [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStep&member=isValid) property of a step is set to `true`.
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the opportunity to set validation logic for each step through the two-way bindable [`**isValid**`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property. Based on its value it is decided whether the user will have the ability to move forward in linear stepper mode.
+By default, the [`isValid`](mcp:get_api_reference?platform=angular&component=IgxStepComponent&member=isValid) property of a step is set to `true`.
 
 ### Linear Stepper
 
-The `igx-stepper` gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper).
+The `igx-stepper` gives you the opportunity to set its steps flow using the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property. By default, linear is set to `false` and the user is enabled to select any non-disabled step in the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent).
 
-When the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
+When the [`linear`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=linear) property is set to `true`, the stepper will require the current non-optional step to be valid before proceeding to the next one.
 
 If the current non-optional step is not valid you cannot go forward to the next step until you validate the current one.
 
@@ -1819,12 +1819,12 @@ igx-radio {
 
 ### Step Interactions
 
-[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) provides the following API methods for step interactions:
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) provides the following API methods for step interactions:
 
-- [`**navigateTo**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=navigateTo) – activates the step by given index.
-- [`**next**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=next) - activates the next non-disabled step.
-- [`**prev**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=prev) – activates the previous non-disabled step.
-- [`**reset**`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=reset) – resets the stepper to its initial state.
+- [`**navigateTo**`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=navigateTo) – activates the step by given index.
+- [`**next**`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=next) - activates the next non-disabled step.
+- [`**prev**`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=prev) – activates the previous non-disabled step.
+- [`**reset**`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=reset) – resets the stepper to its initial state.
 
 **Note:** 
 The reset method would not clear the step`s content. This should be done manually.
@@ -1833,7 +1833,7 @@ The reset method would not clear the step`s content. This should be done manuall
 
 The Ignite UI for Angular Stepper gives you the ability to configure different options for titles, indicators and more.
 
-This could be achieved through the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) property of the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper). It takes a member of the `IgxStepType` enum:
+This could be achieved through the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property of the [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent). It takes a member of the `IgxStepType` enum:
 
 - Full _(default value)_
 - Indicator
@@ -1844,7 +1844,7 @@ This could be achieved through the [`stepType`](mcp:get_api_reference?platform=a
 If titles and subtitles are defined, with this setup both indicators and titles would be rendered.
 
 The user would also have the ability to define the position of the title for the steps, so it could be placed before, after, above or below the step indicator.
-The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
+The user can configure the title position using the [`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property. Both properties take member of `IgxStepperTitlePosition` enum:
 
 - end
 - start
@@ -1856,17 +1856,17 @@ When the `igx-stepper` is horizontally orientated, the title position default va
 When the orientation is set to vertical layout the title position by default is `end`.
 
 **Note:** 
-[`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=titlePosition) property is applicable **only** when the stepper [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) property is set to `full`.
+[`titlePosition`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=titlePosition) property is applicable **only** when the stepper [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) property is set to `full`.
 
 **Indicator**
 
-If you want to display only indicators for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) option to `indicator`.
+If you want to display only indicators for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `indicator`.
 
-The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [IgxIconComponent](/icon) or [IgxAvatarComponent](layouts/avatar.md) as step indicators.
+The step indicator supports any content, however with the restriction that its size would be always **24 pixels**. Having this in mind, we recommend using [IgxIconComponent](/layouts/icon) or [IgxAvatarComponent](layouts/avatar.md) as step indicators.
 
 **Title**
 
-If you want to display only titles for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=stepType) option to `title`.
+If you want to display only titles for the steps, set the [`stepType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=stepType) option to `title`.
 
 In this way if subtitles are defined, they will also be rendered below the step title.
 
@@ -1955,7 +1955,7 @@ $sample-gap: 20px;
 
 <hr/>
 
-The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) also allows you to customize the rendered indicators for active, invalid and completed steps. This could be achieved through the `igxStepActiveIndicator`, `igxStepInvalidIndicator` and `igxStepCompletedIndicator` directives:
 
 ```html
 <igx-stepper>
@@ -1981,18 +1981,18 @@ This templates would be applied for all steps with the relevant state.
 
 Angular Stepper Animations provide the end-users with a beautiful experience interacting with the defined steps. The available animation options differ depending on the orientation of the stepper.
 
-When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=horizontalAnimationType) input.
+When the stepper is **horizontally orientated**, it is configured to use the `slide` animation by default. It also supports `fade` as an alternative. The animations are configured through the [`horizontalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=horizontalAnimationType) input.
 
-In **vertically orientated** layout, the animation type could be defined using the [`verticalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
+In **vertically orientated** layout, the animation type could be defined using the [`verticalAnimationType`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=verticalAnimationType) property. By default, its value is `grow` and the user has the ability to set it to `fade` as well.
 
 Setting `none` to the both animation type inputs disables stepper animations.
 
-[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxStepper&member=animationDuration) property, which takes a number as an argument and it is common to the both orientations.
+[`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) gives you the ability to configure the duration of the transition between the steps. This could be achieved through the [`animationDuration`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent&member=animationDuration) property, which takes a number as an argument and it is common to the both orientations.
 
 ## Keyboard Navigation
 
 Angular Stepper provides a rich variety of keyboard interactions to the end-user. This functionality is enabled by default and allows end-users to easily navigate through the steps.
-The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
+The [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent) navigation is compliant with [W3 accessibility standards](https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-manual.html#accessibilityfeatures) and convenient to use.
 
 **Key Combinations**
 
@@ -2181,7 +2181,7 @@ $stepper-theme: stepper-theme(
 
 ### Styling with Tailwind
 
-You can style the stepper using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the stepper using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -2290,8 +2290,8 @@ export class StepperTailwindStylingSampleComponent {
 
 ## API Reference
 
-- [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepper)
-- [`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStep)
+- [`IgxStepper`](mcp:get_api_reference?platform=angular&component=IgxStepperComponent)
+- [`IgxStep`](mcp:get_api_reference?platform=angular&component=IgxStepComponent)
 
 ## Additional Resources
 

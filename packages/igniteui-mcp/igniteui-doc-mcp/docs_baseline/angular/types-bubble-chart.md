@@ -4,9 +4,11 @@ description: Infragistics' Angular Bubble Chart
 keywords: Angular Charts, Bubble Chart, Infragistics
 license: commercial
 
+mentionedTypes: ["Series", "BubbleSeries", "ScatterSeries", "MarkerType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Bubble Chart is a type of Scatter Chart that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates."
+platformType: xplat
 _tocName: Bubble Chart
 _premium: true
 ---
@@ -14,7 +16,7 @@ _premium: true
 The Ignite UI for Angular Bubble Chart is a type of [Scatter Chart](scatter-chart.md) that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates. These coordinates of the data point are determined by two numeric data columns. The Bubble Chart draws attention to uneven intervals or clusters of data. This chart is often used to plot scientific data, and can highlight the deviation of collected data from predicted results. The Bubble Chart has many of the characteristics of the [Scatter Marker Chart](scatter-chart.md#angular-scatter-marker-chart) but with the option to have various radius scale sizes.
 
 ## Angular Bubble Chart Example
-You can create Ignite UI for Angular Bubble Chart in `IgxDataChart` control using the `IgxBubbleSeries` and two numeric axes, as shown in the example below.
+You can create Ignite UI for Angular Bubble Chart in [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control using the [`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent) and two numeric axes, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -227,7 +229,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Bubble Chart with Single Series
-You can bind your data to `DataSource` property of `IgxBubbleSeries` and map data columns using its `XMemberPath`, `YMemberPath`, `RadiusMemberPath` properties, as shown in the example below:
+You can bind your data to [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=dataSource) property of [`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent) and map data columns using its [`xMemberPath`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=xMemberPath), [`yMemberPath`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=yMemberPath), [`radiusMemberPath`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=radiusMemberPath) properties, as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -393,7 +395,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Bubble Chart with Multiple Series
-In Angular Bubble Chart, binding multiple data sources works by setting each new data source to `DataSource` property of a additional `IgxBubbleSeries`, as shown in the example below:
+In Angular Bubble Chart, binding multiple data sources works by setting each new data source to [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=dataSource) property of a additional [`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -606,7 +608,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Bubble Chart Styling
-In Angular Bubble Chart, you can customize shape of bubble markers using `MarkerType` property, their size with `RadiusScale` property, and their appearance using `MarkerBrush`, `MarkerOutline`, `MarkerThickness` properties. In addition, you can also color bubble markers based on a data column using `FillMemberPath` and `FillScale` properties. In this example, usage of above properties is demonstrated.
+In Angular Bubble Chart, you can customize shape of bubble markers using [`markerType`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerType) property, their size with [`radiusScale`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=radiusScale) property, and their appearance using [`markerBrush`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerBrush), [`markerOutline`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerOutline), [`markerThickness`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerThickness) properties. In addition, you can also color bubble markers based on a data column using [`fillMemberPath`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=fillMemberPath) and [`fillScale`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=fillScale) properties. In this example, usage of above properties is demonstrated.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -783,6 +785,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 - [Shape Chart](shape-chart.md)
 
 ## API References
-`IgxDataChart`
-`IgxBubbleSeries`
-`IgxScatterSeries`
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent)
+[`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent)

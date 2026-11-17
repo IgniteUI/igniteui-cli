@@ -263,10 +263,10 @@ public processData(reset) {
 }
 ```
 
-When requesting data, you need to utilize the [`IgxIForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState) interface, which provides the [`IgxIForOfState.startIndex`](mcp:get_api_reference?platform=angular&component=IForOfState&member=startIndex) and [`IgxIForOfState.chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) properties.
+When requesting data, you need to utilize the [`IForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState) interface, which provides the [`IForOfState.startIndex`](mcp:get_api_reference?platform=angular&component=IForOfState&member=startIndex) and [`IForOfState.chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) properties.
 
 **Note:** 
-The first [`IgxIForOfState.chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) will always be 0 and should be determined by you based on the specific application scenario.
+The first [`IForOfState.chunkSize`](mcp:get_api_reference?platform=angular&component=IForOfState&member=chunkSize) will always be 0 and should be determined by you based on the specific application scenario.
 
 ### Remote Virtualization Demo
 
@@ -1980,7 +1980,7 @@ igx-paginator {
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-- In remote data scenarios, when the grid has a `primaryKey` set, [`IgxIRowSelectionEventArgs.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+- In remote data scenarios, when the grid has a `primaryKey` set, [`IRowSelectionEventArgs.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 
 ## API References
 - [`IgxPaginatorComponent API`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)

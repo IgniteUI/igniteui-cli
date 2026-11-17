@@ -359,7 +359,7 @@ The [`IgxTimePicker`](mcp:get_api_reference?platform=angular&component=IgxTimePi
 
 ### Dialog Mode
 
-The default time picker mode is editable dropdown mode. To change the time picker mode to read-only dialog mode, set the [`mode`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=mode) input to [`IgxPickerInteractionMode`](mcp:get_api_reference?platform=angular&component=PickerInteractionMode):
+The default time picker mode is editable dropdown mode. To change the time picker mode to read-only dialog mode, set the [`mode`](mcp:get_api_reference?platform=angular&component=IgxTimePickerComponent&member=mode) input to [`PickerInteractionMode`](mcp:get_api_reference?platform=angular&component=PickerInteractionMode):
 
 ```typescript
 // timePickerDropdown.component.ts
@@ -729,7 +729,7 @@ In order to style any additional components that are used as part of the time pi
 
 Since the time picker window uses the [`IgxOverlayService`](/overlay), in order for our custom theme to reach down the time picker window that we want to style, we will provide a specific outlet where the dialog window will be placed in the DOM when it is visible.
 
-The items in our time picker **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the `document` body. Changing this is done by making use of the [`IgxOverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
+The items in our time picker **are not** descendants of our component `host` - they are currently being displayed in the default overlay outlet, at the end of the `document` body. Changing this is done by making use of the [`OverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property in the `overlaySettings`. The `outlet` controls where the overlay container should be rendered.
 
 Here, we can pass a reference to the element where we'd like our container to be:
 

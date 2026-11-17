@@ -54,6 +54,8 @@ This monorepo contains several packages that combine into the `igniteui-cli`:
 	* [Adding components](#adding-components)
   * [Build and run](#build-and-run)
   * [Update packages](#update-packages)
+  * [Search the docs](#search-the-docs)
+  * [Check your setup](#check-your-setup)
 * [Configure AI Tooling](#configure-ai-tooling)
 * [MCP Server](#mcp-server)
   * [Using with AI Assistants](#using-with-ai-assistants)
@@ -162,6 +164,24 @@ In Angular projects, `ig update` runs the project's `ng update` with the given p
 
 Run `ig update --help` for all options, including `--migrate-only` and `--name` to run migrations without changing versions. `ig update` changes package versions; to switch trial Ignite UI packages to their licensed equivalents, use `ig upgrade-packages`.
 
+### Search the docs
+`ig doc` searches the documentation bundled with the CLI and prints the results in the terminal. The framework is detected from the current project; pass `-f` outside a project.
+```bash
+ig doc "row editing"                 # ranked results with the name of each doc
+ig doc --read grid-row-editing       # print one doc by the name from the results
+ig doc "row editing" -f react --limit 5
+ig doc grid --open                   # search infragistics.com in the browser instead
+```
+The bundled docs cover Angular, React, Web Components and Blazor. For jQuery use `--open`.
+
+### Check your setup
+`ig doctor` checks the environment (Node.js, npm, git, CLI version), the current project (CLI config, installed Ignite UI packages, trial and licensed packages mixed together, Angular version match), the licensed `@infragistics` feed, and the AI setup written by `ig ai-config`. It changes nothing, prints a fix hint next to each warning or failure, and exits with code 1 when a check fails.
+```bash
+ig doctor
+ig doctor --offline    # skip the checks that need the network
+ig doctor --json       # machine-readable results
+```
+
 ## Configure AI Tooling
 
 Ignite UI provides rich [AI assisted development toolchain](https://www.infragistics.com/ai-assisted-app-development). To configure Ignite UI AI tooling — MCP servers and AI coding skills — run:
@@ -260,7 +280,7 @@ See the [Contribution guide](https://github.com/IgniteUI/igniteui-cli/blob/maste
 #### Template smoke test
 
 `scripts/smoke-test.sh` drives the locally built CLI end to end: it scaffolds a project, adds
-every component template into it, installs, and builds. The Jasmine specs under `spec/` stub out
+every component template into it, installs, runs `ig doctor`, and builds. The Jasmine specs under `spec/` stub out
 `PackageManager.installPackages`, so they verify that files land on disk but never that the result
 installs or compiles — this script covers that gap.
 

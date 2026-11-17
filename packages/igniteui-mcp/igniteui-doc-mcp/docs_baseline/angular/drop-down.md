@@ -507,7 +507,7 @@ igx-switch {
 
 ### Drop Down as menu
 
-You can configure the drop-down to behave as a menu. To do this, set the [`IgxISelectionEventArgs`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs) interface [`IgxISelectionEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=cancel) member to _true_ in the [`selectionChanging`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectionChanging) event handler. In this way, the selected item is not preserved when opening the menu and previous selections get invalidated. Still, you can get the clicked item through the [`IgxISelectionEventArgs.newSelection`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=newSelection) member value in the event.
+You can configure the drop-down to behave as a menu. To do this, set the [`ISelectionEventArgs`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs) interface [`ISelectionEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=cancel) member to _true_ in the [`selectionChanging`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent&member=selectionChanging) event handler. In this way, the selected item is not preserved when opening the menu and previous selections get invalidated. Still, you can get the clicked item through the [`ISelectionEventArgs.newSelection`](mcp:get_api_reference?platform=angular&component=ISelectionEventArgs&member=newSelection) member value in the event.
 
 ```html
 {/* dropdown.component.html */}
@@ -531,9 +531,9 @@ You can configure the drop-down to behave as a menu. To do this, set the [`IgxIS
   </igx-navbar>
 
   <div>
-    <ng-container *ngIf="text">
+    @if (text) {
       <label igxLabel>{{ text }}</label>
-    </ng-container>
+    }
   
 </div>
 
@@ -1232,9 +1232,9 @@ $custom-drop-down-theme: drop-down-theme(
 - [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
 - `IgxDropDownComponent Styles`
 - [`IgxDropDownItem`](mcp:get_api_reference?platform=angular&component=IgxDropDownItemComponent).
-- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - `IgxOverlay Styles`
-- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent)
 - `IgxDividerComponent Styles`
 ## Theming Dependencies
 

@@ -597,7 +597,7 @@ If you have data field values that contain the default keys, make sure to change
 
 ## Styling
 
-The React Pivot Grid shares the same [CSS properties](../grid/theming-grid.md) as the base Grid. To style it, simply set the desired property values and scope them to the Pivot Grid component.
+The React Pivot Grid shares the same CSS properties as the base Grid. To style it, simply set the desired property values and scope them to the Pivot Grid component. To build a complete theme from just a few colors, see the [theming topic](./theming.md).
 
 ```css
 igc-pivot-grid {

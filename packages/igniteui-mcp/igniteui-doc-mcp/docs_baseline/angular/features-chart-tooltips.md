@@ -7,16 +7,17 @@ mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
+platformType: xplat
 _tocName: Chart Tooltips
 _premium: true
 ---
 # Angular Chart Tooltips
 
-In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` controls.
+In Angular charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points. Tooltips are supported by the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) controls.
 
 ## Angular Chart Tooltip Types
 
-Angular Chart provide three types of tooltips that you can with tooltips enabled by setting the `ToolTipType` property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Angular Chart provide three types of tooltips that you can with tooltips enabled by setting the [`IgxDomainChartComponent.toolTipType`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -163,14 +164,14 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The `ToolTipType` property is configurable and can be set to one of the following options:
+The [`IgxDomainChartComponent.toolTipType`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=toolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|
-| `Default`  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
-| `Data` Tooltip | Display the data tooltips for all series in the chart.  |
-| `Item`  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
-| `Category` Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
+| [`Default`](mcp:get_api_reference?platform=angular&component=ToolTipType&member=Default)  Tooltip | Display a tooltip for a single item when the pointer is positioned over it.  |
+| [`Data`](mcp:get_api_reference?platform=angular&component=ToolTipType&member=Data) Tooltip | Display the data tooltips for all series in the chart.  |
+| [`Item`](mcp:get_api_reference?platform=angular&component=ToolTipType&member=Item)  Tooltip    | Display a tooltip for each data item in the category that the pointer is positioned over.  |
+| [`Category`](mcp:get_api_reference?platform=angular&component=ToolTipType&member=Category) Tooltip | Display a grouped tooltip for all data points in the category that the pointer is positioned over.  |
 
 ## Angular Chart Tooltip Template
 
@@ -178,7 +179,7 @@ If none of built-in types of tooltips are matching your requirements, you can cr
 
 ## Custom Tooltips in Category Chart
 
-This example shows how to create custom tooltips for all series in Angular `IgxCategoryChart` control. Note that you can also apply the same logic to custom tooltips in Angular `IgxFinancialChart` control.
+This example shows how to create custom tooltips for all series in Angular [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control. Note that you can also apply the same logic to custom tooltips in Angular [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) control.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -395,7 +396,7 @@ You can find more information about related chart features in these topics:
 - [Chart Markers](chart-markers.md)
 
 ## API References
-`IgxDataToolTipLayer`
-`IgxCategoryChart`
-`IgxFinancialChart`
-`IgxDataChart`
+[`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent)
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

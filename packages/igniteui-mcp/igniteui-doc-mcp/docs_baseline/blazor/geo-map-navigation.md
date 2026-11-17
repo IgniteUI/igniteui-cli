@@ -3,9 +3,11 @@ title: Blazor Map | Data Visualization Tools | Map Navigation | Infragistics
 description: Navigate Infragistics' Blazor map by panning right and left and zooming horizontally and vertically using mouse or touch. Learn about Ignite UI for Blazor map's navigation capabilities!
 keywords: Blazor map, navigation, Ignite UI for Blazor, Infragistics
 license: commercial
+mentionedTypes: ["GeographicMap"]
 
 llms:
   description: "Navigation in the GeographicMap control is enabled by default and it allows zooming and panning of the map content."
+platformType: xplat
 _tocName: Navigating Map Content
 _premium: true
 ---
@@ -149,7 +151,9 @@ You navigate map content within geographic region bound by these coordinates:
 This code snippet shows how navigate the map using geographic coordinates:
 
 ```razor
-this.GeoMap.ZoomToGeographic(new Rect() { Left = -134.5, Top = 16.5, Width = 70.0, Height = 37.0 });
+var map = this.geoMap;
+var region = new Rect() { Left = -134.5, Top = 16.0, Width = 70.0, Height = 37.0 };
+map.ZoomToGeographic(region);
 ```
 
 ## Window Coordinates
@@ -161,11 +165,15 @@ Also, you can navigate map content within window rectangle bound by these relati
 This code snippet shows how navigate the map using relative window coordinates:
 
 ```razor
-this.GeoMap.ZoomToGeographic(new Rect() { Left = 0.1, Top = 0.1, Width = 0.5, Height = 0.5 });
-// or
-this.GeoMap.WindowPositionHorizontal = 0.1;
-this.GeoMap.WindowPositionVertical = 0.1;
-this.GeoMap.WindowScale = 0.5;
+this.geoMap.WindowRect = new Rect(0.1, 0.1, 0.5, 0.5);
+```
+
+or
+
+```razor
+this.geoMap.WindowPositionHorizontal = 0.1;
+this.geoMap.WindowPositionVertical = 0.1;
+this.geoMap.WindowScale = 0.5;
 ```
 
 ## Properties
@@ -174,13 +182,13 @@ The following table summarizes properties that can be used in navigation of the 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
 |[`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect)| Rect | Sets new position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values will zoom out the entire map content in the navigation window. |
-|[`WindowScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=windowScale)| number | Sets new size of the navigation window in of the map control. It is equivalent smallest value of Width or Height stored in the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property |
-|[`WindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=windowPositionHorizontal)| number | Sets new horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property. |
-|[`WindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=windowPositionVertical)| number | Sets new vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property. |
-|[`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowRect)| Rect | Indicates current position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values displays the entire map content in the navigation window.  |
-|[`ActualWindowScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=actualWindowScale)| number | Indicates current size of the navigation window in of the map control. It is equivalent to smallest value of Width or Height stored in the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowRect) property |
-|[`ActualWindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowPositionHorizontal)| number | Indicates current horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowRect) property. |
-|[`ActualWindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowPositionVertical)| number | Indicates vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbSeriesViewer&member=actualWindowRect) property. |
+|[`WindowScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowScale)| number | Sets new size of the navigation window in of the map control. It is equivalent smallest value of Width or Height stored in the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property |
+|[`WindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowPositionHorizontal)| number | Sets new horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property. |
+|[`WindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowPositionVertical)| number | Sets new vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=WindowRect) property. |
+|[`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowRect)| Rect | Indicates current position and size of the navigation window in viewable area of the map content. Rect with 0, 0, 1, 1 values displays the entire map content in the navigation window.  |
+|[`ActualWindowScale`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowScale)| number | Indicates current size of the navigation window in of the map control. It is equivalent to smallest value of Width or Height stored in the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowRect) property |
+|[`ActualWindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowPositionHorizontal)| number | Indicates current horizontal position of the navigation window’s anchor point from the left edge of the map control. It is equivalent to value stored in the Left of the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowRect) property. |
+|[`ActualWindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowPositionVertical)| number | Indicates vertical position of the navigation window’s anchor point from the top edge of the map control. It is equivalent to value stored in the Top of the [`ActualWindowRect`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=ActualWindowRect) property. |
 
 ## API References
 [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap)

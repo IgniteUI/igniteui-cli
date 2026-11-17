@@ -185,7 +185,7 @@ In order to achieve this, the [`IgxTreeGrid`](mcp:get_api_reference?platform=ang
 Regardless of which option is used for building the tree grid's hierarchy (child collection or primary and foreign keys), the tree grid's rows are constructed of two types of cells:
 
 - [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) - Ordinary cell that contains a value.
-- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the [`IgxITreeGridRecord.level`](mcp:get_api_reference?platform=angular&component=ITreeGridRecord&member=level) property of its inner [`IgxTreeGridRow.treeRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow&member=treeRow).
+- [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) - Tree cell that contains a value, an expand/collapse indicator and an indentation div element, which is based on the level of the cell's row. The level of a row component can be accessed through the [`ITreeGridRecord.level`](mcp:get_api_reference?platform=angular&component=ITreeGridRecord&member=level) property of its inner [`IgxTreeGridRow.treeRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGridRow&member=treeRow).
 
 **Note:** 
 Each row can have only one tree cell, but it can have multiple (or none) ordinary cells.

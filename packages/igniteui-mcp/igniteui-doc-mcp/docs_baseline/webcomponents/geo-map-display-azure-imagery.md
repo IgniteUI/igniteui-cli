@@ -3,9 +3,10 @@ title: "Web Components Map | Data Visualization Tools | Displaying Azure Imagery
 description: Use Infragistics' Web Components to display imagery from Microsoft Azure Maps. View Ignite UI for Web Components map tutorials!
 keywords: "Web Components map, azure maps, Ignite UI for Web Components, Infragistics, imagery tile source, map background"
 license: commercial
-mentionedTypes: ["GeographicMap", "AzureMapsImagery", "GeographicTileSeries"]
+mentionedTypes: ["GeographicMap", "AzureMapsImagery", "GeographicTileSeries", "AzureMapsImageryStyle"]
 llms:
   description: "The Web Components AzureMapsImagery is geographic imagery mapping service provided by Microsoft®."
+platformType: xplat
 _tocName: Displaying Azure Imagery
 _premium: true
 ---
@@ -132,21 +133,31 @@ export class MapUtils {
 ```
 
 ## Web Components Displaying Imagery from Azure Maps - Code Example
-The following code snippet shows how to display geographic imagery tiles from Azure Maps in Web Components `IgcGeographicMap` using `IgcAzureMapsImagery` class.
+The following code snippet shows how to display geographic imagery tiles from Azure Maps in Web Components `IgcGeographicMapComponent` using `IgcAzureMapsImagery` class.
+
+```html
+<igc-geographic-map
+    id="azureMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igc-geographic-map>
+```
 
 ```ts
-const tileSource = new IgcAzureMapsImagery();
-tileSource.apiKey = "YOUR_Azure_MAPS_API_KEY";
-tileSource.imageryStyle = AzureMapsImageryStyle.Satellite; // or
-tileSource.imageryStyle = AzureMapsImageryStyle.Road; // or
-tileSource.imageryStyle = AzureMapsImageryStyle.DarkGrey; // Traffic, Weather etc.
+private azureMap: IgcGeographicMapComponent
 
-map.backgroundContent = tileSource;
+var azureMap = this.azureMap = document.getElementById('azureMap') as IgcGeographicMapComponent;
+
+var azureImagery = new IgcAzureMapsImagery();
+azureImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+azureImagery.imageryStyle = AzureMapsImageryStyle.Satellite;
+azureMap.backgroundContent = azureImagery;
 ```
 
 ## Web Components Overlaying Imagery from Azure Maps - Overview
 
-When working with the `IgcGeographicTileSeries`, you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
+When working with the `IgcGeographicTileSeriesComponent`, you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
 
 - **Base Styles**: Satellite, Road, Terra, and DarkGrey provide the core background tiles.
 - **Overlay Styles**: Traffic and Weather imagery (e.g., `TrafficRelativeOverlay`, `WeatherRadarOverlay`) are designed to be layered on top of a base style by assigning them to a tile series.
@@ -158,53 +169,35 @@ This design allows you to build richer maps, for example:
 - Applying **DarkGrey** with **LabelsRoadOverlay** for a dashboard-friendly, contrast-heavy view.
 
 ## Web Components Overlaying Imagery from Azure Maps - Code Example
-The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Web Components `IgcGeographicMap` using `IgcAzureMapsImagery` and `IgcGeographicTileSeries` classes.
+The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Web Components `IgcGeographicMapComponent` using `IgcAzureMapsImagery` and `IgcGeographicTileSeriesComponent` classes.
 
 ```html
-<!-- index.html -->
-<html>
-  <head>
-    <script type="module" src="index.ts"></script>
-  </head>
-  <body style="margin:0;">
-    <igc-geographic-map id="map" width="100%" height="100%" zoomable="true">
-      <igc-geographic-tile-series id="tileSeries"></igc-geographic-tile-series>
-    </igc-geographic-map>
-  </body>
-</html>
+<igc-geographic-map
+    id="azureMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igc-geographic-tile-series
+        id="imagerySeries">
+    </igc-geographic-tile-series>
+</igc-geographic-map>
 ```
 
 ```ts
-// index.ts
-import {
-  IgcGeographicMapComponent,
-  IgcGeographicTileSeriesComponent,
-  IgcAzureMapsImagery,
-  AzureMapsImageryStyle,
-  IgcGeographicMapModule
-} from 'igniteui-webcomponents-maps';
-import { ModuleManager } from 'igniteui-webcomponents-core';
+private azureMap: IgcGeographicMapComponent
+private imagerySeries: IgcGeographicTileSeriesComponent
 
-ModuleManager.register(IgcGeographicMapModule);
+var azureMap = this.azureMap = document.getElementById('azureMap') as IgcGeographicMapComponent;
+var imagerySeries = this.imagerySeries = document.getElementById('imagerySeries') as IgcGeographicTileSeriesComponent;
 
-const azureKey = "<YOUR_KEY_HERE>";
-
-window.addEventListener("load", () => {
-  const map = document.getElementById("map") as IgcGeographicMapComponent;
-  const tileSeries = document.getElementById("tileSeries") as IgcGeographicTileSeriesComponent;
-
-  // Update TileSeries
-  const overlay = new IgcAzureMapsImagery();
-  overlay.apiKey = azureKey;
-  overlay.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
-  tileSeries.tileImagery = overlay;
-
-  // Update Map Background
-  const background = new IgcAzureMapsImagery();
-  background.apiKey = azureKey;
-  background.imageryStyle = AzureMapsImageryStyle.DarkGrey;
-  map.backgroundContent = background;
-});
+var azureImagery = new IgcAzureMapsImagery();
+azureImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+azureImagery.imageryStyle = AzureMapsImageryStyle.DarkGrey;
+azureMap.backgroundContent = azureImagery;
+var trafficImagery = new IgcAzureMapsImagery();
+trafficImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+trafficImagery.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
+imagerySeries.tileImagery = trafficImagery;
 ```
 
 ## Properties
@@ -212,9 +205,9 @@ The following table summarizes properties of the `IgcAzureMapsImagery` class:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|`ApiKey`|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
-|`ImageryStyle`|`IgxAzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `IgxAzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
+|`apiKey`|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
+|`imageryStyle`|`AzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `AzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
 
 ## API References
 `IgcAzureMapsImagery`
-`IgcGeographicMap`
+`IgcGeographicMapComponent`

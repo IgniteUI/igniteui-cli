@@ -230,15 +230,15 @@ An example of setting a specific type declaratively:
 <igx-input-group type="border"></igx-input-group>
 ```
 
-Using the [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token allows to specify a type on an application level for all input-group instances. It provides an easy way to style all related components at once.
-To set the type, use the [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token to create a DI provider.
+Using the [`IGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token allows to specify a type on an application level for all input-group instances. It provides an easy way to style all related components at once.
+To set the type, use the [`IGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE) injection token to create a DI provider.
 
 ```typescript
 providers: [{provide: IGX_INPUT_GROUP_TYPE, useValue: 'box' }]
 ```
 
 **Note:** 
-The [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property has precedence over a [`IgxIGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE), thus a token value can be overridden on a component level if the type property is set explicitly.
+The [`type`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent&member=type) property has precedence over a [`IGX_INPUT_GROUP_TYPE`](mcp:get_api_reference?platform=angular&component=IGX_INPUT_GROUP_TYPE), thus a token value can be overridden on a component level if the type property is set explicitly.
 Most of the `igniteui-angular` form controls use input-group component internally, or allow for a custom template. Setting a global token will affect these components as well.
 
 Ignite UI for Angular also provides styling for the input of `type="file"` and it supports all the input group types and themes, just add this to your template:
@@ -507,14 +507,18 @@ The following example uses two-way data binding and demonstrates how to inspect 
     <igx-input-group>
         <label igxLabel for="email">Email</label>
         <input igxInput name="email" type="email" [(ngModel)]="user.email" #email="ngModel" required email />
-        <igx-hint *ngIf="email.errors?.email">Please enter a valid email</igx-hint>
+        @if (email.errors?.email) {
+            <igx-hint>Please enter a valid email</igx-hint>
+        }
     </igx-input-group>
 
     <igx-input-group>
         <label igxLabel for="password">Password</label>
         <input igxInput name="password" type="password"
             [(ngModel)]="user.password" #password="ngModel" required minlength="8" />
-        <igx-hint *ngIf="password.errors?.minlength">Password should be at least 8 characters</igx-hint>
+        @if (password.errors?.minlength) {
+            <igx-hint>Password should be at least 8 characters</igx-hint>
+        }
     </igx-input-group>
 
     <button igxButton="contained" igxRipple type="submit">Submit</button>
@@ -530,7 +534,9 @@ The following example demonstrates how to inspect the form's state by exporting 
     <igx-input-group>
         <label igxLabel for="email">Email</label>
         <input igxInput name="email" type="email" [(ngModel)]="user.email" #email="ngModel" required email />
-        <igx-hint *ngIf="email.errors?.email">Please enter a valid email</igx-hint>
+        @if (email.errors?.email) {
+            <igx-hint>Please enter a valid email</igx-hint>
+        }
     </igx-input-group>
     ...
 
@@ -698,13 +704,17 @@ public get password() {
     <igx-input-group>
         <label igxLabel for="email">Email</label>
         <input igxInput name="email" type="email" formControlName="email" />
-        <igx-hint *ngIf="email.errors?.email">Please enter a valid email</igx-hint>
+        @if (email.errors?.email) {
+            <igx-hint>Please enter a valid email</igx-hint>
+        }
     </igx-input-group>
 
     <igx-input-group>
         <label igxLabel for="password">Password</label>
         <input igxInput name="password" type="password" formControlName="password" />
-        <igx-hint *ngIf="password.errors?.minlength">Password should be at least 8 characters</igx-hint>
+        @if (password.errors?.minlength) {
+            <igx-hint>Password should be at least 8 characters</igx-hint>
+        }
     </igx-input-group>
 
     <button igxButton="contained" igxRipple type="submit" [disabled]="!registrationForm.valid">Submit</button>
@@ -1428,7 +1438,7 @@ For instance, setting a dark `$box-background` globally could cause the borders 
 
 ### Styling with Tailwind
 
-You can style the input group using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the input group using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

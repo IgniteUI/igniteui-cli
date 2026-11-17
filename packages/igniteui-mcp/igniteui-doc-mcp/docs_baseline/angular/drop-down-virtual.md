@@ -106,7 +106,7 @@ export class DropDownVirtualComponent {
 
 ### First Steps
 
-Import the drop-down together with the `IgxVirtualScroll` and the `IgxVirtualItemDirective`, which marks the template of a list item:
+Import the drop-down together with the [`IgxVirtualScroll`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent) and the `IgxVirtualItemDirective`, which marks the template of a list item:
 
 ```typescript
 // drop-down-virtual.component.ts
@@ -215,7 +215,7 @@ The `igx-virtual-scroll` element is the scroll container of the list, so it need
 
 ## Remote Data
 
-The `igx-drop-down` also supports loading pages of remote data. Bind the virtual scroll's `dataWindow` input to the loaded page, and load the next page from the range that the `stateChange` output reports. The list is as long as the whole remote collection, so the scrollbar spans every item, while only the loaded page is in memory.
+The `igx-drop-down` also supports loading pages of remote data. Bind the virtual scroll's [`dataWindow`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=dataWindow) input to the loaded page, and load the next page from the range that the [`stateChange`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=stateChange) output reports. The list is as long as the whole remote collection, so the scrollbar spans every item, while only the loaded page is in memory.
 
 ### Template
 
@@ -447,5 +447,5 @@ Using the drop-down with a virtualized list of items enforces some limitations. 
 The drop-down also works with a projected [`*igxFor`](./for-of.md) directive, as in earlier versions. The directive is deprecated in favor of the Virtual Scroll, so use `igx-virtual-scroll` for new drop-downs.
 
 ## API References
-- `IgxVirtualScroll`
+- [`IgxVirtualScroll`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent)
 - [`IgxDropDown`](mcp:get_api_reference?platform=angular&component=IgxDropDownComponent)
