@@ -263,7 +263,7 @@ export class DisabledIconButtonComponent {}
 
 ### SVG Icons
 
-In addition to material icons, the `igxIconButton` directive also supports usage of SVG images as icons. To do so, first we should inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency and then use the [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method to import the SVG file in cache. For further information, you can read the [SVG section](/icon#svg-icons) in the icon topic.
+In addition to material icons, the `igxIconButton` directive also supports usage of SVG images as icons. To do so, first we should inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency and then use the [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method to import the SVG file in cache. For further information, you can read the [SVG section](/layouts/icon#svg-icons) in the icon topic.
 
 ```typescript
 constructor(private _iconService: IgxIconService) { }
@@ -720,7 +720,7 @@ export class IconButtonStylingComponent { }
 
 ### Styling with Tailwind
 
-You can style the icon button using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the icon button using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

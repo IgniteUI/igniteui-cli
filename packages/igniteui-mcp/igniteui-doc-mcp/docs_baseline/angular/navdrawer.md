@@ -262,7 +262,7 @@ There are various ways to open and close the drawer. Input properties can be bou
 
 The Navigation Drawer also integrates with [`IgxNavigationService`](mcp:get_api_reference?platform=angular&component=IgxNavigationService) and can be targeted by id with an [`igxToggleAction`](/toggle#automatic-toggle-actions) directive.
 
-Let's replace the `<main>` in **app.component.html** with the following, adding [`igxIconButton`](/icon-button) and [Icon component](/icon) to style our toggle:
+Let's replace the `<main>` in **app.component.html** with the following, adding [`igxIconButton`](/icon-button) and [Icon component](/layouts/icon) to style our toggle:
 
 ```html
 <main>

@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook"]
 llms:
   description: "The Infragistics React Excel Library has support for adding sparklines to an Excel Worksheet."
+platformType: xplat-unmapped
 _tocName: Working with Sparklines
 _premium: true
 ---

@@ -7,6 +7,7 @@ mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeS
 namespace: Infragistics.Controls.Maps
 llms:
   description: "In the Ignite UI for React map, you can add multiple geographic series objects to overlay a few shapefiles with geo-spacial data."
+platformType: xplat
 _tocName: Binding Multiple Shapes
 _premium: true
 ---
@@ -518,18 +519,20 @@ You can use geographic series in above or other combinations to plot desired dat
 
 First, let's import required components and modules:
 
-```ts
-import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrGeographicShapeSeries } from 'igniteui-react-maps';
-import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
-import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
-import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { IgrDataContext } from 'igniteui-react-core';
+```tsx
+import { IgrGeographicMap, IgrGeographicShapeSeries, IgrGeographicPolylineSeries, IgrGeographicSymbolSeries } from 'igniteui-react-maps';
 import { IgrShapeDataSource } from 'igniteui-react-core';
+```
 
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
+```tsx
+import { IgrGeographicMapModule } from 'igniteui-react-maps';
+import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
+// ...
+const mods: any[] = [
+    IgrGeographicMapModule,
+    IgrDataChartInteractivityModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Creating Series
@@ -537,85 +540,89 @@ IgrDataChartInteractivityModule.register();
 Next, we need to create a map with a few Geographic Series that will later load different type of shapefile.
 
 ```tsx
-public render() {
-    return (
-        <IgrGeographicMap
-            width="100%"
-            height="100%"
-            zoomable="true" >
-            <IgrGeographicShapeSeries
-                name="polygonSeries"
-                dataSource={this.state.polygons}
-                shapeMemberPath="points"
-                shapeFill="rgb(150, 150, 150)"
-                shapeStroke="Black"
-                shapeStrokeThickness={1.0} />
-            <IgrGeographicPolylineSeries
-                name="lineSeries"
-                dataSource={this.state.polylines}
-                shapeMemberPath="points"
-                shapeStroke="rgba(147, 15, 180, 0.5)"
-                thickness={3.0}  />
-            <IgrGeographicSymbolSeries
-                name="symbolSeries"
-                dataSource={this.state.locations}
-                longitudeMemberPath="longitude"
-                latitudeMemberPath="latitude"
-                markerType="Circle"
-                markerOutline="rgb(2, 102, 196)"
-                markerBrush="White" />
-        </IgrGeographicMap>
-    );
-}
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicShapeSeries
+        name="polygonSeries"
+        ref={ref => { this.polygonSeries = ref; }}
+        shapeMemberPath="points"
+        shapeFill="rgb(150, 150, 150)"
+        shapeStroke="Black"
+        shapeStrokeThickness={1} />
+    <IgrGeographicPolylineSeries
+        name="lineSeries"
+        ref={ref => { this.lineSeries = ref; }}
+        shapeMemberPath="points"
+        shapeStroke="rgba(147, 15, 180, 0.5)"
+        thickness={3} />
+    <IgrGeographicSymbolSeries
+        name="symbolSeries"
+        ref={ref => { this.symbolSeries = ref; }}
+        longitudeMemberPath="longitude"
+        latitudeMemberPath="latitude"
+        markerType="Circle"
+        markerOutline="rgba(2, 102, 196, 1)"
+        markerBrush="White" />
+</IgrGeographicMap>
 ```
 
 ## Loading Shapefiles
 
-Next, in constructor of your page, add a `IgrShapefileRecord` for each shapefile that you want to display in the geographic map component.
+Next, in constructor of your page, add a `IgrShapefileRecord` for each shapefile that you want to display in the geographic map component. Each source is given the method that turns its records into data; those methods belong to a `MapMultipleShapesReaders` class, and the sections below show each of them.
 
-```ts
-const sdsPolygons = new IgrShapeDataSource();
-sdsPolygons.importCompleted = this.onPolygonsLoaded;
-sdsPolygons.shapefileSource = url + "/shapes/WorldCountries.shp";
-sdsPolygons.databaseSource  = url + "/shapes/WorldCountries.dbf";
+```tsx
+import { IgrShapeDataSource } from 'igniteui-react-core';
+// ...
+private mapMultipleShapesReaders: MapMultipleShapesReaders = new MapMultipleShapesReaders();
+// ...
+var root = "https://static.infragistics.com/xplatform/shapes/";
+var readers = this.mapMultipleShapesReaders;
+var map = this.geoMap;
+
+var sdsPolygons = new IgrShapeDataSource();
+sdsPolygons.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPolygons(s, e, map);
+sdsPolygons.shapefileSource = root + "WorldCountries.shp";
+sdsPolygons.databaseSource = root + "WorldCountries.dbf";
 sdsPolygons.dataBind();
-const sdsPolylines = new IgrShapeDataSource();
-sdsPolylines.importCompleted = this.onPolylinesLoaded;
-sdsPolylines.shapefileSource = url + "/shapes/WorldConnections.shp";
-sdsPolylines.databaseSource  = url + "/shapes/WorldConnections.dbf";
+
+var sdsPolylines = new IgrShapeDataSource();
+sdsPolylines.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPolylines(s, e, map);
+sdsPolylines.shapefileSource = root + "WorldCableRoutes.shp";
+sdsPolylines.databaseSource = root + "WorldCableRoutes.dbf";
 sdsPolylines.dataBind();
-const sdsLocations = new IgrShapeDataSource();
-sdsLocations.importCompleted = this.onPointsLoaded;
-sdsLocations.shapefileSource = url + "/Shapes/WorldCities.shp";
-sdsLocations.databaseSource  = url + "/Shapes/WorldCities.dbf";
+
+var sdsLocations = new IgrShapeDataSource();
+sdsLocations.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPoints(s, e, map);
+sdsLocations.shapefileSource = root + "WorldCities.shp";
+sdsLocations.databaseSource = root + "WorldCities.dbf";
 sdsLocations.dataBind();
 ```
 
 ## Processing Polygons
 
-Process shapes data loaded in `IgrShapefileRecord` with of countries of the world and assign it to `IgrGeographicShapeSeries` object.
+Process shapes data loaded in `IgrShapefileRecord` with countries of the world and assign it to `IgrGeographicShapeSeries` object.
 
-```ts
-import { IgrGeographicShapeSeries } from 'igniteui-react-maps';
-import { IgrShapeDataSource } from 'igniteui-react-core';
-// ...
-public onPolygonsLoaded(sds: IgrShapeDataSource, e: any) {
-    const geoPolygons: any[] = [];
+```tsx
+/** Country shapes, with the fields the tooltip shows taken from the .DBF file. */
+public readPolygons(sds: IgrShapeDataSource, e: any, map: IgrGeographicMap): void {
+    var geoPolygons: any[] = [];
+    var pointData = sds.getPointData();
     // parsing shapefile data and creating geo-polygons
-    let pointData = sds.getPointData();
-    for ( let i = 0; i < pointData.length; i++ ) {
-        let record = pointData[i];
+    for (var i = 0; i < pointData.length; i++) {
+        var record = pointData[i];
         // using field/column names from .DBF file
-        const country = {
+        geoPolygons.push({
             points: record.points,
             name: record.fieldValues.NAME,
             gdp: record.fieldValues.GDP,
             population: record.fieldValues.POPULATION
-        };
-        geoPolygons.push(country);
-    };
+        });
+    }
 
-    const shapeSeries = this.geoMap.series[0] as IgrGeographicShapeSeries;
+    var shapeSeries = map.series.item(0) as IgrGeographicShapeSeries;
     shapeSeries.dataSource = geoPolygons;
 }
 ```
@@ -624,18 +631,16 @@ public onPolygonsLoaded(sds: IgrShapeDataSource, e: any) {
 
 Process shapes data loaded in `IgrShapefileRecord` with communication routes between major cities and assign it to `IgrGeographicPolylineSeries` object.
 
-```ts
-import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
-import { IgrShapeDataSource } from 'igniteui-react-core';
-// ...
-public onPolylinesLoaded(sds: IgrShapeDataSource, e: any) {
-    const geoPolylines: any[] = [];
-    // parsing shapefile data and creating geo-polygons
-    let pointData = sds.getPointData();
-    for ( let i = 0; i < pointData.length; i++ ) {
-        let record = pointData[i];
+```tsx
+/** Connections between places, each record one path. */
+public readPolylines(sds: IgrShapeDataSource, e: any, map: IgrGeographicMap): void {
+    var geoPolylines: any[] = [];
+    var pointData = sds.getPointData();
+    // parsing shapefile data and creating geo-polylines
+    for (var i = 0; i < pointData.length; i++) {
+        var record = pointData[i];
         // using field/column names from .DBF file
-        const route = {
+        geoPolylines.push({
             points: record.points,
             name: record.fieldValues.Name,
             capacity: record.fieldValues.CapacityG,
@@ -643,10 +648,10 @@ public onPolylinesLoaded(sds: IgrShapeDataSource, e: any) {
             isOverLand: record.fieldValues.OverLand === 0,
             isActive: record.fieldValues.NotLive !== 0,
             service: record.fieldValues.InService
-        };
-        geoPolylines.push(route);
+        });
     }
-    const lineSeries = this.geoMap.series[1] as IgrGeographicPolylineSeries;
+
+    var lineSeries = map.series.item(1) as IgrGeographicPolylineSeries;
     lineSeries.dataSource = geoPolylines;
 }
 ```
@@ -655,29 +660,28 @@ public onPolylinesLoaded(sds: IgrShapeDataSource, e: any) {
 
 Process shapes data loaded in `IgrShapefileRecord` with locations of major cities and assign it to `IgrGeographicSymbolSeries` object.
 
-```ts
-import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
-import { MarkerType } from 'igniteui-react-charts';
-// ...
-public onPointsLoaded(sds: IgrShapeDataSource, e: any) {
-    const geoLocations: any[] = [];
+```tsx
+/** Cities with a known population, one point per record. */
+public readPoints(sds: IgrShapeDataSource, e: any, map: IgrGeographicMap): void {
+    var geoLocations: any[] = [];
+    var pointData = sds.getPointData();
     // parsing shapefile data and creating geo-locations
-    let pointData = sds.getPointData();
-    for ( let i = 0; i < pointData.length; i++ ) {
-        let record = pointData[i];
-        const pop = record.fieldValues.POPULATION;
+    for (var i = 0; i < pointData.length; i++) {
+        var record = pointData[i];
+        var pop = record.fieldValues.POPULATION;
         if (pop > 0) {
-            // each shapefile record has just one point
-            const location = {
+            // each of these records holds a single point
+            // using field/column names from .DBF file
+            geoLocations.push({
                 latitude: record.points[0][0].y,
                 longitude: record.points[0][0].x,
                 city: record.fieldValues.NAME,
                 population: pop
-            };
-            geoLocations.push(location);
+            });
         }
     }
-    const symbolSeries = this.geoMap.series[2] as IgrGeographicSymbolSeries;
+
+    var symbolSeries = map.series.item(2) as IgrGeographicSymbolSeries;
     symbolSeries.dataSource = geoLocations;
 }
 ```
@@ -686,11 +690,12 @@ public onPointsLoaded(sds: IgrShapeDataSource, e: any) {
 
 Also, you might want to hide geographic imagery from the map background content if your shape files provided sufficient geographic context (e.g. shape of countries) for your application.
 
-```ts
-public geoMap: IgrGeographicMapComponent;
-// ...
-
-this.geoMap.backgroundContent = {};
+```tsx
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    backgroundContent={null} />
 ```
 
 ## Summary
@@ -698,169 +703,61 @@ this.geoMap.backgroundContent = {};
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
 ```tsx
-import * as React from "react";
-import "../styles.css";
-import "./GeoMapStyles.css";
-import DataUtils from "../../utilities/DataUtils"
-import WorldUtils from "../../utilities/WorldUtils"
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicShapeSeries
+        name="polygonSeries"
+        ref={ref => { this.polygonSeries = ref; }}
+        shapeMemberPath="points"
+        shapeFill="rgb(150, 150, 150)"
+        shapeStroke="Black"
+        shapeStrokeThickness={1} />
+    <IgrGeographicPolylineSeries
+        name="lineSeries"
+        ref={ref => { this.lineSeries = ref; }}
+        shapeMemberPath="points"
+        shapeStroke="rgba(147, 15, 180, 0.5)"
+        thickness={3} />
+    <IgrGeographicSymbolSeries
+        name="symbolSeries"
+        ref={ref => { this.symbolSeries = ref; }}
+        longitudeMemberPath="longitude"
+        latitudeMemberPath="latitude"
+        markerType="Circle"
+        markerOutline="rgba(2, 102, 196, 1)"
+        markerBrush="White" />
+</IgrGeographicMap>
+```
 
-import { IgrGeographicMapImagery } from 'igniteui-react-maps';
-import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrGeographicShapeSeries } from 'igniteui-react-maps';
-import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
-import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
-import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { IgrDataContext } from 'igniteui-react-core';
+```tsx
 import { IgrShapeDataSource } from 'igniteui-react-core';
+// ...
+private mapMultipleShapesReaders: MapMultipleShapesReaders = new MapMultipleShapesReaders();
+// ...
+var root = "https://static.infragistics.com/xplatform/shapes/";
+var readers = this.mapMultipleShapesReaders;
+var map = this.geoMap;
 
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
+var sdsPolygons = new IgrShapeDataSource();
+sdsPolygons.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPolygons(s, e, map);
+sdsPolygons.shapefileSource = root + "WorldCountries.shp";
+sdsPolygons.databaseSource = root + "WorldCountries.dbf";
+sdsPolygons.dataBind();
 
-export default class MapBindingMultipleShapes extends React.Component<any,any> {
+var sdsPolylines = new IgrShapeDataSource();
+sdsPolylines.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPolylines(s, e, map);
+sdsPolylines.shapefileSource = root + "WorldCableRoutes.shp";
+sdsPolylines.databaseSource = root + "WorldCableRoutes.dbf";
+sdsPolylines.dataBind();
 
-    public geoMap: IgrGeographicMap;
-
-    constructor(props: any) {
-        super(props);
-
-        this.onMapReferenced = this.onMapReferenced.bind(this);
-        this.onPointsLoaded = this.onPointsLoaded.bind(this);
-        this.onPolylinesLoaded = this.onPolylinesLoaded.bind(this);
-        this.onPolygonsLoaded = this.onPolygonsLoaded.bind(this);
-
-        this.state = { locations: [], polylines: [], polygons: []}
-    }
-
-    public render() {
-        const mapStyle = { background: "rgb(212, 212, 212)" } as React.CSSProperties;
-
-        return (
-            <div className="sampleRoot">
-                <div className="map" style={mapStyle} >
-                    <IgrGeographicMap
-                        ref={this.onMapReferenced}
-                        width="100%"
-                        height="100%"
-                        zoomable="true" >
-                        <IgrGeographicShapeSeries
-                            name="polygonSeries"
-                            dataSource={this.state.polygons}
-                            shapeMemberPath="points"
-                            shapeFill="rgb(150, 150, 150)"
-                            shapeStroke="Black"
-                            shapeStrokeThickness={1.0} />
-                        <IgrGeographicPolylineSeries
-                              name="lineSeries"
-                             dataSource={this.state.polylines}
-                             shapeMemberPath="points"
-                             shapeStroke="rgba(147, 15, 180, 0.5)"
-                             thickness={3.0}  />
-                        <IgrGeographicSymbolSeries
-                            name="symbolSeries"
-                            dataSource={this.state.locations}
-                            longitudeMemberPath="longitude"
-                            latitudeMemberPath="latitude"
-                            markerType="Circle"
-                            markerOutline="rgb(2, 102, 196)"
-                            markerBrush="White" />
-                   </IgrGeographicMap>
-                </div>
-            </div>
-        );
-    }
-
-    public onMapReferenced(map: IgrGeographicMap) {
-        this.geoMap = map;
-        this.geoMap.backgroundContent = undefined;
-        this.geoMap.windowRect = { left: 0.2, top: 0.1, width: 0.6, height: 0.6 };
-
-        console.log("series.count " + this.geoMap.series.count);
-        console.log("actualSeries.length " + this.geoMap.actualSeries.length);
-
-        this.geoMap.actualSeries[0].tooltipTemplate = this.getPolygonsTooltip;
-        this.geoMap.actualSeries[1].tooltipTemplate = this.getPolylinesTooltip;
-        this.geoMap.actualSeries[2].tooltipTemplate = this.getPointTooltip;
-
-        const url = DataUtils.getPublicURL();
-        // loading a shapefile with geographic polygons
-        const sdsPolygons = new IgrShapeDataSource();
-        sdsPolygons.importCompleted = this.onPolygonsLoaded;
-        sdsPolygons.shapefileSource = url + "/shapes/WorldCountries.shp";
-        sdsPolygons.databaseSource  = url + "/shapes/WorldCountries.dbf";
-        sdsPolygons.dataBind();
-
-        const sdsPolylines = new IgrShapeDataSource();
-        sdsPolylines.importCompleted = this.onPolylinesLoaded;
-        sdsPolylines.shapefileSource = url + "/shapes/WorldCableRoutes.shp";
-        sdsPolylines.databaseSource  = url + "/shapes/WorldCableRoutes.dbf";
-        sdsPolylines.dataBind();
-
-        // loading a shapefile with geographic points
-        const sdsPoints = new IgrShapeDataSource();
-        sdsPoints.importCompleted = this.onPointsLoaded;
-        sdsPoints.shapefileSource = url + "/Shapes/WorldCities.shp";
-        sdsPoints.databaseSource  = url + "/Shapes/WorldCities.dbf";
-        sdsPoints.dataBind();
-    }
-
-    public onPointsLoaded(sds: IgrShapeDataSource, e: any) {
-
-        const geoLocations: any[] = [];
-        // parsing shapefile data and creating geo-locations
-        for (const record of sds.getPointData()) {
-            const pop = record.fieldValues.POPULATION;
-            if (pop > 0) {
-                // each shapefile record has just one point
-                const location = {
-                    latitude: record.points[0][0].y,
-                    longitude: record.points[0][0].x,
-                    city: record.fieldValues.NAME,
-                    population: pop
-                };
-                geoLocations.push(location);
-            }
-        }
-        this.setState({ locations: geoLocations });
-    }
-
-    public onPolylinesLoaded(sds: IgrShapeDataSource, e: any) {
-        const geoPolylines: any[] = [];
-        // parsing shapefile data and creating geo-polygons
-        sds.getPointData().forEach(record => {
-            // using field/column names from .DBF file
-            const route = {
-                points: record.points,
-                name: record.fieldValues.Name,
-                capacity: record.fieldValues.CapacityG,
-                distance: record.fieldValues.DistanceKM,
-                isOverLand: record.fieldValues.OverLand === 0,
-                isActive: record.fieldValues.NotLive !== 0,
-                service: record.fieldValues.InService
-            };
-            geoPolylines.push(route);
-        });
-
-        this.setState({ polylines: geoPolylines });
-    }
-
-    public onPolygonsLoaded(sds: IgrShapeDataSource, e: any) {
-        const geoPolygons: any[] = [];
-        // parsing shapefile data and creating geo-polygons
-        sds.getPointData().forEach(record => {
-            // using field/column names from .DBF file
-            const country = {
-                points: record.points,
-                name: record.fieldValues.NAME,
-                gdp: record.fieldValues.GDP,
-                population: record.fieldValues.POPULATION
-            };
-            geoPolygons.push(country);
-        });
-
-        this.setState({ polygons: geoPolygons });
-    }
-}
+var sdsLocations = new IgrShapeDataSource();
+sdsLocations.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readPoints(s, e, map);
+sdsLocations.shapefileSource = root + "WorldCities.shp";
+sdsLocations.databaseSource = root + "WorldCities.dbf";
+sdsLocations.dataBind();
 ```
 
 ## API References

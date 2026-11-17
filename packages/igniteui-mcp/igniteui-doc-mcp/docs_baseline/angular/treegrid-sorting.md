@@ -209,7 +209,7 @@ this.treeGrid.sort([
 ```
 
 **Note:** 
-Sorting is performed using our [`IgxDefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) algorithm. Any [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) or [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression&member=strategy) can use a custom implementation of the [`IgxISortingStrategy`](mcp:get_api_reference?platform=angular&component=ISortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
+Sorting is performed using our [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) algorithm. Any [`IgxColumnComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=sortStrategy) or [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression&member=strategy) can use a custom implementation of the [`ISortingStrategy`](mcp:get_api_reference?platform=angular&component=ISortingStrategy) as a substitute algorithm. This is useful when custom sorting needs to be defined for complex template columns, or image columns, for example.
 
 As with the filtering behavior, you can clear the sorting state by using the [`clearSort`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=clearsort) method:
 
@@ -399,7 +399,7 @@ The sample will not be affected by the selected global theme from `Change Theme`
 ## API References
 - [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - `IgxTreeGridComponent Styles`
-- [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression)
+- [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression)
 ## Additional Resources
 
 - [Tree Grid overview](/treegrid/tree-grid)

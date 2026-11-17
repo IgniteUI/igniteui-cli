@@ -97,7 +97,7 @@ Added OthersCategoryBrush and OthersCategoryOutline to DataPieChart and Proporti
 
 ####  User Annotations
 
-In Ignite UI for Angular, you can now annotate the `IgxDataChart` with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
+In Ignite UI for Angular, you can now annotate the [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) with slice, strip, and point annotations at runtime using the new user annotations feature. This allows the end user to add more details to the plot such as calling out single important events such as company quarter reports by using the slice annotation or events that have a duration by using the strip annotation. You can also call out individual points on the plotted series by using the point annotation or any combination of these three.
 
 This is directly integrated with the available tools of the [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent).
 
@@ -105,8 +105,8 @@ This is directly integrated with the available tools of the [`IgxToolbar`](mcp:g
 
 Ability for axis annotations to automatically detect collisions and truncate to fit better. To enable this feature you must set the following properties:
 
-- `ShouldAvoidAnnotationCollisions`
-- `ShouldAutoTruncateAnnotations`
+- [`ShouldAvoidAnnotationCollisions`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent&member=shouldAvoidAnnotationCollisions)
+- [`ShouldAutoTruncateAnnotations`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent&member=shouldAutoTruncateAnnotations)
 
 ### igniteui-angular-maps (Geographic Map)
 
@@ -127,7 +127,7 @@ Ability for axis annotations to automatically detect collisions and truncate to 
 
 ####  Azure Map Imagery Support
 
-The `IgxGeographicMap` now supports Azure-based map imagery, allowing developers to display detailed, dynamic maps across multiple application types. You can combine multiple map layers, visualize geographic data, and create interactive mapping experiences with ease.
+The [`IgxGeographicMap`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) now supports Azure-based map imagery, allowing developers to display detailed, dynamic maps across multiple application types. You can combine multiple map layers, visualize geographic data, and create interactive mapping experiences with ease.
 
 Note: Support for Bing Maps imagery is being phased out. Existing enterprise keys can still be used to access Bing Maps, ensuring your current applications continue to function while you transition to Azure maps.
 
@@ -137,7 +137,7 @@ Explore some of the publicly available [Azure maps here](https://azure.microsoft
 
 ####  New Axis Label Events
 
-The following events have been added to the `IgxDataChart` to allow you to detect different operations on the axis labels:
+The following events have been added to the [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) to allow you to detect different operations on the axis labels:
 
 - `LabelMouseDown`
 - `LabelMouseUp`
@@ -148,15 +148,15 @@ The following events have been added to the `IgxDataChart` to allow you to detec
 
 ####  Companion Axis
 
-Added `CompanionAxis` properties to the X and Y axis that allow you to quickly create a clone of an existing axis. When enabled using the `CompanionAxisEnabled` property, this will default the cloned axis to the opposite position of the chart and you can then configure that axes' properties.
+Added `CompanionAxis` properties to the X and Y axis that allow you to quickly create a clone of an existing axis. When enabled using the [`CompanionAxisEnabled`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent&member=companionAxisEnabled) property, this will default the cloned axis to the opposite position of the chart and you can then configure that axes' properties.
 
 ####  RadialPieSeries Inset Outlines
 
-There is a new property called `UseInsetOutlines` to control how outlines on the `IgxRadialPieSeries` are rendered. Setting this value to **true** will inset the outlines within the slice shape, whereas a **false** (default) value will place the outlines half-in half-out along the edge of the slice shape.
+There is a new property called [`UseInsetOutlines`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=useInsetOutlines) to control how outlines on the [`IgxRadialPieSeries`](mcp:get_api_reference?platform=angular&component=IgxRadialPieSeriesComponent) are rendered. Setting this value to **true** will inset the outlines within the slice shape, whereas a **false** (default) value will place the outlines half-in half-out along the edge of the slice shape.
 
 **Breaking Changes**
 
-- A fix was made due to an issue where the `PlotAreaPosition` and `ChartPosition` properties on `IgxChartMouseEventArgs` class were reversed. This will change the values that `PlotAreaPosition` and `ChartPosition` return.
+- A fix was made due to an issue where the [`PlotAreaPosition`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs&member=plotAreaPosition) and [`ChartPosition`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs&member=chartPosition) properties on [`IgxChartMouseEventArgs`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs) class were reversed. This will change the values that [`PlotAreaPosition`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs&member=plotAreaPosition) and [`ChartPosition`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs&member=chartPosition) return.
 
 ### Enhancements
 
@@ -168,11 +168,11 @@ There is a new property called `UseInsetOutlines` to control how outlines on the
 
 - New properties added to the DataToolTipLayer, ItemToolTipLayer, and CategoryToolTipLayer to aid in styling: `ToolTipBackground`, `ToolTipBorderBrush`, and `ToolTipBorderThickness`
 
-- New properties added to the DataLegend to aid in styling: `ContentBackground`, `ContentBorderBrush`, and `ContentBorderThickness`. The `ContentBorderBrush` and `ContentBorderThickness` default to transparent and 0 respectively, so in order to see these borders, you will need to set these properties.
+- New properties added to the DataLegend to aid in styling: [`ContentBackground`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=contentBackground), [`ContentBorderBrush`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=contentBorderBrush), and [`ContentBorderThickness`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=contentBorderThickness). The [`ContentBorderBrush`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=contentBorderBrush) and [`ContentBorderThickness`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=contentBorderThickness) default to transparent and 0 respectively, so in order to see these borders, you will need to set these properties.
 
-- Added a new property to `IgxChartMouseEventArgs` called `WorldPosition` that provides the world relative position of the mouse. This position will be a value between 0 and 1 for both the X and Y axis within the axis space.
+- Added a new property to [`IgxChartMouseEventArgs`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs) called [`WorldPosition`](mcp:get_api_reference?platform=angular&component=IgxChartMouseEventArgs&member=worldPosition) that provides the world relative position of the mouse. This position will be a value between 0 and 1 for both the X and Y axis within the axis space.
 
-- Added `HighlightingFadeOpacity` to `IgxSeriesViewer` and `IgxDomainChart`. This allows you to configure the opacity applied to highlighted series.
+- Added [`HighlightingFadeOpacity`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightingFadeOpacity) to [`IgxSeriesViewer`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent) and [`IgxDomainChart`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent). This allows you to configure the opacity applied to highlighted series.
 
 - Expose `CalloutLabelUpdating` event for domain charts.
 
@@ -184,10 +184,10 @@ There is a new property called `UseInsetOutlines` to control how outlines on the
 
 | Bug Number | Control | Description |
 |------------|---------|-------------|
-|31624 | `IgxCategoryChart` | Resizing the containing window of the `IgxCategoryChart` causes the chart to fail to render the series|
-|27304 | `IgxDataChart` | Zoom rectangle is not positioned the same as the background rectangle|
-|37930 | `IgxDataChart` | Data Annotation Overlay Text Color not working|
-|30600 | `IgxDoughnutChart` | No textStyle property for either the chart or series (pie chart has this)|
+|31624 | [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) | Resizing the containing window of the [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) causes the chart to fail to render the series|
+|27304 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Zoom rectangle is not positioned the same as the background rectangle|
+|37930 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Data Annotation Overlay Text Color not working|
+|30600 | [`IgxDoughnutChart`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent) | No textStyle property for either the chart or series (pie chart has this)|
 |38231 | `IgxGrid` | Unpinned column does not return to the original position if hidden columns exist|
 |33861 | Excel Library | Adding line chart corrupts excel File for German culture|
 
@@ -226,17 +226,17 @@ For more details please visit:
   - Data Annotation Slice Layer
   - Data Annotation Strip Layer
 
-- The [Data Tooltip](./charts/features/chart-data-tooltip.md) and [Data Legend](./charts/features/chart-data-legend.md) expose  `LayoutMode` property that you can use to layout the contents of the tooltip or legend in a table or vertical layout structure.
+- The [Data Tooltip](./charts/features/chart-data-tooltip.md) and [Data Legend](./charts/features/chart-data-legend.md) expose  [`LayoutMode`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=layoutMode) property that you can use to layout the contents of the tooltip or legend in a table or vertical layout structure.
 
--  The `DefaultInteraction` property of the charts has been updated to include a new enumeration - `DragSelect` in which the dragged preview Rect will select the points contained within.
+-  The [`DefaultInteraction`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=defaultInteraction) property of the charts has been updated to include a new enumeration - `DragSelect` in which the dragged preview Rect will select the points contained within.
 
--  The [ValueOverlay and ValueLayer](./charts/features/chart-overlays.md), in addition to the  [Chart Data Annotations](./charts/features/chart-data-annotations.md) listed above now expose an `OverlayText` property that can be used to overlay additional annotation text in the plot area. These appearance of these annotations can be configured by using the many OverlayText-prefixed properties. For example, the `OverlayTextBrush` property will configure the color of the overlay text.
+-  The [ValueOverlay and ValueLayer](./charts/features/chart-overlays.md), in addition to the  [Chart Data Annotations](./charts/features/chart-data-annotations.md) listed above now expose an [`OverlayText`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent&member=overlayText) property that can be used to overlay additional annotation text in the plot area. These appearance of these annotations can be configured by using the many OverlayText-prefixed properties. For example, the `OverlayTextBrush` property will configure the color of the overlay text.
 
 -  [Trendline Layer](./charts/features/chart-trendlines.md) series type that allows you to apply a single trend line per trend line layer to a particular series. This allows the usage of multiple trend lines on a single series since you can have multiple [TrendlineLayer](./charts/features/chart-overlays.md) series types in the chart.
 
 ### igniteui-angular-dashboards (Dashboards)
 
-- The `IgxDashboardTile` now supports propagating the aggregations from its DataGrid view to the chart visualization such as sorting, grouping, filtering and selection. This is currently supported by binding the `IgxDataSource` of the `IgxDashboardTile` to an instance of `IgxLocalDataSource`.
+- The [`IgxDashboardTile`](mcp:get_api_reference?platform=angular&component=IgxDashboardTileComponent) now supports propagating the aggregations from its DataGrid view to the chart visualization such as sorting, grouping, filtering and selection. This is currently supported by binding the `IgxDataSource` of the [`IgxDashboardTile`](mcp:get_api_reference?platform=angular&component=IgxDashboardTileComponent) to an instance of `IgxLocalDataSource`.
 
 ### igniteui-angular
 
@@ -257,8 +257,8 @@ For more details please visit:
 
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
-|37023 | `IgxDataChart` | Tooltips are cut-off/offscreen if overflow hidden is set.|
-|37685 | `IgxSpreadsheet` | Poor rendering of numbers formatted with Arial font.|
+|37023 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Tooltips are cut-off/offscreen if overflow hidden is set.|
+|37685 | [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) | Poor rendering of numbers formatted with Arial font.|
 |37244 | Excel Library | Custom Data Validation is not working.|
 
 ## **19.0.1 (February 2025)**
@@ -268,7 +268,7 @@ For more details please visit:
 #### Toolbar
 
 - Added new `GroupHeaderTextStyle` property to [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) and [`IgxToolPanel`](mcp:get_api_reference?platform=angular&component=IgxToolPanelComponent). If set, it will apply to all [`IgxToolActionGroupHeader`](mcp:get_api_reference?platform=angular&component=IgxToolActionGroupHeaderComponent) actions.
-- Added new property on [`IgxToolAction`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) called `TitleHorizontalAlignment` which controls the horizontal alignment of the title text.
+- Added new property on [`IgxToolAction`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) called [`TitleHorizontalAlignment`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=titleHorizontalAlignment) which controls the horizontal alignment of the title text.
 - Added new property on [`IgxToolActionSubPanel`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent) called [`ItemSpacing`](mcp:get_api_reference?platform=angular&component=IgxToolPanelComponent&member=itemSpacing) which controls the spacing between items inside the panel.
 
 ### Bug Fixes
@@ -277,13 +277,13 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
-|30286 | `IgxDataChart` | Bubble Series tooltip content is switched to that of nearby bubble data in clicking a bubble|
-|32906 | `IgxDataChart` | `IgxDataChart` is showing two xAxis on the top|
-|33605 | `IgxDataChart` | ScatterLineSeries is not showing the color of the line correctly in the legend|
-|35498 | `IgxDataChart` | Tooltips for the series specified in IncludedSeries are not displayed|
-|34776 | `IgxDataChart` | Repeatedly showing and hiding the `IgxDataChart` causes memory leakage in JS Heap|
+|30286 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Bubble Series tooltip content is switched to that of nearby bubble data in clicking a bubble|
+|32906 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) is showing two xAxis on the top|
+|33605 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | ScatterLineSeries is not showing the color of the line correctly in the legend|
+|35498 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Tooltips for the series specified in IncludedSeries are not displayed|
+|34776 | [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | Repeatedly showing and hiding the [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) causes memory leakage in JS Heap|
 |34053 | [`IgxRadialGauge`](mcp:get_api_reference?platform=angular&component=IgxRadialGaugeComponent) | The position of the scale label is shifted|
-|35496 | `IgxSpreadsheet` | Error when setting styles in Excel with images|
+|35496 | [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) | Error when setting styles in Excel with images|
 |36176 | Excel Library | Exception occurs when loading an Excel workbook that has a LET function|
 |36379 | Excel Library | Colors with any alpha channel in an excel workbook fail to load|
 |26218 | Excel Library | Chart's plot area right margin becomes narrower and fill pattern and fill foreground are gone just by loading an Excel file|
@@ -306,9 +306,9 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ## **18.1.0 (September 2024)**
 
-- [Data Pie Chart](./charts/types/data-pie-chart.md) - The `IgxDataPieChart` is a new component that renders a pie chart. This component works similarly to the `IgxCategoryChart`, in that it will automatically detect the properties on your underlying data model while allowing selection, highlighting, animation and legend support via the ItemLegend component.
+- [Data Pie Chart](./charts/types/data-pie-chart.md) - The [`IgxDataPieChart`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) is a new component that renders a pie chart. This component works similarly to the [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), in that it will automatically detect the properties on your underlying data model while allowing selection, highlighting, animation and legend support via the ItemLegend component.
 
--  [Proportional Category Angle Axis](./charts/types/radial-chart.md) - New axes for the Radial Pie Series in the `IgxDataChart`, to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
+-  [Proportional Category Angle Axis](./charts/types/radial-chart.md) - New axes for the Radial Pie Series in the [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), to plot slices similar to a pie chart, a type of data visualization where data points are represented as segments within a circular graph.
 
 - [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)
 
@@ -329,13 +329,13 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ### igniteui-angular-charts (Charts)
 
-- [Data Legend Grouping](./charts/features/chart-data-legend.md#angular-data-legend-grouping) & [Data Tooltip Grouping](./charts/features/chart-data-tooltip.md#angular-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property `GroupRowVisible` toggles grouping with each series opting in can assign group text via the `DataLegendGroup` property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
+- [Data Legend Grouping](./charts/features/chart-data-legend.md#angular-data-legend-grouping) & [Data Tooltip Grouping](./charts/features/chart-data-tooltip.md#angular-data-tooltip-grouping-for-data-chart) - New grouping feature added. The property [`GroupRowVisible`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=groupRowVisible) toggles grouping with each series opting in can assign group text via the [`DataLegendGroup`](mcp:get_api_reference?platform=angular&component=IgxCrosshairLayerComponent&member=dataLegendGroup) property. If the same value is applied to more than one series then they will appear grouped. Useful for large datasets that need to be categorized and organized for all users.
 
-- [Chart Selection](./charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for `IgxCategoryChart` and `IgxDataChart`. Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and `SelectedSeriesItems` are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
+- [Chart Selection](./charts/features/chart-data-selection.md) - New series selection styling. This is adopted broadly across all category, financial and radial series for [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent). Series can be clicked and shown a different color, brightened or faded, and focus outlines. Manage which items are effected through individual series or entire data item. Multiple series and markers are supported. Useful for illustrating various differences or similarities between values of a particular data item. Also  `SelectedSeriesItemsChanged` event and [`SelectedSeriesItems`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=selectedSeriesItems) are available for additional help to build out robust business requirements surrounding other actions that can take place within an application such as a popup or other screen with data analysis based on the selection.
 
-- [Treemap Highlighting](./charts/types/treemap-chart.md#angular-treemap-highlighting) - Now exposes a `HighlightingMode` property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the `HighlightingTransitionDuration` property.
+- [Treemap Highlighting](./charts/types/treemap-chart.md#angular-treemap-highlighting) - Now exposes a [`HighlightingMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightingMode) property that allows you to configure the mouse-over highlighting of the items in the tree map. This property takes two options: `Brighten` where the highlight will apply to the item that you hover the mouse over only, and `FadeOthers` where the highlight of the hovered item will remain the same, but everything else will fade out. This highlight is animated, and can be controlled using the [`HighlightingTransitionDuration`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightingTransitionDuration) property.
 
-- [Treemap Percent-based Highlighting](./charts/types/treemap-chart.md#angular-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new `HighlightedItemsSource`. Can be toggled via `HighlightedValuesDisplayMode` and styled via `FillBrushes`.
+- [Treemap Percent-based Highlighting](./charts/types/treemap-chart.md#angular-treemap-percent-based-highlighting) - New percent-based highlighting, allowing nodes to represent progress or subset of a collection. The appearance is shown as a fill-in of its backcolor up to a specific value either by a member on your data item or by supplying a new [`HighlightedItemsSource`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=highlightedDataSource). Can be toggled via [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightedValuesDisplayMode) and styled via `FillBrushes`.
 
 - [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) - New [`IsHighlighted`](mcp:get_api_reference?platform=angular&component=IgxToolActionGroupHeaderComponent&member=isHighlighted) option for ToolAction for outlining a border around specific tools of choice.
 
@@ -348,11 +348,11 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ### igniteui-angular-charts
 
-- New Data Filtering via the `InitialFilter` property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
+- New Data Filtering via the [`InitialFilter`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=initialFilter) property. Apply filter expressions to filter the chart data to a subset of records. Can be used for drill down large data.
 
 - `RadialChart`
   - New Label Mode
-        The `IgxCategoryAngleAxis` for the now exposes a `LabelMode` property that allows you to further configure the location of the labels. This allows you to toggle between the default mode by selecting the `Center` enum, or use the new mode, `ClosestPoint`, which will bring the labels closer to the circular plot area.
+        The [`IgxCategoryAngleAxis`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent) for the now exposes a [`LabelMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent&member=labelMode) property that allows you to further configure the location of the labels. This allows you to toggle between the default mode by selecting the `Center` enum, or use the new mode, `ClosestPoint`, which will bring the labels closer to the circular plot area.
 
 ### igniteui-angular-gauges
 
@@ -369,7 +369,7 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ### igniteui-angular-charts (Charts)
 
-- [Chart Highlight Filter](./charts/features/chart-highlight-filter.md) - The `IgxCategoryChart` and `IgxDataChart` now expose a way to highlight and animate in and out of a subset of data. The display of this highlight depends on the series type. For column and area series, the subset will be shown on top of the total set of data where the subset will be colored by the actual brush of the series, and the total set will have a reduced opacity. For line series, the subset will be shown as a dotted line.
+- [Chart Highlight Filter](./charts/features/chart-highlight-filter.md) - The [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) now expose a way to highlight and animate in and out of a subset of data. The display of this highlight depends on the series type. For column and area series, the subset will be shown on top of the total set of data where the subset will be colored by the actual brush of the series, and the total set will have a reduced opacity. For line series, the subset will be shown as a dotted line.
 
 ## **17.0.0 (November 2023)**
 
@@ -383,13 +383,13 @@ The following table lists the bug fixes made for the Ignite UI for Angular tools
 
 ### New Components
 
--  [Toolbar](./menus/toolbar.md) - This component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our `IgxDataChart` or `IgxCategoryChart` components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+-  [Toolbar](./menus/toolbar.md) - This component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) or [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ### igniteui-angular-charts (Charts)
 
-- [ValueLayer](./charts/features/chart-overlays.md#angular-value-layer) - A new series type named the `IgxValueLayer` is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the `IgxCategoryChart` and `IgxFinancialChart` by adding to the new `ValueLines` collection.
+- [ValueLayer](./charts/features/chart-overlays.md#angular-value-layer) - A new series type named the [`IgxValueLayer`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) is now exposed which can allow you to render an overlay for different focal points of the plotted data such as Maximum, Minimum, and Average. This is applied to the [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) by adding to the new [`ValueLines`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=valueLines) collection.
 
-- It is now possible to apply a **dash array** to the different parts of the series of the `IgxDataChart`. You can apply this to the [series](./charts/types/line-chart.md#angular-styling-line-chart) plotted in the chart, the [gridlines](./charts/features/chart-axis-gridlines.md#angular-axis-gridlines-properties) of the chart, and the [trendlines](./charts/features/chart-trendlines.md#angular-chart-trendlines-dash-array-example) of the series plotted in the chart.
+- It is now possible to apply a **dash array** to the different parts of the series of the [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent). You can apply this to the [series](./charts/types/line-chart.md#angular-styling-line-chart) plotted in the chart, the [gridlines](./charts/features/chart-axis-gridlines.md#angular-axis-gridlines-properties) of the chart, and the [trendlines](./charts/features/chart-trendlines.md#angular-chart-trendlines-dash-array-example) of the series plotted in the chart.
 
 ## **16.0.0 (May 2023)**
 - Angular 16 support.
@@ -404,7 +404,7 @@ Added significant improvements to default behaviors, and refined the Category Ch
 - Responsive layouts for horizontal label rotation based on browser / screen size.
 - Enhanced rendering for rounded labels on all platforms.
 - Added marker properties to StackedFragmentSeries.
-- Added `ShouldPanOnMaximumZoom` property.
+- Added [`ShouldPanOnMaximumZoom`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=shouldPanOnMaximumZoom) property.
 - New Category Axis Properties:
   - ZoomMaximumCategoryRange
   - ZoomMaximumItemSpan
@@ -424,25 +424,25 @@ Added significant improvements to default behaviors, and refined the Category Ch
   - GroupSorts
   - GroupSortDescriptions
 
-The Chart's [Aggregation](./charts/features/chart-data-aggregations.md) will not work when using `IncludedProperties` | `ExcludedProperties` because these properties are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render.  The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
+The Chart's [Aggregation](./charts/features/chart-data-aggregations.md) will not work when using [`IncludedProperties`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=includedProperties) | [`ExcludedProperties`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=excludedProperties) because these properties are meant for non-aggregated data. Once you attempt to aggregate data these properties should no longer be used. The reason it does not work is because aggregation replaces the collection that is passed to the chart for render.  The include/exclude properties are designed to filter in/out properties of that data and those properties no longer exist in the new aggregated collection.
 
 ## **13.2.0 (June 2022)**
 ### igniteui-angular-charts (Charts)
 
-- Added the highly-configurable [DataLegend](./charts/features/chart-data-legend.md) component, which works much like the `Legend`, but it shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values.
+- Added the highly-configurable [DataLegend](./charts/features/chart-data-legend.md) component, which works much like the [`Legend`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=Legend), but it shows values of series and provides many configuration properties for filtering series rows and values columns, styling and formatting values.
 - Added the highly-configurable [DataToolTip](./charts/features/chart-data-tooltip.md) which displays values and titles of series as well as legend badges of series in a tooltip. This is now the default tooltip for all chart types.
-- Added animation and transition-in support for Stacked Series. Animations can be enabled by setting the `IsTransitionInEnabled` property to true. From there, you can set the `TransitionInDuration` property to determine how long your animation should take to complete and the `TransitionInMode` to determine the type of animation that takes place.
-- Added `AssigningCategoryStyle` event, is now available to all series in `IgxDataChart`. This event is handled when you want to conditionally configure aspects of the series items such as `Fill` background-color and highlighting.
-- New `AllowedPositions` enumeration for CalloutLayer. Used to limit where the callouts are to be placed within the chart. By default, the callouts are intelligently placed in the best place but this used to force for example `TopLeft`, `TopRight`, `BottomLeft` or `BottomRight`.
+- Added animation and transition-in support for Stacked Series. Animations can be enabled by setting the [`IsTransitionInEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=isTransitionInEnabled) property to true. From there, you can set the [`TransitionInDuration`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionInDuration) property to determine how long your animation should take to complete and the [`TransitionInMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionInMode) to determine the type of animation that takes place.
+- Added `AssigningCategoryStyle` event, is now available to all series in [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent). This event is handled when you want to conditionally configure aspects of the series items such as [`Fill`](mcp:get_api_reference?platform=angular&component=IgxCrosshairLayerComponent&member=fill) background-color and highlighting.
+- New [`AllowedPositions`](mcp:get_api_reference?platform=angular&component=IgxCalloutLayerComponent&member=allowedPositions) enumeration for CalloutLayer. Used to limit where the callouts are to be placed within the chart. By default, the callouts are intelligently placed in the best place but this used to force for example `TopLeft`, `TopRight`, `BottomLeft` or `BottomRight`.
 - New corner radius properties added for Annotation Layers; used to round-out the corners of each of the callouts. Note, a corner radius has now been added by default.
-  - `CalloutCornerRadius` for CalloutLayer
-  - `AxisAnnotationBackgroundCornerRadius` for FinalValueLayer
-  - `XAxisAnnotationBackgroundCornerRadius` and `YAxisAnnotationBackgroundCornerRadius` for CrosshairLayer
-- New `HorizontalViewScrollbarMode` and `VerticalViewScrollbarMode` enumeration to enable scrollbars in various ways. When paired with `IsVerticalZoomEnabled` or `IsHorizontalZoomEnabled`, you'll be able to persist or fade-in and out the scrollbars along the axes to navigate the chart.
-- New `FavorLabellingScaleEnd`, determines whether the axis should favor emitting a label at the end of the scale. Only compatible with numeric axes (e.g. `IgxNumericXAxis`, `IgxNumericYAxis`, `PercentChangeAxis`).
-- New `IsSplineShapePartOfRange` determines whether to include the spline shape in the axis range requested of the axis.
-- New `XAxisMaximumGap`, determines the maximum allowed value for the plotted series when using `XAxisGap`. The gap determines the amount of space between columns or bars of plotted series.
-- New `XAxisMinimumGapSize`, determines the minimum allowed pixel-based value for the plotted series when using `XAxisGap` to ensure there is always some spacing between each category.
+  - [`CalloutCornerRadius`](mcp:get_api_reference?platform=angular&component=IgxCalloutLayerComponent&member=calloutCornerRadius) for CalloutLayer
+  - [`AxisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=angular&component=IgxFinalValueLayerComponent&member=axisAnnotationBackgroundCornerRadius) for FinalValueLayer
+  - [`XAxisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=angular&component=IgxCrosshairLayerComponent&member=xAxisAnnotationBackgroundCornerRadius) and [`YAxisAnnotationBackgroundCornerRadius`](mcp:get_api_reference?platform=angular&component=IgxCrosshairLayerComponent&member=yAxisAnnotationBackgroundCornerRadius) for CrosshairLayer
+- New [`HorizontalViewScrollbarMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=horizontalViewScrollbarMode) and [`VerticalViewScrollbarMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=verticalViewScrollbarMode) enumeration to enable scrollbars in various ways. When paired with [`IsVerticalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=isVerticalZoomEnabled) or [`IsHorizontalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=isHorizontalZoomEnabled), you'll be able to persist or fade-in and out the scrollbars along the axes to navigate the chart.
+- New [`FavorLabellingScaleEnd`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=favorLabellingScaleEnd), determines whether the axis should favor emitting a label at the end of the scale. Only compatible with numeric axes (e.g. [`IgxNumericXAxis`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent), [`IgxNumericYAxis`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent), `PercentChangeAxis`).
+- New [`IsSplineShapePartOfRange`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=isSplineShapePartOfRange) determines whether to include the spline shape in the axis range requested of the axis.
+- New [`XAxisMaximumGap`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisMaximumGap), determines the maximum allowed value for the plotted series when using [`XAxisGap`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisGap). The gap determines the amount of space between columns or bars of plotted series.
+- New [`XAxisMinimumGapSize`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisMinimumGapSize), determines the minimum allowed pixel-based value for the plotted series when using [`XAxisGap`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisGap) to ensure there is always some spacing between each category.
 
 ## **13.1.0 (November 2021)**
 
@@ -453,29 +453,29 @@ Please ensure package "lit-html": "^2.0.0" or newer is added to your project for
 
 This release introduces a few improvements and simplifications to visual design and configuration options for the geographic map and all chart components.
 
-- Changed `YAxisLabelLocation` property's type to **YAxisLabelLocation** from **AxisLabelLocation** in `IgxFinancialChart` and `IgxCategoryChart`
-- Changed `XAxisLabelLocation` property's type to **XAxisLabelLocation** from **AxisLabelLocation** in `IgxFinancialChart`
-- Added `XAxisLabelLocation` property to `IgxCategoryChart`
-- Added support for representing geographic series of `IgxGeographicMap` in a legend
-- Added crosshair lines by default in `IgxFinancialChart` and `IgxCategoryChart`
-- Added crosshair annotations by default in `IgxFinancialChart` and `IgxCategoryChart`
-- Added final value annotation by default in `IgxFinancialChart`
+- Changed [`YAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=yAxisLabelLocation) property's type to **YAxisLabelLocation** from **AxisLabelLocation** in [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) and [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+- Changed [`XAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=xAxisLabelLocation) property's type to **XAxisLabelLocation** from **AxisLabelLocation** in [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+- Added [`XAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=xAxisLabelLocation) property to [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+- Added support for representing geographic series of [`IgxGeographicMap`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) in a legend
+- Added crosshair lines by default in [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) and [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+- Added crosshair annotations by default in [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) and [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+- Added final value annotation by default in [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
 - Added new properties in Category Chart and Financial Chart:
-  - `CrosshairsLineThickness` and other properties for customizing crosshairs lines
-  - `CrosshairsAnnotationXAxisBackground` and other properties for customizing crosshairs annotations
-  - `FinalValueAnnotationsBackground` and other properties for customizing final value annotations
-  - `AreaFillOpacity` that allow changing opacity of series fill (e.g. Area chart)
-  - `MarkerThickness` that allows changing thickness of markers
+  - [`CrosshairsLineThickness`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=crosshairsLineThickness) and other properties for customizing crosshairs lines
+  - [`CrosshairsAnnotationXAxisBackground`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=crosshairsAnnotationXAxisBackground) and other properties for customizing crosshairs annotations
+  - [`FinalValueAnnotationsBackground`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=finalValueAnnotationsBackground) and other properties for customizing final value annotations
+  - [`AreaFillOpacity`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=areaFillOpacity) that allow changing opacity of series fill (e.g. Area chart)
+  - [`MarkerThickness`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=markerThickness) that allows changing thickness of markers
 - Added new properties in Category Chart, Financial Chart, Data Chart, and Geographic Map:
-  - `MarkerAutomaticBehavior` that allows which marker type is assigned to multiple series in the same chart
-  - `LegendItemBadgeShape` for setting badge shape of all series represented in a legend
-  - `LegendItemBadgeMode` for setting badge complexity on all series in a legend
+  - [`MarkerAutomaticBehavior`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=markerAutomaticBehavior) that allows which marker type is assigned to multiple series in the same chart
+  - [`LegendItemBadgeShape`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendItemBadgeShape) for setting badge shape of all series represented in a legend
+  - [`LegendItemBadgeMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendItemBadgeMode) for setting badge complexity on all series in a legend
 - Added new properties in Series in Data Chart and Geographic Map:
-  - `LegendItemBadgeShape` for setting badge shape on specific series represented in a legend
-  - `LegendItemBadgeMode` for setting badge complexity on specific series in a legend
+  - [`LegendItemBadgeShape`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendItemBadgeShape) for setting badge shape on specific series represented in a legend
+  - [`LegendItemBadgeMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendItemBadgeMode) for setting badge complexity on specific series in a legend
 - Changed default vertical crosshair line stroke from <span style="color:#000000">#000000</span> to <span style="color:#BBBBBB">#BBBBBB</span> in category chart and series
-- Changed shape of markers to circle for all series plotted in the same chart. This can be reverted by setting chart's `MarkerAutomaticBehavior` property to `SmartIndexed` enum value
-- Simplified shapes of series in chart's legend to display only circle, line, or square. This can be reverted by setting chart's `LegendItemBadgeMode` property to `MatchSeries` enum value
+- Changed shape of markers to circle for all series plotted in the same chart. This can be reverted by setting chart's [`MarkerAutomaticBehavior`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=markerAutomaticBehavior) property to `SmartIndexed` enum value
+- Simplified shapes of series in chart's legend to display only circle, line, or square. This can be reverted by setting chart's [`LegendItemBadgeMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendItemBadgeMode) property to `MatchSeries` enum value
 - Changed color palette of series and markers displayed in all charts to improve accessibility
 
 | Old brushes/outlines | New outline/brushes |
@@ -485,30 +485,30 @@ This release introduces a few improvements and simplifications to visual design 
 ## **11.2.0 (April 2021)**
 ### igniteui-angular-charts (Charts)
 
-This release introduces several new and improved visual design and configuration options for all of the chart components, e.g. `IgxDataChart`, `IgxCategoryChart`, and `IgxFinancialChart`.
+This release introduces several new and improved visual design and configuration options for all of the chart components, e.g. [`IgxDataChart`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), [`IgxCategoryChart`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), and [`IgxFinancialChart`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent).
 
 - Changed Bar/Column/Waterfall series to have square corners instead of rounded corners
 - Changed Scatter High Density series’ colors for heat min property from <span style="color:#8a5bb1">#8a5bb1</span> to <span style="color:#000000">#000000</span>
 - Changed Scatter High Density series’ colors for heat max property from <span style="color:#ee5879">#ee5879</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed Financial/Waterfall series’ `NegativeBrush` and `NegativeOutline` properties from <span style="color:#C62828">#C62828</span> to <span style="color:#ee5879">#ee5879</span>
 - Changed marker's thickness to 2px from 1px
-- Changed marker's fill to match the marker's outline for `IgxPointSeries`, `IgxBubbleSeries`, `IgxScatterSeries`, `IgxPolarScatterSeries`. You can use set `MarkerFillMode` property to Normal to undo this change
-- Compressed labelling for the `IgxTimeXAxis` and `IgxOrdinalTimeXAxis`
+- Changed marker's fill to match the marker's outline for [`IgxPointSeries`](mcp:get_api_reference?platform=angular&component=IgxPointSeriesComponent), [`IgxBubbleSeries`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent), [`IgxScatterSeries`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent), [`IgxPolarScatterSeries`](mcp:get_api_reference?platform=angular&component=IgxPolarScatterSeriesComponent). You can use set [`MarkerFillMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=markerFillMode) property to Normal to undo this change
+- Compressed labelling for the [`IgxTimeXAxis`](mcp:get_api_reference?platform=angular&component=IgxTimeXAxisComponent) and [`IgxOrdinalTimeXAxis`](mcp:get_api_reference?platform=angular&component=IgxOrdinalTimeXAxisComponent)
 - New Marker Properties:
-  - series.`MarkerFillMode` - Can be set to `MatchMarkerOutline` so the marker depends on the outline
-  - series.`MarkerFillOpacity` - Can be set to a value 0 to 1
-  - series.`MarkerOutlineMode` - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
+  - series.[`MarkerFillMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=markerFillMode) - Can be set to `MatchMarkerOutline` so the marker depends on the outline
+  - series.[`MarkerFillOpacity`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=markerFillOpacity) - Can be set to a value 0 to 1
+  - series.[`MarkerOutlineMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=markerOutlineMode) - Can be set to `MatchMarkerBrush` so the marker's outline depends on the fill brush color
 - New Series Property:
-  - series.`OutlineMode` - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
-- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the `ComputedPlotAreaMarginMode`, listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
-  - chart.`PlotAreaMarginLeft`
-  - chart.`PlotAreaMarginTop`
-  - chart.`PlotAreaMarginRight`
-  - chart.`PlotAreaMarginBottom`
-  - chart.`ComputedPlotAreaMarginMode`
+  - series.[`OutlineMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=outlineMode) - Can be set to toggle the series outline visibility. Note, for Data Chart, the property is on the series
+- New chart properties that define bleed over area introduced into the viewport when the chart is at the default zoom level. A common use case is to provide space between the axes and first/last data points. Note, the [`ComputedPlotAreaMarginMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=computedPlotAreaMarginMode), listed below, will automatically set the margin when markers are enabled. The others are designed to specify a `Double` to represent the thickness, where PlotAreaMarginLeft etc. adjusts the space to all four sides of the chart:
+  - chart.[`PlotAreaMarginLeft`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=plotAreaMarginLeft)
+  - chart.[`PlotAreaMarginTop`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=plotAreaMarginTop)
+  - chart.[`PlotAreaMarginRight`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=plotAreaMarginRight)
+  - chart.[`PlotAreaMarginBottom`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=plotAreaMarginBottom)
+  - chart.[`ComputedPlotAreaMarginMode`](mcp:get_api_reference?platform=angular&component=IgxXYChartComponent&member=computedPlotAreaMarginMode)
 - New Highlighting Properties
-  - chart.`HighlightingMode` - Sets whether hovered or non-hovered series to fade, brighten
-  - chart.`HighlightingBehavior` - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
+  - chart.[`HighlightingMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightingMode) - Sets whether hovered or non-hovered series to fade, brighten
+  - chart.[`HighlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=highlightingBehavior) - Sets whether the series highlights depending on mouse position e.g. directly over or nearest item
   - Note, in previous releases the highlighting was limited to fade on hover.
 - Added Highlighting Stacked, Scatter, Polar, Radial, and Shape series:
 - Added Annotation layers to Stacked, Scatter, Polar, Radial, and Shape series:
@@ -532,7 +532,7 @@ for example:
 #### Chart Legend
 
 - Added horizontal [`Orientation`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=orientation) property to ItemLegend that can be used with Bubble, Donut, and Pie Chart
-- Added `LegendHighlightingMode` property - Enables series highlighting when hovering over legend items
+- Added [`LegendHighlightingMode`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=legendHighlightingMode) property - Enables series highlighting when hovering over legend items
 
 ### igniteui-angular-maps (GeoMap)
 

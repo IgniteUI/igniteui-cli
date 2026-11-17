@@ -344,7 +344,7 @@ export class CalendarSample2Component implements OnInit{
 
 This section demonstrates the usage of [`disabledDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=disabledDates) functionality. For this purpose, different single dates or ranges can be added to an array and then passed to the [`disabledDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=disabledDates) descriptor.
 
-The [`IgxDateRangeType`](mcp:get_api_reference?platform=angular&component=DateRangeType) is used to specify a range that is going to be disabled.
+The [`DateRangeType`](mcp:get_api_reference?platform=angular&component=DateRangeType) is used to specify a range that is going to be disabled.
 
 Let's create a sample that is disabling the dates between the 3rd and the 8th of the current month:
 
@@ -416,7 +416,7 @@ export class CalendarSample6Component implements OnInit{
 .info {
     display: flex;
     justify-content: center;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 .info > span {
@@ -434,7 +434,7 @@ export class CalendarSample6Component implements OnInit{
 
 The [`specialDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=specialDates) feature is using almost the same configuration principles as the [`disabledDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=disabledDates). The ability to select and focus [`specialDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=specialDates) is what differs them from the `disabled` ones.
 
-Let's add some [`specialDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=specialDates) to our `igxCalendar`. In order to do this, we have to create a [`IgxDateRangeDescriptor`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor) item of type [`IgxDateRangeType.Specific`](mcp:get_api_reference?platform=angular&component=DateRangeType&member=Specific) and pass an array of dates as a [`IgxDateRangeDescriptor.dateRange`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor&member=dateRange):
+Let's add some [`specialDates`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=specialDates) to our `igxCalendar`. In order to do this, we have to create a [`DateRangeDescriptor`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor) item of type [`DateRangeType.Specific`](mcp:get_api_reference?platform=angular&component=DateRangeType&member=Specific) and pass an array of dates as a [`DateRangeDescriptor.dateRange`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor&member=dateRange):
 
 ```typescript
 export class CalendarSample7Component {
@@ -543,6 +543,438 @@ export class CalendarSample7Component {
     border-radius: 0;
 }
 ```
+
+### Templating
+
+The `igx-calendar` supports templates for its header, header title, subheader and day cells. To customize a part, mark an `ng-template` inside the calendar with the directive for that part. The `IGX_CALENDAR_DIRECTIVES` token includes all of the template directives.
+
+| Directive | Part it replaces | Rendered |
+| :--- | :--- | :--- |
+| `igxCalendarHeader` | The date in the calendar header | When `selection` is `single` or `range` and [`hasHeader`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=hasHeader) is `true` |
+| `igxCalendarHeaderTitle` | The title above the date in the calendar header | When `selection` is `single` or `range` and [`hasHeader`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=hasHeader) is `true` |
+| `igxCalendarSubheader` | The subheader with the month and year, between the navigation buttons | In all selection modes, in the days, months and years views |
+| `igxCalendarDay` | The content of the day cells | In all selection modes, for every visible day. See [Day template](#day-template) |
+
+The following demo uses all four templates to build an event calendar. The header title shows the number of events for the selected date, the subheader shows the number of events in the month, and every day cell shows a dot for each event:
+
+```typescript
+import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import {
+    IGX_CALENDAR_DIRECTIVES,
+    IgxCalendarComponent,
+    IgxCalendarView
+} from 'igniteui-angular/calendar';
+
+interface CalendarEvent {
+    title: string;
+    type: 'meeting' | 'deadline' | 'personal';
+}
+
+const today = new Date();
+
+// Events are placed relative to the current month so the sample always has data to show.
+const eventsByDay: Record<number, CalendarEvent[]> = {
+    3: [{ title: 'Sprint planning', type: 'meeting' }],
+    7: [{ title: 'Design review', type: 'meeting' }, { title: 'Dentist', type: 'personal' }],
+    12: [{ title: 'Release candidate', type: 'deadline' }],
+    15: [
+        { title: 'Team sync', type: 'meeting' },
+        { title: 'Budget report', type: 'deadline' },
+        { title: 'Gym', type: 'personal' }
+    ],
+    21: [{ title: 'Customer demo', type: 'meeting' }],
+    26: [{ title: 'Code freeze', type: 'deadline' }, { title: 'Retrospective', type: 'meeting' }]
+};
+
+@Component({
+    selector: 'app-calendar-templates',
+    styleUrls: ['./calendar-templates.component.scss'],
+    templateUrl: './calendar-templates.component.html',
+    imports: [
+        IgxCalendarComponent,
+        IGX_CALENDAR_DIRECTIVES,
+        DatePipe
+    ]
+})
+export class CalendarTemplatesComponent {
+    public selectedDate: Date = new Date(today.getFullYear(), today.getMonth(), 15);
+
+    public getEvents(date: Date): CalendarEvent[] {
+        if (!this.isCurrentMonth(date)) {
+            return [];
+        }
+        return eventsByDay[date.getDate()] ?? [];
+    }
+
+    public getMonthEventsCount(date: Date): number {
+        if (!this.isCurrentMonth(date)) {
+            return 0;
+        }
+        return Object.values(eventsByDay).reduce((count, events) => count + events.length, 0);
+    }
+
+    public pluralize(count: number): string {
+        return `${count} ${count === 1 ? 'event' : 'events'}`;
+    }
+
+    public onSelection(date: Date | Date[]) {
+        this.selectedDate = date as Date;
+    }
+
+    public onSubheaderKeydown(event: KeyboardEvent, calendar: IgxCalendarComponent, view: IgxCalendarView) {
+        // Keep the key from reaching the calendar's own keyboard navigation.
+        event.stopPropagation();
+
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.switchView(event, calendar, view);
+        }
+    }
+
+    public switchView(event: Event, calendar: IgxCalendarComponent, view: IgxCalendarView) {
+        // The subheader is re-rendered for the new view, which removes the focused button.
+        // Move focus to the calendar body (the grid around the subheader) so keyboard navigation continues in the new view.
+        const grid = (event.target as HTMLElement).closest<HTMLElement>('[role="grid"]');
+        calendar.activeView = view;
+        grid?.focus();
+    }
+
+    private isCurrentMonth(date: Date): boolean {
+        return date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth();
+    }
+}
+```
+```html
+<div class="sample-wrapper">
+    <article class="calendar-wrapper">
+        <igx-calendar #calendar [value]="selectedDate" (selected)="onSelection($event)">
+            <!-- Header title: the number of events for the selected date -->
+            <ng-template igxCalendarHeaderTitle let-parts>
+                @let count = getEvents(parts.date).length;
+                <span>{{ count ? pluralize(count) : 'No events' }}</span>
+            </ng-template>
+
+            <!-- Header: the selected date, composed from the formatted date parts -->
+            <ng-template igxCalendarHeader let-parts>
+                <span>{{ parts.weekday.value }}, {{ parts.month.value }} {{ parts.day.value }}</span>
+            </ng-template>
+
+            <!-- Subheader: month and year buttons that switch views, plus the month's event count -->
+            <ng-template igxCalendarSubheader let-parts>
+                @if (calendar.activeView === 'month') {
+                    <span
+                        class="igx-calendar-picker__date"
+                        tabindex="0"
+                        role="button"
+                        [attr.aria-label]="(parts.date | date: 'LLLL') + ', select month'"
+                        (click)="switchView($event, calendar, 'year')"
+                        (keydown)="onSubheaderKeydown($event, calendar, 'year')">
+                        {{ parts.month.value }}
+                    </span>
+                }
+                <span
+                    class="igx-calendar-picker__date"
+                    tabindex="0"
+                    role="button"
+                    [attr.aria-label]="(parts.date | date: 'yyyy') + ', select year'"
+                    (click)="switchView($event, calendar, 'decade')"
+                    (keydown)="onSubheaderKeydown($event, calendar, 'decade')">
+                    {{ parts.year.value }}
+                </span>
+                @if (calendar.activeView === 'month') {
+                    @let monthCount = getMonthEventsCount(parts.date);
+                    @if (monthCount) {
+                        <span class="month-badge">{{ pluralize(monthCount) }}</span>
+                    }
+                }
+            </ng-template>
+
+            <!-- Day: the date with a dot for each event -->
+            <ng-template igxCalendarDay let-date let-formattedDate="formattedDate" let-selected="selected">
+                @let events = getEvents(date);
+                <span class="day" [class.day--selected]="selected">
+                    <span>{{ formattedDate }}</span>
+                    <span class="day__dots">
+                        @for (event of events; track $index) {
+                            <span class="day__dot day__dot--{{ event.type }}"></span>
+                        }
+                    </span>
+                    @if (events.length) {
+                        <!-- Readable text for screen readers, announced as the cell description -->
+                        <span class="visually-hidden">{{ pluralize(events.length) }}</span>
+                    }
+                </span>
+            </ng-template>
+        </igx-calendar>
+    </article>
+
+    <section class="agenda">
+        <h5 class="agenda__title">{{ selectedDate | date: 'fullDate' }}</h5>
+        @for (event of getEvents(selectedDate); track $index) {
+            <div class="agenda__item">
+                <span class="agenda__marker day__dot--{{ event.type }}"></span>
+                <span>{{ event.title }}</span>
+            </div>
+        } @empty {
+            <p class="agenda__empty">No events scheduled.</p>
+        }
+    </section>
+</div>
+```
+```scss
+.sample-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 8px;
+}
+
+.calendar-wrapper {
+    max-width: 400px;
+    min-width: 200px;
+    flex: 1;
+}
+
+.igx-calendar {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.26),
+    0 1px 1px 0 rgba(0,0,0,.12),
+    0 2px 1px -1px rgba(0,0,0,.08);
+}
+
+.month-badge {
+    align-self: center;
+    margin-inline-start: 8px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--ig-primary-500-contrast);
+    background: var(--ig-primary-500);
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+
+    &__dots {
+        display: flex;
+        gap: 2px;
+        height: 4px;
+        margin-top: 2px;
+    }
+
+    &__dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: currentColor;
+
+        &--meeting {
+            color: var(--ig-primary-500);
+        }
+
+        &--deadline {
+            color: var(--ig-error-500);
+        }
+
+        &--personal {
+            color: var(--ig-success-500);
+        }
+    }
+
+    // Fall back to the cell foreground so the dots stay readable on the selected background.
+    &--selected &__dot {
+        color: inherit;
+    }
+}
+
+.agenda {
+    min-width: 200px;
+    padding: 16px;
+
+    &__title {
+        margin: 0 0 12px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    &__marker {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: currentColor;
+    }
+
+    &__empty {
+        margin: 0;
+        color: var(--ig-gray-600);
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+```
+
+#### Header templates
+
+The `igxCalendarHeader` and `igxCalendarHeaderTitle` templates receive the date shown in the header: the first selected date, or the current date when nothing is selected. The `igxCalendarSubheader` template receives the view date of the calendar, so it follows the navigation between months and years.
+
+The subheader template replaces the default subheader content in every view, including the month and year buttons that switch between views. Use the calendar's [`activeView`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=activeView) to render content that fits the current view and to switch between views. In the demo above, the subheader shows the month button only in the days view, and the year button in every view:
+
+```html
+<igx-calendar #calendar [value]="selectedDate" (selected)="onSelection($event)">
+    {/* Header title: the number of events for the selected date */}
+    <ng-template igxCalendarHeaderTitle let-parts>
+        @let count = getEvents(parts.date).length;
+        <span>{{ count ? pluralize(count) : 'No events' }}</span>
+    </ng-template>
+
+    {/* Header: the selected date, composed from the formatted date parts */}
+    <ng-template igxCalendarHeader let-parts>
+        <span>{{ parts.weekday.value }}, {{ parts.month.value }} {{ parts.day.value }}</span>
+    </ng-template>
+
+    {/* Subheader: month and year buttons that switch views, plus the month's event count */}
+    <ng-template igxCalendarSubheader let-parts>
+        @if (calendar.activeView === 'month') {
+            <span
+                class="igx-calendar-picker__date"
+                tabindex="0"
+                role="button"
+                [attr.aria-label]="(parts.date | date: 'LLLL') + ', select month'"
+                (click)="calendar.activeView = 'year'"
+                (keydown.enter)="calendar.activeView = 'year'">
+                {{ parts.month.value }}
+            </span>
+        }
+        <span
+            class="igx-calendar-picker__date"
+            tabindex="0"
+            role="button"
+            [attr.aria-label]="(parts.date | date: 'yyyy') + ', select year'"
+            (click)="calendar.activeView = 'decade'"
+            (keydown.enter)="calendar.activeView = 'decade'">
+            {{ parts.year.value }}
+        </span>
+        @if (calendar.activeView === 'month') {
+            @let monthCount = getMonthEventsCount(parts.date);
+            @if (monthCount) {
+                <span class="month-badge">{{ pluralize(monthCount) }}</span>
+            }
+        }
+    </ng-template>
+</igx-calendar>
+```
+
+The month and year buttons reuse the `igx-calendar-picker__date` class, so they keep the default styling, and set `tabindex`, `role` and `aria-label` so they stay accessible from the keyboard.
+
+The header, header title and subheader templates receive the following context as `$implicit`:
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `date` | `Date` | The date of the template: the header date for `igxCalendarHeader` and `igxCalendarHeaderTitle`, the view date for `igxCalendarSubheader`. |
+| `index` | `number` | The index of the month view that the subheader belongs to when [`monthsViewNumber`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=monthsViewNumber) is greater than `1`. The subheader date is offset by this many months. |
+| `full` | `string` | The full date, formatted with the `locale` and `formatOptions` of the calendar. |
+| `era`, `year`, `month`, `day`, `weekday` | `object` | The date part, formatted with the `locale` and `formatOptions` of the calendar. |
+
+Each date part is an object with three strings: `value` is the localized part, `literal` is the separator that follows it, if any, and `combined` is the two together.
+
+#### Day template
+
+To change what the day cells of the `igx-calendar` show, for example to add event indicators, availability or prices, mark an `ng-template` inside the calendar with the `igxCalendarDay` directive. Import `IgxCalendarDayTemplateDirective` together with the calendar, or use the `IGX_CALENDAR_DIRECTIVES` token, which includes it. If the directive is not imported, the `igxCalendarDay` attribute is ignored and the calendar renders the default day content.
+
+```typescript
+import { IgxCalendarComponent, IgxCalendarDayTemplateDirective } from 'igniteui-angular/calendar';
+// import { IgxCalendarComponent, IgxCalendarDayTemplateDirective } from '@infragistics/igniteui-angular'; for licensed package
+
+interface CalendarEvent {
+    title: string;
+    type: 'meeting' | 'deadline' | 'personal';
+}
+
+@Component({
+    ...
+    imports: [IgxCalendarComponent, IgxCalendarDayTemplateDirective]
+})
+export class AppComponent {
+    // Events keyed by Date.toDateString()
+    public events = new Map<string, CalendarEvent[]>();
+
+    public getEvents(date: Date): CalendarEvent[] {
+        return this.events.get(date.toDateString()) ?? [];
+    }
+
+    public pluralize(count: number): string {
+        return `${count} ${count === 1 ? 'event' : 'events'}`;
+    }
+}
+```
+
+```html
+<igx-calendar>
+    {/* Day: the date with a dot for each event */}
+    <ng-template igxCalendarDay let-date let-formattedDate="formattedDate" let-selected="selected">
+        @let events = getEvents(date);
+        <span class="day" [class.day--selected]="selected">
+            <span>{{ formattedDate }}</span>
+            <span class="day__dots">
+                @for (event of events; track $index) {
+                    <span class="day__dot day__dot--{{ event.type }}"></span>
+                }
+            </span>
+            @if (events.length) {
+                {/* Readable text for screen readers, announced as the cell description */}
+                <span class="visually-hidden">{{ pluralize(events.length) }}</span>
+            }
+        </span>
+    </ng-template>
+</igx-calendar>
+```
+
+You can also pass the template through the `dayTemplate` input. A template set through the input takes precedence over one marked with `igxCalendarDay`:
+
+```html
+<igx-calendar [dayTemplate]="dayTemplate"></igx-calendar>
+
+<ng-template #dayTemplate let-date>{{ date.getDate() }}</ng-template>
+```
+
+The template replaces only the day number. The day cell keeps its selection, keyboard navigation, ARIA attributes and state styling (selected, range, current, special, disabled), so selecting a templated day works as before and the theme still draws the selected state. The template is not rendered for hidden days (see [`hideOutsideDays`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=hideOutsideDays)), and it is used in every month view when [`monthsViewNumber`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=monthsViewNumber) is greater than `1`.
+
+The template receives an `IgxCalendarDayTemplateContext` with the following properties:
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `$implicit`, `date` | `Date` | The date of the day cell. |
+| `formattedDate` | `string` | The default text of the day cell, formatted with `formatOptions` and `formatViews`. |
+| `selected` | `boolean` | Whether the day is rendered as selected. |
+| `disabled` | `boolean` | Whether the day is disabled through `disabledDates`. |
+| `special` | `boolean` | Whether the day is marked as special through `specialDates`. |
+| `today` | `boolean` | Whether the day is the current date. |
+| `weekend` | `boolean` | Whether the day is a weekend day. |
+| `currentMonth` | `boolean` | Whether the day belongs to the displayed month. |
+| `active` | `boolean` | Whether the day is the active (keyboard-focused) day. |
+| `firstInRange` | `boolean` | Whether the day is the first day of the selected or previewed range. |
+| `lastInRange` | `boolean` | Whether the day is the last day of the selected or previewed range. |
+| `withinRange` | `boolean` | Whether the day is within the selected range. Always `false` unless `selection` is `range`. |
+| `withinPreviewRange` | `boolean` | Whether the day is within the previewed range while a range is being selected. |
+
+**Note:** 
+Screen readers announce the day cell through its own `aria-label` and read the text that the template renders as the cell description. Render readable text, such as "3 events", rather than symbols only. Do not put focusable or interactive elements in the template, because a click anywhere in the cell selects the date. Use `currentColor` or the `selected` context property to keep the content readable on the selected background.
 
 ### Week numbers
 
@@ -1017,7 +1449,7 @@ export class CalendarMultiViewComponent {
 .stay__info {
     display: flex;
     justify-content: center;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 .stay__info > span {
@@ -1471,7 +1903,7 @@ $custom-calendar-theme: calendar-theme(
 
 ### Styling with Tailwind
 
-You can style the `calendar` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the `calendar` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -1531,8 +1963,8 @@ export class CalendarTailwindStylingSampleComponent { }
 - [`IgxCalendar`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent)
 - [`activeDate`](mcp:get_api_reference?platform=angular&component=IgxCalendarComponent&member=activeDate)
 - `IgxCalendarComponent Styles`
-- [`IgxDateRangeType`](mcp:get_api_reference?platform=angular&component=DateRangeType)
-- [`IgxDateRangeDescriptor`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor)
+- [`DateRangeType`](mcp:get_api_reference?platform=angular&component=DateRangeType)
+- [`DateRangeDescriptor`](mcp:get_api_reference?platform=angular&component=DateRangeDescriptor)
 ## Additional Resources
 
 <hr/>

@@ -3,15 +3,17 @@ title: Angular Excel Library| Working with Charts | Infragistics
 description: Use the Infragistics' Angular excel library's chart feature to add visual charting representations of data trends across regions of cells in a worksheet. Visualize Ignite UI for Angular excel data in over 70 chart types!
 keywords: Excel library, charts,  Ignite UI for Angular, Infragistics
 license: commercial
+mentionedTypes: ["Workbook", "Worksheet"]
 
 llms:
   description: "The Infragistics Angular Excel Engine's WorksheetChart functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet."
+platformType: xplat-unmapped
 _tocName: Working with Charts
 _premium: true
 ---
 # Angular Working with Charts
 
-The Infragistics Angular Excel Engine's `IgxWorksheetChart` functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet. For example, if you want to see your Excel data in a region of cells visualized as a column, line, or over 70 other chart types, this feature can help you to achieve that.
+The Infragistics Angular Excel Engine's [`WorksheetChart`](mcp:get_api_reference?platform=angular&component=WorksheetChart) functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet. For example, if you want to see your Excel data in a region of cells visualized as a column, line, or over 70 other chart types, this feature can help you to achieve that.
 
 ## Angular Working with Charts Example
 
@@ -222,11 +224,11 @@ export class AppComponent implements AfterViewInit {
 The XLSX format is required. Other formats are not supported at this time.
 
 ## Usage
-In order to add a chart to a worksheet, you must use the `AddChart` method of the worksheet's shapes collection. In this method, you can specify the chart type that you wish to use, the top-left cell, the bottom-right cell, and the percentages of those cells that you wish for the chart to take up.
+In order to add a chart to a worksheet, you must use the [`AddChart`](mcp:get_api_reference?platform=angular&component=WorksheetShapeCollection&member=addChart) method of the worksheet's shapes collection. In this method, you can specify the chart type that you wish to use, the top-left cell, the bottom-right cell, and the percentages of those cells that you wish for the chart to take up.
 
-The `AddChart` method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the `SetSourceData` method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
+The [`AddChart`](mcp:get_api_reference?platform=angular&component=WorksheetShapeCollection&member=addChart) method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the [`SetSourceData`](mcp:get_api_reference?platform=angular&component=WorksheetChart&member=setSourceData) method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
 
-There are over 70 supported chart types, including `Line`, `Area`, [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent), and `Pie`.
+There are over 70 supported chart types, including [`Workbook.line`](mcp:get_api_reference?platform=angular&component=Workbook&member=line), [`Workbook.area`](mcp:get_api_reference?platform=angular&component=Workbook&member=area), [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent), and [`Workbook.pie`](mcp:get_api_reference?platform=angular&component=Workbook&member=pie).
 
 The following code demonstrates how to use the Excel charting feature. The below snippet will add a column chart to between the first cell and the 13th cell in the first row of the worksheet. The source data is then set for the data in the region of A2:M6, switching the mapping of columns and rows for the X and Y axis of the column chart:
 
@@ -239,4 +241,4 @@ chart.setSourceData("A2:M6", true);
 ```
 
 ## API References
-`IgxWorksheetChart`
+[`WorksheetChart`](mcp:get_api_reference?platform=angular&component=WorksheetChart)

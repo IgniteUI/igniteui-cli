@@ -34,12 +34,13 @@ igc-button-group {
 }
 
 .album-title {
-    font-size: 0.875rem;
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 1.429;
-    letter-spacing: 0.0178571em;
+    line-height: 20px;
+    letter-spacing: 0.3px;
     margin-block: 0 0.5rem;
-    color: var(--ig-primary-500);
 }
 
 .album-photos {
@@ -919,7 +920,7 @@ icons.forEach(([name, text]) => registerIconFromText(name, text, 'material'));
 
 export default function ButtonGroupCustomToggle() {
   return (
-    <IgrButtonGroup selectionMode="multi">
+    <IgrButtonGroup selection="multiple">
       <IgrToggleButton selected={true}><IgrIcon name="border_top" collection="material" /></IgrToggleButton>
       <IgrToggleButton><IgrIcon name="border_right" collection="material" /></IgrToggleButton>
       <IgrToggleButton><IgrIcon name="border_bottom" collection="material" /></IgrToggleButton>

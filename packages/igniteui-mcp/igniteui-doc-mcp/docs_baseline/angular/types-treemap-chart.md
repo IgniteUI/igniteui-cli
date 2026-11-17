@@ -7,6 +7,7 @@ mentionedTypes: ["Treemap", "TreemapOrientation", "TreemapLayoutType", "TreemapH
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Treemap chart displays hierarchical (tree-structured) data as a set of nested nodes."
+platformType: xplat
 _tocName: Treemap
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Treemap chart displays hierarchical (tree-structured) 
 
 ## Angular Treemap Example
 
-In the following example, the `IgxTreemap` demonstrates the 30 largest countries in the world by total area.
+In the following example, the [`IgxTreemapComponent`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent) demonstrates the 30 largest countries in the world by total area.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -152,13 +153,13 @@ There are several common use cases for choosing a Treemap. When you:
 
 - The data source must be an array or a list of data items
 - The data source must contain at least one data item otherwise the map will not render any nodes.
-- All data items must contain at least one data column (e.g. string) which should be mapped to the `LabelMemberPath` property.
-- All data items must contain at least one numeric data column which should be mapped using the `ValueMemberPath` property.
-- To categorize data into organized tiles you can optionally use `ParentIdMemberPath` and `IdMemberPath`.
+- All data items must contain at least one data column (e.g. string) which should be mapped to the [`labelMemberPath`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=labelMemberPath) property.
+- All data items must contain at least one numeric data column which should be mapped using the [`valueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=valueMemberPath) property.
+- To categorize data into organized tiles you can optionally use [`parentIdMemberPath`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=parentIdMemberPath) and [`idMemberPath`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=idMemberPath).
 
 ## Angular Treemap Configuration
 
-In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the `LayoutType` and `LayoutOrientation` properties.
+In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`layoutType`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=layoutType) and [`layoutOrientation`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=layoutOrientation) properties.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -328,9 +329,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Treemap chart displays the relative weight of data. It uses a variety of algorithms to help it determine how the layout of its data items should occur:
 
-- `SliceAndDiced` - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
-- `Squarified` - layout tiling algorithm has a better aspect ratio than the `SliceAndDice` and keeps a better order than Squarified.
-- `Stripped` - layout type algorithm obtains the best aspect ratio but the objects are arranged by size.
+- [`SliceAndDice`](mcp:get_api_reference?platform=angular&component=TreemapLayoutType&member=SliceAndDice) - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
+- [`Squarified`](mcp:get_api_reference?platform=angular&component=TreemapLayoutType&member=Squarified) - layout tiling algorithm has a better aspect ratio than the [`SliceAndDice`](mcp:get_api_reference?platform=angular&component=TreemapLayoutType&member=SliceAndDice) and keeps a better order than Squarified.
+- [`Stripped`](mcp:get_api_reference?platform=angular&component=TreemapLayoutType&member=Stripped) - layout type algorithm obtains the best aspect ratio but the objects are arranged by size.
 
 The Treemap allows you to choose the algorithm that is best for your requirements, defaulting to use the Squarified method. It also includes the ability to allow you to colorize nodes using two mechanisms:
 
@@ -339,16 +340,16 @@ The Treemap allows you to choose the algorithm that is best for your requirement
 
 ### Layout Orientation
 
-`LayoutOrientation` property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
+[`layoutOrientation`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=layoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
 
-Note that the `LayoutOrientation` property works with the layout types SliceAndDice and Strip.
+Note that the [`layoutOrientation`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=layoutOrientation) property works with the layout types SliceAndDice and Strip.
 
-- `Horizontal` – the child nodes are going to be stacked horizontally(SliceAndDice).
-- `Vertical` – the child nodes are going to be stacked vertically (SliceAndDice).
+- [`Horizontal`](mcp:get_api_reference?platform=angular&component=TreemapOrientation&member=Horizontal) – the child nodes are going to be stacked horizontally(SliceAndDice).
+- [`Vertical`](mcp:get_api_reference?platform=angular&component=TreemapOrientation&member=Vertical) – the child nodes are going to be stacked vertically (SliceAndDice).
 
 ## Angular Treemap Styling
 
-In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the `NodeStylingScript` event.
+In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the [`nodeStyling`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=nodeStyling) event.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -524,7 +525,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ### Angular Treemap Highlighting
 
-In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set `HighlightingMode`to Brighten or FadeOthers.
+In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=highlightingMode)to Brighten or FadeOthers.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -671,10 +672,10 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Treemap Percent based highlighting
 
-- `HighlightedItemsSource`: Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
-- `HighlightedValueMemberPath`: Specifies the name of the property in the datasource where the highlighted values are read.
-- `HighlightedValueOpacity`: Controls the opacity of the normal value behind the highlighted value.
-- `HighlightedValuesDisplayMode`: Enables or disables highlighted values.
+- [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=highlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
+- [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=highlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
+- [`highlightedValueOpacity`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=highlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
+- [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent&member=highlightedValuesDisplayMode): Enables or disables highlighted values.
   - Auto: The treemap decides what mode to use.
   - Overlay: The treemap displays highlighted values over top the normal value with a slight opacity applied to the normal value.
   - Hidden: The treemap does not show highlighted values.
@@ -797,4 +798,4 @@ You can find more information about related chart types in these topics:
 - [Shape Chart](./shape-chart.md)
 
 ## API References
-`IgxTreemap`
+[`IgxTreemapComponent`](mcp:get_api_reference?platform=angular&component=IgxTreemapComponent)

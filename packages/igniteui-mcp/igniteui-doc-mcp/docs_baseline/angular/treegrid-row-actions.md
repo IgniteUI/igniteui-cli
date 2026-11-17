@@ -64,9 +64,11 @@ These components expose templates giving flexibility for customization. For inst
         <button title="Edit" igxIconButton="flat" igxRipple (click)='startEdit(actionstrip.context)'>
             <igx-icon>edit</igx-icon>
         </button>
-        <button title="Delete" igxIconButton="flat" igxRipple *ngIf='!isDeleted(actionstrip.context)' (click)='actionstrip.context.delete()'>
-            <igx-icon>delete</igx-icon>
-        </button>
+        @if (!isDeleted(actionstrip.context)) {
+            <button title="Delete" igxIconButton="flat" igxRipple (click)='actionstrip.context.delete()'>
+                <igx-icon>delete</igx-icon>
+            </button>
+        }
     </igx-action-strip>
 </igx-grid>
 ```
@@ -162,4 +164,4 @@ Additional components and/or directives that can be used within the Action Strip
 - [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
 - [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
 - [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
-- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent)

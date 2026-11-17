@@ -3,10 +3,11 @@ title: "Angular Axis Gridlines | Data Visualization | Infragistics"
 description: Infragistics' Angular Axis Gridlines
 keywords: "Angular Axis, Gridlines, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase" ]
+mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All Ignite UI for Angular charts include built-in capability to modify appearance of axis lines as well as frequency of major/minor gridlines and tickmarks that are rendered on the X-Axis and Y-Axis."
+platformType: xplat
 _tocName: Axis Gridlines
 _premium: true
 ---
@@ -15,7 +16,7 @@ _premium: true
 All Ignite UI for Angular charts include built-in capability to modify appearance of axis lines as well as frequency of major/minor gridlines and tickmarks that are rendered on the X-Axis and Y-Axis.
 
 **Note:** 
-the following examples can be applied to `IgxCategoryChart` as well as `IgxFinancialChart` controls.
+the following examples can be applied to [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) as well as [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) controls.
 
 Axis major gridlines are long lines that extend horizontally along the Y-Axis or vertically along the X-Axis from locations of axis labels, and they render through the plot area of the chart. Axis minor gridlines are lines that render between axis major gridlines.
 
@@ -241,20 +242,20 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Setting the axis interval property specifies how often major gridlines and axis labels are rendered on an axis. Similarly, the axis minor interval property specifies how frequent minor gridlines are rendered on an axis.
 
-In order to display minor gridlines that correspond to minor interval, you need to set `XAxisMinorStroke` and `XAxisMinorStrokeThickness` properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
+In order to display minor gridlines that correspond to minor interval, you need to set [`xAxisMinorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStroke) and [`xAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStrokeThickness) properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
 
 You can customize how the gridlines are displayed in your Angular chart by setting the following properties:
 
 | Axis Visuals           | Type    | Property Names                                               | Description |
 | -----------------------|---------|--------------------------------------------------------------|---------------- |
-| Major Stroke Color     | string  | `XAxisMajorStroke` <br /> `YAxisMajorStroke`                   | These properties set the color of axis major gridlines. |
-| Minor Stroke Color     | string  | `XAxisMinorStroke` <br /> `YAxisMinorStroke`                   | These properties set the color of axis minor gridlines. |
-| Major Stroke Thickness | number  | `XAxisMajorStrokeThickness` <br /> `YAxisMajorStrokeThickness` | These properties set the thickness in pixels of the axis major gridlines. |
-| Minor Stroke Thickness | number  | `XAxisMinorStrokeThickness` <br /> `YAxisMinorStrokeThickness` | These properties set the thickness in pixels of the axis minor gridlines. |
-| Major Interval         | number  | `XAxisInterval` <br /> `YAxisInterval`                         | These properties set interval between axis major gridlines and labels. |
-| Minor Interval         | number  | `XAxisMinorInterval` <br /> `YAxisMinorInterval`               | These properties set interval between axis minor gridlines, if used. |
-| Axis Line Stroke Color | string  | `XAxisStroke` <br /> `YAxisStroke`                   | These properties set the color of an axis line. |
-| Axis Stroke Thickness  | number  | `XAxisStrokeThickness` <br /> `YAxisStrokeThickness` | These properties set the thickness in pixels of an axis line. |
+| Major Stroke Color     | string  | [`xAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStroke) <br /> [`yAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStroke)                   | These properties set the color of axis major gridlines. |
+| Minor Stroke Color     | string  | [`xAxisMinorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStroke) <br /> [`yAxisMinorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorStroke)                   | These properties set the color of axis minor gridlines. |
+| Major Stroke Thickness | number  | [`xAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStrokeThickness) <br /> [`yAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStrokeThickness) | These properties set the thickness in pixels of the axis major gridlines. |
+| Minor Stroke Thickness | number  | [`xAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStrokeThickness) <br /> [`yAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorStrokeThickness) | These properties set the thickness in pixels of the axis minor gridlines. |
+| Major Interval         | number  | [`xAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisInterval) <br /> [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisInterval)                         | These properties set interval between axis major gridlines and labels. |
+| Minor Interval         | number  | [`xAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisMinorInterval) <br /> [`yAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorInterval)               | These properties set interval between axis minor gridlines, if used. |
+| Axis Line Stroke Color | string  | [`xAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStroke) <br /> [`yAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStroke)                   | These properties set the color of an axis line. |
+| Axis Stroke Thickness  | number  | [`xAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStrokeThickness) <br /> [`yAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStrokeThickness) | These properties set the thickness in pixels of an axis line. |
 
 Regarding the Major and Minor Interval in the table above, it is important to note that the major interval for axis labels will also be set by this value, displaying one label at the point on the axis associated with the interval. The minor interval gridlines are always rendered between the major gridlines, and as such, the minor interval properties should always be set to something much smaller (usually 2-5 times smaller) than the value of the major Interval properties.
 
@@ -478,9 +479,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The axes of the `IgxDataChart` also have the ability to place a dash array on the major and minor gridlines by utilizing the `MajorStrokeDashArray` and `MinorStrokeDashArray` properties, respectively. The actual axis line can be dashed as well by setting the `StrokeDashArray` property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
+The axes of the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) also have the ability to place a dash array on the major and minor gridlines by utilizing the [`majorStrokeDashArray`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=majorStrokeDashArray) and [`minorStrokeDashArray`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=minorStrokeDashArray) properties, respectively. The actual axis line can be dashed as well by setting the [`strokeDashArray`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=strokeDashArray) property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
 
-The following example demonstrates a `IgxDataChart` with the above dash array properties set:
+The following example demonstrates a [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) with the above dash array properties set:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -653,9 +654,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Axis Tickmarks Example
 
-Axis tick marks are enabled by setting the `XAxisTickLength` and `YAxisTickLength` properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
+Axis tick marks are enabled by setting the [`xAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickLength) and [`yAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickLength) properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
 
-Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the `YAxisTickLength` property is set to 5, axis labels will be shifted left by that amount.
+Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the [`yAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickLength) property is set to 5, axis labels will be shifted left by that amount.
 
 The following example demonstrates how to customize the tickmarks by setting the properties above:
 
@@ -817,9 +818,9 @@ You can customize how the axis tickmarks are displayed in our Angular chats by s
 
 | Axis Visuals           | Type    | Property Names                                             | Description |
 | -----------------------|---------|------------------------------------------------------------|------------------------- |
-| Tick Stroke Color      | string  | `XAxisTickStroke` <br /> `YAxisTickStroke`                   | These properties set the color of the tickmarks. |
-| Tick Stroke Thickness  | number  | `XAxisTickStrokeThickness` <br /> `YAxisTickStrokeThickness` | These properties set the thickness of the axis tick marks. |
-| Tick Stroke Length     | number  | `XAxisTickLength` <br /> `YAxisTickLength`                   | These properties set the length of the axis tick marks. |
+| Tick Stroke Color      | string  | [`xAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickStroke) <br /> [`yAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickStroke)                   | These properties set the color of the tickmarks. |
+| Tick Stroke Thickness  | number  | [`xAxisTickStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickStrokeThickness) <br /> [`yAxisTickStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickStrokeThickness) | These properties set the thickness of the axis tick marks. |
+| Tick Stroke Length     | number  | [`xAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickLength) <br /> [`yAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickLength)                   | These properties set the length of the axis tick marks. |
 
 ## Additional Resources
 
@@ -832,25 +833,25 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-| `IgxDataChart`                                     | `IgxCategoryChart` or `IgxFinancialChart` |
+| [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)                                     | [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) or [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) |
 | -------------------------------------------------- | ----------------------------------- |
-| `Axes` -> `IgxNumericXAxis` -> `Interval`             | `XAxisInterval` (Major Interval) |
-| `Axes` -> `IgxNumericYAxis` -> `Interval`             | `YAxisInterval` (Major Interval) |
-| `Axes` -> `IgxNumericXAxis` -> `MinorInterval`        | `XAxisMinorInterval`    |
-| `Axes` -> `IgxNumericYAxis` -> `MinorInterval`        | `YAxisMinorInterval`    |
-| `Axes` -> `IgxNumericXAxis` -> `MajorStroke`          | `XAxisMajorStroke`    |
-| `Axes` -> `IgxNumericYAxis` -> `MajorStroke`          | `YAxisMajorStroke`    |
-| `Axes` -> `IgxNumericXAxis` -> `MajorStrokeThickness` | `XAxisMajorStrokeThickness` |
-| `Axes` -> `IgxNumericYAxis` -> `MajorStrokeThickness` | `YAxisMajorStrokeThickness` |
-| `Axes` -> `IgxNumericXAxis` -> `MinorStrokeThickness` | `XAxisMinorStrokeThickness` |
-| `Axes` -> `IgxNumericYAxis` -> `MinorStrokeThickness` | `YAxisMinorStrokeThickness` |
-| `Axes` -> `IgxNumericXAxis` -> `StrokeThickness`      | `XAxisStrokeThickness`   |
-| `Axes` -> `IgxNumericYAxis` -> `StrokeThickness`      | `YAxisStrokeThickness`   |
-| `Axes` -> `IgxNumericXAxis` -> `Stroke`               | `XAxisStroke` (Axis Line Color) |
-| `Axes` -> `IgxNumericYAxis` -> `Stroke`               | `YAxisStroke` (Axis Line Color) |
-| `Axes` -> `IgxNumericXAxis` -> `TickLength`           | `XAxisTickLength`    |
-| `Axes` -> `IgxNumericYAxis` -> `TickLength`           | `YAxisTickLength`    |
-| `Axes` -> `IgxNumericXAxis` -> `TickStroke`           | `XAxisTickStroke`    |
-| `Axes` -> `IgxNumericYAxis` -> `TickStroke`           | `YAxisTickStroke`    |
-| `Axes` -> `IgxNumericXAxis` -> `Strip`                | `XAxisStrip` (Space between Major Gridlines) |
-| `Axes` -> `IgxNumericYAxis` -> `Strip`                | `YAxisStrip` (Space between Major Gridlines) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`IgxNumericXAxisComponent.interval`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=interval)             | [`xAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisInterval) (Major Interval) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`IgxNumericXAxisComponent.interval`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=interval)             | [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisInterval) (Major Interval) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`minorInterval`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=minorInterval)        | [`xAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisMinorInterval)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`minorInterval`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=minorInterval)        | [`yAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorInterval)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`majorStroke`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=majorStroke)          | [`xAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStroke)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`majorStroke`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=majorStroke)          | [`yAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStroke)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`majorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=majorStrokeThickness) | [`xAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStrokeThickness) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`majorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=majorStrokeThickness) | [`yAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStrokeThickness) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`minorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=minorStrokeThickness) | [`xAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStrokeThickness) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`minorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=minorStrokeThickness) | [`yAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorStrokeThickness) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`strokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=strokeThickness)      | [`xAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStrokeThickness)   |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`strokeThickness`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=strokeThickness)      | [`yAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStrokeThickness)   |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`IgxNumericXAxisComponent.stroke`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=stroke)               | [`xAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStroke) (Axis Line Color) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`IgxNumericXAxisComponent.stroke`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=stroke)               | [`yAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStroke) (Axis Line Color) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`tickLength`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=tickLength)           | [`xAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickLength)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`tickLength`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=tickLength)           | [`yAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickLength)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`tickStroke`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=tickStroke)           | [`xAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickStroke)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`tickStroke`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent&member=tickStroke)           | [`yAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickStroke)    |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) -> [`IgxNumericXAxisComponent.strip`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=strip)                | [`xAxisStrip`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStrip) (Space between Major Gridlines) |
+| [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) -> [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) -> [`IgxNumericXAxisComponent.strip`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent&member=strip)                | [`yAxisStrip`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStrip) (Space between Major Gridlines) |

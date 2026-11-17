@@ -7,12 +7,13 @@ mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge."
+platformType: xplat
 _tocName: Linear Gauge
 _premium: true
 ---
 # Blazor Linear Gauge Overview
 
-The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=transitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Blazor linear gauge component allows for visualizing data in the form of a linear gauge. The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the [`TransitionDuration`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=TransitionDuration) property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Blazor Linear Gauge Example
 
@@ -375,35 +376,39 @@ The following sample demonstrates how setting multiple properties on the same [`
 
 ## Component Modules
 
-The [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge) requires the following modules:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbLinearGaugeModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbLinearGaugeModule`](mcp:get_api_reference?platform=blazor&component=IgbLinearGaugeModule), the client resource module of the [`IgbLinearGauge`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbLinearGaugeModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](general-getting-started.md#component-modules)).
 
 ## Usage
 
 The following code demonstrates how create a linear gauge containing a needle and three comparative ranges on the scale.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-        MinimumValue="5"
-        MaximumValue="55"
-        Value="43" >
-    <IgbLinearGraphRange StartValue="0"
-            EndValue="15"
-            Brush="red" >
-    </IgbLinearGraphRange>
-     <IgbLinearGraphRange StartValue="15"
-            EndValue="30"
-            Brush="yellow">
-    </IgbLinearGraphRange>
-    <IgbLinearGraphRange StartValue="30"
-            EndValue="55"
-            Brush="green">
-    </IgbLinearGraphRange>
+<IgbLinearGauge
+    Height="30px"
+    Width="700px"
+    MinimumValue="5"
+    MaximumValue="55"
+    Value="43">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="15"
+        Brush="Red" />
+    <IgbLinearGraphRange
+        StartValue="15"
+        EndValue="30"
+        Brush="Yellow" />
+    <IgbLinearGraphRange
+        StartValue="30"
+        EndValue="55"
+        Brush="Green" />
 </IgbLinearGauge>
 ```
 
@@ -412,9 +417,13 @@ The following code demonstrates how create a linear gauge containing a needle an
 This is the primary measure displayed by the linear gauge component and is visualized as a bar or you can customize it to show almost any shape as is demonstrated below.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-    MinimumValue="0" Value="50"
-    MaximumValue="100" Interval="10"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
     IsNeedleDraggingEnabled="true"
     NeedleShape="LinearGraphNeedleShape.Custom"
     NeedleBrush="DodgerBlue"
@@ -428,8 +437,7 @@ This is the primary measure displayed by the linear gauge component and is visua
     NeedleInnerPointWidth="0"
     NeedleOuterPointWidth="0.3"
     NeedleInnerBaseWidth="0"
-    NeedleOuterBaseWidth="0.07">
-</IgbLinearGauge>
+    NeedleOuterBaseWidth="0.07" />
 ```
 
 ```razor
@@ -466,13 +474,15 @@ This is the primary measure displayed by the linear gauge component and is visua
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's [`Value`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=highlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=highlightValue).
+The linear gauge can be modified to show a second needle. This will make the main needle's [`IgbLinearGauge.Value`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=Value) appear with a lower opacity. To enable this first set [`HighlightValueDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValueDisplayMode) to Overlay and then apply a [`HighlightValue`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=HighlightValue).
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
     MinimumValue="0"
     MaximumValue="100"
-    Value="75"
+    Value="50"
     Interval="10"
     LabelInterval="10"
     LabelExtent="0.025"
@@ -480,9 +490,8 @@ The linear gauge can be modified to show a second needle. This will make the mai
     LabelsPostInitial="0"
     NeedleBrush="Blue"
     HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
-    HighlightValue=25
-    IsHighlightNeedleDraggingEnabled=true>
-</IgbLinearGauge>
+    HighlightValue="25"
+    IsHighlightNeedleDraggingEnabled="true" />
 ```
 
 ```razor
@@ -519,25 +528,29 @@ The linear gauge can be modified to show a second needle. This will make the mai
 The ranges are visual elements that highlight a specified range of values on a scale. Their purpose is to visually communicate the qualitative state of the performance bar measure, illustrating at the same times the degree to which it resides within that state.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-        MinimumValue="0" Value="50"
-        MaximumValue="100" Interval="10"
-        RangeBrushes="#A4BD29, #F86232"
-        RangeOutlines="#A4BD29, #F86232">
-    <IgbLinearGraphRange StartValue="0"
-            EndValue="50"
-            InnerStartExtent="0.075"
-            InnerEndExtent="0.075"
-            OuterStartExtent="0.25"
-            OuterEndExtent="0.4">
-    </IgbLinearGraphRange>
-    <IgbLinearGraphRange StartValue="50"
-            EndValue="100"
-            InnerStartExtent="0.075"
-            InnerEndExtent="0.075"
-            OuterStartExtent="0.4"
-            OuterEndExtent="0.55">
-    </IgbLinearGraphRange>
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
+    RangeBrushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    RangeOutlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="50"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.25"
+        OuterEndExtent="0.4" />
+    <IgbLinearGraphRange
+        StartValue="50"
+        EndValue="100"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.4"
+        OuterEndExtent="0.55" />
 </IgbLinearGauge>
 ```
 
@@ -584,9 +597,13 @@ Major tick marks – The major tick marks are used as primary delimiters on the 
 Minor tick marks – The minor tick marks represent helper tick marks, which might be used to additionally improve the readability of the scale and can be customized in a way similar to the major ones.
 
 ```razor
- <IgbLinearGauge Height="80px" Width="100%"
-    MinimumValue="0" Value="50"
-    MaximumValue="100" Interval="10"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
     TickBrush="DodgerBlue"
     TicksPreTerminal="0"
     TicksPostInitial="0"
@@ -595,10 +612,9 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
     TickEndExtent="0.05"
     MinorTickCount="4"
     MinorTickBrush="DarkViolet"
-    MinorTickEndExtent="0.05"
     MinorTickStartExtent="0.15"
-    MinorTickStrokeThickness="1">
-</IgbLinearGauge>
+    MinorTickEndExtent="0.05"
+    MinorTickStrokeThickness="1" />
 ```
 
 ```razor
@@ -637,16 +653,19 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
 The labels indicate the measures on the scale.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-    MinimumValue="0" Value="50"
-    MaximumValue="100" Interval="10"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
     LabelInterval="10"
     LabelExtent="0.025"
     LabelsPreTerminal="0"
     LabelsPostInitial="0"
     FontBrush="DodgerBlue"
-    Font="11px Verdana">
-</IgbLinearGauge>
+    Font="11px Verdana" />
 ```
 
 ```razor
@@ -679,17 +698,18 @@ The labels indicate the measures on the scale.
 The backing element represents background and border of the linear gauge component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
     MinimumValue="0"
     MaximumValue="100"
     Value="50"
     Interval="10"
-    BackingBrush="#BDDCFC"
+    BackingBrush="rgba(189, 220, 252, 1)"
     BackingOutline="DodgerBlue"
     BackingStrokeThickness="4"
     BackingInnerExtent="0"
-    BackingOuterExtent="1">
-</IgbLinearGauge>
+    BackingOuterExtent="1" />
 ```
 
 ```razor
@@ -719,21 +739,24 @@ The backing element represents background and border of the linear gauge compone
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=isScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using [`IsScaleInverted`](mcp:get_api_reference?platform=blazor&component=IgbLinearGauge&member=IsScaleInverted) property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-    MinimumValue="0" Value="50"
-    MaximumValue="100" Interval="10"
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
     IsScaleInverted="false"
     ScaleBrush="DodgerBlue"
-    ScaleOutline="Red"
-    ScaleStrokeThickness="2"
+    ScaleOutline="DarkViolet"
+    ScaleStrokeThickness="1"
     ScaleInnerExtent="0.05"
     ScaleOuterExtent="0.65"
     ScaleStartExtent="0.05"
-    ScaleEndExtent="0.95">
-</IgbLinearGauge>
+    ScaleEndExtent="0.95" />
 ```
 
 ```razor
@@ -767,78 +790,76 @@ The scale is a visual element that highlights the full range of values in the li
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the linear gauge with all features and visuals enabled.
 
 ```razor
-<IgbLinearGauge Height="80px" Width="100%"
-        MinimumValue="0"
-        MaximumValue="100"
-
-        LabelInterval="10"
-        LabelExtent="0.025"
-        LabelsPreTerminal="0"
-        LabelsPostInitial="0"
-        FontBrush="DodgerBlue"
-        Font="11px Verdana"
-
-        Interval="10"
-        TickBrush="DodgerBlue"
-        TicksPreTerminal="0"
-        TicksPostInitial="0"
-        TickStrokeThickness="2"
-        TickStartExtent="0.25"
-        TickEndExtent="0.05"
-
-        MinorTickCount="4"
-        MinorTickBrush="DarkViolet"
-        MinorTickEndExtent="0.05"
-        MinorTickStartExtent="0.15"
-        MinorTickStrokeThickness="1"
-        Value="50"
-        MaximumValue="100" Interval="10"
-        IsNeedleDraggingEnabled="true"
-        NeedleShape="LinearGraphNeedleShape.Custom"
-        NeedleBrush="DodgerBlue"
-        NeedleOutline="DodgerBlue"
-        NeedleStrokeThickness="1"
-        NeedleBreadth="15"
-        NeedleInnerExtent="0.35"
-        NeedleOuterExtent="0.65"
-        NeedleOuterPointExtent="0.8"
-        NeedleInnerPointExtent="0.325"
-        NeedleInnerPointWidth="0"
-        NeedleOuterPointWidth="0.3"
-        NeedleInnerBaseWidth="0"
-        NeedleOuterBaseWidth="0.07"
-
-        IsScaleInverted="false"
-        ScaleBrush="DodgerBlue"
-        ScaleOutline="Red"
-        ScaleStrokeThickness="2"
-        ScaleInnerExtent="0.05"
-        ScaleOuterExtent="0.65"
-        ScaleStartExtent="0.05"
-        ScaleEndExtent="0.95"
-
-        BackingBrush="#BDDCFC"
-        BackingOutline="DodgerBlue"
-        BackingStrokeThickness="4"
-        BackingInnerExtent="0"
-        BackingOuterExtent="1"
-
-        RangeBrushes="#A4BD29, #F86232"
-        RangeOutlines="#A4BD29, #F86232">
-    <IgbLinearGraphRange StartValue="0"
-                EndValue="50"
-                InnerStartExtent="0.075"
-                InnerEndExtent="0.075"
-                OuterStartExtent="0.25"
-                OuterEndExtent="0.4">
-    </IgbLinearGraphRange>
-    <IgbLinearGraphRange StartValue="50"
-                EndValue="100"
-                InnerStartExtent="0.075"
-                InnerEndExtent="0.075"
-                OuterStartExtent="0.4"
-                OuterEndExtent="0.55">
-    </IgbLinearGraphRange>
+<IgbLinearGauge
+    Height="80px"
+    Width="400px"
+    MinimumValue="0"
+    MaximumValue="100"
+    Value="50"
+    Interval="10"
+    IsScaleInverted="false"
+    ScaleBrush="DodgerBlue"
+    ScaleOutline="DarkViolet"
+    ScaleStrokeThickness="1"
+    ScaleInnerExtent="0.05"
+    ScaleOuterExtent="0.65"
+    ScaleStartExtent="0.05"
+    ScaleEndExtent="0.95"
+    BackingBrush="rgba(189, 220, 252, 1)"
+    BackingOutline="DodgerBlue"
+    BackingStrokeThickness="4"
+    BackingInnerExtent="0"
+    BackingOuterExtent="1"
+    LabelInterval="10"
+    LabelExtent="0.025"
+    LabelsPreTerminal="0"
+    LabelsPostInitial="0"
+    FontBrush="DodgerBlue"
+    Font="11px Verdana"
+    TickBrush="DodgerBlue"
+    TicksPreTerminal="0"
+    TicksPostInitial="0"
+    TickStrokeThickness="2"
+    TickStartExtent="0.25"
+    TickEndExtent="0.05"
+    MinorTickCount="4"
+    MinorTickBrush="DarkViolet"
+    MinorTickStartExtent="0.15"
+    MinorTickEndExtent="0.05"
+    MinorTickStrokeThickness="1"
+    IsNeedleDraggingEnabled="true"
+    NeedleShape="LinearGraphNeedleShape.Custom"
+    NeedleBrush="DodgerBlue"
+    NeedleOutline="DodgerBlue"
+    NeedleStrokeThickness="1"
+    NeedleBreadth="15"
+    NeedleInnerExtent="0.35"
+    NeedleOuterExtent="0.65"
+    NeedleOuterPointExtent="0.8"
+    NeedleInnerPointExtent="0.325"
+    NeedleInnerPointWidth="0"
+    NeedleOuterPointWidth="0.3"
+    NeedleInnerBaseWidth="0"
+    NeedleOuterBaseWidth="0.07"
+    HighlightValueDisplayMode="HighlightedValueDisplayMode.Overlay"
+    HighlightValue="25"
+    IsHighlightNeedleDraggingEnabled="true"
+    RangeBrushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    RangeOutlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
+    <IgbLinearGraphRange
+        StartValue="0"
+        EndValue="50"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.25"
+        OuterEndExtent="0.4" />
+    <IgbLinearGraphRange
+        StartValue="50"
+        EndValue="100"
+        InnerStartExtent="0.075"
+        InnerEndExtent="0.075"
+        OuterStartExtent="0.4"
+        OuterEndExtent="0.55" />
 </IgbLinearGauge>
 ```
 

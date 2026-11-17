@@ -3,10 +3,11 @@ title: "React Step Chart | Data Visualization | Infragistics"
 description: Infragistics' React Step Chart
 keywords: "React Charts, Step Chart, Step Area Chart, Step Line Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series", "CategoryChartType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Step Chart belongs to a group of category charts that render as a collection of points connected by continuous vertical and horizontal lines."
+platformType: xplat
 _tocName: Step Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for React Step Chart belongs to a group of category charts that re
 
 ## React Step Area Chart
 
-You can create React Step Area Chart in the `IgrCategoryChart` control by setting `CategoryChart.ChartType` property to `StepArea` enum, as shown in the example below.
+You can create React Step Area Chart in the `IgrCategoryChart` control by setting `chartType` property to `StepArea` enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -143,7 +144,7 @@ root.render(<Sample/>);
 
 The React Step Line Chart is very similar to Step Area Chart, except that the area below lines are filled in.
 
-You can create Step Line Chart in the `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `StepLine` value, as shown in the example below.
+You can create Step Line Chart in the `IgrCategoryChart` control by binding your data and setting `chartType` property to `StepLine` value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -265,7 +266,7 @@ root.render(<Sample/>);
 
 ## React Step Chart Styling
 
-If you need Step Charts with more features such as composite other series, you can configure the `MarkerTypes`, `MarkerBrushes`, `MarkerOutlines`, lines' `Brushes`, and lines' `Outlines` properties on the `IgrCategoryChart` control as demonstrated below.
+If you need Step Charts with more features such as composite other series, you can configure the `markerTypes`, `markerBrushes`, `markerOutlines`, lines' `IgrDomainChart.brushes`, and lines' `IgrDomainChart.outlines` properties on the `IgrCategoryChart` control as demonstrated below.
 
 ```typescript
 export class CountryRenewableElectricityItem {

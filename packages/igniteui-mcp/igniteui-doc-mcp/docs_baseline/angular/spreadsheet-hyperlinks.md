@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The Angular Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook."
+platformType: xplat-unmapped
 _tocName: Hyperlinks
 _premium: true
 ---
@@ -85,11 +86,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Hyperlinks Overview
 
-Hyperlinks are added to the `IgxSpreadsheet` control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a `IgxWorksheetHyperlink` object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
+Hyperlinks are added to the [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) control by accessing the `Hyperlinks` collection on the worksheet that you want to place the hyperlink on. This collection has an `Add` method that takes a [`WorksheetHyperlink`](mcp:get_api_reference?platform=angular&component=WorksheetHyperlink) object, where you can define the cell address, the hyperlink URL to be navigated to, the display text, and a tooltip to optionally be displayed on hover.
 
 ## Dependencies
 
-When setting up your Angular spreadsheet control to use hyperlinks, you will need to import the `IgxWorksheetHyperlink` class like so:
+When setting up your Angular spreadsheet control to use hyperlinks, you will need to import the [`WorksheetHyperlink`](mcp:get_api_reference?platform=angular&component=WorksheetHyperlink) class like so:
 
 ```ts
 import { WorksheetHyperlink } from 'igniteui-angular-excel';

@@ -23,33 +23,26 @@ igc-avatar {
 }
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { IgrAvatar, IgrTooltip } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class TooltipOverview extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample">
-        <IgrAvatar id="avatar" shape="circle"
-          src="https://dl.infragistics.com/x/img/avatars/10.jpg"
-        ></IgrAvatar>
-        <IgrTooltip placement="bottom-start" anchor="avatar">
-          Her name is Madelyn James
-        </IgrTooltip>
-      </div>
-    );
-  }
+export default function TooltipOverview() {
+  return (
+    <div className="container sample">
+      <IgrAvatar id="avatar" shape="circle"
+        src="https://dl.infragistics.com/x/img/avatars/10.jpg"
+      ></IgrAvatar>
+      <IgrTooltip placement="bottom-start" anchor="avatar">
+        Her name is Madelyn James
+      </IgrTooltip>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<TooltipOverview />);
 ```
 
@@ -173,7 +166,6 @@ igc-tooltip::part(base) {
 }
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { IgrAvatar, IgrTooltip, IgrIcon, registerIconFromText } from "igniteui-react";
@@ -184,42 +176,36 @@ const location =
 
 registerIconFromText("location_on", location, "material");
 
-export default class TooltipRich extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample center">
-        <div className="map">
-          <IgrIcon
-            id="location_icon"
-            slot="actions"
-            collection="material"
-            name="location_on"
-          ></IgrIcon>
-          <IgrTooltip anchor="location_icon" className="locationTooltip">
-            <div className="locationTooltipContent">
-              <IgrAvatar
-                className="logo"
-                src="https://dl.infragistics.com/x/img/browsers/ig.png.png"
-                shape="square"
-              ></IgrAvatar>
-              <div>
-                <div>Infragistics Inc. HQ</div>
-                <div>2 Commerce Dr, Cranbury, NJ 08512, USA</div>
-              </div>
+export default function TooltipRich() {
+  return (
+    <div className="container sample center">
+      <div className="map">
+        <IgrIcon
+          id="location_icon"
+          slot="actions"
+          collection="material"
+          name="location_on"
+        ></IgrIcon>
+        <IgrTooltip anchor="location_icon" className="locationTooltip">
+          <div className="locationTooltipContent">
+            <IgrAvatar
+              className="logo"
+              src="https://dl.infragistics.com/x/img/browsers/ig.png.png"
+              shape="square"
+            ></IgrAvatar>
+            <div>
+              <div>Infragistics Inc. HQ</div>
+              <div>2 Commerce Dr, Cranbury, NJ 08512, USA</div>
             </div>
-          </IgrTooltip>
-        </div>
+          </div>
+        </IgrTooltip>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<TooltipRich />);
 ```
 
@@ -238,7 +224,7 @@ It's important to note that the Tooltip API methods — [`Show`](mcp:get_api_ref
 
 ### Placement
 
-The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property along with one of the [`IgrPopoverPlacement`](mcp:get_api_reference?platform=react&component=PopoverPlacement) options.
+The [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property along with one of the [`PopoverPlacement`](mcp:get_api_reference?platform=react&component=PopoverPlacement) options.
 
 If the [`Placement`](mcp:get_api_reference?platform=react&component=IgrTooltip&member=placement) property is not set, the default value is `Bottom`, which places the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=IgrTooltip) below the target element.
 
@@ -271,7 +257,6 @@ igc-button::part(base) {
 }
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { IgrButton, IgrTooltip } from "igniteui-react";
@@ -291,49 +276,43 @@ type PopoverPlacement =
   | "left-start"
   | "left-end";
 
-export default class TooltipPlacement extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+const Positions = ["top", "bottom", "left", "right"].flatMap((each) => [
+  each,
+  `${each}-start`,
+  `${each}-end`,
+]) as Array<PopoverPlacement>;
 
-  Positions = ["top", "bottom", "left", "right"].flatMap((each) => [
-    each,
-    `${each}-start`,
-    `${each}-end`,
-  ]) as Array<PopoverPlacement>;
+export default function TooltipPlacement() {
+  return (
+    <div className="container sample">
+      <IgrButton
+        variant="outlined"
+        id="tooltip-position"
+      >Click to trigger all supported placements
+      </IgrButton>
 
-  public render(): JSX.Element {
-    return (
-      <div className="container sample">
-        <IgrButton
-          variant="outlined"
-          id="tooltip-position"
-        >Click to trigger all supported placements
-        </IgrButton>
-
-        {this.Positions.map((pos) => (
-          <IgrTooltip
-            anchor="tooltip-position"
-            showTriggers="click"
-            showDelay={0}
-            hideDelay={0}
-            sticky={true}
-            withArrow={true}
-            placement={pos}
-            key={pos}
-          >
-            <div>
-              <strong>{pos}</strong>
-            </div>
-          </IgrTooltip>
-        ))}
-      </div>
-    );
-  }
+      {Positions.map((pos) => (
+        <IgrTooltip
+          anchor="tooltip-position"
+          showTriggers="click"
+          showDelay={0}
+          hideDelay={0}
+          sticky={true}
+          withArrow={true}
+          placement={pos}
+          key={pos}
+        >
+          <div>
+            <strong>{pos}</strong>
+          </div>
+        </IgrTooltip>
+      ))}
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<TooltipPlacement />);
 ```
 
@@ -373,144 +352,137 @@ By default, the [`IgrTooltip`](mcp:get_api_reference?platform=react&component=Ig
 }
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { IgrTooltip, IgrButton, IgrInput, IgrCard, IgrCardContent, IgrCardHeader } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class TooltipTriggers extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
+export default function TooltipTriggers() {
+  return (
+    <div className="container sample">
+      <div id="triggers-container">
+        <IgrCard>
+          <IgrCardHeader>
+            <h4 slot="title">Default triggers</h4>
+          </IgrCardHeader>
+          <IgrCardContent>
+            <p>
+              Hovering over the button below will display the tooltip using
+              its default configuration: it appears on{" "}
+              <strong>pointer enter</strong> and hides on{" "}
+              <strong>pointer leave</strong> or <strong>click</strong>.
+            </p>
+            <IgrButton variant="outlined" id="triggers-default">
+              Hover over me
+            </IgrButton>
+            <IgrTooltip anchor="triggers-default">
+              I am show on pointer enter and hidden on pointer leave and/or
+              click.
+            </IgrTooltip>
+          </IgrCardContent>
+        </IgrCard>
 
-  public render(): JSX.Element {
-    return (
-      <div className="container sample">
-        <div id="triggers-container">
-          <IgrCard>
-            <IgrCardHeader>
-              <h4 slot="title">Default triggers</h4>
-            </IgrCardHeader>
-            <IgrCardContent>
-              <p>
-                Hovering over the button below will display the tooltip using
-                its default configuration: it appears on{" "}
-                <strong>pointer enter</strong> and hides on{" "}
-                <strong>pointer leave</strong> or <strong>click</strong>.
-              </p>
-              <IgrButton variant="outlined" id="triggers-default">
-                Hover over me
-              </IgrButton>
-              <IgrTooltip anchor="triggers-default">
-                I am show on pointer enter and hidden on pointer leave and/or
-                click.
-              </IgrTooltip>
-            </IgrCardContent>
-          </IgrCard>
+        <IgrCard>
+          <IgrCardHeader>
+            <h4 slot="title">Focus based</h4>
+          </IgrCardHeader>
+          <IgrCardContent>
+            <p>
+              In this instance, the tooltip is bound to show on its anchor
+              <strong>focus</strong> and will hide when its anchor is
+              <strong>blurred</strong>.
+            </p>
+            <p>
+              Try to navigate with a Tab key to the anchor to see the effect.
+            </p>
+            <IgrButton variant="outlined" id="triggers-focus-blur">
+              Focus me
+            </IgrButton>
+            <IgrTooltip
+              anchor="triggers-focus-blur"
+              show-delay="0"
+              hide-delay="0"
+              show-triggers="focus"
+              hide-triggers="blur"
+            >
+              I am shown on focus and hidden on blur.
+            </IgrTooltip>
+          </IgrCardContent>
+        </IgrCard>
 
-          <IgrCard>
-            <IgrCardHeader>
-              <h4 slot="title">Focus based</h4>
-            </IgrCardHeader>
-            <IgrCardContent>
-              <p>
-                In this instance, the tooltip is bound to show on its anchor
-                <strong>focus</strong> and will hide when its anchor is
-                <strong>blurred</strong>.
-              </p>
-              <p>
-                Try to navigate with a Tab key to the anchor to see the effect.
-              </p>
-              <IgrButton variant="outlined" id="triggers-focus-blur">
-                Focus me
-              </IgrButton>
-              <IgrTooltip
-                anchor="triggers-focus-blur"
-                show-delay="0"
-                hide-delay="0"
-                show-triggers="focus"
-                hide-triggers="blur"
-              >
-                I am shown on focus and hidden on blur.
-              </IgrTooltip>
-            </IgrCardContent>
-          </IgrCard>
+        <IgrCard>
+          <IgrCardHeader>
+            <h4 slot="title">Same trigger(s) for showing and hiding</h4>
+          </IgrCardHeader>
+          <IgrCardContent>
+            <p>
+              The same trigger can be bound to both show and hide the tooltip.
+              The button below has its tooltip bound to show/hide on
+              <strong>click</strong>.
+            </p>
+            <IgrButton variant="outlined" id="triggers-click">
+              Click
+            </IgrButton>
+            <IgrTooltip
+              show-delay="0"
+              hide-delay="0"
+              anchor="triggers-click"
+              show-triggers="click"
+              hide-triggers="click"
+            >
+              I am show on click and will hide on anchor click.
+            </IgrTooltip>
+          </IgrCardContent>
+        </IgrCard>
 
-          <IgrCard>
-            <IgrCardHeader>
-              <h4 slot="title">Same trigger(s) for showing and hiding</h4>
-            </IgrCardHeader>
-            <IgrCardContent>
-              <p>
-                The same trigger can be bound to both show and hide the tooltip.
-                The button below has its tooltip bound to show/hide on
-                <strong>click</strong>.
-              </p>
-              <IgrButton variant="outlined" id="triggers-click">
-                Click
-              </IgrButton>
-              <IgrTooltip
-                show-delay="0"
-                hide-delay="0"
-                anchor="triggers-click"
-                show-triggers="click"
-                hide-triggers="click"
-              >
-                I am show on click and will hide on anchor click.
-              </IgrTooltip>
-            </IgrCardContent>
-          </IgrCard>
+        <IgrCard>
+          <IgrCardHeader>
+            <h4 slot="title">Keyboard interactions</h4>
+          </IgrCardHeader>
+          <IgrCardContent>
+            <p>
+              Keyboard interactions are also supported. The button below has
+              its tooltip bound to show on a <strong>keypress</strong> and
+              hide on a<strong>keypress</strong> or <strong>blur</strong>.
+            </p>
+            <p>Try it out by focusing the button and pressing a key.</p>
+            <IgrButton variant="outlined" id="triggers-keypress">
+              Press a key
+            </IgrButton>
+            <IgrTooltip
+              anchor="triggers-keypress"
+              show-triggers="keypress"
+              hide-triggers="keypress blur"
+            >
+              I am shown on a keypress and will hide on a keypress or blur.
+            </IgrTooltip>
+          </IgrCardContent>
+        </IgrCard>
 
-          <IgrCard>
-            <IgrCardHeader>
-              <h4 slot="title">Keyboard interactions</h4>
-            </IgrCardHeader>
-            <IgrCardContent>
-              <p>
-                Keyboard interactions are also supported. The button below has
-                its tooltip bound to show on a <strong>keypress</strong> and
-                hide on a<strong>keypress</strong> or <strong>blur</strong>.
-              </p>
-              <p>Try it out by focusing the button and pressing a key.</p>
-              <IgrButton variant="outlined" id="triggers-keypress">
-                Press a key
-              </IgrButton>
-              <IgrTooltip
-                anchor="triggers-keypress"
-                show-triggers="keypress"
-                hide-triggers="keypress blur"
-              >
-                I am shown on a keypress and will hide on a keypress or blur.
-              </IgrTooltip>
-            </IgrCardContent>
-          </IgrCard>
-
-          <IgrCard>
-            <IgrCardHeader>
-              <h4 slot="title">Custom events</h4>
-            </IgrCardHeader>
-            <IgrCardContent>
-              <p>
-                The tooltip supports any DOM event, including custom events. Try
-                entering a value in the input below, then &quot;commit&quot; it
-                by either <strong>blurring</strong> the input or pressing{" "}
-                <strong>Enter</strong>.
-              </p>
-              <IgrInput id="triggers-custom" label="Username"></IgrInput>
-              <IgrTooltip anchor="triggers-custom" show-triggers="igcChange">
-                Value changed!
-              </IgrTooltip>
-            </IgrCardContent>
-          </IgrCard>
-        </div>
+        <IgrCard>
+          <IgrCardHeader>
+            <h4 slot="title">Custom events</h4>
+          </IgrCardHeader>
+          <IgrCardContent>
+            <p>
+              The tooltip supports any DOM event, including custom events. Try
+              entering a value in the input below, then &quot;commit&quot; it
+              by either <strong>blurring</strong> the input or pressing{" "}
+              <strong>Enter</strong>.
+            </p>
+            <IgrInput id="triggers-custom" label="Username"></IgrInput>
+            <IgrTooltip anchor="triggers-custom" show-triggers="igcChange">
+              Value changed!
+            </IgrTooltip>
+          </IgrCardContent>
+        </IgrCard>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<TooltipTriggers />);
 ```
 
@@ -1362,34 +1334,27 @@ igc-avatar {
 }
 ```
 ```tsx
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./Styling.css";
 import "./index.css";
 import { IgrAvatar, IgrTooltip } from "igniteui-react";
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 
-export default class TooltipStyling extends React.Component<any, any> {
-  constructor(props: any) {
-    super(props);
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className="container sample">
-        <IgrAvatar id="avatar" shape="circle"
-          src="https://dl.infragistics.com/x/img/avatars/10.jpg"
-        ></IgrAvatar>
-        <IgrTooltip placement="bottom-start" anchor="avatar" withArrow={true}>
-          Her name is Madelyn James
-        </IgrTooltip>
-      </div>
-    );
-  }
+export default function TooltipStyling() {
+  return (
+    <div className="container sample">
+      <IgrAvatar id="avatar" shape="circle"
+        src="https://dl.infragistics.com/x/img/avatars/10.jpg"
+      ></IgrAvatar>
+      <IgrTooltip placement="bottom-start" anchor="avatar" withArrow={true}>
+        Her name is Madelyn James
+      </IgrTooltip>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<TooltipStyling />);
 ```
 

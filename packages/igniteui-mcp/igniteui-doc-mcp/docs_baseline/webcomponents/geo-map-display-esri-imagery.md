@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
+platformType: xplat
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
@@ -213,17 +214,25 @@ export class MapUtils {
 ```
 
 ## Code Snippet
-The following code snippet shows how to display Web Components geographic imagery tiles from Esri imagery servers in `IgcGeographicMap` using `IgcArcGISOnlineMapImagery` class.
+The following code snippet shows how to display Web Components geographic imagery tiles from Esri imagery servers in `IgcGeographicMapComponent` using `IgcArcGISOnlineMapImagery` class.
+
+```html
+<igc-geographic-map
+    id="oceansMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igc-geographic-map>
+```
 
 ```ts
-import { IgcGeographicMap } from 'igniteui-webcomponents-maps';
-import { IgcArcGISOnlineMapImagery } from 'igniteui-webcomponents-maps';
+import { IgcGeographicMapComponent, IgcArcGISOnlineMapImagery } from 'igniteui-webcomponents-maps';
 // ...
-const tileSource = new IgcArcGISOnlineMapImagery();
-tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
-
-const geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent
-geoMap.backgroundContent = tileSource;
+private oceansMap: IgcGeographicMapComponent
+var oceansMap = this.oceansMap = document.getElementById('oceansMap') as IgcGeographicMapComponent;
+var oceansMapImagery = new IgcArcGISOnlineMapImagery();
+oceansMapImagery.mapServerUri = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer";
+oceansMap.backgroundContent = oceansMapImagery;
 ```
 
 ## Esri Utility
@@ -243,4 +252,4 @@ geoMap.backgroundContent = tileSource;
 
 ## API References
 `IgcArcGISOnlineMapImagery`
-`IgcGeographicMap`
+`IgcGeographicMapComponent`

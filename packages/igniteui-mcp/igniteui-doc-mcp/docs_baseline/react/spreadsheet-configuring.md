@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The React Spreadsheet component allows the user to configure many different aspects of the control."
+platformType: xplat-unmapped
 _tocName: Configuring Spreadsheet
 _premium: true
 ---

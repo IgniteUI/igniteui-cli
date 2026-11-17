@@ -1,279 +1,110 @@
 ---
-title: "Web Components ComboBox Component – Ignite UI for Web Components"
-description: "Web Components Combo component provides a powerful input, combining features of the basic HTML input, select, filtering and custom drop-down lists. Try it for FREE"
-keywords: "Ignite UI for Web Components, UI controls, Web Components widgets, web widgets, UI widgets, Web Components, Native Web Components Components Suite, Native Web Components Controls, Native Web Components Components Library, Web Components ComboBox component"
+title: "Web Components Styling and Themes | Web Components Theming | Theme Switching | Infragistics"
+description: Use Infragistics' Web Components components to create apps and improve data visualization with the world's fastest, virtualized, real-time Web Components data grid and streaming financial and business and financial charts.
+keywords: "Ignite UI for Web Components, Infragistics, Themes, Styling"
 license: MIT
-mentionedTypes: ["Combo", "ComboItem", "ComboHeader", "ComboList"]
+mentionedTypes: ["ConfigureTheme"]
+last_updated: "2026-10-09"
 llms:
-  description: "Web Components ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list."
-_tocName: Combo Box
+  description: "Ignite UI for Web Components ships with four distinct themes - Bootstrap, Material, Fluent, and Indigo."
+_tocName: Overview
 ---
-# Web Components ComboBox Overview
+# Themes in Ignite UI for Web Components
 
-Web Components ComboBox is a lightweight editor that enables users to easily select, filter, and group different predefined options in a provided list. The component also supports options for Web Components ComboBox keyboard navigation, templates to customize how the items, header, and footer are displayed.
+Ignite UI for Web Components ships with four distinct themes - Bootstrap, Material, Fluent, and Indigo. All component themes are baked into the components, however, a global style file is required for palettes, typography, and other global configurations to work.
 
-The Ignite UI for Web Components ComboBox component provides a list of options from which users can make a selection. It displays all options in a virtualized list of items, meaning the ComboBox can simultaneously show thousands of records, where one or more options can be selected. Additionally, the component features case-sensitive filtering, grouping, complex data binding and more.
+## Loading a Theme
 
-## Web Components ComboBox Example
+To enable a theme, a theme file should be loaded. Depending on your project configuration you can either `import` or `link`.
 
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-```
+Here's the complete list of all bundled themes and their path:
 
-## Getting Started with Web Components ComboBox
+| Name        | Variant | Location                                          |
+| ----------- | ------- | ------------------------------------------------- |
+| **Bootstrap**   | Light   | igniteui-webcomponents/themes/light/bootstrap.css |
+| **Material**    | Light   | igniteui-webcomponents/themes/light/material.css  |
+| **Fluent**      | Light   | igniteui-webcomponents/themes/light/fluent.css    |
+| **Indigo**      | Light   | igniteui-webcomponents/themes/light/indigo.css    |
+| **Bootstrap**   | Dark    | igniteui-webcomponents/themes/dark/bootstrap.css  |
+| **Material**    | Dark    | igniteui-webcomponents/themes/dark/material.css   |
+| **Fluent**      | Dark    | igniteui-webcomponents/themes/dark/fluent.css     |
+| **Indigo**      | Dark    | igniteui-webcomponents/themes/dark/indigo.css     |
 
-First, you need to install the Ignite UI for Web Components by running the following command:
-
-```cmd
-npm install igniteui-webcomponents
-```
-
-Before using the [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component, you need to register it together with its additional components and necessary CSS:
-
-```ts
-import { defineComponents, IgcComboComponent }
-from 'igniteui-webcomponents';
-import 'igniteui-webcomponents/themes/light/bootstrap.css';
-
-defineComponents(IgcComboComponent);
-```
-
-For a complete introduction to the Ignite UI for Web Components, read the [**Getting Started**](../../general-getting-started.md) topic.
-
-**Warning: Warning**
-
-The [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component doesn't work with the standard `<form>` element. Use `Form` instead.
-
-Then, we will bind an array of objects to the combo data source used for building the list of options.
-
-```ts
-interface City {
-    id: string;
-    name: string;
-}
-
-const cities: City[] = [
-    { name: 'London', id: 'UK01' },
-    { name: 'Sofia', id: 'BG01'},
-    { name: 'New York', id: 'NY01'}
-];
-
-export class Sample {
-    private combo: IgcComboComponent<City>;
-
-    constructor() {
-        this.combo = document.getElementById('basic-combo') as IgcComboComponent<City>;
-        this.combo.data = cities;
-    }
-}
-```
-
-```html
-<igc-combo id='basic-combo' display-key='name' value-key='id' value='["BG01"]'></igc-combo>
-```
-
-### Data value and display properties
-
-When the combo is bound to a list of complex data (i.e. objects), we need to specify a property that the control will use to handle item selection. The component exposes the following properties:
-
-- `T` - **required**, if [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) is omitted, this should be set to "object", otherwise this needs to match the property type of [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey).
-- [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) - **Optional**, **required** for complex data object - Determines which field of the data source will be used to make selections. If [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) is omitted, the selection API will use object references to select items.
-- [`DisplayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) - **Optional**, **recommended** for complex data objects - Determines which field in the data source is used as the display value. If no value is specified for [`DisplayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey), the combo will use the specified [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) (if any).
-In our case, we want the combo to display the `name` of each city and use the `id` field for item selection and as the underlying value for each item. Therefore, we provide these properties to the combo's [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) and [`DisplayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey) respectively.
+## Runtime Theme Switching
 
 **Note:** 
-When the data source consists of primitive types (e.g. `strings`, `numbers`, etc.), **do not** specify a [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) and/or [`DisplayKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=displayKey).
+Changing the theme at runtime also requires you to replace the global stylesheet from the table above.
 
-### Setting Value
+Ignite UI for Web Components allows you to switch the component themes at runtime by using the `ConfigureTheme` function exported by the library.
 
-The ComboBox component exposes a [`Value`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=value) getter and setter in addition to an attribute, which is also called value. You can use the value attribute to set the selected items on component initialization.
-
-If you want to read the value, i.e. the list of currently selected items, or to update the value use the value getter and setter respectively. The value getter will return a list of all selected items as represented by the [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey). Likewise, if you want to update the list of selected items by using the value setter, you should provide a list of items by their [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey).
+It takes the theme as its first argument - `bootstrap`, `material`, `fluent`, or `indigo` - and an optional variant as its second, either `light` or `dark`. Omit the variant to keep the one currently active.
 
 ```ts
-const combo = document.getElementById('basic-combo') as IgcComboComponent<City>;
+import { configureTheme } from "igniteui-webcomponents";
 
-// Given the overview example from above this will return ['BG01']
-console.log(combo.value);
+// Sets material as the theme to be used by all components
+configureTheme("material");
 
-// Change the selected items to New York and London
-combo.value = ['NY01', 'UK01'];
+// Sets material and switches to its dark variant
+configureTheme("material", "dark");
 ```
 
-### Selection API
+**Note:** 
+This only tells components to switch their internal styles to the desired theme, you should also switch the global theme file to one of the listed files above.
 
-The combo component exposes APIs that allow you to change the currently selected items.
+## Customizing with Sass
 
-Besides selecting items from the list of options by user interaction, you can select items programmatically. This is done via the [`Select`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=select) and [`Deselect`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=deselect) methods. You can pass an array of items to both methods. If the methods are called with no arguments all items will be selected/deselected depending on which method is called. If you have specified a [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) for your combo component, then you should pass the value keys of the items you would like to select/deselect:
+The theme files above are prebuilt CSS, and the topics in this section customize them by overriding CSS variables - see [Palettes](palettes.md), [Typography](typography.md), [Elevations](elevations.md), and [Configuration](configuration.md). That path needs no build configuration and covers most customization.
 
-#### Select/deselect some items
+The prebuilt themes are compiled from `igniteui-theming`, the Sass library behind every Ignite UI for Web Components theme, and the same library is available to your application. Some capabilities are only reachable from it, because they run at compile time rather than through a variable:
+
+- Generating a palette from your own seed colors, as described in [Palette Generation](palette-generation.md).
+- The contrast and chart-palette functions on the [Accessibility](accessibility.md) topic.
+
+A Sass build with `igniteui-theming` produces plain CSS: a stylesheet of `--ig-*` variables that you load after the theme file, the same way you load your own CSS overrides. Your framework only needs a way to run the Sass compiler. Install both packages:
+
+```cmd
+npm install igniteui-theming sass --save-dev
+```
+
+Then import the library in a `.scss` file:
+
+```scss
+@use 'igniteui-theming' as *;
+
+// Required for $material-type-scale, $indigo-type-scale, and similar preset variables
+@use 'igniteui-theming/sass/typography/presets' as *;
+
+// Required for $material-elevations and $indigo-elevations
+@use 'igniteui-theming/sass/elevations/presets' as *;
+
+:root {
+  @include palette(palette($primary: #0099ff, $secondary: #df1b74, $surface: #ffffff));
+}
+```
+
+### Compiling the Stylesheet
+
+Vite compiles `.scss` imports once the `sass` package is installed, and webpack does the same through `sass-loader`. Import the stylesheet after the theme file:
 
 ```ts
-// Select/deselect items by their IDs as valueKey is set to 'id'
-combo.select(['BG01', 'BG02', 'BG03', 'BG04']);
-combo.deselect(['BG01', 'BG02', 'BG03', 'BG04']);
+import 'igniteui-webcomponents/themes/light/bootstrap.css';
+import './theme.scss';
 ```
 
-#### Select/deselect all items
+Any other build tool works the same way, and so does the Sass command line. When nothing else compiles Sass, run it as a separate step and load the output like any CSS file:
 
-```ts
-// Select/deselect all items
-combo.select();
-combo.deselect();
+```cmd
+npx sass --load-path=node_modules src/theme.scss public/theme.css
 ```
 
-If the [`ValueKey`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=valueKey) property is omitted, you will have to list the items you wish to select/deselect as objects references:
+**Note:** 
+If `@use 'igniteui-theming' as *;` does not resolve, your Sass compiler is missing `node_modules` in its load paths. Pass `--load-path=node_modules` to the Sass command line, set `css.preprocessorOptions.scss.loadPaths` in Vite, or set `sassOptions.loadPaths` in Next.js.
 
-```ts
-// Select/deselect values by object references when no valueKey is provided
-combo.select([cities[1], cities[5]]);
-combo.deselect([cities[1], cities[5]]);
-```
+### Without a Sass Toolchain
 
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-.button-container {
-    display: flex;
-    margin-top: 16px;
-    gap: 8px;
-}
-```
-
-### Validation
-
-The Ignite UI for Web Components [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component supports most of the [`IgcInput`](mcp:get_api_reference?platform=webcomponents&component=IgcInputComponent) properties, such as [`Required`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=required), [`Disabled`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=disabled), [`Autofocus`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=autofocus), [`Invalid`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=invalid), etc. The component also exposes two methods bound to its validation:
-
-- [`ReportValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=reportValidity) - checks for validity and returns true if the component satisfies the validation constraints.
-- [`CheckValidity`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent&member=checkValidity) - a wrapper around reportValidity to comply with the native input API.
-
-## Keyboard Navigation
-
-When the combo component is focused and the list of options is **not visible**:
-
-- Open the list of options using <kbd>Down/Alt</kbd> + <kbd>Down</kbd> keys.
-
-When the combo component is focused and the list of options is **visible**:
-
-- Using the <kbd>Down</kbd> key will activate the next item in the list.
-- Using the <kbd>Up</kbd> key will activate the previous item in the list. If the first item is already active it will focus the input.
-- Using the <kbd>HOME</kbd> or <kbd>END</kbd> keys will activate the first or the last item in the list.
-- Using the <kbd>SPACE</kbd> key will select the active item.
-- Using the <kbd>ENTER</kbd> key will select the active item and close the list of options.
-- Using the <kbd>ESC</kbd> or <kbd>TAB/SHIFT</kbd> + <kbd>TAB</kbd> keys will close the list of options.
-
-## Styling
-
-You can change the appearance of the [`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent) component and its items, by using the exposed CSS parts listed below:
-
-| Part name            | Description                                                                     |
-| -------------------- | ------------------------------------------------------------------------------- |
-| `label`              | The encapsulated text label.                                                    |
-| `input`              | The main input field.                                                           |
-| `native-input`       | The native input of the main input field.                                       |
-| `prefix`             | The prefix wrapper.                                                             |
-| `suffix`             | The suffix wrapper.                                                             |
-| `toggle-icon`        | The toggle icon wrapper.                                                        |
-| `clear-icon`         | The clear icon wrapper.                                                         |
-| `case-icon`          | A case-icon wrapper that renders content inside the suffix of the filter-input. |
-| `helper-text`        | The helper text wrapper.                                                        |
-| `search-input`       | The search input field.                                                         |
-| `list-wrapper`       | The list of options wrapper.                                                    |
-| `list`               | The list of options box.                                                        |
-| `item`               | Represents each item in the list of options.                                    |
-| `group-header`       | Represents each header in the list of options.                                  |
-| `active`             | Appended to the item parts list when the item is active.                        |
-| `selected`           | Appended to the item parts list when the item is selected.                      |
-| `checkbox`           | Represents each checkbox of each list item.                                     |
-| `checkbox-indicator` | Represents the checkbox indicator of each list item.                            |
-| `checked`            | Appended to checkbox parts list when checkbox is checked.                       |
-| `header`             | The container holding the header content.                                       |
-| `footer`             | The container holding the footer content.                                       |
-| `empty`              | The container holding the empty content.                                        |
-
-Using the CSS parts we have full control over the Combo styling.
-
-```css
-igc-combo::part(search-input) {
-  background-color: var(--ig-gray-100);
-  border-radius: 2px;
-}
-
-igc-combo::part(input) {
-  background-color: var(--ig-gray-100);
-}
-
-igc-combo::part(prefix) {
-  background-color: var(--ig-secondary-50);
-  color: var(--ig-primary-500);
-}
-
-igc-combo::part(toggle-icon) {
-  color: var(--ig-primary-500);
-}
-```
-
-```css
-igc-combo::part(search-input) {
-  background-color: var(--ig-gray-100);
-  border-radius: 2px;
-}
-
-igc-combo::part(input) {
-  background-color: var(--ig-gray-100);
-}
-
-igc-combo::part(prefix) {
-  background-color: var(--ig-secondary-50);
-  color: var(--ig-primary-500);
-}
-
-igc-combo::part(toggle-icon) {
-  color: var(--ig-primary-500);
-}
-```
-```css
-/* shared styles are loaded from: */
-/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
-igc-combo::part(label),
-igc-combo::part(empty),
-igc-combo::part(group-header) {
-    color: #2B3A55;
-}
-
-igc-combo::part(native-input),
-igc-combo::part(list-wrapper) {
-    background-color: #F2E5E5;
-}
-
-igc-combo::part(item selected) {
-    background: #E8C4C4;
-}
-
-igc-combo::part(item selected active),
-igc-combo::part(item selected):hover {
-    background: #CE7777;
-}
-
-igc-combo::part(prefix),
-igc-combo::part(suffix),
-igc-combo::part(case-icon) {
-    color: #F2E5E5;
-    background-color: #2B3A55;
-}
-
-igc-combo::part(checkbox checked)::after {
-    background: #2B3A55;
-    box-shadow: none;
-}
-```
+The output does not have to be rebuilt with your application. Compile the stylesheet once and commit the CSS, then recompile it only when you change the Sass. The [Theming MCP server](../ai/theming-mcp.md) can also generate palettes and component themes as ready-to-use CSS, with no local Sass compiler.
 
 ## API References
 
-[`IgcCombo`](mcp:get_api_reference?platform=webcomponents&component=IgcComboComponent)<br />
-
-## Additional Resources
-
-- [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
-- [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)
+[`configureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)

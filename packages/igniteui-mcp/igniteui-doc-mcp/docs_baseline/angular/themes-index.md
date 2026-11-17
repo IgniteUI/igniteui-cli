@@ -64,18 +64,18 @@ Every bundled CSS theme declares its variables in the `:root` scope, covering `c
 
 ### Palette Colors
 
-To change the primary and secondary colors, set the corresponding variables in your `styles.css` file:
+To change the primary, secondary, and surface colors, set the corresponding variables in your `styles.css` file:
 
 ```css
 /* styles.css */
 :root {
   --ig-primary-500: #09f;
   --ig-secondary-500: red;
-  --ig-surface-500: rgb(221 211 211);
+  --ig-surface-base: rgb(221 211 211);
 }
 ```
 
-The `ig` prefix identifies the variable as part of an Ignite UI for Angular theme, `primary` names the color variable, and `500` is the color variant. Ignite UI for Angular ships several base color variables (`primary`, `secondary`, `surface`, `success`, `info`, and more), each with a range of variants generated from its `500` (main) value. Changing the `500` variant regenerates the rest of that color's palette. See [Palettes](/themes/palettes) for the full list of variants.
+The `ig` prefix identifies the variable as part of an Ignite UI for Angular theme, `primary` names the color variable, and `500` is the color variant. Ignite UI for Angular ships several base color variables (`primary`, `secondary`, `surface`, `success`, `info`, and more), each with a range of variants. In the bundled themes, the variants are derived from the `500` (main) value at runtime, so changing the `500` variant regenerates the rest of that color's palette. Palettes you generate with the Sass `palette()` function use the `fitted` generator by default, which emits fixed colors, so overriding `500` there changes only that variant. The `surface` color is made of named layers instead of numbered variants: since Ignite UI for Angular 22.3.0, components read `--ig-surface-base` rather than `--ig-surface-500`, so set `--ig-surface-base` to change the surface. See [Palettes](/themes/palettes) for the full list of variants and the surface layers, and [Palette Generation](/themes/palette-generation) for how the generators differ.
 
 **Warning:** 
 Some components do not use colors from the palettes. In those instances, target the component's CSS variables directly to modify their colors. To find out which palette colors a component uses, see the `Sass Theming API Reference`.

@@ -175,9 +175,9 @@ public class EmployeesFlatData
 ```
 
 ## Setup
-In order to setup row selection in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), you just need to set the [`IgbTreeGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowSelection) property. This property accepts [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid), you just need to set the [`IgbTreeGrid.rowSelection`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) values.
 
-[`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

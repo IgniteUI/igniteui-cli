@@ -77,23 +77,24 @@ This index records what each component's documentation covers today. **Not docum
 | [Avatar](../layouts/avatar.md#accessibility) | Documented | Documented | [Accessibility](../layouts/avatar.md#accessibility) |
 | [Badge](../inputs/badge.md#accessibility) | Documented | Documented | [Accessibility](../inputs/badge.md#accessibility) |
 | [Banner](../banner.md) | Not documented yet | Not documented yet | — |
-| [Bottom Navigation](../tabs.md) | Not documented yet | Not documented yet | — |
+| [Bottom Navigation](../tabbar.md) | Not documented yet | Not documented yet | — |
 | [Button](../inputs/button.md) | Not documented yet | Not documented yet | — |
 | [Button Group](../inputs/button-group.md) | Not documented yet | Not documented yet | — |
 | [Calendar](../calendar.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../calendar.md#keyboard-navigation) |
-| [Card](../card.md) | Not documented yet | Not documented yet | — |
+| [Card](../layouts/card.md) | Not documented yet | Not documented yet | — |
 | [Carousel](../layouts/carousel.md#accessibility) | Documented | Documented | [Accessibility](../layouts/carousel.md#accessibility) |
-| [Checkbox](../checkbox.md) | Not documented yet | Not documented yet | — |
-| [Chip](../chip.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../chip.md#keyboard-navigation) |
+| [Checkbox](../inputs/checkbox.md) | Not documented yet | Not documented yet | — |
+| [Chip](../inputs/chip.md#accessibility) | Documented | Documented | [Accessibility](../inputs/chip.md#accessibility) |
 | [Circular Progress](../circular-progress.md) | Not documented yet | Not documented yet | — |
-| [Combo](../combo.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../combo.md#keyboard-navigation) |
+| [Combo](../inputs/combo/overview.md#accessibility) | Documented | Documented | [Accessibility](../inputs/combo/overview.md#accessibility) |
+| [Combo Single Selection](../inputs/combo/single-selection.md#accessibility) | Documented | Documented | [Accessibility](../inputs/combo/single-selection.md#accessibility) |
 | [Date Time Editor](../date-time-editor.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../date-time-editor.md#keyboard-navigation) |
 | [Date Picker](../date-picker.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../date-picker.md#keyboard-navigation) |
 | [Dialog](../dialog.md) | Not documented yet | Not documented yet | — |
 | [Divider](../divider.md) | Not documented yet | Not documented yet | — |
 | [Drop Down](../drop-down.md) | Not documented yet | Not documented yet | — |
 | [Expansion Panel](../expansion-panel.md) | Not documented yet | Not documented yet | — |
-| [Icon](../icon.md) | Not documented yet | Not documented yet | — |
+| [Icon](../layouts/icon.md#accessibility) | Documented | Documented | [Accessibility](../layouts/icon.md#accessibility) |
 | [Input Group](../input-group.md) | Not documented yet | Not documented yet | — |
 | [Label](../label-input.md) | Not documented yet | Not documented yet | — |
 | [Linear Progress](../linear-progress.md) | Not documented yet | Not documented yet | — |
@@ -101,12 +102,13 @@ This index records what each component's documentation covers today. **Not docum
 | [Month Picker](../month-picker.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../month-picker.md#keyboard-navigation) |
 | [Navbar](../navbar.md) | Not documented yet | Not documented yet | — |
 | [Navigation Drawer](../navdrawer.md) | Not documented yet | Not documented yet | — |
-| [Radio](../radio-button.md) | Not documented yet | Not documented yet | — |
+| [Radio](../inputs/radio.md#accessibility) | Documented | Documented | [Accessibility](../inputs/radio.md#accessibility) |
+| [Rating](../inputs/rating.md#accessibility) | Documented | Documented | [Accessibility](../inputs/rating.md#accessibility) |
 | [Select](../select.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../select.md#keyboard-navigation) |
 | [Slider](../slider/slider.md) | Not documented yet | Not documented yet | — |
 | [Snackbar](../snackbar.md) | Not documented yet | Not documented yet | — |
 | [Switch](../inputs/switch.md) | Not documented yet | Not documented yet | — |
-| [Tabs](../tabs.md) | Not documented yet | Not documented yet | — |
+| [Tabs](../layouts/tabs.md#accessibility) | Documented | Documented | [Accessibility](../layouts/tabs.md#accessibility) |
 | [Time Picker](../time-picker.md#keyboard-navigation) | Documented | Not documented yet | [Keyboard navigation](../time-picker.md#keyboard-navigation) |
 | [Toast](../toast.md) | Not documented yet | Not documented yet | — |
 | [Tooltip](../tooltip.md#accessibility) | Documented | Not documented yet | [Accessibility](../tooltip.md#accessibility) |

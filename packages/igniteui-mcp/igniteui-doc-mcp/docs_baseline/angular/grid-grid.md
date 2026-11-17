@@ -54,7 +54,7 @@ _premium: true
 ## Angular Data Grid Example
 
 Boston Marathon 2021 – In this angular grid example, you can see how users can do both basic and excel-style filtering, live-data sorting, as well as using of grid summaries and cell templating that includes our [Sparkline](/charts/types/sparkline-chart) component,
-[Circular Progress Indicator](/circular-progress) component, and [Icons](/icon). The demo also includes  custom paging and per page usage part of the [Angular Pagination](/grid/paging).
+[Circular Progress Indicator](/circular-progress) component, and [Icons](/layouts/icon). The demo also includes  custom paging and per page usage part of the [Angular Pagination](/grid/paging).
 
 ```typescript
 import { Component, HostListener, OnDestroy, OnInit, ViewChild, ElementRef, AfterViewInit, DOCUMENT, inject, ChangeDetectorRef } from '@angular/core';
@@ -991,7 +991,7 @@ As you can see, we are adding **draggable** attribute set to _false_.
 ...
 ```
 
-In the snippet above we "take" a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`IgxCellType`](mcp:get_api_reference?platform=angular&component=CellType) instance itself as shown below:
+In the snippet above we "take" a reference to the implicitly provided cell value. This is sufficient if you just want to present some data and maybe apply some custom styling or pipe transforms over the value of the cell. However even more useful is to take the [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) instance itself as shown below:
 
 ```html
 <igx-grid #grid [data]="data">
@@ -1035,7 +1035,7 @@ to set the [`IgxColumn.editable`](mcp:get_api_reference?platform=angular&compone
 </igx-column>
 ```
 
-Make sure to check the API for the [`IgxCellType`](mcp:get_api_reference?platform=angular&component=CellType) in order to get accustomed with the provided properties you can use in your templates.
+Make sure to check the API for the [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) in order to get accustomed with the provided properties you can use in your templates.
 
 ### Column Template API
 

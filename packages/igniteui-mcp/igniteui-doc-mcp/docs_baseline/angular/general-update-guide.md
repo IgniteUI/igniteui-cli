@@ -2,6 +2,7 @@
 title: Update Guide | Ignite UI for Angular | Infragistics
 description: Check out this article on updating how to update to a newer version of the Ignite UI for Angular library.
 keywords: ignite ui for angular, update, npm package, material components
+last_updated: "2026-10-12"
 llms:
   description: "In the Ignite UI for Angular versioning the first number always matches the major version of Angular the code supports and the second is dedicated for major version releases."
 _tocName: Update guide
@@ -58,6 +59,44 @@ If the `ng update` command fails because of package dependency mismatches, then 
 Unfortunately not all changes can be automatically updated. Changes below are split into sections as they occur in the versions, so if any updates are required you should start from your current version and apply further updates from bottom to top.
 
 For example: if you are updating from version 6.2.4 to 7.1.0 you'd start from the "From 6.x .." section apply those changes and work your way up:
+
+## From 22.2.x to 22.3.x
+
+Ignite UI for Angular 22.3.0 uses Ignite UI Theming 30 (`igniteui-theming`), whose `palette()` function builds palettes with a new `fitted` generator by default. The `fitted` generator places every shade by contrast and emits it as a fixed color, so a `palette()` call compiles to different colors than it did before. The predefined palettes, such as `$light-material-palette`, and the prebuilt CSS themes keep the `legacy` generator and are unchanged. [Palette Generation](../themes/palette-generation.md) explains both generators.
+
+The `ng update` migration adds `$generator: 'legacy'` to every `palette()` function call in your `.scss` and `.sass` files that does not already choose a generator, so your palettes keep their colors:
+
+```scss
+// Before
+$my-palette: palette(
+  $primary: #0099ff,
+  $secondary: #df1b74,
+  $surface: #ffffff
+);
+
+// After
+$my-palette: palette(
+  $primary: #0099ff,
+  $secondary: #df1b74,
+  $surface: #ffffff,
+  $generator: 'legacy'
+);
+```
+
+The migration leaves `@include palette(...)`, the mixin that emits a palette as CSS variables, unchanged. It cannot add the argument to a call that spreads its arguments, such as `palette($args...)`. It reports each of those calls, with its file and line, at the end of the `ng update` output, so add `generator: 'legacy'` to the spread map yourself.
+
+To move a palette to the `fitted` generator, remove the `$generator` argument. To keep the `legacy` generator for every `palette()` call without passing the argument, configure the theming library before anything else loads it:
+
+```scss
+@use "igniteui-theming" with ($shade-generator: 'legacy');
+@use "igniteui-angular/theming" as *;
+```
+
+Component themes now take their background from the `base` surface role, `--ig-surface-base`, instead of `--ig-surface-500`. Every palette emits the surface roles: `base`, `sunken`, `raised`, `overlay`, and `container`. The numbered surface shades are deprecated: palettes still emit them under both generators, and a `fitted` palette points `--ig-surface-500` to `--ig-surface-base`, but they will be removed in a future release. Review the following manually:
+
+- If you override `--ig-surface-500` at runtime, for example to switch a section to a dark surface, override `--ig-surface-base` instead, along with `--ig-surface-raised`, `--ig-surface-overlay`, and `--ig-surface-sunken` where you use them. See [Palettes](../themes/palettes.md#dark-vs-light).
+- If your own styles read `--ig-surface-500` or `color($color: 'surface', $variant: 500)`, they keep working for now. Move them to a surface role, such as `color($color: 'surface')`, which returns `base`, before the numbered shades are removed.
+- If you pass a palette map you wrote by hand, add the surface roles to its `surface` entry. See [Custom Palette Maps](../themes/sass/palettes.md#custom-palette-maps).
 
 ## From 22.0.x to 22.1.x
 
@@ -508,8 +547,8 @@ When selected row is deleted from the grid component, `rowSelectionChanging` eve
 
 - `igxGrid`, `igxHierarchicalGrid`, `igxTreeGrid`
   - Parameters in grid templates now have types for their context. This can also cause issues if the app is in strict template mode and uses the wrong type. References to the template that may require conversion:
-    - `IgxColumnComponent` - [`IgxColumnType`](mcp:get_api_reference?platform=angular&component=ColumnType) (for example the column parameter in `igxFilterCellTemplate`)
-    - `IgxGridCell` - [`IgxCellType`](mcp:get_api_reference?platform=angular&component=CellType) (for example the cell parameter in `igxCell` template)
+    - `IgxColumnComponent` - [`ColumnType`](mcp:get_api_reference?platform=angular&component=ColumnType) (for example the column parameter in `igxFilterCellTemplate`)
+    - `IgxGridCell` - [`CellType`](mcp:get_api_reference?platform=angular&component=CellType) (for example the cell parameter in `igxCell` template)
 - Ignite UI for Angular has a dependency on [igniteui-theming](https://github.com/IgniteUI/igniteui-theming). Add the following preprocessor configuration in your `angular.json` file.
 
 ```json
@@ -1302,7 +1341,7 @@ The [`**IgxTabsComponent**`](mcp:get_api_reference?platform=angular&component=Ig
 ### IgxGridComponent, IgxTreeGridComponent, IgxHierarchicalGridComponent
 
 - _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ are no longer exposed in the public API.
-- Public APIs, which used to return an instance of one of the above, now return objects implementing the public [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType) interface:
+- Public APIs, which used to return an instance of one of the above, now return objects implementing the public [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) interface:
 
 ```ts
 const row = grid.getRowByIndex(0);
@@ -1310,9 +1349,9 @@ const row = grid.getRowByKey(2);
 const row = cell.row;
 ```
 
-While the public API of [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType) is the same as what _IgxRowComponent_ and others used to expose, please note:
+While the public API of [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) is the same as what _IgxRowComponent_ and others used to expose, please note:
 
-- _toggle_ method, exposed by the _IgxHierarchicalRowComponent_ is not available. Use [`IgxRowType.expanded`](mcp:get_api_reference?platform=angular&component=RowType&member=expanded) property for all row types:
+- _toggle_ method, exposed by the _IgxHierarchicalRowComponent_ is not available. Use [`RowType.expanded`](mcp:get_api_reference?platform=angular&component=RowType&member=expanded) property for all row types:
 
 ```ts
 grid.getRowByIndex(0).expanded = false;
@@ -1320,9 +1359,9 @@ grid.getRowByIndex(0).expanded = false;
 
 *row.rowData_ and _row.rowID_ are deprecated and will be entirely removed with version 13. Please use _row.data_ and _row.key_ instead.
 
-- _row_ property in the event arguments emitted by _onRowPinning_, and _dragData_ property in the event arguments emitted by _onRowDragStart_, _onRowDragEnd_ is now implementing [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType)
-- _ng update_ will migrate most of the uses of _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ , like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType).
-- _getRowByIndex_ will now return a [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType) object, if the row at that index is a summary row (previously used to returned _undefined_). _row.isSummaryRow_ and _row.isGroupByRow_ return true if the row at the index is a summary row or a group by row.
+- _row_ property in the event arguments emitted by _onRowPinning_, and _dragData_ property in the event arguments emitted by _onRowDragStart_, _onRowDragEnd_ is now implementing [`RowType`](mcp:get_api_reference?platform=angular&component=RowType)
+- _ng update_ will migrate most of the uses of _IgxGridRowComponent_, _IgxTreeGridRowComponent_, _IgxHierarchicalRowComponent_, _IgxGridGroupByRowComponent_ , like imports, typings and casts. If a place in your code using any of the above is not migrated, just remove the typing/cast, or change it with [`RowType`](mcp:get_api_reference?platform=angular&component=RowType).
+- _getRowByIndex_ will now return a [`RowType`](mcp:get_api_reference?platform=angular&component=RowType) object, if the row at that index is a summary row (previously used to returned _undefined_). _row.isSummaryRow_ and _row.isGroupByRow_ return true if the row at the index is a summary row or a group by row.
 
 ### IgxInputGroupComponent
 
@@ -1520,7 +1559,7 @@ The `ng update` process will update all enumeration names, like `AvatarType`, `T
     ```
 
 - IgxCombo
-  - The way that the [`igx-combo`](/combo) handles selection and data binding is changed.
+  - The way that the [`igx-combo`](/inputs/combo/overview) handles selection and data binding is changed.
 
   - If the combo's [`valueKey`] input is defined, the control will look for that specific property in the passed array of data items when performing selection.
     **All** selection events are handled with the value of the data items' `valueKey` property.
@@ -1559,7 +1598,7 @@ The `ng update` process will update all enumeration names, like `AvatarType`, `T
     }
     ```
 
-    You can read more about setting up the combo in the [readme](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/combo/README.md#value-binding) and in the [official documentation](/combo#selection-api).
+    You can read more about setting up the combo in the [readme](https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/combo/README.md#value-binding) and in the [official documentation](/inputs/combo/overview#value-and-selection).
 
 ## From 8.0.x to 8.1.x
 

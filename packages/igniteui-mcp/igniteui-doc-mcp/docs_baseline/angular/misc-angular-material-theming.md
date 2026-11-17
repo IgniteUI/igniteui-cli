@@ -409,6 +409,7 @@ $igx-light-palette: palette(
     $success: #4eb862,
     $warn: #fbb13c,
     $error: #ff134a,
+    $generator: 'legacy',
 );
 
 $custom-dark-palette: palette(
@@ -419,6 +420,7 @@ $custom-dark-palette: palette(
     $success: #4eb862,
     $warn: #fbb13c,
     $error: #ff134a,
+    $generator: 'legacy',
 );
 
 $light-palette-primary: mat.m2-define-palette(material-like-palette('primary', $saturations, $igx-light-palette));
@@ -546,7 +548,7 @@ igx-expansion-panel-body {
         }
 
         ::ng-deep {
-            @include dark-theme($custom-dark-palette);
+            @include theme($palette: $custom-dark-palette, $schema: $dark-material-schema);
             @include mat.all-component-colors($custom-mat-dark-theme);
 
             .primary {
@@ -679,7 +681,7 @@ Let's see how our demo sample is done. It is a mixture of Ignite UI and Angular 
 
 Clicking on the `More` buttons, you will see the [`igx-dialog`](mcp:get_api_reference?platform=angular&component=IgxDialogComponent):
 
-Next, we have added an [`igx-expansion-panel`](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent) showing information about some credit cards. Inside its content, there are [`mat-sliders`](https://material.angular.io/components/slider/overview), an [`igx-divider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective) and a [`mat-stepper`](https://material.angular.io/components/stepper/overview) with [`mat-form-fields`](https://material.angular.io/components/form-field/overview).
+Next, we have added an [`igx-expansion-panel`](mcp:get_api_reference?platform=angular&component=IgxExpansionPanelComponent) showing information about some credit cards. Inside its content, there are [`mat-sliders`](https://material.angular.io/components/slider/overview), an [`igx-divider`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent) and a [`mat-stepper`](https://material.angular.io/components/stepper/overview) with [`mat-form-fields`](https://material.angular.io/components/form-field/overview).
 
 Finally, we inserted an Ignite UI for Angular [`icon button`](mcp:get_api_reference?platform=angular&component=IgxIconButtonDirective) in the top right corner, that changes the theme of the whole app:
 
@@ -1003,7 +1005,7 @@ Related topics:
 - [Avatar Component](../../layouts/avatar.md)
 - [Button Component](inputs/button)
 - [Dialog Component](../../dialog.md)
-- [Icon Component](../../icon.md)
+- [Icon Component](../../layouts/icon.md)
 - [Expansion Panel Component](../../expansion-panel.md)
 ## Additional Resources
 

@@ -214,7 +214,7 @@ root.render(<App/>);
 
 ### Increment and decrement
 
-The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) exposes [`IgrDatePicker.stepUp`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepUp) and [`IgrDatePicker.stepDown`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepDown) methods. Both of which come from the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) and can be used for incrementing and decrementing a specific [`IgrDatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date.
+The [`IgrDatePicker`](mcp:get_api_reference?platform=react&component=IgrDatePicker) exposes [`IgrDatePicker.stepUp`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepUp) and [`IgrDatePicker.stepDown`](mcp:get_api_reference?platform=react&component=IgrDatePicker&member=stepDown) methods. Both of which come from the [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) and can be used for incrementing and decrementing a specific [`DatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date.
 
 ```tsx
 <IgrDatePicker>

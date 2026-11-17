@@ -260,7 +260,7 @@ We can easily prevent the user from being able to hide columns through the colum
 
 ## Styling
 
-The grid could be further customized by setting some of the available [CSS variables](../grid/theming-grid.md).
+The grid could be further customized by setting some of the available CSS variables. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 In order to achieve that, we will use a class that we will first assign to the grid:
 
 ```tsx

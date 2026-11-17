@@ -107,7 +107,7 @@ igx-virtual-scroll                      — scrollable viewport (role="list")
 
 ## Getting Started
 
-Set up Ignite UI for Angular with the [Getting Started](../general/getting-started.md) topic, then import the `IgxVirtualScroll` and the `IgxVirtualItemDirective`, which marks the item template:
+Set up Ignite UI for Angular with the [Getting Started](../general/getting-started.md) topic, then import the [`IgxVirtualScroll`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent) and the `IgxVirtualItemDirective`, which marks the item template:
 
 ```ts
 import { Component } from '@angular/core';
@@ -147,7 +147,7 @@ The Virtual Scroll host needs a fixed height for vertical scrolling or a fixed w
 
 The Virtual Scroll item template receives the item and its position in the whole collection. Use the index and the total count for position-dependent content, such as alternating styles or `aria-posinset` and `aria-setsize`.
 
-Mark an `ng-template` with `igxVirtualItem`, or pass a template defined elsewhere through `itemTemplate`, which takes precedence. The template context provides `$implicit` (the item), `index`, `count`, `first`, `last`, `even`, and `odd`.
+Mark an `ng-template` with `igxVirtualItem`, or pass a template defined elsewhere through [`itemTemplate`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=itemTemplate), which takes precedence. The template context provides `$implicit` (the item), `index`, `count`, `first`, `last`, `even`, and `odd`.
 
 ```html
 <igx-list>
@@ -165,7 +165,7 @@ Mark an `ng-template` with `igxVirtualItem`, or pass a template defined elsewher
 
 ### Data
 
-The Virtual Scroll `data` collection is compared by reference. Assign a new array to update the list; changing the bound array in place, for example with `push`, does not update it.
+The Virtual Scroll [`data`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=data) collection is compared by reference. Assign a new array to update the list; changing the bound array in place, for example with `push`, does not update it.
 
 ```ts
 this.employees = [...this.employees, newEmployee];
@@ -175,7 +175,7 @@ When `data` changes, the component keeps the measured sizes of the items before 
 
 ### Estimated Item Size
 
-The Virtual Scroll `estimatedItemSize` is the size in pixels an item has until it renders and is measured (`50` by default). Items can have different sizes: each measured size replaces the estimate.
+The Virtual Scroll [`estimatedItemSize`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=estimatedItemSize) is the size in pixels an item has until it renders and is measured (`50` by default). Items can have different sizes: each measured size replaces the estimate.
 
 Set the estimate close to the average item size to keep the scrollbar and `scrollToIndex` accurate before items are measured.
 
@@ -260,7 +260,7 @@ Items are measured by their border box, so margins are not part of an item's siz
 
 ### Orientation
 
-The Virtual Scroll `orientation` sets the scroll axis: `vertical` (default) or `horizontal`. In a horizontal list, give each item a width and the host a height. In a right-to-left context, horizontal scrolling and item positioning are mirrored.
+The Virtual Scroll [`orientation`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=orientation) sets the scroll axis: `vertical` (default) or `horizontal`. In a horizontal list, give each item a width and the host a height. In a right-to-left context, horizontal scrolling and item positioning are mirrored.
 
 ```html
 <igx-virtual-scroll orientation="horizontal" [data]="employees" [estimatedItemSize]="220" style="height: 200px">
@@ -352,7 +352,7 @@ export class VirtualScrollHorizontalComponent {
 
 ### Over-Scan
 
-The Virtual Scroll `overScan` is the number of extra items rendered beyond each edge of the viewport (`2` by default). A larger value reduces blank areas during fast scrolling and renders more elements.
+The Virtual Scroll [`overScan`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=overScan) is the number of extra items rendered beyond each edge of the viewport (`2` by default). A larger value reduces blank areas during fast scrolling and renders more elements.
 
 ```html
 <igx-virtual-scroll [data]="items" [overScan]="6" style="height: 400px">...</igx-virtual-scroll>
@@ -360,7 +360,7 @@ The Virtual Scroll `overScan` is the number of extra items rendered beyond each 
 
 ### Scroll to Index
 
-The Virtual Scroll `scrollToIndex` method scrolls an item into view. Its options are those of the native `scrollIntoView`: `block` (`start`, `center`, `end`, or `nearest`), `inline` for a horizontal list, and `behavior` (`auto` or `smooth`). Items that have not rendered only have an estimated size, so the component measures the items where it lands and corrects the position; the returned promise resolves on the final position.
+The Virtual Scroll [`scrollToIndex`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=scrollToIndex) method scrolls an item into view. Its options are those of the native `scrollIntoView`: `block` (`start`, `center`, `end`, or `nearest`), `inline` for a horizontal list, and `behavior` (`auto` or `smooth`). Items that have not rendered only have an estimated size, so the component measures the items where it lands and corrects the position; the returned promise resolves on the final position.
 
 ```ts
 private readonly virtualScroll = viewChild.required(IgxVirtualScrollComponent);
@@ -534,7 +534,7 @@ With `block: 'nearest'`, the position does not change when the item is already f
 
 ### Infinite Scroll
 
-The Virtual Scroll `dataRequest` output supports append-only loading from remote data. It is emitted when the rendered window nears the end of `data`, and on the first render when the loaded items do not fill the viewport. Append the requested items as a new array:
+The Virtual Scroll [`dataRequest`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=dataRequest) output supports append-only loading from remote data. It is emitted when the rendered window nears the end of `data`, and on the first render when the loaded items do not fill the viewport. Append the requested items as a new array:
 
 ```html
 <igx-virtual-scroll [data]="employees()" [estimatedItemSize]="64" (dataRequest)="loadMore($event)" style="height: 440px">
@@ -659,7 +659,7 @@ Only one data request is pending at a time; the next one follows the next `data`
 
 ### Paged Data
 
-The Angular Virtual Scroll `dataWindow` input binds a page of a larger collection instead of `data`. The list is as long as `totalCount`, so the scrollbar spans the whole collection while only the page is in memory, and indices that the page does not cover render nothing.
+The Angular Virtual Scroll [`dataWindow`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=dataWindow) input binds a page of a larger collection instead of `data`. The list is as long as `totalCount`, so the scrollbar spans the whole collection while only the page is in memory, and indices that the page does not cover render nothing.
 
 ```ts
 interface VirtualDataWindow<T> {
@@ -669,7 +669,7 @@ interface VirtualDataWindow<T> {
 }
 ```
 
-Load the next page from the range that `stateChange` reports. Cancel the previous request, so a slow response cannot replace a newer page:
+Load the next page from the range that [`stateChange`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=stateChange) reports. Cancel the previous request, so a slow response cannot replace a newer page:
 
 ```html
 <igx-virtual-scroll [dataWindow]="page()" [estimatedItemSize]="64" (stateChange)="onStateChange($event)" style="height: 440px">
@@ -830,7 +830,7 @@ Measured sizes are kept per index while `totalCount` stays the same; a page with
 
 ### Layout Complete
 
-The Virtual Scroll `layoutComplete` property is a promise that resolves when the current render, the measurements it triggers, and the renders they schedule are complete. Await it before you read rendered items after a `data` change, a scroll, or a resize.
+The Virtual Scroll [`layoutComplete`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=layoutComplete) property is a promise that resolves when the current render, the measurements it triggers, and the renders they schedule are complete. Await it before you read rendered items after a `data` change, a scroll, or a resize.
 
 ```ts
 this.employees = await firstValueFrom(this.service.fetchAll());
@@ -937,7 +937,7 @@ Use the Virtual Scroll for a long list that is too large to render at once, such
 <figcaption class="vs-guidance__caption">
 <span class="vs-guidance__label">Don't</span>
 
-Render a short list directly with the [List](../list.md) and `@for`. Use the [Angular Data Grid](../grid/grid.md) for tabular data with columns, sorting, or filtering. Show a small set of rich items as [Card](../card.md) elements without virtualization.
+Render a short list directly with the [List](../list.md) and `@for`. Use the [Angular Data Grid](../grid/grid.md) for tabular data with columns, sorting, or filtering. Show a small set of rich items as [Card](./card.md) elements without virtualization.
 
 </figcaption>
 </figure>
@@ -947,26 +947,26 @@ Render a short list directly with the [List](../list.md) and `@for`. Use the [An
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `data` | `T[]` | `[]` | The collection to virtualize. Compared by reference. |
-| `dataWindow` | `VirtualDataWindow<T> \| null` | `null` | A page of a larger collection, used instead of `data` while it is set. |
-| `orientation` | `'vertical' \| 'horizontal'` | `'vertical'` | The scroll axis. |
-| `overScan` | `number` | `2` | Extra items rendered beyond each edge of the viewport. |
-| `estimatedItemSize` | `number` | `50` | The size in pixels of an item until it is measured. A non-positive value uses `50`. |
-| `itemTemplate` | `TemplateRef<IgxVsItemContext<T>> \| null` | `null` | The item template. Takes precedence over a projected `ng-template[igxVirtualItem]`. |
-| `layoutComplete` | `Promise<void>` (read-only) | — | Resolves when rendering and item measurement have settled. |
+| [`data`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=data) | `T[]` | `[]` | The collection to virtualize. Compared by reference. |
+| [`dataWindow`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=dataWindow) | `VirtualDataWindow<T> \| null` | `null` | A page of a larger collection, used instead of `data` while it is set. |
+| [`orientation`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=orientation) | `'vertical' \| 'horizontal'` | `'vertical'` | The scroll axis. |
+| [`overScan`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=overScan) | `number` | `2` | Extra items rendered beyond each edge of the viewport. |
+| [`estimatedItemSize`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=estimatedItemSize) | `number` | `50` | The size in pixels of an item until it is measured. A non-positive value uses `50`. |
+| [`itemTemplate`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=itemTemplate) | `TemplateRef<IgxVsItemContext<T>> \| null` | `null` | The item template. Takes precedence over a projected `ng-template[igxVirtualItem]`. |
+| [`layoutComplete`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=layoutComplete) | `Promise<void>` (read-only) | — | Resolves when rendering and item measurement have settled. |
 
 ## Methods
 
 | Name | Returns | Description |
 | --- | --- | --- |
-| `scrollToIndex(index: number, options?: ScrollIntoViewOptions)` | `Promise<void>` | Scrolls the item at `index` into view and resolves when the corrected position is stable. |
+| [`scrollToIndex(index: number, options?: ScrollIntoViewOptions)`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=scrollToIndex) | `Promise<void>` | Scrolls the item at `index` into view and resolves when the corrected position is stable. |
 
 ## Events
 
 | Name | Payload | Description |
 | --- | --- | --- |
-| `stateChange` | `VirtualScrollState` | Emitted when the rendered window changes: `startIndex`, `endIndex`, `viewportSize`, `totalSize`. |
-| `dataRequest` | `VirtualScrollDataRequest` | Emitted when the rendered window nears the end of `data`: `startIndex`, `count`. Not emitted while `dataWindow` is bound. |
+| [`stateChange`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=stateChange) | `VirtualScrollState` | Emitted when the rendered window changes: `startIndex`, `endIndex`, `viewportSize`, `totalSize`. |
+| [`dataRequest`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent&member=dataRequest) | `VirtualScrollDataRequest` | Emitted when the rendered window nears the end of `data`: `startIndex`, `count`. Not emitted while `dataWindow` is bound. |
 
 ## Styling
 
@@ -1075,7 +1075,7 @@ The grids keep their own row and column virtualization; see [Grid Virtualization
 
 ## API References
 
-- `IgxVirtualScroll`
+- [`IgxVirtualScroll`](mcp:get_api_reference?platform=angular&component=IgxVirtualScrollComponent)
 
 ## Dependencies
 
@@ -1090,7 +1090,7 @@ The Angular Virtual Scroll has no dependencies on other components. Import `IgxV
 
 - [List](../list.md) - Use the List for a short list, or as the container of a virtualized list.
 - [Data Grid](../grid/grid.md) - Use the Data Grid for tabular data with columns, sorting, or filtering.
-- [Card](../card.md) - Use cards for a small set of rich items, or as items of a horizontal Virtual Scroll.
+- [Card](./card.md) - Use cards for a small set of rich items, or as items of a horizontal Virtual Scroll.
 - [Virtual ForOf Directive](../for-of.md) - The directive-based virtualization used by existing lists.
 
 ## FAQ

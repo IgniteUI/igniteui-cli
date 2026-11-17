@@ -208,7 +208,7 @@ If no expression tree is initially set, you start by choosing an entity and whic
 
 In order to add a condition you select a field, an operand based on the field data type and a value if the operand is not unary. The operands `In` and `Not In` will allow you to create an inner query with conditions for a different entity instead of simply providing a value. Once the condition is committed, a chip with the condition information appears. By clicking or hovering the chip, you have the options to modify it or add another condition or group right after it.
 
-Clicking on the ([`IgxFilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) or [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or)) button placed above each group, will open a menu with options to change the group type or ungroup the conditions inside.
+Clicking on the ([`FilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) or [`FilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or)) button placed above each group, will open a menu with options to change the group type or ungroup the conditions inside.
 
 Since every condition is related to a specific field from a particular entity changing the entity will lead to resetting all preset conditions and groups. When selecting a new entity a confirmation dialog will be shown, unless the [`showEntityChangeDialog`](mcp:get_api_reference?platform=angular&component=IgxQueryBuilderComponent&member=showEntityChangeDialog) input property is set to false.
 
@@ -590,7 +590,7 @@ $custom-icon-button: outlined-icon-button-theme(
 );
 ```
 
-In this example we only changed some of the parameters for the listed components, but the `button-theme`, `chip-theme`, `drop-down-theme`, `input-group-theme` themes provide way more parameters to control their respective styling.
+In this example we only changed some of the parameters for the listed components, but the `flat-button-theme`, `chip-theme`, `drop-down-theme`, `input-group-theme` themes provide way more parameters to control their respective styling.
 
 **Note:** 
 Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](./themes/sass/palettes.md) topic for detailed guidance on how to use them.
@@ -739,7 +739,7 @@ The sample will not be affected by the selected global theme from `Change Theme`
 
 ### Styling with Tailwind
 
-You can style the query builder using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
+You can style the query builder using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/tailwind.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

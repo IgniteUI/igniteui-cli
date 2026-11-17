@@ -53,13 +53,15 @@ This sample demonstrates how to create a Dialog component in Blazor.
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-Before using the Blazor [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbDialogModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbDialogModule`](mcp:get_api_reference?platform=blazor&component=IgbDialogModule), the client resource module of the [`IgbDialog`](mcp:get_api_reference?platform=blazor&component=IgbDialog), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbDialogModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 The simplest way to display the dialog component is to use its [`Show`](mcp:get_api_reference?platform=blazor&component=IgbDialog&member=show) method and call it on a button click.
 

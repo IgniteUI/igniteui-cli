@@ -4,15 +4,17 @@ description: Use Infragistics Ignite UI for Angular chart control's value overla
 keywords: Angular charts, data chart, value overlay, Ignite UI for Angular, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "ValueOverlay", "CategoryChart", "FinancialChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Angular DataChart allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the ValueOverlay."
+platformType: xplat
 _tocName: Chart Overlays
 _premium: true
 ---
 # Angular Chart Overlays
 
-The Angular `IgxDataChart` allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the `IgxValueOverlay`. This can help you to visualize data such as the mean or median of a particular series.
+The Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the [`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent). This can help you to visualize data such as the mean or median of a particular series.
 
 ## Angular Value Overlay Example
 
@@ -113,35 +115,35 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Value Overlay Properties
 
-Unlike other series types that use a `ItemsSource` for data binding, the value overlay uses a `ValueMemberPath` property to bind a single numeric value. In addition, the value overlay requires you to define a single `Axis` to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
+Unlike other series types that use a [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=dataSource) for data binding, the value overlay uses a [`value`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=value) property to bind a single numeric value. In addition, the value overlay requires you to define a single [`IgxValueOverlayComponent.axis`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=axis) to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
 
-When using a numeric X or Y axis, the `ValueMemberPath` property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the `ValueMemberPath` should reflect the index of the category at which you want the value overlay to appear.
+When using a numeric X or Y axis, the [`value`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=value) property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the [`value`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=value) should reflect the index of the category at which you want the value overlay to appear.
 
 When using the value overlay with a numeric angle axis, it will appear as a line from the center of the chart and when using a numeric radius axis, it will appear as a circle.
 
-`IgxValueOverlay` appearance properties are inherited from `Series` and so `Brush` and `Thickness` for example are available and work the same way they do with other types of series.
+[`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent) appearance properties are inherited from [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) and so [`IgxValueOverlayComponent.brush`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=brush) and [`IgxValueOverlayComponent.thickness`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=thickness) for example are available and work the same way they do with other types of series.
 
-It is also possible to show an axis annotation on a `IgxValueOverlay` to show the value of the overlay on the owning axis. In order to show this, you can set the `IsAxisAnnotationEnabled` property to true.
+It is also possible to show an axis annotation on a [`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent) to show the value of the overlay on the owning axis. In order to show this, you can set the [`isAxisAnnotationEnabled`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent&member=isAxisAnnotationEnabled) property to true.
 
 ## Angular Value Layer
 
 The Angular charting components also expose the ability to use value lines to call out different focal points of your data, such as minimum, maximum, and average values.
 
-Applying the `IgxValueLayer` in the `IgxCategoryChart` and `IgxFinancialChart` components is done by setting the `ValueLines` property on the chart. This property takes a collection of the `IgxValueLayerValueMode` enumeration. You can mix and match multiple value layers in the same chart by adding multiple `IgxValueLayerValueMode` enumerations to the `ValueLines` collection of the chart.
+Applying the [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) components is done by setting the [`valueLines`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=valueLines) property on the chart. This property takes a collection of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode) enumeration. You can mix and match multiple value layers in the same chart by adding multiple [`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode) enumerations to the [`valueLines`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=valueLines) collection of the chart.
 
-In the `IgxDataChart`, this is done by adding a `IgxValueLayer` to the `Series` collection of the chart and then setting the `ValueMode` property to one of the `IgxValueLayerValueMode` enumerations. Each of these enumerations and what they mean is listed below:
+In the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), this is done by adding a [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) to the [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) collection of the chart and then setting the [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) property to one of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode) enumerations. Each of these enumerations and what they mean is listed below:
 
-- `Auto`: The default value mode of the `IgxValueLayerValueMode` enumeration.
-- `Average`: Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
-- `GlobalAverage`: Applies a single value line to call out the average of all of the series values in the chart.
-- `GlobalMaximum`: Applies a single value line to call out the absolute maximum value of all of the series values in the chart.
-- `GlobalMinimum`: Applies a single value line to call out the absolute minimum value of all of the series values in the chart.
-- `Maximum`: Applies potentially multiple value lines to call out the maximum value of each series plotted in the chart.
-- `Minimum`: Applies potentially multiple value lines to call out the minimum value of each series plotted in the chart.
+- [`Auto`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=Auto): The default value mode of the [`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode) enumeration.
+- [`Average`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=Average): Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
+- [`GlobalAverage`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=GlobalAverage): Applies a single value line to call out the average of all of the series values in the chart.
+- [`GlobalMaximum`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=GlobalMaximum): Applies a single value line to call out the absolute maximum value of all of the series values in the chart.
+- [`GlobalMinimum`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=GlobalMinimum): Applies a single value line to call out the absolute minimum value of all of the series values in the chart.
+- [`Maximum`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=Maximum): Applies potentially multiple value lines to call out the maximum value of each series plotted in the chart.
+- [`Minimum`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=Minimum): Applies potentially multiple value lines to call out the minimum value of each series plotted in the chart.
 
-If you want to prevent any particular series from being taken into account when using the `IgxValueLayer` element, you can set the `TargetSeries` property on the layer. This will force the layer to target the series that you define. You can have as many `IgxValueLayer` elements within a single `IgxDataChart` as you want.
+If you want to prevent any particular series from being taken into account when using the [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) element, you can set the [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent&member=targetSeries) property on the layer. This will force the layer to target the series that you define. You can have as many [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) elements within a single [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) as you want.
 
-The following sample demonstrates usage of the different `ValueLines` in the `IgxCategoryChart`:
+The following sample demonstrates usage of the different [`valueLines`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=valueLines) in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -310,9 +312,9 @@ You can also plot built-in financial overlays and indicators in Angular [Stock C
 
 ## Chart Overlay Text 
 
-The Angular `IgxValueOverlay`, `IgxValueLayer`, and all Data Annotation Layers can render custom overlay text inside plot area of the DataChart component. You can use this overlay text to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis in relationship to the layers.
+The Angular [`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent), [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent), and all Data Annotation Layers can render custom overlay text inside plot area of the DataChart component. You can use this overlay text to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis in relationship to the layers.
 
-For example, you can use `IgxDataAnnotationSliceLayer`, `IgxValueOverlay`, and `IgxValueLayer` to show overlay text.
+For example, you can use [`IgxDataAnnotationSliceLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataAnnotationSliceLayerComponent), [`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent), and [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) to show overlay text.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -504,7 +506,32 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ### Styling Overlay Text
 
 This code example shows how to style and customize Overlay Text on
-the `IgxDataAnnotationSliceLayer`, `IgxValueOverlay`, and `IgxValueLayer`.
+the [`IgxDataAnnotationSliceLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataAnnotationSliceLayerComponent), [`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent), and [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent).
+
+```html
+<igx-data-annotation-slice-layer
+    #annoLayer
+    [dataSource]="annotationSliceMultiOverlayData"
+    [targetAxis]="yAxis"
+    brush="Green"
+    thickness=2
+    annotationTextColor="White"
+    annotationLabelMemberPath="label"
+    annotationValueMemberPath="value"
+    overlayText="OverlayText on DataAnnotationSliceLayer"
+    overlayTextMemberPath="label"
+    overlayTextLocation="OutsideBottomCenter"
+    overlayTextColor="Red"
+    overlayTextBackground="Green"
+    overlayTextBorderColor="Black"
+    overlayTextBorderThickness=1
+    overlayTextBorderRadius=4
+    overlayTextHorizontalMargin=0
+    overlayTextHorizontalPadding=2
+    overlayTextVerticalMargin=20
+    overlayTextVerticalPadding=2>
+</igx-data-annotation-slice-layer>
+```
 
 ## Additional Resources
 
@@ -516,9 +543,9 @@ You can find more information about related chart types in these topics:
 - [Stock Chart](../types/stock-chart.md)
 
 ## API References
-`IgxDataChart`
-`IgxValueOverlay`
-`IgxValueLayer`
-`IgxValueLayerValueMode`
-`IgxCategoryChart`
-`IgxFinancialChart`
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxValueOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxValueOverlayComponent)
+[`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent)
+[`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode)
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)

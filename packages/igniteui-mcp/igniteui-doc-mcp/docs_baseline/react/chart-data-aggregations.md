@@ -4,21 +4,23 @@ description: Infragistics' React Data Aggregations
 keywords: React Charts, Markers, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In the Ignite UI for React CategoryChart control Data Aggregations feature allows you to group data in the chart by unique values on the XAxis and then sort those groups."
+platformType: xplat
 _tocName: Chart Data Aggregations
 _premium: true
 ---
 # React Data Aggregations
 
-In the Ignite UI for React `IgrCategoryChart` control Data Aggregations feature allows you to group data in the chart by unique values on the `XAxis` and then sort those groups. You may then apply summaries which will be reflected by the range of the `YAxis` and will be displayed in the tooltip when hovering the series.
+In the Ignite UI for React `IgrCategoryChart` control Data Aggregations feature allows you to group data in the chart by the unique values of a data member on the X-axis and then sort those groups. You may then apply summaries which will be reflected by the range of the Y-axis and will be displayed in the tooltip when hovering the series.
 
 ## React Data Aggregations Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member of the `XAxis` and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
+The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member on the X-axis and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
 
-Note, the abbreviated functions found within the dropdowns for `InitialSummaries` and `GroupSorts` have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
+Note, the abbreviated functions found within the dropdowns for `initialSummaries` and `groupSorts` have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
 
 ```typescript
 export class SalesDataItem {
@@ -229,11 +231,12 @@ root.render(<Sample/>);
 ```
 
 ```tsx
- <IgrCategoryChart
-    dataSource={this.state.salesData}
-    initialGroups="country"
-    initialSummaries="Sum(sales) as Sales"
-    groupSorts="Sales Desc"/>
+<IgrCategoryChart
+    ref={this.chartRef}
+    dataSource={this.salesData}
+    initialGroups="Country"
+    initialSummaries="Sum(Sales) as Sales"
+    groupSorts="Sales Desc" />
 ```
 
 ## API References

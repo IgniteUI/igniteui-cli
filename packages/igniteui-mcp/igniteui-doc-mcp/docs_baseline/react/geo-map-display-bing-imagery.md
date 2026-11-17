@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "BingMapsMapImagery"]
 llms:
   description: "NOTE: As of June 30, 2025 all Microsoft Bing Maps for Enterprise Basic (Free) accounts will be retired."
+platformType: xplat
 _tocName: Displaying Bing Imagery
 _premium: true
 ---
@@ -24,29 +25,42 @@ The React `IgrBingMapsMapImagery` is geographic imagery mapping service provided
 ## Code Snippet
 The following code snippet shows how to display geographic imagery tiles from Bing Maps in React `IgrGeographicMap` using `IgrBingMapsMapImagery` class.
 
-```ts
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrBingMapsMapImagery } from 'igniteui-react-maps';
-import { BingMapsImageryStyle } from 'igniteui-react-maps';
-// ...
-const tileSource = new IgrBingMapsMapImagery();
-tileSource.apiKey = "YOUR_BING_MAPS_API_KEY";
-tileSource.imageryStyle = BingMapsImageryStyle.AerialWithLabels; // or
-tileSource.imageryStyle = BingMapsImageryStyle.Aerial; // or
-tileSource.imageryStyle = BingMapsImageryStyle.Road;
+```tsx
+<IgrGeographicMap
+    ref={this.roadMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true} />
+```
 
+```tsx
+import { IgrGeographicMap, IgrBingMapsMapImagery, BingMapsImageryStyle } from 'igniteui-react-maps';
+// ...
+private roadMap: IgrGeographicMap
+private roadMapRef(r: IgrGeographicMap) {
+    this.roadMap = r;
+    this.setState({});
+}
+this.roadMapRef = this.roadMapRef.bind(this);
+var roadImagery = new IgrBingMapsMapImagery();
+roadImagery.apiKey = "REPLACE_WITH_BING_KEY";
+roadImagery.imageryStyle = BingMapsImageryStyle.Road;
+this.roadMap.backgroundContent = roadImagery;
+```
+
+Bing serves its tiles over the protocol named in its REST URI, and a page served over the other protocol
+is refused. Resolve it against the hosting page before assigning the imagery:
+
+```ts
 // resolving BingMaps uri based on HTTP protocol of hosting website
-let tileUri = tileSource.actualBingImageryRestUri;
+let tileUri = roadImagery.actualBingImageryRestUri;
 const isHttpSecured = window.location.toString().startsWith("https:");
 if (isHttpSecured) {
     tileUri = tileUri.replace("http:", "https:");
 } else {
     tileUri = tileUri.replace("https:", "http:");
 }
-tileSource.bingImageryRestUri = tileUri;
-
-const geoMap = new IgrGeographicMap({ name: "geoMap" });
-geoMap.backgroundContent = tileSource;
+roadImagery.bingImageryRestUri = tileUri;
 ```
 
 ## Properties
@@ -54,16 +68,16 @@ The following table summarized properties of the `IgrBingMapsMapImagery` class:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|`ApiKey`|string|Represents the property for setting an API key required for the Bing Maps imagery service. You must obtain this key from the <a href="http://www.bingmapsportal.coms" target="_blank">www.bingmapsportal.com</a> website.|
-|`ImageryStyle`|`IgrBingMapsImageryStyle`|Represents the property for setting the Bing Maps imagery tiles map style. This property can be set to the following `IgrBingMapsImageryStyle` enumeration values: <ul><li> Aerial - Specifies the Aerial map style without road or labels overlay</li> <li> AerialWithLabels - Specifies the Aerial map style with road and labels overlay</li><li> Road - Specifies the Roads map style without Aerial overlay</li></ul>|
-|`BingImageryRestUri`|string|Represents the property for setting the Bing Imagery REST URI specifying where the TilePath and SubDomains will come from. This is an optional property, and if not specified it will use the default REST URI.|
-|`CultureName`|string|Represents a property for setting the culture name for the tile source.|
-|`IsDeferredLoad`|boolean|Represents the property that specifies whether or not the Bing Maps service should auto-initialized upon the assignment of valid property values.|
-|`IsInitialized`|boolean|Represents the property that is set to True occurs when geographic imagery tiles from Bing Maps service have been initialized and they are ready for rendering in the map component.|
-|`SubDomains`|`IgrSubDomainsCollection`|Represents an image collection of URI sub domains|
-|`TilePath`|string|Represents a property that sets the map tile image URI, this is the actual location of the Bing Maps|
+|`apiKey`|string|Represents the property for setting an API key required for the Bing Maps imagery service. You must obtain this key from the <a href="http://www.bingmapsportal.coms" target="_blank">www.bingmapsportal.com</a> website.|
+|`imageryStyle`|`BingMapsImageryStyle`|Represents the property for setting the Bing Maps imagery tiles map style. This property can be set to the following `BingMapsImageryStyle` enumeration values: <ul><li> Aerial - Specifies the Aerial map style without road or labels overlay</li> <li> AerialWithLabels - Specifies the Aerial map style with road and labels overlay</li><li> Road - Specifies the Roads map style without Aerial overlay</li></ul>|
+|`bingImageryRestUri`|string|Represents the property for setting the Bing Imagery REST URI specifying where the TilePath and SubDomains will come from. This is an optional property, and if not specified it will use the default REST URI.|
+|`cultureName`|string|Represents a property for setting the culture name for the tile source.|
+|`isDeferredLoad`|boolean|Represents the property that specifies whether or not the Bing Maps service should auto-initialized upon the assignment of valid property values.|
+|`isInitialized`|boolean|Represents the property that is set to True occurs when geographic imagery tiles from Bing Maps service have been initialized and they are ready for rendering in the map component.|
+|`subDomains`|`SubDomainsCollection`|Represents an image collection of URI sub domains|
+|`tilePath`|string|Represents a property that sets the map tile image URI, this is the actual location of the Bing Maps|
 
 ## API References
-`IgrBingMapsImageryStyle`
+`BingMapsImageryStyle`
 `IgrBingMapsMapImagery`
 `IgrGeographicMap`

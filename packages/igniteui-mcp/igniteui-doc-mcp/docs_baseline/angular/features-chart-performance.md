@@ -3,10 +3,11 @@ title: "Angular Chart Performance | Data Visualization | Infragistics"
 description: Infragistics' Angular Chart Performance
 keywords: "Angular Charts, Performance, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType", "FinancialChartYAxisMode", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "Angular charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds."
+platformType: xplat
 _tocName: Chart Performance
 _premium: true
 ---
@@ -20,7 +21,7 @@ The following examples demonstrates two high performance scenarios of Angular ch
 
 ## Angular Chart with High-Frequency
 
-In High-Frequency scenario, the Angular Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the `IgxCategoryChart` in High-Frequency scenario.
+In High-Frequency scenario, the Angular Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) in High-Frequency scenario.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -289,7 +290,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Chart with High-Volume
 
-In High-Volume scenario, the Angular Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the `IgxCategoryChart` in High-Volume scenario.
+In High-Volume scenario, the Angular Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) in High-Volume scenario.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -490,7 +491,7 @@ This section lists guidelines and chart features that add to the overhead and pr
 
 ### Data Size
 
-If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Angular `IgxDataChart` with one of the following type of series which where designed for specially for that purpose.
+If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) with one of the following type of series which where designed for specially for that purpose.
 
 - [Scatter HD Chart](../types/scatter-chart.md#angular-scatter-high-density-chart) instead of [Category Point Chart](../types/point-chart.md) or [Scatter Marker Chart](../types/scatter-chart.md#angular-scatter-marker-chart)
 - [Scatter Polyline Chart](../types/shape-chart.md#angular-scatter-polyline-chart) instead of [Category Line Chart](../types/line-chart.md#angular-line-chart-example) or [Scatter Line Chart](../types/scatter-chart.md#angular-scatter-line-chart)
@@ -498,7 +499,7 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although Angular charts support rendering of multiple data sources by binding array of arrays of data points to `ItemsSource` property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although Angular charts support rendering of multiple data sources by binding array of arrays of data points to [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
 ```ts
 this.CategoryChart.dataSource = FlattenDataSource.create();
@@ -529,18 +530,18 @@ export class MultiDataSources {
 
 ### Data Filtering
 
-Angular `IgxCategoryChart` and the `IgxFinancialChart` controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use `IncludedProperties` and `ExcludedProperties` to filter only those data columns that you actually want to render. For example,
+Angular [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) and the [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`includedProperties`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=includedProperties) and [`excludedProperties`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=excludedProperties) to filter only those data columns that you actually want to render. For example,
 
 ```ts
-this.Chart.includedProperties = [ "Year", "USA", "RUS" ];
-this.Chart.excludedProperties = [ "CHN",  "FRN", "GER" ];
+this.Chart.includedProperties = ["Year", "USA", "RUS"];
+this.Chart.excludedProperties = ["CHN", "FRN", "GER"];
 ```
 
 ## Chart Performance Guidelines
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use `CategoryChart.ChartType` property of Angular `IgxCategoryChart` or the `IgxFinancialChart` control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Angular `IgxDataChart` control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`IgxCategoryChartComponent.chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property of Angular [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) or the [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
@@ -584,27 +585,28 @@ This code snippet shows how to remove markers from the Angular charts.
 
 ```ts
 // on CategoryChart or FinancialChart
-this.Chart.markerTypes.clear();
-this.Chart.markerTypes.add(MarkerType.None);
+this.Chart.markerTypes = [MarkerType.None];
+```
 
+```ts
 // on LineSeries of DataChart
 this.LineSeries.markerType = MarkerType.None;
-
 ```
 
 ### Chart Resolution
 
-Setting the `Resolution` property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the [`IgxDomainChartComponent.resolution`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the Angular charts.
 
 ```ts
-// on CategoryChart or FinancialChart:
-this.Chart.Resolution = 10;
+// on CategoryChart
+this.Chart.resolution = 10;
+```
 
-// on LineSeries of DataChart:
-this.LineSeries.Resolution = 10;
-
+```ts
+// on LineSeries of DataChart
+this.LineSeries.resolution = 10;
 ```
 
 ### Chart Overlays
@@ -620,21 +622,24 @@ Enabling [Chart Trendlines](chart-trendlines.md) will slightly decrease performa
 Usage of x-axis with DateTime support is not recommended if spaces between data points, based on the amount of time span between them, are not important. Instead, ordinal/category axis should be used because it is more efficient in the way it coalesces data. Also, ordinal/category axis doesn’t perform any sorting on the data like the time-based x-axis does.
 
 **Note:** 
-The `IgxCategoryChart` already uses ordinal/category axis so there is no need to change its properties.
+The [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) already uses ordinal/category axis so there is no need to change its properties.
 
-This code snippet shows how to ordinal/category x-axis in the `IgxFinancialChart` and `IgxDataChart` controls.
+This code snippet shows how to ordinal/category x-axis in the [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) controls.
 
 ```html
-<igx-financial-chart xAxisMode="Ordinal"></igx-financial-chart>
-
+<igx-financial-chart
+    xAxisMode="Ordinal">
+</igx-financial-chart>
 <igx-data-chart>
-    <igx-category-x-axis label="Time"></igx-category-x-axis>
+    <igx-category-x-axis
+        label="Time">
+    </igx-category-x-axis>
 </igx-data-chart>
 ```
 
 ### Axis Intervals
 
-By default, Angular charts will automatically calculate `YAxisInterval` based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing `YAxisInterval` property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, Angular charts will automatically calculate [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
 **Note:** 
 We do not recommend setting axis minor interval as it will decrease chart performance.
@@ -642,19 +647,30 @@ We do not recommend setting axis minor interval as it will decrease chart perfor
 This code snippet shows how to set axis major interval in the Angular charts.
 
 ```html
-<igx-category-chart xAxisInterval="5" yAxisInterval="50"></igx-category-chart>
+<igx-category-chart
+    xAxisInterval=5
+    yAxisInterval=50>
+</igx-category-chart>
 
-<igx-financial-chart xAxisInterval="5" yAxisInterval="50"></igx-financial-chart>
+<igx-financial-chart
+    yAxisInterval=50>
+</igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" interval="5"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" interval="50"></igx-numeric-y-axis>
+    <igx-category-x-axis
+        #xAxis
+        interval=5>
+    </igx-category-x-axis>
+    <igx-numeric-y-axis
+        #yAxis
+        interval=50>
+    </igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
 ### Axis Scale
 
-Setting the `YAxisIsLogarithmic` property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the [`yAxisIsLogarithmic`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -663,31 +679,47 @@ In the same way as Markers, axis labels are also expensive because they use temp
 This code snippet shows how to hide axis labels in the Angular charts.
 
 ```html
-<igx-category-chart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed">
+<igx-category-chart
+    xAxisLabelVisibility="Collapsed"
+    yAxisLabelVisibility="Collapsed">
 </igx-category-chart>
 
-<igx-financial-chart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed">
+<igx-financial-chart
+    xAxisLabelVisibility="Collapsed"
+    yAxisLabelVisibility="Collapsed">
 </igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" labelVisibility="Collapsed"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" labelVisibility="Collapsed"></igx-numeric-y-axis>
+    <igx-category-x-axis
+        #xAxis
+        labelVisibility="Collapsed">
+    </igx-category-x-axis>
+    <igx-numeric-y-axis
+        #yAxis
+        labelVisibility="Collapsed">
+    </igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
 ### Axis Labels Abbreviation
 
-Although, the Angular charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when `YAxisAbbreviateLargeNumbers` is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting `YAxisTitle` to a string that represents factor used used to abbreviate your data values.
+Although, the Angular charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`yAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`yAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTitle) to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the Angular charts.
 
 ```html
-<igx-category-chart yAxisTitle="In millions of Dollars"></igx-category-chart>
+<igx-category-chart
+    yAxisTitle="In millions of Dollars">
+</igx-category-chart>
 
-<igx-financial-chart yAxisTitle="In millions of Dollars"></igx-financial-chart>
+<igx-financial-chart
+    yAxisTitle="In millions of Dollars">
+</igx-financial-chart>
 
 <igx-data-chart>
-    <igx-numeric-y-axis title="In millions of Dollars"></igx-numeric-y-axis>
+    <igx-numeric-y-axis
+        title="In millions of Dollars">
+    </igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -698,13 +730,25 @@ At runtime, the Angular charts adjust extent of labels on y-axis based on a labe
 The following code snippet shows how to set a fixed extent for labels on y-axis in the Angular charts.
 
 ```html
-<igx-category-chart xAxisLabelExtent="50" yAxisLabelExtent="50"></igx-category-chart>
+<igx-category-chart
+    xAxisExtent=50
+    yAxisExtent=50>
+</igx-category-chart>
 
-<igx-financial-chart xAxisLabelExtent="50" yAxisLabelExtent="50"></igx-financial-chart>
+<igx-financial-chart
+    xAxisExtent=50
+    yAxisExtent=50>
+</igx-financial-chart>
 
 <igx-data-chart>
-    <igx-category-x-axis name="xAxis" labelExtent="50"></igx-category-x-axis>
-    <igx-numeric-y-axis name="yAxis" labelExtent="50"></igx-numeric-y-axis>
+    <igx-category-x-axis
+        #xAxis
+        labelExtent=50>
+    </igx-category-x-axis>
+    <igx-numeric-y-axis
+        #yAxis
+        labelExtent=50>
+    </igx-numeric-y-axis>
 </igx-data-chart>
 ```
 
@@ -712,77 +756,77 @@ The following code snippet shows how to set a fixed extent for labels on y-axis 
 
 Enabling additional axis visuals (e.g. axis titles) or changing their default values might decrease performance in the Angular charts.
 
-For example, changing these properties on the `IgxCategoryChart` or `IgxFinancialChart` control:
+For example, changing these properties on the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) or [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) control:
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | `XAxisInterval`<br />  `XAxisMinorInterval` | `YAxisInterval`<br />  `YAxisMinorInterval` |
-| Axis Tickmarks       | `XAxisTickStroke` <br />  `XAxisTickStrokeThickness`<br />  `XAxisTickLength`<br />  | `YAxisTickStroke` <br />  `YAxisTickStrokeThickness`<br />  `YAxisTickLength`<br /> |
-| Axis Major Gridlines | `XAxisMajorStroke`<br />  `XAxisMajorStrokeThickness`<br />   | `YAxisMajorStroke`<br />  `YAxisMajorStrokeThickness`<br /> |
-| Axis Minor Gridlines | `XAxisMinorStroke`<br />  `XAxisMinorStrokeThickness`<br />   | `YAxisMinorStroke`<br />  `YAxisMinorStrokeThickness`<br /> |
-| Axis Main Line       | `XAxisStroke`<br />  `XAxisStrokeThickness`<br />   | `YAxisStroke`<br />  `YAxisStrokeThickness`<br /> |
-| Axis Titles          | `XAxisTitle`<br />  `XAxisTitleAngle`<br />    | `YAxisTitle`<br />  `YAxisTitleAngle`<br /> |
-| Axis Strips          | `XAxisStrip`<br />   | `YAxisStrip`<br /> |
+| All Axis Visual      | [`xAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisInterval)<br />  [`xAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisMinorInterval) | [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisInterval)<br />  [`yAxisMinorInterval`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorInterval) |
+| Axis Tickmarks       | [`xAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickStroke) <br />  [`xAxisTickStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickStrokeThickness)<br />  [`xAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTickLength)<br />  | [`yAxisTickStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickStroke) <br />  [`yAxisTickStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickStrokeThickness)<br />  [`yAxisTickLength`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTickLength)<br /> |
+| Axis Major Gridlines | [`xAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStroke)<br />  [`xAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMajorStrokeThickness)<br />   | [`yAxisMajorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStroke)<br />  [`yAxisMajorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMajorStrokeThickness)<br /> |
+| Axis Minor Gridlines | [`xAxisMinorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStroke)<br />  [`xAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMinorStrokeThickness)<br />   | [`yAxisMinorStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorStroke)<br />  [`yAxisMinorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMinorStrokeThickness)<br /> |
+| Axis Main Line       | [`xAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStroke)<br />  [`xAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStrokeThickness)<br />   | [`yAxisStroke`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStroke)<br />  [`yAxisStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStrokeThickness)<br /> |
+| Axis Titles          | [`xAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTitle)<br />  [`xAxisTitleAngle`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisTitleAngle)<br />    | [`yAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTitle)<br />  [`yAxisTitleAngle`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisTitleAngle)<br /> |
+| Axis Strips          | [`xAxisStrip`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisStrip)<br />   | [`yAxisStrip`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisStrip)<br /> |
 
-Or changing properties of an `IgxAxis` in the `IgxDataChart` control:
+Or changing properties of an [`IgxAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
-| All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | `TickStroke` , `TickStrokeThickness`, `TickLength` |
-| Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness` |
-| Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness` |
-| Axis Main Line       | `Stroke`, `StrokeThickness` |
-| Axis Titles          | `Title`, `TitleAngle` |
-| Axis Strips          | `Strip` |
+| All Axis Visuals     | [`interval`](mcp:get_api_reference?platform=angular&component=IgxNumericAxisBaseComponent&member=interval), [`minorInterval`](mcp:get_api_reference?platform=angular&component=IgxNumericAxisBaseComponent&member=minorInterval) |
+| Axis Tickmarks       | [`tickStroke`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=tickStroke), [`tickStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=tickStrokeThickness), [`tickLength`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=tickLength) |
+| Axis Major Gridlines | [`majorStroke`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=majorStroke), [`majorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=majorStrokeThickness) |
+| Axis Minor Gridlines | [`minorStroke`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=minorStroke), [`minorStrokeThickness`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=minorStrokeThickness) |
+| Axis Main Line       | [`IgxAxisComponent.stroke`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=stroke), [`strokeThickness`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=strokeThickness) |
+| Axis Titles          | [`chartTitle`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=chartTitle), [`titleAngle`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=titleAngle) |
+| Axis Strips          | [`IgxAxisComponent.strip`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=strip) |
 
 ## Performance in Financial Chart
 
-In addition to above performance guidelines, the Angular `IgxFinancialChart` control has the following unique features that affect performance.
+In addition to above performance guidelines, the Angular [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) control has the following unique features that affect performance.
 
 ### Y-Axis Mode
 
-Setting the `YAxisMode` option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `PercentChange` mode.
+Setting the [`yAxisMode`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMode) option to [`Numeric`](mcp:get_api_reference?platform=angular&component=FinancialChartYAxisMode&member=Numeric) is recommended for higher performance, as fewer operations are needed than using [`IgxLineSeriesComponent.percentChange`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent&member=percentChange) mode.
 
 ### Chart Panes
 
-Setting a lot of panes using `IndicatorTypes` and `OverlayTypes` options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using [`indicatorTypes`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=indicatorTypes) and [`overlayTypes`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=overlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the `ZoomSliderType` option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the [`zoomSliderType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=zoomSliderType) option to [`None`](mcp:get_api_reference?platform=angular&component=FinancialChartZoomSliderType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the `VolumeType` property can have the following impact on chart performance:
+Setting the [`volumeType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=volumeType) property can have the following impact on chart performance:
 
-- `None` - is the least expensive since it does not display the volume pane.
-- `Line` - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
-- `Area` - is more expensive to render than the `Line` volume type.
-- `Column` - is more expensive to render than the `Area` volume type and it is recommended when rendering volume data of 1-3 stocks.
+- [`None`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=None) - is the least expensive since it does not display the volume pane.
+- [`Line`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=Line) - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
+- [`Area`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=Area) - is more expensive to render than the [`Line`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=Line) volume type.
+- [`Column`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=Column) - is more expensive to render than the [`Area`](mcp:get_api_reference?platform=angular&component=FinancialChartVolumeType&member=Area) volume type and it is recommended when rendering volume data of 1-3 stocks.
 
 ## Performance in Data Chart
 
-In addition to the general performance guidelines, the Angular `IgxDataChart` control has the following unique features that affect performance.
+In addition to the general performance guidelines, the Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control has the following unique features that affect performance.
 
 ### Axes Collection
 
-Adding too many axis to the `Axes` collection of the `IgxDataChart` control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
+Adding too many axis to the [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) collection of the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
 
 ### Series Collection
 
-Also, adding a lot of series to the `Series` collection of the Angular `IgxDataChart` control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
+Also, adding a lot of series to the [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) collection of the Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
 | Slower Performance Scenario | Faster Scenario with Conditional Styling |
 | ----------------------------|---------------------------------------- |
-| 10+ of `IgxLineSeries`         | Single `IgxScatterLineSeries` |
-| 20+ of `IgxLineSeries`         | Single `IgxScatterPolylineSeries` |
-| 10+ of `IgxScatterLineSeries`  | Single `IgxScatterPolylineSeries` |
-| 10+ of `IgxPointSeries`        | Single `IgxScatterSeries` |
-| 20+ of `IgxPointSeries`        | Single `IgxHighDensityScatterSeries` |
-| 20+ of `IgxScatterSeries`      | Single `IgxHighDensityScatterSeries` |
-| 10+ of `IgxAreaSeries`         | Single `IgxScatterPolygonSeries` |
-| 10+ of `IgxColumnSeries`       | Single `IgxScatterPolygonSeries` |
+| 10+ of [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent)         | Single [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent) |
+| 20+ of [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent)         | Single [`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent) |
+| 10+ of [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent)  | Single [`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent) |
+| 10+ of [`IgxPointSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPointSeriesComponent)        | Single [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent) |
+| 20+ of [`IgxPointSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPointSeriesComponent)        | Single [`IgxHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxHighDensityScatterSeriesComponent) |
+| 20+ of [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent)      | Single [`IgxHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxHighDensityScatterSeriesComponent) |
+| 10+ of [`IgxAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxAreaSeriesComponent)         | Single [`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent) |
+| 10+ of [`IgxColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnSeriesComponent)       | Single [`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent) |
 
 ## Additional Resources
 
@@ -811,6 +855,6 @@ You can find more information about related chart types in these topics:
 - [Chart Trendlines](chart-trendlines.md)
 
 ## API References
-`IgxCategoryChart`
-`IgxFinancialChart`
-`IgxDataChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

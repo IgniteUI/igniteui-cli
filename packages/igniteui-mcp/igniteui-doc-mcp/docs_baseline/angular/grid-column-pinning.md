@@ -116,7 +116,7 @@ this.grid.unpinColumn('Name');
 
 Both methods return a boolean value indicating whether their respective operation is successful or not. Usually the reason they fail is that the column is already in the desired state.
 
-A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnPin) event and changing the [`IgxIPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
+A column is pinned to the right of the rightmost pinned column. Changing the order of the pinned columns can be done by subscribing to the [`columnPin`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=columnPin) event and changing the [`IPinColumnEventArgs.insertAtIndex`](mcp:get_api_reference?platform=angular&component=IPinColumnEventArgs&member=insertAtIndex) property of the event arguments to the desired position index.
 
 ```html
 <igx-grid #grid1 [data]="data | async" [autoGenerate]="true" (columnPin)="columnPinning($event)"></igx-grid>

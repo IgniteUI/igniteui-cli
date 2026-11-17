@@ -4,9 +4,11 @@ description: Navigate Infragistics' React charts by panning right and left and z
 keywords: React charts, data chart, navigation, Ignite UI for React, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "CategoryChart", "FinancialChart", "ModifierKeys", "InteractionState", "SeriesViewerScrollbarMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React charts allows for interactive panning and zooming via the mouse, keyboard and touch."
+platformType: xplat
 _tocName: Chart Navigation
 _premium: true
 ---
@@ -298,13 +300,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<DataChartNavigation/>);
 ```
 
-Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for React toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download free trial.</a>
 
 ## Chart Navigation with User Interactions
 
-Whether or not zooming is on by default depends on the chart you are using. If you are using `IgrCategoryChart`, it is on by default, but it is not in the `IgrDataChart`. In order to enable or disable navigation in the UI, you need to set either the `IsHorizontalZoomEnabled` and/or the `IsVerticalZoomEnabled` properties of the chart, depending on the direction that you wish to enable or disable zooming.
+Whether or not zooming is on by default depends on the chart you are using. If you are using `IgrCategoryChart`, it is on by default, but it is not in the `IgrDataChart`. In order to enable or disable navigation in the UI, you need to set either the `isHorizontalZoomEnabled` and/or the `isVerticalZoomEnabled` properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The `DefaultInteraction` property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This `DefaultInteraction` property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The `defaultInteraction` property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This `defaultInteraction` property can also be set to either `DragPan` to allow panning or `InteractionState.None` to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -314,9 +316,9 @@ Navigation in the React data chart can happen with either touch, the mouse or th
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the `DefaultInteraction` property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the `defaultInteraction` property set to its default - `DragZoom`.
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the `DragModifier` and `PanModifier` properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the `dragModifier` and `panModifier` properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
@@ -328,7 +330,7 @@ The zoom and pan operations can also be enabled by using modifier keys by settin
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the `VerticalViewScrollbarMode` and `HorizontalViewScrollbarMode` properties.
+The chart can be scrolled by enabling the `verticalViewScrollbarMode` and `horizontalViewScrollbarMode` properties.
 
 These can be configured to the following options
 
@@ -527,11 +529,11 @@ Code navigation of the chart can only be used for the `IgrDataChart` control.
 
 The React data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- `WindowPositionHorizontal`: A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- `WindowPositionVertical`: A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- `WindowRect`: A `IgrRect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a `WindowRect` of "0, 0, 1, 1" would be the entirety of the data chart.
-- `WindowScaleHorizontal`: A numeric value describing the width portion of the content view rectangle displayed by the data chart.
-- `WindowScaleVertical`: A numeric value describing the height portion of the content view rectangle displayed by the data chart.
+- `windowPositionHorizontal`: A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- `windowPositionVertical`: A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- `windowRect`: A `IgRect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a `windowRect` of "0, 0, 1, 1" would be the entirety of the data chart.
+- `windowScaleHorizontal`: A numeric value describing the width portion of the content view rectangle displayed by the data chart.
+- `windowScaleVertical`: A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
 ## Additional Resources
 

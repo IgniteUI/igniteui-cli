@@ -56,9 +56,9 @@ All available column data types could be found in the official [Column types top
 
 The template editors of `date`, `dateTime` and `time` column data types use a default input format as per the `IgxGrid`'s [`locale`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=locale).
 
-In case the [`IgxColumnType.pipeArgs`](mcp:get_api_reference?platform=angular&component=ColumnType&member=pipeArgs) object `format` property is set on the column, the input format of the editors will be inferred from it. The condition is that it can be parsed as containing numeric date-time parts only.
+In case the [`ColumnType.pipeArgs`](mcp:get_api_reference?platform=angular&component=ColumnType&member=pipeArgs) object `format` property is set on the column, the input format of the editors will be inferred from it. The condition is that it can be parsed as containing numeric date-time parts only.
 
-If the editors input format should be explicitly set, the [`IgxColumnType.editorOptions`](mcp:get_api_reference?platform=angular&component=ColumnType&member=editorOptions) object of type [`IgxIColumnEditorOptions`](mcp:get_api_reference?platform=angular&component=IColumnEditorOptions) can be leveraged. It accepts a `dateTimeFormat` property that is used as input format for the editors of `date`, `dateTime` and `time` column data types.
+If the editors input format should be explicitly set, the [`ColumnType.editorOptions`](mcp:get_api_reference?platform=angular&component=ColumnType&member=editorOptions) object of type [`IColumnEditorOptions`](mcp:get_api_reference?platform=angular&component=IColumnEditorOptions) can be leveraged. It accepts a `dateTimeFormat` property that is used as input format for the editors of `date`, `dateTime` and `time` column data types.
 
 ```typescript
 const editorOptions: IColumnEditorOptions = {
@@ -76,14 +76,14 @@ The grid exposes a wide array of events that provide greater control over the ed
 
  | Event | Description | Arguments | Cancellable |
 |-------|-------------|-----------|-------------|
-| [`rowEditEnter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditEnter) | If `rowEditing` is enabled, fires when a row enters edit mode | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEditEnter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEdit) | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`cellEditDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=celleditdone) | If value is changed, fires **after** a cell has been edited and cell's value is **committed** | [`IgxIGridEditDoneEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditDoneEventArgs) | `false` |
-| [`cellEditExit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEditExit) | Fires when a cell **exits edit mode** | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
-| [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEdit) | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
-| [`rowEditDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditDone) | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**. | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
-| [`rowEditExit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditExit) | If `rowEditing` is enabled, fires when a row **exits edit mode** | [`IgxIGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEditEnter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditEnter) | If `rowEditing` is enabled, fires when a row enters edit mode | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEditEnter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEditEnter) | Fires when a cell **enters edit mode** (after `rowEditEnter`) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEdit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEdit) | If value is changed, fires just **before** a cell's value is **committed** (e.g. by pressing `Enter`) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`cellEditDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=celleditdone) | If value is changed, fires **after** a cell has been edited and cell's value is **committed** | [`IGridEditDoneEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditDoneEventArgs) | `false` |
+| [`cellEditExit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=cellEditExit) | Fires when a cell **exits edit mode** | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEdit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEdit) | If `rowEditing` is enabled, fires just before a row in edit mode's value is **committed** (e.g. by clicking the `Done` button on the Row Editing Overlay) | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `true` |
+| [`rowEditDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditDone) | If `rowEditing` is enabled, fires **after** a row has been edited and new row's value has been **committed**. | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
+| [`rowEditExit`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditExit) | If `rowEditing` is enabled, fires when a row **exits edit mode** | [`IGridEditEventArgs`](mcp:get_api_reference?platform=angular&component=IGridEditEventArgs) | `false` |
 
 ### Event cancellation
 
@@ -310,7 +310,7 @@ _ [`IgxTreeGridRow`](mcp:get_api_reference?platform=angular&component=IgxTreeGri
 - `IgxDatePickerComponent Styles`
 - [`IgxCheckbox`](mcp:get_api_reference?platform=angular&component=IgxCheckboxComponent)
 - `IgxCheckboxComponent Styles`
-- [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
+- [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings)
 - `IgxOverlay Styles`
 ## Additional Resources
 

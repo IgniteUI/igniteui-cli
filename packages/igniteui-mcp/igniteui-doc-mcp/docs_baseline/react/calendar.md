@@ -19,29 +19,21 @@ The Ignite UI for Ignite UI for React Calendar provides an easy and intuitive wa
 The following React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) component example shows a basic calendar with a single day selection mode. See how it works or inspect the code behind.
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarOverview extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar style={{width: '400px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarOverview() {
+    return (
+        <div className="container sample">
+            <IgrCalendar style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarOverview/>);
 ```
 
@@ -60,8 +52,6 @@ import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar), you need to register it as follows:
-
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 The simplest way to start using the Ignite UI for React [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar) is as follows:
@@ -79,29 +69,21 @@ Users can choose from three different selection modes - single selection, multip
 ```
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarMultipleSelection extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);                    
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar selection="multiple" style={{width: '400px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarMultipleSelection() {
+    return (
+        <div className="container sample">
+            <IgrCalendar selection="multiple" style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarMultipleSelection/>);
 ```
 
@@ -114,29 +96,21 @@ Following the same approach, we can switch [`IgrCalendar.selection`](mcp:get_api
 ```
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarRangeSelection extends React.Component<any, any> {    
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar selection='range' style={{width: '400px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarRangeSelection() {
+    return (
+        <div className="container sample">
+            <IgrCalendar selection='range' style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarRangeSelection/>);
 ```
 
@@ -167,33 +141,23 @@ When slotting content into the `title` slot, we recommend using a `<span>` eleme
 The following sample demonstrates the above configuration:
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrCalendar, IgrCalendarModule } from 'igniteui-react';
+import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrCalendarModule.register();
-
-export default class CalendarHeader extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);                     
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar selection="range" headerOrientation="vertical" style={{width: '500px'}}>
-                    <span slot="title">Trip dates</span>
-                </IgrCalendar>
-            </div>
-        );
-    }
+export default function CalendarHeader() {
+    return (
+        <div className="container sample">
+            <IgrCalendar selection="range" headerOrientation="vertical" style={{width: '500px'}}>
+                <span slot="title">Trip dates</span>
+            </IgrCalendar>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarHeader/>);
 ```
 
@@ -249,74 +213,62 @@ public onRadioChange(e: any) {
 If everything went well, we should now have a Calendar with customized display, that also changes the locale representation, based on the user selection. Let's have a look at it:
 
 ```tsx
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrCalendar, IgrCalendarFormatOptions, IgrRadioGroup, IgrRadio, IgrCalendarModule, IgrRadioGroupModule, IgrRadioModule } from 'igniteui-react';
+import { IgrCalendar, IgrCalendarFormatOptions, IgrRadioGroup, IgrRadio, type IgrRadioChangeEventArgs } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrCalendarModule.register();
-IgrRadioGroupModule.register();
-IgrRadioModule.register();
+const formatOptions: IgrCalendarFormatOptions = {
+    month: 'short',
+    weekday: 'short',
+};
 
-export default class CalendarFormatting extends React.Component<any, any> {
+export default function CalendarFormatting() {
+    const [calendarLocale, setCalendarLocale] = useState<string | undefined>("en");
 
-    constructor(props: any) {
-        super(props);
-        this.onRadioChange = this.onRadioChange.bind(this);
-
-        const formatOptions: IgrCalendarFormatOptions = {
-            month: 'short',
-            weekday: 'short',
-        }
-
-        this.state = { calendarLocale: "en", calendarFormat: formatOptions };
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrRadioGroup alignment="horizontal" style={{marginBottom: '10px'}} value={this.state.calendarLocale}>
-                    <IgrRadio name="lang" value="en" checked={true} onChange={this.onRadioChange}>
-                        <span>EN</span>
-                    </IgrRadio>
-                    <IgrRadio name="lang" value="de" onChange={this.onRadioChange}>
-                        <span>DE</span>
-                    </IgrRadio>
-                    <IgrRadio name="lang" value="fr" onChange={this.onRadioChange}>
-                        <span>FR</span>
-                    </IgrRadio>
-                    <IgrRadio name="lang" value="ar" onChange={this.onRadioChange}>
-                        <span>AR</span>
-                    </IgrRadio>
-                    <IgrRadio name="lang" value="ja" onChange={this.onRadioChange}>
-                        <span>JA</span>
-                    </IgrRadio>                    
-                </IgrRadioGroup>
-
-                <IgrCalendar weekStart='monday' formatOptions={this.state.calendarFormat} 
-                             locale={this.state.calendarLocale}
-                             value={new Date()}
-                             style={{width: '400px'}}/>
-            </div>
-        );
-    }
-
-    public onRadioChange(e: any) {
+    function onRadioChange(e: IgrRadioChangeEventArgs) {
         if (e.detail.checked) {
-            this.setState({ calendarLocale: e.detail.value });
+            setCalendarLocale(e.detail.value);
         }
     }
+
+    return (
+        <div className="container sample">
+            <IgrRadioGroup alignment="horizontal" style={{marginBottom: '10px'}} value={calendarLocale}>
+                <IgrRadio name="lang" value="en" checked={true} onChange={onRadioChange}>
+                    <span>EN</span>
+                </IgrRadio>
+                <IgrRadio name="lang" value="de" onChange={onRadioChange}>
+                    <span>DE</span>
+                </IgrRadio>
+                <IgrRadio name="lang" value="fr" onChange={onRadioChange}>
+                    <span>FR</span>
+                </IgrRadio>
+                <IgrRadio name="lang" value="ar" onChange={onRadioChange}>
+                    <span>AR</span>
+                </IgrRadio>
+                <IgrRadio name="lang" value="ja" onChange={onRadioChange}>
+                    <span>JA</span>
+                </IgrRadio>
+            </IgrRadioGroup>
+
+            <IgrCalendar weekStart='monday' formatOptions={formatOptions}
+                         locale={calendarLocale}
+                         value={new Date()}
+                         style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarFormatting/>);
 ```
 
 ### Disabled dates
 
-In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property. The [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property is an array of [`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) objects. Each descriptor has a `IgrType` and optionally a `DateRange` which is an array of `Date` objects.
+In some cases you would want to have disabled dates in the Calendar which can't be selected by the end user. This functionality is achieved by using the [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property. The [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates) property is an array of [`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) objects. Each descriptor has a `IgrType` and optionally a `DateRange` which is an array of `Date` objects.
 
 These are the available options for the `IgrType` property:
 
@@ -360,43 +312,35 @@ this.state = { disabledDates };
 These configurations should have the following result:
 
 ```tsx
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar, DateRangeDescriptor, DateRangeType } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarDisabledDates extends React.Component<any, any> {
+// The 3rd and 8th of the current month
+function createRanges(): DateRangeDescriptor[] {
+    const today = new Date();
+    const range = [
+        new Date(today.getFullYear(), today.getMonth(), 3),
+        new Date(today.getFullYear(), today.getMonth(), 8)
+    ];
 
-    constructor(props: any) {
-        super(props);
-
-        const today = new Date();
-        const range = [
-            new Date(today.getFullYear(), today.getMonth(), 3),
-            new Date(today.getFullYear(), today.getMonth(), 8)
-        ];
-
-        const desc: DateRangeDescriptor = {
-            dateRange: range,
-            type: DateRangeType.Specific,
-        }
-        const disabledDates = [desc];
-
-        this.state = { disabledDates };
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar disabledDates={this.state.disabledDates} style={{width: '400px'}}/>
-            </div>
-        );
-    }
+    return [{ dateRange: range, type: DateRangeType.Specific }];
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+export default function CalendarDisabledDates() {
+    const [disabledDates] = useState(createRanges);
+
+    return (
+        <div className="container sample">
+            <IgrCalendar disabledDates={disabledDates} style={{width: '400px'}}/>
+        </div>
+    );
+}
+
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarDisabledDates/>);
 ```
 
@@ -404,7 +348,7 @@ root.render(<CalendarDisabledDates/>);
 
 The [`IgrCalendar.specialDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=specialDates) property is using almost the same configuration principles as the [`IgrCalendar.disabledDates`](mcp:get_api_reference?platform=react&component=IgrCalendar&member=disabledDates). The special dates have a highlighted look and feel and unlike the disabled ones can be selected.
 
-Let's add some special dates to our Calendar. In order to do this, we will create a [`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) and pass the dates between the 3rd and the 8th of the current month:
+Let's add some special dates to our Calendar. In order to do this, we will create a [`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor) and pass the dates between the 3rd and the 8th of the current month:
 
 ```ts
 const today = new Date();
@@ -437,43 +381,35 @@ this.state = { specialDates };
 The following demo illustrates a Calendar with a vacation request option:
 
 ```tsx
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar, DateRangeDescriptor, DateRangeType } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarSpecialDates extends React.Component<any, any> {
+// Between the 3rd and 8th of the current month
+function createRanges(): DateRangeDescriptor[] {
+    const today = new Date();
+    const range = [
+        new Date(today.getFullYear(), today.getMonth(), 3),
+        new Date(today.getFullYear(), today.getMonth(), 8)
+    ];
 
-    constructor(props: any) {
-        super(props);
-
-        const today = new Date();
-        const range = [
-            new Date(today.getFullYear(), today.getMonth(), 3),
-            new Date(today.getFullYear(), today.getMonth(), 8)
-        ];
-
-        const desc: DateRangeDescriptor = {
-            dateRange: range,
-            type: DateRangeType.Between,
-        }
-        const specialDates = [desc];
-
-        this.state = { specialDates };
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar specialDates={this.state.specialDates} style={{width: '400px'}}/>
-            </div>
-        );
-    }
+    return [{ dateRange: range, type: DateRangeType.Between }];
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+export default function CalendarSpecialDates() {
+    const [specialDates] = useState(createRanges);
+
+    return (
+        <div className="container sample">
+            <IgrCalendar specialDates={specialDates} style={{width: '400px'}}/>
+        </div>
+    );
+}
+
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarSpecialDates/>);
 ```
 
@@ -488,29 +424,21 @@ You can use the [`IgrCalendar.showWeekNumbers`](mcp:get_api_reference?platform=r
 The following demo illustrates a Calendar with enabled week numbers:
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarWeekNumbers extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);                      
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar showWeekNumbers={true} style={{width: '400px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarWeekNumbers() {
+    return (
+        <div className="container sample">
+            <IgrCalendar showWeekNumbers={true} style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarWeekNumbers/>);
 ```
 
@@ -527,29 +455,21 @@ The Calendar displays leading and trailing dates from the previous and the next 
 The following sample demonstrates the multiple months configuration:
 
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarMultipleMonths extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar visibleMonths={2} hideOutsideDays={true} style={{width: '600px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarMultipleMonths() {
+    return (
+        <div className="container sample">
+            <IgrCalendar visibleMonths={2} hideOutsideDays={true} style={{width: '600px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarMultipleMonths/>);
 ```
 
@@ -571,55 +491,48 @@ You could control the size and spacing of the calendar inner elements using the 
 }
 ```
 ```tsx
-import React from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrCalendar, IgrRadioGroup, IgrRadio } from 'igniteui-react';
+import { IgrCalendar, IgrRadioGroup, IgrRadio, type IgrRadioChangeEventArgs } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarSize extends React.Component<any, any> {
+export default function CalendarSize() {
+    const [calendarSize, setCalendarSize] = useState<string | undefined>("large");
 
-    constructor(props: any) {
-        super(props);                
-        this.onRadioChange = this.onRadioChange.bind(this);
-        this.state = { calendarSize: "large"};        
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrRadioGroup alignment="horizontal" style={{ marginBottom: '10px' }}>
-                    <IgrRadio name="size" value="small" 
-                        checked={this.state.calendarSize === "small"} 
-                        onChange={this.onRadioChange}>
-                        <span>Small</span>
-                    </IgrRadio>
-                    <IgrRadio name="size" value="medium" 
-                        checked={this.state.calendarSize === "medium"} 
-                        onChange={this.onRadioChange}>
-                        <span>Medium</span>
-                    </IgrRadio>
-                    <IgrRadio name="size" value="large" 
-                        checked={this.state.calendarSize === "large"} 
-                        onChange={this.onRadioChange}>
-                        <span>Large</span>
-                    </IgrRadio>
-                </IgrRadioGroup>
-                <IgrCalendar className={'size-' + this.state.calendarSize} style={{width: '400px'}}/>                
-            </div>
-        );
-    }
-
-    public onRadioChange(e: any) {
+    function onRadioChange(e: IgrRadioChangeEventArgs) {
         if (e.detail.checked) {
-            this.setState({ calendarSize: e.detail.value });
+            setCalendarSize(e.detail.value);
         }
     }
+
+    return (
+        <div className="container sample">
+            <IgrRadioGroup alignment="horizontal" style={{ marginBottom: '10px' }}>
+                <IgrRadio name="size" value="small"
+                    checked={calendarSize === "small"}
+                    onChange={onRadioChange}>
+                    <span>Small</span>
+                </IgrRadio>
+                <IgrRadio name="size" value="medium"
+                    checked={calendarSize === "medium"}
+                    onChange={onRadioChange}>
+                    <span>Medium</span>
+                </IgrRadio>
+                <IgrRadio name="size" value="large"
+                    checked={calendarSize === "large"}
+                    onChange={onRadioChange}>
+                    <span>Large</span>
+                </IgrRadio>
+            </IgrRadioGroup>
+            <IgrCalendar className={'size-' + calendarSize} style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<CalendarSize />);
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
+root.render(<CalendarSize/>);
 ```
 
 ### Events
@@ -789,30 +702,22 @@ igc-calendar::part(navigation-button):focus {
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './CalendarStyling.css';
 import { IgrCalendar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class CalendarStyling extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);                    
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrCalendar style={{width: '400px'}}/>                
-            </div>
-        );
-    }
+export default function CalendarStyling() {
+    return (
+        <div className="container sample">
+            <IgrCalendar style={{width: '400px'}}/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<CalendarStyling/>);
 ```
 
@@ -821,7 +726,7 @@ root.render(<CalendarStyling/>);
 [`IgrCalendar`](mcp:get_api_reference?platform=react&component=IgrCalendar)<br />
 [`IgrRadio`](mcp:get_api_reference?platform=react&component=IgrRadio)<br />
 [`IgrRadioGroup`](mcp:get_api_reference?platform=react&component=IgrRadioGroup)<br />
-[`IgrDateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor)
+[`DateRangeDescriptor`](mcp:get_api_reference?platform=react&component=DateRangeDescriptor)
 
 ## Additional Resources
 

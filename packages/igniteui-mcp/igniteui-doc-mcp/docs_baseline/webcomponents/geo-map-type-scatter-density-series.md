@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "In Web Components map component, you can use the GeographicHighDensityScatterSeries to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time."
+platformType: xplat
 _tocName: Geographic High Density Map
 _premium: true
 ---
 # Web Components Geographic High Density Map
 
-In Web Components map component, you can use the `IgcGeographicHighDensityScatterSeries` to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
+In Web Components map component, you can use the `IgcGeographicHighDensityScatterSeriesComponent` to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
 
 ## Web Components Geographic High Density Map Example
 
@@ -245,82 +246,80 @@ export class WorldUtils {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The demo above shows the `IgcGeographicHighDensityScatterSeries` series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
+The demo above shows the `IgcGeographicHighDensityScatterSeriesComponent` series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
 
 Because there are so many data points, the series displays the scatter data as tiny dots as opposed to full size markers, and displays areas with the most data using a higher color density representing a cluster of data points.
 
 ## Data Requirements
-Similar to other types of scatter series in the map control, the `IgcGeographicHighDensityScatterSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns.
+Similar to other types of scatter series in the map control, the `IgcGeographicHighDensityScatterSeriesComponent` series has the `dataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `longitudeMemberPath` and `latitudeMemberPath` properties to map these data columns.
 
 ### Data Binding
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `DataSource`|any|Gets or sets the items source |
-| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
-| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `dataSource`|any|Gets or sets the items source |
+| `longitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `latitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
 
 ## Heat Color Scale
 The Heat Color Scale, an optional feature, determines the color pattern within the series. The following table summarizes the properties used for determining the color scale.
 
 | Property |Type|Description |
 | ---|---|--- |
-| `HeatMinimum`|Double|Defines the double value representing the minimum end of the color scale |
-| `HeatMaximum`|Double|Defines the double value representing the maximum end of the color scale |
-| `HeatMinimumColor`|Color|Defines the point density color used at the bottom end of the color scale |
-| `HeatMaximumColor`|Color|Defines the point density color used at the top end of the color scale |
+| `heatMinimum`|Double|Defines the double value representing the minimum end of the color scale |
+| `heatMaximum`|Double|Defines the double value representing the maximum end of the color scale |
+| `heatMinimumColor`|Color|Defines the point density color used at the bottom end of the color scale |
+| `heatMaximumColor`|Color|Defines the point density color used at the top end of the color scale |
 
 ## Code Example
 
-The following code demonstrates how set the `HeatMinimumColor` and `HeatMaximumColor` properties of the `IgcGeographicHighDensityScatterSeries`
+The following code demonstrates how set the `heatMinimumColor` and `heatMaximumColor` properties of the `IgcGeographicHighDensityScatterSeriesComponent`
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igc-geographic-map>
 ```
 
 ```ts
-import { IgcGeographicHighDensityScatterSeriesComponent } from 'igniteui-webcomponents-maps';
-//...
-connectedCallback() {
-    this.geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent;
-    const url = "../data/Places.csv";
+var map = this.geoMap;
+var url = "https://static.infragistics.com/xplatform/data/AusPlaces.csv";
+fetch(url)
+    .then((response) => response.text())
+    .then((csvData: string) => {
+        var csvLines = csvData.split("\n");
+        var geoLocations: any[] = [];
+        // parsing CSV data and creating geographic locations
+        for (var i = 1; i < csvLines.length; i++) {
+            var columns = csvLines[i].split(",");
+            if (columns.length < 3) continue;
+            geoLocations.push({
+                name: columns[0],
+                longitude: Number(columns[1]),
+                latitude: Number(columns[2])
+            });
+        }
+        // creating the high density series with the loaded data
+        var series = new IgcGeographicHighDensityScatterSeriesComponent();
+        series.dataSource = geoLocations;
+        series.longitudeMemberPath = "longitude";
+        series.latitudeMemberPath = "latitude";
+        series.heatMaximumColor = "Red";
+        series.heatMinimumColor = "Black";
+        series.heatMinimum = 0;
+        series.heatMaximum = 5;
+        series.pointExtent = 1;
+        series.mouseOverEnabled = true;
+        // adding the series to the geographic map
+        map.series.add(series);
 
-    fetch(url)
-        .then((response) => response.text())
-        .then(data => this.onDataLoaded(data));
-}
-
-onDataLoaded(csvData: string) {
-    const csvLines = csvData.split("\n");
-    const geoLocations: any[] = [];
-
-    for (let i = 1; i < csvLines.length; i++) {
-        const columns = csvLines[i].split(",");
-        const location = {
-            latitude:  Number(columns[2]),
-            longitude: Number(columns[1]),
-            name:  columns[0]
-        };
-        geoLocations.push(location);
-    }
-
-    // creating HD series with loaded data
-    const geoSeries = new IgcGeographicHighDensityScatterSeriesComponent();
-    geoSeries.dataSource = geoLocations;
-    geoSeries.longitudeMemberPath = "longitude";
-    geoSeries.latitudeMemberPath = "latitude";
-    geoSeries.heatMaximumColor = "Red";
-    geoSeries.heatMinimumColor = "Black";
-    geoSeries.heatMinimum = 0;
-    geoSeries.heatMaximum = 5;
-    geoSeries.pointExtent = 1;
-    // adding HD series to the geographic amp
-    this.geoMap.series.add(geoSeries);
-}
+        map.zoomToGeographic({ left: 110, top: -10, width: 45, height: -35 });
+    });
 ```
 
 ## API References
-`IgcGeographicHighDensityScatterSeries`
+`IgcGeographicHighDensityScatterSeriesComponent`

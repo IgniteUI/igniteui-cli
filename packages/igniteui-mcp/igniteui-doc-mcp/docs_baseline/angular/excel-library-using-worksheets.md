@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "DisplayOptions", "WorksheetFilterSettings", "IWorksheetCellFormat"]
 llms:
   description: "The Infragistics Angular Excel Engine's Worksheet is where your data is kept."
+platformType: xplat-unmapped
 _tocName: Using Worksheets
 _premium: true
 ---
 # Angular Using Worksheets
 
-The Infragistics Angular Excel Engine's `IgxWorksheet` is where your data is kept. You can input data by working with the Worksheet's rows and cells and setting their corresponding values. The `IgxWorksheet` allows you to filter, sort, and customize the formats of the cells, as shown below.
+The Infragistics Angular Excel Engine's [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) is where your data is kept. You can input data by working with the Worksheet's rows and cells and setting their corresponding values. The [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) allows you to filter, sort, and customize the formats of the cells, as shown below.
 
 ## Angular Using Worksheets Example
 
@@ -266,7 +267,7 @@ import { WorkbookColorInfo } from "igniteui-angular-excel";
 ## Configuring the Gridlines
 The gridlines are used to visually separate the cells in the worksheet. You may show or hide the gridlines and also change their color.
 
-You can show or hide the gridlines using the `ShowGridlines` property of the `IgxDisplayOptions` of the worksheet. The following code demonstrates how you can hide the gridlines in your worksheet:
+You can show or hide the gridlines using the [`ShowGridlines`](mcp:get_api_reference?platform=angular&component=DisplayOptions&member=showGridlines) property of the [`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions) of the worksheet. The following code demonstrates how you can hide the gridlines in your worksheet:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -275,7 +276,7 @@ var worksheet = workbook.worksheets().add("Sheet1");
 worksheet.displayOptions.showGridlines = false;
 ```
 
-You can configure the gridlines' color using the `GridlineColor` property of the `IgxDisplayOptions` of the worksheet. The following code demonstrates how you can change the gridlines in your worksheet to be red:
+You can configure the gridlines' color using the [`GridlineColor`](mcp:get_api_reference?platform=angular&component=DisplayOptions&member=gridlineColor) property of the [`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions) of the worksheet. The following code demonstrates how you can change the gridlines in your worksheet to be red:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -287,7 +288,7 @@ worksheet.displayOptions.gridlineColor = "Red";
 ## Configuring the Headers
 The column and row headers are used to visually identify columns and rows. They are also used to visually highlight the currently selected cell or cell region.
 
-You can show or hide the column and row headers using the `ShowRowAndColumnHeaders` property of the `IgxDisplayOptions` of the worksheet. The following code demonstrates how you can hide the row and column headers:
+You can show or hide the column and row headers using the [`ShowRowAndColumnHeaders`](mcp:get_api_reference?platform=angular&component=DisplayOptions&member=showRowAndColumnHeaders) property of the [`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions) of the worksheet. The following code demonstrates how you can hide the row and column headers:
 
 ```ts
 var workbook = new Workbook(WorkbookFormat.Excel2007);
@@ -297,7 +298,7 @@ worksheet.displayOptions.showRowAndColumnHeaders = false;
 ```
 
 ## Configuring Editing of the Worksheet
-By default, the `IgxWorksheet` objects that you save will be editable. You can disable editing of a worksheet by protecting it using the `IgxWorksheet` object's `Protect` method. This method has a lot of nullable `bool` arguments that determine which pieces are protected, and one of these options is to allow editing of objects, which if set to **false** will prevent editing of the worksheet.
+By default, the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) objects that you save will be editable. You can disable editing of a worksheet by protecting it using the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`Protect`](mcp:get_api_reference?platform=angular&component=Workbook&member=protect) method. This method has a lot of nullable `bool` arguments that determine which pieces are protected, and one of these options is to allow editing of objects, which if set to **false** will prevent editing of the worksheet.
 
 The following code demonstrates how to disable editing in your worksheet:
 
@@ -308,9 +309,9 @@ var worksheet = workbook.worksheets().add("Sheet1");
 worksheet.protect();
 ```
 
-You can also use the `IgxWorksheet` object's `Protect` method to protect a worksheet against structural changes.
+You can also use the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`Protect`](mcp:get_api_reference?platform=angular&component=Workbook&member=protect) method to protect a worksheet against structural changes.
 
-When protection is set, you can set the `IgxIWorksheetCellFormat` object's `Locked` property on individual cells, rows, merged cell regions, or columns to override the worksheet object's protection on those objects. For example, if you need all cells of a worksheet to be read-only except for the cells of one column, you can protect the worksheet and then set the `IgxIWorksheetCellFormat` object's `Locked` property to **false** on a specific `IgxWorksheetColumn` object. This will allow your users to edit cells within the column while disabling editing of the other cells in the worksheet.
+When protection is set, you can set the [`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat) object's [`Locked`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat&member=locked) property on individual cells, rows, merged cell regions, or columns to override the worksheet object's protection on those objects. For example, if you need all cells of a worksheet to be read-only except for the cells of one column, you can protect the worksheet and then set the [`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat) object's [`Locked`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat&member=locked) property to **false** on a specific [`WorksheetColumn`](mcp:get_api_reference?platform=angular&component=WorksheetColumn) object. This will allow your users to edit cells within the column while disabling editing of the other cells in the worksheet.
 
 The following code demonstrates how you can do this:
 
@@ -323,24 +324,24 @@ worksheet.columns(0).cellFormat.locked = false;
 ```
 
 ## Filtering Worksheet Regions
-Filtering is done by setting a filter condition on a worksheet's `IgxWorksheetFilterSettings` which can be retrieved from the `IgxWorksheet` object's `FilterSettings` property. Filter conditions are only reapplied when they're added, removed, modified, or when the `ReapplyFilters` method is called on the worksheet. They are not constantly evaluated as data within the region changes.
+Filtering is done by setting a filter condition on a worksheet's [`WorksheetFilterSettings`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings) which can be retrieved from the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`FilterSettings`](mcp:get_api_reference?platform=angular&component=Worksheet&member=filterSettings) property. Filter conditions are only reapplied when they're added, removed, modified, or when the [`ReapplyFilters`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=reapplyFilters) method is called on the worksheet. They are not constantly evaluated as data within the region changes.
 
-You can specify the region to apply the filter by using the `SetRegion` method on the `IgxWorksheetFilterSettings` object.
+You can specify the region to apply the filter by using the [`SetRegion`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=setRegion) method on the [`WorksheetFilterSettings`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings) object.
 
 Below is a list of methods and their descriptions that you can use to add a filter to a worksheet:
 
 | Method        | Description |
 | --------------|-------------|
-|`ApplyAverageFilter`|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
-|`ApplyDatePeriodFilter`|Represents a filter which can filter dates in a Month, or quarter of any year.|
-|`ApplyFillFilter`|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
-|`ApplyFixedValuesFilter`|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
-|`ApplyFontColorFilter`|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
-|`ApplyIconFilter`|Represents a filter which can filter cells based on their conditional formatting icon.|
-|`ApplyRelativeDateRangeFilter`|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
-|`ApplyTopOrBottomFilter`|Represents a filter which can filter in cells in the upper or lower portion of the sorted values.|
-|`ApplyYearToDateFilter`|Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.|
-|`ApplyCustomFilter`|Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.|
+|[`ApplyAverageFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyAverageFilter)|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
+|[`ApplyDatePeriodFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyDatePeriodFilter)|Represents a filter which can filter dates in a Month, or quarter of any year.|
+|[`ApplyFillFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyFillFilter)|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
+|[`Workbook.applyFixedValuesFilter`](mcp:get_api_reference?platform=angular&component=Workbook&member=applyFixedValuesFilter)|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
+|[`ApplyFontColorFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyFontColorFilter)|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
+|[`ApplyIconFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyIconFilter)|Represents a filter which can filter cells based on their conditional formatting icon.|
+|[`ApplyRelativeDateRangeFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyRelativeDateRangeFilter)|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
+|[`ApplyTopOrBottomFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyTopOrBottomFilter)|Represents a filter which can filter in cells in the upper or lower portion of the sorted values.|
+|[`ApplyYearToDateFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyYearToDateFilter)|Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.|
+|[`ApplyCustomFilter`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=applyCustomFilter)|Represents a filter which can filter data based on one or two custom conditions. These two filter conditions can be combined with a logical "and" or a logical "or" operation.|
 
 You can use the following code snippet as an example to add a filter to a worksheet region:
 
@@ -355,9 +356,9 @@ worksheet.filterSettings.applyAverageFilter(0, AverageFilterType.AboveAverage);
 ## Freezing and Splitting Panes
 You can freeze rows at the top of your worksheet or columns at the left using the freezing panes features. Frozen rows and columns remain visible at all times while the user is scrolling. The frozen rows and columns are separated from the rest of the worksheet by a single, solid line, which cannot be removed.
 
-In order to enable pane freezing, you need to set the `PanesAreFrozen` property of the `IgxWorksheet` object's `IgxDisplayOptions` to **true**. You can then specify the rows or columns to freeze by using the `FrozenRows` and `FrozenColumns` properties of the display options `FrozenPaneSettings`, respectively.
+In order to enable pane freezing, you need to set the [`PanesAreFrozen`](mcp:get_api_reference?platform=angular&component=DisplayOptions&member=panesAreFrozen) property of the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions) to **true**. You can then specify the rows or columns to freeze by using the [`Workbook.frozenRows`](mcp:get_api_reference?platform=angular&component=Workbook&member=frozenRows) and [`Workbook.frozenColumns`](mcp:get_api_reference?platform=angular&component=Workbook&member=frozenColumns) properties of the display options [`FrozenPaneSettings`](mcp:get_api_reference?platform=angular&component=DisplayOptions&member=frozenPaneSettings), respectively.
 
-You can also specify the first row in the bottom pane or first column in the right pane using the `FirstRowInBottomPane` and `FirstColumnInRightPane` properties, respectively.
+You can also specify the first row in the bottom pane or first column in the right pane using the [`Workbook.firstRowInBottomPane`](mcp:get_api_reference?platform=angular&component=Workbook&member=firstRowInBottomPane) and [`Workbook.firstColumnInRightPane`](mcp:get_api_reference?platform=angular&component=Workbook&member=firstColumnInRightPane) properties, respectively.
 
 The following code snippet demonstrates how to use the freezing panes features in a worksheet:
 
@@ -375,7 +376,7 @@ worksheet.displayOptions.frozenPaneSettings.firstRowInBottomPane = 6;
 ```
 
 ## Setting the Worksheet Zoom Level
-You can change the zoom level for each worksheet independently using the `MagnificationInNormalView` property on the `IgxWorksheet` object's `IgxDisplayOptions`. This property takes a value between 10 and 400 and represents the percentage of zoom that you wish to apply.
+You can change the zoom level for each worksheet independently using the [`MagnificationInNormalView`](mcp:get_api_reference?platform=angular&component=WorksheetDisplayOptions&member=magnificationInNormalView) property on the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions). This property takes a value between 10 and 400 and represents the percentage of zoom that you wish to apply.
 
 The following code demonstrates how you can do this:
 
@@ -390,9 +391,9 @@ worksheet.displayOptions.magnificationInNormalView = 300;
 
 Sorting is done by setting a sorting condition on a worksheet level object on either columns or rows. You can sort columns or rows in ascending or descending order.
 
-This is done by specifying a region and sort type to the `IgxWorksheet` object's `IgxWorksheetSortSettings` that can be retrieved using the `SortSettings` property of the sheet.
+This is done by specifying a region and sort type to the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object's [`WorksheetSortSettings`](mcp:get_api_reference?platform=angular&component=WorksheetSortSettings) that can be retrieved using the [`SortSettings`](mcp:get_api_reference?platform=angular&component=Worksheet&member=sortSettings) property of the sheet.
 
-The sort conditions in a sheet are only reapplied when sort conditions are added, removed, modified, or when the `ReapplySortConditions` method is called on the worksheet. Columns or rows will be sorted within the region. "Rows" is the default sort type.
+The sort conditions in a sheet are only reapplied when sort conditions are added, removed, modified, or when the [`ReapplySortConditions`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings&member=reapplySortConditions) method is called on the worksheet. Columns or rows will be sorted within the region. "Rows" is the default sort type.
 
 The following code snippet demonstrates how to apply a sort to a region of cells in a worksheet:
 
@@ -404,7 +405,7 @@ worksheet.sortSettings.sortConditions().addItem(new RelativeIndex(0), new Ordere
 ```
 
 ## Worksheet Protection
-You can protect a worksheet by calling the `Protect` method on the `IgxWorksheet` object. This method exposes many nullable `bool` parameters that allow you to restrict or allow the following user operations:
+You can protect a worksheet by calling the [`Protect`](mcp:get_api_reference?platform=angular&component=Workbook&member=protect) method on the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object. This method exposes many nullable `bool` parameters that allow you to restrict or allow the following user operations:
 
 - Editing of cells.
 - Editing of objects such as shapes, comments, charts, or other controls.
@@ -417,7 +418,7 @@ You can protect a worksheet by calling the `Protect` method on the `IgxWorksheet
 - Sorting of data.
 - Usage of pivot tables.
 
-You can remove worksheet protection by calling the `Unprotect` method on the `IgxWorksheet` object.
+You can remove worksheet protection by calling the [`Unprotect`](mcp:get_api_reference?platform=angular&component=Workbook&member=unprotect) method on the [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object.
 
 The following code snippet shows how to enable protection of all of the above-listed user operations:
 
@@ -430,13 +431,13 @@ worksheet.protect();
 
 ## Worksheet Conditional Formatting
 
-You can configure the conditional formatting of a `IgxWorksheet` object by using the many "Add" methods exposed on the `ConditionalFormats` collection of that worksheet. The first parameter of these "Add" methods is the `string` region of the worksheet that you would like to apply the conditional format to.
+You can configure the conditional formatting of a [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet) object by using the many "Add" methods exposed on the [`ConditionalFormats`](mcp:get_api_reference?platform=angular&component=Worksheet&member=conditionalFormats) collection of that worksheet. The first parameter of these "Add" methods is the `string` region of the worksheet that you would like to apply the conditional format to.
 
-Many of the conditional formats that you can add to your worksheet have a `IgxIWorksheetCellFormat` property that determines the way that the `IgxWorksheetCell` elements should look when the condition in that conditional format holds true. For example, you can use the properties attached to this `IgxIWorksheetCellFormat` property such as `Fill` and `Font` to determine the background and font settings of your cells under a particular conditional format, respectively.
+Many of the conditional formats that you can add to your worksheet have a [`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat) property that determines the way that the [`WorksheetCell`](mcp:get_api_reference?platform=angular&component=WorksheetCell) elements should look when the condition in that conditional format holds true. For example, you can use the properties attached to this [`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat) property such as [`Fill`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat&member=fill) and [`Font`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat&member=font) to determine the background and font settings of your cells under a particular conditional format, respectively.
 
-There are a few conditional formats that do not have a `IgxIWorksheetCellFormat` property, as their visualization on the worksheet cell behaves differently. These conditional formats are the `IgxDataBarConditionalFormat`, `IgxColorScaleConditionalFormat`, and `IgxIconSetConditionalFormat`.
+There are a few conditional formats that do not have a [`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat) property, as their visualization on the worksheet cell behaves differently. These conditional formats are the [`DataBarConditionalFormat`](mcp:get_api_reference?platform=angular&component=DataBarConditionalFormat), [`ColorScaleConditionalFormat`](mcp:get_api_reference?platform=angular&component=ColorScaleConditionalFormat), and [`IconSetConditionalFormat`](mcp:get_api_reference?platform=angular&component=IconSetConditionalFormat).
 
-When loading a pre-existing `IgxWorkbook` from Excel, the formats will be preserved when that `IgxWorkbook` is loaded. The same is true for when you save the `IgxWorkbook` out to an Excel file.
+When loading a pre-existing [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) from Excel, the formats will be preserved when that [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) is loaded. The same is true for when you save the [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) out to an Excel file.
 
 The following code example demonstrates usage of conditional formats on a worksheet:
 
@@ -452,13 +453,13 @@ format.cellFormat.font.colorInfo = new WorkbookColorInfo(color);
 ```
 
 ## API References
-`IgxIWorksheetCellFormat`
-`IgxColorScaleConditionalFormat`
-`IgxDataBarConditionalFormat`
-`IgxDisplayOptions`
-`IgxWorkbook`
-`IgxWorksheetCell`
-`IgxWorksheetColumn`
-`IgxWorksheetFilterSettings`
-`IgxWorksheetSortSettings`
-`IgxWorksheet`
+[`IWorksheetCellFormat`](mcp:get_api_reference?platform=angular&component=IWorksheetCellFormat)
+[`ColorScaleConditionalFormat`](mcp:get_api_reference?platform=angular&component=ColorScaleConditionalFormat)
+[`DataBarConditionalFormat`](mcp:get_api_reference?platform=angular&component=DataBarConditionalFormat)
+[`DisplayOptions`](mcp:get_api_reference?platform=angular&component=DisplayOptions)
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)
+[`WorksheetCell`](mcp:get_api_reference?platform=angular&component=WorksheetCell)
+[`WorksheetColumn`](mcp:get_api_reference?platform=angular&component=WorksheetColumn)
+[`WorksheetFilterSettings`](mcp:get_api_reference?platform=angular&component=WorksheetFilterSettings)
+[`WorksheetSortSettings`](mcp:get_api_reference?platform=angular&component=WorksheetSortSettings)
+[`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet)

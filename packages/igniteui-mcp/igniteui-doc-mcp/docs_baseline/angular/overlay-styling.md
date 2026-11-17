@@ -11,7 +11,7 @@ _tocName: Styling
 
 <div class="highlight">
 
-[`IgxOverlayService`](/overlay) is used to display content above the page content. A lot of Ignite UI for Angular components use the overlay - [Drop Down](/drop-down), [Combo](/combo), [Date Picker](/date-picker) and more - so it is important to understand how the overlay displays content.
+[`IgxOverlayService`](/overlay) is used to display content above the page content. A lot of Ignite UI for Angular components use the overlay - [Drop Down](/drop-down), [Combo](/inputs/combo/overview), [Date Picker](/date-picker) and more - so it is important to understand how the overlay displays content.
 To display the content above other elements, the service moves it into a special outlet container (attached at the end of the document's body, by default). This behavior can affect styles [scoped to specific container](#scoped-overlay-styles).
 </div>
 <hr/>
@@ -46,7 +46,7 @@ Because these universal overrides are global, the drop-down content can consume 
 
 A local theme can only affect overlay content that inherits from its container or matches its generated selectors. Content attached to the default outlet at the end of `body` is not a descendant of the component that opened it.
 
-For example, the `igx-combo` item [styles](/combo#styling) use the drop-down theme. This component-local theme takes effect after the combo outlet is moved beneath the host:
+For example, the `igx-combo` item [styles](/inputs/combo/overview#styling) use the drop-down theme. This component-local theme takes effect after the combo outlet is moved beneath the host:
 
 ```scss
 // overlay-styling.component.scss
@@ -59,7 +59,7 @@ For example, the `igx-combo` item [styles](/combo#styling) use the drop-down the
 **Warning:** 
 `::ng-deep` does not make tokens inherit into a detached outlet. Either emit the overlay theme globally or move the outlet beneath the themed container. If a special customization uses scoped mode and its generated selectors still cannot match the nested overlay content, `::ng-deep` may also be required after moving the outlet.
 
-Use the [`IgxOverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property to control where the overlay container is rendered.
+Use the [`OverlaySettings.outlet`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=outlet) property to control where the overlay container is rendered.
 
 Here, we can pass a reference to the element where we'd like our container to be:
 

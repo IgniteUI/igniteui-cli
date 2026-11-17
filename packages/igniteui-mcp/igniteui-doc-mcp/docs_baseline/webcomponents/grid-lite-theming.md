@@ -218,8 +218,6 @@ $themes: (
 
 Aside from the default themes shipped with the Grid Lite package, you can further customize the look and feel of your data grid by using an alternate set of CSS custom properties.
 
-Refer to the [theming topic](../grids/grid/theming-grid.md) for more details.
-
 ```css
 .grid-sample {
   --header-background: #494949;
@@ -376,6 +374,7 @@ $custom-palette: palette(
     $secondary: #d5896f,
     $surface: #031d44,
     $gray: #04395e,
+    $generator: 'legacy',
 );
 
 .grid-lite-wrapper {

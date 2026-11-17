@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction"]
 llms:
   description: "The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet."
+platformType: xplat-unmapped
 _tocName: Commands
 _premium: true
 ---
 # Angular Working with Commands
 
-The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the `IgxSpreadsheetAction` enum for a full list.
+The Angular Spreadsheet component allows you to perform commands for activating different features of the spreadsheet. This topic explains how to perform different operations with the control using commands. Many of the commands will perform their action based on the active cells, rows, or worksheets. For example two such commands are ZoomIn and ZoomOut. See the [`SpreadsheetAction`](mcp:get_api_reference?platform=angular&component=SpreadsheetAction) enum for a full list.
 
 ## Angular Working with Commands Example
 
@@ -99,7 +100,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Dependencies
 
-Before making use of the commands you will want to import the `IgxSpreadsheetAction`
+Before making use of the commands you will want to import the [`SpreadsheetAction`](mcp:get_api_reference?platform=angular&component=SpreadsheetAction)
 
 ```ts
 import { IgxSpreadsheetComponent } from 'igniteui-angular-spreadsheet';
@@ -127,4 +128,4 @@ public zoomOut(): void {
 
 ## API References
 
-`IgxSpreadsheetAction`<br />
+[`SpreadsheetAction`](mcp:get_api_reference?platform=angular&component=SpreadsheetAction)<br />

@@ -1,5 +1,5 @@
 ---
-title: "Button Component"
+title: "Button"
 description: Get started with the Angular Button Component. Select button variants, configure sizes, define styling, and gain flexibility through the Angular Button OnClick event.
 keywords: "Angular, UI controls, web widgets, UI widgets, Angular Button Components, Infragistics"
 mentionedTypes: ["Button", "ButtonBase"]
@@ -48,11 +48,13 @@ export class ButtonOverviewComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .form {
     display: flex;
     justify-content: center;
-    gap: 1.25rem;
-    padding: 2.5rem;
+    gap: rem(20px);
+    padding: rem(40px);
 }
 
 .form igx-avatar {
@@ -62,9 +64,9 @@ export class ButtonOverviewComponent { }
 .fields {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 260px;
-    width: 100%;
+    gap: rem(16px);
+    max-inline-size: rem(260px);
+    inline-size: 100%;
 }
 
 :host ::ng-deep .fields .igx-input-group__bundle {
@@ -79,11 +81,12 @@ export class ButtonOverviewComponent { }
 :host ::ng-deep .fields .igx-input-group__input {
     margin: 0;
 }
+
 .actions {
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    gap: rem(16px);
+    margin-block-start: rem(8px);
 }
 ```
 
@@ -265,13 +268,15 @@ export class ButtonContainedComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-sample {
     display: flex;
-    padding: 2.5rem;
+    padding: rem(40px);
 }
 
 .button-sample button {
-    width: 46%;
+    inline-size: 46%;
     margin: auto;
 }
 ```
@@ -303,13 +308,15 @@ export class ButtonOutlinedComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-sample {
     display: flex;
-    padding: 2.5rem;
+    padding: rem(40px);
 }
 
 .button-sample button {
-    width: 46%;
+    inline-size: 46%;
     margin: auto;
 }
 ```
@@ -341,13 +348,15 @@ export class ButtonFlatComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-sample {
     display: flex;
-    padding: 2.5rem;
+    padding: rem(40px);
 }
 
 .button-sample button {
-    width: 46%;
+    inline-size: 46%;
     margin: auto;
 }
 ```
@@ -379,13 +388,15 @@ export class ButtonFabComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-sample {
     display: flex;
-    padding: 2rem;
+    padding: rem(32px);
 }
 
 .button-sample button {
-    width: 45%;
+    inline-size: 45%;
     margin: auto;
 }
 ```
@@ -444,19 +455,21 @@ export class ButtonStatesComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
+    gap: rem(32px);
+    padding: rem(32px);
 }
 
 .button-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: rem(24px);
 }
 ```
 
@@ -505,37 +518,42 @@ export class ButtonInteractionStatesComponent {
 </div>
 ```
 ```scss
-@use "igniteui-angular/theming" as *;
+@use "igniteui-theming/sass/typography" as *;
 
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: 1rem;
+    gap: rem(32px);
+    padding: rem(16px);
 }
 
 .button-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
     --hover-background: var(--ig-contained-button-hover-background);
     --hover-foreground: var(--ig-contained-button-hover-foreground);
     --focus-background: var(--ig-contained-button-focus-background);
     --focus-foreground: var(--ig-contained-button-focus-foreground);
     --focus-hover-background: var(--ig-contained-button-focus-hover-background);
     --focus-hover-foreground: var(--ig-contained-button-focus-hover-foreground);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(12px);
 }
 
 .button-label {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     color: var(--ig-gray-600);
     font-family: "Aktiv Grotesk", sans-serif;
-    font-size: 13px;
+    font-size: rem(13px);
     font-weight: 400;
     font-style: normal;
-    line-height: 20px;
-    letter-spacing: 0.3px;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
 }
 
 .button-item button.state-hover {
@@ -589,29 +607,31 @@ export class ButtonLayoutComponent {
     </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    width: 100%;
+    gap: rem(16px);
+    inline-size: 100%;
     box-sizing: border-box;
-    padding: 2.5rem;
+    padding: rem(40px);
 }
 
 .button-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: rem(12px);
 }
 
 .button-container button {
-    --ig-font-family: 'Titillium Web', sans-serif;
+    --ig-font-family: "Titillium Web", sans-serif;
     --ig-button-text-transform: uppercase;
 
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    font-size: rem(13.6px);
+    letter-spacing: rem(1px);
 }
 ```
 
@@ -667,6 +687,8 @@ export class ButtonSizeComponent {
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     justify-content: center;
@@ -676,45 +698,58 @@ export class ButtonSizeComponent {
 .size-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding: 1rem;
-    width: 100%;
+    gap: rem(20px);
+    padding: rem(16px);
+    inline-size: 100%;
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .size-row {
     display: grid;
-    grid-template-columns: 70px repeat(4, minmax(0, 1fr));
+    grid-template-columns: rem(70px) repeat(4, minmax(0, 1fr));
     align-items: center;
     justify-items: center;
-    column-gap: 1rem;
-    row-gap: 0.5rem;
-    width: 100%;
+    column-gap: rem(16px);
+    row-gap: rem(8px);
+    inline-size: 100%;
 }
 
 .size-header {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     display: grid;
-    grid-template-columns: 70px repeat(4, minmax(0, 1fr));
+    grid-template-columns: rem(70px) repeat(4, minmax(0, 1fr));
     align-items: center;
     justify-items: center;
-    column-gap: 1rem;
-    width: 100%;
+    column-gap: rem(16px);
+    inline-size: 100%;
     color: var(--ig-gray-600);
-    font: 13px/20px "Aktiv Grotesk", sans-serif;
-    letter-spacing: .3px;
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
 }
 
 .size-label {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     justify-self: start;
     color: var(--ig-gray-600);
-    font: 400 13px/20px "Aktiv Grotesk", sans-serif;
-    letter-spacing: .3px;
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(13px);
+    font-weight: 400;
+    line-height: rem(20px);
+    letter-spacing: rem(0.3px);
 }
 
 .size-row button {
-    width: auto;
-    transform: scale(.9);
+    inline-size: auto;
+    transform: scale(0.9);
 }
 
 .size-small {
@@ -762,13 +797,15 @@ export class ButtonDownloadComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 .button-sample {
     display: flex;
-    padding: 2.5rem;
+    padding: rem(40px);
 }
 
 .button-sample a {
-    width: 46%;
+    inline-size: 46%;
     margin: auto;
 }
 ```
@@ -886,16 +923,44 @@ export class ButtonStylingComponent { }
 </div>
 ```
 ```scss
-@use "layout.scss";
+@use "igniteui-angular/theming" as *;
+@use "igniteui-angular/lib/core/styles/themes/presets/igniteui-bootstrap-light";
 
-// CSS variables approach
+.button-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    block-size: 100%;
+    gap: rem(24px);
+    padding: rem(16px);
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    justify-items: center;
+    gap: rem(48px);
+}
+
+.button-row button.confirm-button,
+.button-row button.send-button,
+.button-row button.cancel-button {
+    block-size: rem(40px);
+    min-block-size: rem(40px);
+    inline-size: 90%;
+}
 
 .confirm-button {
     --background: #1275c4;
     --foreground: #fff;
     --hover-background: #1275c4;
     --hover-foreground: #fff;
-    &:hover { --hover-background: #0b4f8a; }
+
+    &:hover {
+        --hover-background: #0b4f8a;
+    }
 }
 
 .send-button {
@@ -906,13 +971,23 @@ export class ButtonStylingComponent { }
     --hover-foreground: #8a2be2;
     --icon-color: #8a2be2;
     --icon-color-hover: #8a2be2;
-    &:hover { --hover-background: #8a2be2; --hover-border-color: #6a1bb1; --hover-foreground: #fff; --icon-color-hover: #fff; }
+
+    &:hover {
+        --hover-background: #8a2be2;
+        --hover-border-color: #6a1bb1;
+        --hover-foreground: #fff;
+        --icon-color-hover: #fff;
+    }
 }
 
 .cancel-button {
     --foreground: #1275c4;
     --hover-foreground: #1275c4;
-    &:hover { --hover-background: #dbeeff; --hover-foreground: #063b68; }
+
+    &:hover {
+        --hover-background: #dbeeff;
+        --hover-foreground: #063b68;
+    }
 }
 
 .add-button {
@@ -923,7 +998,12 @@ export class ButtonStylingComponent { }
     --icon-color: #000;
     --icon-color-hover: #000;
     --border-radius: 999px;
-    &:hover { --hover-background: #257a2b; --hover-foreground: #fff; --icon-color-hover: #fff; }
+
+    &:hover {
+        --hover-background: #257a2b;
+        --hover-foreground: #fff;
+        --icon-color-hover: #fff;
+    }
 }
 ```
 
@@ -963,15 +1043,23 @@ import { IgxIconComponent } from 'igniteui-angular/icon';
 export class ButtonTailwindStylingComponent { }
 ```
 ```html
-<div class="button-grid flex flex-col items-center justify-center h-full gap-6 p-4">
-  <div class="button-row grid grid-cols-4 items-center justify-items-center gap-12">
-    <button igxButton="contained" class="confirm-button">Confirm</button>
-    <button igxButton="outlined" class="send-button">
+<div class="flex flex-col items-center justify-center h-full gap-6 p-4">
+  <div class="grid grid-cols-4 items-center justify-items-center gap-12">
+    <button igxButton="contained"
+      class="!h-10 !min-h-10 !w-[90%] ![--background:var(--color-indigo-700)] ![--foreground:var(--color-white)] ![--hover-background:var(--color-indigo-800)] ![--hover-foreground:var(--color-white)]">
+      Confirm
+    </button>
+    <button igxButton="outlined"
+      class="!h-10 !min-h-10 !w-[90%] ![--background:transparent] ![--border-color:var(--color-pink-600)] ![--foreground:var(--color-pink-600)] ![--icon-color:var(--color-pink-600)] ![--hover-background:var(--color-pink-600)] ![--hover-border-color:var(--color-pink-700)] ![--hover-foreground:var(--color-white)] ![--icon-color-hover:var(--color-white)]">
       <igx-icon family="material">send</igx-icon>
       Send
     </button>
-    <button igxButton="flat" class="cancel-button">Cancel</button>
-    <button igxButton="fab" class="add-button">
+    <button igxButton="flat"
+      class="!h-10 !min-h-10 !w-[90%] ![--foreground:var(--color-amber-700)] ![--hover-background:var(--color-amber-100)] ![--hover-foreground:var(--color-amber-900)]">
+      Cancel
+    </button>
+    <button igxButton="fab"
+      class="![--border-radius:9999px] ![--background:var(--color-teal-500)] ![--foreground:var(--color-black)] ![--icon-color:var(--color-white)] ![--hover-background:var(--color-teal-700)] ![--hover-foreground:var(--color-white)] ![--icon-color-hover:var(--color-white)]">
       Add
       <igx-icon family="material">add</igx-icon>
     </button>
@@ -979,12 +1067,7 @@ export class ButtonTailwindStylingComponent { }
 </div>
 ```
 ```scss
-@use "layout.scss";
-
-.confirm-button { --hover-background: #3730a3; --hover-foreground: #fff; }
-.send-button { --hover-background: #db2777; --hover-border-color: #be185d; --hover-foreground: #fff; --icon-color-hover: #fff; }
-.cancel-button { --hover-background: #fef3c7; --hover-foreground: #78350f; }
-.add-button { --hover-background: #0f766e; --hover-foreground: #fff; --icon-color-hover: #fff; }
+@use "igniteui-angular/lib/core/styles/themes/presets/igniteui-bootstrap-light";
 ```
 
 ## Accessibility

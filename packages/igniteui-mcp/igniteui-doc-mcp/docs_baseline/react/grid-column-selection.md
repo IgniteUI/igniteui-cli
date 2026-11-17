@@ -189,7 +189,7 @@ root.render(<Sample/>);
 
 ## Basic Usage
 
-The column selection feature can be enabled through the [`IgrGrid.columnSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=columnSelection) input, which takes [`IgrGridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) values.
+The column selection feature can be enabled through the [`IgrGrid.columnSelection`](mcp:get_api_reference?platform=react&component=IgrGrid&member=columnSelection) input, which takes [`GridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) values.
 
 ## Interactions
 
@@ -371,7 +371,7 @@ More information regarding the API manipulations could be found in the [API Refe
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 In case you would like to change some of the colors, you need to set a `class` for the grid first:
 
 ```tsx

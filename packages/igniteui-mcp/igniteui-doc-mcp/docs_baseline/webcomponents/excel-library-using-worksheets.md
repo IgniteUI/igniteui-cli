@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "DisplayOptions", "WorksheetFilterSettings", "IWorksheetCellFormat"]
 llms:
   description: "The Infragistics Web Components Excel Engine's Worksheet is where your data is kept."
+platformType: xplat-unmapped
 _tocName: Using Worksheets
 _premium: true
 ---
@@ -217,7 +218,7 @@ Below is a list of methods and their descriptions that you can use to add a filt
 |`ApplyAverageFilter`|Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.|
 |`ApplyDatePeriodFilter`|Represents a filter which can filter dates in a Month, or quarter of any year.|
 |`ApplyFillFilter`|Represents a filter which will filter cells based on their background fills. This filter specifies a single CellFill. Cells of with this fill will be visible in the data range. All other cells will be hidden.|
-|`ApplyFixedValuesFilter`|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
+|`IgcWorkbook.applyFixedValuesFilter`|Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.|
 |`ApplyFontColorFilter`|Represents a filter which will filter cells based on their font colors. This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells will be hidden.|
 |`ApplyIconFilter`|Represents a filter which can filter cells based on their conditional formatting icon.|
 |`ApplyRelativeDateRangeFilter`|Represents a filter which can filter date cells based on dates relative to the when the filter was applied.|
@@ -238,9 +239,9 @@ worksheet.filterSettings.applyAverageFilter(0, AverageFilterType.AboveAverage);
 ## Freezing and Splitting Panes
 You can freeze rows at the top of your worksheet or columns at the left using the freezing panes features. Frozen rows and columns remain visible at all times while the user is scrolling. The frozen rows and columns are separated from the rest of the worksheet by a single, solid line, which cannot be removed.
 
-In order to enable pane freezing, you need to set the `PanesAreFrozen` property of the `IgcWorksheet` object's `IgcDisplayOptions` to **true**. You can then specify the rows or columns to freeze by using the `FrozenRows` and `FrozenColumns` properties of the display options `FrozenPaneSettings`, respectively.
+In order to enable pane freezing, you need to set the `PanesAreFrozen` property of the `IgcWorksheet` object's `IgcDisplayOptions` to **true**. You can then specify the rows or columns to freeze by using the `IgcWorkbook.frozenRows` and `IgcWorkbook.frozenColumns` properties of the display options `FrozenPaneSettings`, respectively.
 
-You can also specify the first row in the bottom pane or first column in the right pane using the `FirstRowInBottomPane` and `FirstColumnInRightPane` properties, respectively.
+You can also specify the first row in the bottom pane or first column in the right pane using the `IgcWorkbook.firstRowInBottomPane` and `IgcWorkbook.firstColumnInRightPane` properties, respectively.
 
 The following code snippet demonstrates how to use the freezing panes features in a worksheet:
 

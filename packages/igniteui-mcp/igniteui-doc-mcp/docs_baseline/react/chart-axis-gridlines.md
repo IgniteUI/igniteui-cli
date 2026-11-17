@@ -3,10 +3,11 @@ title: "React Axis Gridlines | Data Visualization | Infragistics"
 description: Infragistics' React Axis Gridlines
 keywords: "React Axis, Gridlines, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase" ]
+mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DataChart", "NumericXAxis", "NumericYAxis", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All Ignite UI for React charts include built-in capability to modify appearance of axis lines as well as frequency of major/minor gridlines and tickmarks that are rendered on the X-Axis and Y-Axis."
+platformType: xplat
 _tocName: Axis Gridlines
 _premium: true
 ---
@@ -245,20 +246,20 @@ root.render(<Sample/>);
 
 Setting the axis interval property specifies how often major gridlines and axis labels are rendered on an axis. Similarly, the axis minor interval property specifies how frequent minor gridlines are rendered on an axis.
 
-In order to display minor gridlines that correspond to minor interval, you need to set `XAxisMinorStroke` and `XAxisMinorStrokeThickness` properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
+In order to display minor gridlines that correspond to minor interval, you need to set `xAxisMinorStroke` and `xAxisMinorStrokeThickness` properties on the axis. This is because minor gridlines do not have a default color or thickness and they will not be displayed without first assigning them.
 
 You can customize how the gridlines are displayed in your React chart by setting the following properties:
 
 | Axis Visuals           | Type    | Property Names                                               | Description |
 | -----------------------|---------|--------------------------------------------------------------|---------------- |
-| Major Stroke Color     | string  | `XAxisMajorStroke` <br /> `YAxisMajorStroke`                   | These properties set the color of axis major gridlines. |
-| Minor Stroke Color     | string  | `XAxisMinorStroke` <br /> `YAxisMinorStroke`                   | These properties set the color of axis minor gridlines. |
-| Major Stroke Thickness | number  | `XAxisMajorStrokeThickness` <br /> `YAxisMajorStrokeThickness` | These properties set the thickness in pixels of the axis major gridlines. |
-| Minor Stroke Thickness | number  | `XAxisMinorStrokeThickness` <br /> `YAxisMinorStrokeThickness` | These properties set the thickness in pixels of the axis minor gridlines. |
-| Major Interval         | number  | `XAxisInterval` <br /> `YAxisInterval`                         | These properties set interval between axis major gridlines and labels. |
-| Minor Interval         | number  | `XAxisMinorInterval` <br /> `YAxisMinorInterval`               | These properties set interval between axis minor gridlines, if used. |
-| Axis Line Stroke Color | string  | `XAxisStroke` <br /> `YAxisStroke`                   | These properties set the color of an axis line. |
-| Axis Stroke Thickness  | number  | `XAxisStrokeThickness` <br /> `YAxisStrokeThickness` | These properties set the thickness in pixels of an axis line. |
+| Major Stroke Color     | string  | `xAxisMajorStroke` <br /> `yAxisMajorStroke`                   | These properties set the color of axis major gridlines. |
+| Minor Stroke Color     | string  | `xAxisMinorStroke` <br /> `yAxisMinorStroke`                   | These properties set the color of axis minor gridlines. |
+| Major Stroke Thickness | number  | `xAxisMajorStrokeThickness` <br /> `yAxisMajorStrokeThickness` | These properties set the thickness in pixels of the axis major gridlines. |
+| Minor Stroke Thickness | number  | `xAxisMinorStrokeThickness` <br /> `yAxisMinorStrokeThickness` | These properties set the thickness in pixels of the axis minor gridlines. |
+| Major Interval         | number  | `xAxisInterval` <br /> `yAxisInterval`                         | These properties set interval between axis major gridlines and labels. |
+| Minor Interval         | number  | `xAxisMinorInterval` <br /> `yAxisMinorInterval`               | These properties set interval between axis minor gridlines, if used. |
+| Axis Line Stroke Color | string  | `xAxisStroke` <br /> `yAxisStroke`                   | These properties set the color of an axis line. |
+| Axis Stroke Thickness  | number  | `xAxisStrokeThickness` <br /> `yAxisStrokeThickness` | These properties set the thickness in pixels of an axis line. |
 
 Regarding the Major and Minor Interval in the table above, it is important to note that the major interval for axis labels will also be set by this value, displaying one label at the point on the axis associated with the interval. The minor interval gridlines are always rendered between the major gridlines, and as such, the minor interval properties should always be set to something much smaller (usually 2-5 times smaller) than the value of the major Interval properties.
 
@@ -486,7 +487,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The axes of the `IgrDataChart` also have the ability to place a dash array on the major and minor gridlines by utilizing the `MajorStrokeDashArray` and `MinorStrokeDashArray` properties, respectively. The actual axis line can be dashed as well by setting the `StrokeDashArray` property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
+The axes of the `IgrDataChart` also have the ability to place a dash array on the major and minor gridlines by utilizing the `majorStrokeDashArray` and `minorStrokeDashArray` properties, respectively. The actual axis line can be dashed as well by setting the `strokeDashArray` property of the corresponding axis. These properties take an array of numbers that will describe the length of the dashes for the corresponding grid lines.
 
 The following example demonstrates a `IgrDataChart` with the above dash array properties set:
 
@@ -682,9 +683,9 @@ root.render(<Sample/>);
 
 ## React Axis Tickmarks Example
 
-Axis tick marks are enabled by setting the `XAxisTickLength` and `YAxisTickLength` properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
+Axis tick marks are enabled by setting the `xAxisTickLength` and `yAxisTickLength` properties to a value greater than 0. These properties specifies the length of the line segments forming the tick marks.
 
-Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the `YAxisTickLength` property is set to 5, axis labels will be shifted left by that amount.
+Tick marks are always extend from the axis line and point to the direction of the labels. Labels are offset by the value of the length of tickmarks to avoid overlapping. For example, with the `yAxisTickLength` property is set to 5, axis labels will be shifted left by that amount.
 
 The following example demonstrates how to customize the tickmarks by setting the properties above:
 
@@ -858,9 +859,9 @@ You can customize how the axis tickmarks are displayed in our React chats by set
 
 | Axis Visuals           | Type    | Property Names                                             | Description |
 | -----------------------|---------|------------------------------------------------------------|------------------------- |
-| Tick Stroke Color      | string  | `XAxisTickStroke` <br /> `YAxisTickStroke`                   | These properties set the color of the tickmarks. |
-| Tick Stroke Thickness  | number  | `XAxisTickStrokeThickness` <br /> `YAxisTickStrokeThickness` | These properties set the thickness of the axis tick marks. |
-| Tick Stroke Length     | number  | `XAxisTickLength` <br /> `YAxisTickLength`                   | These properties set the length of the axis tick marks. |
+| Tick Stroke Color      | string  | `xAxisTickStroke` <br /> `yAxisTickStroke`                   | These properties set the color of the tickmarks. |
+| Tick Stroke Thickness  | number  | `xAxisTickStrokeThickness` <br /> `yAxisTickStrokeThickness` | These properties set the thickness of the axis tick marks. |
+| Tick Stroke Length     | number  | `xAxisTickLength` <br /> `yAxisTickLength`                   | These properties set the length of the axis tick marks. |
 
 ## Additional Resources
 
@@ -875,23 +876,23 @@ The following is a list of API members mentioned in the above sections:
 
 | `IgrDataChart`                                     | `IgrCategoryChart` or `IgrFinancialChart` |
 | -------------------------------------------------- | ----------------------------------- |
-| `Axes` -> `IgrNumericXAxis` -> `Interval`             | `XAxisInterval` (Major Interval) |
-| `Axes` -> `IgrNumericYAxis` -> `Interval`             | `YAxisInterval` (Major Interval) |
-| `Axes` -> `IgrNumericXAxis` -> `MinorInterval`        | `XAxisMinorInterval`    |
-| `Axes` -> `IgrNumericYAxis` -> `MinorInterval`        | `YAxisMinorInterval`    |
-| `Axes` -> `IgrNumericXAxis` -> `MajorStroke`          | `XAxisMajorStroke`    |
-| `Axes` -> `IgrNumericYAxis` -> `MajorStroke`          | `YAxisMajorStroke`    |
-| `Axes` -> `IgrNumericXAxis` -> `MajorStrokeThickness` | `XAxisMajorStrokeThickness` |
-| `Axes` -> `IgrNumericYAxis` -> `MajorStrokeThickness` | `YAxisMajorStrokeThickness` |
-| `Axes` -> `IgrNumericXAxis` -> `MinorStrokeThickness` | `XAxisMinorStrokeThickness` |
-| `Axes` -> `IgrNumericYAxis` -> `MinorStrokeThickness` | `YAxisMinorStrokeThickness` |
-| `Axes` -> `IgrNumericXAxis` -> `StrokeThickness`      | `XAxisStrokeThickness`   |
-| `Axes` -> `IgrNumericYAxis` -> `StrokeThickness`      | `YAxisStrokeThickness`   |
-| `Axes` -> `IgrNumericXAxis` -> `Stroke`               | `XAxisStroke` (Axis Line Color) |
-| `Axes` -> `IgrNumericYAxis` -> `Stroke`               | `YAxisStroke` (Axis Line Color) |
-| `Axes` -> `IgrNumericXAxis` -> `TickLength`           | `XAxisTickLength`    |
-| `Axes` -> `IgrNumericYAxis` -> `TickLength`           | `YAxisTickLength`    |
-| `Axes` -> `IgrNumericXAxis` -> `TickStroke`           | `XAxisTickStroke`    |
-| `Axes` -> `IgrNumericYAxis` -> `TickStroke`           | `YAxisTickStroke`    |
-| `Axes` -> `IgrNumericXAxis` -> `Strip`                | `XAxisStrip` (Space between Major Gridlines) |
-| `Axes` -> `IgrNumericYAxis` -> `Strip`                | `YAxisStrip` (Space between Major Gridlines) |
+| `axes` -> `IgrNumericXAxis` -> `IgrNumericXAxis.interval`             | `xAxisInterval` (Major Interval) |
+| `axes` -> `IgrNumericYAxis` -> `IgrNumericXAxis.interval`             | `yAxisInterval` (Major Interval) |
+| `axes` -> `IgrNumericXAxis` -> `minorInterval`        | `xAxisMinorInterval`    |
+| `axes` -> `IgrNumericYAxis` -> `minorInterval`        | `yAxisMinorInterval`    |
+| `axes` -> `IgrNumericXAxis` -> `majorStroke`          | `xAxisMajorStroke`    |
+| `axes` -> `IgrNumericYAxis` -> `majorStroke`          | `yAxisMajorStroke`    |
+| `axes` -> `IgrNumericXAxis` -> `majorStrokeThickness` | `xAxisMajorStrokeThickness` |
+| `axes` -> `IgrNumericYAxis` -> `majorStrokeThickness` | `yAxisMajorStrokeThickness` |
+| `axes` -> `IgrNumericXAxis` -> `minorStrokeThickness` | `xAxisMinorStrokeThickness` |
+| `axes` -> `IgrNumericYAxis` -> `minorStrokeThickness` | `yAxisMinorStrokeThickness` |
+| `axes` -> `IgrNumericXAxis` -> `strokeThickness`      | `xAxisStrokeThickness`   |
+| `axes` -> `IgrNumericYAxis` -> `strokeThickness`      | `yAxisStrokeThickness`   |
+| `axes` -> `IgrNumericXAxis` -> `IgrNumericXAxis.stroke`               | `xAxisStroke` (Axis Line Color) |
+| `axes` -> `IgrNumericYAxis` -> `IgrNumericXAxis.stroke`               | `yAxisStroke` (Axis Line Color) |
+| `axes` -> `IgrNumericXAxis` -> `tickLength`           | `xAxisTickLength`    |
+| `axes` -> `IgrNumericYAxis` -> `tickLength`           | `yAxisTickLength`    |
+| `axes` -> `IgrNumericXAxis` -> `tickStroke`           | `xAxisTickStroke`    |
+| `axes` -> `IgrNumericYAxis` -> `tickStroke`           | `yAxisTickStroke`    |
+| `axes` -> `IgrNumericXAxis` -> `IgrNumericXAxis.strip`                | `xAxisStrip` (Space between Major Gridlines) |
+| `axes` -> `IgrNumericYAxis` -> `IgrNumericXAxis.strip`                | `yAxisStrip` (Space between Major Gridlines) |

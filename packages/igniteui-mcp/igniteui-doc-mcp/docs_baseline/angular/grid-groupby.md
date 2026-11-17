@@ -166,7 +166,7 @@ public ngOnInit() {
 }
 ```
 
-Grouping expressions implement the [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression) interface.
+Grouping expressions implement the [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression) interface.
 
 ## Group By API
 
@@ -189,7 +189,7 @@ public ngOnInit() {
 }
 ```
 
-During runtime the expressions are gettable and settable from the [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`IgxGrid.groupby`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupby) method with either a single or an array of [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression).
+During runtime the expressions are gettable and settable from the [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions) property. If you need to add or change an existing expression you may also use the [`IgxGrid.groupby`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupby) method with either a single or an array of [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression).
 
 ```typescript
 grid.groupBy({ fieldName: 'ProductName', dir: SortingDirection.Desc, ignoreCase: true });
@@ -214,7 +214,7 @@ export interface IGroupByExpandState {
 }
 ```
 
-As with [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions), setting a list of [`IgxIGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState) directly to the [`IgxGrid.groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) exposes a method that toggles a group by the group record instance.
+As with [`IgxGrid.groupingExpressions`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpressions), setting a list of [`IGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState) directly to the [`IgxGrid.groupingExpansionState`](mcp:get_api_reference?platform=angular&component=IgxGridComponent&member=groupingExpansionState) will change the expansion accordingly. Additionally [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent) exposes a method that toggles a group by the group record instance.
 
 ```typescript
     const groupRow = this.grid.groupsRecords.find(r => r.value === "France");
@@ -449,7 +449,7 @@ The grouping UI supports the following keyboard interactions:
 igxGrid allows defining custom grouping per column or per grouping expression, which provides grouping based on a custom condition. This is useful when you need to group by complex objects or for other application specific scenarios.
 
 **Note:** 
-In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`IgxDefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy). After the data is sorted the custom groups can be determined by specifying a [`IgxIGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) for the column or for the specific grouping expression.
+In order to implement custom grouping the data first needs to be sorted appropriately. Due to this you may also need to apply a custom sorting strategy that extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy). After the data is sorted the custom groups can be determined by specifying a [`IGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) for the column or for the specific grouping expression.
 
 The sample below demonstrates custom grouping by `Date`, where the date values are sorted and grouped by Day, Week, Month or Year based on user-selected grouping mode.
 
@@ -689,7 +689,7 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 ```
 
 The sample defines custom sorting strategies for the different date conditions.
-Each custom strategy extends the base [`IgxDefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) and defines the [`IgxDefaultSortingStrategy.compareValues`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy&member=compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
+Each custom strategy extends the base [`DefaultSortingStrategy`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy) and defines the [`DefaultSortingStrategy.compareValues`](mcp:get_api_reference?platform=angular&component=DefaultSortingStrategy&member=compareValues) method, which is the custom compare function used when sorting the values. Additionally it extracts the values from the date needed for the comparison.
 
 ```typescript
 class BaseSortingStrategy extends DefaultSortingStrategy {
@@ -747,7 +747,7 @@ class WeekSortingStrategy extends BaseSortingStrategy {
 }
 ```
 
-A [`IgxIGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
+A [`IGroupingExpression.groupingComparer`](mcp:get_api_reference?platform=angular&component=IGroupingExpression&member=groupingComparer) function is defined for the grouping expressions, which determines the items belonging to the same group based on the selected grouping mode. Values in the sorted data for which this function returns 0 are marked as part of the same group.
 
 ```typescript
  groupingComparer: (a, b) => {
@@ -1129,9 +1129,9 @@ The sample will not be affected by the selected global theme from `Change Theme`
 - [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)
 - [`IgxGroupByRow`](mcp:get_api_reference?platform=angular&component=IgxGroupByRow)
 - `IgxGridComponent Styles`
-- [`IgxISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression)
+- [`ISortingExpression`](mcp:get_api_reference?platform=angular&component=ISortingExpression)
 - [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
-- [`IgxIGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState)
+- [`IGroupByExpandState`](mcp:get_api_reference?platform=angular&component=IGroupByExpandState)
 - [`IgxChip`](mcp:get_api_reference?platform=angular&component=IgxChipComponent)
 - `IgxChipComponent Styles`
 ## Additional Resources

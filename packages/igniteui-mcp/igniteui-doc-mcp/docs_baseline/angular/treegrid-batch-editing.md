@@ -10,7 +10,7 @@ _premium: true
 ---
 # Angular Tree Grid Batch Editing and Transactions
 
-The Batch Editing feature of the IgxTreeGrid is based on the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxHierarchicalTransactionService` and details how it is implemented.
+The Batch Editing feature of the IgxTreeGrid is based on the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService). Follow the [`Transaction Service class hierarchy`](../transaction-classes.md) topic to see an overview of the `igxHierarchicalTransactionService` and details how it is implemented.
 
 Below is a detailed example of how is Batch Editing enabled for the Tree Grid component.
 
@@ -280,7 +280,7 @@ After batch editing is enabled, define a `IgxTreeGrid` with bound data source an
 ...
 ```
 
-The following code demonstrates the usage of the [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService) API - undo, redo, commit.
+The following code demonstrates the usage of the [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService) API - undo, redo, commit.
 
 ```typescript
 export class TreeGridBatchEditingSampleComponent {
@@ -315,7 +315,7 @@ Disabling [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTr
 
 ## API References
 
-- [`IgxHierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalTransactionService)
+- [`HierarchicalTransactionService`](mcp:get_api_reference?platform=angular&component=HierarchicalTransactionService)
 - [`rowEditable`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=rowEditable)
 - [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent)
 - [`IgxGrid`](mcp:get_api_reference?platform=angular&component=IgxGridComponent)

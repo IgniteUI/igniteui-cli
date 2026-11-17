@@ -1,12 +1,13 @@
 ---
 title: "Blazor Pie Charts and Graphs | Ignite UI for Blazor"
-description: The Ignite UI for Blazor pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+description: The Ignite UI for Blazor pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Download free trial.
 keywords: "Blazor charts, pie chart, Ignite UI for Blazor, Infragistics, data binding, slice selection, slice explosion, animation"
 license: commercial
-mentionedTypes: ["PieChart", "DataChart"]
+mentionedTypes: ["PieChart", "DataChart", "SliceSelectionMode", "SelectedItemChangingEventArgs"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
+platformType: xplat
 _tocName: Pie Chart
 _premium: true
 ---
@@ -146,9 +147,9 @@ Do Not Use Pie Chart When:
 ## Blazor Pie Chart Legend
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`Legend`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=legend) property. The [`LegendLabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgbPieChart.Legend`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=Legend) property. The [`LegendLabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the [`LegendItemTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=legendItemTemplate) and [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`LegendItemTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemTemplate) and [`LegendItemBadgeTemplate`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=LegendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -242,9 +243,9 @@ public class EnergyGlobalDemand
 ## Blazor Pie Chart Others Category
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=othersCategoryThreshold) is set to 2, and [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryThreshold) is set to 2, and [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=othersCategoryType) to Percent, then [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=othersCategoryType) is most appropriate for your application.
+If you set [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) to Percent, then [`OthersCategoryThreshold`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`OthersCategoryType`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=OthersCategoryType) is most appropriate for your application.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -339,7 +340,7 @@ public class EnergyGlobalDemand
 ```
 
 ## Blazor Pie Chart Explosion
-The pie chart supports explosion of individual pie slices as well as a `SliceClick` event that allows you to modify selection states and implement custom logic
+The pie chart supports explosion of individual pie slices as well as a [`SliceClick`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SliceClick) event that allows you to modify selection states and implement custom logic
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -458,9 +459,9 @@ The pie chart supports explosion of individual pie slices as well as a `SliceCli
 ```
 
 ## Blazor Pie Chart Selection
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=selectedItems) property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`SelectedItems`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SelectedItems) property. The selected slices are then highlighted.
 
-There is a property called [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`SelectionMode`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=SelectionMode) which is how you set what mode you want the pie chart to use. The default value is [`Single`](mcp:get_api_reference?platform=blazor&component=SliceSelectionMode&member=Single). In order to disable selection, set the property to [`Manual`](mcp:get_api_reference?platform=blazor&component=SliceSelectionMode&member=Manual).
 
 The pie chart supports three different selection modes.
 
@@ -474,7 +475,7 @@ The pie chart has 4 events associated with selection:
 - SelectedItemsChanging
 - SelectedItemsChanged
 
-The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
+The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property [`Cancel`](mcp:get_api_reference?platform=blazor&component=IgbSelectedItemChangingEventArgs&member=Cancel) to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
 
 For scenarios where you click on the Others slice, the pie chart will return an object called [`IgbPieSliceOthersContext`](mcp:get_api_reference?platform=blazor&component=IgbPieSliceOthersContext). This object contains a list of the data items contained within the Others slice.
 
@@ -545,7 +546,7 @@ For scenarios where you click on the Others slice, the pie chart will return an 
 ```
 
 ## Blazor Pie Chart Animation
-You can animate the pie chart smoothly by setting the `radiusFactor` property, which will scale the chart's radius. Also set the `startAngle` property to angle the chart such that it keep increasing the chart angle while rotating.
+You can animate the pie chart smoothly by setting the [`RadiusFactor`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=RadiusFactor) property, which will scale the chart's radius. Also set the [`StartAngle`](mcp:get_api_reference?platform=blazor&component=IgbPieChart&member=StartAngle) property to angle the chart such that it keep increasing the chart angle while rotating.
 
 In the code below, the radiusFactor is increasing the chart by 0.25% of the size, and startAngle is rotating the chart by 1 degree. When radiusFactor and startAngle reached to its maximum limit the animation is stopped by reset the animation flag and clear the interval.
 

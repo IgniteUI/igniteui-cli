@@ -111,9 +111,9 @@ export class FinancialDataAll extends Array<FinancialDataAllItem> {
 ```
 
 ## Setup
-In order to setup row selection in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you just need to set the [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property. This property accepts [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent), you just need to set the [`IgcGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
 
-[`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

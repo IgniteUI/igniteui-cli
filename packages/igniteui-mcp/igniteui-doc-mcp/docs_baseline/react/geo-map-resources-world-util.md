@@ -1,11 +1,12 @@
 ---
 title: "React Map | World Utility | Data Source | Infragistics"
-description: Use Infragistics' React JavaScript map data utility to generate geographic data. View Ignite UI for React map demos!
+description: Use Infragistics' React map data utility to generate geographic data. View Ignite UI for React map demos!
 keywords: "React map, map data, Ignite UI for React, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of utility that helps with generating React geographic data."
+platformType: xplat
 _tocName: World Utility
 _premium: true
 ---
@@ -15,8 +16,8 @@ The resource topic provides implementation of utility that helps with generating
 
 ## Code Snippet
 
-```ts
-export default class WorldUtils {
+```tsx
+export class WorldUtils {
 
     // calculate geo-paths between two locations using great circle formula
     public static calcPaths(origin: any, dest: any): any[] {
@@ -57,7 +58,7 @@ export default class WorldUtils {
     }
 
     // calculate bearing angle between two locations
-    public static calcBearing(origin: any, dest: any) : number
+    public static calcBearing(origin: any, dest: any): number
     {
         origin = this.toRadianLocation(origin);
         dest = this.toRadianLocation(dest);
@@ -91,7 +92,7 @@ export default class WorldUtils {
     }
 
     // calculate distance between two locations
-    public static calcDistance(origin: any, dest: any) : number {
+    public static calcDistance(origin: any, dest: any): number {
         origin = this.toRadianLocation(origin);
         dest = this.toRadianLocation(dest);
         let sinProd = Math.sin(origin.lat) * Math.sin(dest.lat);
@@ -103,22 +104,22 @@ export default class WorldUtils {
         return distance; // * 6371.0; // in km
     }
 
-    public static toRadianLocation(geoPoint: any) : any {
+    public static toRadianLocation(geoPoint: any): any {
         let x = this.toRadians(geoPoint.lon);
         let y = this.toRadians(geoPoint.lat);
         return { lon: x, lat: y };
     }
 
-    public static toRadians(degrees: number) : number
+    public static toRadians(degrees: number): number
     {
         return degrees * Math.PI / 180;
     }
 
-    public static toDegrees(radians: number) : number {
+    public static toDegrees(radians: number): number {
         return (radians * 180.0 / Math.PI);
     }
 
-    public static toDegreesNormalized(radians: number) : number
+    public static toDegreesNormalized(radians: number): number
     {
         let degrees = this.toDegrees(radians);
         degrees = (degrees + 360) % 360;
@@ -126,19 +127,19 @@ export default class WorldUtils {
     }
 
     // converts latitude coordinate to a string
-    public static toStringLat(latitude: number) : string {
+    public static toStringLat(latitude: number): string {
         let str = Math.abs(latitude).toFixed(1) + "°";
         return latitude > 0 ? str + "N" : str + "S";
     }
 
     // converts longitude coordinate to a string
-    public static toStringLon(coordinate: number) : string {
+    public static toStringLon(coordinate: number): string {
         let val = Math.abs(coordinate);
         let str = val < 100 ? val.toFixed(1) : val.toFixed(0);
         return coordinate > 0 ? str + "°E" : str + "°W";
     }
 
-    public static toStringAbbr(value: number) : string {
+    public static toStringAbbr(value: number): string {
         if (value > 1000000000000) {
             return (value / 1000000000000).toFixed(1) + " T"
         } else if (value > 1000000000) {
@@ -151,21 +152,21 @@ export default class WorldUtils {
         return value.toFixed(0);
     }
 
-    public static getLongitude(location: any) : number {
+    public static getLongitude(location: any): number {
         if (location.x) return location.x;
         if (location.lon) return location.lon;
         if (location.longitude) return location.longitude;
         return Number.NaN;
     }
 
-    public static getLatitude(location: any) : number {
+    public static getLatitude(location: any): number {
         if (location.y) return location.y;
         if (location.lat) return location.lat;
         if (location.latitude) return location.latitude;
         return Number.NaN;
     }
 
-    public static getBounds(locations: any[]) : any {
+    public static getBounds(locations: any[]): any {
         let minLat = 90;
         let maxLat = -90;
         let minLon = 180;
@@ -183,6 +184,27 @@ export default class WorldUtils {
                 minLat = Math.min(minLat, crrLat);
                 maxLat = Math.max(maxLat, crrLat);
             }
+
+            // if (location.x) {
+            //     minLon = Math.min(minLon, location.x);
+            //     maxLon = Math.max(maxLon, location.x);
+            // } else if (location.lon) {
+            //     minLon = Math.min(minLon, location.lon);
+            //     maxLon = Math.max(maxLon, location.lon);
+            // } else if (location.longitude) {
+            //     minLon = Math.min(minLon, location.longitude);
+            //     maxLon = Math.max(maxLon, location.longitude);
+            // }
+            // if (location.y) {
+            //     minLat = Math.min(minLat, location.y);
+            //     maxLat = Math.max(maxLat, location.y);
+            // } else if (location.lat) {
+            //     minLat = Math.min(minLat, location.lat);
+            //     maxLat = Math.max(maxLat, location.lat);
+            // } else if (location.latitude) {
+            //     minLat = Math.min(minLat, location.latitude);
+            //     maxLat = Math.max(maxLat, location.latitude);
+            // }
         }
 
         const geoBounds = {
@@ -193,6 +215,30 @@ export default class WorldUtils {
         };
         return geoBounds;
     }
+
+    public static getNightShapes(): any[] {
+        let nightShape = [];
+
+        let line: any[] = [];
+
+        for (let lon = -180; lon <= 180; lon += 1) {
+
+            // let line: any[] = [{x: lon, y: -90}, {x: lon, y: 90}];
+            let x = lon;
+            let y = 75 * Math.cos(lon * Math.PI / 180);
+            line.push({x: x, y: y});
+        }
+        // line.push({x: 180, y: 90});
+        // line.push({x: -180, y: 90});
+        // line.push({x: -180, y: -90});
+
+        let coordinateLine = {points: [line]};
+
+        nightShape.push(coordinateLine);
+
+        return nightShape;
+    }
+
 }
 ```
 

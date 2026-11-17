@@ -255,8 +255,12 @@ Let's create a search box that we can use to highlight different parts of the te
 
   <igx-input-group type="search" class="input-group">
     <igx-prefix>
-      <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
-      <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
+      @if (searchText.length == 0) {
+        <igx-icon>search</igx-icon>
+      }
+      @if (searchText.length > 0) {
+        <igx-icon (click)="clearSearch()">clear</igx-icon>
+      }
     </igx-prefix>
 
     <input
@@ -281,14 +285,16 @@ Let's create a search box that we can use to highlight different parts of the te
         </button>
       
 </div>
-      <ng-container *ngIf="searchText.length > 0">
+      @if (searchText.length > 0) {
         <span>
-          <ng-container *ngIf="matchCount > 0">
+          @if (matchCount > 0) {
             {{ index + 1 }} of {{ matchCount }} results
-          </ng-container>
-          <ng-container *ngIf="matchCount == 0"> No results </ng-container>
+          }
+          @if (matchCount == 0) {
+            No results
+          }
         </span>
-      </ng-container>
+      }
 
       <div class="searchButtons">
 

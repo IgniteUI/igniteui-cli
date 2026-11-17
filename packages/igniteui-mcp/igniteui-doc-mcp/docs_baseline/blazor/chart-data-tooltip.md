@@ -4,9 +4,11 @@ description: Use Infragistics Ignite UI for Blazor chart with the data tooltip l
 keywords: Blazor charts, chart legend, legend, legend types, Ignite UI for Blazor, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "Legend", "CategoryChart", "FinancialChart", "DataLegend", "DataToolTipLayer", "DataAbbreviationMode", "DataLegendSeriesValueType", "DataToolTipLayerGroupingMode", "DataLegendLayoutMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for Blazor, the DataToolTip displays values and titles of series as well as legend badges of series in a tooltip."
+platformType: xplat
 _tocName: Chart Data Tooltip
 _premium: true
 ---
@@ -26,11 +28,11 @@ The **DataToolTip** displays content using a set of three types of rows and four
 
 The rows of the **DataToolTip** include the header row, series row(s), and the summary row.
 
-The header row displays the axis label of the point that is hovered, and can be changed using the [`DataToolTipHeaderText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipHeaderText) property.
+The header row displays the axis label of the point that is hovered, and can be changed using the [`DataToolTipHeaderText`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipHeaderText) property.
 
 The series row can actually be a set of rows corresponding to each series plotted in the chart. These rows will display the legend badge, series title, actual/abbreviated value of the the series, and abbreviation symbol and unit, if specified.
 
-Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`DataToolTipSummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipSummaryTitleText) property of the legend. Also, you can use the [`DataToolTipSummaryType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
+Finally, there is a summary row that displays the total of all series values. The default summary title can be changed using the [`DataToolTipSummaryTitleText`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipSummaryTitleText) property of the legend. Also, you can use the [`DataToolTipSummaryType`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipSummaryType) property to customize whether you display the Total, Min, Max, or Average of series values in the summary row.
 
 The following example demonstrates the data tooltip with a summary applied:
 
@@ -114,15 +116,15 @@ public class HighestGrossingMovies
 
 ### Blazor Data Tooltip Columns
 
-The columns of the [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipExcludedColumns) collections of the chart.
+The columns of the [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer) include the title, label, value, and units columns. Each series in the chart can have multiple columns for label, value, and units depending on the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipExcludedColumns) collections of the chart.
 
-The title column displays legend badges and series titles, which come from the [`Title`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=chartTitle) property of the different [`Series`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=Series) plotted in the chart.
+The title column displays legend badges and series titles, which come from the [`ChartTitle`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ChartTitle) property of the different [`IgbSeries`](mcp:get_api_reference?platform=blazor&component=IgbSeries) plotted in the chart.
 
-The label column displays the name or abbreviation of the different property paths in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipExcludedColumns) collections of the tooltip.
+The label column displays the name or abbreviation of the different property paths in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipIncludedColumns) or [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipExcludedColumns) collections of the tooltip.
 
-The value column displays series values as abbreviated text which can be formatted using the [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to `Auto` or `Shared`. Alternatively, a user can select other abbreviations such as `Independent`, `Kilo`, `Million`, etc. Precision of abbreviated values is controlled using the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
+The value column displays series values as abbreviated text which can be formatted using the [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatAbbreviation) property to apply the same abbreviation for all numbers by setting this property to [`DataAbbreviationMode.Auto`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Auto) or [`Shared`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Shared). Alternatively, a user can select other abbreviations such as [`Independent`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Independent), [`Kilo`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Kilo), [`Million`](mcp:get_api_reference?platform=blazor&component=DataAbbreviationMode&member=Million), etc. Precision of abbreviated values is controlled using the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatMaxFractions) for minimum and maximum digits, respectively.
 
-The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`DataToolTipUnitsText`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
+The units column displays an abbreviation symbol and/or unit text, which can be set either on the **DataToolTip** by setting the [`DataToolTipUnitsText`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipUnitsText) for all columns or using the following properties on each series in the chart:
 
 - Category Series (e.g. ColumnSeries)
   - ValueMemberAsLegendUnit="K"
@@ -142,7 +144,7 @@ The units column displays an abbreviation symbol and/or unit text, which can be 
 
 For the above-listed properties, there are corresponding properties ending with **MemberAsLegendLabel** to determine the text in the label columns mentioned previously.
 
-The columns included in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipIncludedColumns) and [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the `High`, `Low`, `Open`, and `Close` paths that are required for the financial series to plot correctly. You have the ability to show `TypicalPrice`, `Change`, and `Volume` options within the tooltip.
+The columns included in the [`DataToolTipIncludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipIncludedColumns) and [`DataToolTipExcludedColumns`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipExcludedColumns) collections generally correspond to the value paths of your underlying data items, but the financial series has the option to include some special ones in addition to the [`High`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=High), [`Low`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=Low), [`Open`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=Open), and [`Close`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=Close) paths that are required for the financial series to plot correctly. You have the ability to show [`TypicalPrice`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=TypicalPrice), [`Change`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=Change), and [`Volume`](mcp:get_api_reference?platform=blazor&component=DataLegendSeriesValueType&member=Volume) options within the tooltip.
 
 The following example demonstrates a data tooltip with the added columns of Open, High, Low, Close, and Change:
 
@@ -308,8 +310,8 @@ The following example demonstrates a data tooltip with the added columns of Open
 
 ## Blazor Data Tooltip Grouping for Data Chart
 
-[`DataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=dataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
-By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupRowVisible) property to true. [`GroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=groupingMode) should be set to "Grouped" and [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=labelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
+[`DataLegendGroup`](mcp:get_api_reference?platform=blazor&component=IgbSeries&member=DataLegendGroup) can be set, on all types of series, to a string that will categorize a group of series in Data Legend. Each group will have its own summary row displayed before another group of series is displayed:
+By default, DataLegend will hide names of groups, but you can display group names by setting the [`GroupRowVisible`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupRowVisible) property to true. [`GroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupingMode) should be set to "Grouped" and [`LabelDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=LabelDisplayMode) should be set to "Visible" on the Data Tooltip Layer.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -445,7 +447,7 @@ public class OlympicMedalsTopCountriesWithTotals
 
 ## Blazor Data Tooltip Grouping & Positioning for Category Chart & Financial Chart
 
-You can set [`DataToolTipGroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipGroupingMode) property to either `Grouped` or `Individual` to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the `Grouped` mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
+You can set [`DataToolTipGroupingMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipGroupingMode) property to either [`Grouped`](mcp:get_api_reference?platform=blazor&component=DataToolTipLayerGroupingMode&member=Grouped) or [`Individual`](mcp:get_api_reference?platform=blazor&component=DataToolTipLayerGroupingMode&member=Individual) to group content for multiple series into single tooltip or separate content for each series in multiple tooltips. In the [`Grouped`](mcp:get_api_reference?platform=blazor&component=DataToolTipLayerGroupingMode&member=Grouped) mode, you can customize where the tooltip is shown by setting the [`DataToolTipGroupedPositionModeX`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipGroupedPositionModeX) and [`DataToolTipGroupedPositionModeY`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipGroupedPositionModeY) properties. This essentially allows you to customize the horizontal and vertical alignments of the tooltip and whether you want it to track to the closest series points to the mouse position or pin the tooltip to edge of plot area.
 
 The following example demonstrates a data tooltip positioned to the top-right of the chart:
 
@@ -577,7 +579,7 @@ public class HighestGrossingMovies
 
 ## Blazor Data Tooltip Value Formatting
 
-The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
+The **DataToolTip** provides automatic abbreviation of large numbers using its [`DataToolTipValueFormatAbbreviation`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatAbbreviation) property. This adds a multiplier in the units column such as kilo, million, billion, etc. You can customize the number of fractional digits that are displayed by setting the [`DataToolTipValueFormatMinFractions`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatMinFractions) and [`DataToolTipValueFormatMaxFractions`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatMaxFractions). This will allow you to determine the minimum and maximum number of digits that appear after the decimal point, respectively.
 
 The following example demonstrates a **DataToolTip** with the minimum and maximum fractions set:
 
@@ -662,7 +664,7 @@ public class HighestGrossingMovies
 
 ## Blazor Data Tooltip Value Mode
 
-You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`DataToolTipValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueFormatCulture) set to "en-GB":
+You can change the default decimal display of values within the **DataToolTip** to be currency by changing the [`DataToolTipValueFormatMode`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatMode) property of the layer. The **DataToolTip** also exposes the ability to modify the culture of the displayed currency symbol by using its [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatCulture) property and setting it to its corresponding culture tag. For example, the following sample demonstrates a chart with the [`DataToolTipValueFormatCulture`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueFormatCulture) set to "en-GB":
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -828,13 +830,13 @@ You can change the default decimal display of values within the **DataToolTip** 
 
 ## Layout Mode
 
-Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=layoutMode) property. The default value is `Table`, which retains the same look and feel as seen in previous releases.
+Legend items can be positioned in a vertical or table structure via the [`LayoutMode`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=LayoutMode) property. The default value is [`Table`](mcp:get_api_reference?platform=blazor&component=DataLegendLayoutMode&member=Table), which retains the same look and feel as seen in previous releases.
 
 eg.
 
 ## Blazor Data Tooltip Styling
 
-The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`DataToolTipTitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipTitleTextColor), [`DataToolTipLabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipLabelTextColor), [`DataToolTipValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipValueTextColor), and [`DataToolTipUnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataToolTipUnitsTextColor) properties.
+The **DataToolTip** provides properties for styling each type of column. Each of these properties begins with Title, Label, Value, or Units, and you can style the text's color, font, and margin. For example, if you wanted to set the text color of each of these, you would set the [`DataToolTipTitleTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipTitleTextColor), [`DataToolTipLabelTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipLabelTextColor), [`DataToolTipValueTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipValueTextColor), and [`DataToolTipUnitsTextColor`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart&member=DataToolTipUnitsTextColor) properties.
 
 The following example demonstrates usage of the styling properties mentioned above:
 
@@ -1054,20 +1056,12 @@ public class StockItem {
 
 Several properties are exposed including grouping portions of the tooltip.
 
-- [`GroupTextMargin`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextMargin)
-- [`GroupTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextColor)
-- [`GroupTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontSize)
-- [`GroupTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontFamily)
-- [`GroupTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontStyle)
-- [`GroupTextFontStretch`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontStretch)
-- [`GroupTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=groupTextFontWeight)
-- [`HeaderTextMargin`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextMargin)
-- [`HeaderTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextColor)
-- [`HeaderTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontSize)
-- [`HeaderTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontFamily)
-- [`HeaderTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontStyle)
-- [`HeaderTextFontStretch`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontStretch)
-- [`HeaderTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataLegend&member=headerTextFontWeight)
+- [`GroupTextMarginLeft`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextMarginLeft)/[`GroupTextMarginTop`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextMarginTop)/[`GroupTextMarginRight`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextMarginRight)/[`GroupTextMarginBottom`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextMarginBottom)
+- [`GroupTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextColor)
+- [`GroupTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextFontSize)/[`GroupTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextFontFamily)/[`GroupTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextFontStyle)/[`GroupTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=GroupTextFontWeight)
+- [`HeaderTextMarginLeft`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextMarginLeft)/[`HeaderTextMarginTop`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextMarginTop)/[`HeaderTextMarginRight`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextMarginRight)/[`HeaderTextMarginBottom`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextMarginBottom)
+- [`HeaderTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextColor)
+- [`HeaderTextFontSize`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextFontSize)/[`HeaderTextFontFamily`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextFontFamily)/[`HeaderTextFontStyle`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextFontStyle)/[`HeaderTextFontWeight`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer&member=HeaderTextFontWeight)
 
 ## API References
 [`IgbDataToolTipLayer`](mcp:get_api_reference?platform=blazor&component=IgbDataToolTipLayer)

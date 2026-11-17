@@ -3,9 +3,10 @@ title: Web Components Spreadsheet | Activation | Infragistics
 description: Learn how to use the activation feature of the  Web Components spreadsheet control which is split between the cells, panes and worksheets. Check out the Ignite UI for Web Components spreadsheet demos!
 keywords: Excel Spreadsheet, activation, Ignite UI for Web Components, Infragistics
 license: commercial
-
+mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The Web Components Spreadsheet component exposes properties that allow you to determine the currently active cell, pane, and worksheet in the control."
+platformType: xplat-unmapped
 _tocName: Activation
 _premium: true
 ---

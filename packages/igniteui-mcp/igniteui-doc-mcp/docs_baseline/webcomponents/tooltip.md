@@ -162,7 +162,7 @@ It's important to note that the Tooltip API methods — [`Show`](mcp:get_api_ref
 
 ### Placement
 
-The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property along with one of the [`IgcPopoverPlacement`](mcp:get_api_reference?platform=webcomponents&component=PopoverPlacement) options.
+The [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) can also be positioned relative to its target element with ease. All you need to do is use the [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property along with one of the [`PopoverPlacement`](mcp:get_api_reference?platform=webcomponents&component=PopoverPlacement) options.
 
 If the [`Placement`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent&member=placement) property is not set, the default value is `Bottom`, which places the [`IgcTooltip`](mcp:get_api_reference?platform=webcomponents&component=IgcTooltipComponent) below the target element.
 

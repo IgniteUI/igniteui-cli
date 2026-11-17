@@ -24,27 +24,29 @@ Below you can see a sample that demonstrates how the Date Picker works when user
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDatePicker @ref="DatePicker"/>
+        <IgbDatePicker @bind-Value="date"/>
     </div>
 </div>
 
 @code {
 
-    public IgbDatePicker DatePicker { get; set; }
+    private DateTime? date;
 }
 ```
 
 ## Getting Started with Blazor Date Picker
 
-To get started with the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component, first we need to register its module as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbDatePickerModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component. The following needs to be placed in the wwwroot/index.html file in a Blazor Web Assembly project or the Pages/_Host.cshtml file in a Blazor Server project:
+Registering [`IgbDatePickerModule`](mcp:get_api_reference?platform=blazor&component=IgbDatePickerModule), the client resource module of the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbDatePickerModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -67,13 +69,12 @@ To instantiate a [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&compone
 The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) can be bound to a `date`.
 
 ```Razor
-<IgbDatePicker @ref="DatePicker" Value="@SelectedDate">
+<IgbDatePicker Value="@SelectedDate">
 </IgbDatePicker>
 
 @code {
 
     public DateTime SelectedDate { get; set; }
-    public IgbDatePicker DatePicker { get; set; }
 
     protected override void OnInitialized()
     {
@@ -157,13 +158,13 @@ The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePic
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDatePicker @ref="DatePicker" Mode="PickerMode.Dialog"/>
+        <IgbDatePicker @bind-Value="date" Mode="PickerMode.Dialog"/>
     </div>
 </div>
 
 @code {
 
-    public IgbDatePicker DatePicker { get; set; }
+    private DateTime? date;
 }
 ```
 
@@ -183,19 +184,19 @@ More information about these can be found in the [`IgbDateTimeInput`](mcp:get_ap
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDatePicker @ref="DatePicker" DisplayFormat="shortDate" InputFormat="dd/MM/yy"/>
+        <IgbDatePicker @bind-Value="date" DisplayFormat="shortDate" InputFormat="dd/MM/yy"/>
     </div>
 </div>
 
 @code {
 
-    public IgbDatePicker DatePicker { get; set; }
+    private DateTime? date;
 }
 ```
 
 ### Increment and decrement
 
-The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) exposes [`IgbDatePicker.stepUp`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepUp) and [`IgbDatePicker.stepDown`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepDown) methods. Both of which come from the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) and can be used for incrementing and decrementing a specific [`IgbDatePart`](mcp:get_api_reference?platform=blazor&component=DatePart) of the currently set date.
+The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) exposes [`IgbDatePicker.stepUp`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepUp) and [`IgbDatePicker.stepDown`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=stepDown) methods. Both of which come from the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) and can be used for incrementing and decrementing a specific [`DatePart`](mcp:get_api_reference?platform=blazor&component=DatePart) of the currently set date.
 
 ```razor
 <IgbDatePicker @ref="DatePicker">
@@ -218,7 +219,7 @@ The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePic
 
 The [`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker) could be used in a form element, the component's [`IgbDatePicker.min`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=min) and [`IgbDatePicker.max`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=max) properties act as form validators.
 
-In forms, we can handle the `Change` event of the component and update the value of the label.
+In forms, bind the component's value with `@bind-Value`. In the sample the picker is required, and the form's `@onsubmit` handler shows the submitted date instead of reloading the page. A native reset button returns the picker to its initial value without raising a change event, so the `@onreset` handler clears the bound field.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -235,69 +236,37 @@ In forms, we can handle the `Change` event of the component and update the value
 
 <div class="container vertical">
     <div class="container vertical">
-        <form @ref="Form">
+        <form @onsubmit="HandleSubmit" @onreset="HandleReset">
             <div class="horizontal">
-                <IgbDatePicker @ref="DatePicker"
+                <IgbDatePicker Required
                                Min="@MinDate"
                                Max="@MaxDate"
-                               Value="@SelectedDate"
-                               Change="HandleDateChange" />
-                <IgbButton onclick="@HandleReset"><span>Reset</span></IgbButton>
+                               @bind-Value="SelectedDate" />
+                <IgbButton DisplayType="ButtonBaseType.Submit"><span>Submit</span></IgbButton>
+                <IgbButton DisplayType="ButtonBaseType.Reset"><span>Reset</span></IgbButton>
             </div>
         </form>
-        <p>Date picker value: @(SelectedDate != default ? SelectedDate.ToString("G") : "None")</p>
-        <p>Form valid: @FormStatus</p>
+        <p>Date picker value: @(SelectedDate?.ToLocalTime().ToString("G") ?? "None")</p>
+        @if (SubmittedDate is not null)
+        {
+            <p>Submitted: @SubmittedDate.Value.ToLocalTime().ToString("d")</p>
+        }
     </div>
 </div>
 
 @code {
-    private IgbDatePicker DatePicker { get; set; }
-    private ElementReference Form { get; set; }
-    private DateTime SelectedDate { get; set; } = DateTime.Today;
-    private DateTime MinDate { get; set; }
-    private DateTime MaxDate { get; set; }
-    private String FormStatus { get; set; } = "true";
+    private DateTime? SelectedDate { get; set; }
+    private DateTime? SubmittedDate { get; set; }
+    private DateTime MinDate { get; set; } = DateTime.Today.AddDays(-10);
+    private DateTime MaxDate { get; set; } = DateTime.Today.AddDays(15);
 
-    protected override void OnInitialized()
+    private void HandleSubmit() => SubmittedDate = SelectedDate;
+
+    private void HandleReset()
     {
-        var initialDate = DateTime.Today;
-        MinDate = initialDate.AddDays(-10);
-        MaxDate = initialDate.AddDays(15);
-
-        UpdateFormStatus();
+        SelectedDate = null;
+        SubmittedDate = null;
     }
-
-    private void UpdateFormStatus()
-    {
-        FormStatus = "true";
-
-        if (SelectedDate < MinDate || SelectedDate > MaxDate)
-        {
-            FormStatus = "false";
-        }
-    }
-
-    private void HandleDateChange(IgbComponentDateValueChangedEventArgs e)
-    {
-        if (DateTime.TryParse(e.Detail.ToString(), out var newValue))
-        {
-            SelectedDate = newValue;
-        }
-        else
-        {
-            SelectedDate = default;
-        }
-        UpdateFormStatus();
-    }
-
-    private void HandleReset(MouseEventArgs e)
-    {
-        SelectedDate = default;
-        DatePicker.Clear();
-        UpdateFormStatus();
-    }
-
-
 }
 ```
 
@@ -357,13 +326,13 @@ igc-date-picker::part(year-inner selected) {
 
 <div class="container vertical">
     <div class="container vertical">
-        <IgbDatePicker @ref="DatePicker" Mode="PickerMode.Dialog"/>
+        <IgbDatePicker @bind-Value="date" Mode="PickerMode.Dialog"/>
     </div>
 </div>
 
 @code {
 
-    public IgbDatePicker DatePicker { get; set; }
+    private DateTime? date;
 }
 ```
 

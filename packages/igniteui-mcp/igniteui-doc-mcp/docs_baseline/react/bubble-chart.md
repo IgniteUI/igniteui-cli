@@ -4,9 +4,11 @@ description: Infragistics' React Bubble Chart
 keywords: React Charts, Bubble Chart, Infragistics
 license: commercial
 
+mentionedTypes: ["Series", "BubbleSeries", "ScatterSeries", "MarkerType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Bubble Chart is a type of Scatter Chart that show markers with variable scaling to represent the relationship among items in several distinct series of data or to plot data items using x and y coordinates."
+platformType: xplat
 _tocName: Bubble Chart
 _premium: true
 ---
@@ -260,7 +262,7 @@ root.render(<Sample/>);
 ```
 
 ## React Bubble Chart with Single Series
-You can bind your data to `DataSource` property of `IgrBubbleSeries` and map data columns using its `XMemberPath`, `YMemberPath`, `RadiusMemberPath` properties, as shown in the example below:
+You can bind your data to `dataSource` property of `IgrBubbleSeries` and map data columns using its `xMemberPath`, `yMemberPath`, `radiusMemberPath` properties, as shown in the example below:
 
 ```typescript
 export class WorldStatsItem {
@@ -443,7 +445,7 @@ root.render(<Sample/>);
 ```
 
 ## React Bubble Chart with Multiple Series
-In React Bubble Chart, binding multiple data sources works by setting each new data source to `DataSource` property of a additional `IgrBubbleSeries`, as shown in the example below:
+In React Bubble Chart, binding multiple data sources works by setting each new data source to `dataSource` property of a additional `IgrBubbleSeries`, as shown in the example below:
 
 ```typescript
 export class CountryStatsAfricaItem {
@@ -689,7 +691,7 @@ root.render(<Sample/>);
 ```
 
 ## React Bubble Chart Styling
-In React Bubble Chart, you can customize shape of bubble markers using `MarkerType` property, their size with `RadiusScale` property, and their appearance using `MarkerBrush`, `MarkerOutline`, `MarkerThickness` properties. In addition, you can also color bubble markers based on a data column using `FillMemberPath` and `FillScale` properties. In this example, usage of above properties is demonstrated.
+In React Bubble Chart, you can customize shape of bubble markers using `markerType` property, their size with `radiusScale` property, and their appearance using `markerBrush`, `markerOutline`, `markerThickness` properties. In addition, you can also color bubble markers based on a data column using `fillMemberPath` and `fillScale` properties. In this example, usage of above properties is demonstrated.
 
 ```typescript
 export class WorldStatsItem {

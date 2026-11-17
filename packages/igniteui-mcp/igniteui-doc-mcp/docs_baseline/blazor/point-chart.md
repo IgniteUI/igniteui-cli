@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", 
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Point Chart renders a collection of points."
+platformType: xplat
 _tocName: Point Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Blazor Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## Blazor Point Chart Example
-You can create the Blazor Point Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Point** enum, as shown in the example below.
+You can create the Blazor Point Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) property and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Point** enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls

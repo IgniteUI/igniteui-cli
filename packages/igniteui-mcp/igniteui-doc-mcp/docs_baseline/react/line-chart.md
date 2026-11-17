@@ -1,12 +1,13 @@
 ---
 title: "React Line Chart and Graph | Ignite UI for React"
-description: The React Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
+description: The React Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Download free trial.
 keywords: "React Charts, Line Chart, Line Graph, Infragistics"
 license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time."
+platformType: xplat
 _tocName: Line Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for React Line Chart or Line Graph is a type of category charts th
 
 ## React Line Chart Example
 
-You can create the React Line Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to `Line` enum, as shown in the example below.
+You can create the React Line Chart in the `IgrCategoryChart` control by binding your data to `dataSource` property and setting `chartType` property to `CategoryChartType.Line` enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -184,7 +185,7 @@ There are several common use cases for choosing a Line Chart:
 
 The React Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period, as we have shown in the example below.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `CategoryChartType.Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -292,7 +293,7 @@ root.render(<Sample/>);
 
 Since the React Line Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `CategoryChartType.Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -417,7 +418,7 @@ The React Line chart is capable of handling high volumes of data, ranging into m
 
 In this example, we are streaming live data into the React Line Chart at an interval of your choosing. You can set the data points from 5,000 to 1 million and update the chart to optimize the scale based on the device you are rendering the chart on.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `CategoryChartType.Line`, as shown in the example below:
 
 ```typescript
 export class CategoryChartSharedData {
@@ -673,7 +674,7 @@ root.render(<CategoryChartHighFrequency/>);
 
 Once our chart is set up, we may want to make some further styling customizations such as change the line colors, change the legend font family, and/or increase the size of the axis labels to make it easier to read.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `CategoryChartType.Line`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -795,9 +796,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-You can also create a dashed line within the `IgrLineSeries` by using the `IgrDataChart` and setting the `DashArray` property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
+You can also create a dashed line within the `IgrLineSeries` by using the `IgrDataChart` and setting the `dashArray` property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
-The following example demonstrates usage of the `DashArray` in a `IgrLineSeries` in `IgrDataChart`:
+The following example demonstrates usage of the `dashArray` in a `IgrLineSeries` in `IgrDataChart`:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -1682,7 +1683,7 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type        | Control Name       | API Members |
 | ------------------|--------------------|----------------------- |
-| Line              | `IgrCategoryChart`    | `CategoryChart.ChartType` = `Line` |
+| Line              | `IgrCategoryChart`    | `chartType` = `CategoryChartType.Line` |
 | Polar Line        | `IgrDataChart`     | `IgrPolarLineSeries` |
 | Radial Line       | `IgrDataChart`     | `IgrRadialLineSeries` |
 | Stacked Line      | `IgrDataChart`     | `IgrStackedLineSeries` |

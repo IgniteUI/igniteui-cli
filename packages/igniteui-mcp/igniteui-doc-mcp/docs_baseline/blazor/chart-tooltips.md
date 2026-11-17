@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Blazor charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
+platformType: xplat
 _tocName: Chart Tooltips
 _premium: true
 ---
@@ -16,7 +17,7 @@ In Blazor charts, tooltips provide details about bound data and they are rendere
 
 ## Blazor Chart Tooltip Types
 
-Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=toolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+Blazor Chart provide three types of tooltips that you can with tooltips enabled by setting the [`IgbDomainChart.ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -132,7 +133,7 @@ public class HighestGrossingMovies
 }
 ```
 
-The [`ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=toolTipType) property is configurable and can be set to one of the following options:
+The [`IgbDomainChart.ToolTipType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=ToolTipType) property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|

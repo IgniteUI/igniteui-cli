@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "PolarAreaSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Polar Chart uses the polar coordinate system (angle, radius) instead of the Cartesian coordinate system (x, y) to plot data in chart."
+platformType: xplat
 _tocName: Polar Chart
 _premium: true
 ---

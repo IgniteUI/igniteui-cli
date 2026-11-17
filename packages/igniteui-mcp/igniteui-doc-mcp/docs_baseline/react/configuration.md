@@ -99,4 +99,4 @@ As mentioned before, you can control the horizontal and vertical spacing individ
 
 ## API References
 
-[`IgrconfigureTheme`](mcp:get_api_reference?platform=react&component=configureTheme)<br />
+[`configureTheme`](mcp:get_api_reference?platform=react&component=configureTheme)<br />

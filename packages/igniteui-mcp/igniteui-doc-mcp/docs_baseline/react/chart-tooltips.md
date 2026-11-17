@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In React charts, tooltips provide details about bound data and they are rendered in popups when the end-user hovers over data points."
+platformType: xplat
 _tocName: Chart Tooltips
 _premium: true
 ---
@@ -16,7 +17,7 @@ In React charts, tooltips provide details about bound data and they are rendered
 
 ## React Chart Tooltip Types
 
-React Chart provide three types of tooltips that you can with tooltips enabled by setting the `ToolTipType` property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
+React Chart provide three types of tooltips that you can with tooltips enabled by setting the `IgrDomainChart.toolTipType` property. The following example shows the [Column Chart](../types/column-chart.md) with a combo-box that you can use to change type of tooltips.
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -174,7 +175,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The `ToolTipType` property is configurable and can be set to one of the following options:
+The `IgrDomainChart.toolTipType` property is configurable and can be set to one of the following options:
 
 | Property Value     | Description  |
 | -------------------|----------------|

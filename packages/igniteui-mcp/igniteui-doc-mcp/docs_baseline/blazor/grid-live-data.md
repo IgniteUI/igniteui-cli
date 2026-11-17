@@ -34,11 +34,11 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
             </div>
             <div class="control-item">
                 <label>Records: @RecordsCount</label>
-                <IgbSlider @ref=slider1 Class="finjs-slider" Change=OnRecordsChange Max="10000" Step="100"></IgbSlider>
+                <IgbSlider @bind-Value="RecordsCount" @bind-Value:after="OnRecordsChange" Class="finjs-slider" Max="10000" Step="100"></IgbSlider>
             </div>
             <div class="control-item">
                 <label>Frequency: @Frequency</label>
-                <IgbSlider @ref=slider2 Class="finjs-slider" Change="OnFrequencyChange" LowerBound="100" Min="100" Max="3000" Step="10"></IgbSlider>
+                <IgbSlider @bind-Value="Frequency" Class="finjs-slider" LowerBound="100" Min="100" Max="3000" Step="10"></IgbSlider>
             </div>
         </div>
         <div class="control-item finjs-play-controls">
@@ -55,10 +55,12 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
 
         <IgbGrid Class="gridSize" 
                  AutoGenerate="false"
+                 Data="CurrentData"
                  RowSelection="GridSelectionMode.Multiple"
                  PrimaryKey="id"
                  AllowFiltering="true"
                  FilterMode="FilterMode.ExcelStyleFilter"
+                 GroupingExpressions="GroupingExpressions"
                  HideGroupedColumns=true
                  CellClick="OnCellClick"
                  Name="grid1"
@@ -370,8 +372,8 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
 </div>
 
 @code {
-
-    public IgbGroupingExpression[] GroupingExpressions = new IgbGroupingExpression[3]
+    public IgbGroupingExpression[] GroupingExpressions = new IgbGroupingExpression[0];
+    public IgbGroupingExpression[] PredefinedGroupingExpressions = new IgbGroupingExpression[3]
     {
         new IgbGroupingExpression(){ FieldName = "category", Dir= SortingDirection.Desc },
         new IgbGroupingExpression() { FieldName = "type", Dir= SortingDirection.Desc  },
@@ -391,10 +393,8 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
     private IgbButton StartButton;
 
     private IgbButton ShowChartButton;
-    private IgbSlider slider1;
-    private IgbSlider slider2;
-    public int RecordsCount = 1000;
-    public int Frequency = 500;
+    public double RecordsCount = 0;
+    public double Frequency = 0;
     public System.Threading.Timer Timer;
     public IgbCategoryChart Chart;
     public IgbDialog Dialog;
@@ -405,8 +405,6 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var grid1 = this.grid1;
-        var icon = this.icon;
         if (icon != null && firstRender)
         {
             await icon.EnsureReady();
@@ -417,43 +415,20 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
             await icon.RegisterIconFromTextAsync("update", this.updateIcon, "material");
         }
 
-        if (grid1 != null && firstRender)
+        if (firstRender)
         {
-            this.CurrentData = FinancialLiveData.Generate(RecordsCount);
-            grid1.Data = this.CurrentData;
-            grid1.GroupingExpressions = this.GroupingExpressions;
-        }
-
-        if (slider1 != null && firstRender)
-        {
-            await slider1.EnsureReady();
-            slider1.StepUp(10);
-        }
-
-        if (slider2 != null && firstRender)
-        {
-            await slider2.EnsureReady();
-            slider2.StepUp(40);
-        }
-
-    }
-
-    private void OnRecordsChange(IgbNumberEventArgs e)
-    {
-        if (e != null)
-        {
-            RecordsCount = Convert.ToInt32(e.Detail);
-            this.CurrentData = FinancialLiveData.Generate(RecordsCount);
-            grid1.Data = this.CurrentData;
+            // Set initial values for sliders on first render.
+            Frequency = 500;
+            RecordsCount = 1000;
+            CurrentData = FinancialLiveData.Generate((int)RecordsCount);
+            GroupingExpressions = PredefinedGroupingExpressions;
+            StateHasChanged();
         }
     }
 
-    private void OnFrequencyChange(IgbNumberEventArgs e)
+    private void OnRecordsChange()
     {
-        if (e != null)
-        {
-            Frequency = Convert.ToInt32(e.Detail);
-        }
+        this.CurrentData = FinancialLiveData.Generate((int)RecordsCount);
     }
 
     public bool IsFeedDisabled = false;
@@ -582,17 +557,14 @@ Feed the same data into the [Column Chart](../../charts/types/column-chart.md) t
     {
         if (isChecked)
         {
-            this.grid1.GroupingExpressions = this.GroupingExpressions;
+            GroupingExpressions = PredefinedGroupingExpressions;
         }
         else
         {
-            this.grid1.GroupingExpressions = new IgbGroupingExpression[0];
+            GroupingExpressions = new IgbGroupingExpression[0];
         }
 
     }
-
-
-
 }
 ```
 ```csharp

@@ -596,8 +596,8 @@ export class GridFinJSDockManagerComponent implements OnInit, OnDestroy, AfterVi
 // excel filter, etc. Scoped mode emits the short `--background`/`--foreground`/
 // `--accent-color` aliases the derived layer reads first.
 $finjs-grid-accent-color: var(--ig-primary-500);
-$finjs-grid-background: var(--ig-surface-500);
-$finjs-grid-foreground: var(--ig-surface-500-contrast);
+$finjs-grid-background: var(--ig-surface-base);
+$finjs-grid-foreground: var(--ig-surface-base-contrast);
 
 $finjs-dark-grid-theme: grid-theme(
     $schema: $dark-material-schema,

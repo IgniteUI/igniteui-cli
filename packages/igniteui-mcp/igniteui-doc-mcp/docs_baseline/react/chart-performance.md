@@ -3,10 +3,11 @@ title: "React Chart Performance | Data Visualization | Infragistics"
 description: Infragistics' React Chart Performance
 keywords: "React Charts, Performance, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType", "FinancialChartYAxisMode", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "React charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds."
+platformType: xplat
 _tocName: Chart Performance
 _premium: true
 ---
@@ -437,7 +438,7 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although React charts support rendering of multiple data sources by binding array of arrays of data points to `ItemsSource` property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although React charts support rendering of multiple data sources by binding array of arrays of data points to `dataSource` property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
 ```ts
 this.CategoryChart.dataSource = FlattenDataSource.create();
@@ -468,18 +469,18 @@ export class MultiDataSources {
 
 ### Data Filtering
 
-React `IgrCategoryChart` and the `IgrFinancialChart` controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use `IncludedProperties` and `ExcludedProperties` to filter only those data columns that you actually want to render. For example,
+React `IgrCategoryChart` and the `IgrFinancialChart` controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use `includedProperties` and `excludedProperties` to filter only those data columns that you actually want to render. For example,
 
-```ts
-this.Chart.includedProperties = [ "Year", "USA", "RUS" ];
-this.Chart.excludedProperties = [ "CHN",  "FRN", "GER" ];
+```tsx
+this.Chart.includedProperties = ["Year", "USA", "RUS"];
+this.Chart.excludedProperties = ["CHN", "FRN", "GER"];
 ```
 
 ## Chart Performance Guidelines
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use `CategoryChart.ChartType` property of React `IgrCategoryChart` or the `IgrFinancialChart` control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in React `IgrDataChart` control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use `IgrCategoryChart.chartType` property of React `IgrCategoryChart` or the `IgrFinancialChart` control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in React `IgrDataChart` control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
@@ -521,29 +522,30 @@ In React charts, [Markers](chart-markers.md) are especially expensive when it co
 
 This code snippet shows how to remove markers from the React charts.
 
-```ts
+```tsx
 // on CategoryChart or FinancialChart
-this.Chart.markerTypes.clear();
-this.Chart.markerTypes.add(MarkerType.None);
+this.Chart.markerTypes = [MarkerType.None];
+```
 
+```tsx
 // on LineSeries of DataChart
 this.LineSeries.markerType = MarkerType.None;
-
 ```
 
 ### Chart Resolution
 
-Setting the `Resolution` property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the `IgrDomainChart.resolution` property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the React charts.
 
-```ts
-// on CategoryChart or FinancialChart:
-this.Chart.Resolution = 10;
+```tsx
+// on CategoryChart
+this.Chart.resolution = 10;
+```
 
-// on LineSeries of DataChart:
-this.LineSeries.Resolution = 10;
-
+```tsx
+// on LineSeries of DataChart
+this.LineSeries.resolution = 10;
 ```
 
 ### Chart Overlays
@@ -564,16 +566,17 @@ The `IgrCategoryChart` already uses ordinal/category axis so there is no need to
 This code snippet shows how to ordinal/category x-axis in the `IgrFinancialChart` and `IgrDataChart` controls.
 
 ```tsx
-<IgrFinancialChart xAxisMode="Ordinal" />
-
+<IgrFinancialChart
+    xAxisMode="Ordinal" />
 <IgrDataChart>
-    <IgrCategoryXAxis label="Time" />
+    <IgrCategoryXAxis
+        label="Time" />
 </IgrDataChart>
 ```
 
 ### Axis Intervals
 
-By default, React charts will automatically calculate `YAxisInterval` based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing `YAxisInterval` property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, React charts will automatically calculate `yAxisInterval` based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing `yAxisInterval` property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
 **Note:** 
 We do not recommend setting axis minor interval as it will decrease chart performance.
@@ -581,19 +584,28 @@ We do not recommend setting axis minor interval as it will decrease chart perfor
 This code snippet shows how to set axis major interval in the React charts.
 
 ```tsx
-<IgrCategoryChart  xAxisInterval={5} yAxisInterval={50}/>
+<IgrCategoryChart
+    xAxisInterval={5}
+    yAxisInterval={50} />
 
-<IgrFinancialChart xAxisInterval={5} yAxisInterval={50}/>
+<IgrFinancialChart
+    yAxisInterval={50} />
 
 <IgrDataChart>
-    <IgrCategoryXAxis name="xAxis" interval={5} />
-    <IgrNumericYAxis  name="yAxis" interval={50}/>
+    <IgrCategoryXAxis
+        name="xAxis"
+        ref={ref => { this.xAxis = ref; }}
+        interval={5} />
+    <IgrNumericYAxis
+        name="yAxis"
+        ref={ref => { this.yAxis = ref; }}
+        interval={50} />
 </IgrDataChart>
 ```
 
 ### Axis Scale
 
-Setting the `YAxisIsLogarithmic` property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the `yAxisIsLogarithmic` property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -602,29 +614,42 @@ In the same way as Markers, axis labels are also expensive because they use temp
 This code snippet shows how to hide axis labels in the React charts.
 
 ```tsx
-<IgrCategoryChart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed" />
+<IgrCategoryChart
+    xAxisLabelVisibility="Collapsed"
+    yAxisLabelVisibility="Collapsed" />
 
-<IgrFinancialChart xAxisLabelVisibility="Collapsed" yAxisLabelVisibility="Collapsed" />
+<IgrFinancialChart
+    xAxisLabelVisibility="Collapsed"
+    yAxisLabelVisibility="Collapsed" />
 
 <IgrDataChart>
-    <IgrCategoryXAxis name="xAxis" labelVisibility="Collapsed" />
-    <IgrNumericYAxis  name="yAxis" labelVisibility="Collapsed" />
+    <IgrCategoryXAxis
+        name="xAxis"
+        ref={ref => { this.xAxis = ref; }}
+        labelVisibility="Collapsed" />
+    <IgrNumericYAxis
+        name="yAxis"
+        ref={ref => { this.yAxis = ref; }}
+        labelVisibility="Collapsed" />
 </IgrDataChart>
 ```
 
 ### Axis Labels Abbreviation
 
-Although, the React charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when `YAxisAbbreviateLargeNumbers` is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting `YAxisTitle` to a string that represents factor used used to abbreviate your data values.
+Although, the React charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when `yAxisAbbreviateLargeNumbers` is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting `yAxisTitle` to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the React charts.
 
 ```tsx
-<IgrCategoryChart  yAxisTitle="In millions of Dollars" />
+<IgrCategoryChart
+    yAxisTitle="In millions of Dollars" />
 
-<IgrFinancialChart yAxisTitle="In millions of Dollars" />
+<IgrFinancialChart
+    yAxisTitle="In millions of Dollars" />
 
 <IgrDataChart>
-    <IgrNumericYAxis title="In millions of Dollars" />
+    <IgrNumericYAxis
+        title="In millions of Dollars" />
 </IgrDataChart>
 ```
 
@@ -635,13 +660,23 @@ At runtime, the React charts adjust extent of labels on y-axis based on a label 
 The following code snippet shows how to set a fixed extent for labels on y-axis in the React charts.
 
 ```tsx
-<IgrCategoryChart  xAxisLabelExtent={50} yAxisLabelExtent={50}/>
+<IgrCategoryChart
+    xAxisExtent={50}
+    yAxisExtent={50} />
 
-<IgrFinancialChart xAxisLabelExtent={50} yAxisLabelExtent={50}/>
+<IgrFinancialChart
+    xAxisExtent={50}
+    yAxisExtent={50} />
 
 <IgrDataChart>
-    <IgrCategoryXAxis name="xAxis" labelExtent={50} />
-    <IgrNumericYAxis  name="yAxis" labelExtent={50} />
+    <IgrCategoryXAxis
+        name="xAxis"
+        ref={ref => { this.xAxis = ref; }}
+        labelExtent={50} />
+    <IgrNumericYAxis
+        name="yAxis"
+        ref={ref => { this.yAxis = ref; }}
+        labelExtent={50} />
 </IgrDataChart>
 ```
 
@@ -653,25 +688,25 @@ For example, changing these properties on the `IgrCategoryChart` or `IgrFinancia
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | `XAxisInterval`<br />  `XAxisMinorInterval` | `YAxisInterval`<br />  `YAxisMinorInterval` |
-| Axis Tickmarks       | `XAxisTickStroke` <br />  `XAxisTickStrokeThickness`<br />  `XAxisTickLength`<br />  | `YAxisTickStroke` <br />  `YAxisTickStrokeThickness`<br />  `YAxisTickLength`<br /> |
-| Axis Major Gridlines | `XAxisMajorStroke`<br />  `XAxisMajorStrokeThickness`<br />   | `YAxisMajorStroke`<br />  `YAxisMajorStrokeThickness`<br /> |
-| Axis Minor Gridlines | `XAxisMinorStroke`<br />  `XAxisMinorStrokeThickness`<br />   | `YAxisMinorStroke`<br />  `YAxisMinorStrokeThickness`<br /> |
-| Axis Main Line       | `XAxisStroke`<br />  `XAxisStrokeThickness`<br />   | `YAxisStroke`<br />  `YAxisStrokeThickness`<br /> |
-| Axis Titles          | `XAxisTitle`<br />  `XAxisTitleAngle`<br />    | `YAxisTitle`<br />  `YAxisTitleAngle`<br /> |
-| Axis Strips          | `XAxisStrip`<br />   | `YAxisStrip`<br /> |
+| All Axis Visual      | `xAxisInterval`<br />  `xAxisMinorInterval` | `yAxisInterval`<br />  `yAxisMinorInterval` |
+| Axis Tickmarks       | `xAxisTickStroke` <br />  `xAxisTickStrokeThickness`<br />  `xAxisTickLength`<br />  | `yAxisTickStroke` <br />  `yAxisTickStrokeThickness`<br />  `yAxisTickLength`<br /> |
+| Axis Major Gridlines | `xAxisMajorStroke`<br />  `xAxisMajorStrokeThickness`<br />   | `yAxisMajorStroke`<br />  `yAxisMajorStrokeThickness`<br /> |
+| Axis Minor Gridlines | `xAxisMinorStroke`<br />  `xAxisMinorStrokeThickness`<br />   | `yAxisMinorStroke`<br />  `yAxisMinorStrokeThickness`<br /> |
+| Axis Main Line       | `xAxisStroke`<br />  `xAxisStrokeThickness`<br />   | `yAxisStroke`<br />  `yAxisStrokeThickness`<br /> |
+| Axis Titles          | `xAxisTitle`<br />  `xAxisTitleAngle`<br />    | `yAxisTitle`<br />  `yAxisTitleAngle`<br /> |
+| Axis Strips          | `xAxisStrip`<br />   | `yAxisStrip`<br /> |
 
 Or changing properties of an `IgrAxis` in the `IgrDataChart` control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
-| All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | `TickStroke` , `TickStrokeThickness`, `TickLength` |
-| Axis Major Gridlines | `MajorStroke`, `MajorStrokeThickness` |
-| Axis Minor Gridlines | `MinorStroke`, `MinorStrokeThickness` |
-| Axis Main Line       | `Stroke`, `StrokeThickness` |
-| Axis Titles          | `Title`, `TitleAngle` |
-| Axis Strips          | `Strip` |
+| All Axis Visuals     | `interval`, `minorInterval` |
+| Axis Tickmarks       | `tickStroke`, `tickStrokeThickness`, `tickLength` |
+| Axis Major Gridlines | `majorStroke`, `majorStrokeThickness` |
+| Axis Minor Gridlines | `minorStroke`, `minorStrokeThickness` |
+| Axis Main Line       | `IgrAxis.stroke`, `strokeThickness` |
+| Axis Titles          | `chartTitle`, `titleAngle` |
+| Axis Strips          | `IgrAxis.strip` |
 
 ## Performance in Financial Chart
 
@@ -679,19 +714,19 @@ In addition to above performance guidelines, the React `IgrFinancialChart` contr
 
 ### Y-Axis Mode
 
-Setting the `YAxisMode` option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `PercentChange` mode.
+Setting the `yAxisMode` option to `Numeric` is recommended for higher performance, as fewer operations are needed than using `IgrLineSeries.percentChange` mode.
 
 ### Chart Panes
 
-Setting a lot of panes using `IndicatorTypes` and `OverlayTypes` options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using `indicatorTypes` and `overlayTypes` options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the `ZoomSliderType` option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the `zoomSliderType` option to `None` will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the `VolumeType` property can have the following impact on chart performance:
+Setting the `volumeType` property can have the following impact on chart performance:
 
 - `None` - is the least expensive since it does not display the volume pane.
 - `Line` - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
@@ -704,11 +739,11 @@ In addition to the general performance guidelines, the React `IgrDataChart` cont
 
 ### Axes Collection
 
-Adding too many axis to the `Axes` collection of the `IgrDataChart` control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
+Adding too many axis to the `axes` collection of the `IgrDataChart` control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
 
 ### Series Collection
 
-Also, adding a lot of series to the `Series` collection of the React `IgrDataChart` control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
+Also, adding a lot of series to the `IgrSeries` collection of the React `IgrDataChart` control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
 | Slower Performance Scenario | Faster Scenario with Conditional Styling |
 | ----------------------------|---------------------------------------- |

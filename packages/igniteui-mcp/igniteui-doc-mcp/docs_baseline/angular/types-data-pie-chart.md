@@ -1,12 +1,14 @@
 ---
 title: Angular Pie Charts and Graphs | Ignite UI for Angular
-description: The Ignite UI for Angular data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+description: The Ignite UI for Angular data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Download free trial.
 keywords: Angular charts, pie chart, Ignite UI for Angular, Infragistics, data binding, slice selection, animation, highlighting, legend
 license: commercial
 
+mentionedTypes: ["DataPieChart", "DataChart", "OthersCategoryType", "SeriesSelectionMode", "SeriesSelectionBehavior", "SeriesHighlightingBehavior", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Data Pie Chart is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
+platformType: xplat
 _tocName: Data Pie Chart
 _premium: true
 ---
@@ -14,7 +16,7 @@ _premium: true
 The Ignite UI for Angular Data Pie Chart is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value. Categories are rendered as sections in a circular, or pie-shaped graph. Each section, or pie slice, has an arc length proportional to its underlying data value. Categories are shown in proportion to other categories based on their value percentage to the total value being analyzed, as parts of 100 or 100%.
 
 ## Angular Data Pie Chart Example
-You can create the Angular Pie Chart in the `IgxDataPieChart` by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization.
+You can create the Angular Pie Chart in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -134,13 +136,13 @@ Do Not Use Pie Chart When:
 ## Angular Data Pie Chart Legend
 Legends are used to show information about each point, to know about its contribution towards the total sum.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `Legend` property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its `Orientation` property.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgxDataPieChartComponent.legend`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=legend) property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its `orientation` property.
 
-The labels shown on the legend will display the same content as the label that is shown for each slice in the `IgxDataPieChart` by default, but this can be modified by utilizing the `LegendSliceLabelContentMode` property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
+The labels shown on the legend will display the same content as the label that is shown for each slice in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) by default, but this can be modified by utilizing the [`legendSliceLabelContentMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=legendSliceLabelContentMode) property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
 
-You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the `LegendItemBadgeShape` property on the chart, and you can set this to be a circle, line, bar, column, and more.
+You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the [`legendItemBadgeShape`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=legendItemBadgeShape) property on the chart, and you can set this to be a circle, line, bar, column, and more.
 
-Below is an example that demonstrates usage of the ItemLegend with the `IgxDataPieChart`.
+Below is an example that demonstrates usage of the ItemLegend with the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent).
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -255,31 +257,31 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ## Angular Pie Chart Others Category
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice.
 
-The Others category in the `IgxDataPieChart` has three main, configurable properties - `OthersCategoryType`, `OthersCategoryThreshold`, and `OthersCategoryText` that allow you to configure how the Others slice in the chart is shown. These are each described below:
+The Others category in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) has three main, configurable properties - [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryType), [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold), and [`othersCategoryText`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryText) that allow you to configure how the Others slice in the chart is shown. These are each described below:
 
-The `OthersCategoryType` property works in tandem with the `OthersCategoryThreshold` property of the `IgxDataPieChart`. For the `OthersCategoryType`, you can define whether you want the `OthersCategoryThreshold` to be evaluated as a number or a percentage. For example, if you decide on number and set the `OthersCategoryThreshold` to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the `IgxDataPieChart` will become part of the Others category.
+The [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryType) property works in tandem with the [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold) property of the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent). For the [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryType), you can define whether you want the [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold) to be evaluated as a number or a percentage. For example, if you decide on number and set the [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold) to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) will become part of the Others category.
 
-To get the underlying data items that are contained within the Others slice in the chart, you can utilize the `GetOthersContext` method on the chart. This return type of this method is an `IgxOthersCategoryContext` which exposes an `Items` property. The `Items` property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the `Item` property of the event arguments for the `SeriesClick` event will be will also return this `IgxOthersCategoryContext`.
+To get the underlying data items that are contained within the Others slice in the chart, you can utilize the [`getOthersContext`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=getOthersContext) method on the chart. This return type of this method is an [`IgxOthersCategoryContextComponent`](mcp:get_api_reference?platform=angular&component=IgxOthersCategoryContextComponent) which exposes an [`IgxOthersCategoryContextComponent.items`](mcp:get_api_reference?platform=angular&component=IgxOthersCategoryContextComponent&member=items) property. The [`IgxOthersCategoryContextComponent.items`](mcp:get_api_reference?platform=angular&component=IgxOthersCategoryContextComponent&member=items) property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the [`Item`](mcp:get_api_reference?platform=angular&component=ToolTipType&member=Item) property of the event arguments for the [`seriesClick`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=seriesClick) event will be will also return this [`IgxOthersCategoryContextComponent`](mcp:get_api_reference?platform=angular&component=IgxOthersCategoryContextComponent).
 
-By default, the Others slice will be represented by a label of "Others." You can change this by modifying the `OthersCategoryText` property of the chart.
+By default, the Others slice will be represented by a label of "Others." You can change this by modifying the [`othersCategoryText`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryText) property of the chart.
 
 ### Angular Styling the Others Slice
 You can style the aggregated Others slice separately from other slices by using these properties:
 
-- `OthersCategoryBrush`
+- [`othersCategoryBrush`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryBrush)
   Sets the fill (brush) used for the Others slice.
 
-- `OthersCategoryOutline`
+- [`othersCategoryOutline`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryOutline)
   Sets the outline (stroke) used for the Others slice.
 
 These properties only affect the Others slice (when it exists). All other slices continue to use the normal palette and item-wise coloring behavior.
 
 **Note:** 
-The Others slice is only rendered when the chart is configured to create it (for example, with `OthersCategoryThreshold` greater than `0` and an appropriate `OthersCategoryType`). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
+The Others slice is only rendered when the chart is configured to create it (for example, with [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold) greater than `0` and an appropriate [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryType)). If the Others slice is not present, [`othersCategoryBrush`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryBrush) and [`othersCategoryOutline`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryOutline) have no visible effect.
 
-If you want to ensure that the Others category does not show up in the `IgxDataPieChart`, you can set the `OthersCategoryThreshold` to 0.
+If you want to ensure that the Others category does not show up in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent), you can set the [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold) to 0.
 
-The following sample demonstrates usage of the Others slice in the `IgxDataPieChart`:
+The following sample demonstrates usage of the Others slice in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -433,27 +435,27 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Data Pie Chart Selection
-The `IgxDataPieChart` supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the `SelectionBehavior` and `SelectionMode` properties of the chart, described below:
+The [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the [`selectionBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionBehavior) and [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionMode) properties of the chart, described below:
 
-The main two options of the `SelectionBehavior` are `PerDataItemSingleSelect` and `PerDataItemMultiSelect`, which will enable single and multiple selection, respectively.
+The main two options of the [`selectionBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionBehavior) are [`PerDataItemSingleSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerDataItemSingleSelect) and [`PerDataItemMultiSelect`](mcp:get_api_reference?platform=angular&component=SeriesSelectionBehavior&member=PerDataItemMultiSelect), which will enable single and multiple selection, respectively.
 
-The `SelectionMode` property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
+The [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionMode) property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
 
-- `Brighten`: The selected slices will be highlighted.
-- `FadeOthers`: The selected slices will remain their same color and others will fade.
-- `FocusColorFill`: The selected slices will change their background to the FocusBrush of the chart.
-- `FocusColorOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart.
-- `FocusColorThickOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
-- `GrayscaleOthers`: The unselected slices will have a gray color filter applied to them.
-- `None`: There is no effect on the selected slices.
-- `SelectionColorFill`: The selected slices will change their background to the SelectionBrush of the chart.
-- `SelectionColorOutline`: The selected slices will have an outline with the color defined by the SelectionBrush of the chart.
-- `SelectionColorThickOutline`: The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
-- `ThickOutline`: The selected slices will apply an outline with the thickness dependent on the Thickness property of the chart.
+- [`Brighten`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=Brighten): The selected slices will be highlighted.
+- [`FadeOthers`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FadeOthers): The selected slices will remain their same color and others will fade.
+- [`FocusColorFill`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FocusColorFill): The selected slices will change their background to the FocusBrush of the chart.
+- [`FocusColorOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FocusColorOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart.
+- [`FocusColorThickOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=FocusColorThickOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
+- [`GrayscaleOthers`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=GrayscaleOthers): The unselected slices will have a gray color filter applied to them.
+- [`None`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=None): There is no effect on the selected slices.
+- [`SelectionColorFill`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorFill): The selected slices will change their background to the SelectionBrush of the chart.
+- [`SelectionColorOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorOutline): The selected slices will have an outline with the color defined by the SelectionBrush of the chart.
+- [`SelectionColorThickOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=SelectionColorThickOutline): The selected slices will have an outline with the color defined by the FocusBrush of the chart. The thickness of this outline can be configured via the Thickness property of the control as well.
+- [`ThickOutline`](mcp:get_api_reference?platform=angular&component=SeriesSelectionMode&member=ThickOutline): The selected slices will apply an outline with the thickness dependent on the Thickness property of the chart.
 
 When a slice is selected, its underlying data item will be added to the SelectedSeriesItems collection of the chart. As such, the DataPieChart exposes the SelectedSeriesItemsChanged event to detect when a slice has been selected and this collection is changed.
 
-The following sample demonstrates the selection feature of the `IgxDataPieChart` control:
+The following sample demonstrates the selection feature of the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) control:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -602,22 +604,22 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Data Pie Chart Highlighting
-The `IgxDataPieChart` supports mouse over highlighting, as well as a highlighting overlay that can be configured by providing a separate data source.
+The [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) supports mouse over highlighting, as well as a highlighting overlay that can be configured by providing a separate data source.
 
-First, the `HighlightingBehavior` enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
+First, the [`highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightingBehavior) enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
 
-- `DirectlyOver`: The slices are only highlighted when the mouse is directly over them.
-- `NearestItems`: The nearest slice to the mouse position will be highlighted.
-- `NearestItemsAndSeries`: The nearest slice and series to the mouse position will be highlighted.
-- `NearestItemsRetainMainShapes`: The nearest items to the mouse position will be highlighted and the main shapes of the series will not be de-emphasized.
+- [`DirectlyOver`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingBehavior&member=DirectlyOver): The slices are only highlighted when the mouse is directly over them.
+- [`NearestItems`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingBehavior&member=NearestItems): The nearest slice to the mouse position will be highlighted.
+- [`NearestItemsAndSeries`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingBehavior&member=NearestItemsAndSeries): The nearest slice and series to the mouse position will be highlighted.
+- [`NearestItemsRetainMainShapes`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingBehavior&member=NearestItemsRetainMainShapes): The nearest items to the mouse position will be highlighted and the main shapes of the series will not be de-emphasized.
 
-The `HighlightingMode` enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
+The [`highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightingMode) enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
 
-- `Brighten`: The series will have its color brightened when the mouse position is over or near it.
-- `FadeOthers`: The series will retain its color when the mouse position is over or near it, while the others will appear faded.
-- `None`: The series and slices will not be highlighted.
+- [`Brighten`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingMode&member=Brighten): The series will have its color brightened when the mouse position is over or near it.
+- [`FadeOthers`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingMode&member=FadeOthers): The series will retain its color when the mouse position is over or near it, while the others will appear faded.
+- [`None`](mcp:get_api_reference?platform=angular&component=SeriesHighlightingMode&member=None): The series and slices will not be highlighted.
 
-The following example demonstrates the mouse highlighting behaviors of the `IgxDataPieChart` component:
+The following example demonstrates the mouse highlighting behaviors of the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) component:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -757,7 +759,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-In addition to the mouse highlighting, the `IgxDataPieChart` exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the `HighlightedValuesDisplayMode` property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the `IgxDataPieChart`.
+In addition to the mouse highlighting, the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightedDataSource) for the control and by setting the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightedValuesDisplayMode) property to [`SeriesHighlightedValuesDisplayMode.Overlay`](mcp:get_api_reference?platform=angular&component=SeriesHighlightedValuesDisplayMode&member=Overlay). The [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightedDataSource) expects a subset of the data assigned to the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=dataSource) property of the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent).
 
 When these conditions are met, the values of the subset will be highlighted, while the remainder of the full set of data will be faded - effectively creating a highlight for the subset and allowing easier visualization of a subset of your data within the same control.
 
@@ -868,13 +870,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Data Pie Chart Animation
-The `IgxDataPieChart` supports animating its slices into view, as well as when a value changes.
+The [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) supports animating its slices into view, as well as when a value changes.
 
-You can set the `IsTransitionInEnabled` property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the `TransitionInMode` enumerated property to the type of animation you would like to see. Additionally, you can also set the `TransitionInSpeedType` property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the `TransitionInDuration` property, which takes a `TimeSpan`.
+You can set the [`isTransitionInEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=isTransitionInEnabled) property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the [`transitionInMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionInMode) enumerated property to the type of animation you would like to see. Additionally, you can also set the [`transitionInSpeedType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionInSpeedType) property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the [`transitionInDuration`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionInDuration) property, which takes a number of milliseconds.
 
-If you would like to animate data changes, this can also be done by setting the `AnimateSeriesWhenAxisRangeChanges` property to **true**. The duration of this change can be configured by setting the `TransitionDuration` property as well.
+If you would like to animate data changes, this can also be done by setting the [`animateSeriesWhenAxisRangeChanges`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=animateSeriesWhenAxisRangeChanges) property to **true**. The duration of this change can be configured by setting the [`transitionDuration`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=transitionDuration) property as well.
 
-The following sample demonstrates the usage of animation in the `IgxDataPieChart`:
+The following sample demonstrates the usage of animation in the [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1021,4 +1023,4 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 - [Radial Chart](radial-chart.md)
 
 ## API References
-`IgxDataPieChart`
+[`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent)

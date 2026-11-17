@@ -266,7 +266,7 @@ To display the Dropdown component opened initially, it is recommended to set the
 <hr/>
 
 - [Drop Down overview](/drop-down)
-- [Chip overview](/chip)
+- [Chip overview](/inputs/chip)
 - [Tree overview](/tree)
 - [Tree Grid overview](/treegrid/tree-grid)
 

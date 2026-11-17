@@ -10,7 +10,7 @@ _premium: true
 ---
 # Angular Grid with Cascading Combos
 
-The Grid's Editing functionality provides with the opportunity to use [Cascading Combos](/simple-combo#cascading-scenario). By selecting the value in any preceding [Combos](/combo), the users will receive only the data that is relevant to their selection within the next Combo.
+The Grid's Editing functionality provides with the opportunity to use [Cascading Combos](/inputs/combo/single-selection#value-and-selection). By selecting the value in any preceding [Combos](/inputs/combo/overview), the users will receive only the data that is relevant to their selection within the next Combo.
 
 ## Angular Grid with Cascading Combos Sample Overview
 
@@ -243,9 +243,9 @@ export class GridCascadingCombosComponent implements OnInit {
 
 In order enable column editing, make sure [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) property is set to **true**.
 
-Once the column editing is enabled, you can start by adding your [Single Select ComboBox](/simple-combo). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](/simple-combo) instead of modifying the igxCombo.
+Once the column editing is enabled, you can start by adding your [Single Select ComboBox](/inputs/combo/single-selection). Please note that here in order to have only one single selection available, you will need to use [igxSimpleCombo](/inputs/combo/single-selection) instead of modifying the igxCombo.
 
-To get started with the [Simple ComboBox component](/simple-combo#angular-simple-combobox-features), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
+To get started with the [Simple ComboBox component](/inputs/combo/single-selection#getting-started), first you need to import the `IgxSimpleComboModule` in your **app.module.ts** file:
 
 ```typescript
 import { IgxSimpleComboModule } from 'igniteui-angular/simple-combo';
@@ -280,7 +280,7 @@ export class MySimpleComboComponent implements OnInit {
 }
 ```
 
-In order to handle the selection change, we need [`selectionChanging()`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [`IgxIComboSelectionChangingEventArgs`](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
+In order to handle the selection change, we need [`selectionChanging()`](mcp:get_api_reference?platform=angular&component=IgxComboComponent&member=selectionChanging). The emitted event arguments, [`IComboSelectionChangingEventArgs`](mcp:get_api_reference?platform=angular&component=IComboSelectionChangingEventArgs), contain information about the selection prior to the change, the current selection and the items that were added or removed. Therefore, it will filter the values based on the selection of the previous combo.
 
 ```html
 <igx-combo [data]="countriesData" (selectionChanging)="countryChanging($event)"></igx-combo>
@@ -314,6 +314,6 @@ The [`id`](mcp:get_api_reference?platform=angular&component=IgxLinearProgressBar
 
 - [Grid Editing](/grid/editing)
 
-- [Single Select ComboBox](/simple-combo)
-- [Cascading Combos](/simple-combo#cascading-scenario)
+- [Single Select ComboBox](/inputs/combo/single-selection)
+- [Cascading Combos](/inputs/combo/single-selection#value-and-selection)
 - [Linear Progress](/linear-progress)

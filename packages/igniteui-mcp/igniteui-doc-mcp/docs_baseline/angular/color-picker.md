@@ -1526,7 +1526,7 @@ igc-color-picker {
     border: 0.063rem solid;
     padding: 1.5rem;
     border-color: var(--ig-gray-200);
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
 }
 
 .theme-editor-header {

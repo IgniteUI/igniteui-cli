@@ -133,7 +133,7 @@ This approach is more performance optimized than auto-sizing post initialization
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 In case you would like to change the color of the resize handle, you need to set a class for the grid first:
 
 ```html

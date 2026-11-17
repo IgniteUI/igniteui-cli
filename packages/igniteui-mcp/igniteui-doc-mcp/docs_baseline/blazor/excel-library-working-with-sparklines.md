@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook"]
 llms:
   description: "The Infragistics Blazor Excel Library has support for adding sparklines to an Excel Worksheet."
+platformType: xplat-unmapped
 _tocName: Working with Sparklines
 _premium: true
 ---
@@ -383,4 +384,4 @@ sheet1.SparklineGroups.Add(SparklineType.Column, "Sparklines!B1:B1", "Data!A2:A1
 ```
 
 ## API References
-[`IgbWorkbook`](mcp:get_api_reference?platform=blazor&component=Workbook)
+[`Workbook`](mcp:get_api_reference?platform=blazor&component=Workbook)

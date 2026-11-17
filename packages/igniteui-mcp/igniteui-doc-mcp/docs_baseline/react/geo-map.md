@@ -1,11 +1,12 @@
 ---
 title: "React Map | Data Visualization Tools | Map Overview | Infragistics"
-description: Use Infragistics' React JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for React map demos!
+description: Use Infragistics' React map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for React map demos!
 keywords: "React map, geographic map, imagery tiles, Ignite UI for React, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "The Ignite UI for React map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
+platformType: xplat
 _tocName: Geographic Map Features
 ---
 # React Map Overview
@@ -1035,24 +1036,26 @@ npm install --save igniteui-react-maps
 
 The `IgrGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
-```ts
+```tsx
 import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
 import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
+// ...
+const mods: any[] = [
+    IgrGeographicMapModule,
+    IgrDataChartInteractivityModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Usage
 
-Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
+Configure the geographic map and enable zooming with the following example.
 
 ```tsx
 <IgrGeographicMap
-    width="600px"
-    height="600px"
-    zoomable="true" />
+    height="100%"
+    width="100%"
+    zoomable={true} />
 ```
 
 ## Additional Resources

@@ -3,9 +3,10 @@ title: "React Axis Layouts | Data Visualization | Infragistics"
 description: Infragistics' React Axis Layouts
 keywords: "React Axis, Layouts, Location, Position, Share, Multiple, Crossing, Infragistics"
 license: commercial
-mentionedTypes: [ "DomainChart", "CategoryChart", "XYChart", "DomainChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis" ]
+mentionedTypes: ["DomainChart", "CategoryChart", "XYChart", "DataChart", "Axis", "AxisLabelSettings", "ScatterSplineSeries", "TimeXAxis"]
 llms:
   description: "All Ignite UI for React charts include options to configure many axis layout options such as location as well as having the ability to share axis between series or have multiple axes in the same chart."
+platformType: xplat
 _tocName: Axis Layouts
 _premium: true
 ---
@@ -18,9 +19,9 @@ the following examples can be applied to `IgrCategoryChart` as well as `IgrFinan
 
 ## Axis Locations Example
 
-For all axes, you can specify axis location in relationship to chart plot area. The `XAxisLabelLocation` property of the React charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the `YAxisLabelLocation` property to position y-axis on left side or right side of plot area.
+For all axes, you can specify axis location in relationship to chart plot area. The `xAxisLabelLocation` property of the React charts, allows you to position x-axis line and its labels on above or below plot area. Similarly, you can use the `yAxisLabelLocation` property to position y-axis on left side or right side of plot area.
 
-The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the `YAxisLabelLocation` so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
+The following example depicts the amount of renewable electricity produced since 2009, represented by a [Line Chart](../types/line-chart.md). There is a drop-down that lets you configure the `yAxisLabelLocation` so that you can visualize what the axes look like when the labels are placed on the left or right side on the inside or outside of the chart's plot area.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -337,7 +338,7 @@ root.render(<DataChartAxisSharing/>);
 
 ### Axis Crossing Example
 
-In addition to placing axes outside plot area, the React `IgrDataChart` also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting `CrossingAxis` and `CrossingValue` properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
+In addition to placing axes outside plot area, the React `IgrDataChart` also provides options to position axes inside of plot area and make them cross at specific values. For example, you can create trigonometric chart by setting `crossingAxis` and `crossingValue` properties on both x-axis and y-axis to render axis lines and axis labels such that they are crossing at (0, 0) origin point.
 
 The following example shows a Sin and Cos wave represented by a [Scatter Spline Chart](../types/scatter-chart.md) with the X and Y axes crossing each other at the (0, 0) origin point.
 
@@ -502,14 +503,14 @@ d in the above sections:
 
 | `IgrDataChart`                                         | `IgrCategoryChart`                 |
 | ------------------------------------------------------ | ------------------------------- |
-| `Axes` -> `IgrNumericYAxis` -> `CrossingAxis`             | None                            |
-| `Axes` -> `IgrNumericYAxis` -> `CrossingValue`            | None                            |
-| `Axes` -> `IgrNumericXAxis` -> `IsInverted`               | `XAxisInverted`                 |
-| `Axes` -> `IgrNumericYAxis` -> `IsInverted`               | `YAxisInverted`                 |
-| `Axes` -> `IgrNumericYAxis` -> `LabelLocation`            | `YAxisLabelLocation`            |
-| `Axes` -> `IgrNumericXAxis` -> `LabelLocation`            | `XAxisLabelLocation`            |
-| `Axes` -> `IgrNumericYAxis` -> `LabelHorizontalAlignment` | `YAxisLabelHorizontalAlignment` |
-| `Axes` -> `IgrNumericXAxis` -> `LabelVerticalAlignment`   | `XAxisLabelVerticalAlignment`   |
-| `Axes` -> `IgrNumericYAxis` -> `LabelVisibility`          | `YAxisLabelVisibility`          |
-| `Axes` -> `IgrNumericXAxis` -> `LabelVisibility`          | `XAxisLabelVisibility`          |
+| `axes` -> `IgrNumericYAxis` -> `crossingAxis`             | None                            |
+| `axes` -> `IgrNumericYAxis` -> `crossingValue`            | None                            |
+| `axes` -> `IgrNumericXAxis` -> `isInverted`               | `xAxisInverted`                 |
+| `axes` -> `IgrNumericYAxis` -> `isInverted`               | `yAxisInverted`                 |
+| `axes` -> `IgrNumericYAxis` -> `labelLocation`            | `yAxisLabelLocation`            |
+| `axes` -> `IgrNumericXAxis` -> `labelLocation`            | `xAxisLabelLocation`            |
+| `axes` -> `IgrNumericYAxis` -> `labelHorizontalAlignment` | `yAxisLabelHorizontalAlignment` |
+| `axes` -> `IgrNumericXAxis` -> `labelVerticalAlignment`   | `xAxisLabelVerticalAlignment`   |
+| `axes` -> `IgrNumericYAxis` -> `labelVisibility`          | `yAxisLabelVisibility`          |
+| `axes` -> `IgrNumericXAxis` -> `labelVisibility`          | `xAxisLabelVisibility`          |
 

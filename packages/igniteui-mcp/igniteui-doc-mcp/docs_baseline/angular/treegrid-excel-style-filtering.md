@@ -176,7 +176,7 @@ To turn on the grid excel filtering, two inputs should be set. The [`allowFilter
 
 In order to open the filter menu for a particular column, the Angular filter icon in the header should be clicked. Additionally, you can use the `Ctrl + Shift + L` combination on a selected header. If the column can be sorted, pinned, moved, selected or hidden along with the filtering functionality, there will be buttons available for the features that are turned on.
 
-If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or).
+If no filter is applied, all the items in the list will be selected. They can be filtered from the input above the list. In order to filter the data, you can select/deselect the items in the list and either click the Apply button, or press `Enter`. The filtering applied through the list items creates filter expressions with `equals` operator and the logic operator between the expressions is [`FilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or).
 
 If you type something in the search box and apply the filter, only the items that match the search criteria will be selected. If you want to add items to the currently filtered ones, however, you should select the option `Add current selection to filter`.
 
@@ -200,8 +200,11 @@ Sorting, pinning and hiding features can be removed from the filter menu using t
     <igx-column field="OrderDate" header="Order Date" [dataType]="'date'" [formatter]="formatDate" [sortable]="false"></igx-column>
     <igx-column field="Delivered" header="Deliverued" [dataType]="'boolean'" [sortable]="false">
         <ng-template igxCell let-cell="cell" let-val>
-            <img *ngIf="val" src="assets/images/grid/active.png" title="Delivered" alt="Delivered" />
-            <img *ngIf="!val" src="assets/images/grid/expired.png" title="Undelivered" alt="Undelivered" />
+            @if (val) {
+                <img src="assets/images/grid/active.png" title="Delivered" alt="Delivered" />
+            } @else {
+                <img src="assets/images/grid/expired.png" title="Undelivered" alt="Undelivered" />
+            }
         </ng-template>
     </igx-column>
 </igx-tree-grid>
@@ -507,7 +510,7 @@ These values can be provided manually and loaded on demand, which is demonstrate
 
 ## Formatted Values Filtering Strategy
 
-By default, the Tree Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. In order to do that you can use the [`IgxTreeGridFormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=TreeGridFormattedValuesFilteringStrategy). The following sample demonstrates how to format the numeric values of a column as strings and filter the Tree Grid based on the string values:
+By default, the Tree Grid component filters the data based on the original cell values, however in some cases you may want to filter the data based on the formatted values. In order to do that you can use the [`TreeGridFormattedValuesFilteringStrategy`](mcp:get_api_reference?platform=angular&component=TreeGridFormattedValuesFilteringStrategy). The following sample demonstrates how to format the numeric values of a column as strings and filter the Tree Grid based on the string values:
 
 ```typescript
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -585,7 +588,7 @@ The formatted values filtering strategy won't work correctly if you have more th
 
 ## Tree Filter View
 
-By default, the Excel Style Filtering dialog displays the items in a list view. In order to display them in a tree view you can use the [`IgxTreeGridFilteringStrategy`](mcp:get_api_reference?platform=angular&component=TreeGridFilteringStrategy) and specify an array of column field names. Filter items will be displayed in a tree view for the specified columns and in a list view for all other columns. The following sample demonstrates how to show filter items in a tree view for the first column:
+By default, the Excel Style Filtering dialog displays the items in a list view. In order to display them in a tree view you can use the [`TreeGridFilteringStrategy`](mcp:get_api_reference?platform=angular&component=TreeGridFilteringStrategy) and specify an array of column field names. Filter items will be displayed in a tree view for the specified columns and in a list view for all other columns. The following sample demonstrates how to show filter items in a tree view for the first column:
 
 ```typescript
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';

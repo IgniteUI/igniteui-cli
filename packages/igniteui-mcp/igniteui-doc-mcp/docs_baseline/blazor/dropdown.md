@@ -41,13 +41,15 @@ The following Blazor Dropdown List example demonstrates the use of simple intera
 
 ## How to use the Dropdown List with Ignite UI for Blazor
 
-Before using the [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbDropdownModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbDropdownModule`](mcp:get_api_reference?platform=blazor&component=IgbDropdownModule), the client resource module of the [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbDropdownModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 The simplest way to start using the [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) is as follows:
 
@@ -64,7 +66,7 @@ The Blazor Dropdown list is positioned relatively to its target. The `target` sl
        <IgbButton style="margin-right: 20px;" @onclick=OnClick>Toggle Dropdown</IgbButton>
 
        <IgbDropdown @ref="DropDownRef" KeepOpenOnOutsideClick="true" PositionStrategy="DropdownPositionStrategy.Fixed">
-           <IgbButton @ref="ButtonRef" slot="target" style="margin-right: 20px;">Dropdown</IgbButton>
+           <IgbButton slot="target" style="margin-right: 20px;">Dropdown</IgbButton>
 
            <IgbDropdownItem>Option 1</IgbDropdownItem>
            <IgbDropdownItem>Option 2</IgbDropdownItem>
@@ -76,7 +78,6 @@ The Blazor Dropdown list is positioned relatively to its target. The `target` sl
 @code {
 
     IgbDropdown DropDownRef { get; set; }
-    IgbButton ButtonRef { get; set; }
 
     private void OnClick(MouseEventArgs e)
     {
@@ -105,7 +106,7 @@ The preferred placement of the Blazor Dropdown can be set using the [`Placement`
 </style>
 
 <div class="container sample center">
-    <IgbDropdown @ref="DropDownRef" Distance="5" Change=OnChange Placement=@placement>
+    <IgbDropdown Distance="5" Change=OnChange Placement=@placement>
         <IgbButton slot="target">Option</IgbButton>
             <IgbDropdownItem Value="Top">@PopoverPlacement.Top</IgbDropdownItem>
             <IgbDropdownItem Value="TopStart">@PopoverPlacement.TopStart</IgbDropdownItem>
@@ -124,7 +125,6 @@ The preferred placement of the Blazor Dropdown can be set using the [`Placement`
 
     @code {
 
-    IgbDropdown DropDownRef { get; set; }
     PopoverPlacement placement { get; set; }
 
     private void OnChange(IgbDropdownItemComponentEventArgs e)

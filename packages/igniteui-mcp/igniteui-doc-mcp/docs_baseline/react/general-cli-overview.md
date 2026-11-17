@@ -4,7 +4,7 @@ description: "The Ignite UI for React CLI scaffolds React projects, adds pre-con
 keywords: "React cli, command line interface, Ignite UI for React, Infragistics"
 mentionedTypes: []
 license: MIT
-last_updated: "2026-04-21"
+last_updated: "2026-10-01"
 llms:
   description: "The Ignite UI CLI (igniteui-cli) is a standalone global command-line tool for creating and scaffolding React applications with Ignite UI for React."
 _tocName: Ignite UI CLI
@@ -161,12 +161,85 @@ To list all available templates in the current project:
 ig list
 ```
 
+The list is project-aware and reflects the project's framework and type.
+
 For a guided walkthrough of the component addition wizard, see [Step-by-Step Guide Using Ignite UI CLI](./general-step-by-step-guide-using-cli.md#add-view).
 
 **Note:** 
 Your routing file will be updated with the path to the newly generated page. For example, a component named `MyGrid` will be navigable at `/my-grid`.
 
-To see all component templates available for the current project, run `ig list`. The list is project-aware and reflects the selected framework and type.
+The following component templates are available for React:
+
+| Name               | Component Template |
+| :----------------- | :----------------- |
+| Accordion          | accordion          |
+| Avatar             | avatar             |
+| Badge              | badge              |
+| Banner             | banner             |
+| Breadcrumbs        | breadcrumbs        |
+| Bullet Graph       | bullet-graph       |
+| Button             | button             |
+| Button Group       | button-group       |
+| Calendar           | calendar           |
+| Card               | card               |
+| Carousel           | carousel           |
+| Category Chart     | category-chart     |
+| Chat               | chat               |
+| Checkbox           | checkbox           |
+| Chip               | chip               |
+| Circular Progress  | circular-progress  |
+| Color Picker       | color-picker       |
+| Color Picker Alpha | color-picker-alpha |
+| Combo              | combo              |
+| Date Picker        | date-picker        |
+| Date Range Picker  | date-range-picker  |
+| Date Time Input    | date-time-input    |
+| Dialog             | dialog             |
+| Divider            | divider            |
+| Doughnut Chart     | doughnut-chart     |
+| Dropdown           | dropdown           |
+| Expansion Panel    | expansion-panel    |
+| File Input         | file-input         |
+| Financial Chart    | financial-chart    |
+| Form               | form               |
+| Grid               | grid               |
+| Hierarchical Grid  | hierarchical-grid  |
+| Highlight          | highlight          |
+| Icon               | icon               |
+| Icon Button        | icon-button        |
+| Input              | input              |
+| Linear Gauge       | linear-gauge       |
+| Linear Progress    | linear-progress    |
+| List               | list               |
+| Mask Input         | mask-input         |
+| Nav Drawer         | nav-drawer         |
+| Navbar             | navbar             |
+| Pie Chart          | pie-chart          |
+| Pivot Grid         | pivot-grid         |
+| QR Code            | qr-code            |
+| Radial Gauge       | radial-gauge       |
+| Radio Group        | radio-group        |
+| Range Slider       | range-slider       |
+| Rating             | rating             |
+| Ripple             | ripple             |
+| Select             | select             |
+| Slider             | slider             |
+| Snackbar           | snackbar           |
+| Splitter           | splitter           |
+| Stepper            | stepper            |
+| Switch             | switch             |
+| Tabs               | tabs               |
+| Text Area          | text-area          |
+| Theme Provider     | theme-provider     |
+| Tile Manager       | tile-manager       |
+| Toast              | toast              |
+| Toggle Button      | toggle-button      |
+| Tooltip            | tooltip            |
+| Tree               | tree               |
+| Tree Grid          | tree-grid          |
+| Virtual Scroll     | virtual-scroll     |
+
+The `financial-chart` template is not shown in the interactive `ig add` wizard. Add it directly with `ig add financial-chart [component-name]`.
 
 ## Run the Application
 

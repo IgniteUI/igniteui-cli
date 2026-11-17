@@ -158,7 +158,7 @@ Configuring the message displayed in the banner is easy - just change the conten
 
 ### Adding an icon
 
-An [`igx-icon`](./icon.md) can be displayed in the banner by passing it to the banner's content. The icon will always be positioned at the beginning of the banner message.
+An [`igx-icon`](./layouts/icon.md) can be displayed in the banner by passing it to the banner's content. The icon will always be positioned at the beginning of the banner message.
 
 **Note:** 
 If several `igx-icon` elements are inserted as direct descendants of the banner, the banner will try to position all of them at the beginning. It is strongly advised to pass only one `igx-icon` directly to the banner.

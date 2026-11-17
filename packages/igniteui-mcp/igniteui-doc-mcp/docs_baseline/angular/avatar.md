@@ -112,7 +112,7 @@ export class AvatarOverviewComponent {}
     display: flex;
 
     igx-avatar {
-        box-shadow: 0 0 0 calc(var(--size) * 0.07) var(--ig-surface-500);
+        box-shadow: 0 0 0 calc(var(--size) * 0.07) var(--ig-surface-base);
 
         + igx-avatar {
             // Proportional to the avatar's own rendered size (--size, set by
@@ -280,6 +280,10 @@ $avatars: circle, square, rounded;
 }
 
 :where(span) {
+    @include type-style("body-1") {
+        margin: 0;
+    }
+
     grid-row: 2;
     text-align: center;
     color: var(--ig-gray-600);
@@ -288,10 +292,6 @@ $avatars: circle, square, rounded;
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-1") {
-        margin: 0;
-    };
 }
 
 :where(igx-badge) {
@@ -421,6 +421,10 @@ igx-avatar {
 }
 
 span {
+    @include type-style("body-1") {
+        margin: 0;
+    }
+
     grid-row: 2;
     text-align: center;
     color: var(--ig-gray-600);
@@ -429,10 +433,6 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-1") {
-        margin: 0;
-    };
 }
 
 igx-badge {
@@ -544,6 +544,10 @@ igx-avatar {
 }
 
 span {
+    @include type-style("body-1") {
+        margin: 0;
+    }
+
     grid-row: 2;
     text-align: center;
     color: var(--ig-gray-600);
@@ -552,10 +556,6 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-1") {
-        margin: 0;
-    };
 }
 
 igx-badge {

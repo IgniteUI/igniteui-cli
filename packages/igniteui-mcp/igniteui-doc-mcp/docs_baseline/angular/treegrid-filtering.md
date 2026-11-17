@@ -172,7 +172,7 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Tree Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) of the column, the correct set of [`filtering operations`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) is loaded inside the filter UI dropdown. Additionally, you can set the [`IgxIFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and the initial [`IgxIFilteringExpression.condition`](mcp:get_api_reference?platform=angular&component=IFilteringExpression&member=condition) properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Tree Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) of the column, the correct set of [`filtering operations`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) is loaded inside the filter UI dropdown. Additionally, you can set the [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and the initial [`IFilteringExpression.condition`](mcp:get_api_reference?platform=angular&component=IFilteringExpression&member=condition) properties.
 
 Filtering feature is enabled for the Tree Grid component by setting the [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=allowFiltering) input to `true`. The default [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filterMode) is `quickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filterable) input to `false`.
 
@@ -259,7 +259,7 @@ this.treeGrid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the Tree Grid, set the [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringExpressionsTree) property to an array of [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the Tree Grid, set the [`IgxTreeGrid`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringExpressionsTree) property to an array of [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor(private cdr: ChangeDetectorRef) { }
@@ -293,9 +293,9 @@ import { FilteringLogic } from 'igniteui-angular/grids/core';
 this.treeGrid.filteringLogic = FilteringLogic.OR;
 ```
 
-The default value of [`IgxFilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
+The default value of [`FilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
 
-When set to [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
+When set to [`FilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
 
 ## Remote Filtering
 
@@ -378,8 +378,11 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
     <igx-column field="Name" header="Order Product" [filters]="caseSensitiveFilteringOperand"></igx-column>
     <igx-column field="Delivered" header="Delivered" [dataType]="'boolean'" [filters]="booleanFilteringOperand">
         <ng-template igxCell let-cell="cell" let-val>
-            <img *ngIf="val" src="assets/images/grid/active.png" title="Delivered" alt="Delivered" />
-            <img *ngIf="!val" src="assets/images/grid/expired.png" title="Undelivered" alt="Undelivered" />
+            @if (val) {
+                <img src="assets/images/grid/active.png" title="Delivered" alt="Delivered" />
+            } @else {
+                <img src="assets/images/grid/expired.png" title="Undelivered" alt="Undelivered" />
+            }
         </ng-template>
     </igx-column>
 </igx-tree-grid>
@@ -947,12 +950,12 @@ Some browsers such as Firefox fail to parse regional specific decimal separators
 - The [`filter`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filter) method has new signature. It now accepts the following parameters:
   - `name` - the name of the column to be filtered.
   - `value` - the value to be used for filtering.
-  - `conditionOrExpressionTree` (optional) - this parameter accepts object of type [`IgxIFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) or [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree). If only simple filtering is needed, a filtering operation could be passed as an argument. In case of advanced filtering, an expressions tree containing complex filtering logic could be passed as an argument.
+  - `conditionOrExpressionTree` (optional) - this parameter accepts object of type [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) or [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree). If only simple filtering is needed, a filtering operation could be passed as an argument. In case of advanced filtering, an expressions tree containing complex filtering logic could be passed as an argument.
   - `ignoreCase` (optional) - whether the filtering is case sensitive or not.
-- [`filteringDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringDone) event now have only one parameter of type [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) which contains the filtering state of the filtered column.
-- filtering operands: [`IgxIFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) condition property is no longer a direct reference to a filtering condition method, instead it's a reference to an [`IgxIFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation).
+- [`filteringDone`](mcp:get_api_reference?platform=angular&component=IgxTreeGridComponent&member=filteringDone) event now have only one parameter of type [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) which contains the filtering state of the filtered column.
+- filtering operands: [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) condition property is no longer a direct reference to a filtering condition method, instead it's a reference to an [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation).
 - [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) now exposes a [`filters`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filters) property, which takes an [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) class reference.
-- Custom filters can be provided to the Tree Grid columns by populating the [`operations`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand&member=operations) property of the [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) with operations of [`IgxIFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) type.
+- Custom filters can be provided to the Tree Grid columns by populating the [`operations`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand&member=operations) property of the [`IgxFilteringOperand`](mcp:get_api_reference?platform=angular&component=IgxFilteringOperand) with operations of [`IFilteringOperation`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) type.
 
 ## API References
 - [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)

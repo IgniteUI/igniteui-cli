@@ -129,14 +129,15 @@ In order enable column editing, make sure [`IgbColumn.editable`](mcp:get_api_ref
 
 Once the column editing is enabled, you can start by adding your [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule). Please note that here in order to have only one single selection available, you will need to use set the [`IgbCombo.singleSelect`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=singleSelect) property.
 
-To get started with the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule), first you need to import it:
+Register the Ignite UI for Blazor services:
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(
-    typeof(IgbGridModule),
-    typeof(IgbComboModule)
-);
+// in Program.cs file
+
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbComboModule`](mcp:get_api_reference?platform=blazor&component=IgbComboModule), the client resource module of the [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbComboModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../../general-getting-started.md#component-modules)).
 
 Then you should define the column template with the combo:
 

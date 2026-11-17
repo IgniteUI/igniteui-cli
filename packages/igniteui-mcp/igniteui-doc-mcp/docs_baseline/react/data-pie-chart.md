@@ -1,12 +1,14 @@
 ---
 title: React Pie Charts and Graphs | Ignite UI for React
-description: The Ignite UI for React data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+description: The Ignite UI for React data pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Download free trial.
 keywords: React charts, pie chart, Ignite UI for React, Infragistics, data binding, slice selection, animation, highlighting, legend
 license: commercial
 
+mentionedTypes: ["DataPieChart", "DataChart", "OthersCategoryType", "SeriesSelectionMode", "SeriesSelectionBehavior", "SeriesHighlightingBehavior", "ToolTipType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Data Pie Chart is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
+platformType: xplat
 _tocName: Data Pie Chart
 _premium: true
 ---
@@ -142,11 +144,11 @@ Do Not Use Pie Chart When:
 ## React Data Pie Chart Legend
 Legends are used to show information about each point, to know about its contribution towards the total sum.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `Legend` property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its `Orientation` property.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `IgrDataPieChart.legend` property. The ItemLegend will display its items in vertical orientation as a default, but this can be changed by setting its `orientation` property.
 
-The labels shown on the legend will display the same content as the label that is shown for each slice in the `IgrDataPieChart` by default, but this can be modified by utilizing the `LegendSliceLabelContentMode` property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
+The labels shown on the legend will display the same content as the label that is shown for each slice in the `IgrDataPieChart` by default, but this can be modified by utilizing the `legendSliceLabelContentMode` property on the chart. This exposes an enumeration that allows you to show the label, value, percentage, or any combination of those as the legend's content for each slice in the chart.
 
-You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the `LegendItemBadgeShape` property on the chart, and you can set this to be a circle, line, bar, column, and more.
+You can also modify the ItemLegend badge. By default, it appears as a filled circle corresponding to the color of the associated chart slice. You can configure this by using the `legendItemBadgeShape` property on the chart, and you can set this to be a circle, line, bar, column, and more.
 
 Below is an example that demonstrates usage of the ItemLegend with the `IgrDataPieChart`.
 
@@ -275,29 +277,29 @@ root.render(<Sample/>);
 ## React Pie Chart Others Category
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice.
 
-The Others category in the `IgrDataPieChart` has three main, configurable properties - `OthersCategoryType`, `OthersCategoryThreshold`, and `OthersCategoryText` that allow you to configure how the Others slice in the chart is shown. These are each described below:
+The Others category in the `IgrDataPieChart` has three main, configurable properties - `othersCategoryType`, `othersCategoryThreshold`, and `othersCategoryText` that allow you to configure how the Others slice in the chart is shown. These are each described below:
 
-The `OthersCategoryType` property works in tandem with the `OthersCategoryThreshold` property of the `IgrDataPieChart`. For the `OthersCategoryType`, you can define whether you want the `OthersCategoryThreshold` to be evaluated as a number or a percentage. For example, if you decide on number and set the `OthersCategoryThreshold` to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the `IgrDataPieChart` will become part of the Others category.
+The `othersCategoryType` property works in tandem with the `othersCategoryThreshold` property of the `IgrDataPieChart`. For the `othersCategoryType`, you can define whether you want the `othersCategoryThreshold` to be evaluated as a number or a percentage. For example, if you decide on number and set the `othersCategoryThreshold` to 5, any slices that have a value less than 5 will become part of the Others category. Using the same value of 5 with a percent type, any values that are less than 5 percent of the total values of the `IgrDataPieChart` will become part of the Others category.
 
-To get the underlying data items that are contained within the Others slice in the chart, you can utilize the `GetOthersContext` method on the chart. This return type of this method is an `IgrOthersCategoryContext` which exposes an `Items` property. The `Items` property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the `Item` property of the event arguments for the `SeriesClick` event will be will also return this `IgrOthersCategoryContext`.
+To get the underlying data items that are contained within the Others slice in the chart, you can utilize the `getOthersContext` method on the chart. This return type of this method is an `IgrOthersCategoryContext` which exposes an `IgrOthersCategoryContext.items` property. The `IgrOthersCategoryContext.items` property returns an array that will contain the items in the Others slice. Additionally, when clicking the Others slice, the `Item` property of the event arguments for the `seriesClick` event will be will also return this `IgrOthersCategoryContext`.
 
-By default, the Others slice will be represented by a label of "Others." You can change this by modifying the `OthersCategoryText` property of the chart.
+By default, the Others slice will be represented by a label of "Others." You can change this by modifying the `othersCategoryText` property of the chart.
 
 ### React Styling the Others Slice
 You can style the aggregated Others slice separately from other slices by using these properties:
 
-- `OthersCategoryBrush`
+- `othersCategoryBrush`
   Sets the fill (brush) used for the Others slice.
 
-- `OthersCategoryOutline`
+- `othersCategoryOutline`
   Sets the outline (stroke) used for the Others slice.
 
 These properties only affect the Others slice (when it exists). All other slices continue to use the normal palette and item-wise coloring behavior.
 
 **Note:** 
-The Others slice is only rendered when the chart is configured to create it (for example, with `OthersCategoryThreshold` greater than `0` and an appropriate `OthersCategoryType`). If the Others slice is not present, `OthersCategoryBrush` and `OthersCategoryOutline` have no visible effect.
+The Others slice is only rendered when the chart is configured to create it (for example, with `othersCategoryThreshold` greater than `0` and an appropriate `othersCategoryType`). If the Others slice is not present, `othersCategoryBrush` and `othersCategoryOutline` have no visible effect.
 
-If you want to ensure that the Others category does not show up in the `IgrDataPieChart`, you can set the `OthersCategoryThreshold` to 0.
+If you want to ensure that the Others category does not show up in the `IgrDataPieChart`, you can set the `othersCategoryThreshold` to 0.
 
 The following sample demonstrates usage of the Others slice in the `IgrDataPieChart`:
 
@@ -455,11 +457,11 @@ root.render(<Sample/>);
 ```
 
 ## React Data Pie Chart Selection
-The `IgrDataPieChart` supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the `SelectionBehavior` and `SelectionMode` properties of the chart, described below:
+The `IgrDataPieChart` supports slice selection by mouse click on the slices plotted in the chart. This can be configured by utilizing the `selectionBehavior` and `selectionMode` properties of the chart, described below:
 
-The main two options of the `SelectionBehavior` are `PerDataItemSingleSelect` and `PerDataItemMultiSelect`, which will enable single and multiple selection, respectively.
+The main two options of the `selectionBehavior` are `PerDataItemSingleSelect` and `PerDataItemMultiSelect`, which will enable single and multiple selection, respectively.
 
-The `SelectionMode` property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
+The `selectionMode` property exposes an enumeration that determines how the pie chart slices respond to being selected. The following are the options of that enumeration and what they do:
 
 - `Brighten`: The selected slices will be highlighted.
 - `FadeOthers`: The selected slices will remain their same color and others will fade.
@@ -631,14 +633,14 @@ root.render(<Sample/>);
 ## React Data Pie Chart Highlighting
 The `IgrDataPieChart` supports mouse over highlighting, as well as a highlighting overlay that can be configured by providing a separate data source.
 
-First, the `HighlightingBehavior` enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
+First, the `highlightingBehavior` enumerated property determines how a slice will be highlighted. The following are the options of that property and what they do:
 
 - `DirectlyOver`: The slices are only highlighted when the mouse is directly over them.
 - `NearestItems`: The nearest slice to the mouse position will be highlighted.
 - `NearestItemsAndSeries`: The nearest slice and series to the mouse position will be highlighted.
 - `NearestItemsRetainMainShapes`: The nearest items to the mouse position will be highlighted and the main shapes of the series will not be de-emphasized.
 
-The `HighlightingMode` enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
+The `highlightingMode` enumerated property determines how the data pie chart slices respond to being highlighted. The following are the options of that property and what they do:
 
 - `Brighten`: The series will have its color brightened when the mouse position is over or near it.
 - `FadeOthers`: The series will retain its color when the mouse position is over or near it, while the others will appear faded.
@@ -789,7 +791,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-In addition to the mouse highlighting, the `IgrDataPieChart` exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `HighlightedDataSource` for the control and by setting the `HighlightedValuesDisplayMode` property to `Overlay`. The `HighlightedDataSource` expects a subset of the data assigned to the `DataSource` property of the `IgrDataPieChart`.
+In addition to the mouse highlighting, the `IgrDataPieChart` exposes a highlight filter capability that can display a subset of your data. This is applied by specifying a `highlightedDataSource` for the control and by setting the `highlightedValuesDisplayMode` property to `SeriesHighlightedValuesDisplayMode.Overlay`. The `highlightedDataSource` expects a subset of the data assigned to the `dataSource` property of the `IgrDataPieChart`.
 
 When these conditions are met, the values of the subset will be highlighted, while the remainder of the full set of data will be faded - effectively creating a highlight for the subset and allowing easier visualization of a subset of your data within the same control.
 
@@ -934,9 +936,9 @@ root.render(<Sample/>);
 ## React Data Pie Chart Animation
 The `IgrDataPieChart` supports animating its slices into view, as well as when a value changes.
 
-You can set the `IsTransitionInEnabled` property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the `TransitionInMode` enumerated property to the type of animation you would like to see. Additionally, you can also set the `TransitionInSpeedType` property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the `TransitionInDuration` property, which takes a `TimeSpan`.
+You can set the `isTransitionInEnabled` property to **true** to have the pie chart animate into view. The type of animation performed can be configured by setting the `transitionInMode` enumerated property to the type of animation you would like to see. Additionally, you can also set the `transitionInSpeedType` property to scale with index, value, normal, or randomized. The duration of this animation can be controlled by the `transitionInDuration` property, which takes a number of milliseconds.
 
-If you would like to animate data changes, this can also be done by setting the `AnimateSeriesWhenAxisRangeChanges` property to **true**. The duration of this change can be configured by setting the `TransitionDuration` property as well.
+If you would like to animate data changes, this can also be done by setting the `animateSeriesWhenAxisRangeChanges` property to **true**. The duration of this change can be configured by setting the `transitionDuration` property as well.
 
 The following sample demonstrates the usage of animation in the `IgrDataPieChart`:
 

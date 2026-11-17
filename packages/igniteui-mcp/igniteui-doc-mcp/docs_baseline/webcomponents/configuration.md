@@ -99,4 +99,4 @@ As mentioned before, you can control the horizontal and vertical spacing individ
 
 ## API References
 
-[`IgcconfigureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)<br />
+[`configureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)<br />

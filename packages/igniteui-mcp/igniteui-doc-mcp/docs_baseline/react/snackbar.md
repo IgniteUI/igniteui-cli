@@ -63,8 +63,6 @@ import { IgrSnackbar } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrSnackbar`](mcp:get_api_reference?platform=react&component=IgrSnackbar), you need to register it as follows:
-
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 The simplest way to display the snackbar component is to use its [`Show`](mcp:get_api_reference?platform=react&component=IgrSnackbar&member=show) method and call it on a button click.

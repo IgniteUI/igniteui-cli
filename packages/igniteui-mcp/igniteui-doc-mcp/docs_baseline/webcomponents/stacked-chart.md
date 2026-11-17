@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "StackedAreaSeries", "Stacked100AreaSeries", "Stac
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines."
+platformType: xplat
 _tocName: Stacked Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Web Components Stacked Chart belongs to a special group of cha
 
 ## Web Components Stacked Chart Types
 
-The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
+The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 ```css
 /* shared styles are loaded from: */
@@ -29,7 +30,7 @@ The following sections demonstrate individual types of Ignite UI for Web Compone
 
 Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](./area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent), as shown in the example below.
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -70,7 +71,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 ## Web Components Stacked 100 Area Chart
 Sometimes the series represent part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100AreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent), as shown in the example below.
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -114,7 +115,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the [Bar Chart](./bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below.
+In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below.
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -155,7 +156,7 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 The Web Components Stacked 100% Bar Chart is identical to the Web Components stacked bar chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100% bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below.
+In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below.
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -196,7 +197,7 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 The Stacked Column Chart is identical to the [Column Chart](./column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent), as shown in the example below.
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -238,7 +239,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Stacked 100% Column Chart is identical to the Stacked Column Chart in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100% Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100ColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent), as shown in the example below.
+The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent), as shown in the example below.
 
 ```typescript
 export class OnlineTrafficByDeviceItem {
@@ -275,7 +276,7 @@ export class OnlineTrafficByDevice extends Array<OnlineTrafficByDeviceItem> {
 
 ## Web Components Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent), as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -317,7 +318,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100LineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100LineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -359,7 +360,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](./area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent), as shown in the example below.
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -401,7 +402,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100SplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent), as shown in the example below.
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -441,7 +442,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 ## Web Components Stacked Spline Chart
 
-The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedSplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineSeriesComponent), as shown in the example below.
+The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineSeriesComponent), as shown in the example below.
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -483,7 +484,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100SplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineSeriesComponent).
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineSeriesComponent).
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -535,15 +536,15 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type               | Control Name   | API Members |
 | -------------------------|----------------|-------------------------------- |
-| Stacked Area             | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent) |
-| Stacked Bar              | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent) |
-| Stacked Column           | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent) |
-| Stacked Line             | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent) |
-| Stacked Spline           | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedSplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineSeriesComponent) |
-| Stacked Spline Area      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedSplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent) |
-| Stacked 100% Area        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100AreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent) |
-| Stacked 100% Bar         | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent) |
-| Stacked 100% Column      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100ColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent) |
-| Stacked 100% Line        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100LineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent) |
-| Stacked 100% Spline      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100SplineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineSeriesComponent) |
-| Stacked 100% Spline Area | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100SplineAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent) |
+| Stacked Area             | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedAreaSeriesComponent) |
+| Stacked Bar              | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent) |
+| Stacked Column           | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedColumnSeriesComponent) |
+| Stacked Line             | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent) |
+| Stacked Spline           | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedSplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineSeriesComponent) |
+| Stacked Spline Area      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedSplineAreaSeriesComponent) |
+| Stacked 100% Area        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100AreaSeriesComponent) |
+| Stacked 100% Bar         | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent) |
+| Stacked 100% Column      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100ColumnSeriesComponent) |
+| Stacked 100% Line        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100LineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent) |
+| Stacked 100% Spline      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineSeriesComponent) |
+| Stacked 100% Spline Area | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) | [`IgcStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100SplineAreaSeriesComponent) |

@@ -1,12 +1,13 @@
 ---
 title: "Web Components Line Chart and Graph | Ignite UI for Web Components"
-description: The Web Components Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
+description: The Web Components Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Download free trial.
 keywords: "Web Components Charts, Line Chart, Line Graph, Infragistics"
 license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time."
+platformType: xplat
 _tocName: Line Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Web Components Line Chart or Line Graph is a type of category 
 
 ## Web Components Line Chart Example
 
-You can create the Web Components Line Chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line) enum, as shown in the example below.
+You can create the Web Components Line Chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data to [`dataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property and setting [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line) enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -100,7 +101,7 @@ There are several common use cases for choosing a Line Chart:
 
 The Web Components Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period, as we have shown in the example below.
 
-You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line), as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -139,7 +140,7 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 Since the Web Components Line Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
 
-You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line), as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -180,7 +181,7 @@ The Web Components Line chart is capable of handling high volumes of data, rangi
 
 In this example, we are streaming live data into the Web Components Line Chart at an interval of your choosing. You can set the data points from 5,000 to 1 million and update the chart to optimize the scale based on the device you are rendering the chart on.
 
-You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line), as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 export class CategoryChartSharedData {
@@ -256,7 +257,7 @@ export class CategoryChartSharedData {
 
 Once our chart is set up, we may want to make some further styling customizations such as change the line colors, change the legend font family, and/or increase the size of the axis labels to make it easier to read.
 
-You can create this type of chart in the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line), as shown in the example below:
+You can create this type of chart in the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -291,9 +292,9 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-You can also create a dashed line within the [`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) by using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) and setting the [`DashArray`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
+You can also create a dashed line within the [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) by using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) and setting the [`dashArray`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
-The following example demonstrates usage of the [`DashArray`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=dashArray) in a [`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent):
+The following example demonstrates usage of the [`dashArray`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=dashArray) in a [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent):
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -348,11 +349,11 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ## Advanced Types of Line Charts
 
-The following sections explain more advanced types of Web Components Line Charts that can be created using the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
+The following sections explain more advanced types of Web Components Line Charts that can be created using the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control instead of [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) control with simplified API.
 
 ## Web Components Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent), as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -394,7 +395,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100LineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100LineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class ContinentsBirthRateItem {
@@ -436,7 +437,7 @@ export class ContinentsBirthRate extends Array<ContinentsBirthRateItem> {
 
 The Radial Line Chart belongs to a group of radial charts and has a shape of an unfilled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Line Chart, but wraps the data points around a circular axis rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcRadialLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class FootballPlayerStatsItem {
@@ -474,7 +475,7 @@ export class FootballPlayerStats extends Array<FootballPlayerStatsItem> {
 
 The Polar Line Chart belongs to a group of polar charts and is rendered using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. Polar Line Charts use the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcPolarLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent), as shown in the example below:
 
 ```typescript
 export class BoatSailingDataItem {
@@ -525,16 +526,16 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type        | Control Name       | API Members |
 | ------------------|--------------------|----------------------- |
-| Line              | [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)    | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`Line`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent&member=line) |
-| Polar Line        | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcPolarLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent) |
-| Radial Line       | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRadialLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent) |
-| Stacked Line      | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStackedLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent) |
-| Stacked 100% Line | [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStacked100LineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent) |
+| Line              | [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)    | [`chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) = [`CategoryChartType.Line`](mcp:get_api_reference?platform=webcomponents&component=CategoryChartType&member=Line) |
+| Polar Line        | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcPolarLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent) |
+| Radial Line       | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcRadialLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent) |
+| Stacked Line      | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStackedLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent) |
+| Stacked 100% Line | [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)     | [`IgcStacked100LineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent) |
 
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
-[`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)<br />
-[`IgcPolarLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent)<br />
-[`IgcRadialLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent)<br />
-[`IgcStackedLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent)<br />
-[`IgcStacked100LineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent)<br />
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)<br />
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)<br />
+[`IgcPolarLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPolarLineSeriesComponent)<br />
+[`IgcRadialLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcRadialLineSeriesComponent)<br />
+[`IgcStackedLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedLineSeriesComponent)<br />
+[`IgcStacked100LineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100LineSeriesComponent)<br />

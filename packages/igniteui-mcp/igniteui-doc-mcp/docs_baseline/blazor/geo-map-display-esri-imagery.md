@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
+platformType: xplat
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
@@ -62,22 +63,20 @@ The [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&componen
 The following code snippet shows how to display Blazor geographic imagery tiles from Esri imagery servers in [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) using [`IgbArcGISOnlineMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbArcGISOnlineMapImagery) class.
 
 ```razor
-@using IgniteUI.Blazor.Controls
+<IgbGeographicMap
+    @ref="oceansMap"
+    Height="100%"
+    Width="100%"
+    Zoomable="true" />
+```
 
-
-<IgbGeographicMap Height="100%" Width="100%"
-    Zoomable="true"
-    BackgroundContent="EsriImagery" />
-
-protected override void OnInitialized()
-{
-    IgbArcGISOnlineMapImagery imagery = new IgbArcGISOnlineMapImagery()
-    {
-        MapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer"
-    };
-
-    this.EsriImagery = imagery;
-}
+```razor
+private IgbGeographicMap oceansMap;
+var oceansMap = this.oceansMap;
+var oceansMapImagery = new IgbArcGISOnlineMapImagery();
+oceansMapImagery.Name = "oceansMapImagery";
+oceansMapImagery.MapServerUri = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer";
+oceansMap.BackgroundContent = oceansMapImagery;
 ```
 
 ## Esri Utility

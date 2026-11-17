@@ -1,18 +1,19 @@
 ---
 title: "Web Components Map | Data Visualization Tools | Binding Geographic Data Models | Infragistics"
-description: Use Infragistics' Web Components JavaScript map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Web Components map demos!
+description: Use Infragistics' Web Components map to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. View Ignite UI for Web Components map demos!
 keywords: "Web Components map, binding data models, Ignite UI for Web Components, Infragistics, data binding"
 license: commercial
-mentionedTypes: ["GeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicScatterAreaSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
+mentionedTypes: ["GeographicMap", "GeographicScatterAreaSeries", "GeographicHighDensityScatterSeries", "GeographicProportionalSymbolSeries", "GeographicContourLineSeries", "GeographicShapeSeries", "GeographicPolylineSeries", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Maps
 llms:
   description: "The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps."
+platformType: xplat
 _tocName: Binding Data Model
 _premium: true
 ---
 # Web Components Binding Geographic Data Models
 
-The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The `DataSource` property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
+The Ignite UI for Web Components map component is designed to display geo-spatial data from shape files and/or geographic locations from data models on geographic imagery maps. The `dataSource` property of geographic series is used for the purpose of binding to data models. This property can be bound an array of custom objects.
 
 ## Web Components Binding Geographic Data Models Example
 
@@ -250,106 +251,223 @@ The following table summarized data structures required for each type of geograp
 
 | Geographic Series  | Properties   | Description   |
 |--------------|---------------| ---------------|
-| `IgcGeographicSymbolSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
-| `IgcGeographicHighDensityScatterSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
-| `IgcGeographicProportionalSymbolSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `RadiusMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
-| `IgcGeographicScatterAreaSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `ColorMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-| `IgcGeographicContourLineSeries` | `LongitudeMemberPath`, `LatitudeMemberPath`, `ValueMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
-|`IgcGeographicShapeSeries`|`ShapeMemberPath`|Specifies the name of data column of `DataSource` items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
-|`IgcGeographicPolylineSeries`|`ShapeMemberPath`|Specifies the name of data column of `DataSource` items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
+| `IgcGeographicSymbolSeriesComponent` | `longitudeMemberPath`, `latitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
+| `IgcGeographicHighDensityScatterSeriesComponent` | `longitudeMemberPath`, `latitudeMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates |
+| `IgcGeographicProportionalSymbolSeriesComponent` | `longitudeMemberPath`, `latitudeMemberPath`, `radiusMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for size/radius of symbols |
+| `IgcGeographicScatterAreaSeriesComponent` | `longitudeMemberPath`, `latitudeMemberPath`, `colorMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+| `IgcGeographicContourLineSeriesComponent` | `longitudeMemberPath`, `latitudeMemberPath`, `valueMemberPath`   | Specifies names of 2 numeric longitude and latitude coordinates and 1 numeric column for triangulation of values |
+|`IgcGeographicShapeSeriesComponent`|`shapeMemberPath`|Specifies the name of data column of `dataSource` items that contains the geographic points of shapes. This property must be mapped to an array of arrays of objects with x and y properties. |
+|`IgcGeographicPolylineSeriesComponent`|`shapeMemberPath`|Specifies the name of data column of `dataSource` items that contains the geographic coordinates of lines. This property must be mapped to an array of arrays of objects with x and y properties. |
 
 ## Code Snippet
-The following code shows how to bind the `IgcGeographicSymbolSeries` to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the `IgcGeographicPolylineSeries` to plot shortest geographic path between these locations using the [WorldUtility](./geo-map-resources-world-util.md)
+The following code shows how to bind the `IgcGeographicSymbolSeriesComponent` to a custom data model that contains geographic locations of some cities of the world stored using longitude and latitude coordinates. Also, we use the `IgcGeographicPolylineSeriesComponent` to plot shortest geographic path between these locations using the great circle maths of `MapGeodesics`, shown in full with the code below
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igc-geographic-map>
 ```
 
 ```ts
-public flights: any[];
+import { IgcGeographicPolylineSeriesComponent, IgcGeographicSymbolSeriesComponent } from 'igniteui-webcomponents-maps';
+import { MarkerType } from 'igniteui-webcomponents-charts';
+// ...
+/**
+ * Great circle maths for a map: the path between two locations, and how far apart they are.
+ */
+export class MapGeodesics {
 
-constructor() {
-    super();
+    // calculate geo-paths between two locations using great circle formula
+    public calcPaths(origin: any, dest: any): any[] {
+        let interval = 200;
+        let paths: any[] = [[]];
+        let pathID = 0;
+        let distance = this.calcDistance(origin, dest);
+        if (distance <= interval) {
+            paths[pathID].push({ x: origin.lon, y: origin.lat });
+            paths[pathID].push({ x: dest.lon, y: dest.lat });
+        } else {
+            let current = origin;
+            let previous = origin;
 
-    const cityDAL = { lat:  32.763, lon: -96.663, country: "US", name: "Dallas" };
-    const citySYD = { lat: -33.889, lon: 151.028, country: "Australia", name: "Sydney" };
-    const cityNZL = { lat: -36.848, lon: 174.763, country: "New Zealand", name: "Auckland" };
-    const cityQTR = { lat: 25.285, lon:  51.531,  country: "Qatar", name: "Doha" };
-    const cityPAN = { lat:  8.949, lon: -79.400,  country: "Panama", name: "Panama" };
-    const cityCHL = { lat: -33.475, lon: -70.647, country: "Chile", name: "Santiago" };
-    const cityJAP = { lat:  35.683, lon: 139.809, country: "Japan", name: "Tokyo" };
-    const cityALT = { lat: 33.795,  lon: -84.349, country: "US", name: "Atlanta" };
-    const cityJOH = { lat: -26.178, lon: 28.004,  country: "South Africa", name: "Johannesburg" };
-    const cityNYC = { lat: 40.750, lon: -74.0999, country: "US", name: "New York" };
-    const citySNG = { lat:  1.229, lon: 104.177,  country: "Singapore", name: "Singapore" };
-    const cityMOS = { lat: 55.750, lon:  37.700,  country: "Russia", name: "Moscow" };
-    const cityROM = { lat:  41.880, lon: 12.520,  country: "Italy", name: "Roma" };
-    const cityLAX = { lat: 34.000, lon: -118.25,  country: "US", name: "Los Angeles" };
+            for (let dist = interval; dist <= distance; dist += interval)
+            {
+                previous = current
+                paths[pathID].push({ x: current.lon, y: current.lat });
 
-    this.flights = [
+                let bearing = this.calcBearing(current, dest);
+                current = this.calcDestination(current, bearing, interval);
+                // ensure geo-path wrap around the world through the new date-line
+                if (previous.lon > 150 && current.lon < -150) {
+                    paths[pathID].push({ x: 180, y: current.lat });
+                    paths.push([]);
+                    pathID++
+                    current = { lon: -180, lat: current.lat }
+                } else if (previous.lon < -150 && current.lon > 150) {
+                    paths[pathID].push({ x: -180, y: current.lat });
+                    paths.push([]);
+                    pathID++
+                    current = { lon: 180, lat: current.lat }
+                }
+            }
+            paths[pathID].push({ x: dest.lon, y: dest.lat });
+        }
+        return paths;
+    }
+
+    // calculate bearing angle between two locations
+    public calcBearing(origin: any, dest: any): number
+    {
+        origin = this.toRadianLocation(origin);
+        dest = this.toRadianLocation(dest);
+        let range = (dest.lon - origin.lon);
+        let y = Math.sin(range) * Math.cos(dest.lat);
+        let x = Math.cos(origin.lat) * Math.sin(dest.lat) -
+                Math.sin(origin.lat) * Math.cos(dest.lat) * Math.cos(range);
+        let angle = Math.atan2(y, x);
+        return this.toDegreesNormalized(angle);
+    }
+
+    // calculate destination for origin location and travel distance
+    public calcDestination(origin: any, bearing: number, distance: number): any {
+        let radius = 6371.0;
+        origin = this.toRadianLocation(origin);
+        bearing = this.toRadians(bearing);
+        distance = distance / radius; // angular distance in radians
+
+        let lat = Math.asin(Math.sin(origin.lat) * Math.cos(distance) +
+                       Math.cos(origin.lat) * Math.sin(distance) * Math.cos(bearing));
+        let x = Math.sin(bearing) * Math.sin(distance) * Math.cos(origin.lat);
+        let y = Math.cos(distance) - Math.sin(origin.lat) * Math.sin(origin.lat);
+        let lon = origin.lon + Math.atan2(x, y);
+        // normalize lon to coordinate between -180º and +180º
+        lon = (lon + 3 * Math.PI) % (2 * Math.PI) - Math.PI;
+
+        lon = this.toDegrees(lon);
+        lat = this.toDegrees(lat);
+
+        return { lon: lon, lat: lat };
+    }
+
+    // calculate distance between two locations
+    public calcDistance(origin: any, dest: any): number {
+        origin = this.toRadianLocation(origin);
+        dest = this.toRadianLocation(dest);
+        let sinProd = Math.sin(origin.lat) * Math.sin(dest.lat);
+        let cosProd = Math.cos(origin.lat) * Math.cos(dest.lat);
+        let lonDelta = (dest.lon - origin.lon);
+
+        let angle = Math.acos(sinProd + cosProd * Math.cos(lonDelta));
+        let distance = angle * 6371.0;
+        return distance; // * 6371.0; // in km
+    }
+
+    public toRadianLocation(geoPoint: any): any {
+        let x = this.toRadians(geoPoint.lon);
+        let y = this.toRadians(geoPoint.lat);
+        return { lon: x, lat: y };
+    }
+
+    public toRadians(degrees: number): number
+    {
+        return degrees * Math.PI / 180;
+    }
+
+    public toDegrees(radians: number): number {
+        return (radians * 180.0 / Math.PI);
+    }
+
+    public toDegreesNormalized(radians: number): number
+    {
+        let degrees = this.toDegrees(radians);
+        degrees = (degrees + 360) % 360;
+        return degrees;
+    }
+}
+// ...
+private mapGeodesics: MapGeodesics = new MapGeodesics();
+
+public mapBindingDataModelOnViewInit(): void {
+    var geoMap = this.geoMap;
+    geoMap.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.6, height: 0.6 });
+
+    var cityDAL = { lat: 32.763, lon: -96.663, country: "US", name: "Dallas" };
+    var citySYD = { lat: -33.889, lon: 151.028, country: "Australia", name: "Sydney" };
+    var cityNZL = { lat: -36.848, lon: 174.763, country: "New Zealand", name: "Auckland" };
+    var cityQTR = { lat: 25.285, lon: 51.531, country: "Qatar", name: "Doha" };
+    var cityPAN = { lat: 8.949, lon: -79.4, country: "Panama", name: "Panama" };
+    var cityCHL = { lat: -33.475, lon: -70.647, country: "Chile", name: "Santiago" };
+    var cityJAP = { lat: 35.683, lon: 139.809, country: "Japan", name: "Tokyo" };
+    var cityALT = { lat: 33.795, lon: -84.349, country: "US", name: "Atlanta" };
+    var cityJOH = { lat: -26.178, lon: 28.004, country: "South Africa", name: "Johannesburg" };
+    var cityNYC = { lat: 40.75, lon: -74.0999, country: "US", name: "New York" };
+    var citySNG = { lat: 1.229, lon: 104.177, country: "Singapore", name: "Singapore" };
+    var cityMOS = { lat: 55.75, lon: 37.7, country: "Russia", name: "Moscow" };
+    var cityROM = { lat: 41.88, lon: 12.52, country: "Italy", name: "Roma" };
+    var cityLAX = { lat: 34.0, lon: -118.25, country: "US", name: "Los Angeles" };
+
+    var flights = [
         { origin: cityDAL, dest: citySNG, color: "Green" },
         { origin: cityMOS, dest: cityNZL, color: "Red" },
         { origin: cityCHL, dest: cityJAP, color: "Blue" },
         { origin: cityPAN, dest: cityROM, color: "Orange" },
         { origin: cityALT, dest: cityJOH, color: "Black" },
         { origin: cityNYC, dest: cityQTR, color: "Purple" },
-        { origin: cityLAX, dest: citySYD, color: "Gray" },
+        { origin: cityLAX, dest: citySYD, color: "Gray" }
     ];
-}
 
-connectedCallback() {
-    this.geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent;
-
-    for (const flight of this.flights) {
-        this.createPolylineSeries(flight);
-        this.createSymbolSeries(flight);
+    // the route first, so that the cities at either end of it draw on top
+    for (var i = 0; i < flights.length; i++) {
+        this.addFlightRoute(geoMap, flights[i]);
+        this.addFlightCities(geoMap, flights[i]);
     }
 }
 
-createSymbolSeries(flight: any)
-{
-    const geoLocations = [flight.origin, flight.dest ];
-    const symbolSeries = new IgcGeographicSymbolSeriesComponent();
-    symbolSeries.dataSource = geoLocations;
-    symbolSeries.markerType = MarkerType.Circle;
-    symbolSeries.latitudeMemberPath = "lat";
-    symbolSeries.longitudeMemberPath = "lon";
-    symbolSeries.markerBrush  = "White";
-    symbolSeries.markerOutline = flight.color;
-    symbolSeries.thickness = 1;
-    this.geoMap.series.add(symbolSeries);
-}
-
-createPolylineSeries(flight: any)
-{
-    const geoPath = WorldUtils.calcPaths(flight.origin, flight.dest);
-    const geoDistance = WorldUtils.calcDistance(flight.origin, flight.dest);
-
-    const geoRoutes = [
-        { points: geoPath ,
-          origin: flight.origin,
-          dest: flight.dest,
-          distance: geoDistance,
-          time: geoDistance / 850,
+/** the flight itself, as a great circle path between its two cities */
+public addFlightRoute(geoMap: any, flight: any): void {
+    var geodesics = this.mapGeodesics;
+    var geoPath = geodesics.calcPaths(flight.origin, flight.dest);
+    var geoDistance = geodesics.calcDistance(flight.origin, flight.dest);
+    var geoRoutes = [{
+        points: geoPath,
+        origin: flight.origin,
+        dest: flight.dest,
+        distance: geoDistance,
+        time: geoDistance / 850
     }];
 
-    const lineSeries = new IgcGeographicPolylineSeriesComponent();
+    var lineSeries = new IgcGeographicPolylineSeriesComponent();
     lineSeries.dataSource = geoRoutes;
     lineSeries.shapeMemberPath = "points";
     lineSeries.shapeStrokeThickness = 9;
     lineSeries.shapeOpacity = 0.5;
     lineSeries.shapeStroke = flight.color;
+    geoMap.series.add(lineSeries);
+}
 
-    this.geoMap.series.add(lineSeries);
+/** the cities at either end, in the flight's own colour */
+public addFlightCities(geoMap: any, flight: any): void {
+    var geoLocations = [flight.origin, flight.dest];
+
+    var symbolSeries = new IgcGeographicSymbolSeriesComponent();
+    symbolSeries.dataSource = geoLocations;
+    symbolSeries.markerType = MarkerType.Circle;
+    symbolSeries.latitudeMemberPath = "lat";
+    symbolSeries.longitudeMemberPath = "lon";
+    symbolSeries.markerBrush = "White";
+    symbolSeries.markerOutline = flight.color;
+    symbolSeries.thickness = 1;
+    geoMap.series.add(symbolSeries);
 }
 ```
 
 ## API References
-`IgcGeographicContourLineSeries`
-`IgcGeographicHighDensityScatterSeries`
-`IgcGeographicPolylineSeries`
-`IgcGeographicProportionalSymbolSeries`
-`IgcGeographicScatterAreaSeries`
-`IgcGeographicSymbolSeries`
+`IgcGeographicContourLineSeriesComponent`
+`IgcGeographicHighDensityScatterSeriesComponent`
+`IgcGeographicPolylineSeriesComponent`
+`IgcGeographicProportionalSymbolSeriesComponent`
+`IgcGeographicScatterAreaSeriesComponent`
+`IgcGeographicSymbolSeriesComponent`

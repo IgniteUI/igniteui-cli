@@ -184,7 +184,7 @@ If Ignite UI for Web Components does not provide resource strings for the requir
 **Note:** 
 Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
 
-You can use the provided [`IgcIResourceStrings`](mcp:get_api_reference?platform=webcomponents&component=IResourceStrings) type for all components to get typings for the resource strings used:
+You can use the provided [`IResourceStrings`](mcp:get_api_reference?platform=webcomponents&component=IResourceStrings) type for all components to get typings for the resource strings used:
 
 ```ts
 import { IResourceStrings } from 'igniteui-webcomponents';

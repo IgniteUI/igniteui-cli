@@ -101,105 +101,115 @@ export interface FilterExpression<T, K extends Keys<T> = Keys<T>> {
 }
 ```
 
-```razor
+```csharp
 public class IgbGridLiteFilterExpression
 {
     /// <summary>
     /// The target column for the filter operation.
     /// </summary>
-    [JsonPropertyName("key")]
-    public string Key { get; set; }
+    public required string Key { get; set; }
 
     /// <summary>
-    /// The filter condition to apply. Can be a condition name (string) or a FilterOperation // TODO
+    /// The name of the filter condition to apply. The valid names depend on the column's DataType.
     /// </summary>
-    [JsonPropertyName("condition")]
-    public object Condition { get; set; }
+    public required string Condition { get; set; }
 
     /// <summary>
     /// The filtering value used in the filter condition function.
     /// Optional for unary conditions.
     /// </summary>
-    [JsonPropertyName("searchTerm")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public object SearchTerm { get; set; }
+    public object? SearchTerm { get; set; }
 
     /// <summary>
-    /// Dictates how this expression should resolve in the filter operation.
-    /// 'and' - the record must pass all the conditions.
-    /// 'or' - the record must pass at least one condition.
+    /// How this expression resolves in relation to the column's other expressions:
+    /// And - the record must pass all the conditions.
+    /// Or - the record must pass at least one condition.
     /// </summary>
-    [JsonPropertyName("criteria")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public string Criteria { get; set; } // "and" or "or"
+    public GridLiteFilterCriteria? Criteria { get; set; }
 
     /// <summary>
     /// Whether the filter operation should be case sensitive.
     /// If not provided, the value is resolved based on the column filter configuration.
     /// </summary>
-    [JsonPropertyName("caseSensitive")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public bool? CaseSensitive { get; set; }
 }
 ```
 
+The condition names a column accepts depend on its `DataType`; a column without one counts as `String`:
+
+| `DataType` | Condition names |
+| :--------- | :-------------- |
+| `String`   | `contains`, `doesNotContain`, `startsWith`, `endsWith`, `equals`, `doesNotEqual`, `empty`, `notEmpty` |
+| `Number`   | `equals`, `doesNotEqual`, `greaterThan`, `lessThan`, `greaterThanOrEqual`, `lessThanOrEqual`, `empty`, `notEmpty` |
+| `Boolean`  | `all`, `true`, `false`, `empty`, `notEmpty` |
+
+The `Boolean` conditions, `empty` and `notEmpty` take no `SearchTerm`.
+
 ## Filter API
 
-The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `GridLite.Filter()`/`GridLite.ClearFilter()` methods or through the `GridLite.FilterExpressions` property.
+The Grid Lite exposes two main approaches for applying filter operations from its API. Either through the `FilterAsync()`/`ClearFilterAsync()` methods or through the `GridLite.FilterExpressions` property.
 
-The `Filter()` method accepts either a single expression or an array of filter expression and then filters the grid data
+The `FilterAsync()` method accepts either a single expression or a collection of filter expressions and then filters the grid data
 based on those expressions.
 
 ```razor
 // Single
-await grid.Filter(new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "contains", SearchTerm = "George" });
+await grid.FilterAsync(new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "contains", SearchTerm = "George" });
 
 // Multiple
-await grid.Filter(new IgbGridLiteFilterExpression[]
+await grid.FilterAsync(new IgbGridLiteFilterExpression[]
 {
     new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "a" },
-    new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "g", Criteria = "or" }```
+    new IgbGridLiteFilterExpression { Key = "FirstName", Condition = "startsWith", SearchTerm = "g", Criteria = GridLiteFilterCriteria.Or }```
 
-The `ClearFilter()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
+The `ClearFilterAsync()` method, as the name implies, clears the filter state of a single column or the whole grid component, depending on the passed arguments.
 
 ```razor
 // Clear the filter state for the `Age` column.
-grid.ClearFilter("Age");
+await grid.ClearFilterAsync("Age");
 
 // Clear the filter state of the grid.
-grid.ClearFilter();
+await grid.ClearFilterAsync();
 ```
 
 ## Initial filter state
 
-The `FilterExpressions` property is very similar in behavior to the `Filter()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
+The `FilterExpressions` property is very similar in behavior to the `FilterAsync()` method call. It exposes a declarative way to control filter state in the grid, but the most useful property is the ability to set initial filter state when the Grid Lite component is first rendered.
 
 For example:
 
 ```razor
-private IgbGridLiteFilterExpression[] filterState = new[]
-{
-    new IgbGridLiteFilterExpression { Key = "Age", Condition = "greaterThan", SearchTerm = 21 },
-    // unary condition so `SearchTerm` is not required
-    new IgbGridLiteFilterExpression { Key = "Active", Condition = "true" }
-};
+<IgbGridLite Data="users" FilterExpressions="filterState" />
 
-<IgbGridLite FilterExpressions="filterState" />
+@code {
+    private IgbGridLiteFilterExpression[] filterState = new[]
+    {
+        new IgbGridLiteFilterExpression { Key = "Age", Condition = "greaterThan", SearchTerm = 21 },
+        // unary condition so `SearchTerm` is not required
+        new IgbGridLiteFilterExpression { Key = "Active", Condition = "true" }
+    };
+}
 ```
 
-It can be used to get the current filter state of the component and do additional processing depending on another state in your application.
+The `FilterExpressions` parameter sets the filter state; it does not follow the changes users make through the UI. To get the current filter state, handle the `Filtered` event: its `State` holds the filter expressions of the column named by `Key`.
 
 ```razor
-var state = grid.FilterExpressions;
-// Save the current filter state
-SaveUserFilterState(state);
+<IgbGridLite Data="users" Filtered="OnFiltered" />
+
+@code {
+    private void OnFiltered(IgbGridLiteFilteredEventArgs args)
+    {
+        // Save the current filter state of the column
+        SaveUserFilterState(args.Key, args.State);
+    }
+}
 ```
 
 ## Events
 
-When a filter operation is performed through the UI, the component raises `Filtering` and `Filtered` events. The `Filtering` event is cancellable and if cancelled will prevent the current filter operation.
+When a filter operation is performed through the UI, the component raises the `Filtering` event. It carries the column's filter expressions and the type of the change (`Add`, `Modify` or `Remove`). It is a notification: it cannot cancel or change the operation.
 
-After the grid applies the new filter state, a `Filtered` event is raised. It contains the filter state for the column which was the target of the operation and it is not cancellable.
+After the grid applies the new filter state, a `Filtered` event is raised. It contains the filter state for the column which was the target of the operation.
 
 ```razor
 <IgbGridLite Filtering="OnFiltering" Filtered="OnFiltered" />
@@ -289,4 +299,4 @@ After the grid applies the new filter state, a `Filtered` event is raised. It co
 
 Our community is active and always welcoming to new ideas.
 
-- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Grid.OSS)
+- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Blazor.GridLite)
