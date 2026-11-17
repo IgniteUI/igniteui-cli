@@ -11,7 +11,7 @@ _tocName: Data Binding
 ---
 # Blazor Grid Lite Data Binding
 
-The Grid Lite accepts a `List<T>` as its data source, where `T` is representing your model. Each grid row is the rendered representation of a data record in the array with row cells being controlled by the column configuration.
+The Grid Lite accepts an `IEnumerable<TItem>`, such as a `List<TItem>`, as its data source, where `TItem` is representing your model. Each grid row is the rendered representation of a data record in the collection with row cells being controlled by the column configuration.
 
 When applying data transformations, such as sorting and filtering, the grid does not modify the original data reference. That is to say, data transformations will not be reflected in the original source. The grid does not track changes to the objects inside the data array, so direct modification of the data objects will not be reflected.
 
@@ -26,9 +26,15 @@ The component supports changing its data source at runtime. If the new source ha
 </IgbGridLite>
 
 @code {
-    this.data = new List<T>
+    private List<Product> data = new();
+
+    private void UpdateData()
     {
-    };
+        // Assign a new collection
+        data = new List<Product>
+        {
+        };
+    }
 }
 ```
 
@@ -38,15 +44,20 @@ If the grid has `AutoGenerate` enabled, it will "_infer_" the new column configu
 <IgbGridLite Data="data" AutoGenerate="true" />
 
 @code {
-    // After the new binding the grid will infer the column collection from the bound data.
-    this.data = new List<T>();
+    private List<Product> data = new();
+
+    private void UpdateData()
+    {
+        // After the new binding the grid will infer the column collection from the bound data.
+        data = new List<Product>();
+    }
 }
 ```
 
 **Note:** 
 The sort/filter states of the Grid Lite are kept when changing the data source in this manner.
 
-Usually you will want to reset them by calling either `ClearSort()` and/or `ClearFilter()`.
+Usually you will want to reset them by calling either `ClearSortAsync()` and/or `ClearFilterAsync()`.
 
 In the sample below, the grid has column auto-generation enabled. When you click on the switch data button,
 the column collection is reset, and a new data source is bound to the grid.
@@ -107,4 +118,4 @@ the column collection is reset, and a new data source is bound to the grid.
 
 Our community is active and always welcoming to new ideas.
 
-- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Grid.OSS)
+- [Grid Lite **GitHub**](https://github.com/IgniteUI/IgniteUI.Blazor.GridLite)

@@ -11,7 +11,6 @@ _tocName: Custom Tailwind Classes
 # Tailwind CSS Integration with Ignite UI for Web Components
 
 Ignite UI for Web Components offers full theming customization through CSS variables. In this guide, you'll learn how to integrate Tailwind CSS into your project and enhance it with custom utility classes provided by the `igniteui-theming` package. These classes expose Ignite UI for Web Components design tokens for colors, shadows, and typography, enabling a seamless utility-first styling experience.
-<br />
 
 ## Overview
 
@@ -25,18 +24,18 @@ npm install igniteui-theming
 
 Start by installing Tailwind CSS, according to your chosen build tool or framework by following the [official Tailwind installation guide](https://tailwindcss.com/docs/installation).
 
-Once Tailwind is set up, import both Tailwind and the Ignite UI theming configuration in your global stylesheet.
+Once Tailwind is set up, import both Tailwind and the Ignite UI theming configuration in your global stylesheet:
 
 ```css
-@import 'tailwindcss';
-@import 'igniteui-theming/tailwind/theme';
+@import "tailwindcss";
+@import "igniteui-theming/tailwind/themes/base";
 ```
 
-If your project uses `sass` for styling:
+If your project uses Sass for styling, load the Ignite UI configuration first. Sass requires every `@use` rule to come before any other rule, including `@import`:
 
 ```scss
+@use "igniteui-theming/tailwind/themes/base.css";
 @import "tailwindcss";
-@use "igniteui-theming/tailwind/theme";
 ```
 
 ## Using Ignite UI Custom Utility Classes
@@ -59,19 +58,17 @@ Our color utility classes are powered by tokens from each Ignite UI theme. You c
 <h1 class="bg-primary-500 text-primary-500-contrast">This is a title</h1>
 ```
 
-You can explore Tailwind’s full color system in this [topic](https://tailwindcss.com/docs/color), and apply it using the Ignite UI-provided class names.
-<br />
+You can explore Tailwind’s full color system in the [Tailwind color documentation](https://tailwindcss.com/docs/color), and apply it using the Ignite UI-provided class names.
 
 ### Shadow utility classes
 
-You can add depth using any of the predefined [elevation levels](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/elevations) (from 0 to 24):
+You can add depth using any of the predefined [elevation levels](elevations.md) (from 0 to 24):
 
 ```html
 <div class="shadow-elevation-8">Elevated container</div>
 ```
 
-You can find all the shadow-related utility classes provided by Tailwind in this [topic](https://tailwindcss.com/docs/box-shadow)
-<br />
+You can find all the shadow-related utility classes provided by Tailwind in the [Tailwind box shadow documentation](https://tailwindcss.com/docs/box-shadow).
 
 ### Typography custom utility styles
 
@@ -82,11 +79,11 @@ We provide custom utility classes for each typography level (e.g., h1, h2, body-
 <p class="type-style-h3">This paragraph gets the h3 styles</p>
 ```
 
-Each class applies all necessary font settings, spacing, and sizing according to the [Ignite UI type scale](https://www.infragistics.com/products/ignite-ui-web-components/web-components/components/themes/typography).
+Each class applies all necessary font settings, spacing, and sizing according to the [Ignite UI type scale](typography.md).
 
 ## Sample
 
-In the sample below, you’ll see a 404 page built entirely with Tailwind utility classes, including our "custom utilities" for "shadows", "colors", and "typography".
+In the sample below, you’ll see a 404 page built entirely with Tailwind utility classes, including our custom utilities for shadows, colors, and typography.
 
 ```css
 /* shared styles are loaded from: */
@@ -108,3 +105,10 @@ This sample is fictional and fully custom, it’s not part of the Ignite UI comp
 ## Summary
 
 With just a few configuration steps, you can combine Tailwind’s utility-first approach with Ignite UI’s robust design system. This integration allows you to rapidly build consistent, themed UI components using well-defined tokens for color, elevation, and typography, right from your HTML.
+
+## Additional Resources
+
+Our community is active and always welcoming to new ideas.
+
+- [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
+- [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)

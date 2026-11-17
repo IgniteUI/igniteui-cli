@@ -50,10 +50,10 @@ The following Ignite UI for Blazor Stepper Example below shows the component in 
         <IgbStep Invalid="@(IsLinear && !IsValid)">
             <span slot="title">Payment</span>
                  
-            <IgbRadioGroup>
-                <IgbRadio name="payment" Required="true" Value="paypal" Change="OnPaymentChange">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
-                <IgbRadio name="payment" Required="true" Value="visa" Change="OnPaymentChange">Visa (**** **** **** 1234; 12/23)</IgbRadio>
-                <IgbRadio name="payment" Required="true" Value="mastercard" Change="OnPaymentChange">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
+            <IgbRadioGroup @bind-Value="user.Payment">
+                <IgbRadio name="payment" Required="true" Value="@("paypal")">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
+                <IgbRadio name="payment" Required="true" Value="@("visa")">Visa (**** **** **** 1234; 12/23)</IgbRadio>
+                <IgbRadio name="payment" Required="true" Value="@("mastercard")">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
             </IgbRadioGroup>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Previous">PREVIOUS</IgbButton>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Next" Disabled="@(IsLinear && !IsValid)">SUBMIT</IgbButton>
@@ -69,7 +69,7 @@ The following Ignite UI for Blazor Stepper Example below shows the component in 
 
 @code {
     public bool IsLinear { get; set; }
-    public bool IsValid = false;
+    public bool IsValid => !String.IsNullOrEmpty(user.Payment);
 
     private IgbStepper stepper;
     private StepperUserModel user = new StepperUserModel();
@@ -78,15 +78,6 @@ The following Ignite UI for Blazor Stepper Example below shows the component in 
     public void OnSwitchChange(IgbCheckboxChangeEventArgs args)
     {
         IsLinear = args.Detail.Checked;
-    }
-
-    public void OnPaymentChange(IgbRadioChangeEventArgs args)
-    {
-        IsValid = args.Detail.Checked;
-        if (IsValid)
-        {
-            user.Payment = (args.Parent as IgbRadio).Value.ToString();            
-        }
     }
 
     public void Previous()
@@ -114,15 +105,17 @@ The following Ignite UI for Blazor Stepper Example below shows the component in 
 
 ## Getting Started with Blazor Stepper
 
+Register the Ignite UI for Blazor services:
+
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(
-    typeof(IgbStepperModule)
-);
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbStepperModule`](mcp:get_api_reference?platform=blazor&component=IgbStepperModule), the Stepper's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbStepperModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -198,12 +191,12 @@ The sample below demonstrates how stepper orientation and titles position could 
         <div class="radio-group">
             <label>Title position</label>
             <div class="radio-group-container">
-                <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-                    <IgbRadio name="alignment" Value="top" Change="onTitlePositionChange">Top</IgbRadio>
-                    <IgbRadio name="alignment" Value="bottom" Change="onTitlePositionChange">Bottom</IgbRadio>
-                    <IgbRadio name="alignment" Value="start" Change="onTitlePositionChange">Start</IgbRadio>
-                    <IgbRadio name="alignment" Value="end" Change="onTitlePositionChange">End</IgbRadio>
-                    <IgbRadio name="alignment" Value="" Checked="true" Change="onTitlePositionChange">Default</IgbRadio>
+                <IgbRadioGroup Alignment="ContentOrientation.Horizontal" @bind-Value="titlePosition">
+                    <IgbRadio name="alignment" Value="@("top")">Top</IgbRadio>
+                    <IgbRadio name="alignment" Value="@("bottom")">Bottom</IgbRadio>
+                    <IgbRadio name="alignment" Value="@("start")">Start</IgbRadio>
+                    <IgbRadio name="alignment" Value="@("end")">End</IgbRadio>
+                    <IgbRadio name="alignment" Value="@("auto")">Default</IgbRadio>
                 </IgbRadioGroup>
             </div>
         </div>
@@ -211,15 +204,15 @@ The sample below demonstrates how stepper orientation and titles position could 
         <div class="radio-group">
             <label>Orientation</label>
             <div class="radio-group-container">
-                <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-                    <IgbRadio name="orientation" Value="horizontal" Checked="true" Change="onOrientationChange">Horizontal</IgbRadio>
-                    <IgbRadio name="orientation" Value="vertical" Change="onOrientationChange">Vertical</IgbRadio>
+                <IgbRadioGroup Alignment="ContentOrientation.Horizontal" @bind-Value="orientation">
+                    <IgbRadio name="orientation" Value="@("horizontal")">Horizontal</IgbRadio>
+                    <IgbRadio name="orientation" Value="@("vertical")">Vertical</IgbRadio>
                 </IgbRadioGroup>
             </div>
         </div>
    </div>
 
-   <IgbStepper Name="stepper" @ref="stepper" Orientation="@Orientation">
+   <IgbStepper Name="stepper" @ref="stepper" Orientation="@Orientation" TitlePosition="@TitlePosition">
         <IgbStep>
             <span slot="title">Order</span>
              <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Next">NEXT</IgbButton>
@@ -240,41 +233,10 @@ The sample below demonstrates how stepper orientation and titles position could 
 
 @code {
     public IgbStepper stepper;
-    public StepperOrientation Orientation = StepperOrientation.Horizontal;
-    public StepperTitlePosition TitlePosition;
-
-    private bool IsDefaultTitlePosition;
-
-    public void onTitlePositionChange(IgbRadioChangeEventArgs args)
-    {
-        if(args.Detail.Checked)
-        {
-            string value = (args.Parent as IgbRadio).Value.ToString();
-            if (String.IsNullOrEmpty(value))
-            {
-                IsDefaultTitlePosition = true;
-                setDefaultTitleOrientation(stepper.Orientation);
-
-            } else
-            {
-                IsDefaultTitlePosition = false;
-                stepper.TitlePosition = (StepperTitlePosition)System.Enum.Parse(typeof(StepperTitlePosition), value, true);                
-            }
-        }
-    }
-
-    public void onOrientationChange(IgbRadioChangeEventArgs args)
-    {
-        if(args.Detail.Checked)
-        {
-            string value = (args.Parent as IgbRadio).Value.ToString();          
-            Orientation = (StepperOrientation)System.Enum.Parse(typeof(StepperOrientation), value, true);
-
-            if (IsDefaultTitlePosition)
-                setDefaultTitleOrientation(Orientation);
-
-        }
-    }
+    private string orientation = "horizontal";
+    private string titlePosition = "auto";
+    public StepperOrientation Orientation => (StepperOrientation)System.Enum.Parse(typeof(StepperOrientation), orientation, true);
+    public StepperTitlePosition TitlePosition => (StepperTitlePosition)System.Enum.Parse(typeof(StepperTitlePosition), titlePosition, true);
 
     public void Previous()
     {
@@ -289,16 +251,6 @@ The sample below demonstrates how stepper orientation and titles position could 
     public void Reset()
     {
         this.stepper.Reset();
-    }
-
-    private void setDefaultTitleOrientation(StepperOrientation orientation)
-    {
-        if( orientation == StepperOrientation.Horizontal )
-        {
-            stepper.TitlePosition = StepperTitlePosition.Bottom;
-        } else {
-            stepper.TitlePosition = StepperTitlePosition.End;
-        }
     }
 }
 ```
@@ -398,14 +350,14 @@ The sample below demonstrates all exposed step types and how they could be chang
 <div class="container vertical">   
    <label>Step type</label>
    <div class="radio-group-container">
-        <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-            <IgbRadio name="type" Value="indicator" Change="onStepTypeChange">Indicator</IgbRadio>
-            <IgbRadio name="type" Value="title" Change="onStepTypeChange">Title</IgbRadio>
-            <IgbRadio name="type" Value="full" Checked="true" Change="onStepTypeChange">Full</IgbRadio>
+        <IgbRadioGroup Alignment="ContentOrientation.Horizontal" @bind-Value="stepType">
+            <IgbRadio name="type" Value="@("indicator")">Indicator</IgbRadio>
+            <IgbRadio name="type" Value="@("title")">Title</IgbRadio>
+            <IgbRadio name="type" Value="@("full")">Full</IgbRadio>
         </IgbRadioGroup>
    </div>  
 
-   <IgbStepper Name="stepper" @ref="stepper">
+   <IgbStepper Name="stepper" StepType="@StepType">
         <IgbStep>
             <span slot="title">Pricing Plan</span>
         </IgbStep>
@@ -419,16 +371,8 @@ The sample below demonstrates all exposed step types and how they could be chang
 </div>
 
 @code {
-    public IgbStepper stepper;
-
-    public void onStepTypeChange(IgbRadioChangeEventArgs args)
-    {
-        if(args.Detail.Checked)
-        {
-            string value = (args.Parent as IgbRadio).Value.ToString();           
-            stepper.StepType = (StepperStepType)System.Enum.Parse(typeof(StepperStepType), value, true); 
-        }
-    }
+    private string stepType = "full";
+    public StepperStepType StepType => (StepperStepType)System.Enum.Parse(typeof(StepperStepType), stepType, true);
 }
 ```
 
@@ -463,25 +407,25 @@ The [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) c
 
 <div class="container sample">
     <article class="settings">
-        <IgbSelect Label="Orienation" Change="OrientationChange">
-            <IgbSelectItem Value="Horizontal" Selected="true">Horizontal</IgbSelectItem>
-            <IgbSelectItem Value="Vertical">Vertical</IgbSelectItem>
+        <IgbSelect Label="Orienation" @bind-Value="orientation">
+            <IgbSelectItem Value="@("Horizontal")">Horizontal</IgbSelectItem>
+            <IgbSelectItem Value="@("Vertical")">Vertical</IgbSelectItem>
         </IgbSelect>
-        <IgbSelect Label="Vertical Animation" Change="VerticalAnimationChange">
-            <IgbSelectItem Value="Grow" Selected="true">Grow</IgbSelectItem>
-            <IgbSelectItem Value="Fade">Fade</IgbSelectItem>
-            <IgbSelectItem Value="None">None</IgbSelectItem>
+        <IgbSelect Label="Vertical Animation" @bind-Value="verticalAnimation">
+            <IgbSelectItem Value="@("Grow")">Grow</IgbSelectItem>
+            <IgbSelectItem Value="@("Fade")">Fade</IgbSelectItem>
+            <IgbSelectItem Value="@("None")">None</IgbSelectItem>
         </IgbSelect>
-        <IgbSelect Label="Horizontal Animation" Change="HorizontalAnimationChange">
-            <IgbSelectItem Value="Slide" Selected="true">Slide</IgbSelectItem>
-            <IgbSelectItem Value="Fade">Fade</IgbSelectItem>
-            <IgbSelectItem Value="None">None</IgbSelectItem>
+        <IgbSelect Label="Horizontal Animation" @bind-Value="horizontalAnimation">
+            <IgbSelectItem Value="@("Slide")">Slide</IgbSelectItem>
+            <IgbSelectItem Value="@("Fade")">Fade</IgbSelectItem>
+            <IgbSelectItem Value="@("None")">None</IgbSelectItem>
         </IgbSelect>
         <IgbInput DisplayType=InputType.Number Value="320" Label="Duration" Change="AnimationDurationChange">
             <span slot="suffix">ms</span>
         </IgbInput>
     </article>
-    <IgbStepper @ref="stepper">
+    <IgbStepper @ref="stepper" Orientation="@Orientation" VerticalAnimation="@VerticalAnimation" HorizontalAnimation="@HorizontalAnimation">
         <IgbStep>
             <span slot="title">Personal Info</span>
             <IgbInput DisplayType=InputType.Text Label="Full Name"></IgbInput>
@@ -497,10 +441,10 @@ The [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) c
         </IgbStep>
         <IgbStep>
             <span slot="title">Payment</span>
-            <IgbRadioGroup>
-                <IgbRadio name="payment" Value="paypal" Checked="true">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
-                <IgbRadio name="payment" Value="visa">Visa (**** **** **** 1234; 12/23)</IgbRadio>
-                <IgbRadio name="payment" Value="mastercard">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
+            <IgbRadioGroup @bind-Value="payment">
+                <IgbRadio name="payment" Value="@("paypal")">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
+                <IgbRadio name="payment" Value="@("visa")">Visa (**** **** **** 1234; 12/23)</IgbRadio>
+                <IgbRadio name="payment" Value="@("mastercard")">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
             </IgbRadioGroup>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Previous">PREVIOUS</IgbButton>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Next">SUBMIT</IgbButton>
@@ -516,6 +460,14 @@ The [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) c
 
 @code {
     private IgbStepper stepper;
+    private string payment = "paypal";
+    private string orientation = "Horizontal";
+    private string verticalAnimation = "Grow";
+    private string horizontalAnimation = "Slide";
+
+    private StepperOrientation Orientation => Enum.Parse<StepperOrientation>(orientation);
+    private StepperVerticalAnimation VerticalAnimation => Enum.Parse<StepperVerticalAnimation>(verticalAnimation);
+    private HorizontalTransitionAnimation HorizontalAnimation => Enum.Parse<HorizontalTransitionAnimation>(horizontalAnimation);
 
     public void Previous()
     {
@@ -530,24 +482,6 @@ The [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper) c
     public void Reset()
     {
         this.stepper.Reset();
-    }
-
-    public void OrientationChange(IgbSelectItemComponentEventArgs args)
-    {
-        StepperOrientation orientation = Enum.Parse<StepperOrientation>(args.Detail.Value);
-        this.stepper.Orientation = orientation;
-    }
-
-    public void VerticalAnimationChange(IgbSelectItemComponentEventArgs args)
-    {
-        StepperVerticalAnimation animation = Enum.Parse<StepperVerticalAnimation>(args.Detail.Value);
-        this.stepper.VerticalAnimation = animation;
-    }
-
-    public void HorizontalAnimationChange(IgbSelectItemComponentEventArgs args)
-    {
-        HorizontalTransitionAnimation animation = Enum.Parse<HorizontalTransitionAnimation>(args.Detail.Value);
-        this.stepper.HorizontalAnimation = animation;
     }
 
     public void AnimationDurationChange(IgbComponentValueChangedEventArgs args)
@@ -620,25 +554,25 @@ igc-step::part(indicator) {
 
 <div class="container sample">
     <article class="settings">
-        <IgbSelect Label="Orienation" Change="OrientationChange">
-            <IgbSelectItem Value="Horizontal" Selected="true">Horizontal</IgbSelectItem>
-            <IgbSelectItem Value="Vertical">Vertical</IgbSelectItem>
+        <IgbSelect Label="Orienation" @bind-Value="orientation">
+            <IgbSelectItem Value="@("Horizontal")">Horizontal</IgbSelectItem>
+            <IgbSelectItem Value="@("Vertical")">Vertical</IgbSelectItem>
         </IgbSelect>
-        <IgbSelect Label="Vertical Animation" Change="VerticalAnimationChange">
-            <IgbSelectItem Value="Grow" Selected="true">Grow</IgbSelectItem>
-            <IgbSelectItem Value="Fade">Fade</IgbSelectItem>
-            <IgbSelectItem Value="None">None</IgbSelectItem>
+        <IgbSelect Label="Vertical Animation" @bind-Value="verticalAnimation">
+            <IgbSelectItem Value="@("Grow")">Grow</IgbSelectItem>
+            <IgbSelectItem Value="@("Fade")">Fade</IgbSelectItem>
+            <IgbSelectItem Value="@("None")">None</IgbSelectItem>
         </IgbSelect>
-        <IgbSelect Label="Horizontal Animation" Change="HorizontalAnimationChange">
-            <IgbSelectItem Value="Slide" Selected="true">Slide</IgbSelectItem>
-            <IgbSelectItem Value="Fade">Fade</IgbSelectItem>
-            <IgbSelectItem Value="None">None</IgbSelectItem>
+        <IgbSelect Label="Horizontal Animation" @bind-Value="horizontalAnimation">
+            <IgbSelectItem Value="@("Slide")">Slide</IgbSelectItem>
+            <IgbSelectItem Value="@("Fade")">Fade</IgbSelectItem>
+            <IgbSelectItem Value="@("None")">None</IgbSelectItem>
         </IgbSelect>
         <IgbInput DisplayType=InputType.Number Value="320" Label="Duration" Change="AnimationDurationChange">
             <span slot="suffix">ms</span>
         </IgbInput>
     </article>
-    <IgbStepper @ref="stepper">
+    <IgbStepper @ref="stepper" Orientation="@Orientation" VerticalAnimation="@VerticalAnimation" HorizontalAnimation="@HorizontalAnimation">
         <IgbStep>
             <span slot="title">Personal Info</span>
             <IgbInput DisplayType=InputType.Text Label="Full Name"></IgbInput>
@@ -654,10 +588,10 @@ igc-step::part(indicator) {
         </IgbStep>
         <IgbStep>
             <span slot="title">Payment</span>
-            <IgbRadioGroup>
-                <IgbRadio name="payment" Value="paypal" Checked="true">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
-                <IgbRadio name="payment" Value="visa">Visa (**** **** **** 1234; 12/23)</IgbRadio>
-                <IgbRadio name="payment" Value="mastercard">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
+            <IgbRadioGroup @bind-Value="payment">
+                <IgbRadio name="payment" Value="@("paypal")">PayPal (n@mail.com; 18/02/2021)</IgbRadio>
+                <IgbRadio name="payment" Value="@("visa")">Visa (**** **** **** 1234; 12/23)</IgbRadio>
+                <IgbRadio name="payment" Value="@("mastercard")">MasterCard (**** **** **** 5678; 12/24)</IgbRadio>
             </IgbRadioGroup>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Previous">PREVIOUS</IgbButton>
             <IgbButton DisplayType="ButtonBaseType.Button" @onclick="Next">SUBMIT</IgbButton>
@@ -673,6 +607,14 @@ igc-step::part(indicator) {
 
 @code {
     private IgbStepper stepper;
+    private string payment = "paypal";
+    private string orientation = "Horizontal";
+    private string verticalAnimation = "Grow";
+    private string horizontalAnimation = "Slide";
+
+    private StepperOrientation Orientation => Enum.Parse<StepperOrientation>(orientation);
+    private StepperVerticalAnimation VerticalAnimation => Enum.Parse<StepperVerticalAnimation>(verticalAnimation);
+    private HorizontalTransitionAnimation HorizontalAnimation => Enum.Parse<HorizontalTransitionAnimation>(horizontalAnimation);
 
     public void Previous()
     {
@@ -687,24 +629,6 @@ igc-step::part(indicator) {
     public void Reset()
     {
         this.stepper.Reset();
-    }
-
-    public void OrientationChange(IgbSelectItemComponentEventArgs args)
-    {
-        StepperOrientation orientation = Enum.Parse<StepperOrientation>(args.Detail.Value);
-        this.stepper.Orientation = orientation;
-    }
-
-    public void VerticalAnimationChange(IgbSelectItemComponentEventArgs args)
-    {
-        StepperVerticalAnimation animation = Enum.Parse<StepperVerticalAnimation>(args.Detail.Value);
-        this.stepper.VerticalAnimation = animation;
-    }
-
-    public void HorizontalAnimationChange(IgbSelectItemComponentEventArgs args)
-    {
-        HorizontalTransitionAnimation animation = Enum.Parse<HorizontalTransitionAnimation>(args.Detail.Value);
-        this.stepper.HorizontalAnimation = animation;
     }
 
     public void AnimationDurationChange(IgbComponentValueChangedEventArgs args)

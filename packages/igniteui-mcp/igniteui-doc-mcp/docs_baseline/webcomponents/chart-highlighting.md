@@ -4,9 +4,11 @@ description: Infragistics' Web Components Chart Highlighting
 keywords: Web Components Charts, Highlighting, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All Web Components Charts support a variety of highlighting options."
+platformType: xplat
 _tocName: Chart Highlighting
 _premium: true
 ---
@@ -49,9 +51,9 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 
 # Web Components Chart Highlighting Modes & Behaviors
 
-All Web Components Charts support a variety of highlighting options. [`HighlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`HighlightingBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls and they have the same API for using the highlighting feature.
+All Web Components Charts support a variety of highlighting options. [`highlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingMode) can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. [`highlightingBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingBehavior) can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls and they have the same API for using the highlighting feature.
 
-The following example demonstrates the [`HighlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingMode) Web Components chart.
+The following example demonstrates the [`highlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=highlightingMode) Web Components chart.
 
 ```typescript
 export class TemperatureAnnotatedDataItem {
@@ -86,7 +88,7 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The following example demonstrates the [`HighlightingBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=highlightingBehavior) Web Components chart.
+The following example demonstrates the [`highlightingBehavior`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=highlightingBehavior) Web Components chart.
 
 ```typescript
 export class TemperatureAnnotatedDataItem {
@@ -123,7 +125,7 @@ export class TemperatureAnnotatedData extends Array<TemperatureAnnotatedDataItem
 
 # Web Components Chart Legend Highlighting
 
-All Web Components Charts support legend highlighting. [`LegendHighlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls and they have the same API for using the highlighting feature.
+All Web Components Charts support legend highlighting. [`legendHighlightingMode`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=legendHighlightingMode) can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent), [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent), and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls and they have the same API for using the highlighting feature.
 
 The following example demonstrates the legend series highlighting Web Components chart.
 
@@ -161,13 +163,13 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Highlight Layers
 
-The Ignite UI for Web Components [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) can enable three types of highlighting when hovering over data items.
+The Ignite UI for Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) can enable three types of highlighting when hovering over data items.
 
-1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`IsSeriesHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isSeriesHighlightingEnabled) property to true.
+1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the [`isSeriesHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isSeriesHighlightingEnabled) property to true.
 
-2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`IsItemHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isItemHighlightingEnabled) property to true.
+2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the [`isItemHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isItemHighlightingEnabled) property to true.
 
-3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`IsCategoryHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isCategoryHighlightingEnabled) property to true.
+3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the [`isCategoryHighlightingEnabled`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=isCategoryHighlightingEnabled) property to true.
 
 The following example demonstrates the different highlighting layers that are available on the Web Components chart.
 
@@ -185,6 +187,6 @@ You can find more information about related chart features in these topics:
 - [Chart Tooltips](chart-tooltips.md)
 
 ## API References
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)

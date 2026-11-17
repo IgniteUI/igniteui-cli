@@ -809,7 +809,7 @@ export class GridRowReorderComponent {
     public data: any[];
 
     constructor() {
-        this.data = DATA;
+        this.data = [...DATA];
     }
 
     public onDropAllowed(args) {
@@ -817,17 +817,16 @@ export class GridRowReorderComponent {
         const currRowIndex = this.getCurrentRowIndex(this.grid.rowList.toArray(),
             { x: event.clientX, y: event.clientY });
         if (currRowIndex === -1) { return; }
-        // remove the row that was dragged and place it onto its new location
-        this.grid.deleteRow(args.dragData.key);
-        this.data.splice(currRowIndex, 0, args.dragData.data);
+        const newData = this.data.filter(r => r.ID !== args.dragData.key);
+        newData.splice(currRowIndex, 0, args.dragData.data);
+        this.data = newData;
     }
 
     private getCurrentRowIndex(rowList: IgxRowDirective[], cursorPosition) {
         for (const row of rowList) {
             const rowRect = row.nativeElement.getBoundingClientRect();
-            if (cursorPosition.y > rowRect.top + window.scrollY && cursorPosition.y < rowRect.bottom + window.scrollY &&
-                cursorPosition.x > rowRect.left + window.scrollX && cursorPosition.x < rowRect.right + window.scrollX) {
-                // return the index of the targeted row
+            if (cursorPosition.y > rowRect.top && cursorPosition.y < rowRect.bottom &&
+                cursorPosition.x > rowRect.left && cursorPosition.x < rowRect.right) {
                 return this.data.indexOf(this.data.find((r) => r.ID === row.key));
             }
         }
@@ -1096,7 +1095,7 @@ export class GridDropIndicatorComponent implements AfterViewInit, OnDestroy {
   private highlightedRow: HTMLElement;
 
   constructor() {
-    this.data = DATA;
+    this.data = [...DATA];
   }
 
   public onDropAllowed(args: IDropDroppedEventArgs): void {
@@ -1111,6 +1110,7 @@ export class GridDropIndicatorComponent implements AfterViewInit, OnDestroy {
     // remove the row that was dragged and place it onto its new location
     this.grid.deleteRow(this._draggedRow[this.grid.primaryKey]);
     this.data.splice(currRowIndex, 0, this._draggedRow);
+    this.data = [...this.data];
     this.clearHighlightElement();
   }
 
@@ -1138,10 +1138,10 @@ export class GridDropIndicatorComponent implements AfterViewInit, OnDestroy {
     for (const row of rowList) {
       const rowRect = row.nativeElement.getBoundingClientRect();
       if (
-        cursorPosition.y > rowRect.top + window.scrollY &&
-        cursorPosition.y < rowRect.bottom + window.scrollY &&
-        cursorPosition.x > rowRect.left + window.scrollX &&
-        cursorPosition.x < rowRect.right + window.scrollX
+        cursorPosition.y > rowRect.top &&
+        cursorPosition.y < rowRect.bottom &&
+        cursorPosition.x > rowRect.left &&
+        cursorPosition.x < rowRect.right
       ) {
         // return the index of the targeted row
         return this.data.indexOf(this.data.find(r => r.ID === row.key));

@@ -635,7 +635,7 @@ export class TreeGridRemotePagingSampleComponent implements OnInit, AfterViewIni
   - Row Expand/collapse
   - Row Editing
   - Row Pinning
-- In remote data scenarios, when the grid has a `primaryKey` set, [`IgxIRowSelectionEventArgs.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
+- In remote data scenarios, when the grid has a `primaryKey` set, [`IRowSelectionEventArgs.oldSelection`](mcp:get_api_reference?platform=angular&component=IRowSelectionEventArgs&member=oldSelection) event argument will not contain the full row data object for the rows that are currently out of the data view. In this case, `rowSelectionChanging.oldSelection` object will contain only one property, which is the `primaryKey` field. For the rest of the rows, currently in the data view, `rowSelectionChanging.oldSelection` will contain the whole row data.
 
 ## API References
 - [`IgxPaginatorComponent API`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent)

@@ -104,15 +104,17 @@ The component renders its content inside the `base` CSS part. Use the component'
 
 To use the Blazor Badge, follow the [Ignite UI for Blazor Getting Started](../general-getting-started.md) topic for the basic project setup, then register the component for your target platform.
 
-For Blazor using the **IgniteUI.Blazor** package, register the Badge module as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbBadgeModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbBadgeModule`](mcp:get_api_reference?platform=blazor&component=IgbBadgeModule), the Badge's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbBadgeModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -130,10 +132,12 @@ Use the Blazor Badge to display a short status, category, count, or notification
 
 The following example shows a success Badge displayed on an Avatar. Import the Badge and Avatar components from the platform-specific package, then place the Badge inside a relatively positioned wrapper.
 
-Register the Avatar and Badge modules in `Program.cs`:
+Register the Ignite UI for Blazor services:
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule), typeof(IgbBadgeModule));
+// in Program.cs file
+
+builder.Services.AddIgniteUIBlazor();
 ```
 
 Add the components to your Razor markup:
@@ -501,20 +505,20 @@ The badge component supports `rounded`(default) and `square` shapes. These value
 <div class="badge-shape">
     <div class="badge-shape-row">
         <span class="row-label">Rounded</span>
-        <IgbBadge Variant="@StyleVariant.Success" Shape="@BadgeShape.Rounded">
+        <IgbBadge Variant="@StyleVariant.Success" Shape="@BadgeShape.Rounded" class="badge-large">
             <IgbIcon @ref="checkIconRef" IconName="check" Collection="material" />
         </IgbBadge>
-        <IgbBadge Variant="@StyleVariant.Success" Shape="@BadgeShape.Rounded">2</IgbBadge>
+        <IgbBadge Variant="@StyleVariant.Success" Shape="@BadgeShape.Rounded" class="badge-medium">2</IgbBadge>
         <IgbBadge Variant="@StyleVariant.Success" Shape="@BadgeShape.Rounded" class="badge-small">
             <IgbIcon IconName="check" Collection="material" />
         </IgbBadge>
     </div>
     <div class="badge-shape-row">
         <span class="row-label">Square</span>
-        <IgbBadge Variant="@StyleVariant.Info" Shape="@BadgeShape.Square">
+        <IgbBadge Variant="@StyleVariant.Info" Shape="@BadgeShape.Square" class="badge-large">
             <IgbIcon IconName="check" Collection="material" />
         </IgbBadge>
-        <IgbBadge Variant="@StyleVariant.Info" Shape="@BadgeShape.Square">2</IgbBadge>
+        <IgbBadge Variant="@StyleVariant.Info" Shape="@BadgeShape.Square" class="badge-medium">2</IgbBadge>
         <IgbBadge Variant="@StyleVariant.Info" Shape="@BadgeShape.Square" class="badge-small">
             <IgbIcon IconName="check" Collection="material" />
         </IgbBadge>
@@ -943,7 +947,7 @@ The Blazor Badge API reference lists the complete verified API surface for the t
 
 ## Dependencies
 
-The Blazor Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in **Getting Started**.
+The Blazor Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in [**Getting Started**](../general-getting-started.md).
 
 ## Additional Resources
 

@@ -215,13 +215,17 @@ The Tile Manager offers two components that we can use:
 
 Before using the Tile Manager, you need to import it as follows:
 
+Register the Ignite UI for Blazor services:
+
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbTileManagerModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbTileManagerModule`](mcp:get_api_reference?platform=blazor&component=IgbTileManagerModule), the Tile Manager's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbTileManagerModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbTileManager`](mcp:get_api_reference?platform=blazor&component=IgbTileManager) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -526,10 +530,10 @@ You can see the difference between the three states in the example below:
 
 <div class="container sample center">
     <div class="inputWrapper">
-        <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-            <IgbRadio name="resize" Value="Always" Checked="true" Change="OnRadioButtonClick">Always</IgbRadio>
-            <IgbRadio name="resize" Value="Hover" Change="OnRadioButtonClick">Hover</IgbRadio>
-            <IgbRadio name="resize" Value="None" Change="OnRadioButtonClick">None</IgbRadio>
+        <IgbRadioGroup Alignment="ContentOrientation.Horizontal" @bind-Value="SelectedResizeMode">
+            <IgbRadio name="resize" Value="@("Always")">Always</IgbRadio>
+            <IgbRadio name="resize" Value="@("Hover")">Hover</IgbRadio>
+            <IgbRadio name="resize" Value="@("None")">None</IgbRadio>
         </IgbRadioGroup>
         <IgbInput Label="Minimum Column Width" Placeholder="200px" DisplayType="InputType.Text" Change="OnInputChangeColumnWidth"></IgbInput>
         <IgbInput Label="Minimum Row Height" Placeholder="200px" DisplayType="InputType.Text" Change="OnInputChangeRowHeight"></IgbInput>
@@ -556,26 +560,8 @@ You can see the difference between the three states in the example below:
 
 @code {
     private IgbTileManager TileManagerRef { get; set; }
-    private TileManagerResizeMode ResizeMode = TileManagerResizeMode.Always;
-
-    public void OnRadioButtonClick(IgbRadioChangeEventArgs e)
-    {
-        if (this.TileManagerRef != null)
-        {
-            switch (e.Detail.Value)
-            {
-                case "Hover":
-                    this.ResizeMode = TileManagerResizeMode.Hover;
-                    break;
-                case "Always":
-                    this.ResizeMode = TileManagerResizeMode.Always;
-                    break;
-                case "None":
-                    this.ResizeMode = TileManagerResizeMode.None;
-                    break;
-            }
-        }
-    }
+    private string SelectedResizeMode = "Always";
+    private TileManagerResizeMode ResizeMode => Enum.Parse<TileManagerResizeMode>(SelectedResizeMode);
 
     public void OnInputChangeColumnWidth(IgbComponentValueChangedEventArgs e)
     {
@@ -638,13 +624,13 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
 
 <div class="container sample center">
     <div class="radioWrapper">
-        <IgbRadioGroup Alignment="ContentOrientation.Horizontal">
-            <IgbRadio name="dragMode" Value="TileHeader" Checked="true" Change="OnRadioButtonClick">Tile-header</IgbRadio>
-            <IgbRadio name="dragMode" Value="Tile" Change="OnRadioButtonClick">Tile</IgbRadio>
-            <IgbRadio name="dragMode" Value="None" Change="OnRadioButtonClick">None</IgbRadio>
+        <IgbRadioGroup Alignment="ContentOrientation.Horizontal" @bind-Value="SelectedDragMode">
+            <IgbRadio name="dragMode" Value="@("TileHeader")">Tile-header</IgbRadio>
+            <IgbRadio name="dragMode" Value="@("Tile")">Tile</IgbRadio>
+            <IgbRadio name="dragMode" Value="@("None")">None</IgbRadio>
         </IgbRadioGroup>
     </div>
-    <IgbTileManager @ref="TileManagerRef" DragMode="@DragMode" ColumnCount="2" Gap="20px">
+    <IgbTileManager DragMode="@DragMode" ColumnCount="2" Gap="20px">
         <IgbTile>
             <span slot="title">Tile 1 header</span>
             <p>Content for Tile 1</p>
@@ -665,27 +651,8 @@ Similar to resizing, when you initiate the drag-and-drop process, a ghost elemen
 </div>  
 
 @code {
-    private IgbTileManager TileManagerRef { get; set; }
-    private TileManagerDragMode DragMode = TileManagerDragMode.TileHeader;
-
-    public void OnRadioButtonClick(IgbRadioChangeEventArgs e)
-    {
-        if (this.TileManagerRef != null)
-        {
-            switch (e.Detail.Value)
-            {
-                case "TileHeader":
-                    this.DragMode = TileManagerDragMode.TileHeader;
-                    break;
-                case "Tile":
-                    this.DragMode = TileManagerDragMode.Tile;
-                    break;
-                case "None":
-                    this.DragMode = TileManagerDragMode.None;
-                    break;
-            }
-        }
-    }
+    private string SelectedDragMode = "TileHeader";
+    private TileManagerDragMode DragMode => Enum.Parse<TileManagerDragMode>(SelectedDragMode);
 }
 ```
 

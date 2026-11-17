@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "GeographicShapeSeries", "Series"]
 llms:
   description: "Explains how to apply data-driven conditional styling to geographic shape series in the Ignite UI for React Map."
+platformType: xplat
 _tocName: Shape Styling
 _premium: true
 ---
@@ -697,44 +698,65 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<MapShapeStyling/>);
 ```
 
+The four styling classes each section uses — **ShapeRandomStyling**, **ShapeScaleStyling**, **ShapeRangeStyling** and **ShapeComparisonStyling** — come from the [Shape Styling Utility](./geo-map-resources-shape-styling-utility.md), which publishes the file to copy into your own project.
+
 ## Required Imports
 
 Shape styling requires that you import the following classes:
 
-```ts
-import { IgrGeographicShapeSeries } from 'igniteui-react-maps';
-import { IgrStyleShapeEventArgs } from 'igniteui-react-charts';
-import { IgrShapeDataSource } from 'igniteui-react-core';
-import { IgrShapefileRecord } from 'igniteui-react-core';
+```tsx
+import { IgrGeographicMap, IgrGeographicShapeSeries } from 'igniteui-react-maps';
+import { IgrShapeDataSource, IgrShapefileRecord } from 'igniteui-react-core';
+import { IgrAssigningShapeStyleEventArgs } from 'igniteui-react-charts';
 ```
-
-Note that the following code examples are using the [Shape Styling Utility](./geo-map-resources-shape-styling-utility.md) file that provides four different ways of styling shapes:
-- [Shape Comparison Styling](#shape-comparison-styling)
-- [Shape Random Styling](#shape-random-styling)
-- [Shape Range Styling](#shape-range-styling)
-- [Shape Scale Styling](#shape-scale-styling)
 
 ## Shape Random Styling
 
 This code snippet creates instances of **ShapeRandomStyling** that will randomly assign fill colors to the countries of the world.
 
-```ts
-import { ShapeRandomStyling } from './ShapeStylingUtility';
+```tsx
+import { IgrGeographicShapeSeries, IgrGeographicShapeSeriesBase } from 'igniteui-react-maps';
+import { IgrShapeDataSource, IgrShapefileRecord } from 'igniteui-react-core';
+import { IgrAssigningShapeStyleEventArgs } from 'igniteui-react-charts';
 // ...
-this.shapeRandomStyling = new ShapeRandomStyling();
-this.shapeRandomStyling.shapeStrokeColors = ['Black'];
-this.shapeRandomStyling.shapeFillColors = ['#8C23D1', '#0E9759', '#B4D336', '#F2A464', '#D74545', 'DodgerBlue'];
+public shapeRandomStyling: ShapeRandomStyling;
 
-this.geoSeries = new IgrGeographicShapeSeries();
-this.geoSeries.styleShape = this.onStylingShape;
-// ...
-public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs) {
-    const itemRecord = args.item as IgrShapefileRecord;
-    const shapeStyle = this.ShapeRandomStyling.getStyle(itemRecord);
-    args.shapeOpacity = shapeStyle.opacity;
-    args.shapeFill = shapeStyle.fill;
-    args.shapeStroke = shapeStyle.stroke;
-    args.shapeStrokeThickness = shapeStyle.strokeThickness;
+// Random styling: each country keeps the color it is first given.
+public mapShapeRandomStyling(): Promise<void> {
+    this.shapeRandomStyling = new ShapeRandomStyling();
+    this.shapeRandomStyling.shapeStrokeColors = ['Black'];
+    this.shapeRandomStyling.shapeFillColors = ['#8C23D1', '#0E9759', '#B4D336', '#F2A464', '#D74545', 'DodgerBlue'];
+
+    var map = this.geoMap;
+
+    // loading a shapefile with the geographic polygons of world countries
+    var sds = new IgrShapeDataSource();
+    sds.shapefileSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.shp";
+    sds.databaseSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.dbf";
+    return new Promise((resolve) => {
+        sds.importCompleted = (s: IgrShapeDataSource, e: any) => {
+            var geoSeries = new IgrGeographicShapeSeries({ name: "geographicShapeSeries1" });
+            geoSeries.dataSource = s.getPointData();
+            geoSeries.shapeMemberPath = "points";
+            // the series asks for each shape's style as it draws it, which it only does when it is
+            // allowed to take one
+            geoSeries.isCustomShapeStyleAllowed = true;
+            geoSeries.assigningShapeStyle = this.onStylingShape.bind(this);
+            map.series.add(geoSeries);
+            resolve();
+        };
+        sds.dataBind();
+    });
+}
+
+public onStylingShape(s: IgrGeographicShapeSeriesBase, args: IgrAssigningShapeStyleEventArgs): void {
+    // the event covers a range of items rather than one, so the record is asked for by index
+    var itemRecord = args.getItems(args.startIndex, args.endIndex)[0] as IgrShapefileRecord;
+    var shapeStyle = this.shapeRandomStyling.generate(itemRecord);
+    args.opacity = shapeStyle.opacity;
+    args.fill = shapeStyle.fill;
+    args.stroke = shapeStyle.stroke;
+    args.strokeThickness = shapeStyle.strokeThickness;
 }
 ```
 
@@ -742,28 +764,51 @@ public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs)
 
 This code snippet creates instances of **ShapeScaleStyling** that will assign fill colors to shape of countries based on population scaled on logarithmic scale.
 
-```ts
-import { ShapeScaleStyling } from './ShapeStylingUtility';
+```tsx
+import { IgrGeographicShapeSeries, IgrGeographicShapeSeriesBase } from 'igniteui-react-maps';
+import { IgrShapeDataSource, IgrShapefileRecord } from 'igniteui-react-core';
+import { IgrAssigningShapeStyleEventArgs } from 'igniteui-react-charts';
 // ...
-this.shapeScaleStyling = new ShapeScaleStyling();
-this.shapeScaleStyling.itemMinimumValue = 5000;
-this.shapeScaleStyling.itemMaximumValue = 2000000000; // 2 Billions
-this.shapeScaleStyling.itemMemberPath = 'Population';
-this.shapeScaleStyling.isLogarithmic = true;
-this.shapeScaleStyling.defaultFill = 'Gray';
-this.shapeScaleStyling.shapeStrokeColors = ['Black'];
-this.shapeScaleStyling.shapeFillColors = ['DodgerBlue', 'yellow', '#c2f542', '#e8c902', '#e8b602', '#e87902', 'brown'];
+public shapeScaleStyling: ShapeScaleStyling;
 
-this.geoSeries = new IgrGeographicShapeSeries();
-this.geoSeries.styleShape = this.onStylingShape;
-// ...
-public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs) {
-    const itemRecord = args.item as IgrShapefileRecord;
-    const shapeStyle = this.shapeScaleStyling.getStyle(itemRecord);
-    args.shapeOpacity = shapeStyle.opacity;
-    args.shapeFill = shapeStyle.fill;
-    args.shapeStroke = shapeStyle.stroke;
-    args.shapeStrokeThickness = shapeStyle.strokeThickness;
+// Scale styling: a color taken from a scale across a range of values.
+public mapShapeScaleStyling(): void {
+    this.shapeScaleStyling = new ShapeScaleStyling();
+    this.shapeScaleStyling.defaultFill = 'Gray';
+    this.shapeScaleStyling.shapeStrokeColors = ['Black'];
+    this.shapeScaleStyling.shapeFillColors = ['DodgerBlue', 'yellow', '#c2f542', '#e8c902', '#e8b602', '#e87902', 'brown'];
+    this.shapeScaleStyling.itemMemberPath = 'Population';
+    this.shapeScaleStyling.itemMinimumValue = 5000;
+    this.shapeScaleStyling.itemMaximumValue = 2000000000; // 2 Billions
+    this.shapeScaleStyling.isLogarithmic = true;
+
+    var map = this.geoMap;
+
+    // loading a shapefile with the geographic polygons of world countries
+    var sds = new IgrShapeDataSource();
+    sds.shapefileSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.shp";
+    sds.databaseSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.dbf";
+    sds.importCompleted = (s: IgrShapeDataSource, e: any) => {
+        var geoSeries = new IgrGeographicShapeSeries({ name: "geographicShapeSeries1" });
+        geoSeries.dataSource = s.getPointData();
+        geoSeries.shapeMemberPath = "points";
+        // the series asks for each shape's style as it draws it, which it only does when it is
+        // allowed to take one
+        geoSeries.isCustomShapeStyleAllowed = true;
+        geoSeries.assigningShapeStyle = this.onStylingShape.bind(this);
+        map.series.add(geoSeries);
+    };
+    sds.dataBind();
+}
+
+public onStylingShape(s: IgrGeographicShapeSeriesBase, args: IgrAssigningShapeStyleEventArgs): void {
+    // the event covers a range of items rather than one, so the record is asked for by index
+    var itemRecord = args.getItems(args.startIndex, args.endIndex)[0] as IgrShapefileRecord;
+    var shapeStyle = this.shapeScaleStyling.generate(itemRecord);
+    args.opacity = shapeStyle.opacity;
+    args.fill = shapeStyle.fill;
+    args.stroke = shapeStyle.stroke;
+    args.strokeThickness = shapeStyle.strokeThickness;
 }
 ```
 
@@ -771,29 +816,52 @@ public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs)
 
 This code snippet creates instances of **ShapeRangeStyling** that will assign colors to shape of countries based on ranges of population.
 
-```ts
-import { ShapeRangeStyling } from './ShapeStylingUtility';
+```tsx
+import { IgrGeographicShapeSeries, IgrGeographicShapeSeriesBase } from 'igniteui-react-maps';
+import { IgrShapeDataSource, IgrShapefileRecord } from 'igniteui-react-core';
+import { IgrAssigningShapeStyleEventArgs } from 'igniteui-react-charts';
 // ...
-this.shapeRangeStyling = new ShapeRangeStyling();
-this.shapeRangeStyling.defaultFill = 'Gray';
-this.shapeRangeStyling.itemMemberPath = 'Population';
-this.shapeRangeStyling.ranges = [
-    { fill: 'yellow', minimum: 5000, maximum: 10000000, },        // 5 K - 10 M
-    { fill: 'orange', minimum: 10000000, maximum: 100000000, },   // 10 M - 100 M
-    { fill: 'red',    minimum: 100000000, maximum: 500000000, },  // 100 M - 500 M
-    { fill: 'brown',  minimum: 500000000, maximum: 2000000000, }, // 500 M - 2 B
-];
+public shapeRangeStyling: ShapeRangeStyling;
 
-this.geoSeries = new IgrGeographicShapeSeries();
-this.geoSeries.styleShape = this.onStylingShape;
-// ...
-public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs) {
-    const itemRecord = args.item as IgrShapefileRecord;
-    const shapeStyle = this.shapeRangeStyling.getStyle(itemRecord);
-    args.shapeOpacity = shapeStyle.opacity;
-    args.shapeFill = shapeStyle.fill;
-    args.shapeStroke = shapeStyle.stroke;
-    args.shapeStrokeThickness = shapeStyle.strokeThickness;
+// Range styling: a color per band of values.
+public mapShapeRangeStyling(): void {
+    this.shapeRangeStyling = new ShapeRangeStyling();
+    this.shapeRangeStyling.defaultFill = 'Gray';
+    this.shapeRangeStyling.itemMemberPath = 'Population';
+    this.shapeRangeStyling.ranges = [
+        { fill: 'yellow', minimum: 5000, maximum: 10000000, },        // 5 K - 10 M
+        { fill: 'orange', minimum: 10000000, maximum: 100000000, },   // 10 M - 100 M
+        { fill: 'red',    minimum: 100000000, maximum: 500000000, },  // 100 M - 500 M
+        { fill: 'brown',  minimum: 500000000, maximum: 2000000000, }, // 500 M - 2 B
+    ];
+
+    var map = this.geoMap;
+
+    // loading a shapefile with the geographic polygons of world countries
+    var sds = new IgrShapeDataSource();
+    sds.shapefileSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.shp";
+    sds.databaseSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.dbf";
+    sds.importCompleted = (s: IgrShapeDataSource, e: any) => {
+        var geoSeries = new IgrGeographicShapeSeries({ name: "geographicShapeSeries1" });
+        geoSeries.dataSource = s.getPointData();
+        geoSeries.shapeMemberPath = "points";
+        // the series asks for each shape's style as it draws it, which it only does when it is
+        // allowed to take one
+        geoSeries.isCustomShapeStyleAllowed = true;
+        geoSeries.assigningShapeStyle = this.onStylingShape.bind(this);
+        map.series.add(geoSeries);
+    };
+    sds.dataBind();
+}
+
+public onStylingShape(s: IgrGeographicShapeSeriesBase, args: IgrAssigningShapeStyleEventArgs): void {
+    // the event covers a range of items rather than one, so the record is asked for by index
+    var itemRecord = args.getItems(args.startIndex, args.endIndex)[0] as IgrShapefileRecord;
+    var shapeStyle = this.shapeRangeStyling.generate(itemRecord);
+    args.opacity = shapeStyle.opacity;
+    args.fill = shapeStyle.fill;
+    args.stroke = shapeStyle.stroke;
+    args.strokeThickness = shapeStyle.strokeThickness;
 }
 ```
 
@@ -801,44 +869,71 @@ public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs)
 
 This code snippet creates instances of **ShapeComparisonStyling** that will assign colors to countries based on their region name in the world.
 
-```ts
-import { ShapeComparisonStyling } from './ShapeStylingUtility';
-this.shapeComparisonStyling = new ShapeComparisonStyling();
-this.shapeComparisonStyling.defaultFill = 'Gray';
-this.shapeComparisonStyling.itemMemberPath = 'Region';
-this.shapeComparisonStyling.itemMappings = [
-    { fill: 'Red', itemValue: 'Eastern Europe' },
-    { fill: 'Red', itemValue: 'Central Asia' },
-    { fill: 'Red', itemValue: 'Eastern Asia' },
-    { fill: 'Orange', itemValue: 'Southern Asia' },
-    { fill: 'Orange', itemValue: 'Middle East' },
-    { fill: 'Orange', itemValue: 'Northern Africa' },
-    { fill: 'Yellow', itemValue: 'Eastern Africa' },
-    { fill: 'Yellow', itemValue: 'Western Africa' },
-    { fill: 'Yellow', itemValue: 'Middle Africa' },
-    { fill: 'Yellow', itemValue: 'Southern Africa' },
-    { fill: 'DodgerBlue', itemValue: 'Central America' },
-    { fill: 'DodgerBlue', itemValue: 'Northern America' },
-    { fill: 'DodgerBlue', itemValue: 'Western Europe' },
-    { fill: 'DodgerBlue', itemValue: 'Southern Europe' },
-    { fill: 'DodgerBlue', itemValue: 'Northern Europe' },
-    { fill: '#22c928', itemValue: 'South America' },
-    { fill: '#b64fff', itemValue: 'Melanesia' },
-    { fill: '#b64fff', itemValue: 'Micronesia' },
-    { fill: '#b64fff', itemValue: 'Polynesia' },
-    { fill: '#b64fff', itemValue: 'Australia' },
-];
-
-this.geoSeries = new IgrGeographicShapeSeries();
-this.geoSeries.styleShape = this.onStylingShape;
+```tsx
+import { IgrGeographicShapeSeries, IgrGeographicShapeSeriesBase } from 'igniteui-react-maps';
+import { IgrShapeDataSource, IgrShapefileRecord } from 'igniteui-react-core';
+import { IgrAssigningShapeStyleEventArgs } from 'igniteui-react-charts';
 // ...
-public onStylingShape(s: IgrGeographicShapeSeries, args: IgrStyleShapeEventArgs) {
-    const itemRecord = args.item as IgrShapefileRecord;
-    const shapeStyle = this.shapeComparisonStyling.getStyle(itemRecord);
-    args.shapeOpacity = shapeStyle.opacity;
-    args.shapeFill = shapeStyle.fill;
-    args.shapeStroke = shapeStyle.stroke;
-    args.shapeStrokeThickness = shapeStyle.strokeThickness;
+public shapeComparisonStyling: ShapeComparisonStyling;
+
+// Comparison styling: a color per named value.
+public mapShapeComparisonStyling(): Promise<void> {
+    this.shapeComparisonStyling = new ShapeComparisonStyling();
+    this.shapeComparisonStyling.defaultFill = 'Gray';
+    this.shapeComparisonStyling.itemMemberPath = 'Region';
+    this.shapeComparisonStyling.itemMappings = [
+        { fill: 'Red', itemValue: 'Eastern Europe' },
+        { fill: 'Red', itemValue: 'Central Asia' },
+        { fill: 'Red', itemValue: 'Eastern Asia' },
+        { fill: 'Orange', itemValue: 'Southern Asia' },
+        { fill: 'Orange', itemValue: 'Middle East' },
+        { fill: 'Orange', itemValue: 'Northern Africa' },
+        { fill: 'Yellow', itemValue: 'Eastern Africa' },
+        { fill: 'Yellow', itemValue: 'Western Africa' },
+        { fill: 'Yellow', itemValue: 'Middle Africa' },
+        { fill: 'Yellow', itemValue: 'Southern Africa' },
+        { fill: 'DodgerBlue', itemValue: 'Central America' },
+        { fill: 'DodgerBlue', itemValue: 'Northern America' },
+        { fill: 'DodgerBlue', itemValue: 'Western Europe' },
+        { fill: 'DodgerBlue', itemValue: 'Southern Europe' },
+        { fill: 'DodgerBlue', itemValue: 'Northern Europe' },
+        { fill: '#22c928', itemValue: 'South America' },
+        { fill: '#b64fff', itemValue: 'Melanesia' },
+        { fill: '#b64fff', itemValue: 'Micronesia' },
+        { fill: '#b64fff', itemValue: 'Polynesia' },
+        { fill: '#b64fff', itemValue: 'Australia' },
+    ];
+
+    var map = this.geoMap;
+
+    // loading a shapefile with the geographic polygons of world countries
+    var sds = new IgrShapeDataSource();
+    sds.shapefileSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.shp";
+    sds.databaseSource = "https://static.infragistics.com/xplatform/shapes/world_countries_all.dbf";
+    return new Promise((resolve) => {
+        sds.importCompleted = (s: IgrShapeDataSource, e: any) => {
+            var geoSeries = new IgrGeographicShapeSeries({ name: "geographicShapeSeries1" });
+            geoSeries.dataSource = s.getPointData();
+            geoSeries.shapeMemberPath = "points";
+            // the series asks for each shape's style as it draws it, which it only does when it is
+            // allowed to take one
+            geoSeries.isCustomShapeStyleAllowed = true;
+            geoSeries.assigningShapeStyle = this.onStylingShape.bind(this);
+            map.series.add(geoSeries);
+            resolve();
+        };
+        sds.dataBind();
+    });
+}
+
+public onStylingShape(s: IgrGeographicShapeSeriesBase, args: IgrAssigningShapeStyleEventArgs): void {
+    // the event covers a range of items rather than one, so the record is asked for by index
+    var itemRecord = args.getItems(args.startIndex, args.endIndex)[0] as IgrShapefileRecord;
+    var shapeStyle = this.shapeComparisonStyling.generate(itemRecord);
+    args.opacity = shapeStyle.opacity;
+    args.fill = shapeStyle.fill;
+    args.stroke = shapeStyle.stroke;
+    args.strokeThickness = shapeStyle.strokeThickness;
 }
 ```
 

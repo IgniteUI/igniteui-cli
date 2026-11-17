@@ -1,12 +1,13 @@
 ---
 title: "Blazor Bar Chart and Graph | Ignite UI for Blazor"
-description: "Blazor Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE."
+description: "Blazor Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Download free trial."
 keywords: "Blazor Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics"
 license: commercial
 mentionedTypes: ["DataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different."
+platformType: xplat
 _tocName: Bar Chart
 _premium: true
 ---
@@ -960,7 +961,7 @@ Range values are represented on the X-Axis and categories are displayed on the Y
 
 The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#blazor-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
 
-You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a `IgbRangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a `NumericXAxis` with a `CategoryYAxis`, as shown in the example below:
+You can create this type of chart in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control by binding your data to a `IgbRangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) with a [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis), as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1119,4 +1120,4 @@ You can find more information about related chart types in these topics:
 [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
 [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)
 `IgbRangeBarSeries`
-[`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries&member=dataSource)
+`DataSource`

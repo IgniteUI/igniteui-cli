@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
 llms:
   description: "In Blazor map component, you can use the GeographicPolylineSeries to display geo-spatial data using polylines in a geographic context."
+platformType: xplat
 _tocName: Geographic Polyline Map
 _premium: true
 ---
@@ -58,32 +59,27 @@ In Blazor map component, you can use the [`IgbGeographicPolylineSeries`](mcp:get
 The [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) works a lot like the [`IgbGeographicShapeSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicShapeSeries) except that geo-spatial data is rendered with polylines instead of polygons.
 
 ## Data Requirements
-Similarly to other types of geographic series in the control, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=dataSource) property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the `ShapeMemberPath` property. The `GeographicPolylineSeries` uses points of this mapped data column to plot polygons in the control.
+Similarly to other types of geographic series in the control, the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) has the [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries&member=DataSource) property which can be bound to an array of objects. In addition, each data item in this object must have one data column that stores single/multiple shapes using an array of arrays of objects with x and y values representing geographic locations. This data column is then mapped to the [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries&member=ShapeMemberPath) property. The [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) uses points of this mapped data column to plot polylines in the control.
+
+When the shapes come straight from a shape file and need no reshaping first, the series can be given a [`ShapefileDataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries&member=ShapefileDataSource) of its own instead, and it reads the points out of the records itself. That is what the code below does; [Binding Shape Files](./geo-map-binding-shp-file.md) covers the other route, where a handler turns each record into an object of your own and maps [`ShapeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries&member=ShapeMemberPath) to it.
 
 ## Code Snippet
-The following code shows how to bind the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) to locations of cities loaded from a shape file using the [`IgbShapefileRecord`](mcp:get_api_reference?platform=blazor&component=IgbShapefileRecord).
+The following code gives the [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) a [`ShapefileDataSource`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries&member=ShapefileDataSource) pointing at a shape file of American roads, and draws every road in it.
 
 ```razor
-@using IgniteUI.Blazor.Controls
-
-
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
-    <IgbGeographicPolylineSeries Outline="Red" ShapefileDataSource="DataSource" />
+<IgbGeographicMap
+    @ref="map"
+    Height="100%"
+    Width="100%"
+    Zoomable="true">
+    <IgbGeographicPolylineSeries
+        @ref="geographicPolylineSeries1"
+        Outline="Red">
+        <IgbShapeDataSource
+            ShapefileSource="https://static.infragistics.com/xplatform/shapes/AmericanRoads.shp"
+            DatabaseSource="https://static.infragistics.com/xplatform/shapes/AmericanRoads.dbf" />
+    </IgbGeographicPolylineSeries>
 </IgbGeographicMap>
-
-@code {
-
-    public IgbShapeDataSource DataSource;
-
-    protected override void OnInitialized()
-    {
-        this.DataSource = new IgbShapeDataSource()
-        {
-            ShapefileSource = "https://static.infragistics.com/xplatform/shapes/AmericanRoads.shp",
-            DatabaseSource = "https://static.infragistics.com/xplatform/shapes/AmericanRoads.dbf"
-        };
-    }
-}
 ```
 
 ## API References

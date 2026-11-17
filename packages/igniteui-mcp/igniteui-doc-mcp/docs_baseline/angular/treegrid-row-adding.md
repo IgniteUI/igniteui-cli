@@ -158,7 +158,7 @@ Setting primary key is mandatory for row adding operations.
 Every column excluding the primary key one is editable in the row adding UI by default. If you want to disable editing for a specific column, then you have to set the [`editable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=editable) column's input to `false`.
 
 **Note:** 
-The IgxGridEditingActions inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`IgxRowType`](mcp:get_api_reference?platform=angular&component=RowType)) to fine tune which records the buttons show for.
+The IgxGridEditingActions inputs controlling the visibility of the add row and add child buttons may use the action strip context (which is of type [`RowType`](mcp:get_api_reference?platform=angular&component=RowType)) to fine tune which records the buttons show for.
 
 The internal [`IgxBaseTransactionService`](mcp:get_api_reference?platform=angular&component=IgxBaseTransactionService) is automatically provided for Tree Grid. It holds pending cell changes until the row state is submitted or cancelled.
 

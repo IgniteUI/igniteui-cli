@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "ScatterSeries", "ScatterLineSeries", "ScatterSpli
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Scatter Chart belongs to a group of charts that show the relationship among items in distinct series of data or to plot data items using numeric x and y coordinates."
+platformType: xplat
 _tocName: Scatter Chart
 _premium: true
 ---

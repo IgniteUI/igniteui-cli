@@ -636,7 +636,7 @@ igc-grid-lite {
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a [`IgcDataPipelineParams`](mcp:get_api_reference?platform=webcomponents&component=DataPipelineParams) object.
+Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a [`DataPipelineParams`](mcp:get_api_reference?platform=webcomponents&component=DataPipelineParams) object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -842,7 +842,7 @@ igc-grid-lite {
 
 [`IgcGridLite`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLite)<br />
 [`IgcGridLiteColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcGridLiteColumn)<br />
-[`IgcGridLiteSortingOptions`](mcp:get_api_reference?platform=webcomponents&component=GridLiteSortingOptions)<br />
+[`GridLiteSortingOptions`](mcp:get_api_reference?platform=webcomponents&component=GridLiteSortingOptions)<br />
 
 ## Additional Resources
 

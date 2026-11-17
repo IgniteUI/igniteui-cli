@@ -34,7 +34,6 @@ The Ignite UI for React Icon Button component allows developers to use registere
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -42,44 +41,34 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const iconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg>';
 
-export default class IconButtonSize extends React.Component<any, any> {
+registerIconFromText("thumb-up", iconText, "material");
 
-    public smallIcon: IgrIconButton;
-    public mediumIcon: IgrIconButton;
-    public largeIcon: IgrIconButton;
-
-    constructor(props: any) {
-        super(props); 
-        registerIconFromText("thumb-up", iconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div className="options horizontal">
-                    <IgrIconButton className="size-small"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                    <IgrIconButton className="size-medium"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                    <IgrIconButton className="size-large"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                </div>
+export default function IconButtonSize() {
+    return (
+        <div className="container sample">
+            <div className="options horizontal">
+                <IgrIconButton className="size-small"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
+                <IgrIconButton className="size-medium"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
+                <IgrIconButton className="size-large"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<IconButtonSize/>);
 ```
 
@@ -117,7 +106,6 @@ Similar to the regular button components, the icon button supports several varia
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -125,44 +113,34 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const iconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg>';
 
-export default class IconButtonVariant extends React.Component<any, any> {
+registerIconFromText("thumb-up", iconText, "material");
 
-    public icon1: IgrIconButton;
-    public icon2: IgrIconButton;
-    public icon3: IgrIconButton;
-
-    constructor(props: any) {
-        super(props); 
-        registerIconFromText("thumb-up", iconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div className="options horizontal">
-                    <IgrIconButton style={{margin: "10px"}}
-                        name="thumb-up" 
-                        collection="material"
-                        variant="flat">
-                    </IgrIconButton>
-                    <IgrIconButton style={{margin: "10px"}}
-                        name="thumb-up" 
-                        collection="material" 
-                        variant="contained">
-                    </IgrIconButton>
-                    <IgrIconButton style={{margin: "10px"}}
-                        name="thumb-up" 
-                        collection="material" 
-                        variant="outlined">
-                    </IgrIconButton>
-                </div>
+export default function IconButtonVariant() {
+    return (
+        <div className="container sample">
+            <div className="options horizontal">
+                <IgrIconButton style={{margin: "10px"}}
+                    name="thumb-up" 
+                    collection="material"
+                    variant="flat">
+                </IgrIconButton>
+                <IgrIconButton style={{margin: "10px"}}
+                    name="thumb-up" 
+                    collection="material" 
+                    variant="contained">
+                </IgrIconButton>
+                <IgrIconButton style={{margin: "10px"}}
+                    name="thumb-up" 
+                    collection="material" 
+                    variant="outlined">
+                </IgrIconButton>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<IconButtonVariant/>);
 ```
 
@@ -194,7 +172,6 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -202,44 +179,34 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const iconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg>';
 
-export default class IconButtonSize extends React.Component<any, any> {
+registerIconFromText("thumb-up", iconText, "material");
 
-    public smallIcon: IgrIconButton;
-    public mediumIcon: IgrIconButton;
-    public largeIcon: IgrIconButton;
-
-    constructor(props: any) {
-        super(props); 
-        registerIconFromText("thumb-up", iconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div className="options horizontal">
-                    <IgrIconButton className="size-small"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                    <IgrIconButton className="size-medium"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                    <IgrIconButton className="size-large"
-                        name="thumb-up"
-                        collection="material"
-                        variant="contained">
-                    </IgrIconButton>
-                </div>
+export default function IconButtonSize() {
+    return (
+        <div className="container sample">
+            <div className="options horizontal">
+                <IgrIconButton className="size-small"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
+                <IgrIconButton className="size-medium"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
+                <IgrIconButton className="size-large"
+                    name="thumb-up"
+                    collection="material"
+                    variant="contained">
+                </IgrIconButton>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<IconButtonSize/>);
 ```
 
@@ -303,7 +270,6 @@ igc-icon-button::part(icon) {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIconButton, registerIconFromText } from 'igniteui-react';
@@ -312,30 +278,22 @@ import "./IconButtonStyling.css";
 
 const iconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg>';
 
-export default class IconButtonStyling extends React.Component<any, any> {
+registerIconFromText("thumb-up", iconText, "material");
 
-    public icon: IgrIconButton;
-
-    constructor(props: any) {
-        super(props); 
-        registerIconFromText("thumb-up", iconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrIconButton style={{margin: "10px"}}
-                    name="thumb-up" 
-                    collection="material"
-                    variant="contained">
-                </IgrIconButton>
-            </div>
-        );
-    }
+export default function IconButtonStyling() {
+    return (
+        <div className="container sample">
+            <IgrIconButton style={{margin: "10px"}}
+                name="thumb-up" 
+                collection="material"
+                variant="contained">
+            </IgrIconButton>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<IconButtonStyling/>);
 ```
 

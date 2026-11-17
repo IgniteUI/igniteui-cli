@@ -7,6 +7,7 @@ import {
 	CommandType,
 	config,
 	doc,
+	doctor,
 	generate,
 	list,
 	mcp,
@@ -36,7 +37,7 @@ export async function run(args: string | string[]) {
 	newCommand.addChoices(templateManager.getFrameworkIds());
 
 	const registeredCommands: CommandType[] = [
-		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig
+		newCommand, add, build, start, generate, config, doc, test, list, upgrade, mcp, aiConfig, doctor
 	];
 
 	const yargsModule = args ? yargs(args) : yargs;

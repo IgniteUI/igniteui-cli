@@ -1,11 +1,12 @@
 ---
 title: "Angular Map | Data Visualization Tools | Map Overview | Infragistics"
-description: Use Infragistics' Angular JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Angular map demos!
+description: Use Infragistics' Angular map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Angular map demos!
 keywords: "Angular map, geographic map, imagery tiles, Ignite UI for Angular, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "The Ignite UI for Angular map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
+platformType: xplat
 _tocName: Geographic Map Features
 _premium: true
 ---
@@ -15,7 +16,7 @@ The Ignite UI for Angular map component allows you to display data that contains
 
 ## Angular Map Example
 
-The following sample demonstrates how display data in `IgxGeographicMap` using `IgxGeographicProportionalSymbolSeries` also known as Bubble Series.
+The following sample demonstrates how display data in [`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) using [`IgxGeographicProportionalSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicProportionalSymbolSeriesComponent) also known as Bubble Series.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -164,7 +165,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
-The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgxGeographicSymbolSeries` can be added for plotting geographic locations such as cities and the `IgxGeographicPolylineSeries` for plotting connections (e.g. roads) between these geographic locations.
+The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, [`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent) can be added for plotting geographic locations such as cities and the [`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent) for plotting connections (e.g. roads) between these geographic locations.
 
 The map provides customizable navigation behaviors for navigating map content using mouse, keyboard, or code-behind.
 
@@ -186,59 +187,32 @@ npm install --save igniteui-angular-maps
 
 ## Component Modules
 
-The `IgxGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
+The [`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
 ```ts
-// app.module.ts
 import { IgxGeographicMapModule } from 'igniteui-angular-maps';
 import { IgxDataChartInteractivityModule } from 'igniteui-angular-charts';
-
+// ...
+// app.module.ts
 @NgModule({
     imports: [
-        // ...
-        IgxGeographicMapModule,
-        IgxDataChartInteractivityModule
-        // ...
+    IgxGeographicMapModule,
+    IgxDataChartInteractivityModule
     ]
 })
-export class AppModule {}
-```
-
-```ts
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-
-@Component({
-  selector: "app-map-overview",
-  styleUrls: ["./map-overview.component.scss"],
-  templateUrl: "./map-overview.component.html"
-})
-
-export class MapOverviewComponent implements AfterViewInit {
-
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
-        this.map.windowRect = { left: 0.2, top: 0.1, width: 0.7, height: 0.7 };
-    }
-}
+export class AppModule { }
 ```
 
 ## Usage
 
-Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
+Configure the geographic map and enable zooming with the following example.
 
 ```html
-<div class="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
-</div>
+<igx-geographic-map
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igx-geographic-map>
 ```
 
 ## Additional Resources
@@ -256,11 +230,11 @@ You can find more information about related Angular map features in these topics
 - [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-`IgxGeographicMap`
-`IgxGeographicContourLineSeries`
-`IgxGeographicHighDensityScatterSeries`
-`IgxGeographicPolylineSeries`
-`IgxGeographicShapeSeries`
-`IgxGeographicProportionalSymbolSeries`
-`IgxGeographicSymbolSeries`
-`IgxGeographicScatterAreaSeries`
+[`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent)
+[`IgxGeographicContourLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicContourLineSeriesComponent)
+[`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent)
+[`IgxGeographicPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicPolylineSeriesComponent)
+[`IgxGeographicShapeSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicShapeSeriesComponent)
+[`IgxGeographicProportionalSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicProportionalSymbolSeriesComponent)
+[`IgxGeographicSymbolSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicSymbolSeriesComponent)
+[`IgxGeographicScatterAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicScatterAreaSeriesComponent)

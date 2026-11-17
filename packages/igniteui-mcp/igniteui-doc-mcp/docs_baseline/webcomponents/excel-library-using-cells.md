@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "WorksheetCell", "WorkbookStyleCollection", "IWorksheetCellFormat", "WorkbookColorInfo", "DisplayOptions"]
 llms:
   description: "The WorksheetCell objects in an Excel worksheet is the object that holds your actual data values for the worksheet."
+platformType: xplat-unmapped
 _tocName: Using Cells
 _premium: true
 ---
@@ -255,15 +256,15 @@ The color palette is analogous to the color dialog in Microsoft Excel 2007 UI. Y
 
 You can create all possible fill types using static properties and methods on the `IgcCellFill` class. They are as follows:
 
-- `NoColor` - A property that represents a fill with no color, which allows a background image of the worksheet, if any, to show through.
+- `IgcWorkbook.noColor` - A property that represents a fill with no color, which allows a background image of the worksheet, if any, to show through.
 
-- `CreateSolidFill` - Returns a `IgcCellFillPattern` instance which has a pattern style of `Solid` and a background color set to the `Color` or `IgcWorkbookColorInfo` specified in the method.
+- `IgcWorkbook.createSolidFill` - Returns a `IgcCellFillPattern` instance which has a pattern style of `IgcWorkbook.solid` and a background color set to the `Color` or `IgcWorkbookColorInfo` specified in the method.
 
-- `CreatePatternFill` - Returns a `IgcCellFillPattern` instance which has the specified pattern style and the `Color` or `IgcWorkbookColorInfo` values, specified for the background and pattern colors.
+- `IgcWorkbook.createPatternFill` - Returns a `IgcCellFillPattern` instance which has the specified pattern style and the `Color` or `IgcWorkbookColorInfo` values, specified for the background and pattern colors.
 
-- `CreateLinearGradientFill` - Returns a `IgcCellFillLinearGradient` instance with the specified angle and gradient stops.
+- `IgcWorkbook.createLinearGradientFill` - Returns a `IgcCellFillLinearGradient` instance with the specified angle and gradient stops.
 
-- `CreateRectangularGradientFill` - Returns a `IgcCellFillRectangularGradient` instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
+- `IgcWorkbook.createRectangularGradientFill` - Returns a `IgcCellFillRectangularGradient` instance with the specified left, top, right, and bottom of the inner rectangle and gradient stops. If the inner rectangle values are not specified, the center of the cell is used as the inner rectangle.
 
 The derived types, representing the various fills which can be created, are as follows:
 
@@ -323,7 +324,7 @@ Each workbook has 12 associated theme colors. They are the following:
 
 - There are default values when a workbook is created, which can be customized via Excel.
 
-Colors are defined by the `IgcWorkbookColorInfo` class, which is a sealed immutable class. The class has a static `Automatic` property, which returns the automatic color, and there are various constructors which allow you to create a `IgcWorkbookColorInfo` instance with a color or a theme value and an optional tint.
+Colors are defined by the `IgcWorkbookColorInfo` class, which is a sealed immutable class. The class has a static `IgcWorkbook.automatic` property, which returns the automatic color, and there are various constructors which allow you to create a `IgcWorkbookColorInfo` instance with a color or a theme value and an optional tint.
 
 The `GetResolvedColor` method on `IgcWorkbookColorInfo` allows you to determine what color will actually be seen by the user when they open the file in Excel.
 
@@ -365,7 +366,7 @@ When you merge cells, each cell in the region will have the same value and cell 
 
 Setting the value (or cell format) of the region or any cell in the region will change the value of all cells and the region. If you un-merge cells, all of the previously merged cells will retain the shared cell format they had before they were unmerged. However, only the top-left cell of the region will retain the shared value.
 
-In order to create a merged cell region, you must add a range of cells to the `IgcWorksheet` object’s `MergedCellsRegions` collection. This collection exposes an `Add` method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
+In order to create a merged cell region, you must add a range of cells to the `IgcWorksheet` object’s `MergedCellsRegions` collection. This collection exposes an `IgcWorkbook.add` method that takes four integer parameters. The four parameters determine the index of the starting row and column (top-left most cell) and the index of the ending row and column (bottom-right most cell).
 
 ```ts
 var workbook = new Workbook();

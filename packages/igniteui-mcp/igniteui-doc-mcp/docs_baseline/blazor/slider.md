@@ -58,16 +58,15 @@ The Blazor Slider & Range Slider components allow selection in a given range by 
 
 ## Usage
 
-Before using the [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider), you need to register them as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(
-  typeof(IgbSliderModule),
-  typeof(IgbRangeSliderModule)
-);
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbSliderModule`](mcp:get_api_reference?platform=blazor&component=IgbSliderModule) and [`IgbRangeSliderModule`](mcp:get_api_reference?platform=blazor&component=IgbRangeSliderModule), the client resource modules of the [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider), is **optional**: the components load their resources when they first render. Listing them in `builder.Services.AddIgniteUIBlazor(typeof(IgbSliderModule), typeof(IgbRangeSliderModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 The simplest way to start using the [`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider) is as follows:
 
@@ -103,7 +102,7 @@ Both sliders emit two events when any of the values is changed. The [`IgbInput`]
 </style>
 
 <div class="container sample center">
-    <IgbSlider Value=@ValueInt Change=OnChange
+    <IgbSlider @bind-Value="ValueInt"
         >
     </IgbSlider>
     <div class="value-container">
@@ -122,14 +121,6 @@ Both sliders emit two events when any of the values is changed. The [`IgbInput`]
     private double ValueInt = 40;
     private double LowerInt = 20;
     private double UpperInt = 70;
-
-    private void OnChange(IgbNumberEventArgs e)
-    {
-        if(e != null)
-        {
-            ValueInt = e.Detail;
-        }
-    }
 
     private void OnRangeChange(IgbRangeSliderValueEventArgs e)
     {
@@ -252,14 +243,14 @@ The slider components could display tick marks and labels. The slider components
 
 <div class="container sample center">
     <IgbSlider
+        @bind-Value="sliderValue"
         PrimaryTicks="3"
         SecondaryTicks="4">
     </IgbSlider>
 </div>
 
 @code {
-
-
+    private double sliderValue;
 }
 ```
 
@@ -281,6 +272,7 @@ By default, the tick marks display labels with their values. You could modify th
 
 <div class="container sample center">
     <IgbSlider
+        @bind-Value="sliderValue"
         PrimaryTicks="6"
         SecondaryTicks="1"
         TickOrientation="SliderTickOrientation.Mirror"
@@ -289,8 +281,7 @@ By default, the tick marks display labels with their values. You could modify th
 </div>
 
 @code {
-
-
+    private double sliderValue;
 }
 ```
 
@@ -309,56 +300,27 @@ If you want to format the thumb and tick label values, the slider provides [`Val
 </style>
 
 <div class="container sample center">
-    <IgbSlider @ref="SliderRef"
-        PrimaryTicks="3"
-        SecondaryTicks="4">
+    <IgbSlider Value="@Value1" PrimaryTicks="3"
+        SecondaryTicks="4"
+        ValueFormatOptions="@formatSpecifier">
     </IgbSlider>
-    <IgbSlider @ref="SliderRef2"
-        ValueFormat="Storage: {0} GB">
+    <IgbSlider Value="@Value2" ValueFormat="Storage: {0} GB"
+        ValueFormatOptions="@formatSpecifier2">
     </IgbSlider>
 </div>
 
 @code {
-    public IgbNumberFormatSpecifier formatSpecifier;
-    public IgbNumberFormatSpecifier formatSpecifier2;
-
-    private IgbSlider _slider;
-    public IgbSlider SliderRef
+    public double Value1;
+    public double Value2;
+    public IgbNumberFormatOptions formatSpecifier = new IgbNumberFormatOptions()
     {
-        get
-        {
-            return _slider;
-        }
-        set
-        {
-            _slider = value;
-            formatSpecifier = new IgbNumberFormatSpecifier();
-            formatSpecifier.Style = "currency";
-            formatSpecifier.Currency = "USD";
-            _slider.ValueFormatOptions = formatSpecifier;
-            StateHasChanged();
-        }
-    }
-
-    private IgbSlider _slider2;
-    public IgbSlider SliderRef2
+        Style = "currency",
+        Currency = "USD"
+    };
+    public IgbNumberFormatOptions formatSpecifier2 = new IgbNumberFormatOptions()
     {
-        get
-        {
-            return _slider2;
-        }
-        set
-        {
-            _slider2 = value;
-            formatSpecifier2 = new IgbNumberFormatSpecifier();
-            formatSpecifier2.MinimumFractionDigits = 1;
-            _slider2.ValueFormatOptions = formatSpecifier2;
-            StateHasChanged();
-        }
-    }
-
-
-
+        MinimumFractionDigits = 1
+    };
 }
 ```
 

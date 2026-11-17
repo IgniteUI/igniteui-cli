@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["ZoomSlider", "DataChart"]
 llms:
   description: "The Web Components ZoomSlider control provides zooming functionality to range-enabled controls."
+platformType: xplat
 _tocName: Zoom Slider
 ---
 # Web Components Zoom Slider Overview
@@ -14,7 +15,7 @@ The Web Components ZoomSlider control provides zooming functionality to range-en
 
 ## Web Components Zoom Slider Example
 
-The following sample demonstrates how to use [`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) to navigate content in [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
+The following sample demonstrates how to use [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) to navigate content in [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent).
 
 ```typescript
 export class SampleScatterStats {
@@ -431,13 +432,15 @@ npm install --save igniteui-webcomponents-charts
 
 ## Component Modules
 
-The [`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) requires the following modules:
+The [`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent) requires the following modules:
 
 ```ts
+import { ModuleManager } from 'igniteui-webcomponents-core';
 import { IgcZoomSliderModule } from 'igniteui-webcomponents-charts';
-import { IgcZoomSliderComponent } from "igniteui-webcomponents-charts";
-
-IgcZoomSliderModule.register();
+// ...
+ModuleManager.register(
+    IgcZoomSliderModule
+);
 ```
 
 ## Code Snippet
@@ -445,11 +448,12 @@ IgcZoomSliderModule.register();
 The following code demonstrates how to setup the ZoomSlider.
 
 ```html
-  <igc-zoom-slider
-      name="zoomSlider"
-      width="100%"
-      height="160px" >
-  </igc-zoom-slider>
+<igc-zoom-slider
+    id="zoomSlider"
+    are-thumb-callouts-enabled="true"
+    height="100%"
+    width="100%">
+</igc-zoom-slider>
 ```
 
 ## Additional Resources
@@ -457,5 +461,5 @@ The following code demonstrates how to setup the ZoomSlider.
 You can find more information about charts in [Chart Features](./charts/chart-features.md) topic.
 
 ## API References
-[`IgcZoomSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent)
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcZoomSliderComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcZoomSliderComponent)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

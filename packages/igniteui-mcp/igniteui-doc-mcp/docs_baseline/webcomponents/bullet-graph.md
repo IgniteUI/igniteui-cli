@@ -7,6 +7,7 @@ mentionedTypes: ["BulletGraph"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Web Components bullet graph component allows for a linear and concise view of measures compared against a scale."
+platformType: xplat
 _tocName: Bullet Graph
 _premium: true
 ---
@@ -18,14 +19,14 @@ The Ignite UI for Web Components bullet graph component provides you with the ab
 
 ## Web Components Bullet Graph Example
 
-The following sample demonstrates how setting multiple properties on the same `IgcBulletGraph` can transform it to completely different bullet graph.
+The following sample demonstrates how setting multiple properties on the same `IgcBulletGraphComponent` can transform it to completely different bullet graph.
 
 ```css
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the `transitionDuration` property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Dependencies
@@ -38,16 +39,13 @@ npm install --save igniteui-webcomponents-gauges
 
 ## Component Modules
 
-The `IgcBulletGraph` requires the following modules:
+The `IgcBulletGraphComponent` requires the following modules:
 
 ```ts
-import { IgcBulletGraphCoreModule  } from 'igniteui-webcomponents-gauges';
-import { IgcBulletGraphModule } from 'igniteui-webcomponents-gauges';
 import { ModuleManager } from 'igniteui-webcomponents-core';
-
-// register the modules
+import { IgcBulletGraphModule } from 'igniteui-webcomponents-gauges';
+// ...
 ModuleManager.register(
-    IgcBulletGraphCoreModule,
     IgcBulletGraphModule
 );
 ```
@@ -57,28 +55,29 @@ ModuleManager.register(
 The following code walks through creating a bullet graph component, and configuring a performance bar, comparative measure marker, and three comparative ranges on the scale.
 
 ```html
-  <igc-bullet-graph height="100px"
+<igc-bullet-graph
+    height="100px"
     width="300px"
     minimum-value="5"
     maximum-value="55"
     value="35"
     target-value="43">
     <igc-linear-graph-range
-      start-value="0"
-      end-value="15"
-      brush="#828181">
+        start-value="0"
+        end-value="15"
+        brush="#828181">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="15"
-      end-value="30"
-      brush="#AAAAAA">
+        start-value="15"
+        end-value="30"
+        brush="#AAAAAA">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="30"
-      end-value="55"
-      brush="#D0D0D0">
+        start-value="30"
+        end-value="55"
+        brush="#D0D0D0">
     </igc-linear-graph-range>
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ## Comparative Measures
@@ -87,9 +86,11 @@ The bullet graph can show two measures: performance value and target value.
 Performance value is the primary measure displayed by the component and it is visualized as a bar that stretches along the length of the whole graph. The target value is a measure which the performance value compares against. It is displayed as a small block that runs perpendicular to the orientation of the performance bar.
 
 ```html
-  <igc-bullet-graph
+<igc-bullet-graph
     height="80px"
     width="400px"
+    minimum-value="0"
+    maximum-value="100"
     value="50"
     value-brush="DodgerBlue"
     value-stroke-thickness="1"
@@ -101,10 +102,8 @@ Performance value is the primary measure displayed by the component and it is vi
     target-value-outline="LimeGreen"
     target-value-stroke-thickness="1"
     target-value-inner-extent="0.3"
-    target-value-outer-extent="0.85"
-    minimum-value="0"
-    maximum-value="100">
-  </igc-bullet-graph>
+    target-value-outer-extent="0.85">
+</igc-bullet-graph>
 ```
 
 ```css
@@ -114,24 +113,23 @@ Performance value is the primary measure displayed by the component and it is vi
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the `Value` appear with a lower opacity. A good example is if `Value` is 50 and  `HighlightValue` is set to 25. This would represent a performance of 50% regardless of what the value of `TargetValue` is set to. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue` to something lower than `Value`.
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the `IgcBulletGraphComponent.value` appear with a lower opacity. A good example is if `IgcBulletGraphComponent.value` is 50 and `highlightValue` is set to 25. This would represent a performance of 50% regardless of what the value of `targetValue` is set to. To enable this first set `highlightValueDisplayMode` to Overlay and then apply a `highlightValue` to something lower than `IgcBulletGraphComponent.value`.
 
 ```html
 <igc-bullet-graph
-    id="gauge"
     height="80px"
-    width="100%"
+    width="400px"
     minimum-value="0"
     maximum-value="100"
-    value="70"
-    interval="10"
+    value="50"
     target-value="90"
+    interval="10"
     label-interval="10"
     label-extent="0.025"
     labels-pre-terminal="0"
     labels-post-initial="0"
     highlight-value-display-mode="Overlay"
-    highlight-value="25" >
+    highlight-value="25">
 </igc-bullet-graph>
 ```
 
@@ -144,28 +142,41 @@ The bullet graph's performance value can be further modified to show progress re
 The ranges are visual elements that highlight a specified range of values on a scale. Their purpose is to visually communicate the qualitative state of the performance bar measure, illustrating at the same time the degree to which it resides within that state.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
-    minimum-value="0" value="80" interval="10"
-    maximum-value="100" target-value="90"
-    range-brushes ="#C62828, #F96232, #FF9800"
-    range-outlines="#C62828, #F96232, #FF9800">
+<igc-bullet-graph
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="80"
+    interval="10"
+    target-value="90"
+    range-brushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    range-outlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
     <igc-linear-graph-range
-      start-value="0" end-value="40"
-      inner-start-extent="0.075" inner-end-extent="0.075"
-      outer-start-extent="0.95" outer-end-extent="0.95">
+        start-value="0"
+        end-value="40"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="40" end-value="70"
-      inner-start-extent="0.075" inner-end-extent="0.075"
-      outer-start-extent="0.95" outer-end-extent="0.95">
+        start-value="40"
+        end-value="70"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="70" end-value="100"
-      inner-start-extent="0.075" inner-end-extent="0.075"
-      outer-start-extent="0.95" outer-end-extent="0.95">
+        start-value="70"
+        end-value="100"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ```css
@@ -179,10 +190,13 @@ The tick marks serve as a visual division of the scale into intervals in order t
 - Minor tick marks – The minor tick marks represent helper tick marks, which might be used to additionally improve the readability of the scale and can be customized in a way similar to the major ones.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
-    minimum-value="0" value="70"
-    maximum-value="100" target-value="90"
+<igc-bullet-graph
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="70"
+    target-value="90"
     interval="10"
     tick-brush="DodgerBlue"
     ticks-pre-terminal="0"
@@ -192,10 +206,10 @@ The tick marks serve as a visual division of the scale into intervals in order t
     tick-end-extent="0.075"
     minor-tick-count="4"
     minor-tick-brush="DarkViolet"
-    minor-tick-end-extent="0.1"
     minor-tick-start-extent="0.2"
+    minor-tick-end-extent="0.1"
     minor-tick-stroke-thickness="1">
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ```css
@@ -207,17 +221,21 @@ The tick marks serve as a visual division of the scale into intervals in order t
 The labels indicate the measures on the scale.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
-    minimum-value="0" value="70" interval="10"
-    maximum-value="100" target-value="90"
+<igc-bullet-graph
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="70"
+    target-value="90"
+    interval="10"
     label-interval="10"
     label-extent="0.025"
     labels-pre-terminal="0"
     labels-post-initial="0"
     font-brush="DodgerBlue"
     font="11px Verdana">
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ```css
@@ -229,16 +247,20 @@ The labels indicate the measures on the scale.
 The backing element represents background and border of the bullet graph component. It is always the first element rendered and all the rest of elements such as labels, and tick marks are overlaid on top of it.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
-    minimum-value="0" value="70" interval="10"
-    maximum-value="100" target-value="90"
-    backing-brush="#bddcfc"
+<igc-bullet-graph
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="70"
+    target-value="90"
+    interval="10"
+    backing-brush="rgba(189, 220, 252, 1)"
     backing-outline="DodgerBlue"
     backing-stroke-thickness="4"
     backing-inner-extent="0"
     backing-outer-extent="1">
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ```css
@@ -247,20 +269,24 @@ The backing element represents background and border of the bullet graph compone
 ```
 
 ## Scale
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using `isScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
-    minimum-value="0" value="70" interval="10"
-    maximum-value="100" target-value="90"
+<igc-bullet-graph
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="70"
+    target-value="90"
+    interval="10"
     is-scale-inverted="false"
     scale-background-brush="DodgerBlue"
     scale-background-outline="DarkViolet"
     scale-background-thickness="2"
     scale-start-extent="0.05"
     scale-end-extent="0.95">
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ```css
@@ -272,80 +298,86 @@ The scale is visual element that highlights the full range of values in the gaug
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the bullet graph with all features and visuals enabled.
 
 ```html
-  <igc-bullet-graph
-    height="80px" width="400px"
+<igc-bullet-graph
+    height="80px"
+    width="400px"
     minimum-value="0"
     maximum-value="100"
+    interval="10"
     is-scale-inverted="false"
-    scale-background-brush="Gray"
-    scale-background-outline="Gray"
+    scale-background-brush="DodgerBlue"
+    scale-background-outline="DarkViolet"
     scale-background-thickness="2"
     scale-start-extent="0.05"
     scale-end-extent="0.95"
-
     value="50"
-    value-brush="Black"
+    value-brush="DodgerBlue"
     value-stroke-thickness="1"
     value-inner-extent="0.5"
     value-outer-extent="0.65"
     target-value="80"
-    target-value-breadth="7.5"
-    target-value-brush="Black"
-    target-value-outline="Black"
+    target-value-breadth="10"
+    target-value-brush="LimeGreen"
+    target-value-outline="LimeGreen"
     target-value-stroke-thickness="1"
     target-value-inner-extent="0.3"
     target-value-outer-extent="0.85"
-
+    highlight-value-display-mode="Overlay"
+    highlight-value="25"
     label-interval="10"
     label-extent="0.025"
     labels-pre-terminal="0"
     labels-post-initial="0"
-    font-brush="Black"
+    font-brush="DodgerBlue"
     font="11px Verdana"
-
-    backing-brush="#cecece"
-    backing-outline="#cecece"
+    backing-brush="rgba(189, 220, 252, 1)"
+    backing-outline="DodgerBlue"
     backing-stroke-thickness="4"
     backing-inner-extent="0"
     backing-outer-extent="1"
-
-    interval="10"
-    tick-brush="Black"
+    tick-brush="DodgerBlue"
     ticks-pre-terminal="0"
     ticks-post-initial="0"
     tick-stroke-thickness="2"
     tick-start-extent="0.2"
     tick-end-extent="0.075"
-
     minor-tick-count="4"
-    minor-tick-brush="Black"
-    minor-tick-end-extent="0.1"
+    minor-tick-brush="DarkViolet"
     minor-tick-start-extent="0.2"
+    minor-tick-end-extent="0.1"
     minor-tick-stroke-thickness="1"
-
-    range-brushes="#C62828, #F96232, #FF9800"
-    range-outlines="#C62828, #F96232, #FF9800">
+    range-brushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    range-outlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
     <igc-linear-graph-range
-      start-value="20" end-value="40"
-      inner-start-extent="0.25" inner-end-extent="0.25"
-      outer-start-extent="0.9" outer-end-extent="0.9">
+        start-value="0"
+        end-value="40"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="40" end-value="60"
-      inner-start-extent="0.25" inner-end-extent="0.25"
-      outer-start-extent="0.9" outer-end-extent="0.9">
+        start-value="40"
+        end-value="70"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-      start-value="60" end-value="90"
-      inner-start-extent="0.25" inner-end-extent="0.25"
-      outer-start-extent="0.9" outer-end-extent="0.9">
+        start-value="70"
+        end-value="100"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.95"
+        outer-end-extent="0.95">
     </igc-linear-graph-range>
-  </igc-bullet-graph>
+</igc-bullet-graph>
 ```
 
 ## API References
-`IgcBulletGraph`
-`IgcLinearGraphRange`
+`IgcBulletGraphComponent`
+`IgcLinearGraphRangeComponent`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:

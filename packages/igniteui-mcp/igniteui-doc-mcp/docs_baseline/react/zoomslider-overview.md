@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["ZoomSlider", "DataChart"]
 llms:
   description: "The React ZoomSlider control provides zooming functionality to range-enabled controls."
+platformType: xplat
 _tocName: Zoom Slider
 ---
 # React Zoom Slider Overview
@@ -788,11 +789,13 @@ npm install --save igniteui-react-charts
 
 The `IgrZoomSlider` requires the following modules:
 
-```ts
+```tsx
 import { IgrZoomSliderModule } from 'igniteui-react-charts';
-import { IgrZoomSlider } from 'igniteui-react-charts';
-
-IgrZoomSliderModule.register();
+// ...
+const mods: any[] = [
+    IgrZoomSliderModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Code Snippet
@@ -800,10 +803,11 @@ IgrZoomSliderModule.register();
 The following code demonstrates how to setup the ZoomSlider.
 
 ```tsx
- <IgrZoomSlider
-  width="100%"
-  height="100%"
- />
+<IgrZoomSlider
+    ref={this.zoomSliderRef}
+    areThumbCalloutsEnabled={true}
+    height="100%"
+    width="100%" />
 ```
 
 ## Additional Resources

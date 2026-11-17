@@ -3,10 +3,11 @@ title: "Blazor Axis Types | Data Visualization | Infragistics"
 description: Infragistics' Blazor Axis Types
 keywords: "Blazor Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis", "TimeAxisIntervalType", "PolarBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Category Chart uses only one CategoryXAxis and one NumericYAxis type."
+platformType: xplat
 _tocName: Axis Types
 _premium: true
 ---
@@ -23,7 +24,7 @@ The [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChar
 
 The [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) treats its data as a sequence of categorical data items. It can display almost any type of data including strings and numbers. If you are plotting numbers on this axis, it is important to keep in mind that this axis is a discrete axis and not continuous. This means that each categorical data item will be placed equidistant from the one before it. The items will also be plotted in the order that they appear in the axis' data source.
 
-The [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) requires you to provide a [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) and a [`Label`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=label) in order to plot data with it. It is generally used with the [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) to plot the following type of series:
+The [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) requires you to provide a [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis&member=DataSource) and a [`IgbNumericYAxis.Label`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Label) in order to plot data with it. It is generally used with the [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) to plot the following type of series:
 
 | Category Series  | Stacked Series | Financial Series |
 |------------------|----------------|--------------------|
@@ -205,10 +206,10 @@ public class ContinentsBirthRate
 
 ### Category Y-Axis
 
-The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) works very similarly to the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) and a [`Label`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=label) in order to plot data with it. The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) is generally used with the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) to plot the following type of series:
+The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) works very similarly to the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis) described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis&member=DataSource) and a [`IgbNumericYAxis.Label`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Label) in order to plot data with it. The [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis) is generally used with the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) to plot the following type of series:
 
 - [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries)
-- `RangeBarSeries`
+- `IgbRangeBarSeries`
 - [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries)
 - [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries)
 
@@ -363,12 +364,12 @@ public class HighestGrossingMovies
 
 ### Numeric X-Axis
 
-The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) labels depends on the [`XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=xMemberPath) property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis). Alternatively, if combined with the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis), these labels will be placed corresponding to the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbAreaSeries&member=valueMemberPath) of the [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), `RangeBarSeries`, [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), and [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries).
+The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) labels depends on the [`IgbBubbleSeries.XMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=XMemberPath) property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis). Alternatively, if combined with the [`IgbCategoryXAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryXAxis), these labels will be placed corresponding to the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries&member=ValueMemberPath) of the [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries), `IgbRangeBarSeries`, [`IgbStackedBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedBarSeries), and [`IgbStacked100BarSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100BarSeries).
 
 The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis) is compatible with the following type of series:
 
 - [`IgbBarSeries`](mcp:get_api_reference?platform=blazor&component=IgbBarSeries)
-- `RangeBarSeries`
+- `IgbRangeBarSeries`
 - [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries)
 - [`IgbHighDensityScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbHighDensityScatterSeries)
 - [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries)
@@ -442,7 +443,7 @@ The [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumer
 
 ### Numeric Y-Axis
 
-The [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) labels depends on the [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=yMemberPath) property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis). Alternatively, if combined with the [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis), these labels will be placed corresponding to the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbAreaSeries&member=valueMemberPath) of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
+The [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) labels depends on the [`YMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbScatterContourSeries&member=YMemberPath) property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a [`IgbNumericXAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericXAxis). Alternatively, if combined with the [`IgbCategoryYAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryYAxis), these labels will be placed corresponding to the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbScatterContourSeries&member=ValueMemberPath) of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
 
 The [`IgbNumericYAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis) is compatible with the following type of series:
 
@@ -632,27 +633,27 @@ public class HealthDataForGermany
 
 ### Time X Axis
 
-The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its [`DateTimeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=dateTimeMemberPath). This, along with a [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) is required to plot data with this axis type.
+The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its [`DateTimeMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=DateTimeMemberPath). This, along with a [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=DataSource) is required to plot data with this axis type.
 
 The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) is the X-Axis type in the [`IgbFinancialChart`](mcp:get_api_reference?platform=blazor&component=IgbFinancialChart) component.
 
 #### Breaks in Time X Axis
 
-The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) has the option to exclude intervals of data by using [`Breaks`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=breaks). As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of [`IgbTimeAxisBreak`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak) can be added to the [`Breaks`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=breaks) collection of the axis and configured by using a unique [`Start`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak&member=start), [`End`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak&member=end) and [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval).
+The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) has the option to exclude intervals of data by using [`IgbTimeXAxis.Breaks`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=Breaks). As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of [`IgbTimeAxisBreak`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak) can be added to the [`IgbTimeXAxis.Breaks`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=Breaks) collection of the axis and configured by using a unique [`IgbTimeAxisBreak.Start`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak&member=Start), [`IgbTimeAxisBreak.End`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisBreak&member=End) and [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval).
 
 #### Formatting in Time X Axis
 
-The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) has the [`LabelFormats`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=labelFormats) property, which represents a collection of [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) objects. Each [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) added to the collection is responsible for assigning a unique [`Format`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=format) and [`Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=range). This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
+The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) has the [`LabelFormats`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=LabelFormats) property, which represents a collection of [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) objects. Each [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) added to the collection is responsible for assigning a unique [`IgbTimeAxisLabelFormat.Format`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Format) and [`IgbTimeAxisLabelFormat.Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Range). This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
 
-The [`Format`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=format) property of the [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) specifies what format to use for a particular visible range. The [`Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=range) property of the [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
+The [`IgbTimeAxisLabelFormat.Format`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Format) property of the [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) specifies what format to use for a particular visible range. The [`IgbTimeAxisLabelFormat.Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Range) property of the [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two [`IgbTimeAxisLabelFormat`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat) elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
 
 #### Intervals in Time X Axis
 
-The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) replaces the conventional [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval) property of the category and numeric axes with an [`Intervals`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=intervals) collection of type [`IgbTimeAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval). Each [`IgbTimeAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval) added to the collection is responsible for assigning a unique [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval), [`Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=range) and [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=intervalType). This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
+The [`IgbTimeXAxis`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis) replaces the conventional [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval) property of the category and numeric axes with an [`IgbTimeXAxis.Intervals`](mcp:get_api_reference?platform=blazor&component=IgbTimeXAxis&member=Intervals) collection of type [`IgbTimeAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval). Each [`IgbTimeAxisInterval`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval) added to the collection is responsible for assigning a unique [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval), [`IgbTimeAxisLabelFormat.Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Range) and [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=IntervalType). This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
 
-- [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval): This specifies the interval to use. This is tied to the [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=intervalType) property. For example, if the [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=intervalType) is set to `Days`, then the numeric value specified in [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval) will be in days.
-- [`Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=range): This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
-- [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=intervalType): This specifies the unit of time for the [`Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=interval) property.
+- [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval): This specifies the interval to use. This is tied to the [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=IntervalType) property. For example, if the [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=IntervalType) is set to [`Days`](mcp:get_api_reference?platform=blazor&component=TimeAxisIntervalType&member=Days), then the numeric value specified in [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval) will be in days.
+- [`IgbTimeAxisLabelFormat.Range`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisLabelFormat&member=Range): This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
+- [`IntervalType`](mcp:get_api_reference?platform=blazor&component=IgbTimeAxisInterval&member=IntervalType): This specifies the unit of time for the [`IgbNumericYAxis.Interval`](mcp:get_api_reference?platform=blazor&component=IgbNumericYAxis&member=Interval) property.
 
 ## Polar Axes
 
@@ -816,11 +817,112 @@ The [`IgbProportionalCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&c
 
 The following example demonstrates usage of the [`IgbProportionalCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbProportionalCategoryAngleAxis) type:
 
- 
+ ```razor
+@using IgniteUI.Blazor.Controls
+
+<div class="container vertical">
+    <div class="container vertical fill">
+        <IgbDataChart
+        Name="chart"
+        @ref="chart"
+        IsHorizontalZoomEnabled="false"
+        IsVerticalZoomEnabled="false">
+            <IgbProportionalCategoryAngleAxis
+            Name="angleAxis"
+            @ref="angleAxis"
+            DataSource="RadialProportionalData"
+            Label="Label"
+            ValueMemberPath="Value"
+            Gap="0"
+            OthersCategoryText="Others"
+            OthersCategoryThreshold="55"
+            OthersCategoryType="OthersCategoryType.Number">
+            </IgbProportionalCategoryAngleAxis>
+
+            <IgbNumericRadiusAxis
+            Name="radiusAxis"
+            @ref="radiusAxis"
+            MinimumValue="0"
+            MaximumValue="100">
+            </IgbNumericRadiusAxis>
+
+            <IgbRadialPieSeries
+            Name="RadialPieSeries1"
+            @ref="radialPieSeries1"
+            DataSource="RadialProportionalData"
+            AngleAxisName="angleAxis"
+            ValueAxisName="radiusAxis"
+            ValueMemberPath="Value"
+            ShowDefaultTooltip="false"
+            UseItemWiseColors="true"
+            LegendRadialLabelMode="RadialLabelMode.LabelAndValueAndPercentage"
+            MarkerType="MarkerType.None"
+            Title="Categories">
+            </IgbRadialPieSeries>
+
+        </IgbDataChart>
+
+    </div>
+</div>
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var chart = this.chart;
+        var angleAxis = this.angleAxis;
+        var radiusAxis = this.radiusAxis;
+        var radialPieSeries1 = this.radialPieSeries1;
+
+    }
+
+    private IgbDataChart chart;
+    private IgbProportionalCategoryAngleAxis angleAxis;
+    private IgbNumericRadiusAxis radiusAxis;
+    private IgbRadialPieSeries radialPieSeries1;
+
+    private RadialProportionalData _radialProportionalData = null;
+    public RadialProportionalData RadialProportionalData
+    {
+        get
+        {
+            if (_radialProportionalData == null)
+            {
+                _radialProportionalData = new RadialProportionalData();
+            }
+            return _radialProportionalData;
+        }
+    }
+
+}
+```
+```csharp
+using System;
+using System.Collections.Generic;
+public class RadialProportionalDataItem
+{
+    public string Label { get; set; }
+    public double Value { get; set; }
+    public double Radius { get; set; }
+    public double Radius2 { get; set; }
+}
+
+public class RadialProportionalData
+    : List<RadialProportionalDataItem>
+{
+    public RadialProportionalData()
+    {
+        this.Add(new RadialProportionalDataItem() { Label = @"A", Value = 100, Radius = 75, Radius2 = 50 });
+        this.Add(new RadialProportionalDataItem() { Label = @"B", Value = 100, Radius = 100, Radius2 = 75 });
+        this.Add(new RadialProportionalDataItem() { Label = @"C", Value = 100, Radius = 80, Radius2 = 140 });
+        // ... 5 more items
+    }
+}
+```
 
 ### Numeric Angle Axis
 
-The [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis) treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis) varies according to the value in the data column mapped using the [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=radiusMemberPath) property of the [Polar Series](../types/polar-chart.md) object or the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbAreaSeries&member=valueMemberPath) property of the [Radial Series](../types/radial-chart.md) object.
+The [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis) treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis) varies according to the value in the data column mapped using the [`RadiusMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusMemberPath) property of the [Polar Series](../types/polar-chart.md) object or the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbProportionalCategoryAngleAxis&member=ValueMemberPath) property of the [Radial Series](../types/radial-chart.md) object.
 
 The The [`IgbNumericAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericAngleAxis) can be used with either the [`IgbCategoryAngleAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryAngleAxis) to plot [Radial Series](../types/radial-chart.md) or with the [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis) to plot [Polar Series](../types/polar-chart.md) respectively.
 
@@ -954,7 +1056,7 @@ public class BoatSailingData
 
 ### Numeric Radius Axis
 
-The [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis) treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the `AngleMemberPath` property of the corresponding polar series.
+The [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis) treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the [`AngleMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbPolarBase&member=AngleMemberPath) property of the corresponding polar series.
 
 The [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis) can be used with the [`IgbNumericRadiusAxis`](mcp:get_api_reference?platform=blazor&component=IgbNumericRadiusAxis) to plot [Polar Series](../types/polar-chart.md).
 

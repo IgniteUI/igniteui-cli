@@ -429,6 +429,15 @@ export class DataAnalysisDockManagerComponent implements OnInit, AfterViewInit {
     --igc-pane-content-background: #{contrast-color($color: 'gray', $variant: 900)};
 
     igx-grid {
+        // The host carries `light-theme` for the dock manager's own theme (igc.themes.css),
+        // but styles.scss also emits every Ignite UI component theme under that same class,
+        // so the host keeps the last one's short aliases - the tooltip's dark, translucent
+        // background and foreground. The grid's derived-themes layer reads those aliases
+        // before its own tokens, which tints its scrollbars. Drop them so the grid falls
+        // back to --ig-grid-background / --ig-grid-foreground.
+        --background: initial;
+        --foreground: initial;
+
         --ig-size: var(--ig-size-small);
     }
 }
@@ -1055,7 +1064,7 @@ export class GridDynamicChartDataComponent implements OnInit, AfterViewInit {
 | `formatter`: **string** | An **input** property, which sets/gets the current formatting type | |
 | `formatColors` | An **input** property, which sets/gets the current formatting colors | `val`: _IFormatColors_ |
 | `onFormattersReady`| An **event**, which emits the applicable `formatting types` for the selected data, when they are determined. | |
-| `formatCells` | Applies conditional formatting for the selected cells. Usage: <br/> **this.conditionalFormatting.formatCells(ConditionalFormattingType.dataBars)** | `formatterName`: **string**, `formatRange`?: [`IgxGridSelectionRange`](mcp:get_api_reference?platform=angular&component=GridSelectionRange) [ ], <br /> `reset`: boolean (**true** by default) |
+| `formatCells` | Applies conditional formatting for the selected cells. Usage: <br/> **this.conditionalFormatting.formatCells(ConditionalFormattingType.dataBars)** | `formatterName`: **string**, `formatRange`?: [`GridSelectionRange`](mcp:get_api_reference?platform=angular&component=GridSelectionRange) [ ], <br /> `reset`: boolean (**true** by default) |
 | `clearFormatting` | Removes the conditional formatting from the selected cells. Usage: <br /> **this.conditionalFormatting.clearFormatting()** | |
 
 ### IgxChartIntegrationDirective

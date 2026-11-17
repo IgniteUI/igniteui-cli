@@ -42,15 +42,17 @@ The Ignite UI for Blazor Mask Input is an input field that allows the developer 
 
 ## Usage
 
-Before using the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbMaskInputModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbMaskInputModule`](mcp:get_api_reference?platform=blazor&component=IgbMaskInputModule), the client resource module of the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbMaskInputModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInput) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -147,9 +149,9 @@ The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInpu
     </IgbMaskInput>
 
     <div id="content" style="width: 100%; height: inherit;">
-        <IgbRadioGroup Alignment="ContentOrientation.Horizontal" style="margin-bottom: 10px;">
-            <IgbRadio name="mode" Value="raw" LabelPosition="ToggleLabelPosition.After" Checked="true" Change="OnRadioButtonClick">raw</IgbRadio>
-            <IgbRadio name="mode" Value="withFormatting" LabelPosition="ToggleLabelPosition.After" Change="OnRadioButtonClick">withFormatting</IgbRadio>
+        <IgbRadioGroup Alignment="ContentOrientation.Horizontal" style="margin-bottom: 10px;" @bind-Value="mode" @bind-Value:after="OnRadioButtonClick">
+            <IgbRadio name="mode" Value="@("raw")">raw</IgbRadio>
+            <IgbRadio name="mode" Value="@("withFormatting")">withFormatting</IgbRadio>
         </IgbRadioGroup>
         <span id="value-span">Value: @SpanValue</span>
     </div>
@@ -159,6 +161,7 @@ The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInpu
     private IgbIcon IconRef { get; set; }
     private IgbMaskInput MaskInputRef { get; set; }
     private string SpanValue { get; set; } = "";
+    private string mode = "raw";
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
     {
@@ -175,9 +178,9 @@ The [`IgbMaskInput`](mcp:get_api_reference?platform=blazor&component=IgbMaskInpu
         this.SpanValue = this.MaskInputRef.Value;
     }
 
-    public void OnRadioButtonClick(IgbRadioChangeEventArgs e)
+    public void OnRadioButtonClick()
     {
-        if (e.Detail.Value == "raw")
+        if (this.mode == "raw")
         {
             this.MaskInputRef.ValueMode = MaskInputValueMode.Raw;
         } else

@@ -165,10 +165,10 @@ The ctx parameter provides different contextual data depending on what is being 
 
 | Context Type                | Provided Data                                                                                                          |
 | --------------------------- | -----------------------------------------------------------------------------------------------------------------------|
-| [`IgcChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext)       | `instance` (the chat component instance).                                                |
-| [`IgcChatInputRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatInputRenderContext)      | Inherits [`IgcChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext) and adds `attachments` (array of [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment)) and `value` (current input text). |
-| [`IgcChatMessageRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatMessageRenderContext)    | Inherits [`IgcChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext) and adds [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) (the [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) being rendered).                                      |
-| [`IgcChatAttachmentRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatAttachmentRenderContext) | Inherits [`IgcChatMessageRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatMessageRenderContext) and adds `attachment` (the [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment) being rendered).                      |
+| [`ChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext)       | `instance` (the chat component instance).                                                |
+| [`ChatInputRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatInputRenderContext)      | Inherits [`ChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext) and adds `attachments` (array of [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment)) and `value` (current input text). |
+| [`ChatMessageRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatMessageRenderContext)    | Inherits [`ChatRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderContext) and adds [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) (the [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage) being rendered).                                      |
+| [`ChatAttachmentRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatAttachmentRenderContext) | Inherits [`ChatMessageRenderContext`](mcp:get_api_reference?platform=webcomponents&component=ChatMessageRenderContext) and adds `attachment` (the [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment) being rendered).                      |
 
 #### Available Renderers
 
@@ -525,8 +525,8 @@ igc-chat::part(suggestion) {
 - [`IgcChatOptions`](mcp:get_api_reference?platform=webcomponents&component=IgcChatOptions)
 - [`IgcChatMessage`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessage)
 - [`IgcChatMessageAttachment`](mcp:get_api_reference?platform=webcomponents&component=IgcChatMessageAttachment)
-- [`IgcChatRenderers`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderers)
-- [`IgcChatTemplateRenderer`](mcp:get_api_reference?platform=webcomponents&component=ChatTemplateRenderer)
+- [`ChatRenderers`](mcp:get_api_reference?platform=webcomponents&component=ChatRenderers)
+- [`ChatTemplateRenderer`](mcp:get_api_reference?platform=webcomponents&component=ChatTemplateRenderer)
 - [Styling & Themes](../themes/overview.md)
 
 ## Additional Resources

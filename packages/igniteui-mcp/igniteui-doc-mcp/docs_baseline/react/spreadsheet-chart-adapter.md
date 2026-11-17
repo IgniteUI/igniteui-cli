@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "Worksheet", "WorksheetShapeCollection", "WorksheetChart"]
 llms:
   description: "The React Spreadsheet component allows displaying charts in your Spreadsheet."
+platformType: xplat-unmapped
 _tocName: Chart Adapter
 _premium: true
 ---

@@ -1,12 +1,13 @@
 ---
 title: "React Bar Chart and Graph | Ignite UI for React"
-description: "React Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE."
+description: "React Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Download free trial."
 keywords: "React Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics"
 license: commercial
 mentionedTypes: ["DataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different."
+platformType: xplat
 _tocName: Bar Chart
 _premium: true
 ---
@@ -1032,7 +1033,7 @@ Range values are represented on the X-Axis and categories are displayed on the Y
 
 The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#react-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
 
-You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrRangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a `NumericXAxis` with a `CategoryYAxis`, as shown in the example below:
+You can create this type of chart in the `IgrDataChart` control by binding your data to a `IgrRangeBarSeries`. The series reads low and high values from `lowMemberPath` and `highMemberPath`, and it typically uses a `IgrNumericXAxis` with a `IgrCategoryYAxis`, as shown in the example below:
 
 ```typescript
 export class TemperatureRangeDataItem {
@@ -1206,4 +1207,4 @@ You can find more information about related chart types in these topics:
 `IgrStackedBarSeries`
 `IgrStacked100BarSeries`
 `IgrRangeBarSeries`
-`DataSource`
+`dataSource`

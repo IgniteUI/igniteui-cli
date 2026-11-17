@@ -39,7 +39,7 @@ The Ignite UI for React Switch component is a binary choice selection component 
         font: 400 10px / 16px "Titillium Web", sans-serif;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: var(--ig-primary-500);
+        color: var(--ig-secondary-500);
     }
 
     & .notifications__row {
@@ -67,12 +67,14 @@ The Ignite UI for React Switch component is a binary choice selection component 
     white-space: normal;
 
     & .option__label {
-        font-size: 16px;
+        font: 400 16px / 24px "Titillium Web", sans-serif;
+        letter-spacing: 0.15px;
         color: var(--ig-gray-900);
     }
 
     & .option__hint {
-        font-size: 13px;
+        font: 400 14px / 20px "Titillium Web", sans-serif;
+        letter-spacing: 0.25px;
         color: var(--ig-gray-700);
     }
 }
@@ -898,14 +900,13 @@ The React Switch requires a theme stylesheet to apply its visual styling. See th
 
 Use the following React resources for API details, examples, and project support:
 
-- [Lists - Design System Pattern](https://www.infragistics.com/products/indigo-design/help/patterns/lists)
+- [Switch - Design System Component](https://www.infragistics.com/products/indigo-design/help/components/switch)
 - [Ignite UI for React **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-react)
 - [Ignite UI for React **GitHub**](https://github.com/IgniteUI/igniteui-react)
 
 ## Related Components
 
 - [Checkbox](./checkbox.md) - Use Checkbox when users select one or more options, especially as part of a form.
-
 - [Button](./button.md) - Use Button when the control represents a command or action rather than a setting.
 
 ## FAQ

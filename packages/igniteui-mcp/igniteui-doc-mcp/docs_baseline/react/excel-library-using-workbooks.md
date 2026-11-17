@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook"]
 llms:
   description: "The Infragistics React Excel Engine enables you to save data to and load data from Microsoft® Excel®."
+platformType: xplat-unmapped
 _tocName: Using Workbooks
 _premium: true
 ---

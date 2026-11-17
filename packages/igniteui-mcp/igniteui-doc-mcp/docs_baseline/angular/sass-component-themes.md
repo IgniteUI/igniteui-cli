@@ -146,6 +146,9 @@ In a component template:
 </div>
 ```
 
+**Note:** 
+Some components theme the components they render and declare those tokens on their own host: the [Grid](../../grid/theming.md), Tree Grid, Hierarchical Grid, Pivot Grid, [Query Builder](../../query-builder.md), [Excel Style Filtering](../../grid/excel-style-filtering.md), the [column hiding](../../grid/column-hiding.md) and pinning UI, the [Paginator](../../paginator.md) and the Grid Toolbar. Tokens scoped to an ancestor don't reach the components inside them. Theme the parent component instead, or target the inner component directly, for example `.promo igx-checkbox` or `.promo .igx-tooltip`. See [Components inside the Grid](../../grid/theming.md#components-inside-the-grid).
+
 <igc-divider></igc-divider>
 
 ## Cascade Layers

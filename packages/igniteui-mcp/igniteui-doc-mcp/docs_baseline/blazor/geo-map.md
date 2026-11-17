@@ -1,11 +1,12 @@
 ---
 title: "Blazor Map | Data Visualization Tools | Map Overview | Infragistics"
-description: Use Infragistics' Blazor JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Blazor map demos!
+description: Use Infragistics' Blazor map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Blazor map demos!
 keywords: "Blazor map, geographic map, imagery tiles, Ignite UI for Blazor, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "The Ignite UI for Blazor map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
+platformType: xplat
 _tocName: Geographic Map Features
 ---
 # Blazor Map Overview
@@ -76,11 +77,10 @@ For more details please visit:
 
 ## Component Modules
 
-The [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
+The map's mouse interactions, such as panning and zooming, come from [`IgbDataChartInteractivityModule`](mcp:get_api_reference?platform=blazor&component=IgbDataChartInteractivityModule), which no component requests on its own, so it has to be registered. [`IgbGeographicMapModule`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMapModule) is optional: the [`IgbGeographicMap`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap) loads it when it first renders (see [Component Modules](general-getting-started.md#component-modules)).
 
-```csharp
+```razor
 // in Program.cs file
-
 builder.Services.AddIgniteUIBlazor(
     typeof(IgbGeographicMapModule),
     typeof(IgbDataChartInteractivityModule)
@@ -89,10 +89,13 @@ builder.Services.AddIgniteUIBlazor(
 
 ## Usage
 
-Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
+Configure the geographic map and enable zooming with the following example.
 
 ```razor
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true" />
+<IgbGeographicMap
+    Height="100%"
+    Width="100%"
+    Zoomable="true" />
 ```
 
 ## Additional Resources

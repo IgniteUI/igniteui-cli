@@ -112,12 +112,17 @@ The Blazor Carousel requires the carousel component, slide component, and theme 
 
 Install Ignite UI for Blazor and configure the theme from the [Getting Started](../general-getting-started.md) topic before adding the Carousel to an application.
 
-Register the Carousel module and add the theme stylesheet to the application host page.
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
-builder.Services.AddIgniteUIBlazor(typeof(IgbCarouselModule));
+
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbCarouselModule`](mcp:get_api_reference?platform=blazor&component=IgbCarouselModule), the Carousel's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbCarouselModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+Add the theme stylesheet to the application host page.
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -1060,10 +1065,10 @@ igc-carousel[vertical]::part(next) {
     <div class="action-wrapper">
         <div class="action">
             <span class="action-label">Animation</span>
-            <IgbSelect Change="OnSelectChange">
-                <IgbSelectItem Value="slide" Selected="true">Slide</IgbSelectItem>
-                <IgbSelectItem Value="fade">Fade</IgbSelectItem>
-                <IgbSelectItem Value="none">None</IgbSelectItem>
+            <IgbSelect @bind-Value="animationType">
+                <IgbSelectItem Value="@("slide")">Slide</IgbSelectItem>
+                <IgbSelectItem Value="@("fade")">Fade</IgbSelectItem>
+                <IgbSelectItem Value="@("none")">None</IgbSelectItem>
             </IgbSelect>
         </div>
         <div class="action">
@@ -1071,7 +1076,7 @@ igc-carousel[vertical]::part(next) {
         </div>
     </div>
 
-    <IgbCarousel @ref="carouselRef" class="@CarouselCssClass" HideIndicators="true" Vertical="@isCarouselVertical">
+    <IgbCarousel class="@CarouselCssClass" HideIndicators="true" Vertical="@isCarouselVertical" AnimationType="@CarouselAnimationType">
         <IgbCarouselSlide>
             <article class="slide-wrapper">
                 <div class="slide-content">
@@ -1109,22 +1114,19 @@ igc-carousel[vertical]::part(next) {
 </div>
 
 @code {
-    private IgbCarousel carouselRef;
+    private string animationType = "slide";
     private bool isCarouselVertical;
     private bool isOrientationChanging;
     private int orientationChangeVersion;
 
     private string CarouselCssClass => isOrientationChanging ? "is-orientation-changing" : string.Empty;
 
-    private void OnSelectChange(IgbSelectItemComponentEventArgs args)
+    private HorizontalTransitionAnimation CarouselAnimationType => animationType switch
     {
-        carouselRef.AnimationType = args.Detail.Value switch
-        {
-            "slide" => HorizontalTransitionAnimation.Slide,
-            "fade" => HorizontalTransitionAnimation.Fade,
-            _ => HorizontalTransitionAnimation.None
-        };
-    }
+        "slide" => HorizontalTransitionAnimation.Slide,
+        "fade" => HorizontalTransitionAnimation.Fade,
+        _ => HorizontalTransitionAnimation.None
+    };
 
     private async Task OnSwitchChange(IgbCheckboxChangeEventArgs args)
     {

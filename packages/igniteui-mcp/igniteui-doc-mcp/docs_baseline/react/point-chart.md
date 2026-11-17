@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "CategoryChartType", "Legend", 
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Point Chart renders a collection of points."
+platformType: xplat
 _tocName: Point Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for React Point Chart renders a collection of points. Values are represented on the y-axis (labels on the left side) and categories are displayed on the x-axis (bottom labels). These charts emphasize the amount of change over a period of time or compare multiple items as well as the relationship of parts of a whole by displaying the total of the plotted values.
 
 ## React Point Chart Example
-You can create the React Point Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Point** enum, as shown in the example below.
+You can create the React Point Chart in the `IgrCategoryChart` control by binding your data to `dataSource` property and setting `chartType` property to **Point** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {

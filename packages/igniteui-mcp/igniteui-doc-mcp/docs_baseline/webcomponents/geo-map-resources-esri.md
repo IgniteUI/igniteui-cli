@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of an utility that helps with using ArcGISOnlineMapImagery provided by Esri Maps in GeographicMap."
+platformType: xplat
 _tocName: Esri Utility
 _premium: true
 ---
 # Web Components Esri Utility
 
-The resource topic provides implementation of an utility that helps with using `IgcArcGISOnlineMapImagery` provided by Esri Maps in `IgcGeographicMap`.
+The resource topic provides implementation of an utility that helps with using `IgcArcGISOnlineMapImagery` provided by Esri Maps in `IgcGeographicMapComponent`.
 
 ## Code Snippet
 
@@ -84,4 +85,4 @@ export enum EsriStyle {
 
 ## API References
 `IgcArcGISOnlineMapImagery`
-`IgcGeographicMap`
+`IgcGeographicMapComponent`

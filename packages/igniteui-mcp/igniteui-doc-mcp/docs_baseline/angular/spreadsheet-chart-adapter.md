@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "Worksheet", "WorksheetShapeCollection", "WorksheetChart"]
 llms:
   description: "The Angular Spreadsheet component allows displaying charts in your Spreadsheet."
+platformType: xplat-unmapped
 _tocName: Chart Adapter
 _premium: true
 ---
 # Angular Spreadsheet Chart Adapter
 
-The Angular Spreadsheet component allows displaying charts in your `IgxSpreadsheet`.
+The Angular Spreadsheet component allows displaying charts in your [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent).
 
 ## Angular Spreadsheet Chart Adapter Example
 
@@ -138,10 +139,10 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ## Chart Adapter Overview
 
 Using
-`IgxSpreadsheetChartAdapterBase`
+[`SpreadsheetChartAdapterBase`](mcp:get_api_reference?platform=angular&component=SpreadsheetChartAdapterBase)
 you can display the charts in the spreadsheet. The spreadsheet chart adapters creates and initializes chart elements for the spreadsheet based on a Infragistics.Documents.Excel.WorksheetChart instance.
 
-In order to add a WorksheetChart to a worksheet, you must use the `AddChart` method of the worksheet’s Shapes collection. You can find more detail of adding charts in Excel below.
+In order to add a WorksheetChart to a worksheet, you must use the [`AddChart`](mcp:get_api_reference?platform=angular&component=WorksheetShapeCollection&member=addChart) method of the worksheet’s Shapes collection. You can find more detail of adding charts in Excel below.
 
 Here are the steps by step description :
 
@@ -201,9 +202,9 @@ There are over 35 chart types supported by the Spreadsheet ChartAdapters includi
 
 **Note:** 
 
-In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a [`Workbook`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent&member=workbook).
 
-When setting up your Angular spreadsheet control to add charts, you will need to import the `IgxSpreadsheetChartAdapter` class like so:
+When setting up your Angular spreadsheet control to add charts, you will need to import the [`IgxSpreadsheetChartAdapter`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetChartAdapterModule) class like so:
 
 ```ts
 import { IgxSpreadsheetChartAdapterModule } from 'igniteui-angular-spreadsheet-chart-adapter';
@@ -217,7 +218,7 @@ import { WorksheetCell } from 'igniteui-angular-excel';
 
 ## Code Snippet
 
-The following code snippet demonstrates how to add charts to the currently viewed worksheet in the `IgxSpreadsheet` control:
+The following code snippet demonstrates how to add charts to the currently viewed worksheet in the [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) control:
 
 ```typescript
 this.spreadsheet.chartAdapter = new SpreadsheetChartAdapter();
@@ -273,7 +274,7 @@ ExcelUtility.loadFromUrl(process.env.PUBLIC_URL + "/ExcelFiles/ChartData.xlsx").
 
 ## API References
 
-`IgxSpreadsheetChartAdapterBase`
+[`SpreadsheetChartAdapterBase`](mcp:get_api_reference?platform=angular&component=SpreadsheetChartAdapterBase)
 <br />
-`IgxSpreadsheet`<br />
-`IgxWorkbook`<br />
+[`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent)<br />
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)<br />

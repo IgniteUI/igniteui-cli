@@ -189,7 +189,7 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 ## Step up/down
 
-The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) exposes public [`StepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods. They increment or decrement a specific [`IgcDatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date and time and can be used in a couple of ways.
+The [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) exposes public [`StepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=stepDown) methods. They increment or decrement a specific [`DatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
 In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 

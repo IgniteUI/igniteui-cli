@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The Web Components Spreadsheet component allows display of pre-existing hyperlinks in your Excel workbook as well as insertion of new ones that can link to websites, file directories, and even other worksheets in the workbook."
+platformType: xplat-unmapped
 _tocName: Hyperlinks
 _premium: true
 ---

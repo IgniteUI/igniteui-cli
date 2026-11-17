@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "In Angular map component, you can use the GeographicHighDensityScatterSeries to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time."
+platformType: xplat
 _tocName: Geographic High Density Map
 _premium: true
 ---
 # Angular Geographic High Density Map
 
-In Angular map component, you can use the `IgxGeographicHighDensityScatterSeries` to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
+In Angular map component, you can use the [`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent) to bind and show scatter data ranging from hundreds to millions of data points requiring exceedingly little loading time.
 
 ## Angular Geographic High Density Map Example
 
@@ -127,111 +128,80 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The demo above shows the `IgxGeographicHighDensityScatterSeries` series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
+The demo above shows the [`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent) series in the map component bound to hundreds or even thousands of data points representing Australia’s population density. The map plot area with more densely populated data points represented as coalescences of red pixels and loosely distributed data points by discrete blue pixels.
 
 Because there are so many data points, the series displays the scatter data as tiny dots as opposed to full size markers, and displays areas with the most data using a higher color density representing a cluster of data points.
 
 ## Data Requirements
-Similar to other types of scatter series in the map control, the `IgxGeographicHighDensityScatterSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns.
+Similar to other types of scatter series in the map control, the [`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent) series has the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=dataSource) property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the [`longitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=longitudeMemberPath) and [`latitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=latitudeMemberPath) properties to map these data columns.
 
 ### Data Binding
 The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `DataSource`|any|Gets or sets the items source |
-| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
-| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=dataSource)|any|Gets or sets the items source |
+| [`longitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=longitudeMemberPath)|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| [`latitudeMemberPath`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=latitudeMemberPath)|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
 
 ## Heat Color Scale
 The Heat Color Scale, an optional feature, determines the color pattern within the series. The following table summarizes the properties used for determining the color scale.
 
 | Property |Type|Description |
 | ---|---|--- |
-| `HeatMinimum`|Double|Defines the double value representing the minimum end of the color scale |
-| `HeatMaximum`|Double|Defines the double value representing the maximum end of the color scale |
-| `HeatMinimumColor`|Color|Defines the point density color used at the bottom end of the color scale |
-| `HeatMaximumColor`|Color|Defines the point density color used at the top end of the color scale |
+| [`heatMinimum`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMinimum)|Double|Defines the double value representing the minimum end of the color scale |
+| [`heatMaximum`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMaximum)|Double|Defines the double value representing the maximum end of the color scale |
+| [`heatMinimumColor`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMinimumColor)|Color|Defines the point density color used at the bottom end of the color scale |
+| [`heatMaximumColor`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMaximumColor)|Color|Defines the point density color used at the top end of the color scale |
 
 ## Code Example
 
-The following code demonstrates how set the `HeatMinimumColor` and `HeatMaximumColor` properties of the `IgxGeographicHighDensityScatterSeries`
+The following code demonstrates how set the [`heatMinimumColor`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMinimumColor) and [`heatMaximumColor`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent&member=heatMaximumColor) properties of the [`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent)
 
 ```html
-<div class="sampleRoot" >
-    <igx-geographic-map #map
-        width="700px"
-        height="500px"
-        zoomable="true" >
-    </igx-geographic-map>
-</div>
-
-<ng-template let-series="series" let-item="item" #template>
-    <div>
-        <span>
-            {{item.n}}
-        </span>
-    </div>
-</ng-template>
+<igx-geographic-map
+    #geoMap
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igx-geographic-map>
 ```
 
 ```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxShapeDataSource } from 'igniteui-angular-core';
-import { IgxGeographicHighDensityScatterSeriesComponent } from 'igniteui-angular-maps';
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { WorldUtils } from "../../utilities/WorldUtils";
+var map = this.geoMap;
+var url = "https://static.infragistics.com/xplatform/data/AusPlaces.csv";
+fetch(url)
+    .then((response) => response.text())
+    .then((csvData: string) => {
+        var csvLines = csvData.split("\n");
+        var geoLocations: any[] = [];
+        // parsing CSV data and creating geographic locations
+        for (var i = 1; i < csvLines.length; i++) {
+            var columns = csvLines[i].split(",");
+            if (columns.length < 3) continue;
+            geoLocations.push({
+                name: columns[0],
+                longitude: Number(columns[1]),
+                latitude: Number(columns[2])
+            });
+        }
+        // creating the high density series with the loaded data
+        var series = new IgxGeographicHighDensityScatterSeriesComponent();
+        series.dataSource = geoLocations;
+        series.longitudeMemberPath = "longitude";
+        series.latitudeMemberPath = "latitude";
+        series.heatMaximumColor = "Red";
+        series.heatMinimumColor = "Black";
+        series.heatMinimum = 0;
+        series.heatMaximum = 5;
+        series.pointExtent = 1;
+        series.mouseOverEnabled = true;
+        // adding the series to the geographic map
+        map.series.add(series);
 
-@Component({
-  selector: "app-map-geographic-scatter-density-series",
-  styleUrls: ["./map-geographic-scatter-density-series.component.scss"],
-  templateUrl: ".map-geographic-scatter-density-series.component.html"
-})
-
-export class MapTypeScatterDensitySeriesComponent implements AfterViewInit {
-
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    @ViewChild("template")
-    public tooltip: TemplateRef<object>;
-
-    public geoLocations;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
-         // fetching geographic locations from public JSON folder
-         fetch("assets/Data/AusPlaces.json")
-         .then((response) => response.json())
-         .then((data) => this.onDataLoaded(data, ""));
-      }
-
-    public onDataLoaded(sds: IgxShapeDataSource, e: any) {
-        this.geoLocations = sds;
-        // creating HD series with loaded data
-        const geoSeries = new IgxGeographicHighDensityScatterSeriesComponent();
-        geoSeries.dataSource = sds;
-        geoSeries.longitudeMemberPath = "x";
-        geoSeries.latitudeMemberPath = "y";
-        geoSeries.heatMaximumColor = "Red";
-        geoSeries.heatMinimumColor = "Black";
-        geoSeries.heatMinimum = 0;
-        geoSeries.heatMaximum = 5;
-        geoSeries.pointExtent = 1;
-        geoSeries.tooltipTemplate = this.tooltip;
-        geoSeries.mouseOverEnabled = true;
-
-        // adding HD series to the geographic amp
-        this.map.series.add(geoSeries);
-
-        // zooming to bound of all geographic locations
-        const geoBounds = WorldUtils.getBounds(this.geoLocations);
-        geoBounds.top = 0;
-        geoBounds.height = -50;
-        this.map.zoomToGeographic(geoBounds);
-    }
-}
+        map.zoomToGeographic({ left: 110, top: -10, width: 45, height: -35 });
+    });
 ```
 
 ## API References
-`IgxGeographicHighDensityScatterSeries`
+[`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent)

@@ -13,9 +13,9 @@ _premium: true
 
 The Ignite UI for React [`IgrGrid`](mcp:get_api_reference?platform=react&component=IgrGrid) icons can be customized to use custom icons from a different collection set using the exposed API methods:
 
-- [`IgrregisterIconFromText`](mcp:get_api_reference?platform=react&component=registerIconFromText)
-- [`IgrregisterIcon`](mcp:get_api_reference?platform=react&component=registerIcon)
-- [`IgrsetIconRef`](mcp:get_api_reference?platform=react&component=setIconRef)
+- [`registerIconFromText`](mcp:get_api_reference?platform=react&component=registerIconFromText)
+- [`registerIcon`](mcp:get_api_reference?platform=react&component=registerIcon)
+- [`setIconRef`](mcp:get_api_reference?platform=react&component=setIconRef)
 
 Registering an icon caches it locally, so that it can reused between components, that reference that icon by name and collection name. Setting a reference changes which icon, from which collection, will be used when referencing that icon by name.
 

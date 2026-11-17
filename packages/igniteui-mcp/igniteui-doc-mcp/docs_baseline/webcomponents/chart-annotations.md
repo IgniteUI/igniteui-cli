@@ -4,9 +4,11 @@ description: Infragistics' Web Components Chart Annotations
 keywords: Web Components Charts, Annotations, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "CategoryChart", "CrosshairLayer", "FinalValueLayer", "CalloutLayer"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Web Components chart's hover interactions and annotations are implemented through hover interaction layers, which are series that are added to the series collection."
+platformType: xplat
 _tocName: Chart Annotations
 _premium: true
 ---
@@ -23,22 +25,22 @@ The following example demonstrates the annotation layers that are available on t
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-Like this sample? Get access to our complete Web Components toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for Web Components toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-web-components/download">Download free trial.</a>
 
 ## Web Components Crosshair Layer
 
-The [`IgcCrosshairLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent) renders as crossing lines intersecting at the actual value of every series that they are configured to target with each series rendering a separate set of lines.
+The [`IgcCrosshairLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent) renders as crossing lines intersecting at the actual value of every series that they are configured to target with each series rendering a separate set of lines.
 
 Crosshair types include:
 - Horizontal
 - Vertical
 - Both
 
-The chart's crosshairs can also be configured to snap to data points by setting the [`CrosshairsSnapToData`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=crosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
+The chart's crosshairs can also be configured to snap to data points by setting the [`crosshairsSnapToData`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=crosshairsSnapToData) property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
 
-You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`TargetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=targetSeries) property.
+You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the [`targetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=targetSeries) property.
 
-By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`Brush`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=brush) property of the Crosshair Layer.
+By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the [`IgcCrosshairLayerComponent.brush`](mcp:get_api_reference?platform=webcomponents&component=IgcCrosshairLayerComponent&member=brush) property of the Crosshair Layer.
 
 The following example shows how to configure the crosshair layer but targeting a single series, setting the type to vertical and styling the brush color.
 
@@ -69,15 +71,15 @@ export class SampleCategoryData {
 
 ## Web Components Final Value Layer
 
-The [`IgcFinalValueLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent) of the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control provides a quick view along the axis of the ending value displayed in a series.
+The [`IgcFinalValueLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent) of the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control provides a quick view along the axis of the ending value displayed in a series.
 
-You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the [`TargetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=targetSeries) property.
+You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the [`targetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=targetSeries) property.
 
 You can also customize this annotation by setting the following properties:
 
-- [`AxisAnnotationBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- [`AxisAnnotationTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationTextColor): This property is used to choose the brush for the annotation's text color.
-- [`AxisAnnotationOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationOutline): This property is used to choose the brush for the annotation's outline color.
+- [`axisAnnotationBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- [`axisAnnotationTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationTextColor): This property is used to choose the brush for the annotation's text color.
+- [`axisAnnotationOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcFinalValueLayerComponent&member=axisAnnotationOutline): This property is used to choose the brush for the annotation's outline color.
 
 The following example demonstrates how to style the final value layer annotation by setting the properties listed above.
 
@@ -108,28 +110,35 @@ export class SampleCategoryData {
 
 ```html
 <igc-category-chart
-     id="chart"
-     final-value-annotations-visible="true">
+    id="chart"
+    final-value-annotations-visible="true"
+    final-value-annotations-background="DodgerBlue"
+    final-value-annotations-text-color="White"
+    final-value-annotations-precision="0">
 </igc-category-chart>
+```
+
+```ts
+chart.dataSource = this.temperatureAnnotatedData;
 ```
 
 ## Web Components Callout Layer
 
-The [`IgcCalloutLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent) displays annotations from existing or new data on the chart control. The annotations appear next to the given data values in the data source.
+The [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent) displays annotations from existing or new data on the chart control. The annotations appear next to the given data values in the data source.
 
 Use the callout annotations to display additional information, such as notes or specific details about data points, that you would like to point out to your users.
 
-You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the [`TargetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=targetSeries) property.
+You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the [`targetSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=targetSeries) property.
 
 You can also customize this annotation by setting the following properties:
 
-- [`CalloutLeaderBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutLeaderBrush): This property is used to choose the brush for the leader lines for the callouts for the layer.
-- [`CalloutOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutOutline): This property is used to choose the brush for the annotation's outline color.
-- [`CalloutBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- [`CalloutTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutTextColor): This property is used to choose the brush for the annotation's text color.
-- [`CalloutStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutStrokeThickness): This property is used to choose the thickness for the callout backing.
-- [`CalloutCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutCornerRadius): This property is used to curve the corners of the callouts.
-- [`AllowedPositions`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=allowedPositions): This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
+- [`calloutLeaderBrush`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutLeaderBrush): This property is used to choose the brush for the leader lines for the callouts for the layer.
+- [`calloutOutline`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutOutline): This property is used to choose the brush for the annotation's outline color.
+- [`calloutBackground`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutBackground): This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- [`calloutTextColor`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutTextColor): This property is used to choose the brush for the annotation's text color.
+- [`calloutStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutStrokeThickness): This property is used to choose the thickness for the callout backing.
+- [`calloutCornerRadius`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=calloutCornerRadius): This property is used to curve the corners of the callouts.
+- [`allowedPositions`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent&member=allowedPositions): This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
 
 The following example demonstrates how to style the callout layer annotations by setting the properties listed above:
 
@@ -168,22 +177,21 @@ export class CountryRenewableElectricity extends Array<CountryRenewableElectrici
 
 ```html
 <igc-category-chart
-     id="chart"
-     width="800px"
-     height="400px"
-     callouts-visible="true">
+    id="chart"
+    callouts-visible="true"
+    callouts-x-member-path="index"
+    callouts-y-member-path="temperature"
+    callouts-label-member-path="tempInfo"
+    callouts-allowed-positions="Top, Bottom">
 </igc-category-chart>
 ```
 
 ```ts
-let chart = (document.getElementById("chart") as IgcCategoryChartComponent);
+var chart = this.chart = document.getElementById('chart') as IgcCategoryChartComponent;
 
-chart.dataSource = data;
-chart.calloutsDataSource = categoryData;
-chart.calloutsXMemberPath = "index";
-chart.calloutsYMemberPath = "value";
-chart.calloutsLabelMemberPath = "info";
+chart.dataSource = this.temperatureAnnotatedData;
+chart.calloutsDataSource = this.temperatureAnnotatedData;
 ```
 
 ## API References
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)

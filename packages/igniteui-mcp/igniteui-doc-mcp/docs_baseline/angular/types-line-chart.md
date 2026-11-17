@@ -1,12 +1,13 @@
 ---
 title: "Angular Line Chart and Graph | Ignite UI for Angular"
-description: The Angular Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Try for FREE.
+description: The Angular Line chart is capable of handling high volumes of data, ranging into millions of data points, and updating them every few milliseconds. Download free trial.
 keywords: "Angular Charts, Line Chart, Line Graph, Infragistics"
 license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "Legend", "PolarLineSeries", "RadialLineSeries", "StackedLineSeries", "Stacked100LineSeries", "Series", "CategoryChartType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Line Chart or Line Graph is a type of category charts that show the continuous data values represented by points connected by straight line segments of one or more quantities over a period of time."
+platformType: xplat
 _tocName: Line Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Line Chart or Line Graph is a type of category charts 
 
 ## Angular Line Chart Example
 
-You can create the Angular Line Chart in the `IgxCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to `Line` enum, as shown in the example below.
+You can create the Angular Line Chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data to [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) property and setting [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line) enum, as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -171,7 +172,7 @@ There are several common use cases for choosing a Line Chart:
 
 The Angular Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period, as we have shown in the example below.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -270,7 +271,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Since the Angular Line Chart allows you to combine multiple series and compare or see how they change over time, let's see how easy it is to achieve this. All we need to do is bind to a data source containing the data for China and the USA, and the line chart will automatically update to fit the additional data.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -382,7 +383,7 @@ The Angular Line chart is capable of handling high volumes of data, ranging into
 
 In this example, we are streaming live data into the Angular Line Chart at an interval of your choosing. You can set the data points from 5,000 to 1 million and update the chart to optimize the scale based on the device you are rendering the chart on.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -653,7 +654,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Once our chart is set up, we may want to make some further styling customizations such as change the line colors, change the legend font family, and/or increase the size of the axis labels to make it easier to read.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Line`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -762,9 +763,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-You can also create a dashed line within the `IgxLineSeries` by using the `IgxDataChart` and setting the `DashArray` property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
+You can also create a dashed line within the [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent) by using the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) and setting the [`dashArray`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent&member=dashArray) property on the series. This property takes an array of numbers that will describe the length of the resulting dashes in the line.
 
-The following example demonstrates usage of the `DashArray` in a `IgxLineSeries` in `IgxDataChart`:
+The following example demonstrates usage of the [`dashArray`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent&member=dashArray) in a [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent) in [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -920,11 +921,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Advanced Types of Line Charts
 
-The following sections explain more advanced types of Angular Line Charts that can be created using the `IgxDataChart` control instead of `IgxCategoryChart` control with simplified API.
+The following sections explain more advanced types of Angular Line Charts that can be created using the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control instead of [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control with simplified API.
 
 ## Angular Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedLineSeries`, as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1110,7 +1111,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100LineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1292,7 +1293,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Radial Line Chart belongs to a group of radial charts and has a shape of an unfilled polygon that is bound by a collection of straight lines connecting data points. This chart type uses the same concept of data plotting as the Line Chart, but wraps the data points around a circular axis rather than stretching them horizontally.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxRadialLineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxRadialLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialLineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1452,7 +1453,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Polar Line Chart belongs to a group of polar charts and is rendered using a collection of straight lines connecting data points in polar (angle/radius) coordinate system. Polar Line Charts use the same concepts of data plotting as the [Scatter Line Chart](scatter-chart.md) with the difference that the visualization wraps data points around a circle rather than stretching them horizontally.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxPolarLineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxPolarLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarLineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1628,16 +1629,16 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type        | Control Name       | API Members |
 | ------------------|--------------------|----------------------- |
-| Line              | `IgxCategoryChart`    | `CategoryChart.ChartType` = `Line` |
-| Polar Line        | `IgxDataChart`     | `IgxPolarLineSeries` |
-| Radial Line       | `IgxDataChart`     | `IgxRadialLineSeries` |
-| Stacked Line      | `IgxDataChart`     | `IgxStackedLineSeries` |
-| Stacked 100% Line | `IgxDataChart`     | `IgxStacked100LineSeries` |
+| Line              | [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)    | [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) = [`CategoryChartType.Line`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Line) |
+| Polar Line        | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxPolarLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarLineSeriesComponent) |
+| Radial Line       | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxRadialLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialLineSeriesComponent) |
+| Stacked Line      | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent) |
+| Stacked 100% Line | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent) |
 
-`IgxCategoryChart`<br />
-`IgxDataChart`<br />
-`IgxLineSeries`<br />
-`IgxPolarLineSeries`<br />
-`IgxRadialLineSeries`<br />
-`IgxStackedLineSeries`<br />
-`IgxStacked100LineSeries`<br />
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)<br />
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)<br />
+[`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent)<br />
+[`IgxPolarLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarLineSeriesComponent)<br />
+[`IgxRadialLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialLineSeriesComponent)<br />
+[`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent)<br />
+[`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent)<br />

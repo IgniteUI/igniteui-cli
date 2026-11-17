@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "When setting up the data validation rules you will need to import the rules you want to use."
+platformType: xplat-unmapped
 _tocName: Data Validation
 _premium: true
 ---

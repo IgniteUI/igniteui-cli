@@ -7,6 +7,7 @@ mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeri
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for React, markers are visual elements that display the values of data points in the chart's plot area."
+platformType: xplat
 _tocName: Chart Markers
 _premium: true
 ---
@@ -16,9 +17,9 @@ In Ignite UI for React, markers are visual elements that display the values of d
 
 ## React Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `MarkerTypes` property to `Circle` enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `markerTypes` property to `MarkerType.Circle` enum value.
 
-The colors of the markers are also managed by setting the `MarkerBrushes` and `MarkerOutlines` properties in the sample below. The markers and `CategoryChart.ChartType` is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the `markerBrushes` and `markerOutlines` properties in the sample below. The markers and `chartType` is configurable in this sample by using the drop-downs as well.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -184,33 +185,43 @@ root.render(<Sample/>);
 
 ## React Chart Marker Size
 
-You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
+You can control the exact device-independent pixel dimensions of data point markers by setting the `markerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
 
-By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
+By default, marker sizing is determined by the series marker template. When you set `markerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `markerSize` back to `NaN` restores the default template-driven sizing.
 
-The `MarkerSize` property is available on all series types that derive from `MarkerSeries`, including `LineSeries`, `SplineSeries`, `AreaSeries`, `ColumnSeries`, `ScatterSeries`, `ScatterLineSeries`, `ScatterSplineSeries`, and polar/radial series types.
+The `markerSize` property is available on all series types that derive from `IgrMarkerSeries`, including `IgrLineSeries`, `IgrSplineSeries`, `IgrAreaSeries`, `IgrColumnSeries`, `IgrScatterSeries`, `IgrScatterLineSeries`, `IgrScatterSplineSeries`, and polar/radial series types.
 
-The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a `ScatterLineSeries` in the `XamDataChart` control:
+The following code examples show how to set `markerSize` to 30 device-independent pixels on a `IgrScatterLineSeries` in the `IgrDataChart` control:
 
 ```tsx
 <IgrDataChart>
+    <IgrNumericXAxis
+        name="xAxis"
+        ref={ref => { this.xAxis = ref; }} />
+    <IgrNumericYAxis
+        name="yAxis"
+        ref={ref => { this.yAxis = ref; }} />
     <IgrScatterLineSeries
-        markerSize={30}
-        markerType="Circle"
-        xMemberPath="X"
-        yMemberPath="Y"
+        name="scatterLineSeries"
+        ref={ref => { this.scatterLineSeries = ref; }}
         xAxisName="xAxis"
-        yAxisName="yAxis" />
+        yAxisName="yAxis"
+        xMemberPath="x"
+        yMemberPath="y"
+        markerType="Circle"
+        markerSize={30} />
 </IgrDataChart>
 ```
 
-To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
+To reset markers to their default template-driven size, set `markerSize` to `NaN` (or remove the attribute in markup):
 
 ```tsx
-<IgrLineSeries markerSize= markerType="Circle" />
+<IgrLineSeries
+    markerType="Circle"
+    markerSize= />
 ```
 
-The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
+The following sample demonstrates `markerSize` on scatter series with an interactive editor:
 
 ```typescript
 export class CountryDemographicAfricanItem {
@@ -486,19 +497,17 @@ root.render(<Sample/>);
 ```
 
 **Note:** 
-For `BubbleSeries`, the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the `RadiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
+For `IgrBubbleSeries`, the `markerSize` property does not override the bubble radius, which is controlled by the radius data column and the `radiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
 
 ## React Chart Checkmark Marker Type
 
-The Ignite UI for React charts include a `Checkmark` option in the `MarkerType` enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+The Ignite UI for React charts include a `MarkerType.Checkmark` option. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
 
 You can apply the `Checkmark` marker type to an individual series by setting its `MarkerType` property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's `MarkerAutomaticBehavior` property to `MarkerAutomaticBehavior.Checkmark`.
 
-The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
-
 ## React Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the `IgrCategoryChart` control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the `markerTemplate` property of a series rendered in the `IgrCategoryChart` control as it is demonstrated in example below.
 
 ```tsx
 import React from 'react';

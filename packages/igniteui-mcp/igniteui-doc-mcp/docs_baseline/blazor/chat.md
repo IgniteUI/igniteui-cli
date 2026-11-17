@@ -19,7 +19,7 @@ Unlike a static message list, the `IgbChat` component is interactive and designe
 
 
 <div class="container vertical">
-    <IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" Height="100%"></IgbChat>
+    <IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" class="chat"></IgbChat>
 </div>
 
 @code {
@@ -90,25 +90,17 @@ Unlike a static message list, the `IgbChat` component is interactive and designe
 
 ## Installation
 
-To get started, install the Ignite UI for Blazor by running the following command:
+To get started, install the Ignite UI for Blazor as described in [Installing Ignite UI for Blazor](../general-installing-blazor.md).
 
-```cmd
-Install-Package IgniteUI.Blazor
-```
+Register the Ignite UI for Blazor services:
 
-Or via .NET CLI:
-
-```cmd
-dotnet add package IgniteUI.Blazor
-```
-
-Once installed, you can import the component in your project and register it so it becomes available as a custom element:
-
-```cs
+```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbChatModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering `IgbChatModule`, the client resource module of the `IgbChat`, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbChatModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 You will also need to link an additional CSS file to apply the styling to the `IgbChat` component.
 
@@ -140,7 +132,7 @@ Here, the `currentUserId` property tells the component which messages are “out
 Once rendered, you can programmatically add messages:
 
 ```razor
-<IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" Height="100%"></IgbChat>
+<IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated"></IgbChat>
 ```
 
 ```cs
@@ -368,7 +360,7 @@ public void OnMessageCreated(IgbChatMessageEventArgs e)
 
 
 <div class="container vertical">
-    <IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" Height="100%"></IgbChat>
+    <IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" class="chat"></IgbChat>
 </div>
 
 @code {
@@ -561,11 +553,10 @@ This allows you to style the `IgbChat` to match your brand without replacing its
 
 
 <div class="container vertical chatCustom">
-    <IgbChat @ref="Chat" Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" Height="100%"></IgbChat>
+    <IgbChat Options="Options" Messages="Messages" MessageCreated="OnMessageCreated" class="chat"></IgbChat>
 </div>
 
 @code {
-    public IgbChat Chat;
     public IgbChatMessage[] Messages = new IgbChatMessage[]
     {
         new IgbChatMessage()

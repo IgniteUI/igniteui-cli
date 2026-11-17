@@ -3,9 +3,10 @@ title: "React Dashboard Tile Component | Ignite UI for React"
 description: See how you can easily get started with React Dashboard Tile Component.
 keywords: "Ignite UI for React, UI controls, React widgets, web widgets, UI widgets, React, Native React Components Suite, Native React Controls, Native React Components Library, React Dashboard components, React Dashboard Tile controls"
 license: commercial
-mentionedTypes: ["Toolbar", "CategoryChart", "DataChart", "RadialGauge", "LinearGauge", "GeographicMap"]
+mentionedTypes: ["Toolbar", "CategoryChart", "DataChart", "RadialGauge", "LinearGauge", "GeographicMap", "DashboardTile"]
 llms:
   description: "The React Dashboard Tile is a automatic data visualization component which determines via analysis of a DataSource collection/array or single data point what would be the most appropriate visualization to display."
+platformType: xplat
 _tocName: Charting in Dashboards
 _premium: true
 ---
@@ -922,22 +923,23 @@ npm install igniteui-react-maps
 
 The following modules are suggested when using the Dashboard Tile component:
 
-```ts
-import { IgrDashboardTileModule, IgrDataChartDashboardTileModule, IgrRadialGaugeDashboardTileModule,
-         IgrLinearGaugeDashboardTileModule, IgrGeographicMapDashboardTileModule,
-         IgrPieChartDashboardTileModule } from "igniteui-react-dashboards";
-
-IgrDataChartDashboardTileModule.register();
-IgrRadialGaugeDashboardTileModule.register();
-IgrLinearGaugeDashboardTileModule.register();
-IgrGeographicMapDashboardTileModule.register();
-IgrPieChartDashboardTileModule.register();
-IgrDashboardTileModule.register();
+```tsx
+import { IgrDashboardTileModule, IgrDataChartDashboardTileModule, IgrGeographicMapDashboardTileModule, IgrLinearGaugeDashboardTileModule, IgrPieChartDashboardTileModule, IgrRadialGaugeDashboardTileModule } from 'igniteui-react-dashboards';
+// ...
+const mods: any[] = [
+    IgrDashboardTileModule,
+    IgrDataChartDashboardTileModule,
+    IgrGeographicMapDashboardTileModule,
+    IgrLinearGaugeDashboardTileModule,
+    IgrPieChartDashboardTileModule,
+    IgrRadialGaugeDashboardTileModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Usage
 
-Depending on what you bind the Dashboard Tile's `IgrDataSource` property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for React toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
+Depending on what you bind the Dashboard Tile's `IgrDashboardTile.dataSource` property to will determine which visualization you see by default, as the control will evaluate the data you bind and then choose a visualization from the Ignite UI for React toolset to show. The data visualization controls that are included to be shown in the Dashboard Tile are the following:
 
 - [IgrCategoryChart](./charts/chart-overview.md)
 - [IgrDataChart](./charts/chart-overview.md)
@@ -946,9 +948,15 @@ Depending on what you bind the Dashboard Tile's `IgrDataSource` property to will
 - [IgrLinear Gauge](./linear-gauge.md)
 - [IgrRadialGauge](./radial-gauge.md)
 
-The data visualization that is chosen by default is mainly dependent on the schema and the count of the `IgrDataSource` that you have bound. For example, if you bind a single numeric value, you will get a `IgrRadialGauge`, but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `IgrDataPieChart`. If you bind an `IgrDataSource` that has more value paths, you will receive a `IgrDataChart` with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `IgrShapeDataSource` or data the appears to contain geographic points to receive a `IgrGeographicMap`.
+The data visualization that is chosen by default is mainly dependent on the schema and the count of the `IgrDashboardTile.dataSource` that you have bound. For example, if you bind a single numeric value, you will get a `IgrRadialGauge`, but if you bind a collection of value-label pairs that are easy to distinguish from each other, you will likely get a `IgrDataPieChart`. If you bind an `IgrDashboardTile.dataSource` that has more value paths, you will receive a `IgrDataChart` with multiple column series or line series, depending mainly on the count of the collection bound. You can also bind to a `IgrShapeDataSource` or data the appears to contain geographic points to receive a `IgrGeographicMap`.
 
-You are not locked into a single visualization when you bind the `IgrDataSource`, and you can tell the control that you want to see a particular visualization by setting its `VisualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
+You are not locked into a single visualization when you bind the `IgrDashboardTile.dataSource`, and you can tell the control that you want to see a particular visualization by setting its `visualizationType` property. For example, if you specifically wanted to see a line chart, you could define the Dashboard Tile like so:
+
+```tsx
+<IgrDashboardTile
+    ref={this.dashboardRef}
+    visualizationType="LineChart" />
+```
 
 ```typescript
 export class DashboardGaugeDataSourceItem {
@@ -1043,10 +1051,10 @@ The visualization or properties of the visualization are also configurable using
 
 From left to right:
 
-- The first tool will show a data grid with the `IgrDataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
+- The first tool will show a data grid with the `IgrDashboardTile.dataSource` provided to the control. This is a toggle tool, so if you click it again after showing the grid, it will revert to the visualization.
 - The second tool allows you to configure the settings of the current data visualization.
-- The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `VisualizationType` property, mentioned above.
-- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the `IncludedProperties` or `ExcludedProperties` collection on the control.
+- The third tool allows you to change the current visualization, allowing you to plot a different series type or show a different type of visualization altogether. This can be set on the control by setting the `visualizationType` property, mentioned above.
+- The last tool allows you to configure which properties on your underlying data item are included for the control. You can configure this by setting the `includedProperties` or `excludedProperties` collection on the control.
 
 This demo demonstrates dashboard tile integration with the React Pie Chart. The toolbar options at the top right provides access to styling and changing the data visualization.
 

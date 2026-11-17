@@ -233,6 +233,23 @@ igniteui-mcp --debug
 | `DB_PATH` | Override the path to the SQLite database file. Defaults to the bundled `dist/igniteui-docs.db`. |
 | `IGNITEUI_MCP_DOCS_BACKEND_URL` | Backend URL used with `--remote` when no URL argument is given. Does not enable remote mode on its own. |
 
+## Using the Docs Database From Code
+
+The `@igniteui/mcp-server/docs` entry gives Node code the bundled docs search without starting the server. `ig doc` uses it.
+
+```js
+import { LocalDocsProvider, resolveDoc, sanitizeSearchDocsQuery } from "@igniteui/mcp-server/docs";
+
+const docs = new LocalDocsProvider();
+await docs.init();
+const results = await docs.searchDocs("angular", sanitizeSearchDocsQuery("row editing"));
+const entries = await docs.searchDocEntries("angular", sanitizeSearchDocsQuery("row editing"));
+const { text, found } = await docs.getDoc("angular", "grid-row-editing");
+const doc = await resolveDoc(docs, "angular", "IgxGrid");
+```
+
+`searchDocs` and `getDoc` return markdown text; `searchDocEntries` returns the same ranked results as `{ name, title, summary?, excerpt? }` objects, with the matched words in `excerpt` between `>>>` and `<<<`. `getDoc` takes the exact doc name; `resolveDoc` also accepts component class names and near matches, as the `get_doc` tool does, and reports the doc it served in `servedName`.
+
 ## Building From Source
 
 The bundled database, the pre-built API reference data, and the import maps are committed to the repository, so a source checkout needs no submodules or API keys to run the server:

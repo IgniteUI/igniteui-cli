@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction", "SpreadsheetCommandType", "Command"]
 llms:
   description: "Explains how to copy, cut, and paste cells in the Angular Spreadsheet by using its clipboard commands and API."
+platformType: xplat-unmapped
 _tocName: Clipboard
 _premium: true
 ---
@@ -105,7 +106,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Dependencies
 
-Before making use of the clipboard you will want to import the `IgxSpreadsheetAction` enumeration:
+Before making use of the clipboard you will want to import the [`SpreadsheetAction`](mcp:get_api_reference?platform=angular&component=SpreadsheetAction) enumeration:
 
 ```ts
 import { IgxSpreadsheetComponent } from 'igniteui-angular-spreadsheet';
@@ -114,7 +115,7 @@ import { SpreadsheetAction } from 'igniteui-angular-spreadsheet';
 
 ## Usage
 
-The following code snippet shows how you can execute commands related to the clipboard in the Angular `IgxSpreadsheet` control:
+The following code snippet shows how you can execute commands related to the clipboard in the Angular [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) control:
 
 ```ts
 public cut(): void {
@@ -132,5 +133,5 @@ public paste(): void {
 
 ## API References
 
-`IgxSpreadsheetAction`<br />
-`IgxSpreadsheet`<br />
+[`SpreadsheetAction`](mcp:get_api_reference?platform=angular&component=SpreadsheetAction)<br />
+[`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent)<br />

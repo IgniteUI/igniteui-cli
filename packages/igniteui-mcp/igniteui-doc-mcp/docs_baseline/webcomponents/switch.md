@@ -39,7 +39,7 @@ The Ignite UI for Web Components Switch component is a binary choice selection c
         font: 400 10px / 16px "Titillium Web", sans-serif;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: var(--ig-primary-500);
+        color: var(--ig-secondary-500);
     }
 
     & .notifications__row {
@@ -67,12 +67,14 @@ The Ignite UI for Web Components Switch component is a binary choice selection c
     white-space: normal;
 
     & .option__label {
-        font-size: 16px;
+        font: 400 16px / 24px "Titillium Web", sans-serif;
+        letter-spacing: 0.15px;
         color: var(--ig-gray-900);
     }
 
     & .option__hint {
-        font-size: 13px;
+        font: 400 14px / 20px "Titillium Web", sans-serif;
+        letter-spacing: 0.25px;
         color: var(--ig-gray-700);
     }
 }
@@ -620,14 +622,13 @@ The Web Components Switch requires a theme stylesheet to apply its visual stylin
 
 Use the following Web Components resources for API details, examples, and project support:
 
-- [Lists - Design System Pattern](https://www.infragistics.com/products/indigo-design/help/patterns/lists)
+- [Switch - Design System Component](https://www.infragistics.com/products/indigo-design/help/components/switch)
 - [Ignite UI for Web Components **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-web-components)
 - [Ignite UI for Web Components **GitHub**](https://github.com/IgniteUI/igniteui-webcomponents)
 
 ## Related Components
 
 - [Checkbox](./checkbox.md) - Use Checkbox when users select one or more options, especially as part of a form.
-
 - [Button](./button.md) - Use Button when the control represents a command or action rather than a setting.
 
 ## FAQ

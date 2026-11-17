@@ -3,7 +3,7 @@ title: Angular Grid Theming - Ignite UI for Angular
 description: The Ignite UI for Angular Grid is themed with grid-theme(), a Sass function that derives every color in the component from three primary tokens.
 keywords: angular grid theming, angular grid styling, grid theme, ignite ui for angular, infragistics
 license: commercial
-last_updated: "2026-08-27"
+last_updated: "2026-11-09"
 llms:
   description: "The Ignite UI for Angular Grid is themed through grid-theme(), which derives every color from a background, foreground and accent token."
 _tocName: Theming
@@ -384,6 +384,30 @@ Grid lines are theme parameters. To hide one, tint it to the surface behind it r
 ));
 ```
 
+## Components inside the Grid
+
+The Grid also themes the components it renders: row selectors, chips, badges, buttons, inputs, drop-downs, tooltips, the paginator, the toolbar and the filtering popups. It declares their tokens on its own host, derived from its primary tokens, so tokens set for those components on an ancestor don't reach them. `.promo { @include tokens(checkbox-theme($fill-color: #ff7d52)); }` recolors the checkboxes in `.promo`, but not the row selectors of a Grid inside it.
+
+To recolor the inner components, theme the Grid. Each inner component follows one or more of its primary tokens. The accent color reaches the row selectors, badges, buttons and inputs, while tooltips follow the foreground and chips follow both the background and the foreground:
+
+```scss
+.promo {
+  @include tokens(grid-theme($accent-color: #ff7d52));
+}
+```
+
+To override one component without changing the Grid's colors, target that component. Tokens declared on the component itself win over the ones the Grid declares:
+
+```scss
+.promo igx-checkbox {
+  @include tokens(checkbox-theme($fill-color: #ff7d52));
+}
+
+.promo .igx-tooltip {
+  @include tokens(tooltip-theme($background: #ff7d52));
+}
+```
+
 ## CSS variables
 
 The default appearance is deliberate, not derived: out of the box the Grid matches the Ignite UI design specification exactly, resolving against the base palette rather than computing colors from a background. Derivation is what you opt into when you declare a theme of your own.
@@ -420,7 +444,8 @@ Prefer the Sass route when you can. `grid-theme()` writes the derived tokens for
 Change a color and watch it reach the header, the rows, the summaries, the paginator and the filtering popups. Switch grids to confirm the same tokens serve all of them, and copy the generated theme when you are happy with it.
 
 ```typescript
-import { Component, ElementRef, afterNextRender, computed, inject, signal, viewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, PLATFORM_ID, afterNextRender, computed, inject, signal, viewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IgxAccordionComponent } from 'igniteui-angular/accordion';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
@@ -437,11 +462,11 @@ import { IgxPivotGridComponent } from 'igniteui-angular/grids/pivot-grid';
 import { IgxTreeGridComponent } from 'igniteui-angular/grids/tree-grid';
 import { IgxPaginatorComponent } from 'igniteui-angular/paginator';
 import { IgxSwitchComponent } from 'igniteui-angular/switch';
+import { defineComponents, IgcColorPickerComponent } from 'igniteui-webcomponents';
 import { INVOICE_DATA } from '../../data/invoiceData';
 import { DATA as PIVOT_DATA } from '../../data/pivot-data';
 import { SINGERS } from '../../data/singersData';
 import { EMPLOYEE_FLAT_AVATARS_DATA } from '../../tree-grid/data/employees-flat-avatars';
-import { ThemeColorFieldComponent } from './theme-color-field.component';
 
 type TokenKey = 'background' | 'accentColor' | 'foreground' | 'headerBackground' | 'headerForeground';
 
@@ -486,14 +511,16 @@ const NO_DIVIDER = 'var(--ig-grid-background)';
         IgxButtonGroupComponent, IgxCellTemplateDirective, IgxColumnComponent,
         IgxDialogActionsDirective, IgxDialogComponent, IgxDialogTitleDirective, IgxGridComponent,
         IgxHierarchicalGridComponent, IgxIconButtonDirective, IgxIconComponent, IgxPaginatorComponent, IgxPivotGridComponent, IgxRowIslandComponent,
-        IgxSwitchComponent, IgxTreeGridComponent, ThemeColorFieldComponent
-    ]
+        IgxSwitchComponent, IgxTreeGridComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class GridThemePlaygroundComponent {
     protected readonly primaryTokens = PRIMARY_TOKENS;
     protected readonly headerTokens = HEADER_TOKENS;
     protected readonly compactSummary = CompactSummary;
 
+    private initialColors: Record<TokenKey, string> = { ...EMPTY_COLORS };
     protected readonly colors = signal<Record<TokenKey, string>>({ ...EMPTY_COLORS });
     protected readonly size = signal<'small' | 'medium' | 'large'>('medium');
     protected readonly radiusFactor = signal(0.4);
@@ -555,6 +582,9 @@ export class GridThemePlaygroundComponent {
     private readonly themeTokens = signal<[string, string][]>([]);
 
     constructor() {
+        if (isPlatformBrowser(inject(PLATFORM_ID))) {
+            defineComponents(IgcColorPickerComponent);
+        }
         afterNextRender(() => {
             this.seedFromStylesheet();
             this.readCompiledTheme();
@@ -637,18 +667,25 @@ export class GridThemePlaygroundComponent {
         return `.my-grid {\n${[...extras, ...lines].join('\n')}\n}`;
     });
 
+    protected onColorChange(key: TokenKey, event: Event): void {
+        // Ignore input events bubbling from the picker's internal text fields;
+        // only the picker itself emits validated color values.
+        if (event.composedPath()[0] === event.currentTarget) {
+            this.setColor(key, (event as CustomEvent<string>).detail);
+        }
+    }
+
     protected setColor(key: TokenKey, value: string): void {
         this.colors.update(current => ({ ...current, [key]: value }));
     }
 
     protected reset(): void {
-        this.colors.set({ ...EMPTY_COLORS });
+        this.colors.set({ ...this.initialColors });
         this.size.set('medium');
         this.radiusFactor.set(0.4);
         this.horizontalDividers.set(true);
         this.verticalDividers.set(false);
         this.zebra.set(false);
-        this.seedFromStylesheet();
     }
 
     protected async showCode(dialog: IgxDialogComponent): Promise<void> {
@@ -728,11 +765,12 @@ export class GridThemePlaygroundComponent {
     private seedFromStylesheet(): void {
         const styles = getComputedStyle(this.stage().nativeElement);
 
-        this.colors.update(current => ({
-            ...current,
+        this.initialColors = {
+            ...EMPTY_COLORS,
             background: styles.getPropertyValue('--ig-grid-background').trim(),
             accentColor: styles.getPropertyValue('--ig-grid-accent-color').trim()
-        }));
+        };
+        this.colors.set({ ...this.initialColors });
     }
 }
 ```
@@ -766,10 +804,20 @@ export class GridThemePlaygroundComponent {
                     </p>
                     <div class="playground__fields">
                         @for (token of primaryTokens; track token.key) {
-                            <app-theme-color-field
-                                [label]="token.label"
-                                [value]="colors()[token.key]"
-                                (valueChange)="setColor(token.key, $event)" />
+                            <div class="playground__color-control">
+                                <igc-color-picker mode="input"
+                                    [label]="token.label"
+                                    [value]="colors()[token.key]"
+                                    (igcInput)="onColorChange(token.key, $event)"
+                                    (igcChange)="onColorChange(token.key, $event)">
+                                </igc-color-picker>
+                                <button igxIconButton="flat" type="button"
+                                    [disabled]="!colors()[token.key]"
+                                    [attr.aria-label]="'Reset ' + token.label + ' to auto'"
+                                    title="Reset to auto" (click)="setColor(token.key, '')">
+                                    <igx-icon>restart_alt</igx-icon>
+                                </button>
+                            </div>
                         }
                     </div>
                 </igx-expansion-panel-body>
@@ -788,10 +836,20 @@ export class GridThemePlaygroundComponent {
                     </p>
                     <div class="playground__fields">
                         @for (token of headerTokens; track token.key) {
-                            <app-theme-color-field
-                                [label]="token.label"
-                                [value]="colors()[token.key]"
-                                (valueChange)="setColor(token.key, $event)" />
+                            <div class="playground__color-control">
+                                <igc-color-picker mode="input"
+                                    [label]="token.label"
+                                    [value]="colors()[token.key]"
+                                    (igcInput)="onColorChange(token.key, $event)"
+                                    (igcChange)="onColorChange(token.key, $event)">
+                                </igc-color-picker>
+                                <button igxIconButton="flat" type="button"
+                                    [disabled]="!colors()[token.key]"
+                                    [attr.aria-label]="'Reset ' + token.label + ' to auto'"
+                                    title="Reset to auto" (click)="setColor(token.key, '')">
+                                    <igx-icon>restart_alt</igx-icon>
+                                </button>
+                            </div>
                         }
                     </div>
                 </igx-expansion-panel-body>
@@ -1020,6 +1078,23 @@ export class GridThemePlaygroundComponent {
     gap: 14px;
 }
 
+.playground__color-control {
+    anchor-scope: --grid-color-input;
+
+    igc-color-picker {
+        anchor-name: --grid-color-input;
+        inline-size: 100%;
+    }
+
+    button {
+        position: absolute;
+        position-anchor: --grid-color-input;
+        inset-inline-end: calc(anchor(self-end) + 0.5rem);
+        align-self: anchor-center;
+        z-index: 1;
+    }
+}
+
 .playground__control {
     display: flex;
     flex-direction: column;
@@ -1038,7 +1113,7 @@ export class GridThemePlaygroundComponent {
     display: flex;
     gap: 8px;
     padding-block: 8px;
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
     border-block-start: 1px solid var(--ig-gray-200);
 
     button {

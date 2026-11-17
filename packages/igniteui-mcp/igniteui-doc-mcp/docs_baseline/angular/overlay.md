@@ -177,7 +177,7 @@ In both cases the [`attach()`](mcp:get_api_reference?platform=angular&component=
 
 - Get the reference to the passed view from Angular
 - Detach the view from the DOM and leave an anchor in its place
-- Re-attach the view to the overlay using the provided [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) or falling back to the default overlay ones
+- Re-attach the view to the overlay using the provided [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) or falling back to the default overlay ones
 
 Calling then [`show(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=show) will play the open animation, if there is any, and will show the attached content. Calling [`hide(id)`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=hide) will play close animation, if there is any, and will hide the attached content.
 
@@ -187,7 +187,7 @@ Finally calling [`detach(id)`](mcp:get_api_reference?platform=angular&component=
 
 ## Attaching Components
 
-In the below demo, we can pass the [IgxCard](/card#angular-card-example) component through the Overlay Service's [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method to generate an ID. Then we call the [`show()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=show) method with the provided ID to dynamically attach the card to the DOM in a modal container.
+In the below demo, we can pass the [IgxCard](/layouts/card#live-demo) component through the Overlay Service's [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method to generate an ID. Then we call the [`show()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=show) method with the provided ID to dynamically attach the card to the DOM in a modal container.
 
 ```typescript
 import { Component, OnDestroy, ViewContainerRef, inject } from '@angular/core';
@@ -245,9 +245,9 @@ export class OverlaySampleMain1Component implements OnDestroy {
 
 ## Overlay Settings
 
-The [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method also accepts an object of the [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) type, which configures the way the content is shown. If no such object is provided, the Overlay Service will use its default settings to render the passed content.
+The [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method also accepts an object of the [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) type, which configures the way the content is shown. If no such object is provided, the Overlay Service will use its default settings to render the passed content.
 
-For example, if we want the content to be positioned relative to an element, we can pass a different [`IgxOverlaySettings.target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target) and [`IgxOverlaySettings.positioningStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positioningStrategy) to the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, e.g. [`IgxConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy). In order to configure how the component is shown, we need to create an [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object first:
+For example, if we want the content to be positioned relative to an element, we can pass a different [`OverlaySettings.target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target) and [`OverlaySettings.positioningStrategy`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=positioningStrategy) to the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, e.g. [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy). In order to configure how the component is shown, we need to create an [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) object first:
 
 ```typescript
 // my-overlay-component.component.ts
@@ -285,15 +285,15 @@ Clicking on the button will now show `MyDynamicComponent` positioned relative to
 
 ## Preset Overlay Settings
 
-The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) and [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) methods provide an easy way to create an [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) based on a predefined settings sets.
+The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) and [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) methods provide an easy way to create an [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) based on a predefined settings sets.
 
-The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) method creates non-modal [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`IgxGlobalPositionStrategy`](mcp:get_api_reference?platform=angular&component=GlobalPositionStrategy) or [`IgxContainerPositionStrategy`](mcp:get_api_reference?platform=angular&component=ContainerPositionStrategy) in case the `outlet` parameter is provided. The `AbsolutePosition` enumeration defines the possible positions to choose from: `Center`, `Top` or `Bottom`. The default position is `Center`.
+The [`IgxOverlayService.createAbsolutePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createAbsolutePositionSettings) method creates non-modal [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`GlobalPositionStrategy`](mcp:get_api_reference?platform=angular&component=GlobalPositionStrategy) or [`ContainerPositionStrategy`](mcp:get_api_reference?platform=angular&component=ContainerPositionStrategy) in case the `outlet` parameter is provided. The `AbsolutePosition` enumeration defines the possible positions to choose from: `Center`, `Top` or `Bottom`. The default position is `Center`.
 
 ```typescript
 const globalOverlaySettings = IgxOverlayService.createAbsoluteOverlaySettings(AbsolutePosition.Top);
 ```
 
-The [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) method creates [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`IgxAutoPositionStrategy`](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy), [`IgxConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy) or [`IgxElasticPositionStrategy`](mcp:get_api_reference?platform=angular&component=ElasticPositionStrategy). Accepts target, position and strategy. The `target` is the attaching point or element for the component to show. The `position` is a `RelativePosition` enumeration with the following options: `Above`, `Below`, `Before`, `After` and `Default`. The `Default` option positions the element below the target, left aligned. The position strategy can be set through the `RelativePositionStrategy` enumeration, which default value is `Auto`.
+The [`IgxOverlayService.createRelativePositionSettings()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=createRelativePositionSettings) method creates [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) with [`AutoPositionStrategy`](mcp:get_api_reference?platform=angular&component=AutoPositionStrategy), [`ConnectedPositioningStrategy`](mcp:get_api_reference?platform=angular&component=ConnectedPositioningStrategy) or [`ElasticPositionStrategy`](mcp:get_api_reference?platform=angular&component=ElasticPositionStrategy). Accepts target, position and strategy. The `target` is the attaching point or element for the component to show. The `position` is a `RelativePosition` enumeration with the following options: `Above`, `Below`, `Before`, `After` and `Default`. The `Default` option positions the element below the target, left aligned. The position strategy can be set through the `RelativePositionStrategy` enumeration, which default value is `Auto`.
 
 ```typescript
 const targetElement = this.myAnchorButton.nativeElement;
@@ -705,13 +705,13 @@ export class MyOverlayComponent implements OnDestroy {
 
 ## Attaching Settings
 
-Using the [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter of the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, we can change how the content is shown - e.g. where the content is positioned, how the scroll should behave and if the container is modal or not
+Using the [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) parameter of the [`attach()`](mcp:get_api_reference?platform=angular&component=IgxOverlayService&member=attach) method, we can change how the content is shown - e.g. where the content is positioned, how the scroll should behave and if the container is modal or not
 
 ```typescript
 import { Component, ElementRef, OnDestroy, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { ConnectedPositioningStrategy, IgxOverlayService } from 'igniteui-angular/core';
 import { IgxButtonDirective } from 'igniteui-angular/directives';
-import { CardSample1Component } from '../../../layouts/card/card-sample-1/card-sample-1.component';
+import { MyDynamicCardComponent } from '../overlay-dynamic-card/overlay-dynamic-card.component';
 // tslint:disable:object-literal-sort-keys
 @Component({
     selector: 'app-overlay-sample',
@@ -733,7 +733,7 @@ export class OverlaySampleMain2Component implements OnDestroy {
         if (this._cardHidden) {
             if (!this._overlayId) {
                 const positionStrategy = new ConnectedPositioningStrategy();
-                this._overlayId = this.overlayService.attach(CardSample1Component, this.viewContainerRef, {
+                this._overlayId = this.overlayService.attach(MyDynamicCardComponent, this.viewContainerRef, {
                     target: this.buttonElement.nativeElement,
                     positionStrategy,
                     modal: false,
@@ -776,7 +776,7 @@ export class OverlaySampleMain2Component implements OnDestroy {
 
 <hr/>
 
-If **no** [`IgxOverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) are configured, the toggled element gets the **default display settings**:
+If **no** [`OverlaySettings`](mcp:get_api_reference?platform=angular&component=OverlaySettings) are configured, the toggled element gets the **default display settings**:
 
 ```typescript
 defaultOverlaySettings = {

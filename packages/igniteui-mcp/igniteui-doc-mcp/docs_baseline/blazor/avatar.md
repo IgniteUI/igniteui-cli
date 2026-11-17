@@ -95,11 +95,17 @@ igc-avatar[role="img"]           // host - exposes the avatar
 
 ## Getting Started
 
-Register the avatar module in `Program.cs` and add the theme stylesheet to your host page. If you have not set up Ignite UI for Blazor yet, complete the shared [Getting Started](../general-getting-started.md) topic first.
+Register the Ignite UI for Blazor services:
 
 ```csharp
-builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule));
+// in Program.cs file
+
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbAvatarModule`](mcp:get_api_reference?platform=blazor&component=IgbAvatarModule), the avatar's client resource module, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbAvatarModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+Add the theme stylesheet to your host page. If you have not set up Ignite UI for Blazor yet, complete the shared [Getting Started](../general-getting-started.md) topic first.
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />

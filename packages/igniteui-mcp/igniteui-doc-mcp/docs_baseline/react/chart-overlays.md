@@ -4,9 +4,11 @@ description: Use Infragistics Ignite UI for React chart control's value overlay 
 keywords: React charts, data chart, value overlay, Ignite UI for React, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "ValueOverlay", "CategoryChart", "FinancialChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The React DataChart allows for placement of horizontal or vertical lines at a single numeric value that you define through usage of the ValueOverlay."
+platformType: xplat
 _tocName: Chart Overlays
 _premium: true
 ---
@@ -123,25 +125,25 @@ root.render(<DataChartValueOverlay/>);
 
 ## React Value Overlay Properties
 
-Unlike other series types that use a `ItemsSource` for data binding, the value overlay uses a `ValueMemberPath` property to bind a single numeric value. In addition, the value overlay requires you to define a single `Axis` to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
+Unlike other series types that use a `dataSource` for data binding, the value overlay uses a `value` property to bind a single numeric value. In addition, the value overlay requires you to define a single `IgrValueOverlay.axis` to use. If you use an X-axis, the value overlay will be a vertical line, and if you use a Y-axis, it will be a horizontal line.
 
-When using a numeric X or Y axis, the `ValueMemberPath` property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the `ValueMemberPath` should reflect the index of the category at which you want the value overlay to appear.
+When using a numeric X or Y axis, the `value` property should reflect the actual numeric value on the axis where you want the value overlay to be drawn. When using a category X or Y axis, the `value` should reflect the index of the category at which you want the value overlay to appear.
 
 When using the value overlay with a numeric angle axis, it will appear as a line from the center of the chart and when using a numeric radius axis, it will appear as a circle.
 
-`IgrValueOverlay` appearance properties are inherited from `Series` and so `Brush` and `Thickness` for example are available and work the same way they do with other types of series.
+`IgrValueOverlay` appearance properties are inherited from `IgrSeries` and so `IgrValueOverlay.brush` and `IgrValueOverlay.thickness` for example are available and work the same way they do with other types of series.
 
-It is also possible to show an axis annotation on a `IgrValueOverlay` to show the value of the overlay on the owning axis. In order to show this, you can set the `IsAxisAnnotationEnabled` property to true.
+It is also possible to show an axis annotation on a `IgrValueOverlay` to show the value of the overlay on the owning axis. In order to show this, you can set the `isAxisAnnotationEnabled` property to true.
 
 ## React Value Layer
 
 The React charting components also expose the ability to use value lines to call out different focal points of your data, such as minimum, maximum, and average values.
 
-Applying the `IgrValueLayer` in the `IgrCategoryChart` and `IgrFinancialChart` components is done by setting the `ValueLines` property on the chart. This property takes a collection of the `IgrValueLayerValueMode` enumeration. You can mix and match multiple value layers in the same chart by adding multiple `IgrValueLayerValueMode` enumerations to the `ValueLines` collection of the chart.
+Applying the `IgrValueLayer` in the `IgrCategoryChart` and `IgrFinancialChart` components is done by setting the `valueLines` property on the chart. This property takes a collection of the `ValueLayerValueMode` enumeration. You can mix and match multiple value layers in the same chart by adding multiple `ValueLayerValueMode` enumerations to the `valueLines` collection of the chart.
 
-In the `IgrDataChart`, this is done by adding a `IgrValueLayer` to the `Series` collection of the chart and then setting the `ValueMode` property to one of the `IgrValueLayerValueMode` enumerations. Each of these enumerations and what they mean is listed below:
+In the `IgrDataChart`, this is done by adding a `IgrValueLayer` to the `IgrSeries` collection of the chart and then setting the `IgrValueLayer` property to one of the `ValueLayerValueMode` enumerations. Each of these enumerations and what they mean is listed below:
 
-- `Auto`: The default value mode of the `IgrValueLayerValueMode` enumeration.
+- `Auto`: The default value mode of the `ValueLayerValueMode` enumeration.
 - `Average`: Applies potentially multiple value lines to call out the average value of each series plotted in the chart.
 - `GlobalAverage`: Applies a single value line to call out the average of all of the series values in the chart.
 - `GlobalMaximum`: Applies a single value line to call out the absolute maximum value of all of the series values in the chart.
@@ -149,9 +151,9 @@ In the `IgrDataChart`, this is done by adding a `IgrValueLayer` to the `Series` 
 - `Maximum`: Applies potentially multiple value lines to call out the maximum value of each series plotted in the chart.
 - `Minimum`: Applies potentially multiple value lines to call out the minimum value of each series plotted in the chart.
 
-If you want to prevent any particular series from being taken into account when using the `IgrValueLayer` element, you can set the `TargetSeries` property on the layer. This will force the layer to target the series that you define. You can have as many `IgrValueLayer` elements within a single `IgrDataChart` as you want.
+If you want to prevent any particular series from being taken into account when using the `IgrValueLayer` element, you can set the `targetSeries` property on the layer. This will force the layer to target the series that you define. You can have as many `IgrValueLayer` elements within a single `IgrDataChart` as you want.
 
-The following sample demonstrates usage of the different `ValueLines` in the `IgrCategoryChart`:
+The following sample demonstrates usage of the different `valueLines` in the `IgrCategoryChart`:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -565,6 +567,31 @@ root.render(<Sample/>);
 This code example shows how to style and customize Overlay Text on
 the `IgrDataAnnotationSliceLayer`, `IgrValueOverlay`, and `IgrValueLayer`.
 
+```tsx
+<IgrDataAnnotationSliceLayer
+    name="AnnoLayer"
+    ref={ref => { this.annoLayer = ref; }}
+    dataSource={this.annotationSliceMultiOverlayData}
+    targetAxisName="yAxis"
+    brush="Green"
+    thickness={2}
+    annotationTextColor="White"
+    annotationLabelMemberPath="label"
+    annotationValueMemberPath="value"
+    overlayText="OverlayText on DataAnnotationSliceLayer"
+    overlayTextMemberPath="label"
+    overlayTextLocation="OutsideBottomCenter"
+    overlayTextColor="Red"
+    overlayTextBackground="Green"
+    overlayTextBorderColor="Black"
+    overlayTextBorderThickness={1}
+    overlayTextBorderRadius={4}
+    overlayTextHorizontalMargin={0}
+    overlayTextHorizontalPadding={2}
+    overlayTextVerticalMargin={20}
+    overlayTextVerticalPadding={2} />
+```
+
 ## Additional Resources
 
 You can find more information about related chart types in these topics:
@@ -578,6 +605,6 @@ You can find more information about related chart types in these topics:
 `IgrDataChart`
 `IgrValueOverlay`
 `IgrValueLayer`
-`IgrValueLayerValueMode`
+`ValueLayerValueMode`
 `IgrCategoryChart`
 `IgrFinancialChart`

@@ -345,7 +345,8 @@ After we've defined our custom buttons, we can make use of the `flat-icon-button
 ...
 
 $button-theme: flat-icon-button-theme(
-  $palette: $purple-palette
+  $background: #e3e3e3,
+  $foreground: #423589
 );
 
 ...

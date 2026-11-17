@@ -159,6 +159,7 @@ $my-light-palette: palette(
     $secondary: #f1d302,
     $surface: #fdfffc,
     $gray: #235789,
+    $generator: 'legacy',
 );
 
 $my_dark_palette: palette(
@@ -166,6 +167,7 @@ $my_dark_palette: palette(
     $secondary: #d5896f,
     $surface: #031d44,
     $gray: #04395e,
+    $generator: 'legacy',
 );
 
 .custom-light {

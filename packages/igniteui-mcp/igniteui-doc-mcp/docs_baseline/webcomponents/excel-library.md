@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "Cell", "Formula"]
 llms:
   description: "The Infragistics Web Components Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like Workbook, Worksheet, Cell, Formula and many more."
+platformType: xplat-unmapped
 _tocName: Excel Library
 ---
 # Web Components Excel Library Overview
@@ -179,7 +180,7 @@ Now that the Excel Library module is imported, next step is to load a workbook.
 
 In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `IgcWorkbook`.
 
-In order to load and save `IgcWorkbook` objects, you can utilize the `Save` method of the actual `IgcWorkbook` object, as well as its static `Load` method.
+In order to load and save `IgcWorkbook` objects, you can utilize the `IgcWorkbook.save` method of the actual `IgcWorkbook` object, as well as its static `IgcWorkbook.load` method.
 
 ```ts
 import { Workbook } from "igniteui-webcomponents-excel";

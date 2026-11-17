@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area."
+platformType: xplat
 _tocName: Composite Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Web Components Composite Chart, also called a Combo Chart, is 
 
 ## Web Components Composite / Combo Example
 
-The following example demonstrates how to create Composite Chart using [`IgcColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent) and [`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
+The following example demonstrates how to create Composite Chart using [`IgcColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent) and [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent) in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 ```css
 /* shared styles are loaded from: */
@@ -32,8 +33,8 @@ The following example demonstrates how to create Composite Chart using [`IgcColu
 
 ## API References
 
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
-[`IgcColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent)<br />
-[`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)<br />
-[`IgcCategoryXAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryXAxisComponent)<br />
-[`IgcNumericYAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent)<br />
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)<br />
+[`IgcColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent)<br />
+[`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)<br />
+[`IgcCategoryXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryXAxisComponent)<br />
+[`IgcNumericYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericYAxisComponent)<br />

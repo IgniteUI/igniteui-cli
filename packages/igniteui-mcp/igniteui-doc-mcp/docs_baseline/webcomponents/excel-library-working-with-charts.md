@@ -3,9 +3,11 @@ title: Web Components Excel Library| Working with Charts | Infragistics
 description: Use the Infragistics' Web Components excel library's chart feature to add visual charting representations of data trends across regions of cells in a worksheet. Visualize Ignite UI for Web Components excel data in over 70 chart types!
 keywords: Excel library, charts,  Ignite UI for Web Components, Infragistics
 license: commercial
+mentionedTypes: ["Workbook", "Worksheet"]
 
 llms:
   description: "The Infragistics Web Components Excel Engine's WorksheetChart functionality allows you to add visual charting representations of data trends across regions of cells in a worksheet."
+platformType: xplat-unmapped
 _tocName: Working with Charts
 _premium: true
 ---
@@ -137,7 +139,7 @@ In order to add a chart to a worksheet, you must use the `AddChart` method of th
 
 The `AddChart` method returns the worksheet chart element to be added to the worksheet. Once you have this, you can use the `SetSourceData` method on the chart to set a cell address of the region of worksheet cells that you wish to use as a data source, as well as whether or not you want to switch the mapping of columns and rows to the X and Y axis.
 
-There are over 70 supported chart types, including `Line`, `Area`, [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), and `Pie`.
+There are over 70 supported chart types, including `IgcWorkbook.line`, `IgcWorkbook.area`, [`IgcColumn`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnComponent), and `IgcWorkbook.pie`.
 
 The following code demonstrates how to use the Excel charting feature. The below snippet will add a column chart to between the first cell and the 13th cell in the first row of the worksheet. The source data is then set for the data in the region of A2:M6, switching the mapping of columns and rows for the X and Y axis of the column chart:
 

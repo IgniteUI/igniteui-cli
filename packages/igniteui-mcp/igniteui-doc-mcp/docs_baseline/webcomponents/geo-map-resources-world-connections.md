@@ -1,11 +1,12 @@
 ---
 title: "Web Components Map | World Connections | Data Source | Infragistics"
-description: Use Infragistics' Web Components JavaScript map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for Web Components map demos!
+description: Use Infragistics' Web Components map data utility to generate locations of airports, flight paths and geographic gridlines. View Ignite UI for Web Components map demos!
 keywords: "Web Components map, map data, Ignite UI for Web Components, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of data utility for generating locations of airports, flight paths, and geographic gridlines."
+platformType: xplat
 _tocName: World Connections
 _premium: true
 ---
@@ -16,24 +17,21 @@ The resource topic provides implementation of data utility for generating locati
 ## Code Snippet
 
 ```ts
-import WorldLocations from "./WorldLocations";
-import WorldUtils from "./WorldUtils"
+export class WorldConnections {
 
-export default class WorldConnections {
+    public static airports: any[] = [];
+    public static airportsLookup = new Map<string, any>();
 
-    private static airports: any[] = [];
-    private static airportsLookup = new Map<string, any>();
-
-    private static flights: any[] = [];
-    private static flightsLookup: string[] = [];
+    public static flights: any[] = [];
+    public static flightsLookup: string[] = [];
 
     public static getFlights(): any[] {
-        if (this.flights.length == 0) this.init();
+        if (this.flights.length === 0) this.init();
         return this.flights;
     }
 
     public static getAirports(): any[] {
-        if (this.airports.length == 0) this.init();
+        if (this.airports.length === 0) this.init();
         return this.airports;
     }
 
@@ -47,7 +45,7 @@ export default class WorldConnections {
         return 0;
     }
 
-    public static init() {
+    public static init(): void {
 
         const cities: any[] = WorldLocations.getAll();
         cities.sort(this.comparePopulation);
@@ -65,10 +63,10 @@ export default class WorldConnections {
             for (let ii = 0; ii < count; ii++)
             {
                 let dest = cities[ii];
-                if (origin.name != dest.name)
+                if (origin.name !== dest.name)
                 {
                     let route = [origin.name, dest.name].sort().join('-');
-                    let routeIsValid = this.flightsLookup.indexOf(route) == -1;
+                    let routeIsValid = this.flightsLookup.indexOf(route) === -1;
                     let distance = Math.round(WorldUtils.calcDistance(origin, dest));
                     let distanceIsValid = distance > minDistance && distance < maxDistance;
                     let pass = Math.round((Math.random() * 200)) + 150;
@@ -81,7 +79,7 @@ export default class WorldConnections {
                         let paths = WorldUtils.calcPaths(origin, dest);
                         flightsCount++;
                         connectionsCount++;
-                        let id = origin.name.substring(0,3).toUpperCase() + "-" + flightsCount;
+                        let id = origin.name.substring(0, 3).toUpperCase() + "-" + flightsCount;
                         let flight = { id: id, origin: origin, dest: dest, time: time, passengers: pass, distance: distance, points: paths };
                         this.flights.push(flight);
                     }
@@ -103,7 +101,7 @@ export default class WorldConnections {
         this.airports = Array.from(this.airportsLookup.values());
     }
 
-    private static addAirport(city: any) {
+    public static addAirport(city: any): void {
         if (this.airportsLookup.has(city.name)) {
             this.airportsLookup.get(city.name).flights += 1;
         } else {
@@ -143,4 +141,4 @@ export default class WorldConnections {
 ```
 
 ## API References
-`IgcGeographicMap`
+`IgcGeographicMapComponent`

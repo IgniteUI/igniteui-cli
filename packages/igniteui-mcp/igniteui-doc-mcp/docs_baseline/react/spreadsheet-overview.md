@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The React Spreadsheet (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more."
+platformType: xplat-unmapped
 _tocName: Spreadsheet
 _premium: true
 ---

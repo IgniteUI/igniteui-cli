@@ -4,7 +4,7 @@ description: "The Ignite UI for Web Components CLI scaffolds Web Components proj
 keywords: "Web Components cli, command line interface, Ignite UI for Web Components, Infragistics"
 mentionedTypes: []
 license: MIT
-last_updated: "2026-04-21"
+last_updated: "2026-10-01"
 llms:
   description: "The Ignite UI CLI (igniteui-cli) is a standalone global command-line tool for creating and scaffolding Web Components applications with Ignite UI for Web Components."
 _tocName: Ignite UI CLI
@@ -159,6 +159,8 @@ To list all available templates in the current project:
 ig list
 ```
 
+The list is project-aware and reflects the project's framework and type.
+
 For a guided walkthrough of the component addition wizard, see [Step-by-Step Guide Using Ignite UI CLI](./general-step-by-step-guide-using-cli.md#add-view).
 
 **Note:** 
@@ -166,45 +168,82 @@ Your routing file will be updated with the path to the newly generated page. For
 
 The following component templates are available for Web Components:
 
-| Name              | Component Template |
-| :---------------- | :----------------- |
-| Accordion         | accordion          |
-| Avatar            | avatar             |
-| Badge             | badge              |
-| Banner            | banner             |
-| Button            | button             |
-| Button Group      | button-group       |
-| Calendar          | calendar           |
-| Card              | card               |
-| Checkbox          | checkbox           |
-| Chip              | chip               |
-| Circular Progress | circular-progress  |
-| Date Picker       | date-picker        |
-| Date Time Input   | date-time-input    |
-| Divider           | divider            |
-| Dock Manager      | dock-manager       |
-| Dropdown          | dropdown           |
-| Expansion Panel   | expansion-panel    |
-| Financial Chart   | financial-chart    |
-| Form              | form               |
-| Grid              | grid               |
-| Icon              | icon               |
-| Icon Button       | icon-button        |
-| Input             | input              |
-| Linear Gauge      | linear-gauge       |
-| Linear Progress   | linear-progress    |
-| List              | list               |
-| Navbar            | navbar             |
-| Pie Chart         | pie-chart          |
-| Radial Gauge      | radial-gauge       |
-| Radio Group       | radio-group        |
-| Rating            | rating             |
-| Ripple            | ripple             |
-| Slider            | slider             |
-| Switch            | switch             |
-| Tabs              | tabs               |
-| Text Area         | text-area          |
-| Tree              | tree               |
+| Name               | Component Template |
+| :----------------- | :----------------- |
+| Accordion          | accordion          |
+| Avatar             | avatar             |
+| Badge              | badge              |
+| Banner             | banner             |
+| Breadcrumb         | breadcrumb         |
+| Button             | button             |
+| Button Group       | button-group       |
+| Calendar           | calendar           |
+| Card               | card               |
+| Carousel           | carousel           |
+| Carousel Vertical  | carousel-vertical  |
+| Chat               | chat               |
+| Checkbox           | checkbox           |
+| Chip               | chip               |
+| Circular Progress  | circular-progress  |
+| Color Picker       | color-picker       |
+| Color Picker Alpha | color-picker-alpha |
+| Combo              | combo              |
+| Combo Groups       | combo-groups       |
+| Date Picker        | date-picker        |
+| Date Range Picker  | date-range-picker  |
+| Date Time Input    | date-time-input    |
+| Dialog             | dialog             |
+| Dialog Form        | dialog-form        |
+| Divider            | divider            |
+| Dock Manager       | dock-manager       |
+| Dropdown           | dropdown           |
+| Expansion Panel    | expansion-panel    |
+| File Input         | file-input         |
+| Financial Chart    | financial-chart    |
+| Form               | form               |
+| Grid               | grid               |
+| Grid Editing       | grid-editing       |
+| Grid Summaries     | grid-summaries     |
+| Hierarchical Grid  | hierarchical-grid  |
+| Highlight          | highlight          |
+| Icon               | icon               |
+| Icon Button        | icon-button        |
+| Input              | input              |
+| Linear Gauge       | linear-gauge       |
+| Linear Progress    | linear-progress    |
+| List               | list               |
+| Mask Input         | mask-input         |
+| Mask Input Formats | mask-input-formats |
+| Nav Drawer         | nav-drawer         |
+| Navbar             | navbar             |
+| Pie Chart          | pie-chart          |
+| Pivot Grid         | pivot-grid         |
+| QR Code            | qr-code            |
+| Radial Gauge       | radial-gauge       |
+| Radio Group        | radio-group        |
+| Range Slider       | range-slider       |
+| Rating             | rating             |
+| Ripple             | ripple             |
+| Select             | select             |
+| Select Groups      | select-groups      |
+| Slider             | slider             |
+| Snackbar           | snackbar           |
+| Snackbar Action    | snackbar-action    |
+| Splitter           | splitter           |
+| Splitter Vertical  | splitter-vertical  |
+| Stepper            | stepper            |
+| Stepper Vertical   | stepper-vertical   |
+| Switch             | switch             |
+| Tabs               | tabs               |
+| Text Area          | text-area          |
+| Theme Provider     | theme-provider     |
+| Tile Manager       | tile-manager       |
+| Toast              | toast              |
+| Toggle Button      | toggle-button      |
+| Tooltip            | tooltip            |
+| Tree               | tree               |
+| Tree Grid          | tree-grid          |
+| Virtual Scroll     | virtual-scroll     |
 
 ## Run the Application
 

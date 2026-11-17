@@ -3,15 +3,16 @@ title: "Angular Map | Data Visualization Tools | Displaying Azure Imagery | Infr
 description: Use Infragistics' Angular to display imagery from Microsoft Azure Maps. View Ignite UI for Angular map tutorials!
 keywords: "Angular map, azure maps, Ignite UI for Angular, Infragistics, imagery tile source, map background"
 license: commercial
-mentionedTypes: ["GeographicMap", "AzureMapsImagery", "GeographicTileSeries"]
+mentionedTypes: ["GeographicMap", "AzureMapsImagery", "GeographicTileSeries", "AzureMapsImageryStyle"]
 llms:
   description: "The Angular AzureMapsImagery is geographic imagery mapping service provided by Microsoft®."
+platformType: xplat
 _tocName: Displaying Azure Imagery
 _premium: true
 ---
 # Angular Imagery from Azure Maps 
 
-The Angular `IgxAzureMapsImagery` is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for Angular map component can display geographic imagery from Azure Maps in the map’s background content using the `IgxAzureMapsImagery` class.
+The Angular [`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery) is geographic imagery mapping service provided by Microsoft®. It provides several styles of geographic imagery tiles of the world. This geographic imagery service is accessible directly on the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">www.azure.microsoft.com</a> web site. The Ignite UI for Angular map component can display geographic imagery from Azure Maps in the map’s background content using the [`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery) class.
 
 ## Angular Displaying Imagery from Azure Maps - Overview
 
@@ -359,36 +360,34 @@ export class AppComponent implements OnInit, AfterViewInit {
 ```
 
 ## Angular Displaying Imagery from Azure Maps - Code Example
-The following code snippet shows how to display geographic imagery tiles from Azure Maps in Angular `IgxGeographicMap` using `IgxAzureMapsImagery` class.
+The following code snippet shows how to display geographic imagery tiles from Azure Maps in Angular [`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) using [`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery) class.
 
 ```html
-<igx-geographic-map #map
-    width="100%"
+<igx-geographic-map
+    #azureMap
     height="100%"
-    zoomable="true" >
+    width="100%"
+    zoomable="true">
 </igx-geographic-map>
 ```
 
 ```ts
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxAzureMapsImagery } from 'igniteui-angular-maps';
-// ...
-const tileSource = new IgxAzureMapsImagery();
-tileSource.apiKey = "YOUR_Azure_MAPS_API_KEY";
-tileSource.imageryStyle = AzureMapsImageryStyle.Satellite; // or
-tileSource.imageryStyle = AzureMapsImageryStyle.TerraOverlay; // or
-tileSource.imageryStyle = AzureMapsImageryStyle.Road; //or Traffic & Weather etc.
+@ViewChild("azureMap", { static: true } )
+private azureMap: IgxGeographicMapComponent
 
-this.map.backgroundContent = tileSource;
+var azureImagery = new IgxAzureMapsImagery();
+azureImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+azureImagery.imageryStyle = AzureMapsImageryStyle.Satellite;
+this.azureMap.backgroundContent = azureImagery;
 ```
 
 ## Angular Overlaying Imagery from Azure Maps - Overview
 
-When working with the `IgxGeographicTileSeries`, you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
+When working with the [`IgxGeographicTileSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicTileSeriesComponent), you can combine **overlays** (traffic, weather, labels) on top of a **base map style** such as eg. **Satellite**, **Road**, or **DarkGrey**. Using **TerraOverlay** with eg. **Satellite** to visualize terrain.
 
 - **Base Styles**: Satellite, Road, Terra, and DarkGrey provide the core background tiles.
-- **Overlay Styles**: Traffic and Weather imagery (e.g., `TrafficRelativeOverlay`, `WeatherRadarOverlay`) are designed to be layered on top of a base style by assigning them to a tile series.
-- **Hybrid Styles**: Variants like `HybridRoadOverlay` and `HybridDarkGreyOverlay` already combine a base style with overlays (labels, roads, etc.), so you don’t need to manage multiple layers manually.
+- **Overlay Styles**: Traffic and Weather imagery (e.g., [`TrafficRelativeOverlay`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle&member=TrafficRelativeOverlay), [`WeatherRadarOverlay`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle&member=WeatherRadarOverlay)) are designed to be layered on top of a base style by assigning them to a tile series.
+- **Hybrid Styles**: Variants like [`HybridRoadOverlay`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle&member=HybridRoadOverlay) and [`HybridDarkGreyOverlay`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle&member=HybridDarkGreyOverlay) already combine a base style with overlays (labels, roads, etc.), so you don’t need to manage multiple layers manually.
 
 This design allows you to build richer maps, for example:
 - Displaying **Satellite imagery** with a **TrafficOverlay** to highlight congestion on real-world images.
@@ -396,46 +395,44 @@ This design allows you to build richer maps, for example:
 - Applying **DarkGrey** with **LabelsRoadOverlay** for a dashboard-friendly, contrast-heavy view.
 
 ## Angular Overlaying Imagery from Azure Maps - Code Example
-The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Angular `IgxGeographicMap` using `IgxAzureMapsImagery` and `IgxGeographicTileSeries` classes.
+The following code snippet shows how to display geographic imagery tiles on top of a background imagery joining eg. traffic with a dark grey map for the Angular [`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) using [`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery) and [`IgxGeographicTileSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicTileSeriesComponent) classes.
 
 ```html
-<igx-geographic-map #map height="100%" width="100%" zoomable="true">
-  <igx-geographic-tile-series #tileSeries></igx-geographic-tile-series>
+<igx-geographic-map
+    #azureMap
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igx-geographic-tile-series
+        #imagerySeries>
+    </igx-geographic-tile-series>
 </igx-geographic-map>
 ```
 
 ```ts
-export class AppComponent implements AfterViewInit {
-  @ViewChild('map', { static: true }) public map!: IgxGeographicMapComponent;
-  @ViewChild('tileSeries', { static: true }) public tileSeries!: IgxGeographicTileSeriesComponent;
+@ViewChild("azureMap", { static: true } )
+private azureMap: IgxGeographicMapComponent
+@ViewChild("imagerySeries", { static: true } )
+private imagerySeries: IgxGeographicTileSeriesComponent
 
-  public azureImagery!: IgxAzureMapsImagery;
-  public azureKey: string = "<YOUR_KEY_HERE>";
-
-  ngAfterViewInit(): void {
-    // Update TileSeries
-    const overlay = new IgxAzureMapsImagery();
-    overlay.apiKey = this.azureKey;
-    overlay.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
-    this.tileSeries.tileImagery = overlay;
-
-    // Update Map Background
-    this.azureImagery = new IgxAzureMapsImagery();
-    this.azureImagery.apiKey = this.azureKey;
-    this.azureImagery.imageryStyle = AzureMapsImageryStyle.DarkGrey;
-    this.map.backgroundContent = this.azureImagery;
-  }
-}
+var azureImagery = new IgxAzureMapsImagery();
+azureImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+azureImagery.imageryStyle = AzureMapsImageryStyle.DarkGrey;
+this.azureMap.backgroundContent = azureImagery;
+var trafficImagery = new IgxAzureMapsImagery();
+trafficImagery.apiKey = "YOUR_AZURE_MAPS_API_KEY";
+trafficImagery.imageryStyle = AzureMapsImageryStyle.TrafficAbsoluteOverlay;
+this.imagerySeries.tileImagery = trafficImagery;
 ```
 
 ## Properties
-The following table summarizes properties of the `IgxAzureMapsImagery` class:
+The following table summarizes properties of the [`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery) class:
 
 | Property Name  | Property Type   | Description   |
 |----------------|-----------------|---------------|
-|`ApiKey`|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
-|`ImageryStyle`|`IgxAzureMapsImageryStyle`|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following `IgxAzureMapsImageryStyle` enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
+|[`apiKey`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery&member=apiKey)|string|Represents the property for setting an API key required for the Azure Maps imagery service. You must obtain this key from the <a href="https://azure.microsoft.com/en-us/products/azure-maps" target="_blank">azure.microsoft.com</a> website.|
+|[`imageryStyle`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery&member=imageryStyle)|[`AzureMapsImageryStyle`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle)|Represents the property for setting the Azure Maps imagery tiles map style. This property can be set to the following [`AzureMapsImageryStyle`](mcp:get_api_reference?platform=angular&component=AzureMapsImageryStyle) enumeration values:<ul><li>Satellite - Specifies the Satellite map style without road or labels overlay</li><li>Road - Specifies the Aerial map style with road and labels overlay</li><li>DarkGrey - Specifies a dark grey basemap style for contrast and highlighting overlays</li><li>TerraOverlay - Specifies a terrain map style with shaded relief to highlight elevation and landscape features</li><li>LabelsRoadOverlay - One of several overlays of city labels without an aerial overlay</li><li>HybridRoadOverlay - Satellite background combined with road and label overlays</li><li>HybridDarkGreyOverlay - Satellite background combined with dark grey label overlays</li><li>LabelsDarkGreyOverlay - One of several overlays of city labels over a dark grey basemap</li><li>TrafficDelayOverlay - Displays traffic delays and congestion areas in real time</li><li>TrafficAbsoluteOverlay - Displays current traffic speeds as absolute values</li><li>TrafficReducedOverlay - Displays reduced traffic flow with light-based visualization</li><li>TrafficRelativeOverlay - Displays traffic speeds relative to normal conditions</li><li>TrafficRelativeDarkOverlay - Displays traffic speeds relative to normal conditions over a dark basemap for enhanced contrast</li><li>WeatherRadarOverlay - Displays near real-time radar imagery of precipitation</li><li>WeatherInfraredOverlay - Displays infrared satellite imagery of cloud cover</li></ul> |
 
 ## API References
-`IgxAzureMapsImagery`
-`IgxGeographicMap`
+[`IgxAzureMapsImagery`](mcp:get_api_reference?platform=angular&component=IgxAzureMapsImagery)
+[`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent)

@@ -402,7 +402,17 @@ $custom-dark-palette: palette(
     $primary: #ecaa53,
     $secondary: #011627,
     $gray: #fff,
-    $surface: #222
+    $surface: #222,
+    $generator: 'legacy'
+);
+
+// The components keep the Bootstrap dark gray and surface
+$custom-dark-theme-palette: palette(
+    $primary: color($custom-dark-palette, "primary"),
+    $secondary: color($custom-dark-palette, "secondary"),
+    $gray: color($dark-bootstrap-palette, "gray"),
+    $surface: color($dark-bootstrap-palette, "surface"),
+    $generator: 'legacy'
 );
 
 $dark-primary: color($custom-dark-palette, "primary");
@@ -452,7 +462,7 @@ $dark-secondary: color($custom-dark-palette, "secondary");
         }
 
         ::ng-deep {
-            @include bootstrap-light-theme($light-bootstrap-palette);
+            @include theme($palette: $light-bootstrap-palette, $schema: $light-bootstrap-schema);
 
             $theme-colors: (
                 "primary": $light-primary,
@@ -491,7 +501,7 @@ $dark-secondary: color($custom-dark-palette, "secondary");
         }
 
         ::ng-deep {
-            @include bootstrap-dark-theme($custom-dark-palette);
+            @include theme($palette: $custom-dark-theme-palette, $schema: $dark-bootstrap-schema);
 
             .accordion {
                 .accordion-header,
@@ -891,7 +901,7 @@ Ignite UI for Angular exposes four default type scales for each of its themes, w
 - [Avatar Component](../../layouts/avatar.md)
 - [Button Component](inputs/button)
 - [Dialog Component](/dialog)
-- [Icon Component](/icon)
+- [Icon Component](/layouts/icon)
 - [List Component](/list)
 
 ## Additional Resources

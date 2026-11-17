@@ -3,10 +3,11 @@ title: "Angular Donut Chart | Data Visualization | Infragistics"
 description: Infragistics' Angular Donut Chart
 keywords: "Angular Charts, Donut Chart, Donut Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DoughnutChart", "DoughnutChart"]
+mentionedTypes: ["DoughnutChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Donut Chart is similar to the Pie Chart, proportionally illustrating the occurrences of a variable."
+platformType: xplat
 _tocName: Donut Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Angular Donut Chart is similar to the [Pie Chart](pie-chart.md), proportionally illustrating the occurrences of a variable. The donut chart can display multiple variables in concentric rings, and provides built-in support for visualizing hierarchical data. The rings are capable of being bound to a different data item, or they can share a common data source.
 
 ## Angular Donut Chart Example
-You can create Donut Chart using the `IgxDoughnutChart` control by binding your data as shown in the example below.
+You can create Donut Chart using the [`IgxDoughnutChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent) control by binding your data as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -162,7 +163,7 @@ The Angular Donut Chart includes interactive features that give the viewer tools
 - You have negative data, as this can not be represented in a donut chart.
 
 ## Angular Donut Chart - Slice Selection
-The Angular Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The `SliceClick` event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
+The Angular Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The [`sliceClick`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent&member=sliceClick) event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -433,4 +434,4 @@ You can find more information about related chart types in these topics:
 - [Radial Chart](radial-chart.md)
 
 ## API References
-`IgxDoughnutChart`
+[`IgxDoughnutChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent)

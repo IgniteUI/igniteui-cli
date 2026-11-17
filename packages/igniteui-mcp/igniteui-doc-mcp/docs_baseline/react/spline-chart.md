@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "SplineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "Series", "CategoryChartType"]
 llms:
   description: "The Ignite UI for React Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline."
+platformType: xplat
 _tocName: Spline Chart
 _premium: true
 ---
@@ -15,7 +16,7 @@ The Ignite UI for React Spline Chart belongs to a group of Category Charts that 
 
 ## React Spline Chart Example
 
-The following example shows how to create React Spline Chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline` enum.
+The following example shows how to create React Spline Chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `Spline` enum.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -136,7 +137,7 @@ root.render(<Sample/>);
 
 The Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period for Europe, as shown in the example below.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -245,7 +246,7 @@ root.render(<Sample/>);
 
 Since the Spline Chart allows you to combine multiple series and compare or see how they change over time. All we need to do is bind to a data source containing the data for China and the USA, and the chart will automatically update to fit the additional data.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -366,7 +367,7 @@ root.render(<Sample/>);
 
 If you need a Spline Chart with more features such as composite other series, you can configure the markers, marker brushes, marker outlines, series brushes and series outlines as demonstrated below.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to `Spline`, as shown in the example below:
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -870,7 +871,7 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members |
 | --------------------|--------------------|-------------------------- |
-| Spline              | `IgrCategoryChart` | `CategoryChart.ChartType` = `Spline` |
+| Spline              | `IgrCategoryChart` | `chartType` = `Spline` |
 | Stacked Spline      | `IgrDataChart`     | `IgrStackedSplineSeries` |
 | Stacked 100% Spline | `IgrDataChart`     | `IgrStacked100SplineSeries` |
 

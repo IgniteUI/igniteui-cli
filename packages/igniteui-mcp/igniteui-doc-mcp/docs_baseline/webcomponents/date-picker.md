@@ -156,7 +156,7 @@ More information about these can be found in the [`IgcDateTimeInput`](mcp:get_ap
 
 ### Increment and decrement
 
-The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) exposes [`IgcDatePicker.stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepUp) and [`IgcDatePicker.stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepDown) methods. Both of which come from the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) and can be used for incrementing and decrementing a specific [`IgcDatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date.
+The [`IgcDatePicker`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent) exposes [`IgcDatePicker.stepUp`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepUp) and [`IgcDatePicker.stepDown`](mcp:get_api_reference?platform=webcomponents&component=IgcDatePickerComponent&member=stepDown) methods. Both of which come from the [`IgcDateTimeInput`](mcp:get_api_reference?platform=webcomponents&component=IgcDateTimeInputComponent) and can be used for incrementing and decrementing a specific [`DatePart`](mcp:get_api_reference?platform=webcomponents&component=DatePart) of the currently set date.
 
 ```html
 <igc-date-picker id="DatePicker">

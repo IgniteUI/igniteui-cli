@@ -4,9 +4,11 @@ description: Infragistics' React Shape Chart
 keywords: React Charts, Shape Chart, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "ScatterPolygonSeries", "ScatterPolylineSeries", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system."
+platformType: xplat
 _tocName: Shape Chart
 _premium: true
 ---

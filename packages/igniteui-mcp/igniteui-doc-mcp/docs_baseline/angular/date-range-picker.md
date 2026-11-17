@@ -102,7 +102,7 @@ public range: DateRange = { start: new Date(2020, 4, 20), end: new Date(2020, 4,
 ```
 
 **Note:** 
-The Date Range Picker value is of type [`IgxDateRange`](mcp:get_api_reference?platform=angular&component=DateRange), which contains a start and an end date.
+The Date Range Picker value is of type [`DateRange`](mcp:get_api_reference?platform=angular&component=DateRange), which contains a start and an end date.
 
 The picker offers two modes for displaying date values: single input and two inputs. In single input mode, the field is non-editable and the date range cannot be edited by typing. In two inputs mode, however, users can edit the start and end dates by typing in separate input fields.
 
@@ -265,9 +265,11 @@ To enrich the default Date Range Picker UX, the component allows projecting chil
 ```html
 <igx-date-range-picker #dateRangePicker [(ngModel)]="range">
     <label igxLabel>Flight dates</label>
-    <igx-hint *ngIf="dateRangePicker.invalid">
-        Please choose start and end date!
-    </igx-hint>
+    @if (dateRangePicker.invalid) {
+        <igx-hint>
+            Please choose start and end date!
+        </igx-hint>
+    }
 </igx-date-range-picker>
 ```
 
@@ -281,9 +283,11 @@ Or for two inputs:
         </igx-picker-toggle>
         <label igxLabel>Start Date</label>
         <input igxInput igxDateTimeEditor type="text">
-        <igx-hint *ngIf="dateRangePicker.invalid">
-            Please choose start and end date!
-        </igx-hint>
+        @if (dateRangePicker.invalid) {
+            <igx-hint>
+                Please choose start and end date!
+            </igx-hint>
+        }
         <igx-picker-clear igxSuffix>
             <igx-icon>clear</igx-icon>
         </igx-picker-clear>
@@ -575,9 +579,11 @@ The `IgxDateRangePickerComponent` is also a validator which means it controls it
 </igx-date-range-picker>
 
 {/* minValue & maxValue will be true if the current range does not satisfy them */}
-<div *ngIf="dateRangePicker.minValue || dateRangePicker.maxValue">
-    <p>Value not in range.</p>
-</div>
+@if (dateRangePicker.minValue || dateRangePicker.maxValue) {
+    <div>
+        <p>Value not in range.</p>
+    </div>
+}
 ```
 
 ### Disabled and Special Dates
@@ -659,6 +665,16 @@ The header, subheader and title parts of the calendar header can be customized b
   <ng-template igxCalendarHeaderTitle let-format>
     <span>My calendar</span>
   </ng-template>
+</igx-date-range-picker>
+```
+
+To customize the content of the calendar day cells, for example to show availability or prices, add an `ng-template` marked with the `igxCalendarDay` directive inside the `igx-date-range-picker`. The date range picker passes the template to its calendar. The directive is included in `IGX_DATE_RANGE_PICKER_DIRECTIVES`, or you can import `IgxCalendarDayTemplateDirective` on its own. The template context includes the range states of the day, such as `firstInRange`, `lastInRange` and `withinRange`. For the full context and the behavior of the day cells, see [Day template](/calendar#day-template) in the calendar topic.
+
+```html
+<igx-date-range-picker [value]="range">
+    <ng-template igxCalendarDay let-date let-withinRange="withinRange">
+        <span [class.day--in-range]="withinRange">{{ date.getDate() }}</span>
+    </ng-template>
 </igx-date-range-picker>
 ```
 

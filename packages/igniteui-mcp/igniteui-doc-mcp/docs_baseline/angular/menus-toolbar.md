@@ -3,15 +3,16 @@ title: "Angular Toolbar Component | Ignite UI for Angular"
 description: See how you can easily get started with Angular Toolbar Component. Compatible with the Data Chart. Extend your .
 keywords: "Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Toolbar components, Angular Toolbar controls"
 license: commercial
-mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "TrendLineType"]
+mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "Axis", "ValueLayerValueMode"]
 llms:
   description: "The Angular Toolbar component is a companion container for UI operations to be used primarily with our charting components."
+platformType: xplat
 _tocName: Toolbar
 _premium: true
 ---
 # Angular Toolbar Overview
 
-The Angular Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our `IgxDataChart` or `IgxCategoryChart` components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
+The Angular Toolbar component is a companion container for UI operations to be used primarily with our charting components. The toolbar will dynamically update with a preset of properties and tool items when linked to our [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) or [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) components. You'll be able to create custom tools for your project allowing end users to provide changes, offering an endless amount of customization.
 
 ## Angular Toolbar Example
 
@@ -167,48 +168,47 @@ npm install igniteui-angular-charts
 npm install igniteui-angular-core
 ```
 
-The following modules are required when using the [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) with the `IgxDataChart` component and it's features.
+The following modules are required when using the [`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent) with the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) component and it's features.
 
 ```ts
 import { IgxToolbarModule } from 'igniteui-angular-layouts';
-import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule, IgxDataChartCategoryTrendLineModule  } from 'igniteui-angular-charts';
-
+import { IgxDataChartToolbarModule, IgxDataChartCoreModule, IgxDataChartCategoryModule, IgxDataChartAnnotationModule, IgxDataChartInteractivityModule, IgxDataChartCategoryTrendLineModule } from 'igniteui-angular-charts';
+// ...
+// app.module.ts
 @NgModule({
     imports: [
-        // ...
-        IgxToolbarModule,
-        IgxDataChartToolbarModule,
-        IgxDataChartCoreModule,
-        IgxDataChartCategoryModule,
-        IgxDataChartAnnotationModule,
-        IgxDataChartInteractivityModule,
-        IgxDataChartCategoryTrendLineModule
-        // ...
+    IgxToolbarModule,
+    IgxDataChartToolbarModule,
+    IgxDataChartCoreModule,
+    IgxDataChartCategoryModule,
+    IgxDataChartAnnotationModule,
+    IgxDataChartInteractivityModule,
+    IgxDataChartCategoryTrendLineModule
     ]
 })
-export class AppModule {}
+export class AppModule { }
 ```
 
 ## Usage
 
 ### Tool Actions
 
-The following is a list of the different [`IgxToolAction`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) items that you can add to the Toolbar.
+The following is a list of the different [`IgxToolActionComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) items that you can add to the Toolbar.
 
-- [`IgxToolActionButton`](mcp:get_api_reference?platform=angular&component=IgxToolActionButtonComponent)
-- [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent)
-- [`IgxToolActionIconButton`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconButtonComponent)
-- [`IgxToolActionIconMenu`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent)
-- [`IgxToolActionLabel`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent)
-- [`IgxToolActionNumberInput`](mcp:get_api_reference?platform=angular&component=IgxToolActionNumberInputComponent)
-- [`IgxToolActionRadio`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent)
-- [`IgxToolActionSubPanel`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent)
+- [`IgxToolActionButtonComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionButtonComponent)
+- [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent)
+- [`IgxToolActionIconButtonComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconButtonComponent)
+- [`IgxToolActionIconMenuComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent)
+- [`IgxToolActionLabelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent)
+- [`IgxToolActionNumberInputComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionNumberInputComponent)
+- [`IgxToolActionRadioComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent)
+- [`IgxToolActionSubPanelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent)
 
-Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgxToolActionIconMenu`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) is a wrapper for other tools that can also be wrapped inside a [`IgxToolActionIconMenu`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent).
+Each of these tools exposes an [`onCommand`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent&member=onCommand) event that is triggered by mouse click. Note, the [`IgxToolActionIconMenuComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) is a wrapper for other tools that can also be wrapped inside a [`IgxToolActionIconMenuComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent).
 
-New and existing tools can be repositioned and marked hidden using the [`OverlayId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=overlayId), [`BeforeId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=beforeId) and [`AfterId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=afterId) properties on the [`IgxToolAction`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) object. ToolActions also expose a [`Visibility`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=visibility) property.
+New and existing tools can be repositioned and marked hidden using the [`overlayId`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent&member=overlayId), [`beforeId`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent&member=beforeId) and [`afterId`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent&member=afterId) properties on the [`IgxToolActionComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) object. ToolActions also expose a [`IgxToolActionComponent.visibility`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=visibility) property.
 
-The following example demonstrates a couple of features. First you can group tools together in the [`IgxToolActionSubPanel`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`AfterId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=afterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`IsHighlighted`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=isHighlighted) property on the tool.
+The following example demonstrates a couple of features. First you can group tools together in the [`IgxToolActionSubPanelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`afterId`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent&member=afterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`isHighlighted`](mcp:get_api_reference?platform=angular&component=IgxToolActionSubPanelComponent&member=isHighlighted) property on the tool.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -545,66 +545,74 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ### Angular Data Chart Integration
 
-The Angular Toolbar contains a [`Target`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=Target) property. This is used to link a component, such as the `IgxDataChart` as shown in the code below:
+The Angular Toolbar contains a [`target`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=target) property. This is used to link a component, such as the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) as shown in the code below:
 
 ```html
-  <div class="legend">
-    <igx-toolbar
-      name="toolbar"
-      [target]="chart"
-      #toolbar>
-    </igx-toolbar>
-  </div>
-  <div class="container fill">
-    <igx-data-chart
-    name="chart"
-    #chart>
-  </igx-data-chart>
+<igx-toolbar
+    #toolbar
+    [target]="chart"
+    orientation="Horizontal">
+</igx-toolbar>
+<igx-data-chart
+    #chart
+    isHorizontalZoomEnabled="true"
+    isVerticalZoomEnabled="true">
+</igx-data-chart>
 ```
 
-Several pre-existing [`IgxToolAction`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) items and menus become available when the `IgxDataChart` is linked with the Toolbar. Here is a list of the built-in Angular `IgxDataChart` Tool Actions and their associated [`OverlayId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=overlayId):
+Several pre-existing [`IgxToolActionComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent) items and menus become available when the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) is linked with the Toolbar. Here is a list of the built-in Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) Tool Actions and their associated [`overlayId`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=overlayId):
 
 Zooming Actions
 
-- `ZoomMenu`: A [`IgxToolActionIconMenu`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) that exposes three [`IgxToolActionLabel`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) items to invoke the `ZoomIn` and `ZoomOut` methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgxToolActionLabel`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) that invokes the `ResetZoom` method on the chart to reset the zoom level to it's default position.
+- `ZoomMenu`: A [`IgxToolActionIconMenuComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) that exposes three [`IgxToolActionLabelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) items to invoke the [`zoomIn`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=zoomIn) and [`zoomOut`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=zoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgxToolActionLabelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) that invokes the [`resetZoom`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=resetZoom) method on the chart to reset the zoom level to it's default position.
 
 Trend Actions
 
-- `AnalyzeMenu`: A [`IgxToolActionIconMenu`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) that contains several options for configuring different options of the chart.
+- `AnalyzeMenu`: A [`IgxToolActionIconMenuComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionIconMenuComponent) that contains several options for configuring different options of the chart.
 - `AnalyzeHeader`: A sub section header.
   - `LinesMenu`: A sub menu containing various tools for showing different dashed horizontal lines on the chart.
   - `LinesHeader`: A sub menu section header for the following three tools:
-    - `MaxValue`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
-    - `MinValue`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
-    - `Average`:  A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the average value of the series.
-  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the `IgxDataChart` plot area.
+    - `MaxValue`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
+    - `MinValue`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
+    - `Average`:  A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that displays a dashed horizontal line along the yAxis at the average value of the series.
+  - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) plot area.
   - `TrendsHeader`: A sub menu section header for the following three tools:
-    - **Exponential**: A [`IgxToolActionRadio`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the `TrendLineType` on each series in the chart to **ExponentialFit**.
-    - **Linear**: A [`IgxToolActionRadio`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the `TrendLineType` on each series in the chart to **LinearFit**.
-    - **Logarithmic**: A [`IgxToolActionRadio`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the `TrendLineType` on each series in the the chart to **LogarithmicFit**.
+    - **Exponential**: A [`IgxToolActionRadioComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the [`trendLineType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=trendLineType) on each series in the chart to **ExponentialFit**.
+    - **Linear**: A [`IgxToolActionRadioComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the [`trendLineType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=trendLineType) on each series in the chart to **LinearFit**.
+    - **Logarithmic**: A [`IgxToolActionRadioComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionRadioComponent) that sets the [`trendLineType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=trendLineType) on each series in the the chart to **LogarithmicFit**.
 - `HelpersHeader`: A sub section header.
-  - `SeriesAvg`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that adds or removes a `IgxValueLayer` to the chart's series collection using the `IgxValueLayerValueMode` of type `Average`.
-  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the `IgxDataChart`'s plot area.
+  - `SeriesAvg`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that adds or removes a [`IgxValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxValueLayerComponent) to the chart's series collection using the [`ValueLayerValueMode`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode) of type [`Average`](mcp:get_api_reference?platform=angular&component=ValueLayerValueMode&member=Average).
+  - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)'s plot area.
   - `ValueLabelsHeader`: A sub menu section header for the following tools:
-    - `ShowValueLabels`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles data point values by using a `IgxCalloutLayer`.
-    - `ShowLastValueLabel`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles final value axis annotations by using a `IgxFinalValueLayer`.
-- `ShowCrosshairs`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles mouse-over crosshair annotations via the chart's `CrosshairsDisplayMode` property.
-- `ShowGridlines`: A [`IgxToolActionCheckbox`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
+    - `ShowValueLabels`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles data point values by using a [`IgxCalloutLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxCalloutLayerComponent).
+    - `ShowLastValueLabel`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles final value axis annotations by using a [`IgxFinalValueLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxFinalValueLayerComponent).
+- `ShowCrosshairs`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles mouse-over crosshair annotations via the chart's [`crosshairsDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=crosshairsDisplayMode) property.
+- `ShowGridlines`: A [`IgxToolActionCheckboxComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionCheckboxComponent) that toggles extra gridlines by applying a [`majorStroke`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent&member=majorStroke) to the X-Axis.
 
 Save to Image Action
 
-- `CopyAsImage`: A [`IgxToolActionLabel`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) that exposes an option to copy the chart to the clipboard.
+- `CopyAsImage`: A [`IgxToolActionLabelComponent`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent) that exposes an option to copy the chart to the clipboard.
 - `CopyHeader`: A sub section header.
 
 ### SVG Icons
 
-When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`IconCollectionName`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=iconCollectionName). The second is the name of the icon defined on the tool eg. [`IconName`](mcp:get_api_reference?platform=angular&component=IgxToolActionComponent&member=iconName), followed by adding the SVG string.
+When adding tools manually, icons can be assigned using the [`registerIconFromText`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=registerIconFromText) method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`iconCollectionName`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent&member=iconCollectionName). The second is the name of the icon defined on the tool eg. [`iconName`](mcp:get_api_reference?platform=angular&component=IgxToolActionLabelComponent&member=iconName), followed by adding the SVG string.
 
 ### Data URL Icons
 
-Similarly to adding svg, you can also add an Icon image from a URL via the [`RegisterIconFromDataURL`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=registerIconFromDataURL). The method's third parameter would be used to enter a string URL.
+Similarly to adding svg, you can also add an Icon image from a URL via the [`registerIconFromDataURL`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=registerIconFromDataURL). The method's third parameter would be used to enter a string URL.
 
-The following snippet shows both methods of adding an Icon.
+The following code registers an icon each way, an SVG string and a URL, into two collections:
+
+```ts
+var toolbar = this.toolbar;
+const icon = '<svg width="28px" height="28px" stroke="none" viewBox="0 0 3.5 3.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--gis" preserveAspectRatio="xMidYMid meet"><path d="M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z" fill="#000000" fill-rule="evenodd"/></svg>';
+toolbar.registerIconFromText("CustomCollection", "CustomIcon", icon);
+
+toolbar.registerIconFromDataURL("CustomCollection2", "CustomIcon2", "https://www.svgrepo.com/show/678/calculator.svg");
+```
+
+A tool then asks for a registered icon by the collection and name it was registered under:
 
 ```html
 <igx-tool-action-label
@@ -614,47 +622,15 @@ The following snippet shows both methods of adding an Icon.
 </igx-tool-action-label>
 ```
 
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  const icon = '<svg width="28px" height="28px" stroke="none" viewBox="0 0 3.5 3.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--gis" preserveAspectRatio="xMidYMid meet"><path d="M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z" fill="#000000" fill-rule="evenodd"/></svg>';
-
-  this.toolbar.registerIconFromText("CustomCollection", "CustomIcon", icon);
-}
-```
-
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  toolbar.registerIconFromDataURL("CustomCollection", "CustomIcon", "https://www.svgrepo.com/show/678/calculator.svg");
-
-}
-```
-
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  const icon = '<svg width="28px" height="28px" stroke="none" viewBox="0 0 3.5 3.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--gis" preserveAspectRatio="xMidYMid meet"><path d="M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z" fill="#000000" fill-rule="evenodd"/></svg>';
-
-  this.toolbar.registerIconFromText("CustomCollection", "CustomIcon", icon);
-
-}
-```
-
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  toolbar.registerIconFromDataURL("CustomCollection", "CustomIcon", "https://www.svgrepo.com/show/678/calculator.svg");
-
-}
-```
-
 ### Vertical Orientation
 
-By default the Angular Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`Orientation`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=orientation) property.
+By default the Angular Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`IgxToolbarComponent.orientation`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=orientation) property.
 
 ```html
-<igx-toolbar orientation="Vertical" />
+<igx-toolbar
+    #toolbar
+    orientation="Vertical">
+</igx-toolbar>
 ```
 
 The following example demonstrates the vertical orientation of the Angular Toolbar.
@@ -792,14 +768,18 @@ You can add a custom color editor tool to the the Angular Toolbar, which will al
 
 ```html
 <igx-toolbar
-  name="toolbar"
-  #toolbar>
-      <igx-tool-action-color-editor
-      title="Series Brush"
-      name="colorEditorTool"
-      #colorEditorTool>
-      </igx-tool-action-color-editor>
+    #toolbar
+    [target]="chart">
+    <igx-tool-action-color-editor
+        title="Series Brush"
+        #colorEditorTool
+        commandId="ToggleSeriesBrush">
+    </igx-tool-action-color-editor>
 </igx-toolbar>
+<igx-data-chart
+    #chart
+    isHorizontalZoomEnabled="true">
+</igx-data-chart>
 ```
 
 The following example demonstrates styling the Angular Data Chart series brush with the Color Editor tool.
@@ -984,7 +964,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 {/* ## Styling/Theming
 
-The icon component can be styled by using it's [`BaseTheme`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent&member=baseTheme) property directly to the [`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent).
+The icon component can be styled by using it's `baseTheme` property directly to the `Toolbar`.
 
 ```html
 <igx-toolbar baseTheme="SlingshotDark" />
@@ -993,8 +973,8 @@ The icon component can be styled by using it's [`BaseTheme`](mcp:get_api_referen
 
 ## API References
 
-[`IgxToolbar`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)<br />
-`IgxDataChart`<br />
+[`IgxToolbarComponent`](mcp:get_api_reference?platform=angular&component=IgxToolbarComponent)<br />
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)<br />
 
 ## Additional Resources
 

@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "CategoryChartType
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in."
+platformType: xplat
 _tocName: Area Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for React Area Chart renders as a collection of points connected b
 
 ## React Area Chart Example
 
-You can create React Category Area Chart in the `IgrCategoryChart` control by binding your data to `DataSource` property and setting `CategoryChart.ChartType` property to **Area** enum, as shown in the example below.
+You can create React Category Area Chart in the `IgrCategoryChart` control by binding your data to `dataSource` property and setting `IgrCategoryChart.chartType` property to **Area** enum, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -169,7 +170,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## React Area Chart with Single Series
 
-React Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `Area` value, as shown in the example below.
+React Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `IgrCategoryChart.chartType` property to `Area` value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -275,7 +276,7 @@ root.render(<Sample/>);
 
 ## React Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `DataSource` property of the `IgrCategoryChart` control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to `dataSource` property of the `IgrCategoryChart` control.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -526,7 +527,7 @@ The following sections explain more advanced types of React Area Charts that can
 
 ## React Step Area Chart
 
-The React Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` property to `StepArea` value, as shown in the example below.
+The React Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in `IgrCategoryChart` control by binding your data and setting `IgrCategoryChart.chartType` property to `StepArea` value, as shown in the example below.
 
 ```typescript
 export class CountryRenewableElectricityItem {
@@ -2021,8 +2022,8 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | `IgrCategoryChart` | `CategoryChart.ChartType` = `Area`  |
-| Step Area                | `IgrCategoryChart` | `CategoryChart.ChartType` = `StepArea`  |
+| Area                     | `IgrCategoryChart` | `IgrCategoryChart.chartType` = `Area`  |
+| Step Area                | `IgrCategoryChart` | `IgrCategoryChart.chartType` = `StepArea`  |
 | Range Area               | `IgrDataChart`  | `IgrRangeAreaSeries`  |
 | Radial Area              | `IgrDataChart`  | `IgrRadialAreaSeries`  |
 | Polar Area               | `IgrDataChart`  | `IgrPolarAreaSeries`  |
@@ -2031,8 +2032,6 @@ The following table lists API members mentioned in above sections:
 | Stacked Spline Area      | `IgrDataChart`  | `IgrStackedSplineAreaSeries`  |
 | Stacked 100% Area        | `IgrDataChart`  | `IgrStacked100AreaSeries`  |
 | Stacked 100% Spline Area | `IgrDataChart`  | `IgrStacked100SplineAreaSeries`  |
-
-## API References
 
 `IgrCategoryChart`<br />
 `IgrDataChart`<br />

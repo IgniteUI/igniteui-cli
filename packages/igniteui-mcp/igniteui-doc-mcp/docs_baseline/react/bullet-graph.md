@@ -7,6 +7,7 @@ mentionedTypes: ["BulletGraph"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The React bullet graph component allows for a linear and concise view of measures compared against a scale."
+platformType: xplat
 _tocName: Bullet Graph
 _premium: true
 ---
@@ -323,7 +324,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<BulletGraphAnimation/>);
 ```
 
-The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property.
+The bullet graph supports one scale, one set of tick marks and one set of labels. The bullet graph component also has built-in support for animated transitions. This animation is easily customizable by setting the `transitionDuration` property.
 The features of the bullet graph include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Dependencies
@@ -338,10 +339,13 @@ npm install --save igniteui-react-gauges
 
 The `IgrBulletGraph` requires the following modules:
 
-```ts
+```tsx
 import { IgrBulletGraphModule } from 'igniteui-react-gauges';
-
-IgrBulletGraphModule.register();
+// ...
+const mods: any[] = [
+    IgrBulletGraphModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Usage
@@ -349,22 +353,26 @@ IgrBulletGraphModule.register();
 The following code walks through creating a bullet graph component, and configuring a performance bar, comparative measure marker, and three comparative ranges on the scale.
 
 ```tsx
- <IgrBulletGraph height="100"
-                   width="300"
-                   minimumValue={5}
-                   maximumValue={55}
-                   value={35}
-                   targetValue={43}>
-        <IgrLinearGraphRange startValue={0}
-                                endValue={15}
-                                brush="#828181"/>
-        <IgrLinearGraphRange startValue={15}
-                                endValue={30}
-                                brush="#AAAAAA"/>
-        <IgrLinearGraphRange startValue={30}
-                                endValue={55}
-                                brush="#D0D0D0"/>
- </IgrBulletGraph>
+<IgrBulletGraph
+    height="100px"
+    width="300px"
+    minimumValue={5}
+    maximumValue={55}
+    value={35}
+    targetValue={43}>
+    <IgrLinearGraphRange
+        startValue={0}
+        endValue={15}
+        brush="#828181" />
+    <IgrLinearGraphRange
+        startValue={15}
+        endValue={30}
+        brush="#AAAAAA" />
+    <IgrLinearGraphRange
+        startValue={30}
+        endValue={55}
+        brush="#D0D0D0" />
+</IgrBulletGraph>
 ```
 
 ## Comparative Measures
@@ -374,6 +382,10 @@ Performance value is the primary measure displayed by the component and it is vi
 
 ```tsx
 <IgrBulletGraph
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
     value={50}
     valueBrush="DodgerBlue"
     valueStrokeThickness={1}
@@ -385,10 +397,7 @@ Performance value is the primary measure displayed by the component and it is vi
     targetValueOutline="LimeGreen"
     targetValueStrokeThickness={1}
     targetValueInnerExtent={0.3}
-    targetValueOuterExtent={0.85}
-    height="80px" width="400px"
-    minimumValue={0} value={50}
-    maximumValue={100} />
+    targetValueOuterExtent={0.85} />
 ```
 
 ```tsx
@@ -442,17 +451,17 @@ root.render(<BulletGraphMeasures/>);
 
 ## Highlight Value
 
-The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the `Value` appear with a lower opacity. A good example is if `Value` is 50 and  `HighlightValue` is set to 25. This would represent a performance of 50% regardless of what the value of `TargetValue` is set to. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue` to something lower than `Value`.
+The bullet graph's performance value can be further modified to show progress represented as a highlighted value. This will make the `IgrBulletGraph.value` appear with a lower opacity. A good example is if `IgrBulletGraph.value` is 50 and `highlightValue` is set to 25. This would represent a performance of 50% regardless of what the value of `targetValue` is set to. To enable this first set `highlightValueDisplayMode` to Overlay and then apply a `highlightValue` to something lower than `IgrBulletGraph.value`.
 
 ```tsx
 <IgrBulletGraph
     height="80px"
-    width="100%"
-    value={70}
-    targetValue={90}
-    interval={10}
+    width="400px"
     minimumValue={0}
     maximumValue={100}
+    value={50}
+    targetValue={90}
+    interval={10}
     labelInterval={10}
     labelExtent={0.025}
     labelsPreTerminal={0}
@@ -504,23 +513,36 @@ The ranges are visual elements that highlight a specified range of values on a s
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
-    minimumValue={0} value={80} interval={10}
-    maximumValue={100} targetValue={90}
-    rangeBrushes ="#C62828, #F96232, #FF9800"
-    rangeOutlines="#C62828, #F96232, #FF9800">
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
+    value={80}
+    interval={10}
+    targetValue={90}
+    rangeBrushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    rangeOutlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
     <IgrLinearGraphRange
-        startValue={0} endValue={40}
-        innerStartExtent={0.075} innerEndExtent={0.075}
-        outerStartExtent={0.95} outerEndExtent={0.95} />
+        startValue={0}
+        endValue={40}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
     <IgrLinearGraphRange
-        startValue={40} endValue={70}
-        innerStartExtent={0.075} innerEndExtent={0.075}
-        outerStartExtent={0.95} outerEndExtent={0.95} />
+        startValue={40}
+        endValue={70}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
     <IgrLinearGraphRange
-        startValue={70} endValue={100}
-        innerStartExtent={0.075} innerEndExtent={0.075}
-        outerStartExtent={0.95} outerEndExtent={0.95} />
+        startValue={70}
+        endValue={100}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
 </IgrBulletGraph>
 ```
 
@@ -576,9 +598,12 @@ The tick marks serve as a visual division of the scale into intervals in order t
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
-    minimumValue={0} value={70}
-    maximumValue={100} targetValue={90}
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
+    value={70}
+    targetValue={90}
     interval={10}
     tickBrush="DodgerBlue"
     ticksPreTerminal={0}
@@ -588,8 +613,8 @@ The tick marks serve as a visual division of the scale into intervals in order t
     tickEndExtent={0.075}
     minorTickCount={4}
     minorTickBrush="DarkViolet"
-    minorTickEndExtent={0.1}
     minorTickStartExtent={0.2}
+    minorTickEndExtent={0.1}
     minorTickStrokeThickness={1} />
 ```
 
@@ -639,15 +664,19 @@ The labels indicate the measures on the scale.
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
-    minimumValue={0} value={70} interval={10}
-    maximumValue={100} targetValue={90}
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
+    value={70}
+    targetValue={90}
+    interval={10}
     labelInterval={10}
     labelExtent={0.025}
     labelsPreTerminal={0}
     labelsPostInitial={0}
     fontBrush="DodgerBlue"
-    font="11px Verdana"/>
+    font="11px Verdana" />
 ```
 
 ```tsx
@@ -690,10 +719,14 @@ The backing element represents background and border of the bullet graph compone
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
-    minimumValue={0} value={70} interval={10}
-    maximumValue={100} targetValue={90}
-    backingBrush="#bddcfc"
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
+    value={70}
+    targetValue={90}
+    interval={10}
+    backingBrush="rgba(189, 220, 252, 1)"
     backingOutline="DodgerBlue"
     backingStrokeThickness={4}
     backingInnerExtent={0}
@@ -735,13 +768,17 @@ root.render(<BulletGraphBackground/>);
 ```
 
 ## Scale
-The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is visual element that highlights the full range of values in the gauge. You can customize appearance and shape of the scale. The scale can also be inverted (using `isScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
-    minimumValue={0} value={70} interval={10}
-    maximumValue={100} targetValue={90}
+    height="80px"
+    width="400px"
+    minimumValue={0}
+    maximumValue={100}
+    value={70}
+    targetValue={90}
+    interval={10}
     isScaleInverted={false}
     scaleBackgroundBrush="DodgerBlue"
     scaleBackgroundOutline="DarkViolet"
@@ -790,70 +827,76 @@ For your convenience, all above code snippets are combined into one code block b
 
 ```tsx
 <IgrBulletGraph
-    height="80px" width="400px"
+    height="80px"
+    width="400px"
     minimumValue={0}
     maximumValue={100}
+    interval={10}
     isScaleInverted={false}
-    scaleBackgroundBrush="Gray"
-    scaleBackgroundOutline="Gray"
+    scaleBackgroundBrush="DodgerBlue"
+    scaleBackgroundOutline="DarkViolet"
     scaleBackgroundThickness={2}
     scaleStartExtent={0.05}
     scaleEndExtent={0.95}
-
     value={50}
-    valueBrush="Black"
+    valueBrush="DodgerBlue"
     valueStrokeThickness={1}
     valueInnerExtent={0.5}
     valueOuterExtent={0.65}
     targetValue={80}
-    targetValueBreadth={7.5}
-    targetValueBrush="Black"
-    targetValueOutline="Black"
+    targetValueBreadth={10}
+    targetValueBrush="LimeGreen"
+    targetValueOutline="LimeGreen"
     targetValueStrokeThickness={1}
     targetValueInnerExtent={0.3}
     targetValueOuterExtent={0.85}
-
+    highlightValueDisplayMode="Overlay"
+    highlightValue={25}
     labelInterval={10}
     labelExtent={0.025}
     labelsPreTerminal={0}
     labelsPostInitial={0}
-    fontBrush="Black"
+    fontBrush="DodgerBlue"
     font="11px Verdana"
-
-    backingBrush="#cecece"
-    backingOutline="#cecece"
+    backingBrush="rgba(189, 220, 252, 1)"
+    backingOutline="DodgerBlue"
     backingStrokeThickness={4}
     backingInnerExtent={0}
     backingOuterExtent={1}
-
-    interval={10}
-    tickBrush="Black"
+    tickBrush="DodgerBlue"
     ticksPreTerminal={0}
     ticksPostInitial={0}
     tickStrokeThickness={2}
     tickStartExtent={0.2}
     tickEndExtent={0.075}
-
     minorTickCount={4}
-    minorTickBrush="Black"
-    minorTickEndExtent={0.1}
+    minorTickBrush="DarkViolet"
     minorTickStartExtent={0.2}
+    minorTickEndExtent={0.1}
     minorTickStrokeThickness={1}
-
-    rangeBrushes ="#C62828, #F96232, #FF9800"
-    rangeOutlines="#C62828, #F96232, #FF9800">
+    rangeBrushes="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)"
+    rangeOutlines="rgba(198, 40, 40, 1) rgba(249, 98, 50, 1) rgba(255, 152, 0, 1)">
     <IgrLinearGraphRange
-        startValue={20} endValue={40}
-        innerStartExtent={0.25} innerEndExtent={0.25}
-        outerStartExtent={0.9} outerEndExtent={0.9} />
+        startValue={0}
+        endValue={40}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
     <IgrLinearGraphRange
-        startValue={40} endValue={60}
-        innerStartExtent={0.25} innerEndExtent={0.25}
-        outerStartExtent={0.9} outerEndExtent={0.9} />
+        startValue={40}
+        endValue={70}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
     <IgrLinearGraphRange
-        startValue={60} endValue={90}
-        innerStartExtent={0.25} innerEndExtent={0.25}
-        outerStartExtent={0.9} outerEndExtent={0.9} />
+        startValue={70}
+        endValue={100}
+        innerStartExtent={0.075}
+        innerEndExtent={0.075}
+        outerStartExtent={0.95}
+        outerEndExtent={0.95} />
 </IgrBulletGraph>
 ```
 

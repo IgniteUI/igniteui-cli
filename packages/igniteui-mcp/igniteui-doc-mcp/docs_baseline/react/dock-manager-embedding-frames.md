@@ -57,72 +57,41 @@ The Infragistics React Dock Manager component provides you with the layout for e
 }
 ```
 ```tsx
-import React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './DockManagerStyles.css';
 import { IgrContentPane, IgrDockManager, IgrDockManagerPaneType, IgrSplitPaneOrientation } from 'igniteui-react-dockmanager';
 
-export default class DockManagerEmbeddingFrames extends React.Component {
+export default function DockManagerEmbeddingFrames() {
+    const dockManagerRef = useRef<IgrDockManager>(null);
 
-    public dockManager: IgrDockManager;
-    public geoMapPane: IgrContentPane;
-    public gaugePane: IgrContentPane;
-    public doughnutChartPane: IgrContentPane;
-
-    constructor(props: any) {
-        super(props);
-
-        // this.onMapRef = this.onMapRef.bind(this);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDockManager id="dockManager">
-                    <div className="dockManagerFull" slot="doughnutChartContainer"  >
-                        <iframe className="dockManagerFrame" seamless frameBorder="0"
-                        src='https://infragistics.com/webcomponents-demos/charts/doughnut-chart-overview' ></iframe>
-                    </div>
-                    <div className="dockManagerFull" slot="gaugeContainer" >
-                        <iframe className="dockManagerFrame" seamless frameBorder="0"
-                        src='https://infragistics.com/webcomponents-demos/gauges/radial-gauge-needle' ></iframe>
-                    </div>
-                    <div className="dockManagerFull" slot="geoMapContainer"  >
-                        <iframe className="dockManagerFrame" seamless frameBorder="0"
-                        src='https://infragistics.com/react-demos/maps/geo-map-binding-data-csv'  ></iframe>
-                    </div>
-                </IgrDockManager>
-            </div>
-        );
-    }
-
-    public componentDidMount() {
+    // Before paint, like componentDidMount: no empty dock manager frame.
+    useLayoutEffect(() => {
         // fetching JSON data with geographic locations from public folder
 
-        this.gaugePane = {
+        const gaugePane: IgrContentPane = {
             // size: 150,
             header: 'ANGULAR RADIAL GAUGE',
             type: IgrDockManagerPaneType.contentPane,
             contentId: 'gaugeContainer'
         };
 
-        this.doughnutChartPane = {
+        const doughnutChartPane: IgrContentPane = {
             // size: 150,
             header: 'WEB COMPONENT DOUGHNUT CHART',
             type: IgrDockManagerPaneType.contentPane,
             contentId: 'doughnutChartContainer'
         };
 
-        this.geoMapPane = {
+        const geoMapPane: IgrContentPane = {
             // size: 200,
             header: 'REACT GEOGRAPHIC MAP',
             type: IgrDockManagerPaneType.contentPane,
             contentId: 'geoMapContainer'
         };
 
-        this.dockManager = document.getElementById("dockManager") as IgrDockManager;
-        this.dockManager.layout = {
+        dockManagerRef.current!.layout = {
             rootPane: {
                 type: IgrDockManagerPaneType.splitPane,
                 orientation: IgrSplitPaneOrientation.vertical,
@@ -131,26 +100,44 @@ export default class DockManagerEmbeddingFrames extends React.Component {
                         type: IgrDockManagerPaneType.splitPane,
                         orientation: IgrSplitPaneOrientation.horizontal,
                         // size: 250,
-                        panes: [  this.gaugePane, this.doughnutChartPane]
+                        panes: [  gaugePane, doughnutChartPane]
                     },
                     {
                         type: IgrDockManagerPaneType.splitPane,
                         orientation: IgrSplitPaneOrientation.vertical,
                         // size: 200,
                         panes: [
-                            // this.financialChartPane,
-                            this.geoMapPane ]
+                            // financialChartPane,
+                            geoMapPane ]
                     },
 
                 ]
             },
         };
-    }
+    }, []);
 
+    return (
+        <div className="container sample">
+            <IgrDockManager id="dockManager" ref={dockManagerRef}>
+                <div className="dockManagerFull" slot="doughnutChartContainer"  >
+                    <iframe className="dockManagerFrame" seamless frameBorder="0"
+                    src='https://infragistics.com/webcomponents-demos/charts/doughnut-chart-overview' ></iframe>
+                </div>
+                <div className="dockManagerFull" slot="gaugeContainer" >
+                    <iframe className="dockManagerFrame" seamless frameBorder="0"
+                    src='https://infragistics.com/webcomponents-demos/gauges/radial-gauge-needle' ></iframe>
+                </div>
+                <div className="dockManagerFull" slot="geoMapContainer"  >
+                    <iframe className="dockManagerFrame" seamless frameBorder="0"
+                    src='https://infragistics.com/react-demos/maps/geo-map-binding-data-csv'  ></iframe>
+                </div>
+            </IgrDockManager>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DockManagerEmbeddingFrames/>);
 ```
 

@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "ScatterSeries", "ScatterLineSeries", "ScatterSpli
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Scatter Chart belongs to a group of charts that show the relationship among items in distinct series of data or to plot data items using numeric x and y coordinates."
+platformType: xplat
 _tocName: Scatter Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Scatter Chart belongs to a group of charts that show t
 
 ## Angular Scatter Marker Chart
 
-Angular Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterSeries`, as shown in the example below:
+Angular Scatter Marker Chart renders as a collection of markers, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -175,7 +176,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter Line Chart
 
-Angular Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterLineSeries`, as shown in the example below:
+Angular Scatter Line Chart renders as a collection of markers connected by a straight lines, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -343,7 +344,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter Spline Chart
 
-Angular Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterSplineSeries`, as shown in the example below:
+Angular Scatter Spline Chart renders as a collection of markers connected by a curved spline, each having a pair of numeric X/Y values that determines its location in the Cartesian coordinate system. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSplineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -511,7 +512,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter High Density Chart
 
-Use the Angular Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxHighDensityScatterSeries`, as shown in the example below:
+Use the Angular Scatter High Density (HD) Chart to bind and show scatter data ranging from thousands to millions of data points with very little loading time. Due to this chart type being designed for such a large amount of points, it is visualized as tiny dots as opposed to full sized markers, and displays areas with the most data using a higher color density representing a cluster of data points. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxHighDensityScatterSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -646,7 +647,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter Area Chart
 
-Angular Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterAreaSeries`, as shown in the example below:
+Angular Scatter Area Chart draws a colored surface based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterAreaSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -815,7 +816,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter Contour Chart
 
-Angular Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterContourSeries`, as shown in the example below:
+Angular Scatter Contour Chart draws colored contour lines based on a triangulation of X and Y data with a numeric data value assigned to each point. This chart is useful for rendering heat maps, magnetic field strength or Wi-Fi strength in an office. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterContourSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterContourSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -954,9 +955,9 @@ The following table lists API members mentioned in the above sections:
 
  |Chart Type                  | Control Name   | API Members |
  |----------------------------|----------------|------------------------ |
- |Scatter Marker              | `IgxDataChart` | `IgxScatterSeries` |
- |Scatter Line                | `IgxDataChart` | `IgxScatterLineSeries` |
- |Scatter Spline              | `IgxDataChart` | `IgxScatterSplineSeries` |
- |High Density Scatter        | `IgxDataChart` | `IgxHighDensityScatterSeries` |
- |Scatter Area                | `IgxDataChart` | `IgxScatterAreaSeries` |
- |Scatter Contour             | `IgxDataChart` | `IgxScatterContourSeries` |
+ |Scatter Marker              | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent) |
+ |Scatter Line                | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent) |
+ |Scatter Spline              | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxScatterSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSplineSeriesComponent) |
+ |High Density Scatter        | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxHighDensityScatterSeriesComponent) |
+ |Scatter Area                | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxScatterAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterAreaSeriesComponent) |
+ |Scatter Contour             | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxScatterContourSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterContourSeriesComponent) |

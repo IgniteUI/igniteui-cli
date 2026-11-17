@@ -3,10 +3,11 @@ title: "React Axis Types | Data Visualization | Infragistics"
 description: Infragistics' React Axis Types
 keywords: "React Axis, Options, Title, Labels, Gap, Overlap, Range, Scale, Mode, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "FinancialChartYAxisMode", "FinancialChartXAxisMode", "NumericYAxis", "CategoryXAxis", "TimeAxisIntervalType", "PolarBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Category Chart uses only one CategoryXAxis and one NumericYAxis type."
+platformType: xplat
 _tocName: Axis Types
 _premium: true
 ---
@@ -23,7 +24,7 @@ The `IgrDataChart` with Cartesian Axes, allows you to plot data in horizontal (X
 
 The `IgrCategoryXAxis` treats its data as a sequence of categorical data items. It can display almost any type of data including strings and numbers. If you are plotting numbers on this axis, it is important to keep in mind that this axis is a discrete axis and not continuous. This means that each categorical data item will be placed equidistant from the one before it. The items will also be plotted in the order that they appear in the axis' data source.
 
-The `IgrCategoryXAxis` requires you to provide a `IgrDataSource` and a `Label` in order to plot data with it. It is generally used with the `IgrNumericYAxis` to plot the following type of series:
+The `IgrCategoryXAxis` requires you to provide a `dataSource` and a `IgrNumericYAxis.label` in order to plot data with it. It is generally used with the `IgrNumericYAxis` to plot the following type of series:
 
 | Category Series  | Stacked Series | Financial Series |
 |------------------|----------------|--------------------|
@@ -209,10 +210,10 @@ root.render(<Sample/>);
 
 ### Category Y-Axis
 
-The `IgrCategoryYAxis` works very similarly to the `IgrCategoryXAxis` described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `IgrDataSource` and a `Label` in order to plot data with it. The `IgrCategoryYAxis` is generally used with the `IgrNumericXAxis` to plot the following type of series:
+The `IgrCategoryYAxis` works very similarly to the `IgrCategoryXAxis` described above, but it is placed vertically rather than horizontally. Also, this axis requires you to provide a `dataSource` and a `IgrNumericYAxis.label` in order to plot data with it. The `IgrCategoryYAxis` is generally used with the `IgrNumericXAxis` to plot the following type of series:
 
 - `IgrBarSeries`
-- `RangeBarSeries`
+- `IgrRangeBarSeries`
 - `IgrStackedBarSeries`
 - `IgrStacked100BarSeries`
 
@@ -379,12 +380,12 @@ root.render(<Sample/>);
 
 ### Numeric X-Axis
 
-The `IgrNumericXAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the `IgrNumericXAxis` labels depends on the `XMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a `IgrNumericYAxis`. Alternatively, if combined with the `IgrCategoryXAxis`, these labels will be placed corresponding to the `ValueMemberPath` of the `IgrBarSeries`, `RangeBarSeries`, `IgrStackedBarSeries`, and `IgrStacked100BarSeries`.
+The `IgrNumericXAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed horizontally along the X-Axis. The location of the `IgrNumericXAxis` labels depends on the `IgrBubbleSeries.xMemberPath` property of the various [Scatter Series](../types/scatter-chart.md) that it supports if combined with a `IgrNumericYAxis`. Alternatively, if combined with the `IgrCategoryXAxis`, these labels will be placed corresponding to the `valueMemberPath` of the `IgrBarSeries`, `IgrRangeBarSeries`, `IgrStackedBarSeries`, and `IgrStacked100BarSeries`.
 
 The `IgrNumericXAxis` is compatible with the following type of series:
 
 - `IgrBarSeries`
-- `RangeBarSeries`
+- `IgrRangeBarSeries`
 - `IgrBubbleSeries`
 - `IgrHighDensityScatterSeries`
 - `IgrScatterSeries`
@@ -540,7 +541,7 @@ root.render(<DataChartTypeScatterDensitySeries/>);
 
 ### Numeric Y-Axis
 
-The `IgrNumericYAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the `IgrNumericYAxis` labels depends on the `YMemberPath` property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a `IgrNumericXAxis`. Alternatively, if combined with the `IgrCategoryYAxis`, these labels will be placed corresponding to the `ValueMemberPath` of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
+The `IgrNumericYAxis` treats its data as continuously varying numerical data items. Labels on this axis are placed vertically along the Y-Axis. The location of the `IgrNumericYAxis` labels depends on the `yMemberPath` property of the various [ScatterSeries](../types/scatter-chart.md) that is supports if combined with a `IgrNumericXAxis`. Alternatively, if combined with the `IgrCategoryYAxis`, these labels will be placed corresponding to the `valueMemberPath` of the category or stacked series mentioned in the table above. If you are using one of the financial series, they will be placed corresponding to the Open/High/Low/Close paths and the series type that you are using.
 
 The `IgrNumericYAxis` is compatible with the following type of series:
 
@@ -747,27 +748,27 @@ root.render(<Sample/>);
 
 ### Time X Axis
 
-The `IgrTimeXAxis` treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `DateTimeMemberPath`. This, along with a `IgrDataSource` is required to plot data with this axis type.
+The `IgrTimeXAxis` treats its data as a sequence of data items, sorted by date. Labels on this axis type are dates and can be formatted and arranged according to date intervals. The date range of this axis is determined by the date values in a data column that is mapped using its `dateTimeMemberPath`. This, along with a `dataSource` is required to plot data with this axis type.
 
 The `IgrTimeXAxis` is the X-Axis type in the `IgrFinancialChart` component.
 
 #### Breaks in Time X Axis
 
-The `IgrTimeXAxis` has the option to exclude intervals of data by using `Breaks`. As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of `IgrTimeAxisBreak` can be added to the `Breaks` collection of the axis and configured by using a unique `Start`, `End` and `Interval`.
+The `IgrTimeXAxis` has the option to exclude intervals of data by using `IgrTimeXAxis.breaks`. As a result, the labels and plotted data will not appear at the excluded interval. For example, working/non-working days, holidays, and/or weekends. An instance of `IgrTimeAxisBreak` can be added to the `IgrTimeXAxis.breaks` collection of the axis and configured by using a unique `IgrTimeAxisBreak.start`, `IgrTimeAxisBreak.end` and `IgrNumericYAxis.interval`.
 
 #### Formatting in Time X Axis
 
-The `IgrTimeXAxis` has the `LabelFormats` property, which represents a collection of `IgrTimeAxisLabelFormat` objects. Each `IgrTimeAxisLabelFormat` added to the collection is responsible for assigning a unique `Format` and `Range`. This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
+The `IgrTimeXAxis` has the `labelFormats` property, which represents a collection of `IgrTimeAxisLabelFormat` objects. Each `IgrTimeAxisLabelFormat` added to the collection is responsible for assigning a unique `IgrTimeAxisLabelFormat.format` and `IgrTimeAxisLabelFormat.range`. This can be especially useful for drilling down data from years to milliseconds and adjusting the labels depending on the range of time shown by the chart.
 
-The `Format` property of the `IgrTimeAxisLabelFormat` specifies what format to use for a particular visible range. The `Range` property of the `IgrTimeAxisLabelFormat` specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two `IgrTimeAxisLabelFormat` elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
+The `IgrTimeAxisLabelFormat.format` property of the `IgrTimeAxisLabelFormat` specifies what format to use for a particular visible range. The `IgrTimeAxisLabelFormat.range` property of the `IgrTimeAxisLabelFormat` specifies the visible range at which the axis label formats will switch to a different format. For example, if you have two `IgrTimeAxisLabelFormat` elements with a range set to 10 days and another set to 5 hours, then as soon as the visible range of the axis becomes less than 10 days, it will switch to 5-hour format.
 
 #### Intervals in Time X Axis
 
-The `IgrTimeXAxis` replaces the conventional `Interval` property of the category and numeric axes with an `Intervals` collection of type `IgrTimeAxisInterval`. Each `IgrTimeAxisInterval` added to the collection is responsible for assigning a unique `Interval`, `Range` and `IntervalType`. This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
+The `IgrTimeXAxis` replaces the conventional `IgrNumericYAxis.interval` property of the category and numeric axes with an `IgrTimeXAxis.intervals` collection of type `IgrTimeAxisInterval`. Each `IgrTimeAxisInterval` added to the collection is responsible for assigning a unique `IgrNumericYAxis.interval`, `IgrTimeAxisLabelFormat.range` and `intervalType`. This can be especially useful for drilling down data from years to milliseconds to provide unique spacing between labels depending on the range of time shown by the chart. A description of these properties is below:
 
-- `Interval`: This specifies the interval to use. This is tied to the `IntervalType` property. For example, if the `IntervalType` is set to `Days`, then the numeric value specified in `Interval` will be in days.
-- `Range`: This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
-- `IntervalType`: This specifies the unit of time for the `Interval` property.
+- `IgrNumericYAxis.interval`: This specifies the interval to use. This is tied to the `intervalType` property. For example, if the `intervalType` is set to `Days`, then the numeric value specified in `IgrNumericYAxis.interval` will be in days.
+- `IgrTimeAxisLabelFormat.range`: This specifies the visible range at which the axis interval will switch to a different interval. For example, if you have two TimeAxisInterval with a range set to 10 days and another set to 5 hours, as soon as the visible range in the axis becomes less than 10 days it will switch to the interval whose range is 5 hours.
+- `intervalType`: This specifies the unit of time for the `IgrNumericYAxis.interval` property.
 
 ## Polar Axes
 
@@ -945,11 +946,134 @@ The `IgrProportionalCategoryAngleAxis` is generally used with the `IgrNumericRad
 
 The following example demonstrates usage of the `IgrProportionalCategoryAngleAxis` type:
 
- 
+ ```typescript
+export class RadialProportionalDataItem {
+    public constructor(init: Partial<RadialProportionalDataItem>) {
+        Object.assign(this, init);
+    }
+
+    public label: string;
+    public value: number;
+    public radius: number;
+    public radius2: number;
+
+}
+export class RadialProportionalData extends Array<RadialProportionalDataItem> {
+    public constructor(items: Array<RadialProportionalDataItem> | number = -1) {
+        if (Array.isArray(items)) {
+            super(...items);
+        } else {
+            const newItems = [
+                new RadialProportionalDataItem({ label: `A`, value: 100, radius: 75, radius2: 50 }),
+                new RadialProportionalDataItem({ label: `B`, value: 100, radius: 100, radius2: 75 }),
+                new RadialProportionalDataItem({ label: `C`, value: 100, radius: 80, radius2: 140 }),
+                // ... 5 more items
+            ];
+            super(...newItems.slice(0));
+        }
+    }
+}
+```
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+```
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+import { IgrDataPieChartCoreModule, IgrDataChartCoreModule, IgrDataChartRadialModule, IgrDataChartRadialCoreModule, IgrDataChartInteractivityModule, IgrDataChartAnnotationModule } from 'igniteui-react-charts';
+import { IgrDataChart, IgrProportionalCategoryAngleAxis, IgrNumericRadiusAxis, IgrRadialPieSeries } from 'igniteui-react-charts';
+import { RadialProportionalDataItem, RadialProportionalData } from './RadialProportionalData';
+
+const mods: any[] = [
+    IgrDataPieChartCoreModule,
+    IgrDataChartCoreModule,
+    IgrDataChartRadialModule,
+    IgrDataChartRadialCoreModule,
+    IgrDataChartInteractivityModule,
+    IgrDataChartAnnotationModule
+];
+mods.forEach((m) => m.register());
+
+export default class Sample extends React.Component<any, any> {
+    private chart: IgrDataChart
+    private chartRef(r: IgrDataChart) {
+        this.chart = r;
+        this.setState({});
+    }
+    private angleAxis: IgrProportionalCategoryAngleAxis
+    private radiusAxis: IgrNumericRadiusAxis
+    private radialPieSeries1: IgrRadialPieSeries
+
+    constructor(props: any) {
+        super(props);
+
+        this.chartRef = this.chartRef.bind(this);
+    }
+
+    public render(): JSX.Element {
+        return (
+        <div className="container sample">
+
+            <div className="container fill">
+                <IgrDataChart
+                    ref={this.chartRef}
+                    isHorizontalZoomEnabled="false"
+                    isVerticalZoomEnabled="false">
+                    <IgrProportionalCategoryAngleAxis
+                        name="angleAxis"
+                        dataSource={this.radialProportionalData}
+                        label="label"
+                        valueMemberPath="value"
+                        gap="0"
+                        othersCategoryText="Others"
+                        othersCategoryThreshold="55"
+                        othersCategoryType="Number">
+                    </IgrProportionalCategoryAngleAxis>
+                    <IgrNumericRadiusAxis
+                        name="radiusAxis"
+                        minimumValue="0"
+                        maximumValue="100">
+                    </IgrNumericRadiusAxis>
+                    <IgrRadialPieSeries
+                        name="RadialPieSeries1"
+                        dataSource={this.radialProportionalData}
+                        angleAxisName="angleAxis"
+                        valueAxisName="radiusAxis"
+                        valueMemberPath="value"
+                        showDefaultTooltip="false"
+                        useItemWiseColors="true"
+                        legendRadialLabelMode="LabelAndValueAndPercentage"
+                        markerType="None"
+                        title="Categories">
+                    </IgrRadialPieSeries>
+                </IgrDataChart>
+            </div>
+        </div>
+        );
+    }
+
+    private _radialProportionalData: RadialProportionalData = null;
+    public get radialProportionalData(): RadialProportionalData {
+        if (this._radialProportionalData == null)
+        {
+            this._radialProportionalData = new RadialProportionalData();
+        }
+        return this._radialProportionalData;
+    }
+
+}
+
+// rendering above component in the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Sample/>);
+```
 
 ### Numeric Angle Axis
 
-The `IgrNumericAngleAxis` treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the `IgrNumericAngleAxis` varies according to the value in the data column mapped using the `RadiusMemberPath` property of the [Polar Series](../types/polar-chart.md) object or the `ValueMemberPath` property of the [Radial Series](../types/radial-chart.md) object.
+The `IgrNumericAngleAxis` treats its data as continuously varying numerical data items. The labels on this axis area placed along a radius line starting from the center of the circular plot. The location of the labels on the `IgrNumericAngleAxis` varies according to the value in the data column mapped using the `radiusMemberPath` property of the [Polar Series](../types/polar-chart.md) object or the `valueMemberPath` property of the [Radial Series](../types/radial-chart.md) object.
 
 The The `IgrNumericAngleAxis` can be used with either the `IgrCategoryAngleAxis` to plot [Radial Series](../types/radial-chart.md) or with the `IgrNumericRadiusAxis` to plot [Polar Series](../types/polar-chart.md) respectively.
 
@@ -1099,7 +1223,7 @@ root.render(<Sample/>);
 
 ### Numeric Radius Axis
 
-The `IgrNumericRadiusAxis` treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the `AngleMemberPath` property of the corresponding polar series.
+The `IgrNumericRadiusAxis` treats the data as continuously varying numerical data items. The labels on this axis are placed around the circular plot. The location of the labels varies according to the value in a data column mapped using the `angleMemberPath` property of the corresponding polar series.
 
 The `IgrNumericRadiusAxis` can be used with the `IgrNumericRadiusAxis` to plot [Polar Series](../types/polar-chart.md).
 

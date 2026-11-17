@@ -205,7 +205,7 @@ Without information about the sizes of the container and the items before render
 - `IgxHierarchicalGridComponent Styles`
 - [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 - [`IgxForOfDirective`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
-- [`IgxIForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState)
+- [`IForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState)
 ## Additional Resources
 
 - [Hierarchical Grid overview](/hierarchicalgrid/hierarchical-grid)

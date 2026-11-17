@@ -3,10 +3,11 @@ title: "Angular Chart Highlight Filter | Data Visualization | Infragistics"
 description: Infragistics' Angular Chart Highlight Filter
 keywords: "Angular Charts, Highlighting, Filtering, Infragistics"
 license: commercial
-mentionedTypes: ["CategoryChart", "DataChart", "Series", "HighlightedValuesDisplayMode"]
+mentionedTypes: ["CategoryChart", "DataChart", "Series", "HighlightedValuesDisplayMode", "HorizontalAnchoredCategorySeries"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Chart components support a data highlighting overlay that can enhance the visualization of the series plotted in those charts by allowing you to view a subset of the data plotted."
+platformType: xplat
 _tocName: Chart Highlight Filter
 _premium: true
 ---
@@ -199,21 +200,21 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-Note that data highlighting feature is supported by the `IgxDataChart` and `IgxCategoryChart`, but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the `HighlightedValuesDisplayMode` property to `Overlay` if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
+Note that data highlighting feature is supported by the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) and [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), but it is configured in different ways in those controls due to the nature of how those controls work. One thing remains constant with this feature though, in that you need to set the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedValuesDisplayMode) property to [`SeriesHighlightedValuesDisplayMode.Overlay`](mcp:get_api_reference?platform=angular&component=SeriesHighlightedValuesDisplayMode&member=Overlay) if you want to see the highlight. The following will explain the different configurations for the highlight filter feature.
 
 ## Using Highlight Filter with DataChart
 
-In the `IgxDataChart`, much of the highlight filter API happens on the series themselves, mainly by setting the `HighlightedItemsSource` property to a collection representing a subset of the data you want to highlight. The count of the items in the `HighlightedItemsSource` needs to match the count of the data bound to the `ItemsSource` of the series that you are looking to highlight, and in the case of category series, it will use the `ValueMemberPath` that you have defined as the highlight path by default. The sample at the top of this page uses the `HighlightedItemsSource` in the `IgxDataChart` to show the overlay.
+In the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), much of the highlight filter API happens on the series themselves, mainly by setting the [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource) property to a collection representing a subset of the data you want to highlight. The count of the items in the [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource) needs to match the count of the data bound to the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) of the series that you are looking to highlight, and in the case of category series, it will use the [`valueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=valueMemberPath) that you have defined as the highlight path by default. The sample at the top of this page uses the [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) to show the overlay.
 
-In the case that the schema does not match between the `HighlightedItemsSource` and the `ItemsSource` of the series, you can configure this using the `HighlightedValueMemberPath` property on the series. Additionally, if you would like to use the `ItemsSource` of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the `HighlightedValueMemberPath` property to that path and not providing a `HighlightedItemsSource`.
+In the case that the schema does not match between the [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource) and the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) of the series, you can configure this using the [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=highlightedValueMemberPath) property on the series. Additionally, if you would like to use the [`dataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=dataSource) of the series itself as the highlight source and have a path on your data item that represents the subset, you can do this. This is done by simply setting the [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=highlightedValueMemberPath) property to that path and not providing a [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource).
 
-The reduced opacity of the column and area series types is configurable by setting the `HighlightedValuesFadeOpacity` property on the series. You can also set the `HighlightedValuesDisplayMode` property to `Hidden` if you do not wish to see the overlay at all.
+The reduced opacity of the column and area series types is configurable by setting the [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent&member=highlightedValuesFadeOpacity) property on the series. You can also set the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode) property to [`SeriesHighlightedValuesDisplayMode.Hidden`](mcp:get_api_reference?platform=angular&component=SeriesHighlightedValuesDisplayMode&member=Hidden) if you do not wish to see the overlay at all.
 
-The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the `HighlightedTitleSuffix`. This will append the value that you provide to the end of the `Title` of the series.
+The part of the series shown by the highlight filter will be represented in the legend and tooltip layers of the chart separately. You can configure the title that this is given in the tooltip and legend by setting the [`highlightedTitleSuffix`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent&member=highlightedTitleSuffix). This will append the value that you provide to the end of the [`chartTitle`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=chartTitle) of the series.
 
-If the `IgxDataLegend` or `IgxDataToolTipLayer` is used then the highlighted series will appear grouped. This can be managed by setting the `HighlightedValuesDataLegendGroup` property on the series to categorize them appropriately.
+If the [`IgxDataLegendComponent`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent) or [`IgxDataToolTipLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent) is used then the highlighted series will appear grouped. This can be managed by setting the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedValuesDataLegendGroup) property on the series to categorize them appropriately.
 
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the `IgxDataChart` control using the `HighlightedValuesDataLegendGroup`:
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control using the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedValuesDataLegendGroup):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -390,7 +391,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the `IgxDataChart` control using the `HighlightedValuesDataLegendGroup`:
+The following example demonstrates the usage of the data legend grouping and highlighting overlay feature within the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control using the [`highlightedValuesDataLegendGroup`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedValuesDataLegendGroup):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -562,7 +563,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-The following example demonstrates the usage of the data highlighting overlay feature within the `IgxDataChart` control using the `HighlightedValueMemberPath`:
+The following example demonstrates the usage of the data highlighting overlay feature within the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control using the [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=highlightedValueMemberPath):
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -721,11 +722,11 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Using Highlight Filter in CategoryChart
 
-The `IgxCategoryChart` highlight filter happens on the chart by setting the `InitialHighlightFilter` property. Since the `IgxCategoryChart` takes all of the properties on your underlying data item into account by default, you will need to define the `InitialGroups` on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the `InitialGroups` to a value path in your underlying data item to group by a path that has duplicate values.
+The [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) highlight filter happens on the chart by setting the [`initialHighlightFilter`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=initialHighlightFilter) property. Since the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) takes all of the properties on your underlying data item into account by default, you will need to define the [`initialGroups`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=initialGroups) on the chart as well so that the data can be grouped and aggregated in a way that you can have a subset of the data to filter on. You can set the [`initialGroups`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=initialGroups) to a value path in your underlying data item to group by a path that has duplicate values.
 
-Similar to the `IgxDataChart`, the `HighlightedValuesDisplayMode` property is also exposed on the `IgxCategoryChart`. In the case that you do not want to see the overlay, you can set this property to `Hidden`.
+Similar to the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), the [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode) property is also exposed on the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent). In the case that you do not want to see the overlay, you can set this property to [`SeriesHighlightedValuesDisplayMode.Hidden`](mcp:get_api_reference?platform=angular&component=SeriesHighlightedValuesDisplayMode&member=Hidden).
 
-The following example demonstrates the usage of the data highlighting overlay feature within the `IgxCategoryChart` control:
+The following example demonstrates the usage of the data highlighting overlay feature within the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -868,13 +869,13 @@ You can find more information about related chart features in these topics:
 
 The following is a list of API members mentioned in the above sections:
 
-| `IgxCategoryChart` Properties                    | `IgxDataChart` Properties |
+| [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) Properties                    | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) Properties |
 | ----------------------------------------------|---------------------------|
-| `HighlightedItemsSource`        | `HighlightedItemsSource`  |
-| `HighlightedTitleSuffix`        | `HighlightedTitleSuffix`  |
-| `HighlightedValueMemberPath`    | `HighlightedValueMemberPath`     |
-| `HighlightedValuesDisplayMode`  | `HighlightedValuesDisplayMode`   |
-| `HighlightedValuesFadeOpacity`  | `HighlightedValuesFadeOpacity`   |
-| `HighlightedValuesDisplayMode`  | `HighlightedValuesDisplayMode`   |
-| `InitialHighlightFilter`        |  |
-| `InitialGroups`                 |  |
+| [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource)        | [`highlightedDataSource`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=highlightedDataSource)  |
+| [`highlightedTitleSuffix`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedTitleSuffix)        | [`highlightedTitleSuffix`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedTitleSuffix)  |
+| [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=highlightedValueMemberPath)    | [`highlightedValueMemberPath`](mcp:get_api_reference?platform=angular&component=IgxHorizontalAnchoredCategorySeriesComponent&member=highlightedValueMemberPath)     |
+| [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode)   |
+| [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedValuesFadeOpacity)  | [`highlightedValuesFadeOpacity`](mcp:get_api_reference?platform=angular&component=IgxDataToolTipLayerComponent&member=highlightedValuesFadeOpacity)   |
+| [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode)  | [`highlightedValuesDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightedValuesDisplayMode)   |
+| [`initialHighlightFilter`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=initialHighlightFilter)        |  |
+| [`initialGroups`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=initialGroups)                 |  |

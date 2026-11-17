@@ -1,98 +1,83 @@
 ---
-title: Palettes
-description:
-keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library
+title: "Angular Styling and Themes | Angular Palettes | Infragistics"
+description: "Ignite UI for Angular palettes are sets of CSS variables, generated from seed colors, that give every component its colors and can be overridden at runtime."
+keywords: "Ignite UI for Angular, Infragistics, Palettes, Styling, CSS variables, color variables, surface roles, contrast colors"
+license: MIT
+mentionedTypes: []
 llms:
-  description: "Ignite UI for Angular exposes CSS variables that allow you to update the colors in your application in a consistent way."
+  description: "Ignite UI for Angular palettes are sets of --ig-* CSS variables, generated from seed colors, that supply the colors of every component theme."
+last_updated: "2026-10-14"
 _tocName: Palettes
 ---
-# Palettes
+# Palettes in Ignite UI for Angular
 
-<div class="highlight">
-Ignite UI for Angular exposes CSS variables that allow you to update the colors in your application in a consistent way.
-</div>
-<igc-divider></igc-divider>
+Ignite UI for Angular palettes are sets of `--ig-*` CSS variables, generated from seed colors, that supply the colors of every component theme.
 
 ## Overview
 
-Ignite UI for Angular exposes over 80 color variants as CSS variables for 8 base colors - `primary`, `secondary`, `surface`, `gray`, `info`, `success`, `warn`, `error`.
+A Ignite UI for Angular palette has eight color families: `primary`, `secondary`, `gray`, `surface`, `info`, `success`, `warn`, and `error`. Each family exposes its shades as CSS variables named `--ig-<family>-<variant>`, for example `--ig-primary-500`.
 
-The `primary`, `secondary`, and `gray` colors follow the [2014 Material Design Color Palette](https://material.io/design/color/the-color-system.html#tools-for-picking-colors). This means these colors include the following variants:
+| Family | Variants |
+|---|---|
+| `primary`, `secondary`, `info`, `success`, `warn`, `error` | `50`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`, `A100`, `A200`, `A400`, `A700`, `seed` |
+| `gray` | `50`–`900`, `seed` |
+| `surface` | `base`, `sunken`, `raised`, `overlay`, `container`, `seed` |
 
-<table>
-    <tr>
-        <th colspan="10" style="text-align: center !important">All</th>
-        <th colspan="4" style="text-align: center !important"><b>Primary & Secondary Only</b></th>
-    </tr>
-    <tr>
-        <td>50</td>
-        <td>100</td>
-        <td>200</td>
-        <td>300</td>
-        <td>400</td>
-        <td>500</td>
-        <td>600</td>
-        <td>700</td>
-        <td>800</td>
-        <td>900</td>
-        <td><b>A100</b></td>
-        <td><b>A200</b></td>
-        <td><b>A400</b></td>
-        <td><b>A700</b></td>
-    </tr>
-</table>
+The numbered shades run from `50`, the lightest, to `900`, the darkest. The `A100`–`A700` accent shades are vivid variants for emphasis. The `surface` family describes layers rather than shades: `base` is the page and component background, `sunken`, `raised`, and `overlay` are layers relative to it, and `container` is a translucent fill. Palettes also include numbered `surface` shades for compatibility, but they are deprecated in favor of the roles, which component themes read.
 
-<hr/>
-
-As the table above shows, the `gray` color doesn't include the `A100`, `A200`, `A400`, and `A700` variants, while the `primary` and `secondary` colors contain all 14 color variants. We include 5 additional colors that are not part of the 2014 Material Design Color Palette - `info`, `success`, `warn`, `error` and `surface`.
-
-On top of the aforementioned colors, we also include **Level AA** [WCAG](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) compliant `contrast` colors for each color variant. This means that you can safely use the corresponding `contrast` color variants as foreground colors for the base color variant.
+Every variant has a matching `-contrast` variable, such as `--ig-primary-500-contrast`, that resolves to black or white, whichever reads better against that shade at the configured WCAG level.
 
 **Note:** 
-Contrast colors are CSS relative colors and are runtime calculated, based on the corresponding shade color (primary, secondary, etc.).
+Contrast colors are CSS relative colors calculated by the browser from their shade, so overriding a shade updates its contrast color along with it. The translucent `container` is the exception: its contrast color is calculated from the container laid over `base`, which is what text on it is read against, so it follows changes to either.
 
-Here's an excerpt of the `primary` variable color as declared in the Light Material Palette:
+Here is an excerpt of the `primary` family in the light Material palette:
 
 ```css
 :root {
-  //...
   --ig-primary-500: #09f;
   --ig-primary-500-contrast: hsla(from color(from var(--ig-primary-500) var(--y-contrast)) h 0 l / 1);
   --ig-primary-600: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.89));
   --ig-primary-600-contrast: hsla(from color(from var(--ig-primary-600) var(--y-contrast)) h 0 l / 1);
-  --ig-primary-700: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.81));
-  //...
-  --ig-secondary-400: hsl(from var(--ig-secondary-500) h calc(s * 0.875) calc(l * 1.08));
-  --ig-secondary-400-contrast: hsla(from color(from var(--ig-secondary-400) var(--y-contrast)) h 0 l / 1);
-  --ig-secondary-500: #df1b74;
-  --ig-secondary-500-contrast: hsla(from color(from var(--ig-secondary-500) var(--y-contrast)) h 0 l / 1);
-  --ig-secondary-600: hsl(from var(--ig-secondary-500) h calc(s * 1.26) calc(l * 0.89));
-  --ig-secondary-600-contrast: hsla(from color(from var(--ig-secondary-600) var(--y-contrast)) h 0 l / 1);
-  //...
+  --ig-primary-seed: #09f;
+  /* ... */
   --ig-wcag-a: 0.31;
   --ig-wcag-aa: 0.185;
   --ig-wcag-aaa: 0.178;
   --ig-contrast-level: var(--ig-wcag-aa);
-  --y: clamp(0,(y / var(--ig-contrast-level) - 1)* -infinity, 1);
+  --y: clamp(0, (y / var(--ig-contrast-level) - 1) * -infinity, 1);
   --y-contrast: xyz-d65 var(--y) var(--y) var(--y);
 }
 ```
 
-All primary color variants come from a single base variable: `--ig-primary-500`. This same pattern applies to other color variables like `--ig-secondary-500` and `--ig-surface-500`. The additional variants are created using relative color CSS functions that take the main `500` variable and adjust its `saturation` and `lightness` to create other variants (600, 700, etc.). We chose this approach because it lets us modify all variants of `primary`, `secondary`, `surface`, and other colors during runtime.
+Each family also exposes a `seed` variable that holds the color the palette was generated from, unchanged. In the prebuilt themes, the seed of `primary`, `secondary`, and the other color families matches their `500` variant. For `gray` it does not: `--ig-gray-seed` records the color the grayscale was derived from, black or white chosen from the surface color's luminance, while `--ig-gray-500` is a generated mid-tone.
 
- The contrast colors are CSS runtime generated, based on the the provided color's luminance and the chosen contrast-level to calculate the best contrast color for it. If we change the main color variant(`500`), the contrast colors will also be updated.
+**Note:** 
+The contrast threshold is held in `--ig-contrast-level`, which defaults to `var(--ig-wcag-aa)`. Override it on any scope to switch to `var(--ig-wcag-a)` or `var(--ig-wcag-aaa)`.
 
- **Note:** 
- You could specify the contrast-level globally by using the `palette` mixin, or if you'd like to set it specifically in the scope of your element, you could use the `adaptive-contrast` mixin. They both accept one of the predefined values: `a`, `aa` or `aaa`.
- 
+In Sass, the `palette()` and `adaptive-contrast()` mixins accept `'a'`, `'aa'`, or `'aaa'` directly:
 
- ```scss
-  @include palette($palette, $contrast-level: 'aaa');
- ```
+```scss
+@include palette($palette, $contrast-level: 'aaa');
+```
+
+## How Palettes Are Generated
+
+Every Ignite UI for Angular palette, including the ones in the prebuilt CSS themes, is generated by the `palette()` function of the `igniteui-theming` Sass library. The function has two generators, and they produce CSS variables that behave differently at runtime:
+
+| Generator | Shades are emitted as | Used by |
+|---|---|---|
+| `legacy` | CSS relative colors of `500`. Overriding `--ig-primary-500` updates every primary shade in the browser. | Every prebuilt CSS theme and the predefined Sass palettes. |
+| `fitted` | Fixed colors solved for contrast targets. Overriding one variable changes only that shade. | Palettes you generate with `palette()` in Sass, by default. |
+
+The `legacy` generator multiplies the `500` shade's saturation and lightness by fixed values, so the quality of its shades depends on how light or dark the `500` color is. A very dark or very pale `500` produces shades that bunch together or resolve to white. If your brand color is very dark or very pale, generate the palette with the `fitted` generator in Sass instead: it builds every family to a contrast scale, so such seeds still produce ten distinct shades. [Palette Generation](palette-generation.md) explains both generators and shows how to generate a palette. [Palettes with Sass](sass/palettes.md) covers each workflow in detail.
+
+<code-view iframe-src="{environment:demosBaseUrl}/themes/palettes/shades" github-src="themes/palettes/shades" alt="Angular palettes: a prebuilt palette's families through the legacy and fitted generators"></code-view>
+
+The rest of this topic describes runtime overrides, which derive new shades only in palettes built with the `legacy` generator, such as the prebuilt themes.
 
 ## Defining Palettes
 
-If you wanted to change the color variants for a color from the palette, you can do so by overriding its `500` color variant. For instance, changing the primary colors is as easy as writing:
+Change a color family by overriding its `500` variant. Every other numbered and accent shade of the family is a relative color of `500`, so it updates with it:
 
 ```css
 :root {
@@ -100,15 +85,19 @@ If you wanted to change the color variants for a color from the palette, you can
 }
 ```
 
-This will automatically update all the other primary variants.
+The derived shades keep the hue of `500` and change only its saturation and lightness, so each family is monochromatic:
 
-You will notice that color variants for each color are monochromatic. This is because all color variants are generated with the relative color function `hsl()`.
+```css
+:root {
+  --ig-primary-600: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.89));
+}
+```
+
+The `seed` variable is not derived from `500`; it records the color the palette was built from. Override the shades you use, not `seed`.
 
 ## Scoping
 
-We've seen that overriding colors in the palette is relatively easy. We can update the _global_ palette by scoping color variants to the `:root` selector in the `styles.css` file of our application:
-
-Let's say your corporate primary color is `#9f349c` and you want to create primary variants for it. All you need to do is to replace the `--ig-primary-500` variable with the desired color in any color value type - RGB, HEX, etc.
+Override palette variables on `:root` in your application's global stylesheet to change the global palette. Any CSS color syntax works:
 
 ```css
 :root {
@@ -116,9 +105,7 @@ Let's say your corporate primary color is `#9f349c` and you want to create prima
 }
 ```
 
-This will automatically alter each primary color variant.
-
-Apart from having a single global palette, you can also create several palettes scoped to other CSS selectors. For example, we can have a blue and red palette scoped to class selectors:
+Scope overrides to other selectors to run several palettes side by side. For example, define a blue and a red palette on classes:
 
 ```css
 /* styles.css */
@@ -136,11 +123,9 @@ Apart from having a single global palette, you can also create several palettes 
 <app-component class="blue-theme"></app-component>
 ```
 
-Then you can simply overhaul the colors in your application by changing the value of the class attribute from `blue-theme` to `red-theme`.
+Change the class from `blue-theme` to `red-theme` to switch the palette of everything inside the element.
 
-This approach works for overriding palette colors for individual components as well. In some instances, you don't want to create multiple palettes, but you would want to change a palette color used in component.
-
-Let's look at the material avatar component theme. It uses the _400_ variant of the _gray_ color for its background. Now, we can customize the theme by overriding the property responsible for setting the background, or we could change the disabled background color for it by overriding the _gray 400_ palette color:
+The same approach changes a palette color for a single component. The Material avatar, for example, takes its background from the `gray` `400` shade, so overriding that shade on the avatar changes its background without touching the rest of the palette:
 
 ```css
 igx-avatar {
@@ -148,49 +133,63 @@ igx-avatar {
 }
 ```
 
+## Surface Layers
+
+The `surface` family is a set of named layers instead of numbered shades. Components read these layers, starting with `--ig-surface-base`:
+
+| Variable | Used for |
+| --- | --- |
+| `--ig-surface-base` | The page background |
+| `--ig-surface-sunken` | Recessed areas |
+| `--ig-surface-raised` | Cards and panels that sit above the page |
+| `--ig-surface-overlay` | Menus, dialogs, and popovers |
+| `--ig-surface-container` | A translucent layer on top of a surface: black over a light surface, white over a dark one |
+
+Each layer has a matching `-contrast` variable, such as `--ig-surface-base-contrast`, for the foreground color on that layer.
+
+A layer that has no room to move resolves to `base`. On a pure white base, for example, `raised` and `overlay` are also white, so use borders or [elevations](elevations.md) to separate them from the page. [Palette Generation](palette-generation.md#surface-roles) explains how the layers are generated.
+
 ## Dark vs. Light
 
-**Warning:** 
-The colors that have the biggest impact on foreground and background colors are `gray` and `surface`. These two colors will be displayed against one another in most cases. For that reason the `surface` color should always contrast the `gray`.
+The `gray` and `surface` families decide whether a Ignite UI for Angular palette is light or dark. Light palettes pair a light surface with grays built from a dark color; dark palettes pair a dark surface with grays built from white. Text, borders, and icons take their colors from the grays, so the two families must stay on opposite ends of the gray scale.
 
-Palettes in Ignite UI for Angular dictate whether a theme is going to be light or dark. The two colors that have the biggest impact on that are `gray` and `surface`. See, the `gray` color variants in all themes are based on either a very light color shade, like `#fff`, or a very dark one like `#222`. Light themes have `gray` variants based on dark shades of gray, while dark themes are the opposite - all `gray` variants are a shade of white. These `gray` colors will be displayed against another color, usually the `surface` color. The `surface` color should always be on the opposite end of the `gray` in the gray scale to ensure themes look good.
+Component backgrounds read the `surface` roles, so override the roles to change the surface at runtime. The roles are fixed colors under both generators, and they are not derived from `--ig-surface-500`:
 
-To make this a bit clearer, below is a list of some `gray` and `surface` color variants in both a light and a dark theme;
-
-_Material Light:_
+**Material Light:**
 
 ```css
 :root {
-  //...
-  /* surface is set to light color*/
-  --ig-surface-500: white;
-  //...
-  /* grays are based on dark gray to contrast the surface color */
+  /* the surface roles are light */
+  --ig-surface-base: #fff;
+  --ig-surface-raised: #fff;
+  --ig-surface-overlay: #fff;
+  --ig-surface-sunken: #f7f7f7;
+  /* grays are built from a dark color to contrast the surface */
   --ig-gray-500: hsl(0, 0%, 62%);
-  //...
 }
 ```
 
-_Material Dark:_
+**Material Dark:**
 
 ```css
 :root {
-  //...
-  /* surface is set to dark color*/
-  --ig-surface-500: #222;
-  //...
-  /* grays are based on light gray to contrast the surface color */
+  /* the surface roles are dark */
+  --ig-surface-base: #222;
+  --ig-surface-raised: #282828;
+  --ig-surface-overlay: #2f2f2f;
+  --ig-surface-sunken: #1c1c1c;
+  /* grays are built from white to contrast the surface */
   --ig-gray-500: hsl(0, 0%, 74%);
-  //...
 }
 ```
 
-Be mindful when changing the `gray` and `surface` color variants as they are used in most components and have a big impact on their overall look and feel.
+Components read the surface roles since Ignite UI for Angular 22.3.0. Earlier versions read `--ig-surface-500` for their background instead, so on those versions override `--ig-surface-500` along with `--ig-surface-base`.
+
+Change `gray` and `surface` carefully: most components use them, and they have the largest effect on the overall look of a theme.
 
 ## Other Colors
 
-So far we've covered the `primary`, `secondary`, `gray`, and `surface` color variants and how you can override them. There are four more colors - `info`, `success`, `warn`, and `error`. They are usually used to set the colors in different states. For example, the `igx-input-group` component uses these colors in its input validation states.
-They can be changed as the other color variants, all we need to do it to set the `500` variant and all of the other variants will be generated.
+The `info`, `success`, `warn`, and `error` families color states, such as the validation states of the `igx-input-group`. Override their `500` variants to change them, and the rest of each family follows:
 
 ```css
 :root {
@@ -203,11 +202,9 @@ They can be changed as the other color variants, all we need to do it to set the
 
 ## Additional Resources
 
-Related topics:
+- [Palette Generation](palette-generation.md)
+- [Accessibility](accessibility.md)
 
-- [Palettes with Sass](/themes/sass/palettes)
-
-Our community is active and always welcoming to new ideas.
-
+- [Palettes with Sass](sass/palettes.md)
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

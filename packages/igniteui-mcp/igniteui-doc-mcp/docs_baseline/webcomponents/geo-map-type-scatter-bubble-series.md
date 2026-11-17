@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "In Web Components map component, you can use the GeographicProportionalSymbolSeries to plot bubbles or proportional markers at the geographic locations specified by the data in your application."
+platformType: xplat
 _tocName: Geographic Bubble Map
 _premium: true
 ---
 # Web Components Geographic Bubble Map
 
-In Web Components map component, you can use the `IgcGeographicProportionalSymbolSeries` to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
+In Web Components map component, you can use the `IgcGeographicProportionalSymbolSeriesComponent` to plot bubbles or proportional markers at the geographic locations specified by the data in your application. This map series can be useful for highlighting points of interest in your particular business case like department stores, warehouses, or offices. Also you can use this map series in a fleet management system or a GPS system for dynamic vehicle tracking.
 
 ## Web Components Geographic Bubble Map Example
 
@@ -661,74 +662,66 @@ export class WorldLocations {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 
-The demo above shows the `IgcGeographicProportionalSymbolSeries` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
+The demo above shows the `IgcGeographicProportionalSymbolSeriesComponent` series and how to specify data binding options of the series. Automatic marker selection is configured along with marker collision avoidance logic, and marker outline and fill colors are specified too.
 
 ## Configuration Summary
-Similar to other types of scatter series in the map control, the `IgcGeographicProportionalSymbolSeries` series has the `DataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `LongitudeMemberPath` and `LatitudeMemberPath` properties to map these data columns. The `RadiusScale` and `RadiusMemberPath` will settings configures the radius for the bubbles.
+Similar to other types of scatter series in the map control, the `IgcGeographicProportionalSymbolSeriesComponent` series has the `dataSource` property which can be bound to an array of objects. In addition, each data item in the items source must have two data columns that store geographic longitude and latitude coordinates and uses the `longitudeMemberPath` and `latitudeMemberPath` properties to map these data columns. The `radiusScale` and `radiusMemberPath` will settings configures the radius for the bubbles.
 
-The following table summarizes the GeographicHighDensityScatterSeries series properties used for data binding.
+The following table summarizes the `IgcGeographicProportionalSymbolSeriesComponent` series properties used for data binding.
 
 | Property|Type|Description |
 | ---|---|--- |
-| `DataSource`|any|Gets or sets the items source |
-| `LongitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
-| `LatitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
-| `RadiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
-| `RadiusScale`|[`IgcSizeScale`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent)|Gets or sets the radius scale property for the current bubble series. |
-| [`MinimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
-| [`MaximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
+| `dataSource`|any|Gets or sets the items source |
+| `longitudeMemberPath`|string|Uses the DataSource property to determine the location of the longitude values on the assigned items |
+| `latitudeMemberPath`|string|Uses the DataSource property to determine the location of the latitude values on the assigned items |
+| `radiusMemberPath`|string|Sets the path to use to get the radius values for the series. |
+| `radiusScale`|[`IgcSizeScaleComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent)|Gets or sets the radius scale property for the current bubble series. |
+| [`minimumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=minimumValue)|any|Configure the minimum value for calculating value sub ranges. |
+| [`maximumValue`](mcp:get_api_reference?platform=webcomponents&component=IgcSizeScaleComponent&member=maximumValue)|any|Configure the maximum value for calculating value sub ranges. |
 
 ## Code Snippet
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="map"
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igc-geographic-proportional-symbol-series
+        id="WorldCitiesSeries"
+        marker-type="Circle"
+        fill-member-path="population"
+        radius-member-path="population"
+        latitude-member-path="y"
+        longitude-member-path="x"
+        marker-outline="rgba(0, 0, 0, 0.3)">
+        <igc-size-scale
+            minimum-value="4"
+            maximum-value="60">
+        </igc-size-scale>
+        <igc-value-brush-scale
+            brushes="rgba(14, 194, 14, 0.4) rgba(252, 170, 32, 0.4) rgba(252, 32, 32, 0.4)"
+            minimum-value="0"
+            maximum-value="30">
+        </igc-value-brush-scale>
+    </igc-geographic-proportional-symbol-series>
 </igc-geographic-map>
 ```
 
 ```ts
-import { IgcGeographicProportionalSymbolSeriesComponent } from 'igniteui-webcomponents-maps';
-import { IgcValueBrushScaleComponent } from 'igniteui-webcomponents-charts';
-import { IgcSizeScaleComponent } from 'igniteui-webcomponents-charts';
-//...
-connectedCallback() {
-    this.geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent;
-    this.addSeriesWith(WorldLocations.getAll());
-}
+// fields:
+private map: IgcGeographicMapComponent
+private worldCitiesSeries: IgcGeographicProportionalSymbolSeriesComponent
 
-addSeriesWith(locations: any[])
-{
-    const sizeScale = new IgcSizeScaleComponent();
-    sizeScale.minimumValue = 4;
-    sizeScale.maximumValue = 60;
+// initialization:
+var map = this.map = document.getElementById('map') as IgcGeographicMapComponent;
+var worldCitiesSeries = this.worldCitiesSeries = document.getElementById('WorldCitiesSeries') as IgcGeographicProportionalSymbolSeriesComponent;
 
-    const brushes = [
-        "rgba(14, 194, 14, 0.4)",  // semi-transparent green
-        "rgba(252, 170, 32, 0.4)", // semi-transparent orange
-        "rgba(252, 32, 32, 0.4)",  // semi-transparent red
-    ];
-
-    const brushScale = new IgcValueBrushScaleComponent();
-    brushScale.brushes = brushes;
-    brushScale.minimumValue = 0;
-    brushScale.maximumValue = 30;
-
-    const symbolSeries = new IgcGeographicProportionalSymbolSeriesComponent ();
-    symbolSeries.dataSource = locations;
-    symbolSeries.markerType = MarkerType.Circle;
-    symbolSeries.radiusScale = sizeScale;
-    symbolSeries.fillScale = brushScale;
-    symbolSeries.fillMemberPath = "pop";
-    symbolSeries.radiusMemberPath = "pop";
-    symbolSeries.latitudeMemberPath = "lat";
-    symbolSeries.longitudeMemberPath = "lon";
-    symbolSeries.markerOutline = "rgba(0,0,0,0.3)";
-
-    this.geoMap.series.add(symbolSeries);
-}
+// bindings:
+worldCitiesSeries.dataSource = this.worldCities;
 ```
 
 ## API References
 
-`IgcGeographicProportionalSymbolSeries`<br />
-`RadiusScale`<br />
+`IgcGeographicProportionalSymbolSeriesComponent`<br />
+`radiusScale`<br />

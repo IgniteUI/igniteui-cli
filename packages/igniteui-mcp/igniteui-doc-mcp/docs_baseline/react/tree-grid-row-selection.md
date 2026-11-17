@@ -202,9 +202,9 @@ root.render(<Sample/>);
 ```
 
 ## Setup
-In order to setup row selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), you just need to set the [`IgrTreeGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) property. This property accepts [`IgrGridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgrTreeGrid`](mcp:get_api_reference?platform=react&component=IgrTreeGrid), you just need to set the [`IgrTreeGrid.rowSelection`](mcp:get_api_reference?platform=react&component=IgrTreeGrid&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) values.
 
-[`IgrGridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=react&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

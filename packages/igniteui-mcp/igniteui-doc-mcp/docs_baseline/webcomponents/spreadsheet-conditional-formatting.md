@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "ConditionalFormatCollection", "WorksheetCell", "Worksheet", "IWorksheetCellFormat"]
 llms:
   description: "The Web Components Spreadsheet component allows you to conditionally format the cells of a worksheet."
+platformType: xplat-unmapped
 _tocName: Conditional Formatting
 _premium: true
 ---

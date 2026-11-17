@@ -225,7 +225,7 @@ When an element inside your Angular application needs to be dragged from one pla
 
 A drag operation starts when the end user swipes at least 5px in any direction. This is customizable and can be changed using the [`dragTolerance`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragTolerance) input. Otherwise the interaction is considered as a click and a `dragClick` event is triggered.
 
-When the dragging starts, the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`IgxIDragStartEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IDragStartEventArgs&member=cancel) property to `true`.
+When the dragging starts, the [`dragStart`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragStart) event is triggered. To prevent any actual movement to occur, the event can be canceled by setting the [`IDragStartEventArgs.cancel`](mcp:get_api_reference?platform=angular&component=IDragStartEventArgs&member=cancel) property to `true`.
 
 Before any actual movement is about to be performed, the [`dragMove`](mcp:get_api_reference?platform=angular&component=IgxDragDirective&member=dragMove) event is also triggered, containing the last and next position of the pointer. It is triggered every time a movement is detected while dragging an element around.
 
@@ -386,16 +386,16 @@ $theme: dialog-theme(
     margin: 16px;
 
     .dialog {
-        @include tokens($theme, $mode: 'scoped');
+        @include tokens($theme);
 
         display: flex;
         flex-direction: column;
         width: rem(280px);
         min-width: rem(280px);
-        border: rem(1px) solid var-get($theme, 'border-color');
-        border-radius: var-get($theme, 'border-radius');
-        background: var-get($theme, 'background');
-        box-shadow: var-get($theme, 'elevation');
+        border: rem(1px) solid var(--ig-dialog-border-color);
+        border-radius: var(--ig-dialog-border-radius);
+        background: var(--ig-dialog-background);
+        box-shadow: var(--ig-dialog-elevation);
         overflow: hidden;
 
         header {
@@ -407,7 +407,7 @@ $theme: dialog-theme(
 
         &__title {
             display: inline-block;
-            color: var-get($theme, 'title-color');
+            color: var(--ig-dialog-title-color);
         }
 
         &__icon {
@@ -415,7 +415,7 @@ $theme: dialog-theme(
         }
 
         &__content {
-            color: var-get($theme, 'message-color');
+            color: var(--ig-dialog-message-color);
             padding: rem(14px) rem(24px);
        }
     }

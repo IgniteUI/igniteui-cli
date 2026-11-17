@@ -19,31 +19,21 @@ The Ignite UI for React Linear Progress Indicator component provides a visual in
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrLinearProgress, IgrLinearProgressModule } from 'igniteui-react';
+import { IgrLinearProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrLinearProgressModule.register();
-
-export default class SimpleLinearProgressIndicator extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrLinearProgress value={100} ></IgrLinearProgress>
-            </div>
-        );
-    }
+export default function SimpleLinearProgressIndicator() {
+    return (
+        <div className="container sample">
+            <IgrLinearProgress value={100} ></IgrLinearProgress>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<SimpleLinearProgressIndicator/>);
 ```
 
@@ -86,36 +76,26 @@ You can make the indicator striped, using the [`Striped`](mcp:get_api_reference?
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrLinearProgress, IgrLinearProgressModule } from 'igniteui-react';
+import { IgrLinearProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrLinearProgressModule.register();
+export default function LinearProgressTypes() {
+    return (
+        <div className="container sample">
+             <IgrLinearProgress value={100}variant="primary" />
+             <IgrLinearProgress value={100}variant="success" striped={true} />
+             <IgrLinearProgress value={100}variant="danger" />
+             <IgrLinearProgress value={100}variant="info" striped={true} />
+             <IgrLinearProgress value={100}variant="warning" />
 
-export default class LinearProgressTypes extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                 <IgrLinearProgress value={100}variant="primary" />
-                 <IgrLinearProgress value={100}variant="success" striped={true} />
-                 <IgrLinearProgress value={100}variant="danger" />
-                 <IgrLinearProgress value={100}variant="info" striped={true} />
-                 <IgrLinearProgress value={100}variant="warning" />
-
-            </div>
-        );
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<LinearProgressTypes/>);
 ```
 
@@ -146,35 +126,25 @@ The following sample demonstrates the above configuration:
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrLinearProgress, IgrLinearProgressModule } from 'igniteui-react';
+import { IgrLinearProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-IgrLinearProgressModule.register();
-
-export default class StripedLinearProgress extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                 <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="primary" />
-                 <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="success" indeterminate={true} striped={true} />
-                 <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="danger" />
-                 <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="info" striped={true} />
-                 <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="warning"/>
-            </div>
-        );
-    }
+export default function StripedLinearProgress() {
+    return (
+        <div className="container sample">
+             <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="primary" />
+             <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="success" indeterminate={true} striped={true} />
+             <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="danger" />
+             <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="info" striped={true} />
+             <IgrLinearProgress style={{marginBottom: "15px"}} value={100} variant="warning"/>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<StripedLinearProgress/>);
 ```
 
@@ -187,76 +157,64 @@ You can dynamically change the value of the progress indicator by using external
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrLinearProgress, IgrIconButton, IgrLinearProgressModule, IgrIconButtonModule, registerIconFromText } from 'igniteui-react';
+import { IgrLinearProgress, IgrIconButton, registerIconFromText } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
-
-IgrLinearProgressModule.register();
-IgrIconButtonModule.register();
 
 const addIconText = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>';
 const removeIconText = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13H5v-2h14v2z"/></svg>';
 
-export default class DynamicLinearProgress extends React.Component<any, any> {
+registerIconFromText(
+    "add", addIconText, "material"
+);
+registerIconFromText(
+    "remove", removeIconText, "material"
+);
 
-    public linearProgress: IgrLinearProgress;
-    constructor(props: any) {
-        super(props);       
-        
-        this.linearProgressRef = this.linearProgressRef.bind(this);
-        registerIconFromText(
-            "add", addIconText, "material"
-        );
-        registerIconFromText(
-            "remove", removeIconText, "material"
-        );
-        this.onIconClick = this.onIconClick.bind(this);
-    }
+export default function DynamicLinearProgress() {
+    const progressRef = useRef<IgrLinearProgress>(null);
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrLinearProgress ref={this.linearProgressRef} style={{marginRight: "50px", marginLeft: "20px"}} max={100} value={100} labelAlign="bottom-start">
-                </IgrLinearProgress>
-                <div style={{display: "flex", justifyContent: "space-evenly", marginTop: "20px", marginLeft: "20px"}} onClick={this.onIconClick}>
-                    <IgrIconButton className="removeIcon" name="remove" collection="material">
-                    </IgrIconButton>
-                    <IgrIconButton className="addIcon" name="add" collection="material">
-                    </IgrIconButton>
-                </div>
-            </div>
-        );
-    }
-
-    public linearProgressRef(progress: IgrLinearProgress)
-    {
-        if(!progress) { return; }
-        this.linearProgress = progress;
-    }
-
-    public onIconClick(e: any) {
+    function onIconClick(e: MouseEvent<HTMLDivElement>) {
         const target = e.target as HTMLElement;
-        const iconButton: any = target.closest('igc-icon-button');
-        if(iconButton.getAttribute("class") === "removeIcon")
-        {
-            if(this.linearProgress.value > 0) {
-                this.linearProgress.value = this.linearProgress.value - 10;
+        const iconButton = target.closest('igc-icon-button');
+        const progress = progressRef.current;
+
+        // Clicks between the buttons have no icon button target.
+        if (!iconButton || !progress) {
+            return;
+        }
+
+        if (iconButton.getAttribute("class") === "removeIcon") {
+            if (progress.value > 0) {
+                progress.value = progress.value - 10;
             }
             else {
-                this.linearProgress.value = 0;
+                progress.value = 0;
             }
         }
         else {
-            this.linearProgress.value = this.linearProgress.value + 10;
+            progress.value = progress.value + 10;
         }
-
     }
+
+    return (
+        <div className="container sample">
+            <IgrLinearProgress ref={progressRef} style={{marginRight: "50px", marginLeft: "20px"}} max={100} value={100} labelAlign="bottom-start">
+            </IgrLinearProgress>
+            <div style={{display: "flex", justifyContent: "space-evenly", marginTop: "20px", marginLeft: "20px"}} onClick={onIconClick}>
+                <IgrIconButton className="removeIcon" name="remove" collection="material">
+                </IgrIconButton>
+                <IgrIconButton className="addIcon" name="add" collection="material">
+                </IgrIconButton>
+            </div>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DynamicLinearProgress/>);
 ```
 
@@ -298,32 +256,22 @@ igc-linear-progress::part(label){
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { IgrLinearProgress, IgrLinearProgressModule } from 'igniteui-react';
+import { IgrLinearProgress } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import './LinearProgressStyling.css';
 
-IgrLinearProgressModule.register();
-
-export default class StylingLinearProgressIndicator extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrLinearProgress value={100} ></IgrLinearProgress>
-            </div>
-        );
-    }
+export default function StylingLinearProgressIndicator() {
+    return (
+        <div className="container sample">
+            <IgrLinearProgress value={100} ></IgrLinearProgress>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<StylingLinearProgressIndicator/>);
 ```
 

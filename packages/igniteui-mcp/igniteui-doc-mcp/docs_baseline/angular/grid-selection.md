@@ -345,10 +345,12 @@ The template we are going to use to combine the grid with the context menu:
             (selected)="cellSelection($event)">
         <!-- Columns area -->
         </igx-grid>
-        <div *ngIf="contextmenu==true">
-            <contextmenu [x]="contextmenuX" [y]="contextmenuY" [cell]="clickedCell" [selectedCells]="multiCellArgs" (onCellValueCopy)="copy($event)">
-            </contextmenu>
-        </div>
+        @if (contextmenu==true) {
+            <div>
+                <contextmenu [x]="contextmenuX" [y]="contextmenuY" [cell]="clickedCell" [selectedCells]="multiCellArgs" (onCellValueCopy)="copy($event)">
+                </contextmenu>
+            </div>
+        }
     </div>
     <div class="selected-data-area">
         <div>

@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "SplineSeries", "StackedSplineSeries", "Stacked100SplineSeries", "Series", "CategoryChartType"]
 llms:
   description: "The Ignite UI for Angular Spline Chart belongs to a group of Category Charts that render as a collection of points connected by smooth curves of spline."
+platformType: xplat
 _tocName: Spline Chart
 _premium: true
 ---
@@ -15,7 +16,7 @@ The Ignite UI for Angular Spline Chart belongs to a group of Category Charts tha
 
 ## Angular Spline Chart Example
 
-The following example shows how to create Angular Spline Chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline` enum.
+The following example shows how to create Angular Spline Chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Spline) enum.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -123,7 +124,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced since 2009 over a ten-year period for Europe, as shown in the example below.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -223,7 +224,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Since the Spline Chart allows you to combine multiple series and compare or see how they change over time. All we need to do is bind to a data source containing the data for China and the USA, and the chart will automatically update to fit the additional data.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -331,7 +332,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 If you need a Spline Chart with more features such as composite other series, you can configure the markers, marker brushes, marker outlines, series brushes and series outlines as demonstrated below.
 
-You can create this type of chart in the `IgxCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to `Spline`, as shown in the example below:
+You can create this type of chart in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control by binding your data and setting the [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) property to [`Spline`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Spline), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -441,13 +442,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Advanced Types of Spline Charts
 
-The following sections explain more advanced types of Angular Spline Charts that can be created using the `IgxDataChart` control instead of `IgxCategoryChart` control with simplified API.
+The following sections explain more advanced types of Angular Spline Charts that can be created using the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control instead of [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control with simplified API.
 
 ## Angular Stacked Spline Chart
 
 The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions, as we have shown in the example below.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedSplineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -633,7 +634,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100SplineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -826,11 +827,11 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members |
 | --------------------|--------------------|-------------------------- |
-| Spline              | `IgxCategoryChart` | `CategoryChart.ChartType` = `Spline` |
-| Stacked Spline      | `IgxDataChart`     | `IgxStackedSplineSeries` |
-| Stacked 100% Spline | `IgxDataChart`     | `IgxStacked100SplineSeries` |
+| Spline              | [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) | [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) = [`Spline`](mcp:get_api_reference?platform=angular&component=CategoryChartType&member=Spline) |
+| Stacked Spline      | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent) |
+| Stacked 100% Spline | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)     | [`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent) |
 
-`IgxCategoryChart`<br />
-`IgxDataChart`<br />
-`IgxStackedSplineSeries`<br />
-`IgxStacked100SplineSeries`<br />
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)<br />
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)<br />
+[`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent)<br />
+[`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent)<br />

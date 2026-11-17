@@ -826,11 +826,11 @@ This release introduces a few improvements and simplifications to visual design 
   - Added `IgcEnterKeyBehaviors` property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
   - Added `IgcEnterKeyBehaviorAfterEdit` property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
   - Added [`SelectAllRows`](mcp:get_api_reference?platform=webcomponents&component=IgcPivotGridComponent&member=selectAllRows) - method.
-  - Added Row Range Selection - With [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) property set to MultipleRow the following new functionality is now included:
+  - Added Row Range Selection - With [`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) property set to MultipleRow the following new functionality is now included:
   - Click and drag to select rows
   - <kbd>SHIFT</kbd> and click to select multiple rows.
   - <kbd>SHIFT</kbd> and press the <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys to select multiple rows.
-  - Pressing space bar toggles selection of active row via [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) property set to MultipleRow or SingleRow
+  - Pressing space bar toggles selection of active row via [`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) property set to MultipleRow or SingleRow
   - Added Column Summaries to Column Options Dialog.
 
 ### igniteui-webcomponents-charts
@@ -1050,7 +1050,7 @@ import { IgcLiveGridComponent } from 'igniteui-webcomponents-data-grids/ES5/igc-
 ### **5.0.0 (August 2024)**
 
 - [`IgcIcon`](mcp:get_api_reference?platform=webcomponents&component=IgcIconComponent)
-  - Added [`IgcsetIconRef`](mcp:get_api_reference?platform=webcomponents&component=setIconRef) method. This allows to register and replace icons by SVG files.
+  - Added [`setIconRef`](mcp:get_api_reference?platform=webcomponents&component=setIconRef) method. This allows to register and replace icons by SVG files.
   - All components now use icons by reference internally so that it's easy to replace them without explicitly providing custom templates.
 - [`IgcRadioGroup`](mcp:get_api_reference?platform=webcomponents&component=IgcRadioGroupComponent)
   - Added `name` and `value` properties.
@@ -1468,7 +1468,7 @@ interface IgcComboChangeEventArgs<T> {
 #### Changed
 - [`IgcRating`](mcp:get_api_reference?platform=webcomponents&component=IgcRatingComponent) - Added support for single selection and empty symbols.
 - [`IgcSlider`](mcp:get_api_reference?platform=webcomponents&component=IgcSliderComponent) - Improved slider steps rendering.
-- Components will now auto register their dependencies when they are registered in [`IgcdefineComponents`](mcp:get_api_reference?platform=webcomponents&component=defineComponents)
+- Components will now auto register their dependencies when they are registered in [`defineComponents`](mcp:get_api_reference?platform=webcomponents&component=defineComponents)
 
 ```typescript
 import { IgcDropdownComponent, defineComponents } from 'igniteui-webcomponents';

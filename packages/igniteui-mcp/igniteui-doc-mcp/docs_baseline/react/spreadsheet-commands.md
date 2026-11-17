@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Spreadsheet", "SpreadsheetAction"]
 llms:
   description: "The React Spreadsheet component allows you to perform commands for activating different features of the spreadsheet."
+platformType: xplat-unmapped
 _tocName: Commands
 _premium: true
 ---

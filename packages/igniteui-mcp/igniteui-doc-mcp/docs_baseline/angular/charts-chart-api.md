@@ -4,115 +4,117 @@ description: Use Infragistics Ignite UI for Angular chart provides useful API to
 keywords: Angular charts, chart API, API, Ignite UI for Angular, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "CategoryChart", "FinancialChart", "SeriesViewer", "DoughnutChart", "PieChart", "Sparkline", "DataPieChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular charts provide simple and easy to use APIs to plot your data in CategoryChart, FinancialChart, DataChart, DataPieChart, DoughnutChart, PieChart, and Sparkline UI elements."
+platformType: xplat
 _tocName: Chart API
 _premium: true
 ---
 # Angular Charts API
 
-The Ignite UI for Angular charts provide simple and easy to use APIs to plot your data in `IgxCategoryChart`, `IgxFinancialChart`, `IgxDataChart`, `IgxDataPieChart`, `IgxDoughnutChart`, `IgxPieChart`, and `IgxSparkline` UI elements.
+The Ignite UI for Angular charts provide simple and easy to use APIs to plot your data in [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent), [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent), [`IgxDoughnutChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent), [`IgxPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent), and [`IgxSparklineComponent`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent) UI elements.
 
 ## Angular Category Chart API
 
-The Angular `IgxCategoryChart` has the following API members:
+The Angular [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) has the following API members:
 
 | Chart Properties | Axis Properties | Series Properties |
 |------------------|-----------------|-------------------|
-| - `ExcludedProperties` <br /> - `IncludedProperties` <br /> - `IsHorizontalZoomEnabled` <br /> - `IsVerticalZoomEnabled` <br /> - `CrosshairsDisplayMode` <br /> - `TransitionInMode` <br /> - `HighlightingBehavior` <br /> - `HighlightingMode` <br /> - `TrendLineType` <br /> |  - `XAxisInterval` <br /> - `XAxisLabelLocation` <br /> - `XAxisGap` <br /> - `XAxisOverlap` <br /> - `XAxisTitle`  <br /> - `YAxisInterval` <br /> - `YAxisLabelLocation`  <br /> - `YAxisTitle` <br />  - `YAxisMinimumValue` <br /> - `YAxisMaximumValue` | - `Brushes` <br /> - `Outlines` <br /> - `MarkerBrushes` <br /> - `MarkerOutlines` <br /> - `MarkerTypes` <br />  - `ToolTipType` <br /> <br /> <br /> <br /> <br /> |
+| - [`excludedProperties`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=excludedProperties) <br /> - [`includedProperties`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=includedProperties) <br /> - [`IgxDataChartComponent.isHorizontalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isHorizontalZoomEnabled) <br /> - [`IgxDataChartComponent.isVerticalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isVerticalZoomEnabled) <br /> - [`IgxCategoryChartComponent.crosshairsDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=crosshairsDisplayMode) <br /> - [`transitionInMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInMode) <br /> - [`IgxDataChartComponent.highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingBehavior) <br /> - [`IgxDataChartComponent.highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingMode) <br /> - [`IgxCategoryChartComponent.trendLineType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=trendLineType) <br /> |  - [`xAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisInterval) <br /> - [`IgxCategoryChartComponent.xAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisLabelLocation) <br /> - [`xAxisGap`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisGap) <br /> - [`xAxisOverlap`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisOverlap) <br /> - [`xAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisTitle)  <br /> - [`yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisInterval) <br /> - [`IgxCategoryChartComponent.yAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisLabelLocation)  <br /> - [`yAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisTitle) <br />  - [`yAxisMinimumValue`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisMinimumValue) <br /> - [`yAxisMaximumValue`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisMaximumValue) | - [`IgxDataChartComponent.brushes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=brushes) <br /> - [`IgxDataChartComponent.outlines`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=outlines) <br /> - [`IgxDataChartComponent.markerBrushes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=markerBrushes) <br /> - [`IgxDataChartComponent.markerOutlines`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=markerOutlines) <br /> - [`markerTypes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerTypes) <br />  - [`IgxCategoryChartComponent.toolTipType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=toolTipType) <br /> <br /> <br /> <br /> <br /> |
 
 ## Angular Financial Chart API
 
-The Angular `IgxFinancialChart` has the following API members:
+The Angular [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) has the following API members:
 
 | Chart Properties | Axis Properties | Series Properties |
 |------------------|-----------------|-------------------|
-| - `ExcludedProperties` <br /> - `IncludedProperties` <br /> - `IsHorizontalZoomEnabled` <br /> - `IsVerticalZoomEnabled` <br /> - `ToolTipType`  <br /> - `CrosshairsDisplayMode`  <br /> - `HighlightingBehavior` <br /> - `HighlightingMode` <br /> - `TrendLineType` |  - `XAxisInterval` <br /> - `XAxisLabelLocation` <br /> - `XAxisTitle` <br /> - `YAxisInterval` <br /> - `YAxisLabelLocation`  <br /> - `YAxisTitle` <br />  - `YAxisMinimumValue` <br /> - `YAxisMaximumValue` <br /> - `YAxisMode` <br /> - `XAxisMode` | - `Brushes` <br /> - `Outlines` <br /> - `MarkerBrushes` <br /> - `MarkerOutlines` <br /> - `MarkerTypes`  <br /> - `IndicatorTypes` <br />  - `VolumeType` <br />  - `ZoomSliderType` <br /> <br /> <br /> |
+| - [`IgxCategoryChartComponent.excludedProperties`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=excludedProperties) <br /> - [`IgxCategoryChartComponent.includedProperties`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=includedProperties) <br /> - [`IgxDataChartComponent.isHorizontalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isHorizontalZoomEnabled) <br /> - [`IgxDataChartComponent.isVerticalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isVerticalZoomEnabled) <br /> - [`IgxCategoryChartComponent.toolTipType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=toolTipType)  <br /> - [`IgxCategoryChartComponent.crosshairsDisplayMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=crosshairsDisplayMode)  <br /> - [`IgxDataChartComponent.highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingBehavior) <br /> - [`IgxDataChartComponent.highlightingMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=highlightingMode) <br /> - [`IgxCategoryChartComponent.trendLineType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=trendLineType) |  - [`xAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisInterval) <br /> - [`IgxCategoryChartComponent.xAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisLabelLocation) <br /> - [`IgxCategoryChartComponent.xAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=xAxisTitle) <br /> - [`IgxCategoryChartComponent.yAxisInterval`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisInterval) <br /> - [`IgxCategoryChartComponent.yAxisLabelLocation`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisLabelLocation)  <br /> - [`IgxCategoryChartComponent.yAxisTitle`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisTitle) <br />  - [`IgxCategoryChartComponent.yAxisMinimumValue`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisMinimumValue) <br /> - [`IgxCategoryChartComponent.yAxisMaximumValue`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=yAxisMaximumValue) <br /> - [`yAxisMode`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=yAxisMode) <br /> - [`xAxisMode`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=xAxisMode) | - [`IgxDataChartComponent.brushes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=brushes) <br /> - [`IgxDataChartComponent.outlines`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=outlines) <br /> - [`IgxDataChartComponent.markerBrushes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=markerBrushes) <br /> - [`IgxDataChartComponent.markerOutlines`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=markerOutlines) <br /> - [`IgxCategoryChartComponent.markerTypes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerTypes)  <br /> - [`indicatorTypes`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=indicatorTypes) <br />  - [`volumeType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=volumeType) <br />  - [`zoomSliderType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=zoomSliderType) <br /> <br /> <br /> |
 
 ## Angular Data Chart API
 
-The Angular `IgxDataChart` has the following API members:
+The Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) has the following API members:
 
 | Chart Properties | Axis Classes |
 |------------------|--------------|
-| - `Title` <br /> - `Subtitle` <br /> - `IsHorizontalZoomEnabled` <br /> - `IsVerticalZoomEnabled` <br /> - `Brushes` <br /> - `Outlines` <br /> - `MarkerBrushes` <br /> - `MarkerOutlines` <br /> - `Axes` <br /> - `Series` <br /> |  - `IgxAxis` is base class for all axis types <br /> - `IgxCategoryXAxis` used with [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md), and [Financial Series](types/stock-chart.md) <br /> - `IgxCategoryYAxis` used with [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md) <br /> - `IgxCategoryAngleAxis` used with [Radial Series](types/radial-chart.md) <br /> - `IgxNumericXAxis` used with [Scatter Series](types/scatter-chart.md) and [Bar Series](types/bar-chart.md)   <br /> - `IgxNumericYAxis` used with [Scatter Series](types/scatter-chart.md), [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md), and [Financial Series](types/stock-chart.md) <br /> - `IgxNumericAngleAxis` used with [Polar Series](types/polar-chart.md) <br /> - `IgxNumericRadiusAxis` used with [Polar Series](types/polar-chart.md) and [Radial Series](types/radial-chart.md) <br /> - `IgxTimeXAxis` used with [Category Series](types/column-chart.md) and [Financial Series](types/stock-chart.md) <br /> <br /> |
+| - [`IgxSeriesViewerComponent.chartTitle`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=chartTitle) <br /> - [`IgxSeriesViewerComponent.subtitle`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=subtitle) <br /> - [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isHorizontalZoomEnabled) <br /> - [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isVerticalZoomEnabled) <br /> - [`brushes`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=brushes) <br /> - [`outlines`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=outlines) <br /> - [`markerBrushes`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=markerBrushes) <br /> - [`markerOutlines`](mcp:get_api_reference?platform=angular&component=IgxSeriesViewerComponent&member=markerOutlines) <br /> - [`axes`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=axes) <br /> - [`IgxDataChartComponent.series`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=series) <br /> |  - [`IgxAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxAxisComponent) is base class for all axis types <br /> - [`IgxCategoryXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryXAxisComponent) used with [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md), and [Financial Series](types/stock-chart.md) <br /> - [`IgxCategoryYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryYAxisComponent) used with [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md) <br /> - [`IgxCategoryAngleAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryAngleAxisComponent) used with [Radial Series](types/radial-chart.md) <br /> - [`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent) used with [Scatter Series](types/scatter-chart.md) and [Bar Series](types/bar-chart.md)   <br /> - [`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent) used with [Scatter Series](types/scatter-chart.md), [Category Series](types/column-chart.md), [Stacked Series](types/stacked-chart.md), and [Financial Series](types/stock-chart.md) <br /> - [`IgxNumericAngleAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericAngleAxisComponent) used with [Polar Series](types/polar-chart.md) <br /> - [`IgxNumericRadiusAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericRadiusAxisComponent) used with [Polar Series](types/polar-chart.md) and [Radial Series](types/radial-chart.md) <br /> - [`IgxTimeXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxTimeXAxisComponent) used with [Category Series](types/column-chart.md) and [Financial Series](types/stock-chart.md) <br /> <br /> |
 
-The Angular `IgxDataChart` can use the following type of series that inherit from `Series`:
+The Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) can use the following type of series that inherit from [`IgxDataChartComponent.series`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=series):
 
 | Category Series  | Stacked Series |
 |------------------|----------------|
-| - `IgxAreaSeries` <br /> - `IgxBarSeries` <br /> - `IgxColumnSeries` <br /> - `IgxLineSeries` <br /> - `IgxPointSeries`  <br /> - `IgxSplineSeries` <br />  - `IgxSplineAreaSeries` <br /> - `IgxStepLineSeries` <br /> - `IgxStepAreaSeries` <br /> - `IgxRangeAreaSeries` <br /> - `IgxRangeColumnSeries` <br /> - `RangeBarSeries` <br /> - `IgxWaterfallSeries` <br /> | - `IgxStackedAreaSeries` <br /> - `IgxStackedBarSeries` <br /> - `IgxStackedColumnSeries` <br /> - `IgxStackedLineSeries` <br /> - `IgxStackedSplineSeries` <br /> - `IgxStacked100AreaSeries` <br /> - `IgxStacked100BarSeries` <br /> - `IgxStacked100ColumnSeries` <br /> - `IgxStacked100LineSeries` <br /> - `IgxStacked100SplineSeries` <br /> <br /> <br /> |
+| - [`IgxAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxAreaSeriesComponent) <br /> - [`IgxBarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBarSeriesComponent) <br /> - [`IgxColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnSeriesComponent) <br /> - [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent) <br /> - [`IgxPointSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPointSeriesComponent)  <br /> - [`IgxSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSplineSeriesComponent) <br />  - [`IgxSplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSplineAreaSeriesComponent) <br /> - [`IgxStepLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStepLineSeriesComponent) <br /> - [`IgxStepAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStepAreaSeriesComponent) <br /> - [`IgxRangeAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRangeAreaSeriesComponent) <br /> - [`IgxRangeColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRangeColumnSeriesComponent) <br /> - [`IgxRangeBarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRangeBarSeriesComponent) <br /> - [`IgxWaterfallSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxWaterfallSeriesComponent) <br /> | - [`IgxStackedAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedAreaSeriesComponent) <br /> - [`IgxStackedBarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedBarSeriesComponent) <br /> - [`IgxStackedColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedColumnSeriesComponent) <br /> - [`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent) <br /> - [`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent) <br /> - [`IgxStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100AreaSeriesComponent) <br /> - [`IgxStacked100BarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100BarSeriesComponent) <br /> - [`IgxStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100ColumnSeriesComponent) <br /> - [`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent) <br /> - [`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent) <br /> <br /> <br /> |
 
 | Scatter Series | Financial Series |
 |----------------|------------------|
-| - `IgxBubbleSeries` <br /> - `IgxHighDensityScatterSeries` <br /> - `IgxScatterSeries` <br />  - `IgxScatterLineSeries` <br /> - `IgxScatterSplineSeries` <br /> - `IgxScatterAreaSeries` <br /> - `IgxScatterContourSeries` <br /> - `IgxScatterPolylineSeries`  <br /> - `IgxScatterPolygonSeries`  <br /> <br /> | - `IgxFinancialPriceSeries` <br /> - `IgxBollingerBandsOverlay` <br /> - `IgxForceIndexIndicator` <br /> - `IgxMedianPriceIndicator` <br /> - `IgxMassIndexIndicator`  <br /> - `IgxRelativeStrengthIndexIndicator` <br /> - `IgxStandardDeviationIndicator` <br /> - `IgxTypicalPriceIndicator` <br /> - `IgxWeightedCloseIndicator` <br /> - and [many more](types/stock-chart.md) |
+| - [`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent) <br /> - [`IgxHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxHighDensityScatterSeriesComponent) <br /> - [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent) <br />  - [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent) <br /> - [`IgxScatterSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSplineSeriesComponent) <br /> - [`IgxScatterAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterAreaSeriesComponent) <br /> - [`IgxScatterContourSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterContourSeriesComponent) <br /> - [`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent)  <br /> - [`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent)  <br /> <br /> | - [`IgxFinancialPriceSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialPriceSeriesComponent) <br /> - [`IgxBollingerBandsOverlayComponent`](mcp:get_api_reference?platform=angular&component=IgxBollingerBandsOverlayComponent) <br /> - [`IgxForceIndexIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxForceIndexIndicatorComponent) <br /> - [`IgxMedianPriceIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxMedianPriceIndicatorComponent) <br /> - [`IgxMassIndexIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxMassIndexIndicatorComponent)  <br /> - [`IgxRelativeStrengthIndexIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxRelativeStrengthIndexIndicatorComponent) <br /> - [`IgxStandardDeviationIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxStandardDeviationIndicatorComponent) <br /> - [`IgxTypicalPriceIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxTypicalPriceIndicatorComponent) <br /> - [`IgxWeightedCloseIndicatorComponent`](mcp:get_api_reference?platform=angular&component=IgxWeightedCloseIndicatorComponent) <br /> - and [many more](types/stock-chart.md) |
 
 | Radial Series | Polar Series |
 |---------------|--------------|
-| - `IgxRadialLineSeries` <br /> - `IgxRadialAreaSeries` <br /> - `IgxRadialPieSeries` <br /> - `IgxRadialColumnSeries` <br /> <br /> | - `IgxPolarScatterSeries` <br /> - `IgxPolarLineSeries` <br /> - `IgxPolarAreaSeries` <br /> - `IgxPolarSplineSeries` <br /> - `IgxPolarSplineAreaSeries` <br /> |
+| - [`IgxRadialLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialLineSeriesComponent) <br /> - [`IgxRadialAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialAreaSeriesComponent) <br /> - [`IgxRadialPieSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialPieSeriesComponent) <br /> - [`IgxRadialColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxRadialColumnSeriesComponent) <br /> <br /> | - [`IgxPolarScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarScatterSeriesComponent) <br /> - [`IgxPolarLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarLineSeriesComponent) <br /> - [`IgxPolarAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarAreaSeriesComponent) <br /> - [`IgxPolarSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarSplineSeriesComponent) <br /> - [`IgxPolarSplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxPolarSplineAreaSeriesComponent) <br /> |
 
 ## Angular Data Legend API
 
-The Angular `IgxDataLegend` has the following API members:
+The Angular [`IgxDataLegendComponent`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent) has the following API members:
 
-- `IncludedColumns`
-- `ExcludedColumns`
-- `IncludedSeries`
-- `ExcludedSeries`
-- `ValueFormatAbbreviation`
-- `ValueFormatMode`
-- `ValueFormatCulture`
-- `ValueFormatMinFractions`
-- `ValueFormatMaxFractions`
-- `ValueTextColor`
-- `TitleTextColor`
-- `LabelTextColor`
-- `UnitsTextColor`
-- `SummaryType`
-- `HeaderTextColor`
-- `BadgeShape`
+- [`includedColumns`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=includedColumns)
+- [`excludedColumns`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=excludedColumns)
+- [`includedSeries`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=includedSeries)
+- [`excludedSeries`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=excludedSeries)
+- [`valueFormatAbbreviation`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueFormatAbbreviation)
+- [`valueFormatMode`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueFormatMode)
+- [`valueFormatCulture`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueFormatCulture)
+- [`valueFormatMinFractions`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueFormatMinFractions)
+- [`valueFormatMaxFractions`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueFormatMaxFractions)
+- [`valueTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=valueTextColor)
+- [`IgxDataChartComponent.titleTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=titleTextColor)
+- [`labelTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=labelTextColor)
+- [`unitsTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=unitsTextColor)
+- [`summaryType`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=summaryType)
+- [`headerTextColor`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=headerTextColor)
+- [`IgxDataLegendComponent.badgeShape`](mcp:get_api_reference?platform=angular&component=IgxDataLegendComponent&member=badgeShape)
 
 ## Angular Donut Chart API
 
-The Angular `IgxDoughnutChart` has the following API members:
+The Angular [`IgxDoughnutChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent) has the following API members:
 
-- `AllowSliceExplosion`
-- `AllowSliceSelection`
-- `InnerExtent`
+- [`allowSliceExplosion`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent&member=allowSliceExplosion)
+- [`allowSliceSelection`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent&member=allowSliceSelection)
+- [`innerExtent`](mcp:get_api_reference?platform=angular&component=IgxDoughnutChartComponent&member=innerExtent)
 
 ## Angular Data Pie Chart API
 
-The Angular `IgxDataPieChart` has the following API members:
+The Angular [`IgxDataPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent) has the following API members:
 
-- `HighlightingBehavior`
-- `OthersCategoryThreshold`
-- `OthersCategoryType`
-- `SelectionMode`
-- `SelectionBehavior`
+- [`highlightingBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=highlightingBehavior)
+- [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryThreshold)
+- [`IgxDataPieChartComponent.othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=othersCategoryType)
+- [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionMode)
+- [`selectionBehavior`](mcp:get_api_reference?platform=angular&component=IgxDataPieChartComponent&member=selectionBehavior)
 
 ## Angular Pie Chart API
 
-The Angular `IgxPieChart` has the following API members:
+The Angular [`IgxPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent) has the following API members:
 
-- `LegendItemBadgeTemplate`
-- `LegendItemTemplate`
-- `LegendLabelMemberPath`
-- `OthersCategoryThreshold`
-- `OthersCategoryType`
-- `SelectionMode`
+- [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendItemBadgeTemplate)
+- [`legendItemTemplate`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendItemTemplate)
+- [`legendLabelMemberPath`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendLabelMemberPath)
+- [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryThreshold)
+- [`IgxPieChartComponent.othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryType)
+- [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=selectionMode)
 
 ## Angular Sparkline Chart API
 
-The Angular `IgxSparkline` has the following API members:
+The Angular [`IgxSparklineComponent`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent) has the following API members:
 
-- `DisplayNormalRangeInFront`
-- `DisplayType`
-- `LowMarkerBrush`
-- `LowMarkerSize`
-- `LowMarkerVisibility`
-- `NormalRangeFill`
-- `UnknownValuePlotting`
+- [`displayNormalRangeInFront`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=displayNormalRangeInFront)
+- [`displayType`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=displayType)
+- [`lowMarkerBrush`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=lowMarkerBrush)
+- [`lowMarkerSize`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=lowMarkerSize)
+- [`lowMarkerVisibility`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=lowMarkerVisibility)
+- [`normalRangeFill`](mcp:get_api_reference?platform=angular&component=IgxSparklineComponent&member=normalRangeFill)
+- [`IgxCategoryChartComponent.unknownValuePlotting`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=unknownValuePlotting)
 
 ## Additional Resources
 

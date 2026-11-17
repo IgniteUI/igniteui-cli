@@ -303,7 +303,7 @@ col.Pinned = true;
 
 - **Other Improvements**
   - A column's [`MinWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumn&member=minWidth) and [`MaxWidth`](mcp:get_api_reference?platform=blazor&component=IgbColumnState&member=maxWidth) constrain the user-specified width so that it cannot go outside their bounds.
-  - The [`PagingMode`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=pagingMode) property can now be set as simple strings "local" and "remote" and does not require importing the [`IgbGridPagingMode`](mcp:get_api_reference?platform=blazor&component=GridPagingMode) enum.
+  - The [`PagingMode`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=pagingMode) property can now be set as simple strings "local" and "remote" and does not require importing the [`GridPagingMode`](mcp:get_api_reference?platform=blazor&component=GridPagingMode) enum.
 
 ### General
 
@@ -379,20 +379,20 @@ There is a new property called [`UseInsetOutlines`](mcp:get_api_reference?platfo
 
 ####  Cell Suffix Content
 
-Added support for suffix content within the cells that allows you to add additional text or icons to the end of the cell value and style it. The full list of added properties for the cell suffix content is listed below and is available on the [`IgbDataGridColumn`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn) and [`CellInfo`](mcp:get_api_reference?platform=blazor&component=IgbDataGridCellEventArgs&member=CellInfo) class:
+Added support for suffix content within the cells that allows you to add additional text or icons to the end of the cell value and style it. The full list of added properties for the cell suffix content is listed below and is available on the `IgbDataGridColumn` and `CellInfo` class:
 
-- [`SuffixText`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixText)
-- [`SuffixTextColor`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixTextColor)
+- `SuffixText`
+- `SuffixTextColor`
 - `SuffixTextFont`
-- [`SuffixIconName`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconName)
-- [`SuffixIconCollectionName`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconCollectionName)
-- [`SuffixIconStroke`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconStroke)
-- [`SuffixIconFill`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconFill)
-- [`SuffixIconViewBoxLeft`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconViewBoxLeft)
-- [`SuffixIconViewBoxTop`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconViewBoxTop)
-- [`SuffixIconViewBoxWidth`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconViewBoxWidth)
-- [`SuffixIconViewBoxHeight`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=suffixIconViewBoxHeight)
-- [`TextDecoration`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn&member=textDecoration)
+- `SuffixIconName`
+- `SuffixIconCollectionName`
+- `SuffixIconStroke`
+- `SuffixIconFill`
+- `SuffixIconViewBoxLeft`
+- `SuffixIconViewBoxTop`
+- `SuffixIconViewBoxWidth`
+- `SuffixIconViewBoxHeight`
+- `TextDecoration`
 
 Please note that the maximum size available for the icons is 24x24. You can provide an icon that is larger or smaller than this, but you will need to configure the viewbox settings in order to properly scale it to fit in the 24x24 space so it is fully visible.
 
@@ -524,17 +524,17 @@ For more details please visit:
 ### Changes
 
 - A number of enumerations have been renamed and/or merged with others. Renames (with affected components):
-  - [`IgbBaseAlertLikePosition`](mcp:get_api_reference?platform=blazor&component=BaseAlertLikePosition) ([`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar) and [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)) has been renamed to [`IgbAbsolutePosition`](mcp:get_api_reference?platform=blazor&component=AbsolutePosition)
-  - [`IgbButtonGroupAlignment`](mcp:get_api_reference?platform=blazor&component=ButtonGroupAlignment) ([`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup)), [`IgbCalendarOrientation`](mcp:get_api_reference?platform=blazor&component=CalendarOrientation) ([`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)), [`IgbCardActionsOrientation`](mcp:get_api_reference?platform=blazor&component=CardActionsOrientation) ([`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions)), [`IgbDatePickerOrientation`](mcp:get_api_reference?platform=blazor&component=DatePickerOrientation) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)), [`IgbRadioGroupAlignment`](mcp:get_api_reference?platform=blazor&component=RadioGroupAlignment) ([`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)) have been merged and renamed to [`IgbContentOrientation`](mcp:get_api_reference?platform=blazor&component=ContentOrientation)
-  - [`IgbCalendarBaseSelection`](mcp:get_api_reference?platform=blazor&component=CalendarBaseSelection) ([`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)) has been renamed to [`IgbCalendarSelection`](mcp:get_api_reference?platform=blazor&component=CalendarSelection)
-  - [`IgbCarouselAnimationType`](mcp:get_api_reference?platform=blazor&component=CarouselAnimationType) ([`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel)) and [`IgbStepperHorizontalAnimation`](mcp:get_api_reference?platform=blazor&component=StepperHorizontalAnimation) ([`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper)) have been merged and renamed to [`IgbHorizontalTransitionAnimation`](mcp:get_api_reference?platform=blazor&component=HorizontalTransitionAnimation)
-  - [`IgbCheckboxBaseLabelPosition`](mcp:get_api_reference?platform=blazor&component=CheckboxBaseLabelPosition) ([`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) and [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch)) and [`IgbRadioLabelPosition`](mcp:get_api_reference?platform=blazor&component=RadioLabelPosition) ([`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)) have been merged and renamed to [`IgbToggleLabelPosition`](mcp:get_api_reference?platform=blazor&component=ToggleLabelPosition)
-  - [`IgbDatePickerMode`](mcp:get_api_reference?platform=blazor&component=DatePickerMode) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)) has been renamed to [`IgbPickerMode`](mcp:get_api_reference?platform=blazor&component=PickerMode)
-  - [`IgbDatePickerHeaderOrientation`](mcp:get_api_reference?platform=blazor&component=DatePickerHeaderOrientation) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)) has been renamed to/merged with [`IgbCalendarHeaderOrientation`](mcp:get_api_reference?platform=blazor&component=CalendarHeaderOrientation)
-  - [`IgbDropdownPlacement`](mcp:get_api_reference?platform=blazor&component=DropdownPlacement) ([`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) and [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=select)) has been renamed to [`IgbPopoverPlacement`](mcp:get_api_reference?platform=blazor&component=PopoverPlacement)
-  - [`IgbDropdownScrollStrategy`](mcp:get_api_reference?platform=blazor&component=DropdownScrollStrategy) ([`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown)) and [`IgbSelectScrollStrategy`](mcp:get_api_reference?platform=blazor&component=SelectScrollStrategy) ([`Select`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=select)) have been merged and renamed to [`IgbPopoverScrollStrategy`](mcp:get_api_reference?platform=blazor&component=PopoverScrollStrategy)
-  - [`IgbSliderBaseTickOrientation`](mcp:get_api_reference?platform=blazor&component=SliderBaseTickOrientation) ([`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider)) has been renamed to [`IgbSliderTickOrientation`](mcp:get_api_reference?platform=blazor&component=SliderTickOrientation)
-  - [`TickLabelRotation`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=tickLabelRotation) ([`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider)) has been renamed to [`IgbSliderTickLabelRotation`](mcp:get_api_reference?platform=blazor&component=SliderTickLabelRotation)
+  - [`BaseAlertLikePosition`](mcp:get_api_reference?platform=blazor&component=BaseAlertLikePosition) ([`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar) and [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast)) has been renamed to [`AbsolutePosition`](mcp:get_api_reference?platform=blazor&component=AbsolutePosition)
+  - [`ButtonGroupAlignment`](mcp:get_api_reference?platform=blazor&component=ButtonGroupAlignment) ([`IgbButtonGroup`](mcp:get_api_reference?platform=blazor&component=IgbButtonGroup)), [`CalendarOrientation`](mcp:get_api_reference?platform=blazor&component=CalendarOrientation) ([`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)), [`CardActionsOrientation`](mcp:get_api_reference?platform=blazor&component=CardActionsOrientation) ([`IgbCardActions`](mcp:get_api_reference?platform=blazor&component=IgbCardActions)), [`DatePickerOrientation`](mcp:get_api_reference?platform=blazor&component=DatePickerOrientation) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)), [`RadioGroupAlignment`](mcp:get_api_reference?platform=blazor&component=RadioGroupAlignment) ([`IgbRadioGroup`](mcp:get_api_reference?platform=blazor&component=IgbRadioGroup)) have been merged and renamed to [`ContentOrientation`](mcp:get_api_reference?platform=blazor&component=ContentOrientation)
+  - [`CalendarBaseSelection`](mcp:get_api_reference?platform=blazor&component=CalendarBaseSelection) ([`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)) has been renamed to [`CalendarSelection`](mcp:get_api_reference?platform=blazor&component=CalendarSelection)
+  - [`CarouselAnimationType`](mcp:get_api_reference?platform=blazor&component=CarouselAnimationType) ([`IgbCarousel`](mcp:get_api_reference?platform=blazor&component=IgbCarousel)) and [`StepperHorizontalAnimation`](mcp:get_api_reference?platform=blazor&component=StepperHorizontalAnimation) ([`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper)) have been merged and renamed to [`HorizontalTransitionAnimation`](mcp:get_api_reference?platform=blazor&component=HorizontalTransitionAnimation)
+  - [`CheckboxBaseLabelPosition`](mcp:get_api_reference?platform=blazor&component=CheckboxBaseLabelPosition) ([`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox) and [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch)) and [`RadioLabelPosition`](mcp:get_api_reference?platform=blazor&component=RadioLabelPosition) ([`IgbRadio`](mcp:get_api_reference?platform=blazor&component=IgbRadio)) have been merged and renamed to [`ToggleLabelPosition`](mcp:get_api_reference?platform=blazor&component=ToggleLabelPosition)
+  - [`DatePickerMode`](mcp:get_api_reference?platform=blazor&component=DatePickerMode) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)) has been renamed to [`PickerMode`](mcp:get_api_reference?platform=blazor&component=PickerMode)
+  - [`DatePickerHeaderOrientation`](mcp:get_api_reference?platform=blazor&component=DatePickerHeaderOrientation) ([`IgbDatePicker`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker)) has been renamed to/merged with [`CalendarHeaderOrientation`](mcp:get_api_reference?platform=blazor&component=CalendarHeaderOrientation)
+  - [`DropdownPlacement`](mcp:get_api_reference?platform=blazor&component=DropdownPlacement) ([`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown) and [`Select`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=select)) has been renamed to [`PopoverPlacement`](mcp:get_api_reference?platform=blazor&component=PopoverPlacement)
+  - [`DropdownScrollStrategy`](mcp:get_api_reference?platform=blazor&component=DropdownScrollStrategy) ([`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown)) and [`SelectScrollStrategy`](mcp:get_api_reference?platform=blazor&component=SelectScrollStrategy) ([`Select`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=select)) have been merged and renamed to [`PopoverScrollStrategy`](mcp:get_api_reference?platform=blazor&component=PopoverScrollStrategy)
+  - [`SliderBaseTickOrientation`](mcp:get_api_reference?platform=blazor&component=SliderBaseTickOrientation) ([`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider)) has been renamed to [`SliderTickOrientation`](mcp:get_api_reference?platform=blazor&component=SliderTickOrientation)
+  - [`TickLabelRotation`](mcp:get_api_reference?platform=blazor&component=IgbSlider&member=tickLabelRotation) ([`IgbSlider`](mcp:get_api_reference?platform=blazor&component=IgbSlider) and [`IgbRangeSlider`](mcp:get_api_reference?platform=blazor&component=IgbRangeSlider)) has been renamed to [`SliderTickLabelRotation`](mcp:get_api_reference?platform=blazor&component=SliderTickLabelRotation)
 - [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs)
 
   Simplified configuration by removing the need to define separate panel and linking the panel and tab header. The `Panel` property and the `IgbTabPanel` itself have been removed. Content can be now assigned directly to the [`IgbTab`](mcp:get_api_reference?platform=blazor&component=IgbTab) and header text can be set conveniently via the new [`Label`](mcp:get_api_reference?platform=blazor&component=IgbDatePicker&member=label) property or by projecting an element to `slot="label"` for more involved customization.
@@ -580,7 +580,7 @@ For more details please visit:
 - [`IgbStepper`](mcp:get_api_reference?platform=blazor&component=IgbStepper)
   - [`IgbActiveStepChangingArgsEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbActiveStepChangingArgsEventArgs) has been renamed to [`IgbActiveStepChangingEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbActiveStepChangingEventArgs)
   - [`IgbActiveStepChangedArgsEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbActiveStepChangedArgsEventArgs) has been renamed to [`IgbActiveStepChangedEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbActiveStepChangedEventArgs)
-  - [`IgbStepperTitlePosition`](mcp:get_api_reference?platform=blazor&component=StepperTitlePosition) now defaults to `Auto` to correctly reflect the default behavior
+  - [`StepperTitlePosition`](mcp:get_api_reference?platform=blazor&component=StepperTitlePosition) now defaults to `Auto` to correctly reflect the default behavior
 - [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree)
   - [`IgbTreeSelectionChangeEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbTreeSelectionChangeEventArgs) has been renamed to [`IgbTreeSelectionEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbTreeSelectionEventArgs)
 - [`IgbTextarea`](mcp:get_api_reference?platform=blazor&component=IgbTextarea)
@@ -605,7 +605,7 @@ For more details please visit:
 
 ### IgniteUI.Blazor (Dashboards)
 
-- The [`IgbDashboardTile`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile) now supports propagating the aggregations from its DataGrid view to the chart visualization such as sorting, grouping, filtering and selection. This is currently supported by binding the [`IgbDataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) of the [`IgbDashboardTile`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile) to an instance of [`IgbLocalDataSource`](mcp:get_api_reference?platform=blazor&component=IgbLocalDataSource).
+- The [`IgbDashboardTile`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile) now supports propagating the aggregations from its DataGrid view to the chart visualization such as sorting, grouping, filtering and selection. This is currently supported by binding the [`DataSource`](mcp:get_api_reference?platform=blazor&component=DataSource) of the [`IgbDashboardTile`](mcp:get_api_reference?platform=blazor&component=IgbDashboardTile) to an instance of [`IgbLocalDataSource`](mcp:get_api_reference?platform=blazor&component=IgbLocalDataSource).
 
 ### Enhancements
 
@@ -620,7 +620,7 @@ For more details please visit:
 
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
-|25997 | [`IgbDataGrid`](mcp:get_api_reference?platform=blazor&component=IgbDataGrid) | Summaries are only showing for first grouped child row|
+|25997 | `IgbDataGrid` | Summaries are only showing for first grouped child row|
 |37023 | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) | Tooltips are cut-off/offscreen if overflow hidden is set.|
 |37244 | Excel Library | Custom Data Validation is not working|
 
@@ -657,9 +657,9 @@ For more details please visit:
 
 | Bug Number | Control | Description      |
 |------------|---------|------------------|
-|25602 | [`IgbDataGrid`](mcp:get_api_reference?platform=blazor&component=IgbDataGrid) | Loading a layout with one of the date-specific filter operators results in a TypeError console error|
+|25602 | `IgbDataGrid` | Loading a layout with one of the date-specific filter operators results in a TypeError console error|
 |28480 | `IgbCombo` | Undefined reference error is thrown when a datasource is replaced|
-|32598 | [`IgbDataGrid`](mcp:get_api_reference?platform=blazor&component=IgbDataGrid) | Multi-selection is not working correctly
+|32598 | `IgbDataGrid` | Multi-selection is not working correctly
 |36374 | [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput) | A previous value was bound when a form was submitted on any touch device|
 |37214|General|Intermittent error in Blazor's WebCallback.Register()
 
@@ -782,9 +782,9 @@ The following table lists the bug fixes made for the Ignite UI for Blazor toolse
 - Removed `size` property in favor of the `--ig-size` CSS custom property for the following components:
   - [`IgbAvatar`](mcp:get_api_reference?platform=blazor&component=IgbAvatar), [`IgbButton`](mcp:get_api_reference?platform=blazor&component=IgbButton),[`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton), [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar), [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip), [`IgbDropdown`](mcp:get_api_reference?platform=blazor&component=IgbDropdown), [`IgbIcon`](mcp:get_api_reference?platform=blazor&component=IgbIcon), [`IgbInput`](mcp:get_api_reference?platform=blazor&component=IgbInput), [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList), [`IgbRating`](mcp:get_api_reference?platform=blazor&component=IgbRating), [`IgbSnackbar`](mcp:get_api_reference?platform=blazor&component=IgbSnackbar), [`IgbTabs`](mcp:get_api_reference?platform=blazor&component=IgbTabs), [`IgbTree`](mcp:get_api_reference?platform=blazor&component=IgbTree)
 - [`IgbBadge`](mcp:get_api_reference?platform=blazor&component=IgbBadge), [`IgbChip`](mcp:get_api_reference?platform=blazor&component=IgbChip), [`IgbLinearProgress`](mcp:get_api_reference?platform=blazor&component=IgbLinearProgress), [`IgbCircularProgress`](mcp:get_api_reference?platform=blazor&component=IgbCircularProgress)
-  - Renamed [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbButton&member=variant) property type to [`IgbStyleVariant`](mcp:get_api_reference?platform=blazor&component=StyleVariant).
+  - Renamed [`Variant`](mcp:get_api_reference?platform=blazor&component=IgbButton&member=variant) property type to [`StyleVariant`](mcp:get_api_reference?platform=blazor&component=StyleVariant).
 - [`IgbCalendar`](mcp:get_api_reference?platform=blazor&component=IgbCalendar)
-  - Renamed [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbFieldPipeArgs&member=weekStart) property type to [`IgbWeekDays`](mcp:get_api_reference?platform=blazor&component=WeekDays).
+  - Renamed [`WeekStart`](mcp:get_api_reference?platform=blazor&component=IgbFieldPipeArgs&member=weekStart) property type to [`WeekDays`](mcp:get_api_reference?platform=blazor&component=WeekDays).
 - [`IgbCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbCheckbox), [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch)
   - Changed `Change` event argument type from [`IgbComponentBoolValueChangedEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbComponentBoolValueChangedEventArgs) to [`IgbCheckboxChangeEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbCheckboxChangeEventArgs).
 - [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule)
@@ -1062,10 +1062,10 @@ Added significant improvements to default behaviors, and refined the Category Ch
 
 ### IgniteUI.Blazor (Data Grid)
 
-- Changed **IgbColumn** to [`IgbDataGridColumn`](mcp:get_api_reference?platform=blazor&component=IgbDataGridColumn)
-- Changed **GridCellEventArgs** to [`IgbDataGridCellEventArgs`](mcp:get_api_reference?platform=blazor&component=IgbDataGridCellEventArgs)
-- Changed **GridSelectionMode** to [`IgbDataGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=DataGridSelectionMode)
-- Changed **SummaryOperand** to [`IgbDataSourceSummaryOperand`](mcp:get_api_reference?platform=blazor&component=DataSourceSummaryOperand)
+- Changed **IgbColumn** to `IgbDataGridColumn`
+- Changed **GridCellEventArgs** to `IgbDataGridCellEventArgs`
+- Changed **GridSelectionMode** to `IgbDataGridSelectionMode`
+- Changed **SummaryOperand** to [`DataSourceSummaryOperand`](mcp:get_api_reference?platform=blazor&component=DataSourceSummaryOperand)
 
 ## **22.1.41 (June 2022)**
 
@@ -1191,8 +1191,8 @@ This release introduces a few improvements and simplifications to visual design 
   - Added `SelectionChanged` event. Used to detect changes on selection interactions
      e.g. Multiple row selection.
 - Breaking Changes:
-  - Changed grid's SummaryScope property's type to SummaryScope from [`IgbDataSourceSummaryScope`](mcp:get_api_reference?platform=blazor&component=DataSourceSummaryScope)
-  - Changed GroupHeaderDisplayMode property's type to GroupHeaderDisplayMode from [`IgbDataSourceSectionHeaderDisplayMode`](mcp:get_api_reference?platform=blazor&component=DataSourceSectionHeaderDisplayMode)
+  - Changed grid's SummaryScope property's type to SummaryScope from [`DataSourceSummaryScope`](mcp:get_api_reference?platform=blazor&component=DataSourceSummaryScope)
+  - Changed GroupHeaderDisplayMode property's type to GroupHeaderDisplayMode from [`DataSourceSectionHeaderDisplayMode`](mcp:get_api_reference?platform=blazor&component=DataSourceSectionHeaderDisplayMode)
 
 ## **21.1.52 (April 2021)**
 ### New Visual Designs
@@ -1261,15 +1261,15 @@ These features are CTP
 ### IgniteUI.Blazor (Data Grid)
 
 - Added [`EditOnKeyPress`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=editOnKeyPress) aka Excel-style Editing, instantly begin editing when typing.
-- Added [`IgbEditModeClickAction`](mcp:get_api_reference?platform=blazor&component=EditModeClickAction) property - By default double-clicking is required to enter edit mode. This can be set to [`SingleClick`](mcp:get_api_reference?platform=blazor&component=EditModeClickAction&member=SingleClick) to allow for edit mode to occur when selecting a new cell.
-- Added [`IgbEnterKeyBehaviors`](mcp:get_api_reference?platform=blazor&component=EnterKeyBehaviors) property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
-- Added [`IgbEnterKeyBehaviorAfterEdit`](mcp:get_api_reference?platform=blazor&component=EnterKeyBehaviorAfterEdit) property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
+- Added `IgbEditModeClickAction` property - By default double-clicking is required to enter edit mode. This can be set to `SingleClick` to allow for edit mode to occur when selecting a new cell.
+- Added `IgbEnterKeyBehaviors` property - aka Excel-style Navigation (Enter Behavior) – controls the behavior of the enter key, e.g. Options are (none, edit, move up, down, left, right)
+- Added `IgbEnterKeyBehaviorAfterEdit` property - While in edit-mode, this property controls when enter is pressed, e.g. Options are (moves to the cell below, above, right, left)
 - Added [`SelectAllRows`](mcp:get_api_reference?platform=blazor&component=IgbGrid&member=selectAllRows) - method.
-- Added Row Range Selection - With [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) property set to MultipleRow the following new functionality is now included:
+- Added Row Range Selection - With [`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) property set to MultipleRow the following new functionality is now included:
   - Click and drag to select rows
   - <kbd>SHIFT</kbd> and click to select multiple rows.
   - <kbd>SHIFT</kbd> and press the <kbd>↑</kbd> + <kbd>↓</kbd> arrow keys to select multiple rows.
-- Pressing space bar toggles selection of active row via [`IgbGridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) property set to MultipleRow or SingleRow
+- Pressing space bar toggles selection of active row via [`GridSelectionMode`](mcp:get_api_reference?platform=blazor&component=GridSelectionMode) property set to MultipleRow or SingleRow
 - Added Column Summaries to Column Options Dialog.
 
 ### IgniteUI.Blazor (Inputs)

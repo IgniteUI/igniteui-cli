@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
+platformType: xplat
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
 # Angular Displaying Imagery from Esri Maps
 
-The `IgxArcGISOnlineMapImagery` is a free geographic imagery mapping service created by <a href="https://www.esri.com/" target="_blank">Esri</a> company. It provides over 40 styles of geographic imagery tiles of the world and some thematic tiles for the USA. This geographic imagery service can be accessed directly on <a href="https://services.arcgisonline.com/ArcGIS/rest/services" target="_blank">www.arcgisonline.com</a> web site.
+The [`IgxArcGISOnlineMapImagery`](mcp:get_api_reference?platform=angular&component=IgxArcGISOnlineMapImagery) is a free geographic imagery mapping service created by <a href="https://www.esri.com/" target="_blank">Esri</a> company. It provides over 40 styles of geographic imagery tiles of the world and some thematic tiles for the USA. This geographic imagery service can be accessed directly on <a href="https://services.arcgisonline.com/ArcGIS/rest/services" target="_blank">www.arcgisonline.com</a> web site.
 
 ## Angular Displaying Imagery from Esri Maps Example
 
@@ -92,26 +93,25 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Code Snippet
-The following code snippet shows how to display Angular geographic imagery tiles from Esri imagery servers in `IgxGeographicMap` using `IgxArcGISOnlineMapImagery` class.
+The following code snippet shows how to display Angular geographic imagery tiles from Esri imagery servers in [`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent) using [`IgxArcGISOnlineMapImagery`](mcp:get_api_reference?platform=angular&component=IgxArcGISOnlineMapImagery) class.
 
 ```html
-<igx-geographic-map #map
-    width="100%"
+<igx-geographic-map
+    #oceansMap
     height="100%"
-    zoomable="true" >
+    width="100%"
+    zoomable="true">
 </igx-geographic-map>
 ```
 
 ```ts
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxArcGISOnlineMapImagery } from 'igniteui-angular-maps';
+import { IgxGeographicMapComponent, IgxArcGISOnlineMapImagery } from 'igniteui-angular-maps';
 // ...
-public geoMap: IgxGeographicMapComponent;
-
-const tileSource = new IgxArcGISOnlineMapImagery();
-tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
-
-this.geoMap.backgroundContent = tileSource;
+@ViewChild("oceansMap", { static: true } )
+private oceansMap: IgxGeographicMapComponent
+var oceansMapImagery = new IgxArcGISOnlineMapImagery();
+oceansMapImagery.mapServerUri = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer";
+this.oceansMap.backgroundContent = oceansMapImagery;
 ```
 
 ## Esri Utility
@@ -131,5 +131,5 @@ this.geoMap.backgroundContent = tileSource;
 ```
 
 ## API References
-`IgxArcGISOnlineMapImagery`
-`IgxGeographicMap`
+[`IgxArcGISOnlineMapImagery`](mcp:get_api_reference?platform=angular&component=IgxArcGISOnlineMapImagery)
+[`IgxGeographicMapComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent)

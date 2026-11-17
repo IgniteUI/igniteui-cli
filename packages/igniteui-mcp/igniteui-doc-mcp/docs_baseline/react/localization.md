@@ -35,7 +35,7 @@ import {
   IgrGridToolbarTitle,
   registerI18n,
   setCurrentI18n,
-} from "igniteui-react-grids/grids";
+} from "igniteui-react-grids";
 import { IgrSelect, IgrSelectItem } from "igniteui-react";
 
 import {
@@ -112,7 +112,7 @@ const GridLocalizationSample: React.FC = () => {
         <IgrGridToolbarTitle className="grid-toolbar-title">Grid with Localization</IgrGridToolbarTitle>
             <IgrSelect
                 value={locale}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocale(e.target.value)}
+                onChange={(e) => setLocale(e.detail.value)}
             >
                 <IgrSelectItem value="hi"><span>HI</span></IgrSelectItem>
                 <IgrSelectItem value="bg"><span>BG</span></IgrSelectItem>
@@ -189,7 +189,7 @@ The locale can be set in several ways, either globally or per component.
 
 ### Global API
 
-You can set the locale that will be used globally using the [`IgrsetCurrentI18n`](mcp:get_api_reference?platform=react&component=setCurrentI18n) method, available from the [`igniteui-react`](https://www.npmjs.com/package/igniteui-react) or [`igniteui-react-grids`](http://npmjs.com/package/igniteui-react-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
+You can set the locale that will be used globally using the [`setCurrentI18n`](mcp:get_api_reference?platform=react&component=setCurrentI18n) method, available from the [`igniteui-react`](https://www.npmjs.com/package/igniteui-react) or [`igniteui-react-grids`](http://npmjs.com/package/igniteui-react-grids) package. All types and APIs can be imported from either package. It affects both formatting and the registered resource strings used in all components. For more on resource strings, see [Localized resource strings](#localized-resource-strings).
 
 ```ts
 setCurrentI18n('de');
@@ -336,7 +336,7 @@ If Ignite UI for React does not provide resource strings for the required langua
 **Note:** 
 Contributions to the [`igniteui-i18n-resources`](https://github.com/IgniteUI/igniteui-i18n/tree/master/projects/igniteui-i18n-resources) GitHub repo with additional languages are welcome.
 
-You can use the provided [`IgrIResourceStrings`](mcp:get_api_reference?platform=react&component=IResourceStrings) type for all components to get typings for the resource strings used:
+You can use the provided [`IResourceStrings`](mcp:get_api_reference?platform=react&component=IResourceStrings) type for all components to get typings for the resource strings used:
 
 ```tsx
 import { IResourceStrings } from 'igniteui-react';

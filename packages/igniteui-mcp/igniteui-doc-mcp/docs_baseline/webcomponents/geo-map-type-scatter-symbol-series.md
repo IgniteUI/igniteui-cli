@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
 llms:
   description: "In Web Components map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
+platformType: xplat
 _tocName: Geographic Symbol Map
 _premium: true
 ---
 # Web Components Geographic Symbol Map
 
-In Web Components map component, you can use the `IgcGeographicSymbolSeries` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
+In Web Components map component, you can use the `IgcGeographicSymbolSeriesComponent` to display geo-spatial data using points or markers in a geographic context. This type of geographic series is often used to render a collection of geographic locations such as cities, airports, earthquakes, or points of interests.
 
 ## Web Components Geographic Symbol Map Example
 
@@ -662,41 +663,52 @@ export class WorldLocations {
 ```
 
 ## Data Requirements
-Similarly to other types of geographic series in the map component, the `IgcGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the `IgcGeographicSymbolSeriesComponent` has the `dataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `latitudeMemberPath` and `longitudeMemberPath` properties. The `IgcGeographicSymbolSeriesComponent` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
-The following code shows how to bind the `IgcGeographicSymbolSeries` to locations of cities loaded from a shape file using the `IgcShapefileRecord`.
+The following code shows how to bind the `IgcGeographicSymbolSeriesComponent` to locations of cities loaded from a shape file using the `IgcShapefileRecord`.
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igc-geographic-symbol-series
+        id="citiesSeries"
+        marker-type="Circle"
+        latitude-member-path="y"
+        longitude-member-path="x"
+        marker-brush="White"
+        marker-outline="Gray">
+    </igc-geographic-symbol-series>
+    <igc-geographic-symbol-series
+        id="capitalsSeries"
+        marker-type="Circle"
+        latitude-member-path="y"
+        longitude-member-path="x"
+        marker-brush="White"
+        marker-outline="rgba(32, 146, 252, 1)">
+    </igc-geographic-symbol-series>
 </igc-geographic-map>
 ```
 
 ```ts
-import { IgcGeographicSymbolSeriesComponent } from 'igniteui-webcomponents-maps';
-import { MarkerType } from 'igniteui-webcomponents-charts';
-//...
-connectedCallback() {
-    this.geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent;
-    this.addSeriesWith(WorldLocations.getCities(), "Gray");
-    this.addSeriesWith(WorldLocations.getCapitals(),"rgb(32, 146, 252)");
-}
+// fields:
+private geoMap: IgcGeographicMapComponent
+private citiesSeries: IgcGeographicSymbolSeriesComponent
+private capitalsSeries: IgcGeographicSymbolSeriesComponent
 
-addSeriesWith(locations: any[], brush: string)
-{
-    const symbolSeries = new IgcGeographicSymbolSeriesComponent ();
-    symbolSeries.dataSource = locations;
-    symbolSeries.markerType = MarkerType.Circle;
-    symbolSeries.latitudeMemberPath = "lat";
-    symbolSeries.longitudeMemberPath = "lon";
-    symbolSeries.markerBrush  = "White";
-    symbolSeries.markerOutline = brush;
+// initialization:
+var geoMap = this.geoMap = document.getElementById('geoMap') as IgcGeographicMapComponent;
+var citiesSeries = this.citiesSeries = document.getElementById('citiesSeries') as IgcGeographicSymbolSeriesComponent;
+var capitalsSeries = this.capitalsSeries = document.getElementById('capitalsSeries') as IgcGeographicSymbolSeriesComponent;
 
-    this.geoMap.series.add(symbolSeries);
-}
+// bindings:
+citiesSeries.dataSource = this.worldCities;
+capitalsSeries.dataSource = this.worldCapitals;
 ```
 
 ## API References
-`IgcGeographicSymbolSeries`
+`IgcGeographicSymbolSeriesComponent`
 `IgcShapefileRecord`

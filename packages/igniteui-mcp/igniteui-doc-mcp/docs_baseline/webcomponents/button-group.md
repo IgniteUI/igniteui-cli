@@ -34,12 +34,13 @@ igc-button-group {
 }
 
 .album-title {
-	font-size: 0.875rem;
-	font-weight: 400;
-	line-height: 1.429;
-	letter-spacing: 0.0178571em;
-	margin-block: 0 0.5rem;
-	color: var(--ig-primary-500);
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin-block: 0 0.5rem;
 }
 
 .album-photos {

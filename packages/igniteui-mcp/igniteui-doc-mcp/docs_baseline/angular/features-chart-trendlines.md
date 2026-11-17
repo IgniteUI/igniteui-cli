@@ -4,23 +4,25 @@ description: Infragistics' Angular Chart Trendlines
 keywords: Angular Charts, Trendlines, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "FinancialChart", "CategoryChart", "DataChart", "TrendLineType", "FinancialPriceSeries", "AnnotationAppearanceMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for Angular charts, trendlines help in identifying a trend or finding patterns in data."
+platformType: xplat
 _tocName: Chart Trendlines
 _premium: true
 ---
 # Angular Chart Trendlines
 
-In Ignite UI for Angular charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the `IgxCategoryChart`, `IgxFinancialChart`, and `IgxDataChart` (except for stacked series, shape series, and range series).
+In Ignite UI for Angular charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent), and [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) (except for stacked series, shape series, and range series).
 
-Trendlines are off by default, but you can enable them by setting the `TrendLineType` property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
+Trendlines are off by default, but you can enable them by setting the [`trendLineType`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent&member=trendLineType) property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
 
-The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the `TrendLineDashArray` property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
+The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the [`trendLineDashArray`](mcp:get_api_reference?platform=angular&component=IgxFinancialPriceSeriesComponent&member=trendLineDashArray) property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
 
 ## Angular Chart Trendlines Example
 
-The following sample depicts a `IgxFinancialChart` showing the stock trend of Microsoft between 2013 and 2017 with a **QuinticFit** trendline initially applied. There is a drop-down that will allow you to change the type of trendline that is applied, and all possible trendline types are listed within that drop-down.
+The following sample depicts a [`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent) showing the stock trend of Microsoft between 2013 and 2017 with a **QuinticFit** trendline initially applied. There is a drop-down that will allow you to change the type of trendline that is applied, and all possible trendline types are listed within that drop-down.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -130,7 +132,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Chart Trendlines Dash Array Example
 
-The following sample depicts a `IgxDataChart` showing a `IgxFinancialPriceSeries` with a **QuarticFit** dashed trendline applied via the `TrendLineDashArray` property:
+The following sample depicts a [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) showing a [`IgxFinancialPriceSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialPriceSeriesComponent) with a **QuarticFit** dashed trendline applied via the [`trendLineDashArray`](mcp:get_api_reference?platform=angular&component=IgxFinancialPriceSeriesComponent&member=trendLineDashArray) property:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -264,29 +266,29 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Chart Trendline Layer
 
-The `IgxTrendLineLayer` is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the `IgxTrendLineLayer` is a series type, you can add more than one of them to the `Series` collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
+The [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) is a series type, you can add more than one of them to the [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
 
 ## Trendline Layer Usage
 
-The `IgxTrendLineLayer` must be provided with a `TargetSeries` and a `TrendLineType` in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
+The [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) must be provided with a [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=targetSeries) and a [`trendLineType`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=trendLineType) in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
 
-If you would like to show the `IgxTrendLineLayer` in the Legend, you can do so by setting the `UseLegend` property to `true`.
+If you would like to show the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) in the Legend, you can do so by setting the [`useLegend`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=useLegend) property to `true`.
 
 ## Styling the Trendline Layer
 
-By default, the `IgxTrendLineLayer` renders with the same color as its `TargetSeries` in a dashed line. This can be configured by using the various styling properties on the `IgxTrendLineLayer`.
+By default, the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) renders with the same color as its [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=targetSeries) in a dashed line. This can be configured by using the various styling properties on the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent).
 
-To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's `Brushes` palette based on the index in which the `IgxTrendLineLayer` is placed in the chart's `Series` collection.
+To change the color of the trendline that is drawn, you can set its [`IgxTrendLineLayerComponent.brush`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=brush) property. Alternatively, you can also set the [`useIndex`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=useIndex) property to `true`, which will pull from the chart's [`IgxDomainChartComponent.brushes`](mcp:get_api_reference?platform=angular&component=IgxDomainChartComponent&member=brushes) palette based on the index in which the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) is placed in the chart's [`IgxSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSeriesComponent) collection.
 
-You can also modify the way that the `IgxTrendLineLayer` appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
+You can also modify the way that the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent) appears by using its [`appearanceMode`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=appearanceMode) and [`shiftAmount`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=shiftAmount) properties. The [`shiftAmount`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=shiftAmount) takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
 
-The following are the options for the `AppearanceMode` property:
+The following are the options for the [`appearanceMode`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=appearanceMode) property:
 
-- `Auto`: This will default to the DashPattern enumeration.
-- `BrightnessShift`: The trendline will take the `TargetSeries` brush and modify its brightness based on the provided `ShiftAmount`.
-- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `DashArray` property on the `IgxTrendLineLayer`.
-- `OpacityShift`: The trendline will take the `TargetSeries` brush and modify its opacity based on the provided `ShiftAmount`.
-- `SaturationShift`: The trendline will take the `TargetSeries` brush and modify its saturation based on the provided `ShiftAmount`.
+- [`Auto`](mcp:get_api_reference?platform=angular&component=AnnotationAppearanceMode&member=Auto): This will default to the DashPattern enumeration.
+- [`BrightnessShift`](mcp:get_api_reference?platform=angular&component=AnnotationAppearanceMode&member=BrightnessShift): The trendline will take the [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=targetSeries) brush and modify its brightness based on the provided [`shiftAmount`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=shiftAmount).
+- [`DashPattern`](mcp:get_api_reference?platform=angular&component=AnnotationAppearanceMode&member=DashPattern): The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the [`dashArray`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=dashArray) property on the [`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent).
+- [`OpacityShift`](mcp:get_api_reference?platform=angular&component=AnnotationAppearanceMode&member=OpacityShift): The trendline will take the [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=targetSeries) brush and modify its opacity based on the provided [`shiftAmount`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=shiftAmount).
+- [`SaturationShift`](mcp:get_api_reference?platform=angular&component=AnnotationAppearanceMode&member=SaturationShift): The trendline will take the [`targetSeries`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=targetSeries) brush and modify its saturation based on the provided [`shiftAmount`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent&member=shiftAmount).
 
 ## Additional Resources
 
@@ -296,7 +298,7 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-`IgxCategoryChart`
-`IgxFinancialChart`
-`IgxDataChart`
-`IgxTrendLineLayer`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxTrendLineLayerComponent`](mcp:get_api_reference?platform=angular&component=IgxTrendLineLayerComponent)

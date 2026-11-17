@@ -4,9 +4,11 @@ description: Navigate Infragistics' Blazor charts by panning right and left and 
 keywords: Blazor charts, data chart, navigation, Ignite UI for Blazor, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "CategoryChart", "FinancialChart", "ModifierKeys", "InteractionState", "SeriesViewerScrollbarMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor charts allows for interactive panning and zooming via the mouse, keyboard and touch."
+platformType: xplat
 _tocName: Chart Navigation
 _premium: true
 ---
@@ -191,13 +193,13 @@ The following example shows all of the available panning and zooming options tha
 }
 ```
 
-Like this sample? Get access to our complete Blazor toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for Blazor toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-blazor/download">Download free trial.</a>
 
 ## Chart Navigation with User Interactions
 
-Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), it is on by default, but it is not in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). In order to enable or disable navigation in the UI, you need to set either the [`IsHorizontalZoomEnabled`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=isHorizontalZoomEnabled) and/or the [`IsVerticalZoomEnabled`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
+Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart), it is on by default, but it is not in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart). In order to enable or disable navigation in the UI, you need to set either the [`IsHorizontalZoomEnabled`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=IsHorizontalZoomEnabled) and/or the [`IsVerticalZoomEnabled`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=IsVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=defaultInteraction) property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=DefaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to [`DragZoom`](mcp:get_api_reference?platform=blazor&component=InteractionState&member=DragZoom) and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=DefaultInteraction) property can also be set to either [`DragPan`](mcp:get_api_reference?platform=blazor&component=InteractionState&member=DragPan) to allow panning or [`InteractionState.None`](mcp:get_api_reference?platform=blazor&component=InteractionState&member=None) to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -207,28 +209,28 @@ Navigation in the Blazor data chart can happen with either touch, the mouse or t
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=defaultInteraction) property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`DefaultInteraction`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=DefaultInteraction) property set to its default - [`DragZoom`](mcp:get_api_reference?platform=blazor&component=InteractionState&member=DragZoom).
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the [`DragModifier`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=dragModifier) and [`PanModifier`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`DragModifier`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=DragModifier) and [`PanModifier`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=PanModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
-| `Shift`        | <kbd>SHIFT</kbd> |
-| `Control`      | <kbd>CTRL</kbd> |
-| `Windows`      | <kbd>WIN</kbd> |
-| `Apple`        | <kbd>APPLE</kbd> |
-| `None`         | no keys |
+| [`Shift`](mcp:get_api_reference?platform=blazor&component=ModifierKeys&member=Shift)        | <kbd>SHIFT</kbd> |
+| [`Control`](mcp:get_api_reference?platform=blazor&component=ModifierKeys&member=Control)      | <kbd>CTRL</kbd> |
+| [`Windows`](mcp:get_api_reference?platform=blazor&component=ModifierKeys&member=Windows)      | <kbd>WIN</kbd> |
+| [`Apple`](mcp:get_api_reference?platform=blazor&component=ModifierKeys&member=Apple)        | <kbd>APPLE</kbd> |
+| [`None`](mcp:get_api_reference?platform=blazor&component=ModifierKeys&member=None)         | no keys |
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the [`VerticalViewScrollbarMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=verticalViewScrollbarMode) and [`HorizontalViewScrollbarMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=horizontalViewScrollbarMode) properties.
+The chart can be scrolled by enabling the [`VerticalViewScrollbarMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=VerticalViewScrollbarMode) and [`HorizontalViewScrollbarMode`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=HorizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
-- `Persistent` - The scrollbars always stay visible, as long as the chart is zoomed in, and fade away when fully zoomed out.
-- `Fading` - The scrollbars disappear after use and reappear when the mouse is near their location.
-- `FadeToLine` - The scrollbars are reduced to a thinner line when zooming is not in use.
-- `None` - Default, no scrollbars are shown.
+- [`Persistent`](mcp:get_api_reference?platform=blazor&component=SeriesViewerScrollbarMode&member=Persistent) - The scrollbars always stay visible, as long as the chart is zoomed in, and fade away when fully zoomed out.
+- [`Fading`](mcp:get_api_reference?platform=blazor&component=SeriesViewerScrollbarMode&member=Fading) - The scrollbars disappear after use and reappear when the mouse is near their location.
+- [`FadeToLine`](mcp:get_api_reference?platform=blazor&component=SeriesViewerScrollbarMode&member=FadeToLine) - The scrollbars are reduced to a thinner line when zooming is not in use.
+- [`None`](mcp:get_api_reference?platform=blazor&component=SeriesViewerScrollbarMode&member=None) - Default, no scrollbars are shown.
 
 The following example demonstrates enabling scrollbars.
 
@@ -399,11 +401,11 @@ Code navigation of the chart can only be used for the [`IgbDataChart`](mcp:get_a
 
 The Blazor data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- [`WindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- [`WindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowRect): A [`IgbRect`](mcp:get_api_reference?platform=blazor&component=Rect) object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
-- [`WindowScaleHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
-- [`WindowScaleVertical`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
+- [`WindowPositionHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`WindowPositionVertical`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowRect): A `Rect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`WindowRect`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`WindowScaleHorizontal`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
+- [`WindowScaleVertical`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=WindowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
 ## Additional Resources
 

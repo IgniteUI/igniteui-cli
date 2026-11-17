@@ -41,7 +41,7 @@ Without information about the sizes of the container and the items before render
 - `IgxTreeGridComponent Styles`
 - [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent)
 - [`IgxForOfDirective`](mcp:get_api_reference?platform=angular&component=IgxForOfDirective)
-- [`IgxIForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState)
+- [`IForOfState`](mcp:get_api_reference?platform=angular&component=IForOfState)
 ## Additional Resources
 
 - [Tree Grid overview](/treegrid/tree-grid)

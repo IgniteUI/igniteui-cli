@@ -3,9 +3,10 @@ title: React Spreadsheet | Activation | Infragistics
 description: Learn how to use the activation feature of the  React spreadsheet control which is split between the cells, panes and worksheets. Check out the Ignite UI for React spreadsheet demos!
 keywords: Excel Spreadsheet, activation, Ignite UI for React, Infragistics
 license: commercial
-
+mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The React Spreadsheet component exposes properties that allow you to determine the currently active cell, pane, and worksheet in the control."
+platformType: xplat-unmapped
 _tocName: Activation
 _premium: true
 ---

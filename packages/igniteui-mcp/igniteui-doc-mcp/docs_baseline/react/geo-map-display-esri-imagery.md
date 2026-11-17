@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The ArcGISOnlineMapImagery is a free geographic imagery mapping service created by Esri company."
+platformType: xplat
 _tocName: Displaying Esri Imagery
 _premium: true
 ---
@@ -307,15 +308,26 @@ root.render(<MapDisplayImageryEsri/>);
 ## Code Snippet
 The following code snippet shows how to display React geographic imagery tiles from Esri imagery servers in `IgrGeographicMap` using `IgrArcGISOnlineMapImagery` class.
 
-```ts
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrArcGISOnlineMapImagery } from 'igniteui-react-maps';
-// ...
-const tileSource = new IgrArcGISOnlineMapImagery();
-tileSource.mapServerUri = "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer";
+```tsx
+<IgrGeographicMap
+    ref={this.oceansMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true} />
+```
 
-const geoMap = new IgrGeographicMap({ name: "geoMap" });
-geoMap.backgroundContent = tileSource;
+```tsx
+import { IgrGeographicMap, IgrArcGISOnlineMapImagery } from 'igniteui-react-maps';
+// ...
+private oceansMap: IgrGeographicMap
+private oceansMapRef(r: IgrGeographicMap) {
+    this.oceansMap = r;
+    this.setState({});
+}
+this.oceansMapRef = this.oceansMapRef.bind(this);
+var oceansMapImagery = new IgrArcGISOnlineMapImagery();
+oceansMapImagery.mapServerUri = "https://services.arcgisonline.com/arcgis/rest/services/Ocean/World_Ocean_Base/MapServer";
+this.oceansMap.backgroundContent = oceansMapImagery;
 ```
 
 ## Esri Utility

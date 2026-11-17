@@ -142,7 +142,7 @@ While some filtering conditions have been applied to a column, and the filter ro
 
 ## Usage
 
-There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Hierarchical Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) of the column, the correct set of [`filtering operations`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) is loaded inside the filter UI dropdown. Additionally, you can set the [`IgxIFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and the initial [`IgxIFilteringExpression.condition`](mcp:get_api_reference?platform=angular&component=IFilteringExpression&member=condition) properties.
+There's a default filtering strategy provided out of the box, as well as all the standard filtering conditions, which the developer can replace with their own implementation. In addition, we've provided a way to easily plug in your own custom filtering conditions. The Hierarchical Grid currently provides not only a simplistic filtering UI, but also more complex filtering options. Depending on the set [`dataType`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=dataType) of the column, the correct set of [`filtering operations`](mcp:get_api_reference?platform=angular&component=IFilteringOperation) is loaded inside the filter UI dropdown. Additionally, you can set the [`IFilteringExpression`](mcp:get_api_reference?platform=angular&component=IFilteringExpression) and the initial [`IFilteringExpression.condition`](mcp:get_api_reference?platform=angular&component=IFilteringExpression&member=condition) properties.
 
 Filtering feature is enabled for the Hierarchical Grid component by setting the [`allowFiltering`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=allowFiltering) input to `true`. The default [`filterMode`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=filterMode) is `quickFilter` and it **cannot** be changed run time. To disable this feature for a certain column – set the [`filterable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=filterable) input to `false`.
 
@@ -228,7 +228,7 @@ this.hierarchicalGrid.clearFilter();
 
 ## Initial filtered state
 
-To set the initial filtering state of the Hierarchical Grid, set the [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=filteringExpressionsTree) property to an array of [`IgxIFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) for each column to be filtered.
+To set the initial filtering state of the Hierarchical Grid, set the [`IgxHierarchicalGrid`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent) [`filteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=filteringExpressionsTree) property to an array of [`IFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IFilteringExpressionsTree) for each column to be filtered.
 
 ```typescript
 constructor(private cdr: ChangeDetectorRef) { }
@@ -262,9 +262,9 @@ import { FilteringLogic } from 'igniteui-angular/grids/core';
 this.hierarchicalGrid.filteringLogic = FilteringLogic.OR;
 ```
 
-The default value of [`IgxFilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
+The default value of [`FilteringLogic.And`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=And) returns only the rows that match all the currently applied filtering expressions. Following the example above, a row will be returned when both the `ProductName` cell value contains `myproduct` and the `Price` cell value is greater than 55.
 
-When set to [`IgxFilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
+When set to [`FilteringLogic.Or`](mcp:get_api_reference?platform=angular&component=FilteringLogic&member=Or), a row will be returned when either the `ProductName` cell value contains `myproduct` or the `Price` cell value is greater than 55.
 
 ## Custom Filtering Operands
 
@@ -343,8 +343,11 @@ export class BooleanFilteringOperand extends IgxBooleanFilteringOperand {
     <igx-column field="Artist" [filterable]='true' [filters]="caseSensitiveFilteringOperand"></igx-column>
     <igx-column field="HasGrammyAward" [filterable]='true' [dataType]="'boolean'" [filters]="booleanFilteringOperand">
         <ng-template igxCell let-cell="cell" let-val>
-            <img *ngIf="val" src="https://www.infragistics.com/angular-demos/assets/images/grid/active.png" title="True" alt="True" />
-            <img *ngIf="!val" src="https://www.infragistics.com/angular-demos/assets/images/grid/expired.png" title="False" alt="False" />
+            @if (val) {
+                <img src="https://www.infragistics.com/angular-demos/assets/images/grid/active.png" title="True" alt="True" />
+            } @else {
+                <img src="https://www.infragistics.com/angular-demos/assets/images/grid/expired.png" title="False" alt="False" />
+            }
         </ng-template>
     </igx-column>
 </igx-hierarchical-grid>

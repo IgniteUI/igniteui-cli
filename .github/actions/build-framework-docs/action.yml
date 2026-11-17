@@ -73,6 +73,16 @@ runs:
       working-directory: packages/igniteui-mcp/igniteui-doc-mcp
       run: ./switch-submodules.sh "${{ inputs.submodule-branch }}"
 
+    # igniteui-documentation's generate.mjs emits json-snippet fences through this
+    # bundle and exits with "no snippet emitter found" when it is not built. Runs
+    # after the branch switch so it is built from the checked-out sources.
+    - name: Build the snippet emitter
+      shell: bash
+      working-directory: packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-documentation/docs/xplat/scripts/snippet-emitter
+      run: |
+        npm install --no-audit --no-fund
+        npm run build
+
     - name: Configure OpenAI credentials
       shell: bash
       working-directory: packages/igniteui-mcp/igniteui-doc-mcp

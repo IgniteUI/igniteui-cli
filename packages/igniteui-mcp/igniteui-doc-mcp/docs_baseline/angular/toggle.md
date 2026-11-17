@@ -156,7 +156,7 @@ In the next sample, we'll use a different positioning strategy so that the conte
 The `igxToggle` directive uses the [`IgxOverlayService`](mcp:get_api_reference?platform=angular&component=IgxOverlayService) provider. The `open`, `close` and `toggle` methods accept optional overlay settings that control how the content is displayed. If omitted, the default overlay settings are used as seen in the previous sample.
 
 **Note:** 
-By default, the [`IgxOverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`IgxOverlaySettings.closeOnEscape`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
+By default, the [`OverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property is set to `true`. In order to disable this functionality, the property has to be set to `false`. Additionally, the [`OverlaySettings.closeOnEscape`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnEscape) property defaults to `false`, so in order to make use of it, we have to set it to `true`.
 
 
 ```typescript
@@ -276,7 +276,7 @@ export class ToggleSample2Component { }
 ```
 
 **Note:** 
-By default `IgxToggleActionDirective` excludes its host element from the [`IgxOverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`IgxOverlaySettings.target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target).
+By default `IgxToggleActionDirective` excludes its host element from the [`OverlaySettings.closeOnOutsideClick`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=closeOnOutsideClick) property. Therefore, clicking on the host element will not fire any event. Additionally, this directive will set its host element as the overlay settings [`OverlaySettings.target`](mcp:get_api_reference?platform=angular&component=OverlaySettings&member=target).
 
 ### Automatic Toggle Service Provider
 

@@ -6,6 +6,7 @@ last_updated: "2025-04-06"
 mentionedTypes: []
 llms:
   description: "Ignite UI for Web Components is a complete set of UI widgets, components, and Figma UI kits for Web Components by Infragistics."
+platformType: xplat
 _tocName: Getting Started
 ---
 # Getting Started With Ignite UI for Web Components
@@ -60,7 +61,7 @@ In order to use the Ignite UI Web Components in your application you should inst
 npm install igniteui-webcomponents
 ```
 
-Next you will need to import the components that you want to use in your `index.ts` file. You could import one or more components using the [`IgcdefineComponents`](mcp:get_api_reference?platform=webcomponents&component=defineComponents) function like this:
+Next you will need to import the components that you want to use in your `index.ts` file. You could import one or more components using the `defineComponents` function like this:
 
 ```ts
 import { defineComponents, IgcAvatarComponent, IgcBadgeComponent } from 'igniteui-webcomponents';
@@ -68,7 +69,7 @@ import { defineComponents, IgcAvatarComponent, IgcBadgeComponent } from 'igniteu
 defineComponents(IgcAvatarComponent, IgcBadgeComponent);
 ```
 
-You could also import all of the components using the [`IgcdefineAllComponents`](mcp:get_api_reference?platform=webcomponents&component=defineAllComponents) function:
+You could also import all of the components using the `defineAllComponents` function:
 
 ```ts
 import { defineAllComponents } from 'igniteui-webcomponents';

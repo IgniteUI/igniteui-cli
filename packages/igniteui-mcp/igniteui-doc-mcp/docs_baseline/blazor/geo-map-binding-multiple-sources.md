@@ -1,11 +1,12 @@
 ---
 title: "Blazor Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
-description: Use Infragistics' Blazor JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Blazor map tutorials!
+description: Use Infragistics' Blazor map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Blazor map tutorials!
 keywords: "Blazor map, geographic series, Ignite UI for Blazor, Infragistics, data binding"
 license: commercial
 mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
 llms:
   description: "In the Ignite UI for Blazor map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
+platformType: xplat
 _tocName: Binding Multiple Sources
 _premium: true
 ---
@@ -62,19 +63,12 @@ You can use geographic series in this or other combinations to plot desired data
 Create data sources for all geographic series that you want to display in the Ignite UI for Blazor map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
 ```razor
-@code {
-
-    public List<WorldCity> Airports;
-    public List<FlightInfo> Flights;
-    public List<CoordinateLine> Coordinates;
-
-    protected override void OnInitialized()
-    {
-        Airports = WorldConnections.GetAirports();
-        Flights = WorldConnections.GetFlights();
-        Coordinates = WorldConnections.GetGridlines();
-    }
-}
+<IgbGeographicMap
+    @ref="geoMap"
+    Height="100%"
+    Width="100%"
+    Zoomable="true">
+</IgbGeographicMap>
 ```
 
 ## Overlaying Flights
@@ -82,10 +76,12 @@ Create data sources for all geographic series that you want to display in the Ig
 Create first [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) object with flight connections between major airports and add it to the Series collection of the Ignite UI for Blazor map.
 
 ```razor
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
-    <IgbGeographicPolylineSeries DataSource="Flights" ShapeMemberPath="Points"
-        ShapeStroke="rgba(196, 14, 14, 0.05)" ShapeStrokeThickness="4" />
-</IgbGeographicMap>
+<IgbGeographicPolylineSeries
+    @ref="lineSeries"
+    DataSource="WorldFlights"
+    ShapeMemberPath="Points"
+    ShapeStroke="rgba(196, 14, 14, 0.05)"
+    ShapeStrokeThickness="4" />
 ```
 
 ## Overlaying Gridlines
@@ -93,10 +89,12 @@ Create first [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blaz
 Create second [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicPolylineSeries) object with geographic gridlines and add it to the Series collection of the Ignite UI for Blazor map.
 
 ```razor
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
-    <IgbGeographicPolylineSeries DataSource="Coordinates" ShapeMemberPath="Points"
-        ShapeStroke="Gray" ShapeStrokeThickness="1" />
-</IgbGeographicMap>
+<IgbGeographicPolylineSeries
+    @ref="gridSeries"
+    DataSource="WorldGridlines"
+    ShapeMemberPath="Points"
+    ShapeStroke="Gray"
+    ShapeStrokeThickness="1" />
 ```
 
 ## Overlaying Airports
@@ -104,11 +102,15 @@ Create second [`IgbGeographicPolylineSeries`](mcp:get_api_reference?platform=bla
 Create [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&component=IgbGeographicSymbolSeries) object with airport points and add it to the Series collection of the geographic Ignite UI for Blazor map.
 
 ```razor
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
-    <IgbGeographicSymbolSeries DataSource="Airports" LatitudeMemberPath="Lat"
-        LongitudeMemberPath="Lon" MarkerType="MarkerType.Circle"
-        MarkerBrush="#AAD3DF" MarkerOutline="Black" Thickness="1" />
-</IgbGeographicMap>
+<IgbGeographicSymbolSeries
+    @ref="symbolSeries"
+    DataSource="WorldAirports"
+    LatitudeMemberPath="Lat"
+    LongitudeMemberPath="Lon"
+    MarkerType="MarkerType.Circle"
+    MarkerBrush="rgba(170, 211, 223, 1)"
+    MarkerOutline="rgba(73, 73, 73, 1)"
+    Thickness="1" />
 ```
 
 ## Summary
@@ -116,33 +118,33 @@ Create [`IgbGeographicSymbolSeries`](mcp:get_api_reference?platform=blazor&compo
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
 ```razor
-@using IgniteUI.Blazor.Controls
-
-
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true">
-    <IgbGeographicPolylineSeries DataSource="Flights" ShapeMemberPath="Points"
-        ShapeStroke="rgba(196, 14, 14, 0.05)" ShapeStrokeThickness="4" />
-    <IgbGeographicPolylineSeries DataSource="Coordinates" ShapeMemberPath="Points"
-        ShapeStroke="Gray" ShapeStrokeThickness="1">
-    </IgbGeographicPolylineSeries>
-    <IgbGeographicSymbolSeries DataSource="Airports" LatitudeMemberPath="Lat"
-        LongitudeMemberPath="Lon" MarkerType="MarkerType.Circle"
-        MarkerBrush="#AAD3DF" MarkerOutline="Black" Thickness="1" />
+<IgbGeographicMap
+    @ref="geoMap"
+    Height="100%"
+    Width="100%"
+    Zoomable="true">
+    <IgbGeographicPolylineSeries
+        @ref="lineSeries"
+        DataSource="WorldFlights"
+        ShapeMemberPath="Points"
+        ShapeStroke="rgba(196, 14, 14, 0.05)"
+        ShapeStrokeThickness="4" />
+    <IgbGeographicPolylineSeries
+        @ref="gridSeries"
+        DataSource="WorldGridlines"
+        ShapeMemberPath="Points"
+        ShapeStroke="Gray"
+        ShapeStrokeThickness="1" />
+    <IgbGeographicSymbolSeries
+        @ref="symbolSeries"
+        DataSource="WorldAirports"
+        LatitudeMemberPath="Lat"
+        LongitudeMemberPath="Lon"
+        MarkerType="MarkerType.Circle"
+        MarkerBrush="rgba(170, 211, 223, 1)"
+        MarkerOutline="rgba(73, 73, 73, 1)"
+        Thickness="1" />
 </IgbGeographicMap>
-
-@code {
-
-    private List<WorldCity> Airports;
-    private List<FlightInfo> Flights;
-    private List<CoordinateLine> Coordinates;
-
-    protected override void OnInitialized()
-    {
-        Airports = WorldConnections.GetAirports();
-        Flights = WorldConnections.GetFlights();
-        Coordinates = WorldConnections.GetGridlines();
-    }
-}
 ```
 
 ## API References

@@ -21,10 +21,6 @@ The React Badge demo shows how the component can communicate a compact status or
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
-igc-avatar {
-  --size: 40px;
-}
-
 igc-icon {
   color: var(--ig-gray-700);
   font-size: 1.5rem;
@@ -39,11 +35,11 @@ igc-badge {
 
 igc-badge::part(base),
 igc-badge igc-icon {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 igc-badge igc-icon {
-  fill: var(--ig-gray-50);
+  fill: #fff;
 }
 
 .avatar-example igc-badge {
@@ -53,16 +49,22 @@ igc-badge igc-icon {
 }
 
 .avatar-example igc-icon {
-  color: var(--ig-gray-50);
-  fill: var(--ig-gray-50);
+  color: #fff;
+  fill: #fff;
 }
 
 .event-example igc-chip {
   --ig-size: var(--ig-size-large);
+  --ig-chip-background: var(--ig-gray-300);
 }
 
 .event-example igc-chip::part(base) {
   border-radius: 999px;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
 }
 
 .event-example igc-badge {
@@ -76,7 +78,7 @@ igc-badge igc-icon {
 }
 
 .icon-example igc-badge::part(base) {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 .notification-example igc-badge {
@@ -111,6 +113,13 @@ igc-badge igc-icon {
   width: 2.5rem;
   height: 2.5rem;
 }
+
+.avatar-example {
+  min-width: auto;
+  min-height: auto;
+  width: fit-content;
+  height: fit-content;
+}
 ```
 ```tsx
 import React, { useEffect } from 'react';
@@ -139,7 +148,6 @@ export default function BadgeOverview(): JSX.Element {
         <IgrAvatar
           src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
           shape="circle"
-          size="small"
         />
         <IgrBadge outlined={true} variant="success">
           <IgrIcon name="check" collection="material" />
@@ -275,10 +283,6 @@ You can also project content directly. When projecting both an icon and text, wr
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
-igc-avatar {
-  --size: 40px;
-}
-
 igc-badge {
   --ig-size: var(--ig-size-small);
   position: absolute;
@@ -288,11 +292,11 @@ igc-badge {
 
 .badge-type igc-badge::part(base),
 .badge-type igc-badge igc-icon {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 .badge-type igc-badge igc-icon {
-  fill: var(--ig-gray-50);
+  fill: #fff;
 }
 
 .badge-type {
@@ -356,7 +360,6 @@ export default function BadgeType(): JSX.Element {
                     <IgrAvatar
                         src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
                         shape="circle"
-                        size="small"
                     />
                     <IgrBadge dot={true} outlined={true} variant="success" className="dot-badge" />
                 </div>
@@ -367,7 +370,6 @@ export default function BadgeType(): JSX.Element {
                     <IgrAvatar
                         src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
                         shape="circle"
-                        size="small"
                     />
                     <IgrBadge outlined={true} variant="success">
                         <IgrIcon name="check" collection="material" />
@@ -380,7 +382,6 @@ export default function BadgeType(): JSX.Element {
                     <IgrAvatar
                         src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
                         shape="circle"
-                        size="small"
                     />
                     <IgrBadge outlined={true} variant="success">
                         2
@@ -424,18 +425,12 @@ registerIconFromText(
 /* shared styles are loaded from: */
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 
-igc-avatar {
-    --size: 40px;
-    --ig-avatar-background: var(--ig-gray-400);
-    --ig-avatar-color: var(--ig-gray-800);
-}
-
 igc-badge igc-icon {
-    color: var(--ig-gray-50);
+    color: #fff;
 }
 
 .badge-star igc-icon {
-    color: var(--ig-gray-900);
+    color: #000000;
 }
 
 .icon-wrapper > igc-badge {
@@ -473,8 +468,10 @@ igc-badge igc-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
     gap: 6px;
     min-width: 56px;
+    min-height: 66px;
 }
 
 .badge-icon-item span {
@@ -491,10 +488,11 @@ igc-badge igc-icon {
 
 .avatar-wrapper {
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    width: fit-content;
+    height: fit-content;
 }
 ```
 ```tsx
@@ -549,7 +547,7 @@ export default function BadgeIcon(): JSX.Element {
             ))}
             <div className="badge-icon-item">
                 <div className="icon-wrapper avatar-wrapper">
-                    <IgrAvatar initials="AZ" shape="circle" size="small" />
+                    <IgrAvatar initials="AZ" shape="circle" />
                     <IgrBadge variant="danger" outlined={true}>
                         <IgrIcon name="close" collection="material" />
                     </IgrBadge>
@@ -582,10 +580,6 @@ Set the [`dot`](mcp:get_api_reference?platform=react&component=IgrBadge&member=d
 igc-badge {
 	--ig-size: var(--ig-size-small);
 	--ig-badge-dot-size: 0.5rem;
-}
-
-igc-avatar {
-	--size: 40px;
 }
 
 .icon-example igc-badge,
@@ -622,12 +616,18 @@ igc-avatar {
 }
 
 .icon-example,
-.avatar-example,
 .icon-circle {
 	display: flex;
 	align-items: center;
 	width: 36px;
 	height: 36px;
+}
+
+.avatar-example {
+	display: inline-flex;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
 }
 
 .icon-circle {
@@ -703,7 +703,7 @@ igc-avatar {
 }
 
 .nav-item.active {
-	color: var(--ig-primary-800);
+	color: var(--ig-primary-500);
 }
 
 .nav-icon {
@@ -773,7 +773,6 @@ export default function BadgeDot(): JSX.Element {
         <IgrAvatar
           src="https://dl.infragistics.com/x/img/avatars/avatar-profile-04.png"
           shape="circle"
-          size="small"
         />
         <IgrBadge dot={true} outlined={true} variant="danger" />
       </div>
@@ -816,11 +815,11 @@ igc-badge {
 
 igc-badge::part(base),
 igc-badge igc-icon {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 igc-badge igc-icon {
-  fill: var(--ig-gray-50);
+  fill: #fff;
 }
 
 .badge-size {
@@ -919,11 +918,11 @@ The badge component supports `rounded`(default) and `square` shapes. These value
 
 igc-badge::part(base),
 igc-badge igc-icon {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 igc-badge igc-icon {
-  fill: var(--ig-gray-50);
+  fill: #fff;
 }
 
 .badge-shape {
@@ -954,6 +953,14 @@ igc-badge igc-icon {
   letter-spacing: 0.3px;
 }
 
+.badge-large {
+  --ig-size: var(--ig-size-large);
+}
+
+.badge-medium {
+  --ig-size: var(--ig-size-medium);
+}
+
 .badge-small {
   --ig-size: var(--ig-size-small);
 }
@@ -977,20 +984,20 @@ export default function BadgeShape(): JSX.Element {
         <div className="badge-shape">
             <div className="badge-shape-row">
                 <span className="row-label">Rounded</span>
-                <IgrBadge variant="success" shape="rounded">
+                <IgrBadge variant="success" shape="rounded" className="badge-large">
                     <IgrIcon name="check" collection="material" />
                 </IgrBadge>
-                <IgrBadge variant="success" shape="rounded">2</IgrBadge>
+                <IgrBadge variant="success" shape="rounded" className="badge-medium">2</IgrBadge>
                 <IgrBadge variant="success" shape="rounded" className="badge-small">
                     <IgrIcon name="check" collection="material" />
                 </IgrBadge>
             </div>
             <div className="badge-shape-row">
                 <span className="row-label">Square</span>
-                <IgrBadge variant="info" shape="square">
+                <IgrBadge variant="info" shape="square" className="badge-large">
                     <IgrIcon name="check" collection="material" />
                 </IgrBadge>
-                <IgrBadge variant="info" shape="square">2</IgrBadge>
+                <IgrBadge variant="info" shape="square" className="badge-medium">2</IgrBadge>
                 <IgrBadge variant="info" shape="square" className="badge-small">
                     <IgrIcon name="check" collection="material" />
                 </IgrBadge>
@@ -1027,17 +1034,11 @@ igc-badge {
 
 .variant-item:not(:nth-child(4)) igc-badge::part(base),
 .variant-item:not(:nth-child(4)) igc-badge igc-icon {
-	color: var(--ig-gray-50);
+	color: #fff;
 }
 
 .variant-item:not(:nth-child(4)) igc-badge igc-icon {
-	fill: var(--ig-gray-50);
-}
-
-igc-avatar {
-	--ig-size: var(--ig-size-small);
-	--ig-avatar-background: var(--ig-gray-400);
-	--ig-avatar-color: var(--ig-gray-800);
+	fill: #fff;
 }
 
 .variant-item:first-child igc-avatar igc-icon,
@@ -1178,16 +1179,6 @@ igc-badge {
   --ig-size: var(--ig-size-small);
 }
 
-igc-avatar {
-  --size: 40px;
-  --ig-avatar-background: var(--ig-gray-400);
-  --ig-avatar-color: var(--ig-gray-800);
-}
-
-.outlined-example igc-avatar igc-icon {
-  color: var(--ig-gray-50);
-}
-
 .outlined-example:nth-child(2) igc-badge {
   inset-block-start: auto;
   inset-block-end: -6px;
@@ -1198,10 +1189,6 @@ igc-avatar {
   position: absolute;
   inset-block-start: -6px;
   inset-inline-end: -10px;
-}
-
-.icon-circle igc-icon {
-  font-size: 20px;
 }
 
 .badge-outlined {
@@ -1231,15 +1218,19 @@ igc-avatar {
   height: 36px;
   background: var(--ig-gray-200);
   color: var(--ig-gray-800);
+
+  igc-icon {
+    --ig-icon-size: 18px;
+  }
 }
 
 igc-badge::part(base),
 igc-badge igc-icon {
-  color: var(--ig-gray-50);
+  color: #fff;
 }
 
 igc-badge igc-icon {
-  fill: var(--ig-gray-50);
+  fill: #fff;
 }
 
 .steps {
@@ -1463,10 +1454,6 @@ igc-badge {
     transform: translate(-50%, -50%);
 }
 
-.styling-item igc-avatar {
-    --size: 40px;
-}
-
 .styling-item.green igc-avatar {
     --icon-color: var(--ig-success-900);
     --ig-avatar-background: var(--ig-success-200);
@@ -1589,12 +1576,6 @@ igc-badge {
     --ig-size: var(--ig-size-small);
 }
 
-igc-avatar {
-    --size: 40px;
-    --ig-avatar-background: var(--ig-gray-400);
-    --ig-avatar-color: var(--ig-gray-800);
-}
-
 igc-avatar igc-icon {
     color: var(--ig-gray-800);
 }
@@ -1683,13 +1664,13 @@ export default function BadgeTailwindStyling(): JSX.Element {
     return (
         <div className="badge-parent flex items-center justify-center !gap-12">
             <div className="relative flex">
-                <IgrAvatar initials="AZ" shape="rounded" size="small" />
+                <IgrAvatar initials="AZ" shape="rounded" />
                 <IgrBadge outlined={true} className="badge-style badge-close">
                     <IgrIcon name="close" collection="material" />
                 </IgrBadge>
             </div>
             <div className="relative flex">
-                <IgrAvatar shape="rounded" size="small">
+                <IgrAvatar shape="rounded">
                     <IgrIcon name="person" collection="material" />
                 </IgrAvatar>
                 <IgrBadge outlined={true} className="badge-style badge-volume">
@@ -1697,13 +1678,13 @@ export default function BadgeTailwindStyling(): JSX.Element {
                 </IgrBadge>
             </div>
             <div className="relative flex">
-                <IgrAvatar initials="AZ" shape="circle" size="small" />
+                <IgrAvatar initials="AZ" shape="circle" />
                 <IgrBadge outlined={true} className="badge-style badge-remove">
                     <IgrIcon name="remove" collection="material" />
                 </IgrBadge>
             </div>
             <div className="relative flex">
-                <IgrAvatar shape="square" size="small">
+                <IgrAvatar shape="square">
                     <IgrIcon name="person" collection="material" />
                 </IgrAvatar>
                 <IgrBadge outlined={true} className="badge-style badge-check">
@@ -1780,7 +1761,7 @@ The React Badge API reference lists the complete verified API surface for the ta
 
 ## Dependencies
 
-The React Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in **Getting Started**.
+The React Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in [**Getting Started**](../general-getting-started.md).
 
 ## Additional Resources
 

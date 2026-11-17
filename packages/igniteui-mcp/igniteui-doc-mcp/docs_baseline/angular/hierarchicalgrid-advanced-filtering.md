@@ -140,7 +140,7 @@ To enable the advanced filtering, the [`allowAdvancedFiltering`](mcp:get_api_ref
 </igx-hierarchical-grid>
 ```
 
-The advanced filtering generates a [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
+The advanced filtering generates a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) which is stored in the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) input property. You could use this property to set an initial state of the advanced filtering.
 
 ```TypeScript
 ngAfterViewInit(): void {
@@ -169,7 +169,7 @@ ngAfterViewInit(): void {
 }
 ```
 
-The advanced filtering in the `IgxHierarchicalGrid` can be used to filter root grid data based on child grids data using the _IN / NOT-IN_ operators. This way, subqueries can be created to define more complex filtering logic. More information about this functionality can be found in [`Query Builder's Using Sub-Queries section`](../query-builder-model.md#using-sub-queries). Here's a sample [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) with a subquery:
+The advanced filtering in the `IgxHierarchicalGrid` can be used to filter root grid data based on child grids data using the _IN / NOT-IN_ operators. This way, subqueries can be created to define more complex filtering logic. More information about this functionality can be found in [`Query Builder's Using Sub-Queries section`](../query-builder-model.md#using-sub-queries). Here's a sample [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) with a subquery:
 
 ```TypeScript
 ngAfterViewInit(): void {

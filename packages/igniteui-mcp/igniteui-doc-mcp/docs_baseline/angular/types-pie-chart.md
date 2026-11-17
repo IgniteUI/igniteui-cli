@@ -1,12 +1,13 @@
 ---
 title: "Angular Pie Charts and Graphs | Ignite UI for Angular"
-description: The Ignite UI for Angular pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections.  Try for FREE.
+description: The Ignite UI for Angular pie chart is a specialized UI control that renders a pie chart, consisting of a circular area divided into sections. Download free trial.
 keywords: "Angular charts, pie chart, Ignite UI for Angular, Infragistics, data binding, slice selection, slice explosion, animation"
 license: commercial
-mentionedTypes: ["PieChart", "DataChart"]
+mentionedTypes: ["PieChart", "DataChart", "SliceSelectionMode", "SelectedItemChangingEventArgs"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value."
+platformType: xplat
 _tocName: Pie Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Angular Pie Chart, or Pie Graph, is a part-to-whole chart that shows how categories (parts) of a data set add up to a total (whole) value. Categories are rendered as sections in a circular, or pie-shaped graph. Each section, or pie slice, has an arc length proportional to its underlying data value. Categories are shown in proportion to other categories based on their value percentage to the total value being analyzed, as parts of 100 or 100%.
 
 ## Angular Pie Chart Example
-You can create the Angular Pie Chart in the `IgxPieChart` by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
+You can create the Angular Pie Chart in the [`IgxPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent) by binding your data items with a string and a numeric data value. These data values will add up to a value of 100% of visualization. In this case, the example shows the overall breakdown of budget spend by department.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -159,9 +160,9 @@ Do Not Use Pie Chart When:
 ## Angular Pie Chart Legend
 Legends are used to show information about each point, to know about its contribution towards the total sum. You can collapse the point using legend click.
 
-In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the `Legend` property. The `LegendLabelMemberPath` can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
+In order to display a legend next to the pie chart an ItemLegend needs to be created and assigned to the [`IgxPieChartComponent.legend`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legend) property. The [`legendLabelMemberPath`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendLabelMemberPath) can then be used to specify which property on your data model it will use to display inside the legend for each pie slice.
 
-Additionally you can use the `LegendItemTemplate` and `LegendItemBadgeTemplate` properties and the various font properties on ItemLegend to further customize the look of the legend items.
+Additionally you can use the [`legendItemTemplate`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendItemTemplate) and [`legendItemBadgeTemplate`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=legendItemBadgeTemplate) properties and the various font properties on ItemLegend to further customize the look of the legend items.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -268,9 +269,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ## Angular Pie Chart Others Category
 Sometimes, the underlying data for the pie chart will contain many items with small values. In this case, the Others category will permit automatic aggregation of several data values into a single slice
 
-In the sample below, the `OthersCategoryThreshold` is set to 2, and `OthersCategoryType` is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
+In the sample below, the [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryThreshold) is set to 2, and [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryType) is set to Number. Therefore, items with value less than or equal to 2 will be assigned to the "Others" category.
 
-If you set `OthersCategoryType` to Percent, then `OthersCategoryThreshold` will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever `OthersCategoryType` is most appropriate for your application.
+If you set [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryType) to Percent, then [`othersCategoryThreshold`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryThreshold) will be interpreted as a percentage rather than as a value, i.e. items whose values are less than 2% of the sum of all item values would be assigned to the Others category. You can use whichever [`othersCategoryType`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=othersCategoryType) is most appropriate for your application.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -378,7 +379,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Pie Chart Explosion
-The pie chart supports explosion of individual pie slices as well as a `SliceClick` event that allows you to modify selection states and implement custom logic
+The pie chart supports explosion of individual pie slices as well as a [`sliceClick`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=sliceClick) event that allows you to modify selection states and implement custom logic
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -474,9 +475,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Pie Chart Selection
-The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the `SelectedItems` property. The selected slices are then highlighted.
+The pie chart supports slice selection by mouse click as the default behavior. You can determine the selected slices by using the [`selectedItems`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=selectedItems) property. The selected slices are then highlighted.
 
-There is a property called `SelectionMode` which is how you set what mode you want the pie chart to use. The default value is `Single`. In order to disable selection, set the property to `Manual`.
+There is a property called [`selectionMode`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=selectionMode) which is how you set what mode you want the pie chart to use. The default value is [`Single`](mcp:get_api_reference?platform=angular&component=SliceSelectionMode&member=Single). In order to disable selection, set the property to [`Manual`](mcp:get_api_reference?platform=angular&component=SliceSelectionMode&member=Manual).
 
 The pie chart supports three different selection modes.
 
@@ -490,9 +491,9 @@ The pie chart has 4 events associated with selection:
 - SelectedItemsChanging
 - SelectedItemsChanged
 
-The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property `Cancel` to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
+The events that end in "Changing" are cancelable events which means you can stop the selection of a slice by setting the event argument property [`cancel`](mcp:get_api_reference?platform=angular&component=IgxSelectedItemChangingEventArgs&member=cancel) to true. When set to true the associated property will not update and the slice will not become selected. This is useful for scenarios where you want to keep users from being able to select certain slices based on the data inside it.
 
-For scenarios where you click on the Others slice, the pie chart will return an object called `IgxPieSliceOthersContext`. This object contains a list of the data items contained within the Others slice.
+For scenarios where you click on the Others slice, the pie chart will return an object called [`IgxPieSliceOthersContext`](mcp:get_api_reference?platform=angular&component=IgxPieSliceOthersContext). This object contains a list of the data items contained within the Others slice.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -593,7 +594,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Angular Pie Chart Animation
-You can animate the pie chart smoothly by setting the `radiusFactor` property, which will scale the chart's radius. Also set the `startAngle` property to angle the chart such that it keep increasing the chart angle while rotating.
+You can animate the pie chart smoothly by setting the [`radiusFactor`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=radiusFactor) property, which will scale the chart's radius. Also set the [`startAngle`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent&member=startAngle) property to angle the chart such that it keep increasing the chart angle while rotating.
 
 In the code below, the radiusFactor is increasing the chart by 0.25% of the size, and startAngle is rotating the chart by 1 degree. When radiusFactor and startAngle reached to its maximum limit the animation is stopped by reset the animation flag and clear the interval.
 
@@ -1009,4 +1010,4 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 - [Radial Chart](radial-chart.md)
 
 ## API References
-`IgxPieChart`
+[`IgxPieChartComponent`](mcp:get_api_reference?platform=angular&component=IgxPieChartComponent)

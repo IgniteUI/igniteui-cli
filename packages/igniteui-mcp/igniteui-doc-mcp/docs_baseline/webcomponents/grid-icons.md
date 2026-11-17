@@ -13,9 +13,9 @@ _premium: true
 
 The Ignite UI for Web Components [`IgcGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcGridComponent) icons can be customized to use custom icons from a different collection set using the exposed API methods:
 
-- [`IgcregisterIconFromText`](mcp:get_api_reference?platform=webcomponents&component=registerIconFromText)
-- [`IgcregisterIcon`](mcp:get_api_reference?platform=webcomponents&component=registerIcon)
-- [`IgcsetIconRef`](mcp:get_api_reference?platform=webcomponents&component=setIconRef)
+- [`registerIconFromText`](mcp:get_api_reference?platform=webcomponents&component=registerIconFromText)
+- [`registerIcon`](mcp:get_api_reference?platform=webcomponents&component=registerIcon)
+- [`setIconRef`](mcp:get_api_reference?platform=webcomponents&component=setIconRef)
 
 Registering an icon caches it locally, so that it can reused between components, that reference that icon by name and collection name. Setting a reference changes which icon, from which collection, will be used when referencing that icon by name.
 

@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["ZoomSlider", "DataChart"]
 llms:
   description: "The Angular ZoomSlider control provides zooming functionality to range-enabled controls."
+platformType: xplat
 _tocName: Zoom Slider
 ---
 # Angular Zoom Slider Overview
@@ -14,7 +15,7 @@ The Angular ZoomSlider control provides zooming functionality to range-enabled c
 
 ## Angular Zoom Slider Example
 
-The following sample demonstrates how to use `IgxZoomSlider` to navigate content in `IgxDataChart`.
+The following sample demonstrates how to use [`IgxZoomSliderComponent`](mcp:get_api_reference?platform=angular&component=IgxZoomSliderComponent) to navigate content in [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent).
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -479,20 +480,18 @@ npm install --save igniteui-angular-charts
 
 ## Component Modules
 
-The `IgxZoomSlider` requires the following modules:
+The [`IgxZoomSliderComponent`](mcp:get_api_reference?platform=angular&component=IgxZoomSliderComponent) requires the following modules:
 
 ```ts
 import { IgxZoomSliderModule } from 'igniteui-angular-charts';
-import { IgxZoomSliderComponent } from 'igniteui-angular-charts';
-
+// ...
+// app.module.ts
 @NgModule({
     imports: [
-        // ...
-        IgxZoomSliderModule,
-        // ...
+    IgxZoomSliderModule
     ]
 })
-export class AppModule {}
+export class AppModule { }
 ```
 
 ## Code Snippet
@@ -501,8 +500,10 @@ The following code demonstrates how to setup the ZoomSlider.
 
 ```html
 <igx-zoom-slider
-  width="100%"
-  height="150px">
+    #zoomSlider
+    areThumbCalloutsEnabled="true"
+    height="100%"
+    width="100%">
 </igx-zoom-slider>
 ```
 
@@ -511,5 +512,5 @@ The following code demonstrates how to setup the ZoomSlider.
 You can find more information about charts in [Chart Features](./charts/chart-features.md) topic.
 
 ## API References
-`IgxZoomSlider`
-`IgxDataChart`
+[`IgxZoomSliderComponent`](mcp:get_api_reference?platform=angular&component=IgxZoomSliderComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

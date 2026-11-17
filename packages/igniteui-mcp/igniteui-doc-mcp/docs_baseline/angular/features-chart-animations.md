@@ -4,9 +4,11 @@ description: Infragistics' Angular Chart Animations
 keywords: Angular Charts, Animations, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "Animations allow you to ease-in the series as it loads a new data source."
+platformType: xplat
 _tocName: Chart Animations
 _premium: true
 ---
@@ -14,11 +16,11 @@ _premium: true
 
 Animations allow you to ease-in the series as it loads a new data source. The available animation differs depending on the type of series involved. For example, the column series animates by rising from the x-axis, a line series animates by drawing from the origin of y-axis.
 
-Animations are disabled in the Ignite UI for Angular Charts, but they can be enabled by setting the `IsTransitionInEnabled` property to true. From there, you can set the `TransitionInDuration` property to determine how long your animation should take to complete and the `TransitionInMode` to determine the type of animation that takes place.
+Animations are disabled in the Ignite UI for Angular Charts, but they can be enabled by setting the [`isTransitionInEnabled`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=isTransitionInEnabled) property to true. From there, you can set the [`transitionInDuration`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInDuration) property to determine how long your animation should take to complete and the [`transitionInMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInMode) to determine the type of animation that takes place.
 
 ## Angular Chart Animation Example
 
-The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default `TransitionInMode` - "Auto." The drop-down and slider at the top in this example will allow you to modify the `TransitionInMode` and `TransitionInDuration`, respectively, so that you can see what the different supported animations look like at different speeds.
+The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default [`transitionInMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInMode) - "Auto." The drop-down and slider at the top in this example will allow you to modify the [`transitionInMode`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInMode) and [`transitionInDuration`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=transitionInDuration), respectively, so that you can see what the different supported animations look like at different speeds.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -161,4 +163,4 @@ You can find more information about related chart features in these topics:
 - [Chart Tooltips](chart-tooltips.md)
 
 ## API References
-`IgxCategoryChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)

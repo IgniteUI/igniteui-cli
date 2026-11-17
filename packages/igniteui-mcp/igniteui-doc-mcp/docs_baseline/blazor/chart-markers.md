@@ -7,6 +7,7 @@ mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeri
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for Blazor, markers are visual elements that display the values of data points in the chart's plot area."
+platformType: xplat
 _tocName: Chart Markers
 _premium: true
 ---
@@ -16,9 +17,9 @@ In Ignite UI for Blazor, markers are visual elements that display the values of 
 
 ## Blazor Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=markerTypes) property to [`Circle`](mcp:get_api_reference?platform=blazor&component=MarkerType&member=Circle) enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`MarkerTypes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerTypes) property to [`MarkerType.Circle`](mcp:get_api_reference?platform=blazor&component=MarkerType&member=Circle) enum value.
 
-The colors of the markers are also managed by setting the [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=markerBrushes) and [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=markerOutlines) properties in the sample below. The markers and [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the [`MarkerBrushes`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerBrushes) and [`MarkerOutlines`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=MarkerOutlines) properties in the sample below. The markers and [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) is configurable in this sample by using the drop-downs as well.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -149,33 +150,40 @@ public class CountryRenewableElectricity
 
 ## Blazor Chart Marker Size
 
-You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
+You can control the exact device-independent pixel dimensions of data point markers by setting the [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbMarkerSeries&member=MarkerSize) property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
 
-By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
+By default, marker sizing is determined by the series marker template. When you set [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbMarkerSeries&member=MarkerSize) to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbMarkerSeries&member=MarkerSize) back to `NaN` restores the default template-driven sizing.
 
-The `MarkerSize` property is available on all series types that derive from `MarkerSeries`, including `LineSeries`, `SplineSeries`, `AreaSeries`, `ColumnSeries`, `ScatterSeries`, `ScatterLineSeries`, `ScatterSplineSeries`, and polar/radial series types.
+The [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbMarkerSeries&member=MarkerSize) property is available on all series types that derive from [`IgbMarkerSeries`](mcp:get_api_reference?platform=blazor&component=IgbMarkerSeries), including [`IgbLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbLineSeries), [`IgbSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbSplineSeries), [`IgbAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbAreaSeries), [`IgbColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbColumnSeries), [`IgbScatterSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSeries), [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries), [`IgbScatterSplineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterSplineSeries), and polar/radial series types.
 
-The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a `ScatterLineSeries` in the `XamDataChart` control:
+The following code examples show how to set [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbScatterSplineSeries&member=MarkerSize) to 30 device-independent pixels on a [`IgbScatterLineSeries`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries) in the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) control:
 
 ```razor
 <IgbDataChart>
+    <IgbNumericXAxis
+        @ref="xAxis" />
+    <IgbNumericYAxis
+        @ref="yAxis" />
     <IgbScatterLineSeries
-        MarkerSize="30"
-        MarkerType="Circle"
+        @ref="scatterLineSeries"
+        XAxisName="xAxis"
+        YAxisName="yAxis"
         XMemberPath="X"
         YMemberPath="Y"
-        XAxisName="xAxis"
-        YAxisName="yAxis" />
+        MarkerType="MarkerType.Circle"
+        MarkerSize="30" />
 </IgbDataChart>
 ```
 
-To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
+To reset markers to their default template-driven size, set [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries&member=MarkerSize) to `NaN` (or remove the attribute in markup):
 
 ```razor
-<IgbLineSeries MarkerSize="NaN" MarkerType="Circle" ... />
+<IgbLineSeries
+    MarkerType="MarkerType.Circle"
+    MarkerSize="NaN" />
 ```
 
-The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
+The following sample demonstrates [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbScatterLineSeries&member=MarkerSize) on scatter series with an interactive editor:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -424,19 +432,17 @@ public class CountryDemographicEurope
 ```
 
 **Note:** 
-For `BubbleSeries`, the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the `RadiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
+For [`IgbBubbleSeries`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries), the [`MarkerSize`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerSize) property does not override the bubble radius, which is controlled by the radius data column and the [`RadiusScale`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=RadiusScale). Bubble sizes remain entirely driven by the data and scale configuration.
 
 ## Blazor Chart Checkmark Marker Type
 
-The Ignite UI for Blazor charts include a `Checkmark` option in the `MarkerType` enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+The Ignite UI for Blazor charts include a [`MarkerType.Checkmark`](mcp:get_api_reference?platform=blazor&component=MarkerType&member=Checkmark) option. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
 
-You can apply the `Checkmark` marker type to an individual series by setting its `MarkerType` property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's `MarkerAutomaticBehavior` property to `MarkerAutomaticBehavior.Checkmark`.
-
-The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
+You can apply the [`Checkmark`](mcp:get_api_reference?platform=blazor&component=MarkerType&member=Checkmark) marker type to an individual series by setting its [`MarkerType`](mcp:get_api_reference?platform=blazor&component=MarkerType) property to [`MarkerType.Checkmark`](mcp:get_api_reference?platform=blazor&component=MarkerType&member=Checkmark). To use the checkmark shape for all series in the chart simultaneously, set the chart's [`MarkerAutomaticBehavior`](mcp:get_api_reference?platform=blazor&component=MarkerAutomaticBehavior) property to [`MarkerAutomaticBehavior.Checkmark`](mcp:get_api_reference?platform=blazor&component=MarkerAutomaticBehavior&member=Checkmark).
 
 ## Blazor Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  [`MarkerTemplate`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=markerTemplate) property of a series rendered in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the [`MarkerTemplate`](mcp:get_api_reference?platform=blazor&component=IgbBubbleSeries&member=MarkerTemplate) property of a series rendered in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control as it is demonstrated in example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls

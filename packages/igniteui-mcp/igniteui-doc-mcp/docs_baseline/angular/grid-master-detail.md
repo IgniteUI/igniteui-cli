@@ -274,10 +274,12 @@ Context of the template is the master record data, so that values from the maste
 ```html
     <igx-grid ... >
          <ng-template igxGridDetail let-dataItem>
-            <div *ngIf="dataItem.Category">
-                <header>{{dataItem.Category.CategoryName}}</header>
-                <span>{{dataItem.Category.Description}}</span>
-            </div>
+            @if (dataItem.Category) {
+                <div>
+                    <header>{{dataItem.Category.CategoryName}}</header>
+                    <span>{{dataItem.Category.Description}}</span>
+                </div>
+            }
         </ng-template>
     </igx-grid>
 ```
