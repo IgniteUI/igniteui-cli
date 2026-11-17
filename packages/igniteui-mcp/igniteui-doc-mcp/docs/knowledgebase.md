@@ -435,6 +435,10 @@ The model listed the **sample application's own classes** while the document bod
 
 **Rule: build the snippet emitter before exporting.** Since 2026-10-20 (igniteui-documentation #497) xplat `generate.mjs` exits with "no snippet emitter found" unless `docs/xplat/scripts/snippet-emitter/dist/snippet-api.cjs` exists: run `npm install && npm run build` in that folder. The CI action does this after the branch switch.
 
+**Rule: the xplat TOC gates entries with `include` as well as `exclude`.** Since igniteui-documentation #497 a node can carry `include` (an allowlist, checked first) and both lists accept the group aliases `Web`, `NonWeb` and `Xaml`. `scripts/lib/toc-index.ts` mirrors the docs repo's `src/lib/platform-groups.ts`; a new platform or group there has to be added here too.
+
+**Rule: placeholder pages are not exported.** Upstream sometimes lists a page in the TOC before writing it (`excel-library-working-with-grids.mdx`: a bare `TODO` body and a sample that does not exist). It compresses to frontmatter and headings, and `docs-db-counts-spec` then fails on a document under 200 characters. `export-docs.ts` skips any page with a standalone `TODO` line outside code fences and reports it as `Skipped (placeholder)`.
+
 **Rule: keep flat names stable.** The docs team keeps moving top-level Angular pages into `inputs/` and `layouts/` (badge, button-group and avatar on master; accordion, button, carousel and switch on vnext a week later), so pages there keep their bare file name instead of a `inputs-`/`layouts-` prefix. An explicit list of moved pages broke on the next move. Pages already prefixed in docfx (`inputs-color-editor`) are listed in `ANGULAR_DOCFX_PREFIXED`; `pivotgrid/` maps to `pivotGrid-`; xplat `grids/theming-grid` became `grids/grid/theming-grid` and is covered by a `theming-grid` alias. A rename otherwise shows up as delete + add and breaks aliases.
 
 **Rule: the first run after the switch is a full recompress.** Converted text differs from the old gulp/docfx output in nearly every file, so the diff step reports every doc as changed.

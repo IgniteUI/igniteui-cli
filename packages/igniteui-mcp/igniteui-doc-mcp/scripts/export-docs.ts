@@ -184,6 +184,14 @@ function stripImages(content: string): string {
   return content.replace(/!\[[^\]]*\]\([^)]*\)/g, "");
 }
 
+/**
+ * A page upstream lists in the TOC before writing it: its body is a bare TODO.
+ * Exported, it compresses to frontmatter and headings and ships as an empty doc.
+ */
+function isPlaceholder(content: string): boolean {
+  return /^[ \t]*TODO[ \t]*$/m.test(content.replace(/^(```|~~~)[\s\S]*?^\1[ \t]*$/gm, ""));
+}
+
 function rewriteMdxLinks(content: string): string {
   return content.replace(/(\]\([^)\s]+?)\.mdx(#[^)\s]*)?\)/g, "$1.md$2)");
 }
@@ -234,6 +242,7 @@ function main() {
     const writtenFiles = new Set<string>();
     const sidecar = new TocSidecar(framework, ROOT);
     let skipped = 0;
+    let placeholders = 0;
 
     for (const tocEntry of entries) {
       const entry = { ...tocEntry, name: resolveTokens(tocEntry.name, replacements).trim() };
@@ -246,6 +255,11 @@ function main() {
 
       let content = readFileSync(sourcePath, "utf-8").replace(/^﻿/, "");
       content = content.replace(/^<!--[\s\S]*?-->\s*/, "");
+      if (isPlaceholder(content)) {
+        console.error(`[WARN] Placeholder page skipped for toc entry "${entry.name}": ${entry.href}`);
+        placeholders++;
+        continue;
+      }
       content = convertMdx(content, options);
       content = stripImages(content);
       content = rewriteMdxLinks(content);
@@ -273,6 +287,7 @@ function main() {
     console.error(`\nDone!`);
     console.error(`  Files exported: ${writtenFiles.size}`);
     console.error(`  Skipped (not found): ${skipped}`);
+    console.error(`  Skipped (placeholder): ${placeholders}`);
     console.error(`  Samples: ${stats.samples}`);
     console.error(`  API links: ${stats.apiLinksResolved}/${stats.apiLinks} resolved (${resolvedPct}%)`);
     if (topUnresolved.length) {
