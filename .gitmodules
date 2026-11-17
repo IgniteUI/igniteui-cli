@@ -21,18 +21,23 @@
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/angular/igniteui-angular
 	url = https://github.com/IgniteUI/igniteui-angular.git
+	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/webcomponents/igniteui-webcomponents
 	url = https://github.com/IgniteUI/igniteui-webcomponents.git
+	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/react/igniteui-react
 	url = https://github.com/IgniteUI/igniteui-react.git
+	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/api-docs
 	url = https://github.com/IgniteUI/api-docs
+	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/blazor/igniteui-blazor
 	url = https://github.com/IgniteUI/igniteui-blazor.git
+	ignore = dirty
 [submodule "packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-documentation"]
 	path = packages/igniteui-mcp/igniteui-doc-mcp/common/igniteui-documentation
 	url = https://github.com/IgniteUI/igniteui-documentation
