@@ -183,10 +183,29 @@ jobs:
         working-directory: packages/igniteui-mcp/igniteui-doc-mcp
         run: npm run release:db
 
+      # A failing check does not stop the run: hours of compression are already paid
+      # for, and the PR is reviewed by a person. The output is carried in the artifact
+      # so the publish job can put it at the top of the PR description.
       - name: Verify document counts
         run: |
-          npx tsc spec/unit/docs-db-counts-spec.ts --target es6 --module commonjs --esModuleInterop --skipLibCheck
-          npx jasmine spec/unit/docs-db-counts-spec.js
+          set -uo pipefail
+          REPORT=packages/igniteui-mcp/igniteui-doc-mcp/dist/verify-report.txt
+          if {
+            npx tsc spec/unit/docs-db-counts-spec.ts --target es6 --module commonjs --esModuleInterop --skipLibCheck &&
+            npx jasmine --no-color spec/unit/docs-db-counts-spec.js
+          } > verify-output.txt 2>&1; then
+            cat verify-output.txt
+            exit 0
+          fi
+          cat verify-output.txt
+          head -n 200 verify-output.txt > "$REPORT"
+          echo "::warning title=Documentation database checks failed::docs-db-counts-spec reported failures. The PR is still opened; see its description."
+          {
+            echo "### :warning: Documentation database checks failed"
+            echo '```'
+            cat "$REPORT"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/upload-artifact@v7
         with:
@@ -195,6 +214,7 @@ jobs:
             packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
             packages/igniteui-mcp/igniteui-doc-mcp/docs_baseline
             packages/igniteui-mcp/igniteui-doc-mcp/data/group-summaries
+            packages/igniteui-mcp/igniteui-doc-mcp/dist/verify-report.txt
           retention-days: 5
 
   # The only job that writes to the repository. It opens a PR for review — nothing is
@@ -236,6 +256,10 @@ jobs:
           echo "Using DB: $DB"
           echo "Using baselines: $BASELINE"
 
+          # Present only when the assemble job's checks failed.
+          VERIFY=$(find artifact -type f -name verify-report.txt | head -1)
+          if [ -n "$VERIFY" ]; then cp "$VERIFY" "$RUNNER_TEMP/verify-report.txt"; fi
+
           cp "$DB" packages/igniteui-mcp/igniteui-doc-mcp/db/igniteui-docs.db
           # Kept in sync with the doc-mcp copy, as every prior doc-update commit has done.
           cp "$DB" packages/igniteui-mcp/docs-backend/docs-backend/igniteui-docs.db
@@ -272,20 +296,41 @@ jobs:
 
           git commit -m "chore(mcp): rebuild documentation database (${{ inputs.mode }})"
           git push origin "$BRANCH"
+
+          BODY="$RUNNER_TEMP/pr-body.md"
+          REPORT="$RUNNER_TEMP/verify-report.txt"
+          : > "$BODY"
+          if [ -f "$REPORT" ]; then
+            {
+              echo '> [!WARNING]'
+              echo '> `spec/unit/docs-db-counts-spec.ts` reported failures for this database. Review them before merging.'
+              echo
+              echo '```'
+              cat "$REPORT"
+              echo '```'
+              echo
+            } >> "$BODY"
+          fi
+          cat >> "$BODY" <<'EOF'
+          Automated rebuild of the Ignite UI documentation database.
+
+          | | |
+          |---|---|
+          | mode | `${{ inputs.mode }}` |
+          | frameworks | `${{ inputs.frameworks }}` |
+          | submodule branch | `${{ inputs.submodule_branch }}` |
+          | model | `${{ inputs.model || 'script default' }}` |
+          | run | [#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
+
+          EOF
+          if [ ! -f "$REPORT" ]; then
+            echo 'Document counts were verified by `spec/unit/docs-db-counts-spec.ts` before this PR was opened.' >> "$BODY"
+            echo >> "$BODY"
+          fi
+          echo 'Requires manual review and merge.' >> "$BODY"
+
           gh pr create \
             --base "${{ github.ref_name }}" \
             --head "$BRANCH" \
             --title "chore(mcp): rebuild documentation database" \
-            --body "Automated rebuild of the Ignite UI documentation database.
-
-          | | |
-          |---|---|
-          | mode | \`${{ inputs.mode }}\` |
-          | frameworks | \`${{ inputs.frameworks }}\` |
-          | submodule branch | \`${{ inputs.submodule_branch }}\` |
-          | model | \`${{ inputs.model || 'script default' }}\` |
-          | run | [#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
-
-          Document counts were verified by \`spec/unit/docs-db-counts-spec.ts\` before this PR was opened.
-
-          Requires manual review and merge."
+            --body-file "$BODY"
