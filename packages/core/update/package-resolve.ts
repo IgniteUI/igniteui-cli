@@ -68,6 +68,10 @@ export const FEED_WEBCOMPONENTS_SPREADSHEET = "@infragistics/igniteui-webcompone
 export const NPM_WEBCOMPONENTS_CHART_ADAPTER = "igniteui-webcomponents-spreadsheet-chart-adapter";
 export const FEED_WEBCOMPONENTS_CHART_ADAPTER = "@infragistics/igniteui-webcomponents-spreadsheet-chart-adapter";
 
+export const NPM_GRID_LITE = "igniteui-grid-lite";
+
+export const NPM_CLI = "igniteui-cli";
+
 /** packages map of `trial: licensed` names */
 export const UPGRADEABLE_PACKAGES = {
 	// angular
@@ -104,6 +108,19 @@ export const UPGRADEABLE_PACKAGES = {
 	[NPM_WEBCOMPONENTS_SPREADSHEET]: FEED_WEBCOMPONENTS_SPREADSHEET,
 	[NPM_WEBCOMPONENTS_CHART_ADAPTER]: FEED_WEBCOMPONENTS_CHART_ADAPTER
 };
+
+/** Ignite UI packages `ig update` updates together until they publish `ig-update.packageGroup`; licensed names count as their trial names */
+export const UPDATE_GROUPS: readonly (readonly string[])[] = [
+	[NPM_WEBCOMPONENTS, NPM_REACT, NPM_GRID_LITE],
+	[NPM_REACT_GRIDS, NPM_WEBCOMPONENTS_GRIDS],
+	[NPM_REACT_CORE, NPM_REACT_CHARTS, NPM_REACT_GAUGES, NPM_REACT_INPUTS, NPM_REACT_LAYOUTS, NPM_REACT_MAPS, NPM_REACT_EXCEL,
+		NPM_REACT_DATASOURCES, NPM_REACT_SPREADSHEET, NPM_REACT_SPREADSHEET_CHART_ADAPTER],
+	[NPM_WEBCOMPONENTS_CORE, NPM_WEBCOMPONENTS_CHARTS, NPM_WEBCOMPONENTS_GAUGES, NPM_WEBCOMPONENTS_INPUTS, NPM_WEBCOMPONENTS_LAYOUTS,
+		NPM_WEBCOMPONENTS_MAPS, NPM_WEBCOMPONENTS_EXCEL, NPM_WEBCOMPONENTS_DATASOURCES, NPM_WEBCOMPONENTS_SPREADSHEET,
+		NPM_WEBCOMPONENTS_CHART_ADAPTER, NPM_WEBCOMPONENTS_FDC3],
+	[NPM_DOCK_MANAGER, NPM_REACT_DOCK_MANAGER],
+	[NPM_CLI]
+];
 
 export function resolvePackage(packageName: keyof typeof UPGRADEABLE_PACKAGES) {
 	const fs = App.container.get<IFileSystem>(FS_TOKEN);

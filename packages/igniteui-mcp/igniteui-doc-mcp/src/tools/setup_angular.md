@@ -82,6 +82,17 @@ Once the project is running:
 3. Call `get_api_reference` or `search_api` to look up properties, methods, and events.
 4. Apply theming via the **igniteui-theming MCP** before or after adding components.
 
+**Use the next paragraph only if the user explicitly asks to update packages to newer versions.**
+
+## Update Packages
+
+Use `ng update`, or `ig update`, which runs the project's `ng update` with the given packages and options. Do not use `upgrade-packages` to update package versions.
+
+```bash
+ig update                    # list the available updates
+ig update igniteui-angular   # update Ignite UI for Angular and apply its migrations
+```
+
 **Use the next paragraph only if the user explicitly asks to upgrade to licensed packages or switch from trial to licensed.**
 
 ## Upgrade to Licensed Packages
