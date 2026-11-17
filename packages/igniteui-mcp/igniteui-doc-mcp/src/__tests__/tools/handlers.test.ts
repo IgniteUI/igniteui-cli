@@ -24,6 +24,8 @@ function makeLoader(overrides: Partial<ApiDocLoader> = {}): ApiDocLoader {
     search: vi.fn().mockReturnValue([]),
     load: vi.fn(),
     getStats: vi.fn(),
+    getPackageVersions: (entry: DocEntry) =>
+      entry.package ? [entry.version ? `${entry.package}@${entry.version}` : entry.package] : [],
     ...overrides,
   } as unknown as ApiDocLoader;
 }
@@ -312,6 +314,68 @@ describe('createGetApiReferenceHandler', () => {
       expect(result.content[0].text).toContain('.checked (property)');
       expect(result.content[0].text).not.toContain('**click()**');
     });
+  });
+});
+
+describe('package version in API results', () => {
+  const versioned = () =>
+    makeEntry({
+      package: 'igniteui-angular',
+      version: '22.2.6',
+      content: '### [IgxGridComponent](url)\n\n## Properties\n- **rowSelection**: `string` — Row selection mode.\n',
+    });
+
+  it('get_api_reference names the package and version for the full entry', async () => {
+    const handler = createGetApiReferenceHandler(makeLoader({ get: vi.fn().mockReturnValue(versioned()) }));
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+    expect(result.content[0].text).toMatch(/^Package: igniteui-angular@22\.2\.6\n\n### \[IgxGridComponent\]/);
+  });
+
+  it('get_api_reference names the package and version for a section', async () => {
+    const handler = createGetApiReferenceHandler(makeLoader({ get: vi.fn().mockReturnValue(versioned()) }));
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'properties' });
+    expect(result.content[0].text).toMatch(/^Package: igniteui-angular@22\.2\.6\n\n# IgxGridComponent \(angular\) - properties/);
+  });
+
+  it('get_api_reference names the package and version for a single member', async () => {
+    const handler = createGetApiReferenceHandler(makeLoader({ get: vi.fn().mockReturnValue(versioned()) }));
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all', member: 'rowSelection' });
+    expect(result.isError).toBeUndefined();
+    expect(result.content[0].text).toMatch(/^Package: igniteui-angular@22\.2\.6\n\nIgxGridComponent\.rowSelection/);
+  });
+
+  it('get_api_reference names the bare package when the snapshot has no version', async () => {
+    const entry = { ...versioned(), version: undefined };
+    const handler = createGetApiReferenceHandler(makeLoader({ get: vi.fn().mockReturnValue(entry) }));
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+    expect(result.content[0].text).toMatch(/^Package: igniteui-angular\n\n/);
+  });
+
+  it('get_api_reference adds no package line when the entry has no package', async () => {
+    const handler = createGetApiReferenceHandler(makeLoader({ get: vi.fn().mockReturnValue(makeEntry()) }));
+    const result = await handler({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+    expect(result.content[0].text).not.toContain('Package:');
+  });
+
+  it('attributes the entry to its source package and lists the others separately', async () => {
+    const loader = makeLoader({
+      get: vi.fn().mockReturnValue(versioned()),
+      search: vi.fn().mockReturnValue([versioned()]),
+      getPackageVersions: () => ['IgniteUI.Blazor.Lite@1.0.1', 'IgniteUI.Blazor@26.1.98'],
+    });
+    const result = await createGetApiReferenceHandler(loader)({ platform: 'angular', component: 'IgxGridComponent', section: 'all' });
+    expect(result.content[0].text).toMatch(
+      /^Package: IgniteUI\.Blazor\.Lite@1\.0\.1\nAlso in: IgniteUI\.Blazor@26\.1\.98 \(the entry there can differ\)\n\n### /
+    );
+
+    const search = await createSearchApiHandler(loader)({ query: 'rowSelection' });
+    expect(search.content[0].text).toContain('[class] [IgniteUI.Blazor.Lite@1.0.1; also in IgniteUI.Blazor@26.1.98] (');
+  });
+
+  it('search_api tags each hit with its package and version', async () => {
+    const handler = createSearchApiHandler(makeLoader({ search: vi.fn().mockReturnValue([versioned()]) }));
+    const result = await handler({ query: 'rowSelection' });
+    expect(result.content[0].text).toContain('**IgxGridComponent** [angular] [class] [igniteui-angular@22.2.6] (');
   });
 });
 

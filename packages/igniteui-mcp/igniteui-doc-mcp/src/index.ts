@@ -12,7 +12,7 @@ import { RemoteDocsProvider } from "./providers/RemoteDocsProvider.js";
 import { LocalDocsProvider } from "./providers/LocalDocsProvider.js";
 import { getApiReferenceSchema, resolveImportSchema, searchApiSchema } from "./tools/schemas.js";
 import { createGetApiReferenceHandler, createResolveImportHandler, createSearchApiHandler } from "./tools/handlers.js";
-import { buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
+import { addPackageVersions, buildProjectSetupGuide, formatSubstitutionNotice, resolveDoc, sanitizeSearchDocsQuery } from "./tools/doc-tools.js";
 import { ApiDocLoader } from "./lib/api-doc-loader.js";
 import { ImportResolver } from "./lib/import-resolver.js";
 import { getPlatforms } from "./config/platforms.js";
@@ -118,7 +118,7 @@ function registerApiTools(server: McpServer, docLoader: ApiDocLoader) {
   );
 }
 
-function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
+function registerDocTools(server: McpServer, docsProvider: DocsProvider, docLoader: ApiDocLoader) {
   server.registerTool(
     "list_components",
     {
@@ -181,7 +181,9 @@ function registerDocTools(server: McpServer, docsProvider: DocsProvider) {
     },
     async ({ framework, name }) => {
       const start = performance.now();
-      const { text, found, servedName, fuzzy } = await resolveDoc(docsProvider, framework, name);
+      const resolved = await resolveDoc(docsProvider, framework, name);
+      const { found, servedName, fuzzy } = resolved;
+      const text = addPackageVersions(resolved.text, framework, docLoader);
 
       const served = fuzzy ? `${formatSubstitutionNotice(name, servedName)}\n\n${text}` : text;
       // Some docs (sparkline, excel-library) still show deprecated components in their samples.
@@ -296,7 +298,7 @@ async function main() {
     appendFileSync(LOG_PATH, `[${new Date().toISOString()}] Server starting in ${mode} mode\n\n`);
   }
 
-  registerDocTools(server, docsProvider);
+  registerDocTools(server, docsProvider, docLoader);
   registerApiTools(server, docLoader);
 
   const transport = new StdioServerTransport();
