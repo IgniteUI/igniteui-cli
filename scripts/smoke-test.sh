@@ -43,7 +43,7 @@ Usage: scripts/smoke-test.sh [options]
 NOTES
   jquery  13 of its templates pull ignite-ui-full from the Infragistics ProGet feed and
           need credentials; it also has no build script, so only scaffold+add+install run.
-  blazor  needs the .NET SDK and has no component templates; only scaffold+dotnet build.
+  blazor  needs the .NET SDK and has no component templates; only scaffold+doctor+dotnet build.
   wizard  scripts/smoke-wizard.mjs answers the prompts over a pipe, so the CLI sees no TTY and
           skips the AI config prompts (defaults apply) and Blazor's "Run the app now";
           spec/acceptance/wizard-spec.ts covers those. The wizard itself runs npm install.
@@ -223,6 +223,24 @@ add_template() {
 }
 
 # install_and_build <framework> <dirName> -> 0 ok
+# a freshly scaffolded and installed project must have no failing checks; warnings are fine
+run_doctor() {
+	local fw="$1" dir="$2" cwd="$OUT/$2"
+	local start=$SECONDS
+	# Blazor Server hosting has no root .sln/.slnx for doctor to detect the project from
+	if [ "$fw" = "blazor" ] && [ -z "$(find "$cwd" -maxdepth 1 \( -name '*.sln' -o -name '*.slnx' \) -print -quit)" ]; then
+		cwd="$cwd/$dir"
+	fi
+	if run_cli "$cwd" "$LOGS/$dir-doctor.log" doctor --offline; then
+		record "$fw" "doctor" "$dir" "PASS" "$((SECONDS - start))"
+		echo "  ✓ ig doctor"
+		return 0
+	fi
+	record "$fw" "doctor" "$dir" "FAIL" "$((SECONDS - start))"
+	echo "  ✗ ig doctor  (see $LOGS/$dir-doctor.log)"
+	return 1
+}
+
 install_and_build() {
 	local fw="$1" dir="$2"
 	local start rc doctor_failed=0
@@ -233,6 +251,7 @@ install_and_build() {
 	fi
 
 	if [ "$fw" = "blazor" ]; then
+		run_doctor "$fw" "$dir" || doctor_failed=1
 		start=$SECONDS
 		# Server hosting has no root .sln/.slnx; the .csproj sits in <dir>/<dir>/
 		(cd "$OUT/$dir" && if [ -n "$(find . -maxdepth 1 \( -name '*.sln' -o -name '*.slnx' \) -print -quit)" ]; then
@@ -241,7 +260,8 @@ install_and_build() {
 		rc=$?
 		[ $rc -eq 0 ] && record "$fw" "build" "$dir" "PASS" "$((SECONDS - start))" \
 			|| record "$fw" "build" "$dir" "FAIL" "$((SECONDS - start))"
-		return $rc
+		[ $rc -ne 0 ] && return $rc
+		return $doctor_failed
 	fi
 
 	start=$SECONDS
@@ -255,16 +275,7 @@ install_and_build() {
 	record "$fw" "install" "$dir" "PASS" "$((SECONDS - start))"
 	echo "  ✓ npm install"
 
-	# a freshly scaffolded and installed project must have no failing checks; warnings are fine
-	start=$SECONDS
-	if run_cli "$OUT/$dir" "$LOGS/$dir-doctor.log" doctor --offline; then
-		record "$fw" "doctor" "$dir" "PASS" "$((SECONDS - start))"
-		echo "  ✓ ig doctor"
-	else
-		doctor_failed=1
-		record "$fw" "doctor" "$dir" "FAIL" "$((SECONDS - start))"
-		echo "  ✗ ig doctor  (see $LOGS/$dir-doctor.log)"
-	fi
+	run_doctor "$fw" "$dir" || doctor_failed=1
 
 	if ! (cd "$OUT/$dir" && node -e "process.exit(require('./package.json').scripts.build ? 0 : 1)") 2>/dev/null; then
 		record "$fw" "build" "$dir" "SKIP" "0"
