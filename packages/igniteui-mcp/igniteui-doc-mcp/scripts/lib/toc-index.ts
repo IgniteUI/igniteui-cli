@@ -30,6 +30,7 @@ export interface TocNode {
   header?: boolean;
   premium?: boolean;
   exclude?: string[];
+  include?: string[];
   items?: TocNode[];
 }
 
@@ -61,6 +62,25 @@ export function buildGroupKey(section: string, groupLabel: string): string {
 
 function buildPath(section: string, ancestors: string[]): string {
   return [section, ...ancestors].filter((p) => p !== "").join(" > ");
+}
+
+/** Group aliases from igniteui-documentation src/lib/platform-groups.ts. */
+const PLATFORM_GROUPS: Record<string, string[]> = {
+  Web: ["Angular", "React", "WebComponents", "Blazor"],
+  NonWeb: ["WinUI", "Uno"],
+  Xaml: ["WinUI", "Uno"],
+};
+
+function expandPlatforms(names: unknown): string[] {
+  if (!Array.isArray(names)) return [];
+  return names.flatMap((name) => PLATFORM_GROUPS[name] ?? [name]);
+}
+
+/** `include` is an allowlist checked first, `exclude` then removes from what is left. */
+function emitsFor(platform: string, node: TocNode): boolean {
+  const include = expandPlatforms(node.include);
+  if (include.length > 0 && !include.includes(platform)) return false;
+  return !expandPlatforms(node.exclude).includes(platform);
 }
 
 function walk(nodes: TocNode[], opts: WalkOptions): TocEntry[] {
@@ -98,7 +118,7 @@ function walk(nodes: TocNode[], opts: WalkOptions): TocEntry[] {
     for (const node of items) {
       const excluded =
         parentExcluded ||
-        (platform !== undefined && Array.isArray(node.exclude) && node.exclude.includes(platform));
+        (platform !== undefined && !emitsFor(platform, node));
 
       if (node.header === true) {
         // Rule 1 — update the section even when excluded, then reset the
@@ -136,7 +156,7 @@ function walk(nodes: TocNode[], opts: WalkOptions): TocEntry[] {
   return entries;
 }
 
-/** Walk a parsed `toc.json`, honouring per-platform `exclude` when `excludePlatform` is set. */
+/** Walk a parsed `toc.json`, honouring per-platform `include`/`exclude` when `excludePlatform` is set. */
 export function walkTocJson(nodes: TocNode[], opts: WalkOptions = {}): TocEntry[] {
   return walk(nodes, opts);
 }

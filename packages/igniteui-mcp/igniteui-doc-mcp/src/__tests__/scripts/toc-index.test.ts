@@ -214,6 +214,19 @@ describe("walkTocJson — platform exclusion", () => {
     expect(entries[0].groupKey).toBe("Grids");
   });
 
+  it("treats include as an allowlist and expands group aliases", () => {
+    const toc: TocNode[] = [
+      { name: "Web only", href: "web.md", include: ["Web"] },
+      { name: "Native only", href: "native.md", include: ["NonWeb"] },
+      { name: "Blazor only", href: "blazor.md", include: ["Blazor"] },
+      { name: "Web without React", href: "no-react.md", include: ["Web"], exclude: ["React"] },
+      { name: "Not native", href: "not-native.md", exclude: ["NonWeb"] },
+    ];
+    const hrefs = (platform: string) => walkTocJson(toc, { excludePlatform: platform }).map((e) => e.href);
+    expect(hrefs("React")).toEqual(["web.md", "not-native.md"]);
+    expect(hrefs("Blazor")).toEqual(["web.md", "blazor.md", "no-react.md", "not-native.md"]);
+  });
+
   it("walks with no exclusion when no platform is given", () => {
     expect(walkTocJson(XPLAT_TOC).map((e) => e.href)).toContain("general-nuget-feed.md");
   });

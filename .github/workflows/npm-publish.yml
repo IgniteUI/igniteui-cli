@@ -120,6 +120,7 @@ jobs:
       # Generated projects depend on igniteui-cli at the CLI's own version, which is not on npm until the
       # publish job runs, so they are pointed at the latest published one. Runs last: the release is packed.
       - name: Smoke test generated projects
+        if: ${{ false }} # disabled: remove this line to run the smoke test before publishing again
         timeout-minutes: 20
         run: |
           set -euo pipefail

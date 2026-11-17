@@ -215,7 +215,7 @@ npm run validate:webcomponents   # LLM-as-Judge quality scoring
 
 ### export-docs.ts
 
-Exports one framework from the `common/igniteui-documentation` submodule: runs its generate scripts, converts each TOC-listed `.mdx` page to markdown and writes flat files with TOC metadata to the processing directory. The Angular sync step writes into the submodule's source tree; the script restores those files afterwards so the submodule can still be pulled.
+Exports one framework from the `common/igniteui-documentation` submodule: runs its generate scripts, converts each TOC-listed `.mdx` page to markdown and writes flat files with TOC metadata to the processing directory. The docs repo's `generate.mjs` needs its snippet emitter built first (`npm install && npm run build` in `common/igniteui-documentation/docs/xplat/scripts/snippet-emitter`). Angular pages shared with xplat are read in place from `docs/xplat/generated/Angular`, the same overlay the Angular site uses. The Angular generate step writes grid topics into the submodule's source tree; the script restores those files afterwards so the submodule can still be pulled.
 
 ```bash
 npm run export:angular
