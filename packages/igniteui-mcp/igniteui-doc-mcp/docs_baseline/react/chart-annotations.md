@@ -4,9 +4,11 @@ description: Infragistics' React Chart Annotations
 keywords: React Charts, Annotations, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "CategoryChart", "CrosshairLayer", "FinalValueLayer", "CalloutLayer"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The React chart's hover interactions and annotations are implemented through hover interaction layers, which are series that are added to the series collection."
+platformType: xplat
 _tocName: Chart Annotations
 _premium: true
 ---
@@ -149,7 +151,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<CategoryChartLineChartWithAnnotations/>);
 ```
 
-Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for React toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download free trial.</a>
 
 ## React Crosshair Layer
 
@@ -160,11 +162,11 @@ Crosshair types include:
 - Vertical
 - Both
 
-The chart's crosshairs can also be configured to snap to data points by setting the `CrosshairsSnapToData` property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
+The chart's crosshairs can also be configured to snap to data points by setting the `crosshairsSnapToData` property to true, otherwise the crosshairs will be interpolated between data points. Annotations can also be enabled to display the crosshair's value along the axis.
 
-You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the `TargetSeries` property.
+You can configure the crosshair layer so that the layer will only display on one specific series, as by default they will target all series in the chart control. To achieve this, set the `targetSeries` property.
 
-By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the `Brush` property of the Crosshair Layer.
+By default, the color of the crosshair lines is a lighter color than the series that it is interacting with. However, this default setting can be overridden so that you can select a color that will be used for the crosshair lines. This is done by setting the `IgrCrosshairLayer.brush` property of the Crosshair Layer.
 
 The following example shows how to configure the crosshair layer but targeting a single series, setting the type to vertical and styling the brush color.
 
@@ -266,13 +268,13 @@ root.render(<DataChartCrosshairLayerStyling/>);
 
 The `IgrFinalValueLayer` of the `IgrDataChart` control provides a quick view along the axis of the ending value displayed in a series.
 
-You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the `TargetSeries` property.
+You can configure this annotation to target a specific series if you want to have multiple final value layers present with different configurations. This can be done be setting the `targetSeries` property.
 
 You can also customize this annotation by setting the following properties:
 
-- `AxisAnnotationBackground`: This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- `AxisAnnotationTextColor`: This property is used to choose the brush for the annotation's text color.
-- `AxisAnnotationOutline`: This property is used to choose the brush for the annotation's outline color.
+- `axisAnnotationBackground`: This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- `axisAnnotationTextColor`: This property is used to choose the brush for the annotation's text color.
+- `axisAnnotationOutline`: This property is used to choose the brush for the annotation's outline color.
 
 The following example demonstrates how to style the final value layer annotation by setting the properties listed above.
 
@@ -375,9 +377,13 @@ root.render(<DataChartFinalValueLayerStyling/>);
 ```
 
 ```tsx
- <IgrCategoryChart
-    dataSource={this.state.data}
-    finalValueAnnotationsVisible={true} />
+<IgrCategoryChart
+    ref={this.chartRef}
+    dataSource={this.temperatureAnnotatedData}
+    finalValueAnnotationsVisible={true}
+    finalValueAnnotationsBackground="DodgerBlue"
+    finalValueAnnotationsTextColor="White"
+    finalValueAnnotationsPrecision={0} />
 ```
 
 ## React Callout Layer
@@ -386,17 +392,17 @@ The `IgrCalloutLayer` displays annotations from existing or new data on the char
 
 Use the callout annotations to display additional information, such as notes or specific details about data points, that you would like to point out to your users.
 
-You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the `TargetSeries` property.
+You can configure the callouts to target a specific series if you want to have multiple callout layers present with different configurations. This can be done by setting the `targetSeries` property.
 
 You can also customize this annotation by setting the following properties:
 
-- `CalloutLeaderBrush`: This property is used to choose the brush for the leader lines for the callouts for the layer.
-- `CalloutOutline`: This property is used to choose the brush for the annotation's outline color.
-- `CalloutBackground`: This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
-- `CalloutTextColor`: This property is used to choose the brush for the annotation's text color.
-- `CalloutStrokeThickness`: This property is used to choose the thickness for the callout backing.
-- `CalloutCornerRadius`: This property is used to curve the corners of the callouts.
-- `AllowedPositions`: This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
+- `calloutLeaderBrush`: This property is used to choose the brush for the leader lines for the callouts for the layer.
+- `calloutOutline`: This property is used to choose the brush for the annotation's outline color.
+- `calloutBackground`: This property is used to choose the brush for the annotation's background color. The default is to use the series brush.
+- `calloutTextColor`: This property is used to choose the brush for the annotation's text color.
+- `calloutStrokeThickness`: This property is used to choose the thickness for the callout backing.
+- `calloutCornerRadius`: This property is used to curve the corners of the callouts.
+- `allowedPositions`: This property is used to choose which positions that the callout layer is allowed to use. eg. top, bottom
 
 The following example demonstrates how to style the callout layer annotations by setting the properties listed above:
 
@@ -533,13 +539,19 @@ root.render(<Sample/>);
 ```
 
 ```tsx
- <IgrCategoryChart
-    dataSource={this.state.data}
+<IgrCategoryChart
+    ref={this.chartRef}
+    dataSource={this.temperatureAnnotatedData}
     calloutsVisible={true}
-    calloutsDataSource={this.state.calloutData}
+    calloutsDataSource={this.temperatureAnnotatedData}
     calloutsXMemberPath="index"
-    calloutsYMemberPath="value"
-    calloutsLabelMemberPath="info" />
+    calloutsYMemberPath="temperature"
+    calloutsLabelMemberPath="tempInfo"
+    calloutsAllowedPositions="Top, Bottom" />
+```
+
+```tsx
+this.chartRef = this.chartRef.bind(this);
 ```
 
 ## API References

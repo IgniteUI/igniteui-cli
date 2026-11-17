@@ -1,17 +1,18 @@
 ---
 title: "Angular Charts & Graphs Library | Ignite UI for Angular"
-description: "Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts for your web and mobile apps. Try for FREE."
+description: "Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts for your web, mobile and desktop apps. Download free trial."
 keywords: "Angular Charts, Chart, Infragistics"
 license: commercial
 mentionedTypes: ["DomainChart", "FinancialChart", "CategoryChart", "DataChart", "CategoryChartType"]
 llms:
-  description: "Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts and dashboards for your web and mobile apps."
+  description: "Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts and dashboards for your web, mobile and desktop apps."
+platformType: xplat
 _tocName: Charts
 _premium: true
 ---
 # Angular Charts & Graphs Overview
 
-Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts and dashboards for your web and mobile apps. Built for speed and beauty, designed to work on every modern browser, and with complete touch and interactivity, you can quickly and easily build responsive visuals into your next app on any device.
+Ignite UI for Angular Charts & Graphs is an extensive library of data visualizations that enable stunning, interactive charts and dashboards for your web, mobile and desktop apps. Built for speed and beauty, designed to work on every modern platform, and with complete touch and interactivity, you can quickly and easily build responsive visuals into your next app on any device.
 
 The Ignite UI for Angular Charts support over 65 types of series and combinations that let you visualize any type of data, including Category Series, Financial Series, Polar Series, Radial Series, Range Series, Scatter Series, Shape Series, and Geospatial Series. No matter the type of comparison you are doing, or what type of data story you are trying to tell, you can represent your data in any of these ways:
 
@@ -28,7 +29,7 @@ Power your most demanding visualizations with Infragistics Angular charting!
 
 ## Angular Chart and Graph Types
 
-The Angular product has over 65 different chart and graph types for any scenario – from a single chart display to an interactive dashboard. You can create Angular charts like Pie, Bar, Area, Line, Point, Stacked, Donut, Scatter, Gauge, Polar, Treemap, Stock, Financial, Geospatial Maps and more for your mobile or web apps. The benefit of our Angular chart vs. others is full support for features like:
+The Angular product has over 65 different chart and graph types for any scenario – from a single chart display to an interactive dashboard. You can create Angular charts like Pie, Bar, Area, Line, Point, Stacked, Donut, Scatter, Gauge, Polar, Treemap, Stock, Financial, Geospatial Maps and more for your web, mobile and desktop apps. The benefit of our Angular chart vs. others is full support for features like:
 
 - Responsive Web Design built in
 - Interactive Panning and Zooming with Mouse, Keyboard and Touch
@@ -47,7 +48,7 @@ Choosing these specific domain charts allows to simplify the API and draw a lot 
 
 Domain charts are using a data chart at its core; so the same performance optimizations apply to both. The difference lies in whether they are trying to make things very easy to specify for the developer, or to be as flexible as possible. Angular Data Chart is more verbose, unlocking all of our charting capabilities you need, allowing you to mix and match of any number of series, axes or annotation for example. For the category and financial charts, there might be a situation that cannot be easily done that the data chart is more suited for, such as a series with a scatter series with a numeric x axis.
 
-It can be difficult to know which chart to pick at first. It's crucial to understand the type of series and how many additional features you want to present. For a more light-weight basic category or financial series, we recommend using one of the domain charts. For more advances scenarios we recommend using Angular Data Chart, such as presenting something other than what is covered by the category chart's `CategoryChart.ChartType` property such as a stacked or scatter series, or numeric or time-based data. It's worth noting that the Angular Financial Chart covers only column, OHLC bar, candlestick, and line series types.
+It can be difficult to know which chart to pick at first. It's crucial to understand the type of series and how many additional features you want to present. For a more light-weight basic category or financial series, we recommend using one of the domain charts. For more advances scenarios we recommend using Angular Data Chart, such as presenting something other than what is covered by [`IgxCategoryChartComponent.chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType), such as a stacked or scatter series, or numeric or time-based data. It's worth noting that the Angular Financial Chart covers only column, OHLC bar, candlestick, and line series types.
 
 We make Angular Category and Financial Chart easier to use, the good news you can always switch to data chart in the future.
 
@@ -2185,6 +2186,6 @@ If you are considering any other Angular Charts on the market, here are a few th
 - We offer the world's first, and only, end-to-end comprehensive design to code platform for UX Designers, Visual Designers, and Developers that will generate pixel-perfect Angular controls from Figma designs. With Indigo.Design, everything you craft in Figma from our Indigo Design System matches to our Ignite UI for Angular controls.
 
 ## API References
-`IgxCategoryChart`
-`IgxDataChart`
-`IgxFinancialChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)

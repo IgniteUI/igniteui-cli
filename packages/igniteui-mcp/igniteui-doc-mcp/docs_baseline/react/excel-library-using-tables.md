@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "WorksheetTable", "Worksheet", "SortSettings"]
 llms:
   description: "The Infragistics React Excel Engine's WorksheetTable functionality allows you to format your data in rows and columns The data in a worksheet table can be managed independently from the data in the other rows and columns in a Worksheet."
+platformType: xplat-unmapped
 _tocName: Using Tables
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Infragistics React Excel Engine's `IgrWorksheetTable` functionality allows you to format your data in rows and columns The data in a worksheet table can be managed independently from the data in the other rows and columns in a `IgrWorksheet`.
 
 ## Adding a Table to a Worksheet
-Worksheet tables in the Infragistics React Excel Engine are represented by the `IgrWorksheetTable` object and are added in the worksheet's `Tables` collection. In order to add a table, you need to invoke the `Add` method on this collection. In this method, you can specify the region in which you would like to add a table, whether or not the table should contain headers, and optionally, specify the table's style as a `IgrWorksheetTableStyle` object.
+Worksheet tables in the Infragistics React Excel Engine are represented by the `IgrWorksheetTable` object and are added in the worksheet's `Tables` collection. In order to add a table, you need to invoke the `IgrWorkbook.add` method on this collection. In this method, you can specify the region in which you would like to add a table, whether or not the table should contain headers, and optionally, specify the table's style as a `IgrWorksheetTableStyle` object.
 
 The following code demonstrates how you can add a table with headers to a `IgrWorksheet` spanning a region of A1 to G10, where A1 to G1 will be the column headers:
 
@@ -53,7 +54,7 @@ table.resize("A1:G15");
 ## Filtering Tables
 Filtering is done by applying a filter on a column in the `IgrWorksheetTable`. When the filter is applied on a column, all filters in the table will be reevaluated to determine which rows meet the criteria of all filters applied.
 
-If the data in the table is subsequently changed or you change the `Hidden` property of the rows, the filter conditions will not automatically reevaluate. The filter conditions in a table are only reapplied when table column filters are added, removed, modified, or when the `ReapplyFilters` method is called on the table.
+If the data in the table is subsequently changed or you change the `IgrWorkbook.hidden` property of the rows, the filter conditions will not automatically reevaluate. The filter conditions in a table are only reapplied when table column filters are added, removed, modified, or when the `ReapplyFilters` method is called on the table.
 
 The following are the filter types available to the columns of your `IgrWorksheetTable`:
 

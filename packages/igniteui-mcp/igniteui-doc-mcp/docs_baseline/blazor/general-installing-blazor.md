@@ -19,7 +19,7 @@ There are three ways to install Ignite UI for Blazor using NuGet:
 Licensed users should use the official licensed Ignite UI for Blazor NuGet packages provided on the [Infragistics Private NuGet Feed](./general-nuget-feed.md).
 
 **Note:** 
-Trial users can install the **IgniteUI.Blazor** trial NuGet package found on [NuGet.org](https://www.nuget.org/packages/IgniteUI.Blazor).
+Trial users can install the **IgniteUI.Blazor.Trial** NuGet package found on [NuGet.org](https://www.nuget.org/packages/IgniteUI.Blazor.Trial).
 
 ## Using Visual Studio
 

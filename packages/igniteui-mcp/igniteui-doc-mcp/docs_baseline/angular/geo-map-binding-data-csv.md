@@ -7,6 +7,7 @@ mentionedTypes: ["GeographicMap", "GeographicHighDensityScatterSeries"]
 namespace: Infragistics.Controls.Maps
 llms:
   description: "With the Ignite UI for Angular map component, you can plot geographic data loaded from various file types."
+platformType: xplat
 _tocName: Binding CSV File
 _premium: true
 ---
@@ -152,105 +153,66 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 Here is an example of data from CSV file:
 
 ```csv
-City,Lat,Lon,State,Code,County,Density,Population
-New York,40.7856,-74.0093,New Jersey,NJ,Hudson,21057,54227
-Dundee,42.5236,-76.9775,New York,NY,Yates,579,1650
+CityName,Lat,Lon,Population
+New York,40.6943,-73.9249,19354922
+Los Angeles,34.1139,-118.4068,12815475
 ```
 
 ## Code Snippet
-The following code loads and binds `IgxGeographicHighDensityScatterSeries` in the map component to an array of objects created from loaded CSV file with geographic locations.
+The following code loads and binds [`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent) in the map component to an array of objects created from loaded CSV file with geographic locations.
 
 ```html
-<div class="sampleRoot" >
-<igx-geographic-map #map
-    width="700px"
-    height="500px"
-    zoomable="true" >
+<igx-geographic-map
+    #geoMap
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igx-geographic-map>
-</div>
-
-<ng-template let-series="series" let-item="item" #template>
-    <div>
-        <span>
-            County: {{item.county}}
-        </span>
-    <br/>
-        <span>
-            Population: {{item.density}} K
-        </span>
-    </div>
-</ng-template>
 ```
 
 ```ts
-import { AfterViewInit, Component, TemplateRef, ViewChild } from "@angular/core";
-import { IgxGeographicHighDensityScatterSeriesComponent } from "igniteui-angular-maps";
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-
-@Component({
-  selector: "app-map-binding-geographic-csv_files",
-  styleUrls: ["./map-binding-geographic-csv_files.component.scss"],
-  templateUrl: "./map-binding-geographic-csv_files.component.html"
-})
-
-export class MapBindingDataCsvComponent implements AfterViewInit {
-
-    @ViewChild ("map")
-    public map: IgxGeographicMapComponent;
-    @ViewChild("template")
-    public tooltip: TemplateRef<object>;
-    constructor() {
-    }
-
-    public ngAfterViewInit(): void {
-        this.componentDidMount();
-    }
-
-    public componentDidMount() {
-        // fetching JSON data with geographic locations from public folder
-        fetch("assets/Data/UsaCities.csv")
-            .then((response) => response.text())
-            .then((data) => this.onDataLoaded(data));
-    }
-
-    public onDataLoaded(csvData: string) {
-        const csvLines = csvData.split("\n");
-
+var map = this.geoMap;
+var url = "https://static.infragistics.com/xplatform/data/UsaCitiesPopulation.csv";
+fetch(url)
+    .then((response) => response.text())
+    .then((csvData: string) => {
+        var csvLines = csvData.split("\n");
+        var geoLocations: any[] = [];
         // parsing CSV data and creating geographic locations
-        const geoLocations: any[] = [];
-        for (let i = 1; i < csvLines.length; i++) {
-            const columns = csvLines[i].split(",");
-            const location = {
-                code: columns[4],
-                county: columns[5],
-                density: Number(columns[6]),
-                latitude:  Number(columns[1]),
+        for (var i = 1; i < csvLines.length; i++) {
+            var columns = csvLines[i].split(",");
+            if (columns.length < 4) continue;
+            geoLocations.push({
+                name: columns[0],
+                latitude: Number(columns[1]),
                 longitude: Number(columns[2]),
-                name:  columns[0],
-                population: Number(columns[7]),
-                state: columns[3]
-            };
-            geoLocations.push(location);
+                population: Number(columns[3])
+            });
         }
+        // creating the series with the loaded data
+        var series = new IgxGeographicHighDensityScatterSeriesComponent();
+        series.name = "hdSeries";
+        series.dataSource = geoLocations;
+        series.latitudeMemberPath = "latitude";
+        series.longitudeMemberPath = "longitude";
+        series.heatMaximumColor = "Red";
+        series.heatMinimumColor = "Black";
+        series.heatMinimum = 0;
+        series.heatMaximum = 5;
+        series.pointExtent = 1;
+        series.mouseOverEnabled = true;
+        // adding the series to the geographic map
+        map.series.add(series);
 
-        // creating HD series with loaded data
-        const geoSeries = new IgxGeographicHighDensityScatterSeriesComponent();
-        geoSeries.dataSource = geoLocations;
-        geoSeries.latitudeMemberPath  = "latitude";
-        geoSeries.longitudeMemberPath = "longitude";
-        geoSeries.heatMaximumColor = "Red";
-        geoSeries.heatMinimumColor = "Black";
-        geoSeries.heatMinimum = 0;
-        geoSeries.heatMaximum = 5;
-        geoSeries.pointExtent = 1;
-        geoSeries.tooltipTemplate = this.tooltip;
-        geoSeries.mouseOverEnabled = true;
-
-        // adding symbol series to the geographic amp
-        this.map.series.add(geoSeries);
-    }
-}
+        // zooming to the bounds of the lower 48 states
+        map.zoomToGeographic({
+            left: -130,
+            top: 15,
+            width: Math.abs(-130 + 65),
+            height: Math.abs(50 - 15)
+        });
+    });
 ```
 
 ## API References
-`IgxGeographicHighDensityScatterSeries`
+[`IgxGeographicHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxGeographicHighDensityScatterSeriesComponent)

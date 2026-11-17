@@ -41,6 +41,10 @@ The Web Components Breadcrumbs component is a pair of elements - a container tha
     --igd-anatomy-padding: 0px;
   }
 
+  [id^="cw-"][id*="breadcrumbs-dropdown"][id$="-example"] .igd-sample-frame {
+    height: 90%;
+  }
+
   [id^="cw-"][id*="breadcrumbs-states"][id$="-example"] .igd-sample-frame {
     width: 90%;
   }
@@ -218,6 +222,57 @@ igc-breadcrumbs {
 
 In Right-to-Left layouts, the separator icon is mirrored automatically without additional configuration, so a right-pointing chevron becomes left-pointing without changing the icon name.
 
+### Dropdown integration
+
+The Breadcrumbs component can be used in conjunction with the [Dropdown](../inputs/dropdown.md) component to provide additional navigation options for each breadcrumb item. This allows users to quickly access related pages or actions directly from the breadcrumb trail.
+
+```css
+/* shared styles are loaded from: */
+/* https://dl.infragistics.com/x/css/samples/shared.v8.css */
+
+.sample {
+    display: flex;
+    justify-content: center;
+    font-family: var(--ig-font-family);
+}
+
+[slot="target"] {
+    color: var(--text-color);
+
+    &:hover {
+        color: var(--hover-text-color);
+        cursor: pointer;
+    }
+
+    &:focus {
+        color: var(--focus-text-color);
+    }
+}
+
+igc-dropdown-item[selected] {
+    background: var(--background-color);
+    outline: none;
+    color: var(--item-text-color);
+
+    igc-icon {
+        color: var(--item-icon-color);
+    }
+
+    &:hover {
+        background: var(--hover-item-background);
+        color: var(--hover-item-text-color);
+
+        igc-icon {
+            color: var(--hover-item-icon-color);
+        }
+    }
+}
+
+igc-icon {
+    --ig-size: 2;
+}
+```
+
 ### Size
 
 Control the Breadcrumbs size by setting the `--ig-size` variable to one of three options: `--ig-size-small`, `--ig-size-medium`, or `--ig-size-large`. This can be used to adjust the text and icon sizes within the breadcrumbs, along with their paddings.
@@ -243,7 +298,7 @@ Control the Breadcrumbs size by setting the `--ig-size` variable to one of three
 .sample {
     display: flex;
     justify-content: center;
-    font-family: "Aktiv Grotesk", sans-serif;
+    font-family: var(--ig-font-family);
 }
 
 span {
@@ -251,6 +306,7 @@ span {
     width: 3.75rem;
     margin-inline-end: 2rem;
     font-size: 0.875rem;
+    font-family: "Aktiv Grotesk", sans-serif;
 }
 
 nav {
@@ -292,7 +348,6 @@ Breadcrumbs support various visual states such as `hover`, `focus`, `pressed`, a
 
     a {
         color: var(--focus-text-color);
-        text-decoration: underline var(--focus-underline-color);
     }
 }
 
@@ -313,7 +368,6 @@ Breadcrumbs support various visual states such as `hover`, `focus`, `pressed`, a
 
     a {
         color: var(--focus-hover-text-color);
-        text-decoration: underline var(--focus-hover-underline-color);
     }
 }
 
@@ -324,7 +378,6 @@ Breadcrumbs support various visual states such as `hover`, `focus`, `pressed`, a
 
     a {
         color: var(--focus-pressed-text-color);
-        text-decoration: underline var(--focus-pressed-underline-color);
     }
 }
 
@@ -338,18 +391,56 @@ Breadcrumbs support various visual states such as `hover`, `focus`, `pressed`, a
     }
 }
 
+[data-igd-theme="material"] {
+    .state-focused-pressed a,
+    .state-focused-hover a,
+    .state-focused a {
+        text-decoration: underline var(--focus-pressed-underline-color);
+    }
+} 
+
+[data-igd-theme="fluent"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) { 
+        outline: .0625rem solid var(--focus-border-color);
+    }
+}
+
+[data-igd-theme="bootstrap"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) {
+        outline: .25rem solid var(--focus-border-color);
+        border-radius: 0.25rem;
+    }
+}
+
+[data-igd-theme="indigo"] {
+    .state-focused-pressed::part(label),
+    .state-focused-hover::part(label),
+    .state-focused::part(label) {
+        outline: .1875rem solid var(--focus-border-color);
+        border-radius: 2rem;
+    }
+
+    .state-disabled igc-icon {
+        opacity: 0.2;
+    }
+}
 
 .sample {
     display: flex;
     justify-content: center;
     max-height: 15rem;
-    font-family: "Aktiv Grotesk", sans-serif;
+    font-family: var(--ig-font-family);
 }
 
 span {
     color: #7d8a96;
     font-size: 0.875rem;
     margin-block-end: 1rem;
+    font-family: "Aktiv Grotesk", sans-serif;
 }
 
 nav {
@@ -500,6 +591,22 @@ The Web Components Breadcrumbs appearance is controlled through CSS variables, C
 | `label` | The container wrapping the prefix, default, and suffix slots. |
 | `separator` | The container wrapping the separator slot content. |
 
+### CSS Variables
+
+Set component CSS variables directly when you need local styling without a Sass build step.
+
+```css
+igc-breadcrumbs {
+  --ig-breadcrumb-text-color: var(--ig-primary-50);
+  --ig-breadcrumb-icon-color: var(--ig-primary-200);
+  --ig-breadcrumb-separator-color: var(--ig-gray-200);
+}
+
+igc-breadcrumb::part(label) {
+  padding-inline: 0.25rem;
+}
+```
+
 ### Sass Theming
 
 Use the `breadcrumb-theme` function for customizing the appearance of the Breadcrumbs through Sass.
@@ -514,22 +621,6 @@ $my-breadcrumb-theme: breadcrumb-theme(
 
 :root {
   @include tokens($my-breadcrumb-theme);
-}
-```
-
-### CSS Variables
-
-Set component CSS variables directly when you need local styling without a Sass build step.
-
-```css
-igc-breadcrumbs {
-  --ig-breadcrumb-text-color: var(--ig-primary-50);
-  --ig-breadcrumb-icon-color: var(--ig-primary-200);
-  --ig-breadcrumb-separator-color: var(--ig-gray-200);
-}
-
-igc-breadcrumb::part(label) {
-  padding-inline: 0.25rem;
 }
 ```
 

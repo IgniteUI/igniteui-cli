@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "ColumnSeries", "W
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights."
+platformType: xplat
 _tocName: Column Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Blazor Column Char, Column Graph, or Vertical Bar Chart is amo
 
 ## Blazor Column Chart Example
 
-You can create Blazor Column Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) to **Column** enum, as shown in the example below:
+You can create Blazor Column Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) to **Column** enum, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -140,7 +141,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Column** value, as shown in the example below:
+You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -219,7 +220,7 @@ public class TemperatureAverageData
 
 ## Blazor Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting the [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Column** value, as shown in the example below:
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1185,7 +1186,7 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = **Column** |
+| Column              | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)    | [`ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = **Column** |
 | Radial Column       | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRadialColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialColumnSeries) |
 | Range Column        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbRangeColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeColumnSeries) |
 | Stacked Column      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)     | [`IgbStackedColumnSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedColumnSeries) |

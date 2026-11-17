@@ -442,7 +442,7 @@ $splitter-theme: splitter-theme(
 
 ### Styling with Tailwind
 
-You can style the splitter using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the splitter using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -501,7 +501,7 @@ Or you can use the universal `--ig-splitter-size` variable to target all instanc
 <hr/>
 - [`IgxSplitter`](mcp:get_api_reference?platform=angular&component=IgxSplitterComponent)
 - [`IgxSplitterPane`](mcp:get_api_reference?platform=angular&component=IgxSplitterPaneComponent)
-- [`IgxSplitterType`](mcp:get_api_reference?platform=angular&component=SplitterType)
+- [`SplitterType`](mcp:get_api_reference?platform=angular&component=SplitterType)
 - `IgxSplitterComponent Styles`
 <hr/>
 ## Theming Dependencies

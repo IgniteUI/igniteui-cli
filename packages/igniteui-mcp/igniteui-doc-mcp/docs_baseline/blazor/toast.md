@@ -43,17 +43,19 @@ Take a look at the simple Ignite UI for Blazor Toast example below. The animated
 
 ### How To Use Ignite UI for Blazor Toast Notification
 
-Before using the Blazor [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbToastModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbToastModule`](mcp:get_api_reference?platform=blazor&component=IgbToastModule), the client resource module of the [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbToastModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 For a complete introduction to the Ignite UI for Blazor, read the [**Getting Started**](../general-getting-started.md) topic.
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+You will also need to link an additional CSS file to apply the styling to the [`IgbToast`](mcp:get_api_reference?platform=blazor&component=IgbToast) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />

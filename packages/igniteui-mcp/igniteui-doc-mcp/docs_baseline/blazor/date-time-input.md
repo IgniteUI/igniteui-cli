@@ -16,7 +16,7 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 @using IgniteUI.Blazor.Controls
 
 <div class="container vertical">
-    <IgbDateTimeInput @ref="DateTimeInputRef">
+    <IgbDateTimeInput TValue="DateTime?" @ref="DateTimeInputRef">
         <IgbIcon IconName="clear" Collection="myIcons" slot="prefix" @onclick="OnClear"></IgbIcon>
         <IgbIcon IconName="up" Collection="myIcons" slot="suffix" @onclick="OnStepUp"></IgbIcon>
         <IgbIcon IconName="down" Collection="myIcons" slot="suffix" @onclick="OnStepDown"></IgbIcon>
@@ -27,7 +27,7 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 
 @code {
 
-    IgbDateTimeInput? DateTimeInputRef;
+    IgbDateTimeInput<DateTime?>? DateTimeInputRef;
     IgbIcon? RegisterIconRef;
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -63,15 +63,17 @@ The Ignite UI for Blazor Date Time Input allows the user to set and edit the dat
 
 ## Usage
 
-Before using the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbDateTimeInputModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbDateTimeInputModule`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInputModule), the client resource module of the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbDateTimeInputModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -142,7 +144,7 @@ If all went well, you should see the following in your browser:
 
 
 <div class="container vertical">
-    <IgbDateTimeInput @ref="DateTimeInputRef" InputFormat="dd-MM-yy" DisplayFormat="medium">
+    <IgbDateTimeInput TValue="DateTime?" @ref="DateTimeInputRef" InputFormat="dd-MM-yy" DisplayFormat="medium">
         <IgbIcon IconName="clear" Collection="myIcons" slot="prefix" @onclick="OnClear"></IgbIcon>
         <IgbIcon IconName="up" Collection="myIcons" slot="suffix" @onclick="OnStepUp"></IgbIcon>
         <IgbIcon IconName="down" Collection="myIcons" slot="suffix" @onclick="OnStepDown"></IgbIcon>
@@ -151,7 +153,7 @@ If all went well, you should see the following in your browser:
 </div>
 
 @code {
-    IgbDateTimeInput? DateTimeInputRef;
+    IgbDateTimeInput<DateTime?>? DateTimeInputRef;
     IgbIcon? RegisterIconRef;
 
     protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -251,7 +253,7 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 
 <div class="container vertical">
-    <IgbDateTimeInput @ref="DateTimeInputRef" Min="@MinDate" Max="@MaxDate">
+    <IgbDateTimeInput TValue="DateTime?" @ref="DateTimeInputRef" Min="@MinDate" Max="@MaxDate">
         <IgbIcon IconName="clear" Collection="myIcons" slot="prefix" @onclick="OnClear"></IgbIcon>
         <IgbIcon IconName="up" Collection="myIcons" slot="suffix" @onclick="OnStepUp"></IgbIcon>
         <IgbIcon IconName="down" Collection="myIcons" slot="suffix" @onclick="OnStepDown"></IgbIcon>
@@ -260,7 +262,7 @@ If all went well, the component will be `invalid` if the value is greater or low
 </div>
 
 @code {
-    IgbDateTimeInput? DateTimeInputRef;
+    IgbDateTimeInput<DateTime?>? DateTimeInputRef;
     IgbIcon? RegisterIconRef;
 
     DateTime MinDate = new DateTime(2021, 1, 1);
@@ -298,7 +300,7 @@ If all went well, the component will be `invalid` if the value is greater or low
 
 ## Step up/down
 
-The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=stepDown) methods. They increment or decrement a specific [`IgbDatePart`](mcp:get_api_reference?platform=blazor&component=DatePart) of the currently set date and time and can be used in a couple of ways.
+The [`IgbDateTimeInput`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=stepDown) methods. They increment or decrement a specific [`DatePart`](mcp:get_api_reference?platform=blazor&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
 In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=blazor&component=IgbDateTimeInput&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
@@ -311,7 +313,7 @@ Try it in the example below:
 
 
 <div class="container vertical">
-    <IgbDateTimeInput @ref="DateTimeInputRef" SpinDelta="@SpinDelta">
+    <IgbDateTimeInput TValue="DateTime?" @ref="DateTimeInputRef" SpinDelta="@SpinDelta">
         <IgbIcon IconName="clear" Collection="myIcons" slot="prefix" @onclick="OnClear"></IgbIcon>
         <IgbIcon IconName="up" Collection="myIcons" slot="suffix" @onclick="OnStepUp"></IgbIcon>
         <IgbIcon IconName="down" Collection="myIcons" slot="suffix" @onclick="OnStepDown"></IgbIcon>
@@ -320,7 +322,7 @@ Try it in the example below:
 </div>
 
 @code {
-    IgbDateTimeInput? DateTimeInputRef;
+    IgbDateTimeInput<DateTime?>? DateTimeInputRef;
     IgbIcon? RegisterIconRef;
 
     IgbDatePartDeltas SpinDelta = new IgbDatePartDeltas()
@@ -397,7 +399,7 @@ igc-date-time-input {
 
 
 <div class="container vertical">
-    <IgbDateTimeInput @ref="DateTimeInputRef" SpinDelta="@SpinDelta">
+    <IgbDateTimeInput TValue="DateTime?" @ref="DateTimeInputRef" SpinDelta="@SpinDelta">
         <IgbIcon IconName="clear" Collection="myIcons" slot="prefix" @onclick="OnClear"></IgbIcon>
         <IgbIcon IconName="up" Collection="myIcons" slot="suffix" @onclick="OnStepUp"></IgbIcon>
         <IgbIcon IconName="down" Collection="myIcons" slot="suffix" @onclick="OnStepDown"></IgbIcon>
@@ -406,7 +408,7 @@ igc-date-time-input {
 </div>
 
 @code {
-    IgbDateTimeInput? DateTimeInputRef;
+    IgbDateTimeInput<DateTime?>? DateTimeInputRef;
     IgbIcon? RegisterIconRef;
 
     IgbDatePartDeltas SpinDelta = new IgbDatePartDeltas()

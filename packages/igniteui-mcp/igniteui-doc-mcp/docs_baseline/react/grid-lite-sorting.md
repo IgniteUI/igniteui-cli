@@ -798,7 +798,7 @@ const getTimeStamp = (): string => `[${new Date().toLocaleTimeString()}]`;
 // Define cellTemplate function outside component
 const ratingCellTemplate = (ctx: any) => {
   return (
-    <IgrRating readonly={true} step={0.01} value={ctx.value}></IgrRating>
+    <IgrRating readOnly={true} step={0.01} value={ctx.value}></IgrRating>
   );
 };
 
@@ -882,7 +882,7 @@ root.render(<GridLiteSortConfigEvents/>);
 
 In cases where sorting must be done remotely or you want to save the current state/data to a server somewhere, the Grid Lite exposes a hook where you can implement and customize this behavior.
 
-Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a [`IgrDataPipelineParams`](mcp:get_api_reference?platform=react&component=DataPipelineParams) object.
+Using the `dataPipelineConfiguration` property, you can provide a custom hook which will be called each time a sort operation is about to run. The callback is passed a [`DataPipelineParams`](mcp:get_api_reference?platform=react&component=DataPipelineParams) object.
 
 ```typescript
 export type DataPipelineParams<T extends object> = {
@@ -1110,7 +1110,7 @@ import "./index.css";
 // Define cellTemplate function outside component
 const ratingCellTemplate = (ctx: any) => {
   return (
-    <IgrRating readonly={true} step={0.01} value={ctx.value}></IgrRating>
+    <IgrRating readOnly={true} step={0.01} value={ctx.value}></IgrRating>
   );
 };
 

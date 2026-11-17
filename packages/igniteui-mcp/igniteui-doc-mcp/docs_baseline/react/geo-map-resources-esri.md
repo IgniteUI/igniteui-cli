@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of an utility that helps with using ArcGISOnlineMapImagery provided by Esri Maps in GeographicMap."
+platformType: xplat
 _tocName: Esri Utility
 _premium: true
 ---

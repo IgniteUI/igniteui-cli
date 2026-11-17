@@ -630,7 +630,7 @@ In the following sample we disable all **secondary labels** by setting [`seconda
 </igx-slider>
 ```
 
-We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation) to [`IgxTickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation)
+We also rotate all viable labels by setting the [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation) to [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=TickLabelsOrientation)
 
 ```typescript
 ... 
@@ -1046,7 +1046,7 @@ $custom-slider-theme: slider-theme(
 
 ### Styling with Tailwind
 
-You can style the `slider` using our custom Tailwind utility classes. Make sure to [set up Tailwind](../themes/misc/tailwind-classes.md) first.
+You can style the `slider` using our custom Tailwind utility classes. Make sure to [set up Tailwind](../themes/tailwind.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 
@@ -1117,7 +1117,7 @@ export class SliderTailwindStylingComponent {
 - [`IgxSlider`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent)
 - `IgxSliderComponent Styles`
 - `SliderType`
-- [`IgxIRangeSliderValue`](mcp:get_api_reference?platform=angular&component=IRangeSliderValue)
+- [`IRangeSliderValue`](mcp:get_api_reference?platform=angular&component=IRangeSliderValue)
 - [`TicksOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=ticksOrientation)
 - [`TickLabelsOrientation`](mcp:get_api_reference?platform=angular&component=IgxSliderComponent&member=tickLabelsOrientation)
 <hr/>

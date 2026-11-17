@@ -1,375 +1,198 @@
 ---
-title: Angular Icon Component – Ignite UI for Angular | Infragistics | MIT license
-description: Developers can unify and use various icon and font sets interchangeably with custom colors and more with Ignite UI for Angular Icon component.
-keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library, Angular Icon components, Angular Icon controls
+title: "Angular Icon Component"
+description: "The Ignite UI for Angular Icon renders named icons from registered icon sets, including custom SVG icons, with theme-based sizes and custom colors."
+keywords: "Angular Icon, Ignite UI for Angular, SVG icon, icon set"
 license: MIT
+last_updated: "2026-10-06"
+relatedComponents: ["IconButton"]
+mentionedTypes: ["Icon"]
 llms:
-  description: "The Ignite UI for Angular Icon component unifies icon/font families so developers can use them interchangeably and add material icons to markup."
+  description: "The Ignite UI for Angular Icon is a component that renders a named icon from a registered icon set, such as a collection of custom SVG icons."
 _tocName: Icon
 ---
-# Angular Icon Component Overview
+# Icon
 
-<div class="highlight">
-The Ignite UI for Angular Icon component unifies icon/font families so developers can use them interchangeably and add material icons to markup.
-</div>
+The Ignite UI for Angular Icon is a component that renders a named icon from a registered icon set, such as a collection of custom SVG icons.
 
-## Angular Icon Example
+By default, the Angular Icon renders Material Icons ligatures. Register SVG icons and other icon fonts with the `IgxIconService` to use them the same way.
+
+## Live Demo
 
 ```typescript
 import { Component } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
+import { IgxNavDrawerItemDirective, IgxNavDrawerTemplateDirective, IgxNavigationDrawerComponent } from 'igniteui-angular/navigation-drawer';
 
-@Component({
-    selector: 'app-icon-sample-1',
-    styleUrls: ['./icon-sample-1.component.scss'],
-    templateUrl: './icon-sample-1.component.html',
-    imports: [IgxIconComponent]
-})
-export class IconSample1Component { }
-```
-```html
-<div class="wrapper">
-    <div class="icon-sample">
-        <igx-icon>sentiment_very_satisfied</igx-icon>
-    </div>
-
-    <div class="icon-sample">
-        <igx-icon>home</igx-icon>
-    </div>
-
-    <div class="icon-sample">
-        <igx-icon>airplanemode_active</igx-icon>
-    </div>
-
-    <div class="icon-sample">
-        <igx-icon>favorite</igx-icon>
-    </div>
-
-    <div class="icon-sample">
-        <igx-icon [active]="false">search</igx-icon>
-    </div>
-</div>
-```
-```scss
-.wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 16px 0;
+interface MenuItem {
+    label: string;
+    icon: string;
 }
 
-.icon-sample {
+@Component({
+    selector: 'app-icon-overview',
+    styleUrls: ['./icon-overview.component.scss'],
+    templateUrl: './icon-overview.component.html',
+    imports: [IgxNavigationDrawerComponent, IgxNavDrawerTemplateDirective, IgxNavDrawerItemDirective, IgxIconComponent]
+})
+export class IconOverviewComponent {
+    public menuItems: MenuItem[] = [
+        { label: 'Home', icon: 'home' },
+        { label: 'Inbox', icon: 'mail' },
+        { label: 'Reports', icon: 'assignment' },
+        { label: 'Settings', icon: 'settings' },
+        { label: 'Support', icon: 'feedback' }
+    ];
+
+    public activeItem = 'Home';
+}
+```
+```html
+<igx-nav-drawer class="menu" [isOpen]="true" [pin]="true" [pinThreshold]="0">
+    <ng-template igxDrawer>
+        @for (item of menuItems; track item.label) {
+            <span igxDrawerItem [active]="item.label === activeItem" (click)="activeItem = item.label">
+                <igx-icon [name]="item.icon"></igx-icon>
+                <span>{{ item.label }}</span>
+            </span>
+        }
+    </ng-template>
+</igx-nav-drawer>
+```
+```scss
+:host {
     display: flex;
-    flex: 1 0 20%;
-    width: 44px;
-    height: 44px;
+    align-items: center;
     justify-content: center;
-    align-items: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+.menu {
+    height: auto;
+}
+
+/* A pinned drawer fills the height of its container. Here it is only as tall
+   as its items. */
+.menu ::ng-deep .igx-nav-drawer__aside {
+    height: auto;
+    min-height: auto;
 }
 ```
 
-<hr/>
+## Anatomy
 
-## Getting Started with Ignite UI for Angular Icon
+An icon is a symbol representing a command, device, directory, or common action.
 
-To get started with the Ignite UI for Angular Icon component, first you need to install Ignite UI for Angular. In an existing Angular application, type the following command:
+**Icon anatomy:** The Icon component draws one glyph from a registered icon set.
 
-```cmd
-ng add igniteui-angular
+<style>{`
+  .icon-anatomy {
+    --igd-anatomy-padding: 64px 32px;
+  }
+
+  .icon-anatomy .igd-anatomy__image {
+    max-width: 94.5px;
+  }
+`}</style>
+
+<span class="ig-typography__body-2" style="display: block; margin-bottom: 24px;"><strong>1. Icon:</strong> a visual symbol used to represent actions, objects or ideas</span>
+
+The `igx-icon` element renders one of the following, depending on the type of its icon family:
+
+```text
+igx-icon.igx-icon[aria-hidden="true"]   // host - also carries the family class, e.g. .material-icons
+├─ ligature text                        // `liga` family - the icon name, e.g. home
+├─ div > svg                            // SVG icon registered with IgxIconService
+└─ ng-content                           // projected ligature text when `name` isn't set
 ```
 
-For a complete introduction to the Ignite UI for Angular, read the [_getting started_](/general/getting-started) topic.
+For a `font` family, the classes on the host draw the glyph, and the element has no content.
 
-The next step is to import the `IgxIconModule` in your **app.module.ts** file.
+## Getting Started
 
-```typescript
-// app.module.ts
+To use the Angular Icon, follow the [Ignite UI for Angular Getting Started](../general/getting-started.md) topic for the basic project setup, then add the component for your target platform.
 
-import { IgxIconModule } from 'igniteui-angular/icon';
-// import { IgxIconModule } from '@infragistics/igniteui-angular'; for licensed package
+If your project doesn't use Ignite UI for Angular yet, run `ng add igniteui-angular`. Then import the standalone [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent) and add it to the `imports` of your component:
 
-@NgModule({
-    imports: [
-        ...
-        IgxIconModule,
-        ...
-    ]
-})
-export class AppModule {}
-```
-
-Alternatively, as of `16.0.0` you can import the `IgxIconComponent` as a standalone dependency.
-
-```typescript
-// home.component.ts
-
-import { IgxIconComponent } from 'igniteui-angular/icon';
-// import { IgxIconComponent } from '@infragistics/igniteui-angular'; for licensed package
-
-@Component({
-  selector: 'app-home',
-  template: '<igx-icon [style.color]="color">home</igx-icon>',
-  styleUrls: ['home.component.scss'],
-  standalone: true,
-  imports: [IgxIconComponent],
-})
-export class HomeComponent {
-  public color = '#e41c77';
-}
-```
-
-Now that you have the Ignite UI for Angular Icon module or component imported, you can start using the `igx-icon` component.
-
-## Using the Angular Icon
-
-### Icon Color
-
-Use `style.color` CSS property to change its default color:
-
-```html
-<igx-icon [style.color]="#e41c77">home</igx-icon>
-```
-
-```typescript
+```ts
 import { Component } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
-    selector: 'app-icon-sample-3',
-    styleUrls: ['./icon-sample-3.component.scss'],
-    templateUrl: './icon-sample-3.component.html',
+    selector: 'app-home',
+    template: '<igx-icon name="home"></igx-icon>',
     imports: [IgxIconComponent]
 })
-export class IconSample3Component { }
-```
-```html
-<igx-icon [style.color]="'#e41c77'">home</igx-icon>
-```
-```scss
-.igx-icon {
-    margin: 8px;
-}
+export class HomeComponent {}
 ```
 
-### Inactive Icon
+The `home` name is a Material Icons ligature, so the icon appears as soon as the Material Icons font loads.
 
-If you want to disable an icon, you can use the [`active`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=active) property:
+## Usage
+
+Use the Angular Icon to add a recognizable symbol to labels, buttons, list items, and navigation, or to show a status at a glance.
+
+### Name and Family
+
+The Angular Icon looks up its [`name`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=name) in its [`family`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=family). The default `material` family renders Material Icons ligatures, so the name is the ligature, such as `home` or `favorite`:
 
 ```html
-<igx-icon [active]="false">volume_off</igx-icon>
+<igx-icon name="home"></igx-icon>
+<igx-icon name="favorite"></igx-icon>
 ```
 
-```typescript
-import { Component } from '@angular/core';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
-@Component({
-    selector: 'app-icon-sample-4',
-    styleUrls: ['./icon-sample-4.component.scss'],
-    templateUrl: './icon-sample-4.component.html',
-    imports: [IgxIconComponent]
-})
-export class IconSample4Component { }
-```
-```html
-<igx-icon [active]="false">volume_off</igx-icon>
-```
-```scss
-.igx-icon {
-    margin: 8px;
-}
-```
-
-### Content Projection
-
-You can set icons with content projection:
+You can also project the ligature as content:
 
 ```html
 <igx-icon>bluetooth</igx-icon>
 ```
 
-```typescript
-import { Component } from '@angular/core';
-import { IgxIconComponent } from 'igniteui-angular/icon';
+### SVG Icons
 
-@Component({
-    selector: 'app-icon-sample-5',
-    styleUrls: ['./icon-sample-5.component.scss'],
-    templateUrl: './icon-sample-5.component.html',
-    imports: [IgxIconComponent]
-})
-export class IconSample5Component { }
-```
-```html
-<igx-icon>bluetooth</igx-icon>
-```
-```scss
-.igx-icon {
-    margin: 8px;
-}
-```
+Register SVG icons with the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService), then set their name and family on the icon. The [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method fetches an SVG file from a URL, and [`addSvgIconFromText`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIconFromText) registers SVG markup:
 
-### Icon Size
-
-You can customize the icons using CSS. To change an icon size use the `--size` CSS variable:
-
-```scss
-.custom-size {
-  --size: 56px;
-}
-```
-
-```typescript
-import { Component } from '@angular/core';
-import { IgxIconComponent } from 'igniteui-angular/icon';
-
-@Component({
-    selector: 'app-icon-sample-2',
-    styleUrls: ['./icon-sample-2.component.scss'],
-    templateUrl: './icon-sample-2.component.html',
-    imports: [IgxIconComponent]
-})
-export class IconSample2Component { }
-```
-```html
-<div class="wrapper">
-    <div class="icon-sample">
-        <igx-icon>phone_iphone</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon class="custom-size">phone_iphone</igx-icon>
-    </div>
-</div>
-```
-```scss
-.custom-size {
-    --size: 56px;
-}
-
-.wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 16px 8px;
-}
-
-.icon-sample {
-    display: flex;
-    flex: 1 0 20%;
-    height: 44px;
-    align-items: center;
-    max-width: 80px;
-}
-```
-
-## SVG Icons
-
-You can also use an SVG image as an icon. First, inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency. In this example we will inject it in a component's constructor but you can use it wherever it is needed in your code.
-
-Use the [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) method to import the SVG file in cache. When the SVG is cached, it can be used anywhere in the application. The icon name and file URL path are the method's mandatory parameters; family can be specified as well. After that, you can use the SVG files in the HTML markup. Alternatively, you can use the `addSvgIconFromText` method to import an SVG file, providing the SVG text content instead of the file URL.
-
-- Have in mind that if there are two icons with the same name and the same family, the SVG icon will be displayed with priority.
-- It is better not to provide image width and height in the SVG file.
-- You may need additional polyfill scripts ("polyfills") for Internet Explorer.
-
-```typescript
-constructor(private iconService: IgxIconService) { }
-
-public ngOnInit() {
-    // register custom SVG icons
-    this.iconService.addSvgIcon('contains', '/assets/images/svg/contains.svg', 'filter-icons');
-}
-```
-
-```html
-<igx-icon name="contains" family="filter-icons"></igx-icon>
-```
-
-```typescript
+```ts
 import { Component, OnInit, inject } from '@angular/core';
 import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
 
+const searchIcon =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>';
+
 @Component({
-    selector: 'app-svg-icon-sample',
-    styleUrls: ['./svg-icon-sample.component.scss'],
-    templateUrl: './svg-icon-sample.component.html',
+    selector: 'app-filter-icons',
+    template: `
+        <igx-icon name="contains" family="filter-icons"></igx-icon>
+        <igx-icon name="search" family="filter-icons"></igx-icon>
+    `,
     imports: [IgxIconComponent]
 })
-export class SvgIconSampleComponent implements OnInit {
+export class FilterIconsComponent implements OnInit {
     private iconService = inject(IgxIconService);
 
-
     public ngOnInit() {
-        // register custom SVG icons
         this.iconService.addSvgIcon('contains', 'assets/images/svg/contains.svg', 'filter-icons');
-        this.iconService.addSvgIcon('does_not_contain', 'assets/images/svg/does_not_contain.svg', 'filter-icons');
-        this.iconService.addSvgIcon('does_not_equal', 'assets/images/svg/does_not_equal.svg', 'filter-icons');
-        this.iconService.addSvgIcon('ends_with', 'assets/images/svg/ends_with.svg', 'filter-icons');
-        this.iconService.addSvgIcon('equals', 'assets/images/svg/equals.svg', 'filter-icons');
-        this.iconService.addSvgIcon('is_empty', 'assets/images/svg/is_empty.svg', 'filter-icons');
-        this.iconService.addSvgIcon('starts_with', 'assets/images/svg/starts_with.svg', 'filter-icons');
+        this.iconService.addSvgIconFromText('search', searchIcon, 'filter-icons');
     }
 }
 ```
-```html
-<div class="wrapper">
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="contains"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="does_not_contain"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="does_not_equal"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="ends_with"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="equals"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="is_empty"></igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="filter-icons" name="starts_with"></igx-icon>
-    </div>
-</div>
-```
-```scss
-.wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 16px 0;
-}
 
-.icon-sample {
-    display: flex;
-    flex: 1 0 10%;
-    height: 44px;
-    justify-content: center;
-    align-items: center;
-}
-```
+When an SVG icon and a ligature share the same name and family, the icon renders the SVG.
 
-## Material Symbols
+### Font Families
 
-Additionally, users can take advantage of the latest Material icons and their design variations included in the newly created [`Material Symbols Library`](https://fonts.google.com/icons). To start using Material Symbols, first you have to add the library to your application:
+Use [`setFamily`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=setFamily) to add another icon font, such as [Material Symbols](https://fonts.google.com/icons), as a family. Load the font stylesheet first:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 ```
 
-Then we need to inject the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService) dependency and make use of its `setFamily` method so that Material Symbols can work with `igx-icon`:
+Map the family name to the CSS class of the font and set its type to `liga`:
 
 ```ts
-constructor(private iconService: IgxIconService) { }
-
-public ngOnInit() {
-    // registers a 'material-symbols-outlined' class to be applied to all igx-icons with 'material-symbols' font-family
-    this.iconService.setFamily('material-symbols', { className: 'material-symbols-outlined', type: 'liga' });
-}
+this.iconService.setFamily('material-symbols', { className: 'material-symbols-outlined', type: 'liga' });
 ```
 
-Now, we are ready to add the desired icon into our markup and customize it using adjustable font styles:
+Then set the family on the icon. Material Symbols is a variable font, so you can adjust settings such as fill and weight:
 
 ```html
 <igx-icon family="material-symbols" name="diamond" class="custom-icon"></igx-icon>
@@ -381,161 +204,182 @@ Now, we are ready to add the desired icon into our markup and customize it using
 }
 ```
 
-```typescript
-import { Component, OnInit, inject } from '@angular/core';
-import { IgxIconComponent, IgxIconService } from 'igniteui-angular/icon';
+The [Icon Service](../icon-service.md) topic covers families of the `font` type, name prefixes, and icon references.
 
-@Component({
-    selector: 'app-material-symbols',
-    templateUrl: './material-symbols.component.html',
-    styleUrls: ['./material-symbols.component.scss'],
-    imports: [IgxIconComponent]
-})
-export class MaterialSymbolsComponent implements OnInit {
-    private iconService = inject(IgxIconService);
+### Size
 
+The Angular Icon supports the small, medium, and large size presets of the theme, and uses the large preset by default. Set the `--ig-size` CSS variable to `--ig-size-small`, `--ig-size-medium`, or `--ig-size-large` to choose a preset:
 
-    public ngOnInit() {
-        this.iconService.registerFamilyAlias('material-symbols', 'material-symbols-outlined');
-    }
+```css
+.small {
+  --ig-size: var(--ig-size-small);
+}
+
+.medium {
+  --ig-size: var(--ig-size-medium);
 }
 ```
+
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-<div class="wrapper">
-    <div class="icon-sample">
-        <igx-icon family="material-symbols" class="custom-icon">grade</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="material-symbols" class="custom-icon">favorite</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="material-symbols" class="custom-icon">&#xe73c;</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="material-symbols" class="custom-icon">diamond</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon family="material-symbols" class="custom-icon">auto_awesome</igx-icon>
-    </div>
-</div>
+<igx-icon class="small" name="build"></igx-icon>
 ```
-```scss
-.wrapper {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 16px 0;
+
+For a size outside the presets, set `--size` on the icon. To resize all icons inside a container, set `--ig-icon-size` on the container:
+
+```css
+.custom-size {
+  --size: 56px;
 }
 
-.icon-sample {
-    display: flex;
-    flex: 1 0 20%;
-    width: 44px;
-    height: 44px;
-    justify-content: center;
-    align-items: center;
-}
-
-.custom-icon {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 200,
-    'GRAD' 0,
-    'opsz' 40
+.toolbar {
+  --ig-icon-size: 2rem;
 }
 ```
-
-To learn more about Material Symbols styles please visit their [`official documentation`](https://fonts.google.com/icons).
-
-## Server-side Rendering Note
-
-**Note:** 
-In case you have implemented server side rendering logic in your application using Angular Universal and have used the `IgxIconService` to register icons, this may cause the following exception:
-<br/><br/> > `XMLHttpRequest is not defined. Could not fetch SVG from url.` > <br/><br/>
-In order to avoid this, execute the listed steps:
-
-<ol>
-<li>
-Install `xmlhttprequest`:
-
-```cmd
-npm i xmlhttprequest
-```
-
-</li>
-<li>
-On the top of your `server.ts` file, add:
-
-```typescript
-(global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-```
-
-</li>
-</ol>
-
-## Styling
-
-To get started with styling the icons, we need to import the `index` file, where all the theme functions and the `tokens()` mixin are exported:
-
-```scss
-@use "igniteui-angular/theming" as *;
-
-// IMPORTANT: Prior to Ignite UI for Angular version 13 use:
-// @import '~igniteui-angular/lib/core/styles/themes/index';
-```
-
-Following the simplest approach, we create a new theme that extends the `icon-theme` and accepts the parameters, required to customize the icon as desired.
-
-```scss
-$custom-icon-theme: icon-theme(
-  $color: #1481b8,
-  $disabled-color: #494949,
-);
-```
-
-The last step is to pass the custom icon theme in our application:
-
-```scss
-:host {
-  @include tokens($custom-icon-theme);
-}
-```
-
-### Demo
 
 ```typescript
 import { Component } from '@angular/core';
 import { IgxIconComponent } from 'igniteui-angular/icon';
 
 @Component({
-    selector: 'app-icon-styling-sample',
-    styleUrls: ['./icon-styling-sample.component.scss'],
-    templateUrl: './icon-styling-sample.component.html',
+    selector: 'app-icon-size',
+    styleUrls: ['./icon-size.component.scss'],
+    templateUrl: './icon-size.component.html',
     imports: [IgxIconComponent]
 })
-export class IconStylingSampleComponent { }
+export class IconSizeComponent { }
 ```
 ```html
-<div class="wrapper">
-    <div class="icon-sample">
-        <igx-icon>person</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon>wifi</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon>laptop_mac</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon>pin_drop</igx-icon>
-    </div>
-    <div class="icon-sample">
-        <igx-icon [active]="false">cloud</igx-icon>
-    </div>
+<div class="icon-sizes">
+    <igx-icon class="size-large" name="notifications"></igx-icon>
+    <span class="size-label">Large</span>
+    <igx-icon class="size-medium" name="notifications"></igx-icon>
+    <span class="size-label">Medium</span>
+    <igx-icon class="size-small" name="notifications"></igx-icon>
+    <span class="size-label">Small</span>
 </div>
 ```
 ```scss
-@use "layout.scss";
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+.icon-sizes {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+    place-items: center;
+    column-gap: 4.25rem;
+    row-gap: 1.0625rem;
+}
+
+.icon-sizes igx-icon {
+    color: var(--ig-gray-800);
+}
+
+.size-large {
+    --ig-size: var(--ig-size-large);
+}
+
+.size-medium {
+    --ig-size: var(--ig-size-medium);
+}
+
+.size-small {
+    --ig-size: var(--ig-size-small);
+}
+
+.size-label {
+    color: var(--ig-gray-600);
+    font-family: "Aktiv Grotesk", Arial, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+```
+
+### Active
+
+Set [`active`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=active) to `false` to show the icon as inactive. An inactive icon uses the disabled color of the theme at a reduced opacity:
+
+```html
+<igx-icon name="volume_off" [active]="false"></igx-icon>
+```
+
+### Accessible Name
+
+Hide a decorative icon from assistive technology, and give an icon that conveys meaning on its own an accessible name that describes that meaning.
+
+The Angular Icon is hidden from assistive technology by default, because its [`ariaHidden`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=ariaHidden) input sets `aria-hidden="true"`. To expose an icon that conveys meaning, set `ariaHidden` to `false`, and add the `img` role and an `aria-label`:
+
+```html
+<igx-icon name="warning" [ariaHidden]="false" role="img" aria-label="Warning"></igx-icon>
+```
+
+### Do/Don't
+
+Carefully pick the Icon color to assure good contrast with the background and definitely avoid similar shades of the same color or combinations that create chromatic aberrations.
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 24px 0 16px;">
+  
+  
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 32px;">
+  <div>
+    <p style="color: #258b3b; font-weight: 600; margin: 0 0 8px;">Do</p>
+    <p style="margin: 0;">Pick icon colors with strong contrast against the background.</p>
+  </div>
+  <div>
+    <p style="color: #e40046; font-weight: 600; margin: 0 0 8px;">Don't</p>
+    <p style="margin: 0;">Avoid shades similar to the background and color combinations that cause chromatic aberration.</p>
+  </div>
+</div>
+
+## Properties
+
+The Angular Icon exposes the following properties. See the API reference for the complete type definitions.
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [`name`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=name) | `string` | — | The name of the icon. For a ligature family, the name is the ligature. |
+| [`family`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=family) | `string` | `material` | The icon family in which the name is looked up. |
+| [`active`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=active) | `boolean` | `true` | Whether the icon is active. An inactive icon uses the disabled color of the theme. |
+| [`ariaHidden`](mcp:get_api_reference?platform=angular&component=IgxIconComponent&member=ariaHidden) | `boolean` | `true` | The value of the `aria-hidden` attribute of the icon. |
+
+## Methods
+
+The Angular Icon draws icons that you register with the following API.
+
+Register icons and families with the following methods of the [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService), which is provided in the application root.
+
+| Method | Description |
+| --- | --- |
+| [`addSvgIcon`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIcon) | Fetches an SVG file through `HttpClient` and caches it under a name in a family. |
+| [`addSvgIconFromText`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addSvgIconFromText) | Caches SVG markup under a name in a family. |
+| [`setFamily`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=setFamily) | Associates a family name with a CSS class, an icon type (`liga`, `font`, or `svg`), and an optional name prefix. |
+| [`setIconRef`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=setIconRef) | Points an icon name in a family to another icon. |
+| [`addIconRef`](mcp:get_api_reference?platform=angular&component=IgxIconService&member=addIconRef) | Points an icon name in a family to another icon only when the name has no reference yet. |
+
+## Styling
+
+The Angular Icon takes the color of the surrounding text by default. Change its color and size with the following CSS variables:
+
+| Variable | What it changes |
+| --- | --- |
+| `--ig-icon-color` | The icon color. Set it on an icon, or on a container to recolor all icons inside it. |
+| `--ig-icon-size` | The icon size. Set it on an icon, or on a container to resize all icons inside it. |
+| `--size` | The size of the icon on which you set it. |
+| `--ig-size` | The size preset: `--ig-size-small`, `--ig-size-medium`, or `--ig-size-large`. |
+| `--ig-icon-disabled-color` | The color of an inactive icon. |
+
+### Sass Theming
+
+Create a theme with the `icon-theme` function and include it with the `tokens()` mixin. The function accepts the `$color`, `$size`, and `$disabled-color` parameters, and the mixin emits the matching `--ig-icon-*` variables in the scope where you include it.
+
+```scss
 @use "igniteui-angular/theming" as *;
 
 $custom-icon-theme: icon-theme(
@@ -544,135 +388,477 @@ $custom-icon-theme: icon-theme(
 );
 
 :host {
-    @include tokens($custom-icon-theme);
+  @include tokens($custom-icon-theme);
 }
 ```
 
-### SVG Limitations
+### CSS Variables
 
-It’s important to note that when using custom SVG icons, the `icon-theme` can apply and overwrite colors only on the `<svg>` element itself. If the SVG contains child elements such as `<path>`, `<rect>`, `<circle>`, `<g>`, etc., with hardcoded color values, those colors cannot be overridden by the theme.
-
-For example:
+Set the color and size on an icon or a container when you need local styling without a Sass build step:
 
 ```html
-<svg>
-    <path fill="#050d42"/>
-</svg>
+<igx-icon name="home" [style.color]="'#e41c77'"></igx-icon>
 ```
 
-In this case, the icon will always use the `#050d42` color defined in the `<path>`, regardless of the color provided by the theme.
-
-```html
-<svg fill="#050d42">
-    <path .../>
-</svg>
-```
-
-Here, the fill color is applied to the `<svg>` element, so it can be overridden with custom color provided via `icon-theme`.
-
-We recommend not using hardcoded colors on SVG child elements so the icon can be styled entirely using the `icon-theme`. However, if you still want to apply hardcoded colors to child elements, you can also use the Ignite UI color variables.
-
-```html
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  {/* This element uses the theme color from the igx-icon component */}
-  <path d="M12 2L15 8H9L12 2Z" />
-
-  {/* This element uses an accent color from Ignite UI palette */}
-  <circle cx="12" cy="17" r="4" fill="var(--ig-primary-500)" />
-</svg>
-```
-
-### Custom sizing
-
-You can either use the `--size` variable, targeting the `igx-icon` directly:
-
-```scss
-igx-icon {
-  --size: 50px;
+```css
+.toolbar {
+  --ig-icon-color: var(--ig-primary-500);
 }
 ```
 
-Or you can use the universal `--ig-icon-size` variable to target all instances:
+```typescript
+import { Component, ViewEncapsulation } from '@angular/core';
+import { PositionSettings } from 'igniteui-angular/core';
+import { IgxButtonDirective, IgxIconButtonDirective, IgxTooltipDirective, IgxTooltipTargetDirective } from 'igniteui-angular/directives';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 
+interface ToolbarAction {
+    icon: string;
+    label: string;
+}
+
+@Component({
+    selector: 'app-icon-styling',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./icon-styling.component.scss'],
+    templateUrl: './icon-styling.component.html',
+    imports: [IgxButtonDirective, IgxIconButtonDirective, IgxIconComponent, IgxTooltipDirective, IgxTooltipTargetDirective]
+})
+export class IconStylingComponent {
+    public actions: ToolbarAction[] = [
+        { icon: 'edit', label: 'Edit' },
+        { icon: 'content_copy', label: 'Copy' },
+        { icon: 'share', label: 'Share' },
+        { icon: 'delete', label: 'Delete' }
+    ];
+
+    public tooltipPosition: PositionSettings = { offset: 25 };
+}
+```
 ```html
-<div class="my-app">
-
-  <igx-icon></igx-icon>
+<div class="icon-styling">
+    <div class="button-row">
+        <button igxButton="contained" type="button" class="download-button">
+            <igx-icon>download</igx-icon>
+            Download
+        </button>
+        <button igxButton="outlined" type="button" class="continue-button">
+            Continue
+            <igx-icon>arrow_forward</igx-icon>
+        </button>
+        <button igxButton="outlined" type="button" class="delete-button">
+            <igx-icon>delete</igx-icon>
+            Delete
+        </button>
+        <button igxButton="fab" type="button" class="add-button" aria-label="Add">
+            <igx-icon>add</igx-icon>
+        </button>
+    </div>
+    <div class="icon-toolbar">
+        @for (action of actions; track action.label) {
+            <button
+                igxIconButton="flat"
+                type="button"
+                [attr.aria-label]="action.label"
+                [igxTooltipTarget]="tooltip"
+                [hasArrow]="true"
+                [positionSettings]="tooltipPosition">
+                <igx-icon>{{ action.icon }}</igx-icon>
+            </button>
+            <span #tooltip="tooltip" igxTooltip class="icon-tooltip">{{ action.label }}</span>
+        }
+    </div>
 </div>
 ```
-
 ```scss
-.my-app {
-  --ig-icon-size: 50px;
+@use "sass:meta";
+@include meta.load-css("igniteui-angular/lib/core/styles/themes/presets/igniteui-bootstrap-light");
+
+app-icon-styling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+.icon-styling {
+    --ig-font-family: "Aktiv Grotesk", Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.8125rem;
+}
+
+.button-row {
+    /* The buttons keep the medium size of the design, while styles.scss asks
+       the page for the large one. */
+    --ig-size: var(--ig-size-medium);
+
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.button-row .igx-button {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    text-transform: none;
+}
+
+.download-button {
+    border-color: #a9b8cc;
+    background: #e5ebf3;
+    color: #344b65;
+    box-shadow: none;
+}
+
+.download-button igx-icon {
+    color: #344b65;
+}
+
+.continue-button {
+    --ig-outlined-button-hover-background: rgb(0 93 204 / 8%);
+    --ig-outlined-button-focus-hover-background: rgb(0 93 204 / 8%);
+    --ig-outlined-button-active-background: rgb(0 93 204 / 16%);
+    --ig-outlined-button-focus-background: rgb(0 93 204 / 16%);
+    --ig-outlined-button-focus-visible-background: rgb(0 93 204 / 16%);
+
+    border-color: #005dcc;
+    color: #005dcc;
+}
+
+.continue-button igx-icon {
+    color: #005dcc;
+}
+
+.delete-button {
+    --ig-outlined-button-hover-background: rgb(223 27 116 / 8%);
+    --ig-outlined-button-focus-hover-background: rgb(223 27 116 / 8%);
+    --ig-outlined-button-active-background: rgb(223 27 116 / 16%);
+    --ig-outlined-button-focus-background: rgb(223 27 116 / 16%);
+    --ig-outlined-button-focus-visible-background: rgb(223 27 116 / 16%);
+
+    border-color: #df1b74;
+    color: #df1b74;
+}
+
+.delete-button igx-icon {
+    color: #df1b74;
+}
+
+.add-button {
+    --ig-size: var(--ig-size-small);
+
+    width: 2.25rem;
+    min-width: 0;
+    height: 2.25rem;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid #0176ff;
+    border-radius: 50%;
+    background: #cce4ff;
+    box-shadow: none;
+}
+
+.add-button igx-icon {
+    color: #005dcc;
+}
+
+.icon-toolbar {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #e5ebf3;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.icon-toolbar .igx-icon-button {
+    --ig-flat-icon-button-hover-background: #f8f8f8;
+    --ig-flat-icon-button-focus-background: #e0e0e0;
+    --ig-flat-icon-button-focus-hover-background: #f8f8f8;
+    --ig-flat-icon-button-active-background: #e0e0e0;
+
+    width: 1.5rem;
+    min-width: 0;
+    height: 1.5rem;
+    min-height: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.icon-toolbar igx-icon {
+    color: #344b65;
+}
+
+/* The tooltips are moved to the overlay, outside of the toolbar. */
+.icon-tooltip {
+    --ig-tooltip-background: rgb(52 75 101 / 90%);
+    --ig-tooltip-text-color: #fff;
 }
 ```
-
-You can also use one of the predefined sizes, assigning it to the `--ig-size` variable. The available values for `--ig-size` are `--ig-size-small`, `--ig-size-medium`, and `--ig-size-large`:
-
-```scss
-igx-icon {
-  --ig-size: var(--ig-size-medium);
-}
-```
-
-Learn more about it in the [Size](/display-density) article.
 
 ### Styling with Tailwind
 
-You can style the `icon` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the Angular Icon with the custom Tailwind utility classes from `igniteui-theming`. Make sure to [set up Tailwind](../themes/tailwind.md) first, then import the Ignite UI utilities in your global stylesheet:
 
-Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
-
-```scss
+```css
 @import "tailwindcss";
-...
-@use 'igniteui-theming/tailwind/utilities/material.css';
+@import "igniteui-theming/tailwind/utilities/material.css";
 ```
 
-The utility file includes both `light` and `dark` theme variants.
-
-- Use `light-*` classes for the light theme.
-- Use `dark-*` classes for the dark theme.
-- Append the component name after the prefix, e.g., `light-icon`, `dark-icon`.
-
-Once applied, these classes enable dynamic theme calculations. From there, you can override the generated CSS variables using `arbitrary properties`. After the colon, provide any valid CSS color format (HEX, CSS variable, RGB, etc.).
-
-You can find the full list of properties in the `icon-theme`. The syntax is as follows:
+Use the `light-icon` or `dark-icon` class for the corresponding theme, and override the generated CSS variables with arbitrary properties:
 
 ```html
-<igx-icon class="!light-icon ![--color:#7B9E89] ![--size:48px]">person</igx-icon>
+<igx-icon name="person" class="!light-icon ![--color:#7B9E89] ![--size:48px]"></igx-icon>
 ```
 
-**Note:** 
-The exclamation mark(`!`) is required to ensure the utility class takes precedence. Tailwind applies styles in layers, and without marking these styles as important, they will get overridden by the component’s default theme.
-
-At the end your icon should look like this:
+The exclamation mark (`!`) gives the Tailwind utility precedence over the default theme styles of the Icon.
 
 ```typescript
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { IgxIconButtonDirective } from 'igniteui-angular/directives';
 import { IgxIconComponent } from 'igniteui-angular/icon';
+import { IgxHintDirective, IgxInputDirective, IgxInputGroupComponent, IgxLabelDirective, IgxPrefixDirective, IgxSuffixDirective } from 'igniteui-angular/input-group';
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 @Component({
-    selector: 'app-icon-tailwind-styling-sample',
-    styleUrls: ['./icon-tailwind-styling-sample.component.scss'],
-    templateUrl: './icon-tailwind-styling-sample.component.html',
-    imports: [IgxIconComponent]
+    selector: 'app-icon-tailwind-styling',
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['./icon-tailwind-styling.component.scss'],
+    templateUrl: './icon-tailwind-styling.component.html',
+    imports: [
+        IgxInputGroupComponent,
+        IgxInputDirective,
+        IgxLabelDirective,
+        IgxPrefixDirective,
+        IgxSuffixDirective,
+        IgxHintDirective,
+        IgxIconComponent,
+        IgxIconButtonDirective
+    ]
 })
-export class IconTailwindStylingSampleComponent { }
+export class IconTailwindStylingComponent {
+    public fieldClasses = 'w-[260px] [--ig-input-group-input-prefix-background:transparent] [--ig-input-group-input-prefix-background--filled:transparent] [--ig-input-group-input-prefix-background--focused:transparent] [--ig-input-group-input-suffix-background:transparent] [--ig-input-group-input-suffix-background--filled:transparent] [--ig-input-group-input-suffix-background--focused:transparent] [--ig-input-group-placeholder-color:#344b65] [--ig-input-group-hover-placeholder-color:#344b65] [--ig-input-group-focused-secondary-color:transparent]';
+    public focusClasses = 'focus-within:[--ig-input-group-border-color:var(--ig-primary-500)] focus-within:[--ig-input-group-focused-border-color:var(--ig-primary-500)]';
+    public invalidClasses = '[--ig-input-group-border-color:#ff134a] [--ig-input-group-focused-border-color:#ff134a]';
+
+    public passwordVisible = false;
+    public email = 'ana@';
+
+    public get emailInvalid(): boolean {
+        return !emailPattern.test(this.email);
+    }
+
+    public onEmailInput(event: Event): void {
+        this.email = (event.target as HTMLInputElement).value;
+    }
+}
 ```
 ```html
-<igx-icon class="!light-icon ![--color:#7B9E89] ![--size:48px]">person</igx-icon>
+<div class="flex flex-col gap-6 rounded-2xl border border-[#d2dbe8] bg-white px-[27px] py-[31px] [--ig-body-1-font-size:0.875rem] [--ig-font-family:'Aktiv_Grotesk',Arial,sans-serif] [--ig-size:var(--ig-size-medium)]">
+    <igx-input-group class="search-field" [class]="fieldClasses + ' ' + focusClasses">
+        <label igxLabel class="!text-xs !leading-4 !uppercase !text-[#344b65]">Search</label>
+        <igx-prefix class="!ps-2">
+            <igx-icon class="!text-[#344b65]">search</igx-icon>
+        </igx-prefix>
+        <input igxInput type="text" placeholder="Find a report..." />
+    </igx-input-group>
+
+    <igx-input-group [class]="fieldClasses + ' ' + focusClasses">
+        <label igxLabel class="!text-xs !leading-4 !uppercase !text-[#344b65]">Password</label>
+        <input igxInput [type]="passwordVisible ? 'text' : 'password'" value="reports-2026" />
+        <igx-suffix class="!p-0">
+            <button
+                igxIconButton="flat"
+                type="button"
+                class="!h-full !w-[39px] !min-w-0 !rounded-none !p-0"
+                [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'"
+                (click)="passwordVisible = !passwordVisible">
+                <igx-icon class="!text-[#344b65]">{{ passwordVisible ? 'visibility' : 'visibility_off' }}</igx-icon>
+            </button>
+        </igx-suffix>
+    </igx-input-group>
+
+    <igx-input-group class="email-field" [class]="fieldClasses + ' ' + (emailInvalid ? invalidClasses : focusClasses)">
+        <label igxLabel class="!text-xs !leading-4 !uppercase !text-[#344b65]">E-mail</label>
+        <igx-prefix class="!ps-2">
+            <igx-icon [class]="emailInvalid ? '!text-[#ff134a]' : '!text-[#344b65]'">mail</igx-icon>
+        </igx-prefix>
+        <input igxInput type="email" [value]="email" [attr.aria-invalid]="emailInvalid" (input)="onEmailInput($event)" />
+        @if (emailInvalid) {
+            <igx-suffix>
+                <igx-icon class="!text-[#ff134a]">info</igx-icon>
+            </igx-suffix>
+        }
+        @if (emailInvalid) {
+            <igx-hint class="text-xs leading-4 tracking-[0.4px] text-[#ff134a]">Enter a complete address</igx-hint>
+        }
+    </igx-input-group>
+</div>
+```
+```scss
+@use "sass:meta";
+@include meta.load-css("igniteui-angular/lib/core/styles/themes/presets/igniteui-bootstrap-light");
+
+app-icon-tailwind-styling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+
+/* The icons sit inside the field, so the input drops the border that would set
+   them apart. The border is on the input's wrapper, which the template can't
+   reach with a class. */
+.search-field .igx-input-group__bundle-main,
+.email-field .igx-input-group__bundle-main {
+    border-inline-start-width: 0;
+}
+
+.email-field.igx-input-group--suffixed .igx-input-group__bundle-main {
+    border-inline-end-width: 0;
+}
 ```
 
+## Accessibility
+
+The Angular Icon is a non-interactive visual that either decorates nearby content or conveys meaning on its own.
+
+### Keyboard Interaction
+
+The Angular Icon doesn't receive focus and has no keyboard interaction: it sets no `tabindex` and handles no keyboard or pointer events. Use the [Icon Button](../icon-button.md) when users must activate an icon with the keyboard.
+
+| Key | Action |
+| --- | --- |
+| n/a | The Icon is not keyboard interactive. |
+
+### Screen Readers / ARIA
+
+The Angular Icon makes no announcements of its own. What assistive technology reports depends on the accessible name of the icon:
+
+- The icon sets `aria-hidden="true"` by default through its `ariaHidden` input, so assistive technology ignores it. An `aria-label` alone doesn't expose a hidden icon.
+- The icon sets no role. When you set `ariaHidden` to `false` without a role and a label, screen readers read a ligature icon as its text, such as `home`.
+- Set `ariaHidden` to `false`, add the `img` role, and add an `aria-label` to expose an icon that conveys meaning.
+- The `active` input changes only the styling. The inactive state isn't exposed to assistive technology.
+
+### Accessibility Compliance
+
+Infragistics documents Ignite UI for Angular accessibility support for Section 508 and WCAG 2.1 guideline areas in the [Accessibility Compliance](../interactivity/accessibility-compliance.md) topic.
+
+| Criterion | How the component complies |
+| --- | --- |
+| [1.1.1 Non-text Content](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) | The icon is hidden from assistive technology by default, so decorative icons can be ignored, and it uses the `aria-label` that you set as its text alternative when you expose it. |
+
+Your responsibilities:
+
+- Give every icon that conveys meaning on its own an accessible name, and keep decorative icons hidden. See [Accessible Name](#accessible-name).
+- Keep a contrast ratio of at least 3:1 between an icon that conveys information and its background, as [1.4.11 Non-text Contrast](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast) requires, especially when you override the theme color.
+- Use an Icon Button, not an Icon, for actions that users activate.
+- Don't rely on the inactive styling alone to convey a state, as [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color) requires. Describe the state in text or in the accessible name.
+
+## Troubleshooting
+
+Use these answers when a Angular Icon doesn't render or doesn't look as expected.
+
+### Why is my icon empty?
+
+Check the following causes:
+
+- A ligature icon needs the font of its family, such as Material Icons for the default `material` family. Check that the font stylesheet loads.
+- An SVG icon needs the same name and family as its registration.
+- `addSvgIcon` needs `HttpClient` to fetch the file. Check the network panel for a failed request.
+- The service caches SVG icons only in the browser, so SVG icons don't render during server-side rendering.
+
+### Why doesn't my SVG icon take the theme color?
+
+The Angular Icon applies its color to the root `<svg>` element, and the child elements inherit it as their fill. A child element with a hardcoded color keeps that color:
+
+```html
+<svg viewBox="0 0 24 24">
+  <path fill="#050d42" d="..." />
+</svg>
+```
+
+Remove hardcoded colors from the child elements, or set the color on the root `<svg>` element, where the theme overrides it. To color part of an icon on purpose, use a theme color variable, such as `fill="var(--ig-primary-500)"`.
+
+### Why does a tooltip appear when I hover an icon?
+
+Browsers show the `<title>` element of an SVG as a native tooltip.
+
+Pass `true` as the `stripMeta` argument of `addSvgIcon` or `addSvgIconFromText` to remove the `<title>` and `<desc>` elements from the cached SVG:
+
+```ts
+this.iconService.addSvgIcon('contains', 'assets/images/svg/contains.svg', 'filter-icons', true);
+```
+
+### Known Limitations
+
+The Angular Icon has the following limitations:
+
+- The Icon is a non-interactive visual: it doesn't receive focus or handle keyboard input.
+- Theme colors reach the root `<svg>` element and the child elements that inherit its fill. Child elements with hardcoded colors keep them.
+- The Angular Icon has no option to mirror an icon for right-to-left layouts.
+
 ## API References
-<hr/>
+
+The Angular Icon API reference lists the complete API surface for the target platform.
+
 - [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)
-- `IgxIconComponent Styles`
+- [`IgxIconService`](mcp:get_api_reference?platform=angular&component=IgxIconService)
+- `icon-theme`
+
+## Dependencies
+
+The Angular Icon requires a theme stylesheet to apply its theme-based size and color. See the framework-specific setup in [**Getting Started**](../general/getting-started.md).
+
+Ligature icons of the default `material` family also require the Material Icons font, and `addSvgIcon` requires the Angular `HttpClient`.
+
 ## Additional Resources
 
-<hr/>
+The following resources provide more Angular Icon guidance and project support:
 
-Our community is active and always welcoming to new ideas.
-
+- [Icon - Design System Component](https://www.infragistics.com/products/indigo-design/help/components/icon)
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
+
+For icon families, icon references, and the extended Material icon set, see the [Icon Service](../icon-service.md) and [Material Icons Extended](../material-icons-extended.md) topics.
+
+## Related Components
+
+The Angular Icon often appears inside other components. Use these components when an icon needs to do more than display a symbol:
+
+- [Icon Button](../icon-button.md) - Use Icon Button when users click or press the icon to run an action.
+- [Avatar](./avatar.md) - Use Avatar to represent a person or entity with an icon, initials, or an image.
+- [Badge](../inputs/badge.md) - Use Badge to show a short status or count next to another element.
+
+## FAQ
+
+These questions cover common Angular Icon setup, accessibility, and usage scenarios.
+
+  **Q: Does the Icon include Material Icons?**
+
+    Yes. The Angular Icon renders Material Icons ligatures through its default `material` family when the Material Icons font is loaded, and the `ng add igniteui-angular` command adds that font. Register other icon fonts and SVG icons with the `IgxIconService`.
+  
+  **Q: How do I add a custom SVG icon?**
+
+    Register the SVG with the `addSvgIcon` or `addSvgIconFromText` method of the `IgxIconService`, then set the same `name` and `family` on the Angular Icon. The service caches the SVG, so every Angular Icon with that name and family renders it.
+  
+  **Q: How do I make an icon accessible to screen readers?**
+
+    The Angular Icon is hidden from screen readers by default through `aria-hidden="true"`. For an icon that conveys meaning on its own, set `[ariaHidden]="false"`, add `role="img"`, and add an `aria-label` that describes the meaning.
+  
+  **Q: Can I make an Icon clickable?**
+
+    The Angular Icon doesn't receive focus or handle keyboard input, so a click handler on it excludes keyboard users. Use the Angular Icon Button for actions, because it places an icon inside a focusable button.
+  
+  **Q: Does the Icon support right-to-left layouts?**
+
+    The Angular Icon has no option to mirror an icon. For a directional icon in a right-to-left layout, use an icon that points in the reading direction, such as `arrow_back` in place of `arrow_forward`.
+  
+

@@ -31,7 +31,7 @@ The igxGridState directive allows developers to easily save and restore the grid
   - Multi-row Layout
 
   - Columns order
-  - Column properties defined by the [`IgxIColumnState`](mcp:get_api_reference?platform=angular&component=IColumnState) interface.
+  - Column properties defined by the [`IColumnState`](mcp:get_api_reference?platform=angular&component=IColumnState) interface.
   - Columns templates and functions are restored using application level code, see [Restoring Column](/grid/state-persistence#restoring-columns) section.
 
 **Note:** 
@@ -42,7 +42,7 @@ The `Row Selection` feature requires the [`primaryKey`](mcp:get_api_reference?pl
 
 ## Usage
 
-[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
+[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
 The developer may choose to get only the state for a certain feature/features, by passing in the feature name, or an array with feature names as a second argument.
 
 ```typescript
@@ -56,14 +56,14 @@ const gridState: IGridState = state.getState(false);
 const sortingFilteringStates: IGridState = state.getState(false, ['sorting', 'filtering']);
 ```
 
-[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
 
 ```typescript
 state.setState(gridState);
 state.setState(sortingFilteringStates)
 ```
 
-`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IgxIGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
 
 ```typescript
 public options =  { cellSelection: false; sorting: false; }

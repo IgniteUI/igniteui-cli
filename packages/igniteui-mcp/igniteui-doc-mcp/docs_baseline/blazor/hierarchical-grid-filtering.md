@@ -396,7 +396,7 @@ To set the initial filtering state of the [`IgbHierarchicalGrid`](mcp:get_api_re
 
 ### Filtering logic
 
-The [`IgbFilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). You can change it at any time through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API, or through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) input property.
+The [`FilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) controls how filtering multiple columns will resolve in the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid). You can change it at any time through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) API, or through the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid) input property.
 
 ```razor
  <IgbHierarchicalGrid FilteringLogic="FilteringLogic.Or"></IgbHierarchicalGrid>
@@ -408,7 +408,7 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor

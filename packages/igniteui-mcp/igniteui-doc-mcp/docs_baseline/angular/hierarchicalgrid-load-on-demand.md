@@ -279,7 +279,7 @@ public schema: EntityType[] = [
 
 #### Setting initial filter
 
-Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`IgxFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) and set it to the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
+Now let's add initial filtering rules to our grid so that the root grid is filtered when first loaded. We will create a [`FilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=FilteringExpressionsTree) and set it to the [`advancedFilteringExpressionsTree`](mcp:get_api_reference?platform=angular&component=IgxHierarchicalGridComponent&member=advancedFilteringExpressionsTree) property of the `IgxHierarchicalGrid` using the `ngOnInit` lifecycle hook.
 
 Let's say we want to filter customers that have order's freight at least `500`. We will take advantage of the ability to create nested queries in the filtering expressions and this is the result:
 

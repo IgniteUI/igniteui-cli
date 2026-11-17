@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series"]
 llms:
   description: "In React map component, you can use the GeographicSymbolSeries to display geo-spatial data using points or markers in a geographic context."
+platformType: xplat
 _tocName: Geographic Symbol Map
 _premium: true
 ---
@@ -986,53 +987,36 @@ root.render(<MapTypeScatterSymbolSeries/>);
 ```
 
 ## Data Requirements
-Similarly to other types of geographic series in the map component, the `IgrGeographicSymbolSeries` has the `DataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `LatitudeMemberPath` and `LongitudeMemberPath` properties. The `GeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
+Similarly to other types of geographic series in the map component, the `IgrGeographicSymbolSeries` has the `dataSource` property which can be bound to an array of objects. In addition, each data item in this object must have two numeric data columns that store a geographic location (longitude and latitude). These data columns are then mapped to the `latitudeMemberPath` and `longitudeMemberPath` properties. The `IgrGeographicSymbolSeries` uses values of these mapped data columns to plot symbol elements in the geographic map component.
 
 ## Code Snippet
 The following code shows how to bind the `IgrGeographicSymbolSeries` to locations of cities loaded from a shape file using the `IgrShapefileRecord`.
 
 ```tsx
-
-import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrGeographicSymbolSeries } from 'igniteui-react-maps';
-import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { MarkerType } from 'igniteui-react-charts';
-
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
-// ...
-
-public render() {
-    return (
-    <IgrGeographicMap
-        ref={this.onMapReferenced}
-        width="600px"
-        height="600px"
-        zoomable="true" />
-    );
-}
-```
-
-```ts
-public onMapReferenced(map: IgrGeographicMap) {
-    this.geoMap = map;
-    this.addSeries(WorldLocations.getCities(), "Gray");
-    this.addSeries(WorldLocations.getCapitals(),"rgb(32, 146, 252)");
-}
-
-public addSeries(locations: any[], brush: string)
-{
-    const symbolSeries = new IgrGeographicSymbolSeries ( { name: "symbolSeries" });
-    symbolSeries.dataSource = locations;
-    symbolSeries.markerType = MarkerType.Circle;
-    symbolSeries.latitudeMemberPath = "lat";
-    symbolSeries.longitudeMemberPath = "lon";
-    symbolSeries.markerBrush  = "White";
-    symbolSeries.markerOutline = brush;
-
-    this.geoMap.series.add(symbolSeries);
-}
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicSymbolSeries
+        name="citiesSeries"
+        ref={ref => { this.citiesSeries = ref; }}
+        dataSource={this.worldCities}
+        markerType="Circle"
+        latitudeMemberPath="y"
+        longitudeMemberPath="x"
+        markerBrush="White"
+        markerOutline="Gray" />
+    <IgrGeographicSymbolSeries
+        name="capitalsSeries"
+        ref={ref => { this.capitalsSeries = ref; }}
+        dataSource={this.worldCapitals}
+        markerType="Circle"
+        latitudeMemberPath="y"
+        longitudeMemberPath="x"
+        markerBrush="White"
+        markerOutline="rgba(32, 146, 252, 1)" />
+</IgrGeographicMap>
 ```
 
 ## API References

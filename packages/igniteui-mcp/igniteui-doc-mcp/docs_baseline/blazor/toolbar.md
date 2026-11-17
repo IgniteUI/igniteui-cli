@@ -3,9 +3,10 @@ title: "Blazor Toolbar Component | Ignite UI for Blazor"
 description: See how you can easily get started with Blazor Toolbar Component. Compatible with the Data Chart. Extend your .
 keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Toolbar components, Blazor Toolbar controls"
 license: commercial
-mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "TrendLineType"]
+mentionedTypes: ["Toolbar", "ToolAction", "DomainChart", "CategoryChart", "DataChart", "Axis", "ValueLayerValueMode"]
 llms:
   description: "The Blazor Toolbar component is a companion container for UI operations to be used primarily with our charting components."
+platformType: xplat
 _tocName: Toolbar
 _premium: true
 ---
@@ -129,11 +130,10 @@ Add the **IgniteUI.Blazor.Controls** namespace in the **_Imports.razor** file:
 @using IgniteUI.Blazor.Controls
 ```
 
-The following modules are required when using the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) with the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) component and it's features.
+The toolbar's chart integration, and the series, trendlines, annotations and interactivity its tools add to the chart on the client, come from modules that no Razor component requests, so they have to be registered. [`IgbToolbarModule`](mcp:get_api_reference?platform=blazor&component=IgbToolbarModule) and [`IgbDataChartCoreModule`](mcp:get_api_reference?platform=blazor&component=IgbDataChartCoreModule) are optional: the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) and the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) load them when they first render (see [Component Modules](../general-getting-started.md#component-modules)).
 
-```csharp
+```razor
 // in Program.cs file
-
 builder.Services.AddIgniteUIBlazor(
     typeof(IgbToolbarModule),
     typeof(IgbDataChartToolbarModule),
@@ -143,12 +143,6 @@ builder.Services.AddIgniteUIBlazor(
     typeof(IgbDataChartInteractivityModule),
     typeof(IgbDataChartCategoryTrendLineModule)
 );
-```
-
-You will also need to link an additional CSS file to apply the styling to the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
-
-```razor
-<link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
 ```
 
 ## Usage
@@ -166,11 +160,11 @@ The following is a list of the different [`IgbToolAction`](mcp:get_api_reference
 - [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio)
 - [`IgbToolActionSubPanel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel)
 
-Each of these tools exposes an `OnCommand` event that is triggered by mouse click. Note, the [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) is a wrapper for other tools that can also be wrapped inside a [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu).
+Each of these tools exposes an [`OnCommand`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel&member=OnCommand) event that is triggered by mouse click. Note, the [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) is a wrapper for other tools that can also be wrapped inside a [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu).
 
-New and existing tools can be repositioned and marked hidden using the [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=overlayId), [`BeforeId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=beforeId) and [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=afterId) properties on the [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) object. ToolActions also expose a [`Visibility`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=visibility) property.
+New and existing tools can be repositioned and marked hidden using the [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu&member=OverlayId), [`BeforeId`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu&member=BeforeId) and [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu&member=AfterId) properties on the [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) object. ToolActions also expose a [`IgbToolAction.Visibility`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=Visibility) property.
 
-The following example demonstrates a couple of features. First you can group tools together in the [`IgbToolActionSubPanel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=afterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`IsHighlighted`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=isHighlighted) property on the tool.
+The following example demonstrates a couple of features. First you can group tools together in the [`IgbToolActionSubPanel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel) including hiding built in tools such as the **ZoomReset** and **AnalyzeMenu** menu tool actions. In this example a new instance of the **ZoomReset** tool action within the **ZoomMenu** by using the the [`AfterId`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel&member=AfterId) property and assigning that to **ZoomOut** to be precise with it's placement. It is also highlighted via the [`IsHighlighted`](mcp:get_api_reference?platform=blazor&component=IgbToolActionSubPanel&member=IsHighlighted) property on the tool.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -478,23 +472,24 @@ public class CountryRenewableElectricity
 The Blazor Toolbar contains a [`Target`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=Target) property. This is used to link a component, such as the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) as shown in the code below:
 
 ```razor
-  <IgbToolbar
-    Name="Toolbar"
+<IgbToolbar
     @ref="toolbar"
-    Target="@chart">
-  <IgbToolbar>
-
-  <IgbDataChart
-    Name="chart"
-    @ref="chart">
-  </IgbDataChart>
+    Orientation="ToolbarOrientation.Horizontal" />
+<IgbDataChart
+    @ref="chart"
+    IsHorizontalZoomEnabled="true"
+    IsVerticalZoomEnabled="true" />
 ```
 
-Several pre-existing [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) items and menus become available when the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) is linked with the Toolbar. Here is a list of the built-in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) Tool Actions and their associated [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=overlayId):
+```razor
+toolbar.Target = this.chart;
+```
+
+Several pre-existing [`IgbToolAction`](mcp:get_api_reference?platform=blazor&component=IgbToolAction) items and menus become available when the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) is linked with the Toolbar. Here is a list of the built-in Blazor [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) Tool Actions and their associated [`OverlayId`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=OverlayId):
 
 Zooming Actions
 
-- `ZoomMenu`: A [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) that exposes three [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) items to invoke the [`ZoomIn`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=zoomIn) and [`ZoomOut`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=zoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) that invokes the [`ResetZoom`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=resetZoom) method on the chart to reset the zoom level to it's default position.
+- `ZoomMenu`: A [`IgbToolActionIconMenu`](mcp:get_api_reference?platform=blazor&component=IgbToolActionIconMenu) that exposes three [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) items to invoke the [`ZoomIn`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ZoomIn) and [`ZoomOut`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ZoomOut) methods on the chart for increasing/decreasing the chart's zoom level including `ZoomReset`, a [`IgbToolActionLabel`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel) that invokes the [`ResetZoom`](mcp:get_api_reference?platform=blazor&component=IgbDataChart&member=ResetZoom) method on the chart to reset the zoom level to it's default position.
 
 Trend Actions
 
@@ -504,20 +499,20 @@ Trend Actions
   - `LinesHeader`: A sub menu section header for the following three tools:
     - `MaxValue`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the maximum value of the series.
     - `MinValue`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the minimum value of the series.
-    - [`Average`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Average):  A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the average value of the series.
+    - `Average`:  A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that displays a dashed horizontal line along the yAxis at the average value of the series.
   - `TrendsMenu`: A sub menu containing tools for applying various trendlines to the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart) plot area.
   - `TrendsHeader`: A sub menu section header for the following three tools:
-    - **Exponential**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=trendLineType) on each series in the chart to **ExponentialFit**.
-    - **Linear**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=trendLineType) on each series in the chart to **LinearFit**.
-    - **Logarithmic**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=trendLineType) on each series in the the chart to **LogarithmicFit**.
+    - **Exponential**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TrendLineType) on each series in the chart to **ExponentialFit**.
+    - **Linear**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TrendLineType) on each series in the chart to **LinearFit**.
+    - **Logarithmic**: A [`IgbToolActionRadio`](mcp:get_api_reference?platform=blazor&component=IgbToolActionRadio) that sets the [`TrendLineType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=TrendLineType) on each series in the the chart to **LogarithmicFit**.
 - `HelpersHeader`: A sub section header.
-  - `SeriesAvg`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that adds or removes a [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) to the chart's series collection using the [`IgbValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) of type [`Average`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Average).
+  - `SeriesAvg`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that adds or removes a [`IgbValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbValueLayer) to the chart's series collection using the [`ValueLayerValueMode`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode) of type [`Average`](mcp:get_api_reference?platform=blazor&component=ValueLayerValueMode&member=Average).
   - `ValueLabelsMenu`: A sub menu containing various tools for showing different annotations on the [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)'s plot area.
   - `ValueLabelsHeader`: A sub menu section header for the following tools:
     - `ShowValueLabels`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles data point values by using a [`IgbCalloutLayer`](mcp:get_api_reference?platform=blazor&component=IgbCalloutLayer).
     - `ShowLastValueLabel`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles final value axis annotations by using a [`IgbFinalValueLayer`](mcp:get_api_reference?platform=blazor&component=IgbFinalValueLayer).
-- `ShowCrosshairs`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles mouse-over crosshair annotations via the chart's [`CrosshairsDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbDomainChart&member=crosshairsDisplayMode) property.
-- `ShowGridlines`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles extra gridlines by applying a `MajorStroke` to the X-Axis.
+- `ShowCrosshairs`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles mouse-over crosshair annotations via the chart's [`CrosshairsDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=CrosshairsDisplayMode) property.
+- `ShowGridlines`: A [`IgbToolActionCheckbox`](mcp:get_api_reference?platform=blazor&component=IgbToolActionCheckbox) that toggles extra gridlines by applying a [`MajorStroke`](mcp:get_api_reference?platform=blazor&component=IgbAxis&member=MajorStroke) to the X-Axis.
 
 Save to Image Action
 
@@ -526,108 +521,48 @@ Save to Image Action
 
 ### SVG Icons
 
-When adding tools manually, icons can be assigned using the `RenderIconFromText` method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`IconCollectionName`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=iconCollectionName). The second is the name of the icon defined on the tool eg. [`IconName`](mcp:get_api_reference?platform=blazor&component=IgbToolAction&member=iconName), followed by adding the SVG string.
+When adding tools manually, icons can be assigned using the [`RegisterIconFromText`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=RegisterIconFromText) method. There are three parameters to pass in this method. The first is the icon collection name defined on the tool eg. [`IconCollectionName`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel&member=IconCollectionName). The second is the name of the icon defined on the tool eg. [`IconName`](mcp:get_api_reference?platform=blazor&component=IgbToolActionLabel&member=IconName), followed by adding the SVG string.
 
 ### Data URL Icons
 
-Similarly to adding svg, you can also add an Icon image from a URL via the [`RegisterIconFromDataURL`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=registerIconFromDataURL). The method's third parameter would be used to enter a string URL.
+Similarly to adding svg, you can also add an Icon image from a URL via the [`RegisterIconFromDataURL`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=RegisterIconFromDataURL). The method's third parameter would be used to enter a string URL.
 
-The following snippet shows both methods of adding an Icon.
+The following code registers an icon each way, an SVG string and a URL, into two collections:
 
-```ts
-public toolbarCustomIconOnViewInit(): void {
+```razor
+var toolbar = this.toolbar;
+toolbar.EnsureReady().ContinueWith(new Action<Task>((e) =>
+{
+	//SVG Icon
+	string icon =
+	@"
+		<svg width=""28px"" height=""28px"" stroke=""none"" viewBox=""0 0 3.5 3.5"" xmlns=""http://www.w3.org/2000/svg"" xmlns:xlink=""http://www.w3.org/1999/xlink"" aria-hidden=""true"" role=""img"" class=""iconify iconify--gis"" preserveAspectRatio=""xMidYMid meet""><path d=""M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z"" fill=""#000000"" fill-rule=""evenodd""/></svg>
+	";
+	toolbar.RegisterIconFromTextAsync("CustomCollection", "CustomIcon", icon);
 
-  const icon = '<svg width="28px" height="28px" stroke="none" viewBox="0 0 3.5 3.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--gis" preserveAspectRatio="xMidYMid meet"><path d="M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z" fill="#000000" fill-rule="evenodd"/></svg>';
+	//DataURL Icon
+	toolbar.RegisterIconFromDataURLAsync("CustomCollection2", "CustomIcon2", "https://www.svgrepo.com/show/678/calculator.svg");
 
-  this.toolbar.registerIconFromText("CustomCollection", "CustomIcon", icon);
-}
+}));
 ```
 
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  toolbar.registerIconFromDataURL("CustomCollection", "CustomIcon", "https://www.svgrepo.com/show/678/calculator.svg");
-
-}
-```
-
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  const icon = '<svg width="28px" height="28px" stroke="none" viewBox="0 0 3.5 3.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--gis" preserveAspectRatio="xMidYMid meet"><path d="M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z" fill="#000000" fill-rule="evenodd"/></svg>';
-
-  this.toolbar.registerIconFromText("CustomCollection", "CustomIcon", icon);
-
-}
-```
-
-```ts
-public toolbarCustomIconOnViewInit(): void {
-
-  toolbar.registerIconFromDataURL("CustomCollection", "CustomIcon", "https://www.svgrepo.com/show/678/calculator.svg");
-
-}
-```
+A tool then asks for a registered icon by the collection and name it was registered under:
 
 ```razor
 <IgbToolActionLabel
     Title="Custom Icon"
     IconName="CustomIcon"
-    IconCollectionName="CustomCollection">
-</IgbToolActionLabel>
-
-@code {
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        var toolbar = this.toolbar;
-
-        if (firstRender) {
-            this.ToolbarCustomIconOnViewInit();
-        }
-    }
-
-    private IgbToolbar toolbar;
-
-    public void ToolbarCustomIconOnViewInit()
-    {
-      this.toolbar.EnsureReady().ContinueWith(new Action<Task>((e) =>
-      {
-        string icon =
-        @"
-          <svg width=""28px"" height=""28px"" stroke=""none"" viewBox=""0 0 3.5 3.5"" xmlns=""http://www.w3.org/2000/svg"" xmlns:xlink=""http://www.w3.org/1999/xlink"" aria-hidden=""true"" role=""img"" class=""iconify iconify--gis"" preserveAspectRatio=""xMidYMid meet""><path d=""M0.436 0.178a0.073 0.073 0 0 0 -0.062 0.036L0.01 0.846a0.073 0.073 0 0 0 0.063 0.109h0.729a0.073 0.073 0 0 0 0.063 -0.109L0.501 0.214a0.073 0.073 0 0 0 -0.064 -0.036zm0.001 0.219 0.238 0.413H0.199zM1.4 0.507v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245zM0.073 1.388A0.073 0.073 0 0 0 0 1.461v0.583a0.073 0.073 0 0 0 0.073 0.073h0.729A0.073 0.073 0 0 0 0.875 2.045V1.461a0.073 0.073 0 0 0 -0.073 -0.073zm0.073 0.146h0.583v0.438H0.146zM1.4 1.674v0.245h0.945v-0.245zm1.19 0v0.245h0.91v-0.245zM0.438 2.447c-0.241 0 -0.438 0.197 -0.438 0.438 0 0.241 0.197 0.438 0.438 0.438s0.438 -0.197 0.438 -0.438c0 -0.241 -0.197 -0.438 -0.438 -0.438zm0 0.146a0.291 0.291 0 0 1 0.292 0.292 0.291 0.291 0 0 1 -0.292 0.292 0.291 0.291 0 0 1 -0.292 -0.292A0.291 0.291 0 0 1 0.438 2.593zM1.4 2.842v0.245h0.525v-0.245zm0.77 0v0.245h1.33v-0.245z"" fill=""#000000"" fill-rule=""evenodd""/></svg>
-        ";
-        this.toolbar.RegisterIconFromTextAsync("CustomCollection", "CustomIcon", icon);
-      }));
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        var toolbar = this.toolbar;
-
-        if (firstRender) {
-            this.ToolbarCustomIconOnViewInit();
-        }
-    }
-
-    private IgbToolbar toolbar;
-
-    public void ToolbarCustomIconOnViewInit()
-    {
-      this.toolbar.EnsureReady().ContinueWith(new Action<Task>((e) =>
-      {
-            this.toolbar.RegisterIconFromDataURLAsync("CustomCollection", "CustomIcon", "https://www.svgrepo.com/show/678/calculator.svg");
-      }));
-    }
-}
+    IconCollectionName="CustomCollection" />
 ```
 
 ### Vertical Orientation
 
-By default the Blazor Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`Orientation`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=orientation) property.
+By default the Blazor Toolbar is shown horizontally, but it also has the ability to shown vertically by setting the [`IgbToolbar.Orientation`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=Orientation) property.
 
 ```razor
-<IgbToolbar Orientation="ToolbarOrientation.Vertical" />
+<IgbToolbar
+    @ref="toolbar"
+    Orientation="ToolbarOrientation.Vertical" />
 ```
 
 The following example demonstrates the vertical orientation of the Blazor Toolbar.
@@ -748,12 +683,19 @@ You can add a custom color editor tool to the the Blazor Toolbar, which will als
 
 ```razor
 <IgbToolbar
-Name="toolbar"
-@ref="toolbar">
+    @ref="toolbar">
     <IgbToolActionColorEditor
-    Title="Series Brush">
-    </IgbToolActionColorEditor>
+        Title="Series Brush"
+        @ref="colorEditorTool"
+        CommandId="ToggleSeriesBrush" />
 </IgbToolbar>
+<IgbDataChart
+    @ref="chart"
+    IsHorizontalZoomEnabled="true" />
+```
+
+```razor
+toolbar.Target = this.chart;
 ```
 
 The following example demonstrates styling the Blazor Data Chart series brush with the Color Editor tool.
@@ -900,7 +842,7 @@ public class CountryRenewableElectricity
 
 {/* ## Styling/Theming
 
-The icon component can be styled by using it's [`BaseTheme`](mcp:get_api_reference?platform=blazor&component=IgbToolbar&member=baseTheme) property directly to the [`IgbToolbar`](mcp:get_api_reference?platform=blazor&component=IgbToolbar).
+The icon component can be styled by using it's `baseTheme` property directly to the `Toolbar`.
 
 ```razor
 <IgbToolbar BaseTheme="BaseControlTheme.SlingshotDark" />

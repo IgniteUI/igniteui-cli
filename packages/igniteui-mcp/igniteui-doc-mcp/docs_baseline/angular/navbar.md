@@ -109,7 +109,7 @@ The [`actionButtonIcon`](mcp:get_api_reference?platform=angular&component=IgxNav
 
 ### Add Icon Buttons
 
-We can make our app a little more functional by adding options for searching, favorites and more. To do that let's grab the [**IgxIconButton**](./icon-button.md) and [**IgxIcon**](./icon.md) modules and import them in our **app.module.ts** file.
+We can make our app a little more functional by adding options for searching, favorites and more. To do that let's grab the [**IgxIconButton**](./icon-button.md) and [**IgxIcon**](./layouts/icon.md) modules and import them in our **app.module.ts** file.
 
 ```typescript
 // app.module.ts
@@ -540,7 +540,7 @@ $custom-icon-button-theme: flat-icon-button-theme(
 
 ### Styling with Tailwind
 
-You can style the navbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/misc/tailwind-classes.md) first.
+You can style the navbar using our custom Tailwind utility classes. Make sure to [set up Tailwind](./themes/tailwind.md) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

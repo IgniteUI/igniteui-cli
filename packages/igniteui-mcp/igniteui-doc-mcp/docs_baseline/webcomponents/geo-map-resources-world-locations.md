@@ -1,11 +1,12 @@
 ---
 title: "Web Components Map | World Locations | Data Source | Infragistics"
-description: Use Infragistics' Web Components JavaScript map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for Web Components map demos!
+description: Use Infragistics' Web Components map data utility to generate geographic locations of cities and capitals of countries. View Ignite UI for Web Components map demos!
 keywords: "Web Components map, map data, Ignite UI for Web Components, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of data utility for generating geographic locations of cities and capitals of countries."
+platformType: xplat
 _tocName: World Locations
 _premium: true
 ---
@@ -16,32 +17,31 @@ The resource topic provides implementation of data utility for generating geogra
 ## Code Snippet
 
 ```ts
-export default class WorldLocations {
+export class WorldLocations {
 
-    private static locations: any[] = [];
-    private static capitals: any[] = [];
-    private static cities: any[] = [];
+    public static locations: any[] = [];
+    public static capitals: any[] = [];
+    public static cities: any[] = [];
 
     // get location of cities and capitals
     public static getAll(): any[] {
-        if (this.locations.length == 0) this.init();
+        if (this.locations.length === 0) this.init();
         return this.locations;
     }
 
     // get location of cities
     public static getCities(): any[] {
-        if (this.cities.length == 0) this.init();
+        if (this.cities.length === 0) this.init();
         return this.cities;
     }
 
     // get location of capitals
     public static getCapitals(): any[] {
-        if (this.capitals.length == 0) this.init();
+        if (this.capitals.length === 0) this.init();
         return this.capitals;
     }
 
-    public static init() {
-        // console.log("WorldLocations init");
+    public static init(): any[] {
         this.locations = [
             { cap: false, pop:  0.468, lat: 68.9635467529297, lon: 33.0860404968262, country: "Russia", name: "Murmansk" },
             { cap: false, pop:  0.416, lat: 64.5206680297852, lon: 40.6461601257324, country: "Russia", name: "Arkhangelsk" },
@@ -59,7 +59,7 @@ export default class WorldLocations {
             { cap: true,  pop:  0.582, lat: 54.6885681152344, lon: 25.2759666442871, country: "Lithuania", name: "Vilnius" },
             { cap: false, pop:  0.685, lat: 54.5869255065918, lon: -5.90966033935547, country: "UK", name: "Belfast" },
             { cap: false, pop:  0.909, lat: 54.3662033081055, lon: 18.624942779541, country: "Poland", name: "Gdansk" },
-            { cap: true,  pop:  1.650, lat: 53.8999366760254, lon: 27.5755672454834, country: "Byelarus", name: "Minsk" },
+            { cap: true,  pop:  1.650, lat: 53.8999366760254, lon: 27.5755672454834, country: "Belarus", name: "Minsk" },
             { cap: false, pop:  1.540, lat: 53.8087120056152, lon: -1.49752748012543, country: "UK", name: "Leeds" },
             { cap: false, pop:  2.225, lat: 53.5711212158203, lon: 10.027606010437, country: "Germany", name: "Hamburg" },
             { cap: false, pop:  2.775, lat: 53.479663848877, lon: -2.26177859306335, country: "UK", name: "Manchester" },
@@ -91,12 +91,12 @@ export default class WorldLocations {
             { cap: false, pop:  0.750, lat: 50.6225280761719, lon: 5.56943559646606, country: "Belgium", name: "Liege" },
             { cap: true,  pop:  2.900, lat: 50.4481582641602, lon: 30.5021114349365, country: "Ukraine", name: "Kiev" },
             { cap: false, pop:  1.855, lat: 50.129997253418, lon: 8.66816711425781, country: "Germany", name: "Frankfurt am Main" },
-            { cap: true,  pop:  1.325, lat: 50.1058959960938, lon: 14.4565200805664, country: "Czech Repub", name: "Prague" },
+            { cap: true,  pop:  1.325, lat: 50.1058959960938, lon: 14.4565200805664, country: "Czechia", name: "Prague" },
             { cap: false, pop:  0.828, lat: 50.0622406005859, lon: 19.9450569152832, country: "Poland", name: "Krakow" },
             { cap: false, pop:  0.625, lat: 49.9211692810059, lon: -97.1244430541992, country: "Canada", name: "Winnipeg" },
             { cap: false, pop:  0.614, lat: 49.879207611084, lon: 73.20263671875, country: "Kazakhstan", name: "Karaganda" },
             { cap: false, pop:  0.790, lat: 49.8373107910156, lon: 24.0345211029053, country: "Ukraine", name: "Lvov" },
-            { cap: false, pop:  0.450, lat: 49.2029800415039, lon: 16.6162452697754, country: "Czech Repub", name: "Brno" },
+            { cap: false, pop:  0.450, lat: 49.2029800415039, lon: 16.6162452697754, country: "Czechia", name: "Brno" },
             { cap: true,  pop:  9.775, lat: 48.8815536499023, lon: 2.43283271789551, country: "France", name: "Paris" },
             { cap: false, pop:  1.360, lat: 48.7102470397949, lon: 44.4836311340332, country: "Russia", name: "Volgograd" },
             { cap: false, pop:  0.400, lat: 48.5834350585938, lon: 7.76799440383911, country: "France", name: "Strasbourg" },
@@ -175,7 +175,7 @@ export default class WorldLocations {
             { cap: false, pop:  1.190, lat: 38.0770950317383, lon: 114.559707641602, country: "China", name: "Shijiazhuang" },
             { cap: true,  pop:  0.398, lat: 37.9504203796387, lon: 58.3901329040527, country: "Turkmenistan", name: "Ashkhabad" },
             { cap: false, pop:  1.660, lat: 37.8930549621582, lon: 112.551704406738, country: "China", name: "Taiyuan" },
-            { cap: true,  pop: 15.850, lat: 37.542350769043, lon: 126.935249328613, country: "Korea Rep", name: "Seoul" },
+            { cap: true,  pop: 15.850, lat: 37.542350769043, lon: 126.935249328613, country: "South-Korea", name: "Seoul" },
             { cap: false, pop:  0.945, lat: 37.3726463317871, lon: -5.97083187103271, country: "Spain", name: "Sevilla" },
             { cap: false, pop:  0.778, lat: 36.9999809265137, lon: 35.3243637084961, country: "Turkey", name: "Adana" },
             { cap: false, pop:  0.796, lat: 36.8792915344238, lon: -76.2685699462891, country: "US", name: "Norfolk" },
@@ -186,14 +186,14 @@ export default class WorldLocations {
             { cap: false, pop:  1.464, lat: 36.2900695800781, lon: 59.596851348877, country: "Iran", name: "Mashhad" },
             { cap: false, pop:  1.216, lat: 36.2155456542969, lon: 37.1592826843262, country: "Syria", name: "Aleppo" },
             { cap: false, pop:  1.270, lat: 36.1134300231934, lon: 103.599594116211, country: "China", name: "Lanzhou" },
-            { cap: false, pop:  2.206, lat: 35.8635368347168, lon: 128.591384887695, country: "Korea Rep", name: "Taegu" },
+            { cap: false, pop:  2.206, lat: 35.8635368347168, lon: 128.591384887695, country: "South-Korea", name: "Taegu" },
             { cap: true,  pop:  6.400, lat: 35.7744750976563, lon: 51.4476509094238, country: "Iran", name: "Tehran" },
             { cap: true,  pop: 23.620, lat: 35.6830558776855, lon: 139.809188842773, country: "Japan", name: "Tokyo" },
             { cap: false, pop:  1.089, lat: 35.5045700073242, lon: 139.72721862793, country: "Japan", name: "Kawasaki" },
             { cap: false, pop:  0.742, lat: 35.4895896911621, lon: -97.5302963256836, country: "US", name: "Oklahoma City" },
             { cap: false, pop:  2.993, lat: 35.437385559082, lon: 139.619659423828, country: "Japan", name: "Yokohama" },
             { cap: false, pop:  0.479, lat: 35.2058143615723, lon: -80.8356857299805, country: "US", name: "Charlotte" },
-            { cap: false, pop:  3.800, lat: 35.1578674316406, lon: 129.0546875, country: "Korea Rep", name: "Pusan" },
+            { cap: false, pop:  3.800, lat: 35.1578674316406, lon: 129.0546875, country: "South-Korea", name: "Pusan" },
             { cap: false, pop:  4.800, lat: 35.1549224853516, lon: 136.920593261719, country: "Japan", name: "Nagoya" },
             { cap: false, pop:  0.853, lat: 35.1147270202637, lon: -90.0003280639648, country: "US", name: "Memphis" },
             { cap: false, pop:  1.479, lat: 35.0091285705566, lon: 135.754821777344, country: "Japan", name: "Kyoto" },
@@ -420,7 +420,7 @@ export default class WorldLocations {
             { cap: false, pop:  1.030, lat: 4.13665008544922, lon: 9.706374168396, country: "Cameroon", name: "Douala" },
             { cap: false, pop:  0.708, lat: -5.19043016433716, lon: 119.722793579102, country: "Indonesia", name: "Vjuag Padang" },
             { cap: false, pop:  0.112, lat: -3.3865532875061, lon: 129.312927246094, country: "Indonesia", name: "Ambon" },
-            { cap: false, pop:  1.604, lat: 37.5894508361816, lon: 126.767440795898, country: "Korea Rep", name: "Inch`on" },
+            { cap: false, pop:  1.604, lat: 37.5894508361816, lon: 126.767440795898, country: "South-Korea", name: "Inch`on" },
             { cap: false, pop:  1.680, lat: 39.0317153930664, lon: 121.598197937012, country: "China", name: "Dalian" },
             { cap: false, pop:  1.227, lat: 45.4421310424805, lon: -122.641677856445, country: "US", name: "Portland" },
             { cap: false, pop:  0.810, lat: -3.12230491638184, lon: -60.0146179199219, country: "Brazil", name: "Manaus" },
@@ -659,4 +659,4 @@ export default class WorldLocations {
 ```
 
 ## API References
-`IgcGeographicMap`
+`IgcGeographicMapComponent`

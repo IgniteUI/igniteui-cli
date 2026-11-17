@@ -1,11 +1,12 @@
 ---
 title: "Web Components Map | Data Visualization Tools | Map Overview | Infragistics"
-description: Use Infragistics' Web Components JavaScript map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Web Components map demos!
+description: Use Infragistics' Web Components map to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps. View the Ignite UI for Web Components map demos!
 keywords: "Web Components map, geographic map, imagery tiles, Ignite UI for Web Components, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap", "Series"]
 llms:
   description: "The Ignite UI for Web Components map component allows you to display data that contains geographic locations from view models or geo-spatial data loaded from shape files on geographic imagery maps."
+platformType: xplat
 _tocName: Geographic Map Features
 ---
 # Web Components Map Overview
@@ -14,7 +15,7 @@ The Ignite UI for Web Components map component allows you to display data that c
 
 ## Web Components Map Example
 
-The following sample demonstrates how display data in `IgcGeographicMap` using `IgcGeographicProportionalSymbolSeries` also known as Bubble Series.
+The following sample demonstrates how display data in `IgcGeographicMapComponent` using `IgcGeographicProportionalSymbolSeriesComponent` also known as Bubble Series.
 
 ```typescript
 export class WorldLocations {
@@ -664,7 +665,7 @@ export class WorldLocations {
 
 The map component allows you to render geographic imagery from Bing Maps™, and Open Street Maps. The map provides plotting of tens of thousands of data points, and updates them every few milliseconds so that the control can handle your real-time feeds.
 
-The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgcGeographicSymbolSeries` can be added for plotting geographic locations such as cities and the `IgcGeographicPolylineSeries` for plotting connections (e.g. roads) between these geographic locations.
+The map's Series property is used to support rendering an unlimited number of geographic series. This property is a collection of geographic series objects and any type of geographic series can be added to it. For example, `IgcGeographicSymbolSeriesComponent` can be added for plotting geographic locations such as cities and the `IgcGeographicPolylineSeriesComponent` for plotting connections (e.g. roads) between these geographic locations.
 
 The map provides customizable navigation behaviors for navigating map content using mouse, keyboard, or code-behind.
 
@@ -686,35 +687,28 @@ npm install --save igniteui-webcomponents-maps
 
 ## Component Modules
 
-The `IgcGeographicMap` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
-
-```ts
-import { IgcGeographicMapModule } from 'igniteui-webcomponents-maps';
-import { IgcGeographicMap } from 'igniteui-webcomponents-maps';
-import { IgcDataChartInteractivityModule } from 'igniteui-webcomponents-charts';
-
-IgcGeographicMapModule.register();
-IgcDataChartInteractivityModule.register();
-```
+The `IgcGeographicMapComponent` requires the following modules, however the DataChartInteractivityModule is only required for mouse interactions, such as panning and zooming the map content.
 
 ```ts
 import { ModuleManager } from 'igniteui-webcomponents-core';
 import { IgcGeographicMapModule } from 'igniteui-webcomponents-maps';
 import { IgcDataChartInteractivityModule } from 'igniteui-webcomponents-charts';
-
+// ...
 ModuleManager.register(
-    IgcDataChartInteractivityModule,
-    IgcGeographicMapModule
+    IgcGeographicMapModule,
+    IgcDataChartInteractivityModule
 );
 ```
 
 ## Usage
 
-Now that the map module is imported, next step is to create geographic map. The following code demonstrates how to do this and enable zooming in the map.
+Configure the geographic map and enable zooming with the following example.
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igc-geographic-map>
 ```
 
@@ -733,11 +727,11 @@ You can find more information about related Web Components map features in these
 - [Using Shape Polyline Series](./geo-map-type-shape-polyline-series.md)
 
 ## API References
-`IgcGeographicMap`
-`IgcGeographicContourLineSeries`
-`IgcGeographicHighDensityScatterSeries`
-`IgcGeographicPolylineSeries`
-`IgcGeographicShapeSeries`
-`IgcGeographicProportionalSymbolSeries`
-`IgcGeographicSymbolSeries`
-`IgcGeographicScatterAreaSeries`
+`IgcGeographicMapComponent`
+`IgcGeographicContourLineSeriesComponent`
+`IgcGeographicHighDensityScatterSeriesComponent`
+`IgcGeographicPolylineSeriesComponent`
+`IgcGeographicShapeSeriesComponent`
+`IgcGeographicProportionalSymbolSeriesComponent`
+`IgcGeographicSymbolSeriesComponent`
+`IgcGeographicScatterAreaSeriesComponent`

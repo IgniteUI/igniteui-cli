@@ -601,7 +601,7 @@ Additional components and/or directives that can be used within the Action Strip
 - [`IgxGridActionsBaseDirective`](mcp:get_api_reference?platform=angular&component=IgxGridActionsBaseDirective)
 - [`IgxGridPinningActions`](mcp:get_api_reference?platform=angular&component=IgxGridPinningActionsComponent)
 - [`IgxGridEditingActions`](mcp:get_api_reference?platform=angular&component=IgxGridEditingActionsComponent)
-- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent)
 
 <igc-divider></igc-divider>
 

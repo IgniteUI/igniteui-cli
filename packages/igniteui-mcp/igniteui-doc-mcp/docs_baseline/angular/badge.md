@@ -70,6 +70,20 @@ igx-icon {
 
 igx-chip {
     --ig-size: var(--ig-size-large);
+    --ig-chip-background: var(--ig-gray-300);
+    --ig-chip-border-radius: #{rem(16px)};
+
+    ::ng-deep .igx-chip__item {
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
+        font-family: "Titillium Web", sans-serif;
+        font-size: rem(14px);
+        font-weight: 400;
+        line-height: rem(20px);
+        letter-spacing: rem(0.25px);
+    }
 }
 
 igx-badge {
@@ -83,6 +97,10 @@ igx-badge {
 
 igx-badge:nth-of-type(1) {
     inset-block-start: anchor(85.5%);
+}
+
+igx-badge:nth-of-type(3) {
+    inset-inline-start: anchor(93%);
 }
 
 $anchors: avatar, mail, events, notifications;
@@ -263,12 +281,14 @@ $types: dot, icon, text;
 }
 
 igx-avatar {
-    --ig-avatar-size: #{rem(40px)};
-
     grid-row: 1;
 }
 
 span {
+    @include type-style("caption") {
+        margin: 0;
+    }
+
     grid-row: 2;
     text-align: center;
     color: var(--ig-gray-600);
@@ -277,10 +297,6 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("caption") {
-        margin: 0;
-    }
 }
 
 igx-badge {
@@ -490,8 +506,6 @@ export class BadgeDotComponent {
 @use "igniteui-theming/sass/typography" as *;
 
 :host {
-    --sample-accent: var(--ig-primary-800);
-
     display: grid;
     grid-auto-flow: column;
     place-content: center;
@@ -529,7 +543,7 @@ $anchors: icon, avatar;
 
 .notifications-card,
 .nav-card {
-    background: var(--ig-surface-500);
+    background: var(--ig-surface-base);
     border-radius: rem(4px);
     box-shadow: 0 rem(1px) rem(3px) hsl(from var(--ig-gray-900) h s l / 0.12);
 }
@@ -591,7 +605,7 @@ $anchors: icon, avatar;
     color: var(--ig-gray-700);
 
     &.active {
-        color: var(--sample-accent);
+        color: var(--ig-primary-500);
     }
 }
 
@@ -663,6 +677,10 @@ export class BadgeSizeComponent { }
 }
 
 span {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     justify-self: end;
     color: var(--ig-gray-600);
     font-family: "Aktiv Grotesk", sans-serif;
@@ -670,10 +688,6 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-2") {
-        margin: 0;
-    }
 }
 
 $sizes: small, medium, large;
@@ -733,6 +747,10 @@ export class BadgeShapeComponent { }
 }
 
 span {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     justify-self: end;
     color: var(--ig-gray-600);
     font-family: "Aktiv Grotesk", sans-serif;
@@ -740,13 +758,9 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-2") {
-        margin: 0;
-    }
 }
 
-$sizes: small, medium, large;
+$sizes: large, medium, small;
 
 @each $size in $sizes {
     $i: list.index($sizes, $size);
@@ -824,6 +838,10 @@ igx-avatar {
 }
 
 span {
+    @include type-style("body-2") {
+        margin: 0;
+    }
+
     grid-row: 2;
     text-align: center;
     color: var(--ig-gray-600);
@@ -832,10 +850,6 @@ span {
     font-weight: 400;
     line-height: rem(20px);
     letter-spacing: rem(0.3px);
-
-    @include type-style("body-2") {
-        margin: 0;
-    }
 }
 
 igx-badge {
@@ -872,13 +886,14 @@ The badge can also have a subtle border around it when the [`outlined`](mcp:get_
 import { Component } from '@angular/core';
 import { IgxAvatarComponent } from 'igniteui-angular/avatar';
 import { IgxBadgeComponent } from 'igniteui-angular/badge';
+import { IgxIconComponent } from 'igniteui-angular/icon';
 import { IGX_STEPPER_DIRECTIVES } from 'igniteui-angular/stepper';
 
 @Component({
   selector: 'app-badge-outlined',
   styleUrls: ['./badge-outlined.component.scss'],
   templateUrl: './badge-outlined.component.html',
-  imports: [IgxAvatarComponent, IgxBadgeComponent, IGX_STEPPER_DIRECTIVES]
+  imports: [IgxAvatarComponent, IgxBadgeComponent, IgxIconComponent, IGX_STEPPER_DIRECTIVES]
 })
 
 export class BadgeOutlinedComponent {
@@ -890,7 +905,9 @@ export class BadgeOutlinedComponent {
 }
 ```
 ```html
-<igx-avatar class="icon-anchor" icon="favorite_border" shape="circle" size="small"></igx-avatar>
+<div class="icon-anchor">
+    <igx-icon>favorite_border</igx-icon>
+</div>
 <igx-badge value="23" type="info" outlined></igx-badge>
 
 <igx-avatar class="initials-anchor" initials="AZ" shape="rounded" size="small"></igx-avatar>
@@ -932,7 +949,17 @@ export class BadgeOutlinedComponent {
 }
 
 .icon-anchor {
-    --ig-avatar-background: #{color($color: gray, $variant: 900, $opacity: 0.08)};
+    display: grid;
+    place-items: center;
+    inline-size: rem(36px);
+    block-size: rem(36px);
+    border-radius: 50%;
+    background: var(--ig-gray-200);
+    color: var(--ig-gray-800);
+
+    igx-icon {
+        font-size: rem(18px);
+    }
 }
 
 igx-badge {
@@ -942,6 +969,11 @@ igx-badge {
     inset-block-start: anchor(14.5%);
     inset-inline-start: anchor(85.5%);
     translate: -50% -50%;
+
+    &:nth-of-type(1) {
+        inset-block-start: anchor(10%);
+        inset-inline-start: anchor(100%);
+    }
 
     &:nth-of-type(2) {
         inset-block-start: anchor(85.5%);
@@ -1276,7 +1308,7 @@ The Angular Badge API reference lists the complete verified API surface for the 
 
 ## Dependencies
 
-The Angular Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in **Getting Started**.
+The Angular Badge requires a theme stylesheet to apply its visual styling. See the framework-specific setup in [**Getting Started**](../general/getting-started.md).
 
 ## Additional Resources
 

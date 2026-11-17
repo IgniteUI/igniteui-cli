@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "ColumnSeries", "W
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Column Char, Column Graph, or Vertical Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by columns with equal widths but different heights."
+platformType: xplat
 _tocName: Column Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for React Column Char, Column Graph, or Vertical Bar Chart is amon
 
 ## React Column Chart Example
 
-You can create React Column Chart in the `IgrCategoryChart` control by binding your data and setting `CategoryChart.ChartType` to **Column** enum, as shown in the example below:
+You can create React Column Chart in the `IgrCategoryChart` control by binding your data and setting `chartType` to **Column** enum, as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -165,7 +166,7 @@ There are several uses cases for Column Charts. When you:
 
 Column Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the bottom to top of the chart towards the values of data points.
 
-You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to **Column** value, as shown in the example below:
+You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to **Column** value, as shown in the example below:
 
 ```typescript
 export class TemperatureAverageDataItem {
@@ -271,7 +272,7 @@ root.render(<Sample/>);
 
 ## React Column Chart with Multiple Series
 
-The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `CategoryChart.ChartType` property to **Column** value, as shown in the example below:
+The Column Chart is able to render multiple columns per category for comparison purposes. You can create this type of chart in the `IgrCategoryChart` control by binding your data and setting the `chartType` property to **Column** value, as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -1344,7 +1345,7 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type          | Control Name       | API Members  |
 | --------------------|--------------------|------------------------|
-| Column              | `IgrCategoryChart`    | `CategoryChart.ChartType` = **Column** |
+| Column              | `IgrCategoryChart`    | `chartType` = **Column** |
 | Radial Column       | `IgrDataChart`     | `IgrRadialColumnSeries` |
 | Range Column        | `IgrDataChart`     | `IgrRangeColumnSeries` |
 | Stacked Column      | `IgrDataChart`     | `IgrStackedColumnSeries` |

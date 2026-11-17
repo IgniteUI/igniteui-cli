@@ -7,6 +7,7 @@ mentionedTypes: ["Treemap", "TreemapOrientation", "TreemapLayoutType", "TreemapH
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Treemap chart displays hierarchical (tree-structured) data as a set of nested nodes."
+platformType: xplat
 _tocName: Treemap
 _premium: true
 ---
@@ -161,13 +162,13 @@ There are several common use cases for choosing a Treemap. When you:
 
 - The data source must be an array or a list of data items
 - The data source must contain at least one data item otherwise the map will not render any nodes.
-- All data items must contain at least one data column (e.g. string) which should be mapped to the `LabelMemberPath` property.
-- All data items must contain at least one numeric data column which should be mapped using the `ValueMemberPath` property.
-- To categorize data into organized tiles you can optionally use `ParentIdMemberPath` and `IdMemberPath`.
+- All data items must contain at least one data column (e.g. string) which should be mapped to the `labelMemberPath` property.
+- All data items must contain at least one numeric data column which should be mapped using the `valueMemberPath` property.
+- To categorize data into organized tiles you can optionally use `parentIdMemberPath` and `idMemberPath`.
 
 ## React Treemap Configuration
 
-In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the `LayoutType` and `LayoutOrientation` properties.
+In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the `layoutType` and `layoutOrientation` properties.
 
 ```typescript
 export class CountyHierarchicalDataItem {
@@ -339,7 +340,7 @@ root.render(<Sample/>);
 
 The Treemap chart displays the relative weight of data. It uses a variety of algorithms to help it determine how the layout of its data items should occur:
 
-- `SliceAndDiced` - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
+- `SliceAndDice` - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
 - `Squarified` - layout tiling algorithm has a better aspect ratio than the `SliceAndDice` and keeps a better order than Squarified.
 - `Stripped` - layout type algorithm obtains the best aspect ratio but the objects are arranged by size.
 
@@ -350,16 +351,16 @@ The Treemap allows you to choose the algorithm that is best for your requirement
 
 ### Layout Orientation
 
-`LayoutOrientation` property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
+`layoutOrientation` property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
 
-Note that the `LayoutOrientation` property works with the layout types SliceAndDice and Strip.
+Note that the `layoutOrientation` property works with the layout types SliceAndDice and Strip.
 
 - `Horizontal` – the child nodes are going to be stacked horizontally(SliceAndDice).
 - `Vertical` – the child nodes are going to be stacked vertically (SliceAndDice).
 
 ## React Treemap Styling
 
-In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the `NodeStylingScript` event.
+In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the `nodeStyling` event.
 
 ```typescript
 export class CountyHierarchicalDataItem {
@@ -528,7 +529,7 @@ root.render(<Sample/>);
 
 ### React Treemap Highlighting
 
-In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set `HighlightingMode`to Brighten or FadeOthers.
+In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set `highlightingMode`to Brighten or FadeOthers.
 
 ```typescript
 export class CountyHierarchicalDataItem {
@@ -683,10 +684,10 @@ root.render(<Sample/>);
 
 ## React Treemap Percent based highlighting
 
-- `HighlightedItemsSource`: Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
-- `HighlightedValueMemberPath`: Specifies the name of the property in the datasource where the highlighted values are read.
-- `HighlightedValueOpacity`: Controls the opacity of the normal value behind the highlighted value.
-- `HighlightedValuesDisplayMode`: Enables or disables highlighted values.
+- `highlightedDataSource`: Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
+- `highlightedValueMemberPath`: Specifies the name of the property in the datasource where the highlighted values are read.
+- `highlightedValueOpacity`: Controls the opacity of the normal value behind the highlighted value.
+- `highlightedValuesDisplayMode`: Enables or disables highlighted values.
   - Auto: The treemap decides what mode to use.
   - Overlay: The treemap displays highlighted values over top the normal value with a slight opacity applied to the normal value.
   - Hidden: The treemap does not show highlighted values.

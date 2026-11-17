@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "WorkbookFormat", "WorkbookSaveOptions"]
 llms:
   description: "Describes the ExcelUtility helper used to load, save, and convert workbook data with the Ignite UI for React Excel Library."
+platformType: xplat-unmapped
 _tocName: Excel Utility
 _premium: true
 ---

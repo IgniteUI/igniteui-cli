@@ -3,10 +3,11 @@ title: "Blazor Donut Chart | Data Visualization | Infragistics"
 description: Infragistics' Blazor Donut Chart
 keywords: "Blazor Charts, Donut Chart, Donut Chart, Infragistics"
 license: commercial
-mentionedTypes: ["DoughnutChart", "DoughnutChart"]
+mentionedTypes: ["DoughnutChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Donut Chart is similar to the Pie Chart, proportionally illustrating the occurrences of a variable."
+platformType: xplat
 _tocName: Donut Chart
 _premium: true
 ---
@@ -150,7 +151,7 @@ The Blazor Donut Chart includes interactive features that give the viewer tools 
 - You have negative data, as this can not be represented in a donut chart.
 
 ## Blazor Donut Chart - Slice Selection
-The Blazor Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The [`SliceClick`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart&member=sliceClick) event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
+The Blazor Donut Chart has the ability to select slices on click. Optionally, you may apply a single custom visual style to the selected slices. The [`SliceClick`](mcp:get_api_reference?platform=blazor&component=IgbDoughnutChart&member=SliceClick) event is raised when the user clicks on a slice. Enabling slice selection allows you to modify the slice's selection upon click. The following sample demonstrates how to enable slice selection and set the selected slice color to gray.
 
 ```razor
 @using IgniteUI.Blazor.Controls

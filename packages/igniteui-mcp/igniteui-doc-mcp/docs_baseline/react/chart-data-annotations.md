@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "CrosshairLayer", "FinalValueLa
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In the React chart, the data annotation layers allow you to annotate data plotted in Data Chart with sloped lines, vertical/horizontal lines (aka axis slices), vertical/horizontal strips (targeting specific axis), rectangles, and even parallelograms (aka bands)."
+platformType: xplat
 _tocName: Chart Data Annotations
 _premium: true
 ---
@@ -618,11 +619,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for React toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download free trial.</a>
 
 ## React Data Annotation Slice Layer Example
 
-In React, the `IgrDataAnnotationSliceLayer` renders multiple vertical or horizontal lines that slice the chart at multiple values of an axis in the `IgrDataChart` component. This data annotation layer is often used to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis. Setting the TargetAxis property to y-axis will render data annotation layer as horizontal slices or setting TargetAxis property to x-axis will render data annotation layer as vertical slices. Similarly to all series, the DataAnnotationSliceLayer also supports data binding via the `IgrDataSource` property that can be set to a collection of data items which should have at least 1 numeric data column mapped to the `AnnotationValueMemberPath` property.
+In React, the `IgrDataAnnotationSliceLayer` renders multiple vertical or horizontal lines that slice the chart at multiple values of an axis in the `IgrDataChart` component. This data annotation layer is often used to annotate important events (e.g. company quarter reports) on x-axis or important values on y-axis. Setting the TargetAxis property to y-axis will render data annotation layer as horizontal slices or setting TargetAxis property to x-axis will render data annotation layer as vertical slices. Similarly to all series, the DataAnnotationSliceLayer also supports data binding via the `dataSource` property that can be set to a collection of data items which should have at least 1 numeric data column mapped to the `annotationValueMemberPath` property.
 
 For example, you can use DataAnnotationSliceLayer to annotate stock prices with important events such as stock split and outcome of earning reports.
 
@@ -993,7 +994,7 @@ root.render(<Sample/>);
 
 ## React Data Annotation Strip Layer Example
 
-In React, the `IgrDataAnnotationStripLayer` renders multiple vertical or horizontal strips between 2 values on an axis in the `IgrDataChart` component. This data annotation layer can be used to annotate duration of events (e.g. stock market crash) on x-axis or important range of values on y-axis. Setting the TargetAxis property to y-axis will render data annotation layer as horizontal strips or setting TargetAxis property to x-axis will render data annotation layer as vertical strips. Similarly to all series, the `IgrDataAnnotationStripLayer` also supports data binding via the `IgrDataSource` property that can be set to a collection of data items which should have at least 1 numeric data column mapped to the AnnotationValueMemberPath property.
+In React, the `IgrDataAnnotationStripLayer` renders multiple vertical or horizontal strips between 2 values on an axis in the `IgrDataChart` component. This data annotation layer can be used to annotate duration of events (e.g. stock market crash) on x-axis or important range of values on y-axis. Setting the TargetAxis property to y-axis will render data annotation layer as horizontal strips or setting TargetAxis property to x-axis will render data annotation layer as vertical strips. Similarly to all series, the `IgrDataAnnotationStripLayer` also supports data binding via the `dataSource` property that can be set to a collection of data items which should have at least 1 numeric data column mapped to the AnnotationValueMemberPath property.
 
 For example, you can use `IgrDataAnnotationStripLayer` to annotate chart with stock market crashes and changes in federal interest rates.
 
@@ -1258,7 +1259,7 @@ root.render(<Sample/>);
 
 ## React Data Annotation Line Layer Example
 
-In React, `IgrDataAnnotationLineLayer` renders multiple lines between 2 points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate stock chart with growth and decline in stock prices. Similarly to all series, the DataAnnotationLineLayer also supports data binding via the `IgrDataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the lines. The starting points should be mapped using using `StartValueXMemberPath` and `StartValueYMemberPath` properties and the ending points should be mapped using `EndValueXMemberPath` and `EndValueYMemberPath`  properties.
+In React, `IgrDataAnnotationLineLayer` renders multiple lines between 2 points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate stock chart with growth and decline in stock prices. Similarly to all series, the DataAnnotationLineLayer also supports data binding via the `dataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the lines. The starting points should be mapped using using `startValueXMemberPath` and `startValueYMemberPath` properties and the ending points should be mapped using `endValueXMemberPath` and `endValueYMemberPath`  properties.
 
 For example, you can use DataAnnotationLineLayer to annotate growth and decline patterns in stock prices and 52-week high and low of stock prices on y-axis.
 
@@ -1586,7 +1587,7 @@ root.render(<Sample/>);
 
 ## React Data Annotation Rect Layer Example
 
-In React, the `IgrDataAnnotationRectLayer` renders multiple rectangles defined by starting and ending points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate region of plot area such as bearish patterns in stock prices. Similarly to all series, the DataAnnotationRectLayer also supports data binding via the `IgrDataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the rectangles. The starting points should be mapped using using `StartValueXMemberPath` and `StartValueYMemberPath` properties and the ending points should be mapped using `EndValueXMemberPath` and `EndValueYMemberPath` properties.
+In React, the `IgrDataAnnotationRectLayer` renders multiple rectangles defined by starting and ending points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate region of plot area such as bearish patterns in stock prices. Similarly to all series, the DataAnnotationRectLayer also supports data binding via the `dataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the rectangles. The starting points should be mapped using using `startValueXMemberPath` and `startValueYMemberPath` properties and the ending points should be mapped using `endValueXMemberPath` and `endValueYMemberPath` properties.
 
 For example, you can use DataAnnotationRectLayer to annotate bearish patterns and gaps in stock prices on y-axis.
 
@@ -1823,7 +1824,7 @@ root.render(<Sample/>);
 
 ## React Data Annotation Band Layer Example
 
-In React, the `IgrDataAnnotationBandLayer` renders multiple skewed rectangles (free-form parallelogram) between 2 points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate range of growth and decline in stock prices. Similarly to all series, the DataAnnotationBandLayer also supports data binding via the `IgrDataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the lines. The starting points should be mapped using `StartValueXMemberPath` and `StartValueYMemberPath` properties and the ending points should be mapped using `EndValueXMemberPath` and `EndValueYMemberPath` properties. In addition, you can specify thickness/size of the skewed rectangle by binding numeric data column to the AnnotationBreadthMemberPath property.
+In React, the `IgrDataAnnotationBandLayer` renders multiple skewed rectangles (free-form parallelogram) between 2 points in plot area of the `IgrDataChart` component. This data annotation layer can be used to annotate range of growth and decline in stock prices. Similarly to all series, the DataAnnotationBandLayer also supports data binding via the `dataSource` property that can be set to a collection of data items which should have at least 4 numeric data columns representing x/y coordinates of starting point and ending point of the lines. The starting points should be mapped using `startValueXMemberPath` and `startValueYMemberPath` properties and the ending points should be mapped using `endValueXMemberPath` and `endValueYMemberPath` properties. In addition, you can specify thickness/size of the skewed rectangle by binding numeric data column to the AnnotationBreadthMemberPath property.
 
 For example, you can use DataAnnotationBandLayer to annotate range of growth in stock prices.
 
@@ -2095,13 +2096,13 @@ root.render(<Sample/>);
 
 The following is a list of API members mentioned in the above sections:
 
-- `TargetAxis`: This property specifies which axis should have an enabled DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
-- `IgrDataSource`: This property binds data to the annotation layer to provide the precise shape.
-- `StartValueXMemberPath`: This property is a mapping to the name of the data column with x-positions for the start of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
-- `StartValueYMemberPath`: This property is a mapping to the name of data column with y-positions for the start of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
-- `EndValueXMemberPath`: This property is a mapping to the data column with x-positions for the end of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
-- `EndValueYMemberPath`: This property is a mapping to the data column with y-positions for end of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
-- `StartLabelXMemberPath`: This property is a mapping to the data column representing the overlay label for the starting position of the xAxis along the axis.
-- `StartLabelXDisplayMode` | `StartLabelYDisplayMode` | `EndLabelXDisplayMode` | `EndLabelYDisplayMode` | `CenterLabelXDisplayMode`: These properties specify what should annotation labels display on starting, ending, or center of the annotation shape, e.g. mapped data value, mapped data label, axis value, or hide a given annotation label.
-- `StartLabelYMemberPath`: This property is a mapping to the data column representing the axis label for the starting position of `IgrDataAnnotationBandLayer`, `IgrDataAnnotationLineLayer`, `IgrDataAnnotationRectLayer` on the y-axis.
-- `EndLabelYMemberPath`: This property is a mapping to the data column representing the axis label for the ending position of `IgrDataAnnotationBandLayer`, `IgrDataAnnotationLineLayer`, `IgrDataAnnotationRectLayer` on the y-axis.
+- `targetAxis`: This property specifies which axis should have an enabled DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
+- `dataSource`: This property binds data to the annotation layer to provide the precise shape.
+- `startValueXMemberPath`: This property is a mapping to the name of the data column with x-positions for the start of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
+- `startValueYMemberPath`: This property is a mapping to the name of data column with y-positions for the start of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
+- `endValueXMemberPath`: This property is a mapping to the data column with x-positions for the end of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
+- `endValueYMemberPath`: This property is a mapping to the data column with y-positions for end of the DataAnnotationBandLayer, DataAnnotationLineLayer, DataAnnotationRectLayer.
+- `startLabelXMemberPath`: This property is a mapping to the data column representing the overlay label for the starting position of the xAxis along the axis.
+- `startLabelXDisplayMode` | `startLabelYDisplayMode` | `endLabelXDisplayMode` | `endLabelYDisplayMode` | `centerLabelXDisplayMode`: These properties specify what should annotation labels display on starting, ending, or center of the annotation shape, e.g. mapped data value, mapped data label, axis value, or hide a given annotation label.
+- `startLabelYMemberPath`: This property is a mapping to the data column representing the axis label for the starting position of `IgrDataAnnotationBandLayer`, `IgrDataAnnotationLineLayer`, `IgrDataAnnotationRectLayer` on the y-axis.
+- `endLabelYMemberPath`: This property is a mapping to the data column representing the axis label for the ending position of `IgrDataAnnotationBandLayer`, `IgrDataAnnotationLineLayer`, `IgrDataAnnotationRectLayer` on the y-axis.

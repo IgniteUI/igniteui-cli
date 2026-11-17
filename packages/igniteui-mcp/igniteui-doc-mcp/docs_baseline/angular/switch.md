@@ -58,41 +58,49 @@ export class SwitchOverviewComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     place-content: center;
     place-items: center;
-    padding: 16px;
+    padding: rem(16px);
 }
 
 .notifications {
     inline-size: 100%;
-    max-inline-size: 384px;
-    background: var(--ig-surface-500);
-    border-radius: 4px;
+    max-inline-size: rem(384px);
+    background: var(--ig-surface-base);
+    border-radius: rem(4px);
     overflow: hidden;
 
     .notifications__title {
-        margin: 0;
-        padding: 16px;
-        font: 400 10px / 16px "Titillium Web", sans-serif;
-        letter-spacing: 1.5px;
+        @include type-style("overline") {
+            margin: 0;
+        }
+
+        padding: rem(16px);
         text-transform: uppercase;
         color: var(--ig-secondary-500);
+        font-family: "Titillium Web", sans-serif;
+        font-size: rem(10px);
+        font-weight: 400;
+        line-height: rem(16px);
+        letter-spacing: rem(1.5px);
     }
 
     .notifications__row {
-        padding-block: 12px;
-        padding-inline: 16px;
+        padding-block: rem(12px);
+        padding-inline: rem(16px);
 
         igx-switch {
             inline-size: 100%;
             justify-content: space-between;
-            gap: 16px;
-            transform: translateX(-10px);
+            gap: rem(16px);
+            transform: translateX(rem(-10px));
 
             ::ng-deep .igx-switch__composite {
-                transform: translateX(8px);
+                transform: translateX(rem(8px));
             }
         }
     }
@@ -101,18 +109,34 @@ export class SwitchOverviewComponent { }
 .option {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: rem(2px);
     text-align: start;
     white-space: normal;
 
     .option__label {
-        font-size: 16px;
+        @include type-style("body-1") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-900);
+        font-family: "Titillium Web", sans-serif;
+        font-size: rem(16px);
+        font-weight: 400;
+        line-height: rem(24px);
+        letter-spacing: rem(0.15px);
     }
 
     .option__hint {
-        font-size: 13px;
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-700);
+        font-family: "Titillium Web", sans-serif;
+        font-size: rem(14px);
+        font-weight: 400;
+        line-height: rem(20px);
+        letter-spacing: rem(0.25px);
     }
 }
 ```
@@ -238,24 +262,33 @@ export class SwitchEnabledComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     place-content: center;
     place-items: center;
-    padding: 16px;
+    padding: rem(16px);
 }
 
 .states {
     display: grid;
     grid-template-columns: repeat(4, auto);
     align-items: center;
-    gap: 32px 24px;
+    gap: rem(32px) rem(24px);
 
     .states__column,
     .states__row {
-        font: 500 14px / 24px "Aktiv Grotesk", sans-serif;
-        letter-spacing: 0.1px;
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-600);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
     }
 
     .states__column {
@@ -309,18 +342,20 @@ export class SwitchDisabledComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     min-block-size: 100%;
     box-sizing: border-box;
     place-content: center;
     place-items: center;
-    padding: 16px;
+    padding: rem(16px);
 }
 
 .states {
-    --variant-gap: 60px;
-    --label-gap: 30px;
+    --variant-gap: #{rem(60px)};
+    --label-gap: #{rem(30px)};
 
     display: flex;
     align-items: center;
@@ -334,9 +369,16 @@ export class SwitchDisabledComponent { }
     }
 
     .states__label {
-        font: 500 14px / 24px "Aktiv Grotesk", sans-serif;
-        letter-spacing: 0.1px;
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-600);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
     }
 }
 ```
@@ -382,29 +424,38 @@ export class SwitchSelectedComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     place-content: center;
     place-items: center;
-    padding: 16px;
+    padding: rem(16px);
 }
 
 .states {
     display: grid;
     grid-template-columns: repeat(3, auto);
     align-items: center;
-    gap: 32px;
-    transform: translateY(16px);
+    gap: rem(32px);
+    transform: translateY(rem(16px));
 
     .states__row {
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         text-align: end;
-        font: 500 14px / 24px "Aktiv Grotesk", sans-serif;
-        letter-spacing: 0.1px;
         color: var(--ig-gray-600);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
     }
 
     .states__disabled {
-        margin-inline-start: 16px;
+        margin-inline-start: rem(16px);
     }
 }
 ```
@@ -446,18 +497,20 @@ export class SwitchLayoutComponent { }
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host {
     display: flex;
     min-block-size: 100%;
     box-sizing: border-box;
     place-content: center;
     place-items: center;
-    padding: 16px;
+    padding: rem(16px);
 }
 
 .variants {
-    --variant-gap: 60px;
-    --label-gap: 30px;
+    --variant-gap: #{rem(60px)};
+    --label-gap: #{rem(30px)};
 
     display: flex;
     inline-size: 100%;
@@ -472,9 +525,16 @@ export class SwitchLayoutComponent { }
     }
 
     .variants__label {
-        font: 500 14px / 24px "Aktiv Grotesk", sans-serif;
-        letter-spacing: 0.1px;
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-600);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
     }
 }
 ```
@@ -485,7 +545,7 @@ The switch can also be labelled by elements external to the switch. In this case
 
 **When to use:** Use Switch for an immediate on/off setting that takes effect when the user changes it.
 
-**When not to use:** Use [Checkbox](../checkbox.md) when users select one or more options for a later form submission, or [Button](./button.md) when the control represents an action or a toggleable command.
+**When not to use:** Use [Checkbox](./checkbox.md) when users select one or more options for a later form submission, or [Button](./button.md) when the control represents an action or a toggleable command.
 
 <div class="table-responsive">
   <table class="table" style="width: 100%; table-layout: fixed; border-collapse: collapse; border: 1px solid #d3d3d3; margin-bottom: 24px;">
@@ -603,12 +663,7 @@ export class SwitchStylingComponent {
 </igx-expansion-panel>
 ```
 ```scss
-@use "igniteui-angular/theming" as *;
-
-:host ::ng-deep igx-switch .igx-switch__thumb {
-	min-width: 10px;
-    transform: translateY(-1px);
-}
+@use "igniteui-theming/sass/typography" as *;
 
 :host ::ng-deep igx-switch .igx-switch__ripple {
     display: none;
@@ -619,26 +674,26 @@ export class SwitchStylingComponent {
     place-content: center;
     place-items: center;
     min-block-size: 100%;
-    padding: 1rem;
+    padding: rem(16px);
 }
 
 .security {
     display: block;
     inline-size: 100%;
-    max-inline-size: 348px;
-    background: var(--ig-surface-500);
+    max-inline-size: rem(348px);
+    background: var(--ig-surface-base);
     border: rem(1px) solid var(--ig-gray-300);
     border-radius: rem(16px);
-    box-shadow: 0 rem(1px) rem(3px) rgb(0 0 0 / 12%);
+    box-shadow: 0 rem(1px) rem(3px) hsl(from var(--ig-gray-900) h s l / 0.12);
     overflow: hidden;
 
     igx-expansion-panel-header {
-        display: block !important;
+        display: block;
     }
 
     ::ng-deep igx-expansion-panel-header > div {
-        padding: rem(12px) rem(16px) !important;
-        gap: rem(16px) !important;
+        padding: rem(12px) rem(16px);
+        gap: rem(16px);
     }
 
     igx-expansion-panel-title {
@@ -659,9 +714,27 @@ export class SwitchStylingComponent {
     }
 
     igx-switch {
-        inline-size: rem(43px);
-        block-size: rem(24px);
-        transform: translateX(rem(2px));
+        --switch-width: #{rem(32px)};
+        --switch-height: #{rem(16px)};
+        --switch-thumb-size: #{rem(10px)};
+        --switch-on-offset: #{rem(4px)};
+        --switch-off-offset: calc(var(--switch-thumb-size) / 4);
+        --transform-thumb: calc(var(--switch-width) - var(--switch-thumb-size) - var(--switch-on-offset));
+
+        --ig-switch-border-color: var(--ig-gray-400);
+        --ig-switch-border-hover-color: var(--ig-gray-500);
+        --ig-switch-border-on-color: var(--ig-primary-500);
+        --ig-switch-border-on-hover-color: var(--ig-primary-600);
+        --ig-switch-track-off-color: var(--ig-gray-900-contrast);
+        --ig-switch-track-on-color: var(--ig-primary-500);
+        --ig-switch-track-on-hover-color: var(--ig-primary-600);
+        --ig-switch-thumb-off-color: var(--ig-gray-400);
+        --ig-switch-thumb-off-hover-color: var(--ig-gray-500);
+        --ig-switch-thumb-on-color: var(--ig-primary-800-contrast);
+        --ig-switch-border-radius-track: #{rem(32px)};
+        --ig-switch-border-radius-thumb: #{rem(32px)};
+        --ig-switch-resting-elevation: none;
+        --ig-switch-hover-elevation: none;
     }
 
     igx-radio-group {
@@ -681,26 +754,47 @@ export class SwitchStylingComponent {
     min-inline-size: 0;
 
     .option__label {
-        font: 600 #{rem(16px)} / #{rem(24px)} "Aktiv Grotesk", sans-serif;
-        letter-spacing: #{rem(0.15px)};
+        @include type-style("body-1") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-700);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(16px);
+        font-weight: 600;
+        line-height: rem(24px);
+        letter-spacing: rem(0.15px);
     }
 
     .option__hint {
-        font: 500 #{rem(14px)} / #{rem(24px)} "Aktiv Grotesk", sans-serif;
-        letter-spacing: #{rem(0.1px)};
+        @include type-style("body-2") {
+            margin: 0;
+        }
+
         color: var(--ig-gray-600);
+        font-family: "Aktiv Grotesk", sans-serif;
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(24px);
+        letter-spacing: rem(0.1px);
     }
 }
 
 igx-radio {
-    font: 600 #{rem(12px)} / #{rem(16px)} "Aktiv Grotesk", sans-serif;
-    letter-spacing: #{rem(0.15px)};
-    color: var(--ig-primary-900);
+    @include type-style("caption") {
+        margin: 0;
+    }
 
     --fill-color: var(--ig-primary-500);
     --fill-color-hover: var(--ig-primary-500);
     --fill-hover-border-color: var(--ig-primary-500);
+
+    color: var(--ig-primary-900);
+    font-family: "Aktiv Grotesk", sans-serif;
+    font-size: rem(12px);
+    font-weight: 600;
+    line-height: rem(16px);
+    letter-spacing: rem(0.15px);
 }
 
 :host ::ng-deep igx-radio.igx-radio--checked .igx-radio__composite::after {
@@ -709,24 +803,24 @@ igx-radio {
 }
 
 :host ::ng-deep igx-radio.igx-radio--checked .igx-radio__composite::before {
-    transform: none !important;
+    transform: none;
 }
 
 :host ::ng-deep igx-radio .igx-radio__composite::before,
 :host ::ng-deep igx-radio .igx-radio__composite::after {
-    width: 16px;
-    height: 16px;
+    inline-size: rem(16px);
+    block-size: rem(16px);
 }
 
 :host ::ng-deep igx-radio .igx-radio__label {
-    transform: translateY(-2px);
+    transform: translateY(rem(-2px));
 }
 
 :host ::ng-deep igx-radio .igx-radio__composite,
 :host ::ng-deep igx-radio .igx-radio__composite::before,
 :host ::ng-deep igx-radio .igx-radio__composite::after {
-    animation: none !important;
-    transition: none !important;
+    animation: none;
+    transition: none;
 }
 
 :host ::ng-deep igx-radio .igx-radio__ripple {
@@ -737,7 +831,7 @@ igx-radio {
 
 ### Styling with Tailwind
 
-You can style the switch using the Ignite UI Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first, then import the utility file in your global stylesheet:
+You can style the switch using the Ignite UI Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first, then import the utility file in your global stylesheet:
 
 ```scss
 @import "tailwindcss";
@@ -800,19 +894,21 @@ export class SwitchTailwindStylingComponent {
 </div>
 ```
 ```scss
+@use "igniteui-theming/sass/typography" as *;
+
 :host ::ng-deep igx-switch .igx-switch__thumb {
-	min-width: 10px;
+    min-inline-size: rem(10px);
 }
 
 :host ::ng-deep igx-switch .igx-switch__ripple {
-	display: none;
+    display: none;
 }
 
 :host {
-	display: flex;
-	place-content: center;
-	place-items: center;
-	padding: 40px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    padding: rem(40px);
 }
 ```
 
@@ -875,14 +971,13 @@ The Angular Switch requires a theme stylesheet to apply its visual styling. See 
 
 Use the following Angular resources for API details, examples, and project support:
 
-- [Lists - Design System Pattern](https://www.infragistics.com/products/indigo-design/help/patterns/lists)
+- [Switch - Design System Component](https://www.infragistics.com/products/indigo-design/help/components/switch)
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)
 
 ## Related Components
 
-- [Checkbox](../checkbox.md) - Use Checkbox when users select one or more options, especially as part of a form.
-
+- [Checkbox](./checkbox.md) - Use Checkbox when users select one or more options, especially as part of a form.
 - [Button](./button.md) - Use Button when the control represents a command or action rather than a setting.
 
 ## FAQ

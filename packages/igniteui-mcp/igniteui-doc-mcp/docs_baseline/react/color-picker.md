@@ -173,7 +173,7 @@ export default function ColorPickerOverview() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerOverview />);
 ```
 
@@ -332,7 +332,7 @@ export default function ColorPickerValue() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerValue />);
 ```
 
@@ -377,7 +377,7 @@ export default function ColorPickerInput() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerInput />);
 ```
 
@@ -428,7 +428,7 @@ export default function ColorPickerFormat() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerFormat />);
 ```
 
@@ -478,7 +478,7 @@ export default function ColorPickerAlpha() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerAlpha />);
 ```
 
@@ -583,7 +583,7 @@ export default function ColorPickerSwatches() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerSwatches />);
 ```
 
@@ -685,7 +685,7 @@ export default function ColorPickerStates() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerStates />);
 ```
 
@@ -770,7 +770,7 @@ export default function ColorPickerSizes() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerSizes />);
 ```
 
@@ -851,7 +851,7 @@ export default function ColorPickerInputSizes() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerInputSizes />);
 ```
 
@@ -1043,7 +1043,7 @@ export default function ColorPickerStyling() {
         <div className="toolbar-group">
           <span className="toolbar-group-label">Colors</span>
           <div className="toolbar-actions">
-            <IgrColorPicker mode="input" placeholder="Color" />
+            <IgrColorPicker mode="input" />
           </div>
         </div>
       </div>
@@ -1051,7 +1051,7 @@ export default function ColorPickerStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerStyling />);
 ```
 ```css
@@ -1565,7 +1565,6 @@ export default function ColorPickerTailwindStyling() {
               className={pickerClassName}
               id="textPicker"
               value={text}
-              size="small"
               label="Text"
               onInput={(e: CustomEvent<string>) => setText(e.detail)}
             >
@@ -1579,7 +1578,6 @@ export default function ColorPickerTailwindStyling() {
               className={pickerClassName}
               id="accentPicker"
               value={accent}
-              size="small"
               label="Accent"
               onInput={(e: CustomEvent<string>) => setAccent(e.detail)}
             >
@@ -1593,7 +1591,6 @@ export default function ColorPickerTailwindStyling() {
               className={pickerClassName}
               id="borderPicker"
               value={border}
-              size="small"
               label="Border"
               onInput={(e: CustomEvent<string>) => setBorder(e.detail)}
             >
@@ -1607,7 +1604,6 @@ export default function ColorPickerTailwindStyling() {
               className={pickerClassName}
               disabled={true}
               value="#7d91ab"
-              size="small"
               label="Shadow (Pro)"
             >
               <span slot="helper-text" className="swatch-hint">
@@ -1635,7 +1631,7 @@ export default function ColorPickerTailwindStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<ColorPickerTailwindStyling />);
 ```
 

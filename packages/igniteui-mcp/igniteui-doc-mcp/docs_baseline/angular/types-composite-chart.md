@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area."
+platformType: xplat
 _tocName: Composite Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Composite Chart, also called a Combo Chart, is visuali
 
 ## Angular Composite / Combo Example
 
-The following example demonstrates how to create Composite Chart using `IgxColumnSeries` and `IgxLineSeries` in the `IgxDataChart` control.
+The following example demonstrates how to create Composite Chart using [`IgxColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnSeriesComponent) and [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -187,8 +188,8 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## API References
 
-`IgxDataChart`<br />
-`IgxColumnSeries`<br />
-`IgxLineSeries`<br />
-`IgxCategoryXAxis`<br />
-`IgxNumericYAxis`<br />
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)<br />
+[`IgxColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnSeriesComponent)<br />
+[`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent)<br />
+[`IgxCategoryXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryXAxisComponent)<br />
+[`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent)<br />

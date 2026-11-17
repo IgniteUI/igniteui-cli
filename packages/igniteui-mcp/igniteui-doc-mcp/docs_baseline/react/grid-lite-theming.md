@@ -231,7 +231,7 @@ import { html } from 'lit-html';
 import "igniteui-webcomponents/themes/light/bootstrap.css";
 import "./index.scss";
 
-declare global {
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       'igc-select': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
@@ -327,8 +327,6 @@ root.render(<Sample/>);
 ## Creating Custom Themes
 
 Aside from the default themes shipped with the Grid Lite package, you can further customize the look and feel of your data grid by using an alternate set of CSS custom properties.
-
-Refer to the [theming topic](../grids/grid/theming-grid.md) for more details.
 
 ```css
 .grid-sample {

@@ -1,17 +1,18 @@
 ---
 title: "Web Components Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
-description: Use Infragistics' Web Components JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Web Components map tutorials!
+description: Use Infragistics' Web Components map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for Web Components map tutorials!
 keywords: "Web Components map, geographic series, Ignite UI for Web Components, Infragistics, data binding"
 license: commercial
 mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
 llms:
   description: "In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
+platformType: xplat
 _tocName: Binding Multiple Sources
 _premium: true
 ---
 # Web Components Binding Multiple Data Sources
 
-In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgcGeographicSymbolSeries` for plotting geographic locations of airports, the `IgcGeographicPolylineSeries` for plotting flights between airports, and 2nd `IgcGeographicPolylineSeries` for plotting gridlines of major geographic coordinates.
+In the Ignite UI for Web Components map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data. For example, `IgcGeographicSymbolSeriesComponent` for plotting geographic locations of airports, the `IgcGeographicPolylineSeriesComponent` for plotting flights between airports, and 2nd `IgcGeographicPolylineSeriesComponent` for plotting gridlines of major geographic coordinates.
 
 ## Web Components Binding Multiple Data Sources Example
 
@@ -1014,9 +1015,9 @@ export class WorldUtils {
 
 This topic takes you step-by-step towards displaying multiple geographic series that will plot following geo-spatial data:
 
-- `IgcGeographicSymbolSeries` – displays locations of major airports
-- `IgcGeographicPolylineSeries` – displays flights between airports
-- `IgcGeographicPolylineSeries` – displays gridlines of major coordinates
+- `IgcGeographicSymbolSeriesComponent` – displays locations of major airports
+- `IgcGeographicPolylineSeriesComponent` – displays flights between airports
+- `IgcGeographicPolylineSeriesComponent` – displays gridlines of major coordinates
 
 You can use geographic series in this or other combinations to plot desired data.
 
@@ -1024,22 +1025,120 @@ You can use geographic series in this or other combinations to plot desired data
 
 Create data sources for all geographic series that you want to display in the Ignite UI for Web Components map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
+```html
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+</igc-geographic-map>
+```
+
+```ts
+lineSeries.dataSource = this.worldFlights;
+gridSeries.dataSource = this.worldGridlines;
+symbolSeries.dataSource = this.worldAirports;
+```
+
 ## Overlaying Flights
 
-Create first `IgcGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for Web Components map.
+Create first `IgcGeographicPolylineSeriesComponent` object with flight connections between major airports and add it to the Series collection of the Ignite UI for Web Components map.
+
+```html
+<igc-geographic-polyline-series
+    id="lineSeries"
+    shape-member-path="points"
+    shape-stroke="rgba(196, 14, 14, 0.05)"
+    shape-stroke-thickness="4">
+</igc-geographic-polyline-series>
+```
 
 ## Overlaying Gridlines
 
-Create second `IgcGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for Web Components map.
+Create second `IgcGeographicPolylineSeriesComponent` object with geographic gridlines and add it to the Series collection of the Ignite UI for Web Components map.
+
+```html
+<igc-geographic-polyline-series
+    id="gridSeries"
+    shape-member-path="points"
+    shape-stroke="Gray"
+    shape-stroke-thickness="1">
+</igc-geographic-polyline-series>
+```
 
 ## Overlaying Airports
 
-Create `IgcGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for Web Components map.
+Create `IgcGeographicSymbolSeriesComponent` object with airport points and add it to the Series collection of the geographic Ignite UI for Web Components map.
+
+```html
+<igc-geographic-symbol-series
+    id="symbolSeries"
+    latitude-member-path="lat"
+    longitude-member-path="lon"
+    marker-type="Circle"
+    marker-brush="rgba(170, 211, 223, 1)"
+    marker-outline="rgba(73, 73, 73, 1)"
+    thickness="1">
+</igc-geographic-symbol-series>
+```
 
 ## Summary
 
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
 
+```ts
+import { IgcGeographicMapComponent, IgcGeographicPolylineSeriesComponent, IgcGeographicSymbolSeriesComponent } from 'igniteui-webcomponents-maps';
+```
+
+```html
+<igc-geographic-map
+    id="geoMap"
+    height="100%"
+    width="100%"
+    zoomable="true">
+    <igc-geographic-polyline-series
+        id="lineSeries"
+        shape-member-path="points"
+        shape-stroke="rgba(196, 14, 14, 0.05)"
+        shape-stroke-thickness="4">
+    </igc-geographic-polyline-series>
+    <igc-geographic-polyline-series
+        id="gridSeries"
+        shape-member-path="points"
+        shape-stroke="Gray"
+        shape-stroke-thickness="1">
+    </igc-geographic-polyline-series>
+    <igc-geographic-symbol-series
+        id="symbolSeries"
+        latitude-member-path="lat"
+        longitude-member-path="lon"
+        marker-type="Circle"
+        marker-brush="rgba(170, 211, 223, 1)"
+        marker-outline="rgba(73, 73, 73, 1)"
+        thickness="1">
+    </igc-geographic-symbol-series>
+</igc-geographic-map>
+```
+
+```ts
+// fields:
+private geoMap: IgcGeographicMapComponent
+private lineSeries: IgcGeographicPolylineSeriesComponent
+private gridSeries: IgcGeographicPolylineSeriesComponent
+private symbolSeries: IgcGeographicSymbolSeriesComponent
+
+// initialization:
+var geoMap = this.geoMap = document.getElementById('geoMap') as IgcGeographicMapComponent;
+var lineSeries = this.lineSeries = document.getElementById('lineSeries') as IgcGeographicPolylineSeriesComponent;
+var gridSeries = this.gridSeries = document.getElementById('gridSeries') as IgcGeographicPolylineSeriesComponent;
+var symbolSeries = this.symbolSeries = document.getElementById('symbolSeries') as IgcGeographicSymbolSeriesComponent;
+
+// bindings:
+lineSeries.dataSource = this.worldFlights;
+gridSeries.dataSource = this.worldGridlines;
+symbolSeries.dataSource = this.worldAirports;
+```
+
 ## API References
-`IgcGeographicPolylineSeries`
-`IgcGeographicSymbolSeries`
+`IgcGeographicPolylineSeriesComponent`
+`IgcGeographicSymbolSeriesComponent`

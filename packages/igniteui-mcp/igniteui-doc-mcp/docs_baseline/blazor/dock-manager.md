@@ -579,8 +579,8 @@ The following table describes all CSS variables used for styling the dock-manage
 | `--igc-tab-text-active`                | The text color of the selected tab header component. |
 | `--igc-tab-background-active`          | The background color of the selected tab header component. |
 | `--igc-tab-border-color-active`        | The border color of the selected tab header component. |
-| `--igc-pinned-header-background`       | The background color of the unpinned pane header component. |
-| `--igc-pinned-header-text`             | The text color of the unpinned pane header component. |
+| `--igc-unpinned-header-background`     | The background color of the unpinned pane header component. |
+| `--igc-unpinned-header-text`           | The text color of the unpinned pane header component. |
 | `--igc-splitter-background`            | The background color of the splitter component. |
 | `--igc-splitter-handle`                | The background color of the splitter handle. |
 | `--igc-button-text`                    | The color of the buttons inside the pane header actions part. |

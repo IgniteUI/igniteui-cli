@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The React OpenStreetMapImagery is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world."
+platformType: xplat
 _tocName: Displaying OSM Imagery
 _premium: true
 ---
@@ -85,16 +86,27 @@ root.render(<MapDisplayImageryOSM/>);
 ```
 
 ## Code Snippet
-This code example explicitly sets `BackgroundContent` of the map component to the `IgrOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets `backgroundContent` of the map component to the `IgrOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
 
-```ts
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrOpenStreetMapImagery } from 'igniteui-react-maps';
+```tsx
+<IgrGeographicMap
+    ref={this.mapRef}
+    height="100%"
+    width="100%"
+    zoomable={true} />
+```
+
+```tsx
+import { IgrGeographicMap, IgrOpenStreetMapImagery } from 'igniteui-react-maps';
 // ...
-const tileSource = new IgrOpenStreetMapImagery();
-
-const geoMap = new IgrGeographicMap({ name: "geoMap" });
-geoMap.backgroundContent = tileSource;
+private map: IgrGeographicMap
+private mapRef(r: IgrGeographicMap) {
+    this.map = r;
+    this.setState({});
+}
+this.mapRef = this.mapRef.bind(this);
+var osmImagery = new IgrOpenStreetMapImagery();
+this.map.backgroundContent = osmImagery;
 ```
 
 ## API References

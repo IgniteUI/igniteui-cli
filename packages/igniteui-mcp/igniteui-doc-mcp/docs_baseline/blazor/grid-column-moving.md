@@ -298,7 +298,7 @@ public class FinancialDataAll
 
 In addition to the drag and drop functionality, the Column Moving feature also provides API methods to allow moving a column/reordering columns programmatically:
 
-[`IgbGridBaseDirective.moveColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a [`IgbDropPosition`](mcp:get_api_reference?platform=blazor&component=DropPosition) value), which determines whether to place the column before or after the target column.
+[`IgbGridBaseDirective.moveColumn`](mcp:get_api_reference?platform=blazor&component=IgbGridBaseDirective&member=moveColumn) - Moves a column before or after another column (a target). The first parameter is the column to be moved, and the second parameter is the target column. Also accepts an optional third parameter `Position` (representing a [`DropPosition`](mcp:get_api_reference?platform=blazor&component=DropPosition) value), which determines whether to place the column before or after the target column.
 
 ```csharp
     public async void HandleClick()
@@ -348,7 +348,7 @@ igRegisterScript("onColumnMovingEnd", (event) => {
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 
 In case you would like to change some of the colors, you need to set a class for the grid first:
 

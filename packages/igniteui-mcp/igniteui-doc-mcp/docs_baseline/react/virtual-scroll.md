@@ -119,7 +119,7 @@ export default function VirtualScrollOverview() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<VirtualScrollOverview />);
 ```
 
@@ -346,7 +346,7 @@ export default function VirtualScrollVariableSize() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<VirtualScrollVariableSize />);
 ```
 
@@ -499,7 +499,7 @@ export default function VirtualScrollHorizontal() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<VirtualScrollHorizontal />);
 ```
 
@@ -744,7 +744,7 @@ export default function VirtualScrollScrollToIndex() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<VirtualScrollScrollToIndex />);
 ```
 
@@ -929,7 +929,7 @@ export default function VirtualScrollInfiniteScroll() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<VirtualScrollInfiniteScroll />);
 ```
 

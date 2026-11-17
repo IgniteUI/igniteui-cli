@@ -4,9 +4,11 @@ description: Navigate Infragistics' Angular charts by panning right and left and
 keywords: Angular charts, data chart, navigation, Ignite UI for Angular, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "CategoryChart", "FinancialChart", "ModifierKeys", "InteractionState", "SeriesViewerScrollbarMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular charts allows for interactive panning and zooming via the mouse, keyboard and touch."
+platformType: xplat
 _tocName: Chart Navigation
 _premium: true
 ---
@@ -202,13 +204,13 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 */
 ```
 
-Like this sample? Get access to our complete Angular toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-angular/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for Angular toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-angular/download">Download free trial.</a>
 
 ## Chart Navigation with User Interactions
 
-Whether or not zooming is on by default depends on the chart you are using. If you are using `IgxCategoryChart`, it is on by default, but it is not in the `IgxDataChart`. In order to enable or disable navigation in the UI, you need to set either the `IsHorizontalZoomEnabled` and/or the `IsVerticalZoomEnabled` properties of the chart, depending on the direction that you wish to enable or disable zooming.
+Whether or not zooming is on by default depends on the chart you are using. If you are using [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent), it is on by default, but it is not in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent). In order to enable or disable navigation in the UI, you need to set either the [`isHorizontalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isHorizontalZoomEnabled) and/or the [`isVerticalZoomEnabled`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=isVerticalZoomEnabled) properties of the chart, depending on the direction that you wish to enable or disable zooming.
 
-It is also possible to zoom or pan simply by clicking the mouse or using touch. The `DefaultInteraction` property of the data chart determines what happens on mouse click or touch events. This property defaults to `DragZoom` and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This `DefaultInteraction` property can also be set to either `DragPan` to allow panning or `None` to prevent these operations.
+It is also possible to zoom or pan simply by clicking the mouse or using touch. The [`defaultInteraction`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=defaultInteraction) property of the data chart determines what happens on mouse click or touch events. This property defaults to [`DragZoom`](mcp:get_api_reference?platform=angular&component=InteractionState&member=DragZoom) and when set to this with zooming enabled, clicking and dragging will place a preview rectangle over the plot area that will become the zoomed area of the chart. This [`defaultInteraction`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=defaultInteraction) property can also be set to either [`DragPan`](mcp:get_api_reference?platform=angular&component=InteractionState&member=DragPan) to allow panning or [`InteractionState.None`](mcp:get_api_reference?platform=angular&component=InteractionState&member=None) to prevent these operations.
 
 ## Chart Navigation with Touch, Mouse and Keyboard
 
@@ -218,28 +220,28 @@ Navigation in the Angular data chart can happen with either touch, the mouse or 
 - **Zoom In**: Using the <kbd>PAGE UP</kbd> key on the keyboard, rolling the mouse wheel up, or pinching to zoom in via touch.
 - **Zoom Out**: Using the <kbd>PAGE DOWN</kbd> key on the keyboard, rolling the mouse wheel down, or pinching to zoom out via touch.
 - **Fit to Chart Plot Area**: Using the <kbd>HOME</kbd> key on the keyboard. There is no mouse or touch operation for this.
-- **Area Zoom**: Click and drag the mouse within the plot area with the `DefaultInteraction` property set to its default - `DragZoom`.
+- **Area Zoom**: Click and drag the mouse within the plot area with the [`defaultInteraction`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=defaultInteraction) property set to its default - [`DragZoom`](mcp:get_api_reference?platform=angular&component=InteractionState&member=DragZoom).
 
-The zoom and pan operations can also be enabled by using modifier keys by setting the `DragModifier` and `PanModifier` properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
+The zoom and pan operations can also be enabled by using modifier keys by setting the [`dragModifier`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=dragModifier) and [`panModifier`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=panModifier) properties, respectively. These properties can be set to the following modifier keys, and when pressed, the corresponding operation will be executed:
 
 | Modifier Value | Corresponding Key |
 | ---------------|------------------ |
-| `Shift`        | <kbd>SHIFT</kbd> |
-| `Control`      | <kbd>CTRL</kbd> |
-| `Windows`      | <kbd>WIN</kbd> |
-| `Apple`        | <kbd>APPLE</kbd> |
-| `None`         | no keys |
+| [`Shift`](mcp:get_api_reference?platform=angular&component=ModifierKeys&member=Shift)        | <kbd>SHIFT</kbd> |
+| [`Control`](mcp:get_api_reference?platform=angular&component=ModifierKeys&member=Control)      | <kbd>CTRL</kbd> |
+| [`Windows`](mcp:get_api_reference?platform=angular&component=ModifierKeys&member=Windows)      | <kbd>WIN</kbd> |
+| [`Apple`](mcp:get_api_reference?platform=angular&component=ModifierKeys&member=Apple)        | <kbd>APPLE</kbd> |
+| [`None`](mcp:get_api_reference?platform=angular&component=ModifierKeys&member=None)         | no keys |
 
 ## Chart Navigation with Scrollbars
 
-The chart can be scrolled by enabling the `VerticalViewScrollbarMode` and `HorizontalViewScrollbarMode` properties.
+The chart can be scrolled by enabling the [`verticalViewScrollbarMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=verticalViewScrollbarMode) and [`horizontalViewScrollbarMode`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=horizontalViewScrollbarMode) properties.
 
 These can be configured to the following options
 
-- `Persistent` - The scrollbars always stay visible, as long as the chart is zoomed in, and fade away when fully zoomed out.
-- `Fading` - The scrollbars disappear after use and reappear when the mouse is near their location.
-- `FadeToLine` - The scrollbars are reduced to a thinner line when zooming is not in use.
-- `None` - Default, no scrollbars are shown.
+- [`Persistent`](mcp:get_api_reference?platform=angular&component=SeriesViewerScrollbarMode&member=Persistent) - The scrollbars always stay visible, as long as the chart is zoomed in, and fade away when fully zoomed out.
+- [`Fading`](mcp:get_api_reference?platform=angular&component=SeriesViewerScrollbarMode&member=Fading) - The scrollbars disappear after use and reappear when the mouse is near their location.
+- [`FadeToLine`](mcp:get_api_reference?platform=angular&component=SeriesViewerScrollbarMode&member=FadeToLine) - The scrollbars are reduced to a thinner line when zooming is not in use.
+- [`None`](mcp:get_api_reference?platform=angular&component=SeriesViewerScrollbarMode&member=None) - Default, no scrollbars are shown.
 
 The following example demonstrates enabling scrollbars.
 
@@ -338,15 +340,15 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ## Chart Navigation through Code
 
 **Note:** 
-Code navigation of the chart can only be used for the `IgxDataChart` control.
+Code navigation of the chart can only be used for the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control.
 
 The Angular data chart provides several navigation properties that are updated each time a zoom or pan operation happens in the chart. You can also set each of these properties to zoom or pan the data chart programmatically. The following is a list of these properties:
 
-- `WindowPositionHorizontal`: A numeric value describing the X portion of the content view rectangle displayed by the data chart.
-- `WindowPositionVertical`: A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
-- `WindowRect`: A `IgxRect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a `WindowRect` of "0, 0, 1, 1" would be the entirety of the data chart.
-- `WindowScaleHorizontal`: A numeric value describing the width portion of the content view rectangle displayed by the data chart.
-- `WindowScaleVertical`: A numeric value describing the height portion of the content view rectangle displayed by the data chart.
+- [`windowPositionHorizontal`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowPositionHorizontal): A numeric value describing the X portion of the content view rectangle displayed by the data chart.
+- [`windowPositionVertical`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowPositionVertical): A numeric value describing the Y portion of the content view rectangle displayed by the data chart.
+- [`windowRect`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowRect): A `IgRect` object representing a rectangle that represents the portion of the chart that is currently in view. For example, a [`windowRect`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowRect) of "0, 0, 1, 1" would be the entirety of the data chart.
+- [`windowScaleHorizontal`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowScaleHorizontal): A numeric value describing the width portion of the content view rectangle displayed by the data chart.
+- [`windowScaleVertical`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent&member=windowScaleVertical): A numeric value describing the height portion of the content view rectangle displayed by the data chart.
 
 ## Additional Resources
 
@@ -356,6 +358,6 @@ You can find more information about related chart features in these topics:
 - [Chart Trendlines](chart-trendlines.md)
 
 ## API References
-`IgxCategoryChart`
-`IgxDataChart`
-`IgxFinancialChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)

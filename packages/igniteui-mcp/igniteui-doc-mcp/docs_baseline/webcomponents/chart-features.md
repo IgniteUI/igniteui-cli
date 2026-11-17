@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
 llms:
   description: "The Ignite UI for Web Components Charts allow you to display many different features to portray the full data story to be told with your chart."
+platformType: xplat
 _tocName: Chart Features
 ---
 # Web Components Chart Features
@@ -391,6 +392,6 @@ export class StockItem {
 ```
 
 ## API References
-[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

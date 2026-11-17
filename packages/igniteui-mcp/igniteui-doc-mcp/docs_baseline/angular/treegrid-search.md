@@ -241,14 +241,20 @@ Let's also display the position of the current occurrence, along with the total 
 ```html
 <!--searchgrid.component.html-->
 
-<div class="resultsText" *ngIf="treeGrid.lastSearchInfo">
-    <span *ngIf="treeGrid.lastSearchInfo.matchInfoCache.length > 0">
-        {{ treeGrid.lastSearchInfo.activeMatchIndex + 1 }} of {{ treeGrid.lastSearchInfo.matchInfoCache.length }} results
-    </span>
-    <span *ngIf="treeGrid.lastSearchInfo.matchInfoCache.length == 0">
-        No results
-    </span>
-</div>
+@if (treeGrid.lastSearchInfo) {
+    <div class="resultsText">
+        @if (treeGrid.lastSearchInfo.matchInfoCache.length > 0) {
+            <span>
+                {{ treeGrid.lastSearchInfo.activeMatchIndex + 1 }} of {{ treeGrid.lastSearchInfo.matchInfoCache.length }} results
+            </span>
+        }
+        @if (treeGrid.lastSearchInfo.matchInfoCache.length == 0) {
+            <span>
+                No results
+            </span>
+        }
+    </div>
+}
 ```
 
 ### Add search buttons
@@ -324,7 +330,7 @@ What if we would like to filter and sort our Tree Grid or even to add and remove
 ### Adding icons
 
 By using some of our other components, we can create an enriched user interface and improve the overall design of our entire search bar! We can have a nice search or delete icon on the left of the search input, a couple of chips for our search options and some material design icons combined with nice ripple styled buttons for our navigation on the right. We can wrap these components inside an input group for a more refined design.
-To do this, let's go and grab the [**IgxInputGroup**](/input-group), [**IgxIcon**](/icon),  [**IgxRipple**](/ripple), [**IgxButton**](inputs/button) and the [**IgxChip**](/chip) modules.
+To do this, let's go and grab the [**IgxInputGroup**](/input-group), [**IgxIcon**](/layouts/icon),  [**IgxRipple**](/ripple), [**IgxButton**](inputs/button) and the [**IgxChip**](/inputs/chip) modules.
 
 ```typescript
 // app.module.ts
@@ -362,16 +368,22 @@ We will wrap all of our components inside an [**IgxInputGroup**](../input-group.
 
 <igx-input-group type="search" class="offset">
     <igx-prefix>
-        <igx-icon *ngIf="searchText.length == 0">search</igx-icon>
-        <igx-icon *ngIf="searchText.length > 0" (click)="clearSearch()">clear</igx-icon>
+        @if (searchText.length == 0) {
+            <igx-icon>search</igx-icon>
+        }
+        @if (searchText.length > 0) {
+            <igx-icon (click)="clearSearch()">clear</igx-icon>
+        }
     </igx-prefix>
 
     <input #search1 id="search1" igxInput placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="treeGrid.findNext(searchText, caseSensitive, exactMatch)"
         (keydown)="searchKeyDown($event)" />
 
-    <igx-suffix *ngIf="searchText.length > 0">
-        ...
-    </igx-suffix>
+    @if (searchText.length > 0) {
+        <igx-suffix>
+            ...
+        </igx-suffix>
+    }
 </igx-input-group>
 ```
 
@@ -391,16 +403,24 @@ On the right in our input group, let's create three separate containers with the
 ```html
 <!--searchgrid.component.html-->
 
-<igx-suffix *ngIf="searchText.length > 0">
-    <div class="resultsText" *ngIf="treeGrid.lastSearchInfo">
-        <span *ngIf="treeGrid.lastSearchInfo.matchInfoCache.length > 0">
-            {{ treeGrid.lastSearchInfo.activeMatchIndex + 1 }} of {{ treeGrid.lastSearchInfo.matchInfoCache.length }} results
-        </span>
-        <span *ngIf="treeGrid.lastSearchInfo.matchInfoCache.length == 0">
-            No results
-        </span>
-    </div>
-</igx-suffix>
+@if (searchText.length > 0) {
+    <igx-suffix>
+        @if (treeGrid.lastSearchInfo) {
+            <div class="resultsText">
+                @if (treeGrid.lastSearchInfo.matchInfoCache.length > 0) {
+                    <span>
+                        {{ treeGrid.lastSearchInfo.activeMatchIndex + 1 }} of {{ treeGrid.lastSearchInfo.matchInfoCache.length }} results
+                    </span>
+                }
+                @if (treeGrid.lastSearchInfo.matchInfoCache.length == 0) {
+                    <span>
+                        No results
+                    </span>
+                }
+            </div>
+        }
+    </igx-suffix>
+}
 ```
 
 - For displaying a couple of chips that toggle the **caseSensitive** and the **exactMatch** properties. We have replaced the checkboxes with two stylish chips that change color based on these properties. Whenever a chip is clicked, we invoke its respective handler - **updateSearch** or **updateExactSearch** depending on which chip has been clicked.
@@ -457,7 +477,7 @@ In this article we implemented our own search bar for the Tree Grid with some ad
 [`IgxGridCell`](mcp:get_api_reference?platform=angular&component=IgxGridCell) methods:
 [`IgxColumn`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent) properties:
 - [`searchable`](mcp:get_api_reference?platform=angular&component=IgxColumnComponent&member=searchable)
-[`IgxISearchInfo`](mcp:get_api_reference?platform=angular&component=ISearchInfo)
+[`ISearchInfo`](mcp:get_api_reference?platform=angular&component=ISearchInfo)
 Additional components and/or directives with relative APIs that were used:
 - [`IgxInputGroup`](mcp:get_api_reference?platform=angular&component=IgxInputGroupComponent)
 - [`IgxIcon`](mcp:get_api_reference?platform=angular&component=IgxIconComponent)

@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "StackedAreaSeries", "Stacked100AreaSeries", "Stac
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines."
+platformType: xplat
 _tocName: Stacked Chart
 _premium: true
 ---

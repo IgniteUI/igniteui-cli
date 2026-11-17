@@ -53,29 +53,25 @@ The text to be highlighted is set via the [`search-text`](mcp:get_api_reference?
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { IgrHighlight } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class HighlightOverview extends React.Component<any, any> {
-
-  public render(): JSX.Element {
-    return (
-      <div className="sample">
-      <IgrHighlight search-text="dolor">
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
-          odit id excepturi ipsum provident eaque dignissimos beatae!
-        </p>
-      </IgrHighlight>
-      </div>
-    );
-  }
+export default function HighlightOverview() {
+  return (
+    <div className="sample">
+    <IgrHighlight search-text="dolor">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
+        odit id excepturi ipsum provident eaque dignissimos beatae!
+      </p>
+    </IgrHighlight>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<HighlightOverview/>);
 ```
 
@@ -161,53 +157,50 @@ igc-divider {
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { IgrInput, IgrHighlight, IgrDivider, IgrIconButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import './index.css';
 
-export default class HighlightSearch extends React.Component<any, any> {
-  private highlightRef = React.createRef<IgrHighlight>();
+export default function HighlightSearch() {
+  const highlightRef = useRef<IgrHighlight>(null);
 
-  private onInput = ({ detail }: CustomEvent<string>) => {
-    if (!this.highlightRef) return;
-    this.highlightRef.current.searchText = detail;
-  };
-
-  private prev = () => {
-    this.highlightRef?.current.previous({preventScroll: true});
-  };
-
-  private next = () => {
-    this.highlightRef?.current.next({preventScroll: true});
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="sample">
-      <div className="search-bar">
-        <IgrInput label="Search" onigcInput={this.onInput}>
-          <IgrIconButton onClick={this.prev} id="prev-btn" variant="flat" name="navigate_before" collection="internal" slot="suffix"></IgrIconButton>
-          <IgrIconButton onClick={this.next} id="next-btn" variant="flat" name="navigate_next" collection="internal" slot="suffix"></IgrIconButton>
-        </IgrInput>
-      </div>
-      <IgrDivider></IgrDivider>
-      <IgrHighlight ref={this.highlightRef}>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
-          odit id excepturi ipsum provident eaque dignissimos beatae! Rerum vero
-          distinctio libero, quasi magni quod natus nesciunt doloremque temporibus
-          voluptate?
-        </p>
-      </IgrHighlight>
-      </div>
-    );
+  function onInput({ detail }: CustomEvent<string>) {
+    highlightRef.current!.searchText = detail;
   }
+
+  function prev() {
+    highlightRef.current!.previous({preventScroll: true});
+  }
+
+  function next() {
+    highlightRef.current!.next({preventScroll: true});
+  }
+
+  return (
+    <div className="sample">
+    <div className="search-bar">
+      <IgrInput label="Search" onInput={onInput}>
+        <IgrIconButton onClick={prev} id="prev-btn" variant="flat" name="navigate_before" collection="internal" slot="suffix"></IgrIconButton>
+        <IgrIconButton onClick={next} id="next-btn" variant="flat" name="navigate_next" collection="internal" slot="suffix"></IgrIconButton>
+      </IgrInput>
+    </div>
+    <IgrDivider></IgrDivider>
+    <IgrHighlight ref={highlightRef}>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
+        odit id excepturi ipsum provident eaque dignissimos beatae! Rerum vero
+        distinctio libero, quasi magni quod natus nesciunt doloremque temporibus
+        voluptate?
+      </p>
+    </IgrHighlight>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<HighlightSearch/>);
 ```
 
@@ -280,94 +273,92 @@ const next = () => {
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { IgrInput, IgrHighlight, IgrIconButton, IgrDivider, IgrExpansionPanel } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class HighlightHelperText extends React.Component<any, any> {
-  private highlightRef = React.createRef<IgrHighlight>();
-  private statusRef = React.createRef<HTMLParagraphElement>();
+export default function HighlightHelperText() {
+  const highlightRef = useRef<IgrHighlight>(null);
+  const statusRef = useRef<HTMLParagraphElement>(null);
 
-  private updateStatus() {
-    const highlight = this.highlightRef.current;
-    const status = this.statusRef.current;
-    if (!highlight || !status) return;
+  function updateStatus() {
+    const highlight = highlightRef.current;
+    const status = statusRef.current;
+    if (!highlight || !status) { return; }
 
     status.textContent = highlight.size
       ? `${highlight.current + 1} of ${highlight.size} match${highlight.size === 1 ? '' : 'es'}`
       : '';
   }
 
-  private onInput = ({ detail }: CustomEvent<string>) => {
-    if (!this.highlightRef.current) return;
-    this.highlightRef.current.searchText = detail;
-    this.updateStatus();
-  };
-
-  private prev = () => {
-    this.highlightRef.current?.previous({preventScroll: true});
-    this.updateStatus();
-  };
-
-  private next = () => {
-    this.highlightRef.current?.next({preventScroll: true});
-    this.updateStatus();
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="sample">
-        <div className="search-bar">
-          <IgrInput label="Search" onigcInput={this.onInput as any}>
-            <IgrIconButton variant="flat" name="navigate_before" collection="internal" slot="suffix" onClick={this.prev}></IgrIconButton>
-            <IgrIconButton variant="flat" name="navigate_next" collection="internal" slot="suffix" onClick={this.next}></IgrIconButton>
-            <p ref={this.statusRef} slot="helper-text"></p>
-          </IgrInput>
-        </div>
-        <IgrDivider></IgrDivider>
-        <IgrHighlight ref={this.highlightRef}>
-          <h1>Document Object Model</h1>
-          <IgrExpansionPanel open>
-            <h2 slot="title">Overview</h2>
-            <section>
-              <p>
-                The Document Object Model (DOM) is a cross-platform and
-                language-independent interface that treats an HTML or XML document
-                as a tree structure wherein each node is an object representing a
-                part of the document. The DOM represents a document with a logical
-                tree. Each branch of the tree ends in a node, and each node
-                contains objects. DOM methods allow programmatic access to the
-                tree; with them one can change the structure, style or content of
-                a document. Nodes can have event handlers (also known as event
-                listeners) attached to them. Once an event is triggered, the event
-                handlers get executed.
-              </p>
-              <p>
-                The principal standardization of the DOM was handled by the World
-                Wide Web Consortium (W3C), which last developed a recommendation
-                in 2004. WHATWG took over the development of the standard,
-                publishing it as a living document. The W3C now publishes stable
-                snapshots of the WHATWG standard.
-              </p>
-              <p>In HTML DOM (Document Object Model), every element is a node:</p>
-              <ul>
-                <li>A document is a document node.</li>
-                <li>All HTML elements are element nodes.</li>
-                <li>All HTML attributes are attribute nodes.</li>
-                <li>Text inserted into HTML elements are text nodes.</li>
-                <li>Comments are comment nodes.</li>
-              </ul>
-            </section>
-          </IgrExpansionPanel>
-        </IgrHighlight>
-      </div>
-    );
+  function onInput({ detail }: CustomEvent<string>) {
+    if (!highlightRef.current) { return; }
+    highlightRef.current.searchText = detail;
+    updateStatus();
   }
+
+  function prev() {
+    highlightRef.current?.previous({preventScroll: true});
+    updateStatus();
+  }
+
+  function next() {
+    highlightRef.current?.next({preventScroll: true});
+    updateStatus();
+  }
+
+  return (
+    <div className="sample">
+      <div className="search-bar">
+        <IgrInput label="Search" onInput={onInput}>
+          <IgrIconButton variant="flat" name="navigate_before" collection="internal" slot="suffix" onClick={prev}></IgrIconButton>
+          <IgrIconButton variant="flat" name="navigate_next" collection="internal" slot="suffix" onClick={next}></IgrIconButton>
+          <p ref={statusRef} slot="helper-text"></p>
+        </IgrInput>
+      </div>
+      <IgrDivider></IgrDivider>
+      <IgrHighlight ref={highlightRef}>
+        <h1>Document Object Model</h1>
+        <IgrExpansionPanel open>
+          <h2 slot="title">Overview</h2>
+          <section>
+            <p>
+              The Document Object Model (DOM) is a cross-platform and
+              language-independent interface that treats an HTML or XML document
+              as a tree structure wherein each node is an object representing a
+              part of the document. The DOM represents a document with a logical
+              tree. Each branch of the tree ends in a node, and each node
+              contains objects. DOM methods allow programmatic access to the
+              tree; with them one can change the structure, style or content of
+              a document. Nodes can have event handlers (also known as event
+              listeners) attached to them. Once an event is triggered, the event
+              handlers get executed.
+            </p>
+            <p>
+              The principal standardization of the DOM was handled by the World
+              Wide Web Consortium (W3C), which last developed a recommendation
+              in 2004. WHATWG took over the development of the standard,
+              publishing it as a living document. The W3C now publishes stable
+              snapshots of the WHATWG standard.
+            </p>
+            <p>In HTML DOM (Document Object Model), every element is a node:</p>
+            <ul>
+              <li>A document is a document node.</li>
+              <li>All HTML elements are element nodes.</li>
+              <li>All HTML attributes are attribute nodes.</li>
+              <li>Text inserted into HTML elements are text nodes.</li>
+              <li>Comments are comment nodes.</li>
+            </ul>
+          </section>
+        </IgrExpansionPanel>
+      </IgrHighlight>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<HighlightHelperText/>);
 ```
 
@@ -404,53 +395,50 @@ igc-divider {
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import { IgrInput, IgrHighlight, IgrDivider, IgrIconButton } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 import './index.css';
 
-export default class HighlightStyling extends React.Component<any, any> {
-  private highlightRef = React.createRef<IgrHighlight>();
+export default function HighlightStyling() {
+  const highlightRef = useRef<IgrHighlight>(null);
 
-  private onInput = ({ detail }: CustomEvent<string>) => {
-    if (!this.highlightRef) return;
-    this.highlightRef.current.searchText = detail;
-  };
-
-  private prev = () => {
-    this.highlightRef?.current.previous({preventScroll: true});
-  };
-
-  private next = () => {
-    this.highlightRef?.current.next({preventScroll: true});
-  };
-
-  public render(): JSX.Element {
-    return (
-      <div className="sample">
-      <div>
-        <IgrInput label="Search" onigcInput={this.onInput as any}>
-          <IgrIconButton onClick={this.prev} id="prev-btn" variant="flat" name="navigate_before" collection="internal" slot="suffix"></IgrIconButton>
-          <IgrIconButton onClick={this.next} id="next-btn" variant="flat" name="navigate_next" collection="internal" slot="suffix"></IgrIconButton>
-        </IgrInput>
-      </div>
-      <IgrDivider></IgrDivider>
-      <IgrHighlight search-text="ipsum" ref={this.highlightRef}>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
-          odit id excepturi ipsum provident eaque dignissimos beatae! Rerum vero
-          distinctio libero, quasi magni quod natus nesciunt doloremque temporibus
-          voluptate?
-        </p>
-      </IgrHighlight>
-      </div>
-    );
+  function onInput({ detail }: CustomEvent<string>) {
+    highlightRef.current!.searchText = detail;
   }
+
+  function prev() {
+    highlightRef.current!.previous({preventScroll: true});
+  }
+
+  function next() {
+    highlightRef.current!.next({preventScroll: true});
+  }
+
+  return (
+    <div className="sample">
+    <div>
+      <IgrInput label="Search" onInput={onInput}>
+        <IgrIconButton onClick={prev} id="prev-btn" variant="flat" name="navigate_before" collection="internal" slot="suffix"></IgrIconButton>
+        <IgrIconButton onClick={next} id="next-btn" variant="flat" name="navigate_next" collection="internal" slot="suffix"></IgrIconButton>
+      </IgrInput>
+    </div>
+    <IgrDivider></IgrDivider>
+    <IgrHighlight search-text="ipsum" ref={highlightRef}>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae doloribus
+        odit id excepturi ipsum provident eaque dignissimos beatae! Rerum vero
+        distinctio libero, quasi magni quod natus nesciunt doloremque temporibus
+        voluptate?
+      </p>
+    </IgrHighlight>
+    </div>
+  );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<HighlightStyling/>);
 ```
 

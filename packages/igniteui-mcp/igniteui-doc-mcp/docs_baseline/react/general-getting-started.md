@@ -6,6 +6,7 @@ last_updated: "2025-04-06"
 mentionedTypes: []
 llms:
   description: "Ignite UI for React is a complete set of UI widgets, components, and Figma UI kits for React by Infragistics."
+platformType: xplat
 _tocName: Getting Started
 ---
 # Getting Started With Ignite UI for React

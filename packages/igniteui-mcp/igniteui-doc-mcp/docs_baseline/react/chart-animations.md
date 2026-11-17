@@ -4,9 +4,11 @@ description: Infragistics' React Chart Animations
 keywords: React Charts, Animations, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "Animations allow you to ease-in the series as it loads a new data source."
+platformType: xplat
 _tocName: Chart Animations
 _premium: true
 ---
@@ -14,11 +16,11 @@ _premium: true
 
 Animations allow you to ease-in the series as it loads a new data source. The available animation differs depending on the type of series involved. For example, the column series animates by rising from the x-axis, a line series animates by drawing from the origin of y-axis.
 
-Animations are disabled in the Ignite UI for React Charts, but they can be enabled by setting the `IsTransitionInEnabled` property to true. From there, you can set the `TransitionInDuration` property to determine how long your animation should take to complete and the `TransitionInMode` to determine the type of animation that takes place.
+Animations are disabled in the Ignite UI for React Charts, but they can be enabled by setting the `isTransitionInEnabled` property to true. From there, you can set the `transitionInDuration` property to determine how long your animation should take to complete and the `transitionInMode` to determine the type of animation that takes place.
 
 ## React Chart Animation Example
 
-The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default `TransitionInMode` - "Auto." The drop-down and slider at the top in this example will allow you to modify the `TransitionInMode` and `TransitionInDuration`, respectively, so that you can see what the different supported animations look like at different speeds.
+The following example depicts a [Line Chart](../types/line-chart.md) with an animation set to the default `transitionInMode` - "Auto." The drop-down and slider at the top in this example will allow you to modify the `transitionInMode` and `transitionInDuration`, respectively, so that you can see what the different supported animations look like at different speeds.
 
 ```tsx
 import React from 'react';

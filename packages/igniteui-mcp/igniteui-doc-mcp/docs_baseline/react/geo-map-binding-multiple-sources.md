@@ -1,11 +1,12 @@
 ---
 title: "React Map | Data Visualization Tools | Binding Multiple Data Source | Infragistics"
-description: Use Infragistics' React JavaScript map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for React map tutorials!
+description: Use Infragistics' React map to add multiple geographic series objects to overlay custom data sources with geo-spacial data. View Ignite UI for React map tutorials!
 keywords: "React map, geographic series, Ignite UI for React, Infragistics, data binding"
 license: commercial
 mentionedTypes: ["GeographicMap", "SeriesViewer", "Series", "GeographicShapeSeriesBase"]
 llms:
   description: "In the Ignite UI for React map, you can add multiple geographic series objects to overlay custom data sources with geo-spacial data."
+platformType: xplat
 _tocName: Binding Multiple Sources
 _premium: true
 ---
@@ -1192,65 +1193,100 @@ You can use geographic series in this or other combinations to plot desired data
 
 Create data sources for all geographic series that you want to display in the Ignite UI for React map. For example, you can the use [WorldConnections](./geo-map-resources-world-connections.md) script.
 
-```ts
-import WorldConnections from "./WorldConnections";
-// ..
-
-public onMapReferenced(map: IgrGeographicMap) {
-    this.geoMap = map;
-
-    const worldFlights: any[] = WorldConnections.getFlights();
-    const worldAirports: any[] = WorldConnections.getAirports();
-    const worldGridlines: any[] = WorldConnections.getGridlines();
-
-    // create and overlay geographic series here
-}
+```tsx
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+</IgrGeographicMap>
 ```
 
 ## Overlaying Flights
 
 Create first `IgrGeographicPolylineSeries` object with flight connections between major airports and add it to the Series collection of the Ignite UI for React map.
 
-```ts
-const lineSeries = new IgrGeographicPolylineSeries ( { name: "lineSeries" });
-lineSeries.dataSource = worldFlights;
-lineSeries.shapeMemberPath = "points";
-lineSeries.shapeStroke = "rgba(196, 14, 14,0.05)";
-lineSeries.shapeStrokeThickness = 4;
-this.geoMap.series.add(lineSeries);
+```tsx
+<IgrGeographicPolylineSeries
+    name="lineSeries"
+    ref={ref => { this.lineSeries = ref; }}
+    dataSource={this.worldFlights}
+    shapeMemberPath="points"
+    shapeStroke="rgba(196, 14, 14, 0.05)"
+    shapeStrokeThickness={4} />
 ```
 
 ## Overlaying Gridlines
 
 Create second `IgrGeographicPolylineSeries` object with geographic gridlines and add it to the Series collection of the Ignite UI for React map.
 
-```ts
-const gridSeries = new IgrGeographicPolylineSeries( { name: "gridSeries" });
-gridSeries.dataSource = worldGridlines;
-gridSeries.shapeMemberPath = "points";
-gridSeries.shapeStroke = "Gray";
-gridSeries.shapeStrokeThickness = 1;
-this.geoMap.series.add(gridSeries);
+```tsx
+<IgrGeographicPolylineSeries
+    name="gridSeries"
+    ref={ref => { this.gridSeries = ref; }}
+    dataSource={this.worldGridlines}
+    shapeMemberPath="points"
+    shapeStroke="Gray"
+    shapeStrokeThickness={1} />
 ```
 
 ## Overlaying Airports
 
 Create `IgrGeographicSymbolSeries` object with airport points and add it to the Series collection of the geographic Ignite UI for React map.
 
-```ts
-const symbolSeries = new IgrGeographicSymbolSeries ( { name: "symbolSeries" });
-symbolSeries.dataSource = worldAirports;
-symbolSeries.markerType = MarkerType.Circle;
-symbolSeries.latitudeMemberPath = "lat";
-symbolSeries.longitudeMemberPath = "lon";
-symbolSeries.markerBrush = "#aad3df";
-symbolSeries.markerOutline = "rgb(73, 73, 73)";
-this.geoMap.series.add(symbolSeries);
+```tsx
+<IgrGeographicSymbolSeries
+    name="symbolSeries"
+    ref={ref => { this.symbolSeries = ref; }}
+    dataSource={this.worldAirports}
+    latitudeMemberPath="lat"
+    longitudeMemberPath="lon"
+    markerType="Circle"
+    markerBrush="rgba(170, 211, 223, 1)"
+    markerOutline="rgba(73, 73, 73, 1)"
+    thickness={1} />
 ```
 
 ## Summary
 
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project.
+
+```tsx
+import { IgrGeographicMap, IgrGeographicPolylineSeries, IgrGeographicSymbolSeries } from 'igniteui-react-maps';
+```
+
+```tsx
+<IgrGeographicMap
+    ref={this.geoMapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicPolylineSeries
+        name="lineSeries"
+        ref={ref => { this.lineSeries = ref; }}
+        dataSource={this.worldFlights}
+        shapeMemberPath="points"
+        shapeStroke="rgba(196, 14, 14, 0.05)"
+        shapeStrokeThickness={4} />
+    <IgrGeographicPolylineSeries
+        name="gridSeries"
+        ref={ref => { this.gridSeries = ref; }}
+        dataSource={this.worldGridlines}
+        shapeMemberPath="points"
+        shapeStroke="Gray"
+        shapeStrokeThickness={1} />
+    <IgrGeographicSymbolSeries
+        name="symbolSeries"
+        ref={ref => { this.symbolSeries = ref; }}
+        dataSource={this.worldAirports}
+        latitudeMemberPath="lat"
+        longitudeMemberPath="lon"
+        markerType="Circle"
+        markerBrush="rgba(170, 211, 223, 1)"
+        markerOutline="rgba(73, 73, 73, 1)"
+        thickness={1} />
+</IgrGeographicMap>
+```
 
 ## API References
 `IgrGeographicPolylineSeries`

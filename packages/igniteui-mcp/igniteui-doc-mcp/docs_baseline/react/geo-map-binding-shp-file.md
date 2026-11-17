@@ -1,215 +1,122 @@
 ---
 title: "React Map | Data Visualization Tools | Binding Geographic Shape Files | Infragistics"
-description: Use Infragistics' React JavaScript map to load geo-spatial data from shape files. View Ignite UI for React map demos!
+description: Use Infragistics' React map to load geo-spatial data from shape files. View Ignite UI for React map demos!
 keywords: "React map, shapefiles, Ignite UI for React, Infragistics, data binding"
 license: commercial
-mentionedTypes: ["GeographicMap", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
+mentionedTypes: ["GeographicMap", "ShapeDataSource", "ShapefileRecord", "Series", "GeographicShapeSeriesBase"]
 llms:
-  description: "The Ignite UI for React map component, the ShapefileRecord class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of IgxShapefileRecord objects."
+  description: "In the Ignite UI for React map component, geo-spatial data (points/locations, polylines, polygons) is loaded from shape files and converted into a collection of shapefile records, one per shape."
+platformType: xplat
 _tocName: Binding Shape File
 _premium: true
 ---
 # React Binding Shape Files with Geo-spatial Data
 
-The Ignite UI for React map component, the `IgrShapefileRecord` class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of `IgxShapefileRecord` objects.
+In the Ignite UI for React map component, the `IgrShapeDataSource` class loads geo-spatial data (points/locations, polylines, polygons) from shape files and converts it to a collection of `IgrShapefileRecord` objects.
 
 ## React Binding Shape Files with Geo-spatial Data Example
 
+
+
+The following table explains properties of the `IgrShapeDataSource` class for loading shape files.
+
+| Property | Type | Description   |
+|----------|------|---------------|
+| `shapefileSource` | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
+|`databaseSource` | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
+
+When both source properties are set to non-null values, then the `IgrShapeDataSource` object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the `IgrShapeDataSource` is populated with `IgrShapefileRecord` objects and the `importCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
+
+## Loading Shapefiles
+The following code creates an instance of the `IgrShapeDataSource` object for loading a shape file that contains the world’s undersea cable routes. It also demonstrates how to handle the `importCompleted` event as a prerequisite for binding data to the map component.
+
 ```tsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { IgrGeographicMapModule } from 'igniteui-react-maps';
-import { IgrGeographicMap } from 'igniteui-react-maps';
-import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
-import { IgrDataChartInteractivityModule } from 'igniteui-react-charts';
-import { IgrDataContext } from 'igniteui-react-core';
 import { IgrShapeDataSource } from 'igniteui-react-core';
+private map: IgrGeographicMap
+private mapRef(r: IgrGeographicMap) {
+    this.map = r;
+    this.setState({});
+}
+// ...
+/**
+ * What the shapefile becomes once it has loaded: records turned into routes, bound to the series that
+ * draws them.
+ *
+ * A handler for the shape data source's importCompleted, and the source is created in code by the item
+ * that requires this one — so there is nothing in a description to bind it to, and it is not an
+ * initializer either.
+ */
+export class MapShpFileReaders {
 
-IgrGeographicMapModule.register();
-IgrDataChartInteractivityModule.register();
-
-export default class MapBindingShapefilePolylines extends React.Component<any, any> {
-
-    public geoMap: IgrGeographicMap;
-
-    constructor(props: any) {
-        super(props);
-
-        this.onMapRef = this.onMapRef.bind(this);
-        this.onDataLoaded = this.onDataLoaded.bind(this);
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <div className="container" >
-                    <IgrGeographicMap
-                        ref={this.onMapRef}
-                        width="100%"
-                        height="100%"
-                        zoomable="true"/>
-                </div>
-                <div className="overlay-bottom-right overlay-border">Imagery Tiles: @OpenStreetMap</div>
-            </div>
-        );
-    }
-
-    public onMapRef(geoMap: IgrGeographicMap) {
-        if (!geoMap) { return; }
-
-        this.geoMap = geoMap;
-        this.geoMap.updateZoomWindow({ left: 0.2, top: 0.1, width: 0.6, height: 0.6 });
-
-        // loading a shapefile with geographic polygons
-        const sds = new IgrShapeDataSource();
-        sds.importCompleted = this.onDataLoaded;
-        sds.shapefileSource = "https://static.infragistics.com/xplatform/shapes/WorldCableRoutes.shp";
-        sds.databaseSource  = "https://static.infragistics.com/xplatform/shapes/WorldCableRoutes.dbf";
-        sds.dataBind();
-    }
-
-    public onDataLoaded(sds: IgrShapeDataSource, e: any) {
-        const shapeRecords = sds.getPointData();
-        console.log("loaded WorldCities.shp " + shapeRecords.length);
-
-        const geoPolylines: any[] = [];
-        // parsing shapefile data and creating geo-polygons
-        for (const record of shapeRecords) {
+    /** Each record is one cable route, with the fields the shapefile's database holds beside it. */
+    public readRoutes(sds: IgrShapeDataSource, e: any, map: IgrGeographicMap): void {
+        var geoRoutes: any[] = [];
+        var pointData = sds.getPointData();
+        // parsing shapefile data and creating geo-locations
+        for (var i = 0; i < pointData.length; i++) {
+            var record = pointData[i];
             // using field/column names from .DBF file
-            const route = {
+            geoRoutes.push({
                 points: record.points,
                 name: record.fieldValues.Name,
                 capacity: record.fieldValues.CapacityG,
                 distance: record.fieldValues.DistanceKM
-            };
-            geoPolylines.push(route);
+            });
         }
 
-        const geoSeries = new IgrGeographicPolylineSeries( { name: "series" });
-        geoSeries.dataSource = geoPolylines;
-        geoSeries.shapeMemberPath = "points";
-        geoSeries.shapeFilterResolution = 0.0;
-        geoSeries.shapeStrokeThickness = 3;
-        geoSeries.shapeStroke = "rgb(82, 82, 82, 0.4)";
-        geoSeries.tooltipTemplate = this.createTooltip;
-
-        this.geoMap.series.add(geoSeries);
+        var lineSeries = map.series.item(0) as IgrGeographicPolylineSeries;
+        lineSeries.dataSource = geoRoutes;
     }
-
-    public createTooltip(context: any) {
-        const dataContext = context.dataContext as IgrDataContext;
-        if (!dataContext) return null;
-
-        const series = dataContext.series as any;
-        if (!series) return null;
-
-        const dataItem = dataContext.item as any;
-        if (!dataItem) return null;
-
-        const capacity = dataItem.capacity + " GB/s";
-        const distance = dataItem.distance + " KM";
-
-        return <div>
-            {/* <div className="tooltipTitle">{dataItem.name}</div> */}
-            <div className="tooltipBox">
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Name</div>
-                    <div className="tooltipVal">{dataItem.name}</div>
-                </div>
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Distance</div>
-                    <div className="tooltipVal">{distance}</div>
-                </div>
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Capacity</div>
-                    <div className="tooltipVal">{capacity}</div>
-                </div>
-            </div>
-        </div>
-    }
-
 }
-
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<MapBindingShapefilePolylines/>);
-```
-
-The following table explains properties of the `IgrShapefileRecord` class for loading shape files.
-
-| Property | Type | Description   |
-|----------|------|---------------|
-| `ShapefileSource` | string |Specifies the Uri to a shape file (.shp) that contains geo-spatial data items.|
-|`DatabaseSource` | string |Specifies the Uri to a shape database file (.dbf) that contains a data table for geo-spatial data items.|
-
-When both source properties are set to non-null values, then the `IgrShapefileRecord` object’s ImportAsync method is invoked which in return performs fetching and reading the shape files and finally doing the conversion. After this operation is complete, the `IgrShapefileRecord` is populated with `IgxShapefileRecord` objects and the `ImportCompleted` event is raised in order to notify about completed process of loading and converting geo-spatial data from shape files.
-
-## Loading Shapefiles
-The following code creates an instance of the `IgrShapefileRecord` object for loading a shape file that contains locations of major cities in the world. It also demonstrates how to handle the `ImportCompleted` event as a prerequisite for binding data to the map component.
-
-```ts
-import { IgrShapeDataSource } from 'igniteui-react-core';
 // ...
+private mapShpFileReaders: MapShpFileReaders = new MapShpFileReaders();
+var root = "https://static.infragistics.com/xplatform/shapes/";
+var readers = this.mapShpFileReaders;
+var map = this.map;
 
-const sds = new IgrShapeDataSource();
-sds.importCompleted = this.onShapePolylinesLoaded;
-sds.shapefileSource = url + "/shapes/WorldCableRoutes.shp";
-sds.databaseSource  = url + "/shapes/WorldCableRoutes.dbf";
+var sds = new IgrShapeDataSource();
+sds.importCompleted = (s: IgrShapeDataSource, e: any) => readers.readRoutes(s, e, map);
+sds.shapefileSource = root + "WorldCableRoutes.shp";
+sds.databaseSource = root + "WorldCableRoutes.dbf";
 sds.dataBind();
 ```
 
 ## Binding Shapefiles
-In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have an `DataSource` property which can be bound to an array of objects. The `IgrShapefileRecord` is an example such array because it contains a list of `IgxShapefileRecord` objects.
+In the map component, Geographic Series are used for displaying geo-spatial data that is loaded from shape files. All types of Geographic Series have a `dataSource` property which can be bound to an array of objects. What a `IgrShapeDataSource` produces is an example of such an array, because each item in it is a `IgrShapefileRecord`.
 
-The `ShapefileRecord` class provides properties for storing geo-spatial data, listed in the following table.
+The `IgrShapefileRecord` class provides properties for storing geo-spatial data, listed in the following table.
 
 | Property     | Description   |
 |--------------|---------------|
-|`Points`|Contains all the points in one geo-spatial shape loaded from a shape file (.shp). For example, the country of Japan in shape file would be represented as a list of a list of points object, where:<ul><li>The first list of points describes shape of Hokkaido island</li><li>The second list of points describes shape of Honshu island</li><li>The third list of points describes shape of Kyushu island</li><li>The fourth list of points describes shape of Shikoku island</li></ul>|
-| `Fields` |Contains a row of data from the shape database file (.dbf) keyed by a column name. For example, a data about county of Japan which includes population, area, name of a capital, etc.|
+|`IgrShapefileRecord.points`|Contains all the points in one geo-spatial shape loaded from a shape file (.shp). For example, the country of Japan in shape file would be represented as a list of a list of points object, where:<ul><li>The first list of points describes shape of Hokkaido island</li><li>The second list of points describes shape of Honshu island</li><li>The third list of points describes shape of Kyushu island</li><li>The fourth list of points describes shape of Shikoku island</li></ul>|
+| `IgrShapefileRecord.fieldValues` |Contains a row of data from the shape database file (.dbf) keyed by a column name. For example, a data about county of Japan which includes population, area, name of a capital, etc.|
 
 This data structure is suitable for use in most Geographic Series as long as appropriate data columns are mapped to them.
 
 ## Code Snippet
-This code example assumes that shape files were loaded using the `IgrShapefileRecord`.
-The following code binds `IgrGeographicPolylineSeries` in the map component to the `IgrShapefileRecord` and maps the `Points` property of all `IgxShapefileRecord` objects.
+This code example assumes that shape files were loaded using the `IgrShapeDataSource`.
+The following code binds `IgrGeographicPolylineSeries` in the map component to the records that source produced, and maps the `IgrShapefileRecord.points` property of each `IgrShapefileRecord` through `shapeMemberPath`.
 
-```ts
-import { IgrGeographicPolylineSeries } from 'igniteui-react-maps';
-// ...
-
-public onShapePolylinesLoaded(sds: IgrShapeDataSource, e: any) {
-    const geoPolylines: any[] = [];
-    for (const record of sds.getPointData()) {
-            // using field/column names from .DBF file
-            const route = {
-                points: record.points,
-                name: record.fieldValues["Name"],
-                capacity: record.fieldValues["CapacityG"],
-                distance: record.fieldValues["DistanceKM"],
-                isOverLand: record.fieldValues["OverLand"] === 0,
-                isActive: record.fieldValues["NotLive"] !== 0,
-                service: record.fieldValues["InService"]
-            };
-            geoPolylines.push(route);
-        }
-
-    const geoSeries = new IgrGeographicPolylineSeries( { name: "series" });
-    geoSeries.dataSource = geoPolylines;
-    geoSeries.shapeMemberPath = "points";
-    geoSeries.shapeFilterResolution = 0.0;
-    geoSeries.shapeStrokeThickness = 3;
-    geoSeries.shapeStroke = "rgb(82, 82, 82, 0.4)";
-    geoSeries.tooltipTemplate = this.createTooltip;
-    this.geoMap.series.add(symbolSeries);
-}
+```tsx
+<IgrGeographicMap
+    ref={this.mapRef}
+    height="100%"
+    width="100%"
+    zoomable={true}>
+    <IgrGeographicPolylineSeries
+        name="lineSeries"
+        ref={ref => { this.lineSeries = ref; }}
+        shapeMemberPath="points"
+        shapeFilterResolution={0}
+        shapeStrokeThickness={3}
+        shapeStroke="rgb(82, 82, 82, 0.4)" />
+</IgrGeographicMap>
 ```
 
 ## API References
 `IgrGeographicPolylineSeries`
 `IgrShapefileRecord`
-`Fields`
-`ImportCompleted`
-`DataSource`
-`Points`
+`fields`
+`IgrShapeDataSource.importCompleted`
+`dataSource`
+`IgrShapefileRecord.points`

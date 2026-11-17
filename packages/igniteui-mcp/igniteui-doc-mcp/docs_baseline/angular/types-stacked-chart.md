@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "StackedAreaSeries", "Stacked100AreaSeries", "Stac
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Stacked Chart belongs to a special group of charts that render multiple values of data items as stacked area/polygons, bars, columns, lines, or splines."
+platformType: xplat
 _tocName: Stacked Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Angular Stacked Chart belongs to a special group of charts tha
 
 ## Angular Stacked Chart Types
 
-The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Angular `IgxDataChart` control.
+The following example, you can use the drop-down to switch between all of the different types stacked charts available in the Angular [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -314,7 +315,7 @@ The following sections demonstrate individual types of Ignite UI for Angular Sta
 
 Stacked Area Charts are rendered using a collection of points connected by line segments, with the area below the line filled in and stacked on top of each other. Stacked Area Charts follow all the same requirements as [Area Chart](./area-chart.md), with the only difference being that visually, the shaded areas are stacked on top of each other.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedAreaSeries`, as shown in the example below.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -499,7 +500,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ## Angular Stacked 100 Area Chart
 Sometimes the series represent part of a whole being changed over time e.g. a country's energy consumption related to the sources from which it is produced. In such cases representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100AreaSeries`, as shown in the example below.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100AreaSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -684,7 +685,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the [Bar Chart](./bar-chart.md) in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedBarSeries`, as shown in the example below.
+In this example of an Stacked Bar Chart, we have a Numeric X Axis (bottom labels of the chart) and a Category Y Axis (left labels of the chart). You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedBarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedBarSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -860,7 +861,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Angular Stacked 100% Bar Chart is identical to the Angular stacked bar chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100% bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100BarSeries`, as shown in the example below.
+In this example of a Stacked 100% Bar Chart, the Energy Product values are shown as a 100% value of all of the data in the fragments of the horizontal bars. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100BarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100BarSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1034,7 +1035,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked Column Chart is identical to the [Column Chart](./column-chart.md) in all aspects, except the series are represented on top of one another rather than to the side. The Stacked Column Chart is used to show comparing results between series. Each stacked fragment in the collection represents one visual element in each stack. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the Y-Axis, and all negative values are grouped on the negative side of the Y-Axis. The Stacked Column Chart uses the same concepts of data plotting as the Stacked Bar Chart but data points are stacked along vertical line (Y-Axis) rather than along horizontal line (X-Axis).
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedColumnSeries`, as shown in the example below.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedColumnSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1218,7 +1219,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Column Chart is identical to the Stacked Column Chart in all aspects except in their treatment of the values on Y-Axis. Instead of presenting a direct representation of the data, the Stacked 100% Column Chart presents the data in terms of percent of the sum of all values in a data point.
 
-The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100ColumnSeries`, as shown in the example below.
+The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100ColumnSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1381,7 +1382,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Stacked Line Chart
 
-The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedLineSeries`, as shown in the example below:
+The Stacked Line Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1567,7 +1568,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Line Chart is identical to the Stacked Line Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Line Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100LineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1749,7 +1750,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 Stacked Spline Area Charts are rendered using a collection of points connected by curved spline segments, with the area below the curved spline fill in and stacked on top of each other. Stacked Spline Area Charts follow all of the same requirements as [Area Chart](./area-chart.md), with the only difference being that the visually shaded areas are stacked on top of each other.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedSplineAreaSeries`, as shown in the example below.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -1935,7 +1936,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Spline Area Chart is identical to the Stacked Spline Area Chart in all aspects except for the treatment of the values on the y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Area Chart presents the data in terms of a percent of the sum of all values in a particular data point. Sometimes the chart represents part of a whole being changed over time. For example, a country's energy consumption related to the sources from which it is produced. In such cases, representing all stacked elements equally may be a better idea.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100SplineAreaSeries`, as shown in the example below.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineAreaSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -2115,7 +2116,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Stacked Spline Chart
 
-The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStackedSplineSeries`, as shown in the example below.
+The Stacked Spline Chart is often used to show the change of value over time such as the amount of renewable electricity produced for several years between regions. You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent), as shown in the example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -2301,7 +2302,7 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 The Stacked 100% Spline Chart is identical to the Stacked Spline Chart in all aspects except in their treatment of the values on y-axis. Instead of presenting a direct representation of the data, the Stacked 100% Spline Chart presents the data in terms of percent of the sum of all values in a data point. The example below shows a study made for online shopping traffic by departments via tablet, phone and personal computers.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxStacked100SplineSeries`.
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent).
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -2492,15 +2493,15 @@ The following table lists API members mentioned in the above sections:
 
 | Chart Type               | Control Name   | API Members |
 | -------------------------|----------------|-------------------------------- |
-| Stacked Area             | `IgxDataChart` | `IgxStackedAreaSeries` |
-| Stacked Bar              | `IgxDataChart` | `IgxStackedBarSeries` |
-| Stacked Column           | `IgxDataChart` | `IgxStackedColumnSeries` |
-| Stacked Line             | `IgxDataChart` | `IgxStackedLineSeries` |
-| Stacked Spline           | `IgxDataChart` | `IgxStackedSplineSeries` |
-| Stacked Spline Area      | `IgxDataChart` | `IgxStackedSplineAreaSeries` |
-| Stacked 100% Area        | `IgxDataChart` | `IgxStacked100AreaSeries` |
-| Stacked 100% Bar         | `IgxDataChart` | `IgxStacked100BarSeries` |
-| Stacked 100% Column      | `IgxDataChart` | `IgxStacked100ColumnSeries` |
-| Stacked 100% Line        | `IgxDataChart` | `IgxStacked100LineSeries` |
-| Stacked 100% Spline      | `IgxDataChart` | `IgxStacked100SplineSeries` |
-| Stacked 100% Spline Area | `IgxDataChart` | `IgxStacked100SplineAreaSeries` |
+| Stacked Area             | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedAreaSeriesComponent) |
+| Stacked Bar              | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedBarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedBarSeriesComponent) |
+| Stacked Column           | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedColumnSeriesComponent) |
+| Stacked Line             | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedLineSeriesComponent) |
+| Stacked Spline           | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineSeriesComponent) |
+| Stacked Spline Area      | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStackedSplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStackedSplineAreaSeriesComponent) |
+| Stacked 100% Area        | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100AreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100AreaSeriesComponent) |
+| Stacked 100% Bar         | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100BarSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100BarSeriesComponent) |
+| Stacked 100% Column      | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100ColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100ColumnSeriesComponent) |
+| Stacked 100% Line        | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100LineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100LineSeriesComponent) |
+| Stacked 100% Spline      | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100SplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineSeriesComponent) |
+| Stacked 100% Spline Area | [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) | [`IgxStacked100SplineAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxStacked100SplineAreaSeriesComponent) |

@@ -7,6 +7,7 @@ mentionedTypes: ["DomainChart", "CategoryChart", "DataChart", "CategoryChartType
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Area Chart renders as a collection of points connected by straight line segments with the area below the line filled in."
+platformType: xplat
 _tocName: Area Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for Blazor Area Chart renders as a collection of points connected 
 
 ## Blazor Area Chart Example
 
-You can create Blazor Category Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataSource) property and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to **Area** enum, as shown in the example below.
+You can create Blazor Category Area Chart in the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) property and setting [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to **Area** enum, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -144,7 +145,7 @@ There are several common use cases for choosing an Area Chart:
 
 ## Blazor Area Chart with Single Series
 
-Blazor Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`Area`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Area) value, as shown in the example below.
+Blazor Area Chart is often used to show the change of value over time such as the amount of renewable electricity produced. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`Area`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Area) value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -223,7 +224,7 @@ public class CountryRenewableElectricity
 
 ## Blazor Area Chart with Multiple Series
 
-Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=dataSource) property of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control.
+Similarly to how you can show multiple [Line Chart](line-chart.md) and [Spline Chart](spline-chart.md), you may also combine multiple Area Charts in the same control. This is accomplished by binding multiple data source to [`DataSource`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=DataSource) property of the [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -424,7 +425,7 @@ The following sections explain more advanced types of Blazor Area Charts that ca
 
 ## Blazor Step Area Chart
 
-The Blazor Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) property to [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea) value, as shown in the example below.
+The Blazor Step Area Chart belongs to a group of category charts and it is rendered using a collection of points connected by continuous vertical and horizontal lines with the area below lines filled in. Values are represented on the y-axis and categories are displayed on the x-axis. The step area chart emphasizes the amount of change over a period of time or compares multiple items. You can create this type of chart in [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control by binding your data and setting [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) property to [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea) value, as shown in the example below.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -1820,8 +1821,8 @@ The following table lists API members mentioned in above sections:
 
 | Chart Type               | Control Name    | API Members  |
 | -------------------------|-----------------|-----------------------|
-| Area                     | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = [`Area`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Area)  |
-| Step Area                | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`CategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=chartType) = [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea)  |
+| Area                     | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = [`Area`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=Area)  |
+| Step Area                | [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) | [`IgbCategoryChart.ChartType`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=ChartType) = [`StepArea`](mcp:get_api_reference?platform=blazor&component=CategoryChartType&member=StepArea)  |
 | Range Area               | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbRangeAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRangeAreaSeries)  |
 | Radial Area              | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbRadialAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbRadialAreaSeries)  |
 | Polar Area               | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbPolarAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbPolarAreaSeries)  |
@@ -1830,8 +1831,6 @@ The following table lists API members mentioned in above sections:
 | Stacked Spline Area      | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStackedSplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStackedSplineAreaSeries)  |
 | Stacked 100% Area        | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStacked100AreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100AreaSeries)  |
 | Stacked 100% Spline Area | [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)  | [`IgbStacked100SplineAreaSeries`](mcp:get_api_reference?platform=blazor&component=IgbStacked100SplineAreaSeries)  |
-
-## API References
 
 [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart)<br />
 [`IgbDataChart`](mcp:get_api_reference?platform=blazor&component=IgbDataChart)<br />

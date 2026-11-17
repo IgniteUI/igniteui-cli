@@ -4,9 +4,11 @@ description: Infragistics' React Chart Trendlines
 keywords: React Charts, Trendlines, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "FinancialChart", "CategoryChart", "DataChart", "TrendLineType", "FinancialPriceSeries", "AnnotationAppearanceMode"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for React charts, trendlines help in identifying a trend or finding patterns in data."
+platformType: xplat
 _tocName: Chart Trendlines
 _premium: true
 ---
@@ -14,9 +16,9 @@ _premium: true
 
 In Ignite UI for React charts, trendlines help in identifying a trend or finding patterns in data. Trendlines are always rendered in front of data points bound to the chart and are supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` (except for stacked series, shape series, and range series).
 
-Trendlines are off by default, but you can enable them by setting the `TrendLineType` property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
+Trendlines are off by default, but you can enable them by setting the `trendLineType` property. Also, you can modify multiple appearance properties of trendlines such as its brush, period, and thickness.
 
-The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the `TrendLineDashArray` property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
+The trendlines also have the ability to have a dash array applied to them once enabled. This is done by setting the `trendLineDashArray` property to an array of numbers. The numeric array describes the length of the dashes of the trendline.
 
 ## React Chart Trendlines Example
 
@@ -217,7 +219,7 @@ root.render(<FinancialChartTrendlines/>);
 
 ## React Chart Trendlines Dash Array Example
 
-The following sample depicts a `IgrDataChart` showing a `IgrFinancialPriceSeries` with a **QuarticFit** dashed trendline applied via the `TrendLineDashArray` property:
+The following sample depicts a `IgrDataChart` showing a `IgrFinancialPriceSeries` with a **QuarticFit** dashed trendline applied via the `trendLineDashArray` property:
 
 ```typescript
 export class Stock2YearsItem {
@@ -379,29 +381,29 @@ root.render(<Sample/>);
 
 ## React Chart Trendline Layer
 
-The `IgrTrendLineLayer` is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the `IgrTrendLineLayer` is a series type, you can add more than one of them to the `Series` collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
+The `IgrTrendLineLayer` is a series type that is designed to display a single trendline type for a target series. The difference between this and the existing trendline features on the existing series types is that since the `IgrTrendLineLayer` is a series type, you can add more than one of them to the `IgrSeries` collection of the chart to have multiple trendlines attached to the same series. You can also have the trendline appear in the legend, which was not possible previously.
 
 ## Trendline Layer Usage
 
-The `IgrTrendLineLayer` must be provided with a `TargetSeries` and a `TrendLineType` in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
+The `IgrTrendLineLayer` must be provided with a `targetSeries` and a `trendLineType` in order to work properly. The different trendline types that are available are the same as the trendlines that are available on the series.
 
-If you would like to show the `IgrTrendLineLayer` in the Legend, you can do so by setting the `UseLegend` property to `true`.
+If you would like to show the `IgrTrendLineLayer` in the Legend, you can do so by setting the `useLegend` property to `true`.
 
 ## Styling the Trendline Layer
 
-By default, the `IgrTrendLineLayer` renders with the same color as its `TargetSeries` in a dashed line. This can be configured by using the various styling properties on the `IgrTrendLineLayer`.
+By default, the `IgrTrendLineLayer` renders with the same color as its `targetSeries` in a dashed line. This can be configured by using the various styling properties on the `IgrTrendLineLayer`.
 
-To change the color of the trendline that is drawn, you can set its `Brush` property. Alternatively, you can also set the `UseIndex` property to `true`, which will pull from the chart's `Brushes` palette based on the index in which the `IgrTrendLineLayer` is placed in the chart's `Series` collection.
+To change the color of the trendline that is drawn, you can set its `IgrTrendLineLayer.brush` property. Alternatively, you can also set the `useIndex` property to `true`, which will pull from the chart's `IgrDomainChart.brushes` palette based on the index in which the `IgrTrendLineLayer` is placed in the chart's `IgrSeries` collection.
 
-You can also modify the way that the `IgrTrendLineLayer` appears by using its `AppearanceMode` and `ShiftAmount` properties. The `ShiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
+You can also modify the way that the `IgrTrendLineLayer` appears by using its `appearanceMode` and `shiftAmount` properties. The `shiftAmount` takes a value between -1.0 and 1.0 to determine how much of a "shift" to apply to the options that end in "Shift".
 
-The following are the options for the `AppearanceMode` property:
+The following are the options for the `appearanceMode` property:
 
 - `Auto`: This will default to the DashPattern enumeration.
-- `BrightnessShift`: The trendline will take the `TargetSeries` brush and modify its brightness based on the provided `ShiftAmount`.
-- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `DashArray` property on the `IgrTrendLineLayer`.
-- `OpacityShift`: The trendline will take the `TargetSeries` brush and modify its opacity based on the provided `ShiftAmount`.
-- `SaturationShift`: The trendline will take the `TargetSeries` brush and modify its saturation based on the provided `ShiftAmount`.
+- `BrightnessShift`: The trendline will take the `targetSeries` brush and modify its brightness based on the provided `shiftAmount`.
+- `DashPattern`: The trendline will appear as a dashed line. The frequency of the dashes can be modified by using the `dashArray` property on the `IgrTrendLineLayer`.
+- `OpacityShift`: The trendline will take the `targetSeries` brush and modify its opacity based on the provided `shiftAmount`.
+- `SaturationShift`: The trendline will take the `targetSeries` brush and modify its saturation based on the provided `shiftAmount`.
 
 ## Additional Resources
 

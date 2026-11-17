@@ -4,9 +4,11 @@ description: Infragistics' Angular Shape Chart
 keywords: Angular Charts, Shape Chart, Infragistics
 license: commercial
 
+mentionedTypes: ["DataChart", "ScatterPolygonSeries", "ScatterPolylineSeries", "Series", "GeographicShapeSeriesBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Angular Shape Charts are a group of charts that take array of shapes (array or arrays of X/Y points) and render them as collection of polygons or polylines in Cartesian (x, y) coordinate system."
+platformType: xplat
 _tocName: Shape Chart
 _premium: true
 ---
@@ -16,9 +18,9 @@ The Ignite UI for Angular Shape Charts are a group of charts that take array of 
 
 ## Angular Scatter Polygon Chart
 
-The Angular Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using `IgxScatterPolygonSeries` in the `IgxDataChart` control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
+The Angular Scatter Polygon Chart renders an array or array of arrays of polygons in the Cartesian (x, y) coordinate system using [`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control. This chart can be used to filled shapes of plot diagrams, blueprints, or even the floor plan of buildings.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterPolygonSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -195,9 +197,9 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Scatter Polyline Chart
 
-The Angular Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using `IgxScatterPolylineSeries` in the `IgxDataChart` control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
+The Angular Scatter Polyline Chart renders an array or array of arrays of polylines in the Cartesian (x, y) coordinate system using [`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control. This chart can be used to outlines of plot diagrams, blueprints, or even the floor plan of buildings. Also, it can visualizes complex relationships between a large amount of elements.
 
-You can create this type of chart in the `IgxDataChart` control by binding your data to a `IgxScatterPolylineSeries`, as shown in the example below:
+You can create this type of chart in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control by binding your data to a [`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent), as shown in the example below:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -380,8 +382,8 @@ You can find more information about related chart types in these topics:
 - [Scatter Chart](./scatter-chart.md)
 
 ## API References
-`IgxDataChart`
-`IgxScatterPolygonSeries`
-`IgxScatterPolylineSeries`
-`IgxNumericXAxis`
-`IgxNumericYAxis`
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)
+[`IgxScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolygonSeriesComponent)
+[`IgxScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterPolylineSeriesComponent)
+[`IgxNumericXAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericXAxisComponent)
+[`IgxNumericYAxisComponent`](mcp:get_api_reference?platform=angular&component=IgxNumericYAxisComponent)

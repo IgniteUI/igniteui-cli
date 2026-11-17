@@ -24,7 +24,7 @@ The igxGridState directive allows developers to easily save and restore the grid
 - `Column Selection`
 - `Expansion`
 - `Pivot Configuration`
-  - Pivot Configuration properties defined by the [`IgxIPivotConfiguration`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration) interface.
+  - Pivot Configuration properties defined by the [`IPivotConfiguration`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration) interface.
   - Pivot Dimension and Value functions are restored using application level code, see [Restoring Pivot Configuration](/pivotgrid/state-persistence#restoring-pivot-configuration) section.
   - Pivot Row and Column strategies are also restored using application level code, see [Restoring Pivot Strategies](/pivotgrid/state-persistence#restoring-pivot-strategies) section.
 
@@ -33,7 +33,7 @@ The `Row Selection` feature requires the [`primaryKey`](mcp:get_api_reference?pl
 
 ## Usage
 
-[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
+[`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) - This method returns the grid state in a serialized JSON string, so developers can just take it and save it on any data storage (database, cloud, browser localStorage, etc). The method accepts first optional parameter `serialize`, which determines whether [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) will return an [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object or a serialized JSON string.
 The developer may choose to get only the state for a certain feature/features, by passing in the feature name, or an array with feature names as a second argument.
 
 ```typescript
@@ -47,14 +47,14 @@ const gridState: IGridState = state.getState(false);
 const sortingFilteringStates: IGridState = state.getState(false, ['sorting', 'filtering']);
 ```
 
-[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IgxIGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
+[`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) - The [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method accepts the serialized JSON string or [`IGridState`](mcp:get_api_reference?platform=angular&component=IGridState) object as argument and will restore the state of each feature found in the object/JSON string.
 
 ```typescript
 state.setState(gridState);
 state.setState(sortingFilteringStates)
 ```
 
-`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IgxIGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
+`options` - The [`options`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=options) object implements the [`IGridStateOptions`](mcp:get_api_reference?platform=angular&component=IGridStateOptions) interface, i.e. for every key, which is the name of a certain feature, there is the boolean value indicating if this feature state will be tracked. [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method will not put the state of these features in the returned value and [`setState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=setState) method will not restore state for it.
 
 ```typescript
 public options =  { cellSelection: false; sorting: false; }
@@ -740,8 +740,8 @@ export class PivotGridNoopPersistenceSampleComponent implements AfterViewInit {
 
 ## Limitations
 
-- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive will ignore the pivot dimension [`IgxIPivotDimension.memberFunction`](mcp:get_api_reference?platform=angular&component=IPivotDimension&member=memberFunction), pivot values [`IgxIPivotValue.member`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=member), [`IgxIPivotValue.formatter`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=formatter), custom [`IgxIPivotValue.aggregate`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=aggregate) functions,
- [`IgxIPivotValue.styles`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=styles) and pivot configuration strategies: [`IgxIPivotConfiguration.columnStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=columnStrategy) and [`IgxIPivotConfiguration.rowStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=rowStrategy).
+- [`getState`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective&member=getState) method uses JSON.stringify() method to convert the original objects to a JSON string. JSON.stringify() does not support Functions, thats why the [`IgxGridStateDirective`](mcp:get_api_reference?platform=angular&component=IgxGridStateDirective) directive will ignore the pivot dimension [`IPivotDimension.memberFunction`](mcp:get_api_reference?platform=angular&component=IPivotDimension&member=memberFunction), pivot values [`IPivotValue.member`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=member), [`IPivotValue.formatter`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=formatter), custom [`IPivotValue.aggregate`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=aggregate) functions,
+ [`IPivotValue.styles`](mcp:get_api_reference?platform=angular&component=IPivotValue&member=styles) and pivot configuration strategies: [`IPivotConfiguration.columnStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=columnStrategy) and [`IPivotConfiguration.rowStrategy`](mcp:get_api_reference?platform=angular&component=IPivotConfiguration&member=rowStrategy).
 
 ## API References
 

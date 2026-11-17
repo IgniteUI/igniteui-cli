@@ -53,15 +53,17 @@ The Ignite UI for Blazor Icon Button component allows developers to use register
 
 ## Usage
 
-Before using the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbIconButtonModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbIconButtonModule`](mcp:get_api_reference?platform=blazor&component=IgbIconButtonModule), the client resource module of the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbIconButtonModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbIconButton`](mcp:get_api_reference?platform=blazor&component=IgbIconButton) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -157,13 +159,13 @@ The size of the button can be changed by utilizing the `--ig-size` CSS variable 
 ```
 
 ```css
-igc-icon-button {
+.size-medium {
     --ig-size: var(--ig-size-medium);
 }
 ```
 
 ```razor
-<IgbIconButton IconName="thumb-up" Collection="material" Size="@SizableComponentSize.Medium" />
+<IgbIconButton class="size-medium" IconName="thumb-up" Collection="material" />
 ```
 
 ### Type

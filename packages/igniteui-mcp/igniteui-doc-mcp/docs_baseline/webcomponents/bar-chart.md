@@ -1,12 +1,13 @@
 ---
 title: "Web Components Bar Chart and Graph | Ignite UI for Web Components"
-description: "Web Components Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Try for FREE."
+description: "Web Components Bar Chart is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories. Download free trial."
 keywords: "Web Components Charts, Bar Chart, Bar Graph, Horizontal Chart, Infragistics"
 license: commercial
 mentionedTypes: ["DataChart", "BarSeries", "StackedBarSeries", "Stacked100BarSeries", "RangeBarSeries", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Web Components Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different."
+platformType: xplat
 _tocName: Bar Chart
 _premium: true
 ---
@@ -14,7 +15,7 @@ _premium: true
 The Ignite UI for Web Components Bar Chart, Bar Graph, or Horizontal Bar Chart, is among the most common category chart types used to quickly compare frequency, count, total, or average of data in different categories with data encoded by horizontal bars with equal heights but different lengths. This chart is ideal for showing variations in the value of an item over time. Data is represented using a collection of rectangles that extend from the left to right of the chart towards the values of data points. Bar Chart is very similar to [Column Chart](column-chart.md) except that Bar Chart renders with 90 degrees clockwise rotation and therefore it has horizontal orientation (left to right) while [Column Chart](column-chart.md) has vertical orientation (up and down)
 
 ## Web Components Bar Chart Example
-You can create Web Components Bar Chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data sources to multiple [`IgcBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
+You can create Web Components Bar Chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data sources to multiple [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -92,7 +93,7 @@ These use cases are commonly used for the following scenarios:
 - The list must contain at least one numeric data column.
 
 ## Web Components Bar Chart with Single Series
-Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
+Bar Chart belongs to a group of Category Series and it is rendered using a collection of rectangles that extend from the left to right of the chart towards the values of data points. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class OnlineShoppingSearchesItem {
@@ -130,7 +131,7 @@ export class OnlineShoppingSearches extends Array<OnlineShoppingSearchesItem> {
 
 ## Web Components Bar Chart with Multiple Series
 
-The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to multiple [`IgcBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
+The Bar Chart is able to render multiple bars per category for comparison purposes. In this example, the Bar Chart is comparing box office revenue amongst popular movie franchises. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to multiple [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class HighestGrossingMoviesItem {
@@ -166,7 +167,7 @@ export class HighestGrossingMovies extends Array<HighestGrossingMoviesItem> {
 
 ## Web Components Bar Chart Styling
 
-The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent) and adding a [`IgcCalloutLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent), as shown in the example below:
+The Bar Chart can be styled, and allows for the ability to use [annotation values](../features/chart-annotations.md) for each bar, for example, to demonstrate percent comparisons. You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent) and adding a [`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent), as shown in the example below:
 
 ```typescript
 export class OnlineShoppingSearchesItem {
@@ -208,7 +209,7 @@ A Stacked Bar Chart, or Stacked Bar Graph, is a type of category chart that is u
 
 The Stacked Bar Chart differs from the Bar Chart in that the data points representing your data are stacked next to each other horizontally to visually group your data. Each stack can contain both positive and negative values. All positive values are grouped on the positive side of the X-Axis, and all negative values are grouped on the negative side of the X-Axis.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -249,7 +250,7 @@ export class EnergyRenewableConsumption extends Array<EnergyRenewableConsumption
 
 The Web Components Stacked 100% Bar Chart is identical to the Web Components Stacked Bar Chart in all aspects except in their treatment of the values on X-Axis (bottom labels of the chart). Instead of presenting a direct representation of the data, the stacked 100 bar chart presents the data in terms of percent of the sum of all values in a data point.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a [`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent), as shown in the example below:
 
 ```typescript
 export class EnergyRenewableConsumptionItem {
@@ -294,7 +295,7 @@ Range values are represented on the X-Axis and categories are displayed on the Y
 
 The Range Bar Chart is identical to the [Range Column Chart](column-chart.md#web-components-range-column-chart) in all aspects except that the ranges are represented as a set of horizontal bars rather than vertical columns.
 
-You can create this type of chart in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a `IgcRangeBarSeries`. The series reads low and high values from `LowMemberPath` and `HighMemberPath`, and it typically uses a `NumericXAxis` with a `CategoryYAxis`, as shown in the example below:
+You can create this type of chart in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control by binding your data to a `IgcRangeBarSeriesComponent`. The series reads low and high values from `lowMemberPath` and `highMemberPath`, and it typically uses a [`IgcNumericXAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericXAxisComponent) with a [`IgcCategoryYAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryYAxisComponent), as shown in the example below:
 
 ```typescript
 export class TemperatureRangeDataItem {
@@ -341,10 +342,10 @@ You can find more information about related chart types in these topics:
 - [Stacked Chart](stacked-chart.md)
 
 ## API References
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
-[`IgcBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent)
-[`IgcCalloutLayer`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent)
-[`IgcStackedBarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)
-[`IgcStacked100BarSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent)
-`IgcRangeBarSeries`
-[`DataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent&member=dataSource)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcBarSeriesComponent)
+[`IgcCalloutLayerComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCalloutLayerComponent)
+[`IgcStackedBarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStackedBarSeriesComponent)
+[`IgcStacked100BarSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcStacked100BarSeriesComponent)
+`IgcRangeBarSeriesComponent`
+`dataSource`

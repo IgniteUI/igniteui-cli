@@ -1,28 +1,34 @@
 ---
 title: "Web Components Map | Shape Map Resources | Infragistics"
-description: Use Infragistics' Web Components JavaScript map to load geo-spatial data from shape files. View Ignite UI for Web Components map demos!
+description: Use Infragistics' Web Components map to load geo-spatial data from shape files. View Ignite UI for Web Components map demos!
 keywords: "Web Components map, shape styling, conditional formatting, Ignite UI for Web Components, Infragistics"
 license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The resource topic provides implementation of an utility that helps with styling UI elements of GeographicShapeSeries in Web Components GeographicMap component."
+platformType: xplat
 _tocName: Shape Styling Utility
 _premium: true
 ---
 # Web Components Shape Styling Utility
 
-The resource topic provides implementation of an utility that helps with styling UI elements of `IgcGeographicShapeSeries` in Web Components `IgcGeographicMap` component.
+The resource topic provides implementation of an utility that helps with styling UI elements of `IgcGeographicShapeSeriesComponent` in Web Components `IgcGeographicMapComponent` component.
 
 ## Required Imports
 
 ```ts
-import { IgcGeographicShapeSeriesComponent } from 'igniteui-webcomponents-maps';
-import { Style } from 'igniteui-webcomponents-core';
+import { IgcGeographicShapeSeriesComponent, IgcGeographicShapeSeriesBaseComponent } from 'igniteui-webcomponents-maps';
+import { IgcShapeDataSource, IgcShapefileRecord } from 'igniteui-webcomponents-core';
+import { IgcAssigningShapeStyleEventArgs } from 'igniteui-webcomponents-charts';
 ```
 
 ## Utility Implementation
 
 ```ts
+/**
+ * Data driven styling for a geographic shape series: four ways of turning a shapefile record into
+ * a style, behind one method the series' styleShape handler calls.
+ */
 export abstract class ShapeStyling {
   public defaultStroke = 'black';
   public defaultFill = 'gray';
@@ -43,7 +49,7 @@ export abstract class ShapeStyling {
   public getValue(itemMemberPath: string, item: any): any {
     let itemValue = null;
 
-    if (item.fieldValues !== undefined) { // .hasOwnProperty("fieldValues")) {
+    if (item.fieldValues !== undefined) {
       if (item.fieldsNames.indexOf(itemMemberPath) >= 0) {
         itemValue = item.fieldValues[itemMemberPath];
       } else {
@@ -70,6 +76,8 @@ export class ShapeRandomStyling extends ShapeStyling {
   public generate(record: any): Style {
     const id = record.fieldValues.Name || this.getRandomValue(0, 1000);
 
+    // Kept per record, so a shape keeps the colour it was first given rather than picking a new
+    // one every time the series restyles.
     if (this.styleMappings.has(id)) {
       return this.styleMappings.get(id);
     } else {
@@ -91,48 +99,6 @@ export class ShapeRandomStyling extends ShapeStyling {
   public getRandomItem(array: any[]): any {
     return this.getRandomValue(0, array.length - 1);
   }
-}
-
-export class ShapeRangeStyling extends ShapeStyling {
-
-  public itemMemberPath = '';
-  public ranges: ShapeRange[] = [];
-
-  constructor() {
-    super();
-    this.ranges.push({ minimum: 0, maximum: 50, fill: 'yellow'} );
-    this.ranges.push({ minimum: 0, maximum: 100, fill: 'red'} );
-  }
-
-  public generate(record: any): Style {
-    let itemValue = this.getValue(this.itemMemberPath, record);
-    if (itemValue === null) {
-      return this.defaultStyle;
-    }
-
-    for (const range of this.ranges) {
-      if (range.minimum <= itemValue && itemValue < range.maximum) {
-        const shapeStyle = new Style();
-        shapeStyle.opacity = range.opacity || this.defaultOpacity;
-        shapeStyle.fill    = range.fill || this.defaultFill;
-        shapeStyle.stroke  = range.stroke || this.defaultStroke;
-        shapeStyle.strokeThickness = range.strokeThickness || this.defaultThickness;
-        return shapeStyle;
-      }
-    }
-    return this.defaultStyle;
-  }
-}
-
-export class ShapeRange {
-
-  public minimum: number;
-  public maximum: number;
-
-  public opacity?: number;
-  public fill: string;
-  public stroke?: string;
-  public strokeThickness?: number;
 }
 
 export class ShapeScaleStyling extends ShapeStyling {
@@ -215,6 +181,50 @@ export class ShapeScaleStyling extends ShapeStyling {
       let scaledValue = (value - min) / (max - min);
       return scaledValue;
   }
+
+}
+
+export class ShapeRangeStyling extends ShapeStyling {
+
+  public itemMemberPath = '';
+  public ranges: ShapeRange[] = [];
+
+  constructor() {
+    super();
+    this.ranges.push({ minimum: 0, maximum: 50, fill: 'yellow'} );
+    this.ranges.push({ minimum: 0, maximum: 100, fill: 'red'} );
+  }
+
+  public generate(record: any): Style {
+    let itemValue = this.getValue(this.itemMemberPath, record);
+    if (itemValue === null) {
+      return this.defaultStyle;
+    }
+
+    for (const range of this.ranges) {
+      if (range.minimum <= itemValue && itemValue < range.maximum) {
+        const shapeStyle = new Style();
+        shapeStyle.opacity = range.opacity || this.defaultOpacity;
+        shapeStyle.fill    = range.fill || this.defaultFill;
+        shapeStyle.stroke  = range.stroke || this.defaultStroke;
+        shapeStyle.strokeThickness = range.strokeThickness || this.defaultThickness;
+        return shapeStyle;
+      }
+    }
+    return this.defaultStyle;
+  }
+}
+
+export class ShapeRange {
+
+  public minimum: number;
+  public maximum: number;
+
+  public opacity?: number;
+  public fill: string;
+  public stroke?: string;
+  public strokeThickness?: number;
+
 }
 
 export class ShapeComparisonStyling extends ShapeStyling {
@@ -255,5 +265,5 @@ export class ShapeComparison {
 ```
 
 ## API References
-`IgcGeographicShapeSeries`
-`IgcGeographicMap`
+`IgcGeographicShapeSeriesComponent`
+`IgcGeographicMapComponent`

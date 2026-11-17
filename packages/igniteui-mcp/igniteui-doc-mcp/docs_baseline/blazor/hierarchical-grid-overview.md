@@ -289,7 +289,7 @@ To get started with the Blazor hierarchical grid, first you need to install the 
 
 Please refer to these topics on adding the IgniteUI.Blazor package:
 
-- [Getting Started](../../general-getting-started-blazor-client.md)
+- [Getting Started](../../general-getting-started.md)
 - [Adding Nuget Package](../../general-nuget-feed.md)
 
 You also need to include the following CSS link in the index.html file of your application to provide the necessary styles to the hierarchical grid:
@@ -306,12 +306,15 @@ Afterwards, you may start implementing the control by adding the following names
 
 ### Component Modules
 
+Register the Ignite UI for Blazor services:
+
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbhierarchicalGridModule));
-
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering [`IgbHierarchicalGridModule`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGridModule), the client resource module of the [`IgbHierarchicalGrid`](mcp:get_api_reference?platform=blazor&component=IgbHierarchicalGrid), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbHierarchicalGridModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../../general-getting-started.md#component-modules)).
 
 ## Using the Blazor Hierarchical Data Grid
 
@@ -505,7 +508,7 @@ The Selection and Navigation features work globally for the whole Hierarchical G
 The Hierarchical Grid allows the users to conveniently collapse all its currently expanded rows by pressing the "Collapse All" button at its top left corner. Additionally, every child grid which contains other grids and is a Hierarchical Grid itself, also has such a button - this way the user is able to collapse only a given grid in the hierarchy:
 
 ## Styling
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](./theming-grid.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](./theming.md). In case you would like to change the header background and text color, you need to set a class for the grid first:
 
 ```razor
  <IgbHierarchicalGrid Class="grid"></IgbHierarchicalGrid>

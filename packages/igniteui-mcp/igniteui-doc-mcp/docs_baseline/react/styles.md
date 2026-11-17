@@ -49,4 +49,4 @@ Having learned about CSS parts and CSS variables and in combination with the oth
 
 ## API References
 
-[`IgrconfigureTheme`](mcp:get_api_reference?platform=react&component=configureTheme)<br />
+[`configureTheme`](mcp:get_api_reference?platform=react&component=configureTheme)<br />

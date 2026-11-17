@@ -255,7 +255,7 @@ To set the initial filtering state of the [`IgbTreeGrid`](mcp:get_api_reference?
 
 ### Filtering logic
 
-The [`IgbFilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) controls how filtering multiple columns will resolve in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). You can change it at any time through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) API, or through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) input property.
+The [`FilteringLogic`](mcp:get_api_reference?platform=blazor&component=FilteringLogic) property of the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) controls how filtering multiple columns will resolve in the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid). You can change it at any time through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) API, or through the [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid) input property.
 
 ```razor
  <IgbTreeGrid FilteringLogic="FilteringLogic.Or"></IgbTreeGrid>
@@ -267,7 +267,7 @@ When set to `OR`, a row will be returned when either the 'ProductName' cell valu
 
 ## Styling
 
-In addition to the predefined themes, the grid could be further customized by setting some of the available [CSS properties](../grid/theming-grid.md).
+In addition to the predefined themes, the grid could be further customized by setting some of the available CSS properties. To build a complete theme from just a few colors, see the [theming topic](theming.md).
 In case you would like to change some of the colors, you need to set a class for the grid first:
 
 ```razor

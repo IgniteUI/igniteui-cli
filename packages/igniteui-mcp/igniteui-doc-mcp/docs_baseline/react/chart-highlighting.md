@@ -4,9 +4,11 @@ description: Infragistics' React Chart Highlighting
 keywords: React Charts, Highlighting, Infragistics
 license: commercial
 
+mentionedTypes: ["CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "All React Charts support a variety of highlighting options."
+platformType: xplat
 _tocName: Chart Highlighting
 _premium: true
 ---
@@ -166,9 +168,9 @@ root.render(<Sample/>);
 
 # React Chart Highlighting Modes & Behaviors
 
-All React Charts support a variety of highlighting options. `HighlightingMode` can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. `HighlightingBehavior` can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` controls and they have the same API for using the highlighting feature.
+All React Charts support a variety of highlighting options. `highlightingMode` can be set to brighten or fade when the mouse is hovering over a series/data item rendered in the plot area. `highlightingBehavior` can be set to directly over or the nearest data item to trigger the highlighting effect. Highlighting modes and behaviors is supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` controls and they have the same API for using the highlighting feature.
 
-The following example demonstrates the `HighlightingMode` React chart.
+The following example demonstrates the `highlightingMode` React chart.
 
 ```typescript
 export class TemperatureAnnotatedDataItem {
@@ -307,7 +309,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Sample/>);
 ```
 
-The following example demonstrates the `HighlightingBehavior` React chart.
+The following example demonstrates the `highlightingBehavior` React chart.
 
 ```typescript
 export class TemperatureAnnotatedDataItem {
@@ -449,7 +451,7 @@ root.render(<Sample/>);
 
 # React Chart Legend Highlighting
 
-All React Charts support legend highlighting. `LegendHighlightingMode` can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` controls and they have the same API for using the highlighting feature.
+All React Charts support legend highlighting. `legendHighlightingMode` can enabled so that when mouse is hovering over a legend marker item then the rendered series will highlight in the plot area. Legend highlighting is supported by the `IgrCategoryChart`, `IgrFinancialChart`, and `IgrDataChart` controls and they have the same API for using the highlighting feature.
 
 The following example demonstrates the legend series highlighting React chart.
 
@@ -574,11 +576,11 @@ root.render(<Sample/>);
 
 The Ignite UI for React `IgrCategoryChart` can enable three types of highlighting when hovering over data items.
 
-1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the `IsSeriesHighlightingEnabled` property to true.
+1. Series Highlighting will highlight the single data point represented by a marker or column when the pointer is positioned over it. This is enabled by setting the `isSeriesHighlightingEnabled` property to true.
 
-2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the `IsItemHighlightingEnabled` property to true.
+2. Item Highlighting highlights items in a series either by drawing a banded shape at their position or by rendering a marker at their position. This is enabled by setting the `isItemHighlightingEnabled` property to true.
 
-3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the `IsCategoryHighlightingEnabled` property to true.
+3. Category Highlighting targets all category axes in the chart. They draw a shape that illuminates the area of the axis closest to the pointer position. This is enabled by setting the `isCategoryHighlightingEnabled` property to true.
 
 The following example demonstrates the different highlighting layers that are available on the React chart.
 

@@ -1,19 +1,20 @@
 ---
-title: "Blazor ComboBox Component – Ignite UI for Blazor"
-description: "Ignite UI for Blazor ComboBox Component Features"
-keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor ComboBox Component Features"
+title: "Blazor Combo Features"
+description: "The Blazor Combo binds to local data, filters its options as the user types, groups them by a data field, and can be disabled."
+keywords: "Ignite UI for Blazor, UI controls, Blazor widgets, web widgets, UI widgets, Blazor, Native Blazor Components Suite, Native Blazor Controls, Native Blazor Components Library, Blazor Combo Features, Blazor Combo Data Binding, Blazor Combo Filtering, Blazor Combo Grouping"
 license: MIT
-mentionedTypes: ["Combo", "ComboList", "ComboItem"]
+last_updated: "2026-11-16"
+platformType: web-only
+mentionedTypes: ["Combo"]
 llms:
-  description: "The Ignite UI for Blazor ComboBox component exposes several features such as filtering and grouping."
+  description: "The Blazor Combo binds to local data, filters its options as the user types, groups them by a data field, and can be disabled."
 _tocName: Features
 ---
-# Blazor ComboBox Features
+# Combo Component Features
 
-The Ignite UI for Blazor ComboBox component exposes several features such as filtering and grouping.
+The Blazor Combo binds to local data, filters its options as the user types, groups them by a data field, and can be disabled.
 
-## Combobox Features Example
-The following demo shows some [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) features that are enabled/disabled at runtime:
+## Live Demo
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -29,7 +30,7 @@ The following demo shows some [`IgbCombo`](mcp:get_api_reference?platform=blazor
     </style>
 
     <IgbCombo 
-        T="string"
+        @bind-Value="SelectedCities"
         Label="Cities" 
         Placeholder="Pick a city" 
         Data="Data" 
@@ -51,6 +52,7 @@ The following demo shows some [`IgbCombo`](mcp:get_api_reference?platform=blazor
 
 @code {
     private List<City> Data;
+    private string[] SelectedCities = [];
     private bool DisableFiltering = false;
     private bool CaseSensitiveIcon = false;
     private string Group = "";
@@ -61,187 +63,140 @@ The following demo shows some [`IgbCombo`](mcp:get_api_reference?platform=blazor
     }
 
     public void OnDisableFilteringClick(IgbCheckboxChangeEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.DisableFiltering = sw.Checked;
+        this.DisableFiltering = e.Detail.Checked;
     }
 
     public void OnCaseSensitiveClick(IgbCheckboxChangeEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.CaseSensitiveIcon = sw.Checked;
+        this.CaseSensitiveIcon = e.Detail.Checked;
     }
 
     public void OnGroupClick(IgbCheckboxChangeEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.Group = sw.Checked ? "Country" : "";
+        this.Group = e.Detail.Checked ? "Country" : "";
     }
 
     public void OnDisableClick(IgbCheckboxChangeEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.Disabled = sw.Checked;
-    }
-}
-```
-
-In our sample we are going to use the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component, so we have to import them together with the combo:
-
-```csharp
-// in Program.cs file
-
-builder.Services.AddIgniteUIBlazor(typeof(IgbComboModule));
-builder.Services.AddIgniteUIBlazor(typeof(IgbSwitchModule));
-```
-
-You will also need to link an additional CSS file to apply the styling to the [`IgbSwitch`](mcp:get_api_reference?platform=blazor&component=IgbSwitch) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
-
-```razor
-<link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
-```
-
-Then, using React's useState hook, we will declare our variables which will update when the state of the switches change. This will keep track for updates and reflect the changes to the combo inputs accordingly:
-
-```razor
-<IgbCombo
-    Label="Cities"
-    Placeholder="Pick a city"
-    Data="Data"
-    ValueKey="Id"
-    DisplayKey="Name"
-    DisableFiltering="@DisableFiltering"
-    CaseSensitiveIcon="@CaseSensitiveIcon"
-    GroupKey="@Group"
-    Disabled="@Disabled">
-</IgbCombo>
-
-<IgbSwitch Change="@OnDisableFilteringClick">Disable Filtering</IgbSwitch>
-<IgbSwitch Change="@OnCaseSensitiveClick" Disabled="@DisableFiltering">Show Case-sensitive Icon</IgbSwitch>
-<IgbSwitch Change="@OnGroupClick">Enable Grouping</IgbSwitch>
-<IgbSwitch Change="@OnDisableClick">Disable Combo</IgbSwitch>
-
-@code {
-    private bool DisableFiltering = false;
-    private bool CaseSensitiveIcon = false;
-    private bool Disabled = false;
-
-    public void OnDisableFilteringClick(IgbComponentBoolValueChangedEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.DisableFiltering = sw.Checked;
-    }
-
-    public void OnCaseSensitiveClick(IgbComponentBoolValueChangedEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.CaseSensitiveIcon = sw.Checked;
-    }
-
-    public void OnDisableClick(IgbComponentBoolValueChangedEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.Disabled = sw.Checked;
-    }
-}
-```
-
-Note that grouping is enabled/disabled by setting the [`GroupKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupKey) property to a corresponding data source field:
-
-```razor
-@code {
-    private string Group = "";
-
-    public void OnGroupClick(IgbComponentBoolValueChangedEventArgs e) {
-        IgbSwitch sw = e.Parent as IgbSwitch;
-        this.Group = sw.Checked ? "Country" : "";
+        this.Disabled = e.Detail.Checked;
     }
 }
 ```
 
 ## Features
 
-### Filtering
+### Data Binding
 
-By default, filtering in the ComboBox is enabled. It can be disabled by setting the [`DisableFiltering`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=disableFiltering) property.
-
-Filtering options can be further enhanced by enabling the search case sensitivity. The case-sensitive icon can be turned on using the [`CaseSensitiveIcon`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=caseSensitiveIcon) property so that end-users can control the case sensitivity.
+The following snippets bind the Blazor Combo to a local list of US states through its [`data`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=data) property, storing the code of each state and showing its name. The keys that the Combo reads from each item are described in [Data Binding](./overview.md#data-binding) in the Combo Overview topic.
 
 ```razor
-<IgbCombo DisableFiltering="true" CaseSensitiveIcon="true" />
+<IgbCombo @bind-Value="selectedStates" Data="usStates" ValueKey="Id" DisplayKey="Name" />
+
+@code {
+    // Items such as new UsState { Id = "CT", Name = "Connecticut", Region = "New England" }
+    private List<UsState> usStates = UsStatesData.States;
+    private string[] selectedStates = [];
+}
+```
+
+`IgbCombo` infers its value type from `Data` and `@bind-Value`. The Blazor snippets in the rest of this topic leave them out, so add them back when you copy a snippet.
+
+### Filtering
+
+The Blazor Combo filters its list of options as the user types in the search input of the dropdown. Filtering is on by default. Set [`disableFiltering`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=disableFiltering) to turn it off, which also hides the search input.
+
+To let users switch the search between case-sensitive and case-insensitive, set [`caseSensitiveIcon`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=caseSensitiveIcon). The Combo then shows a case-sensitive icon in its search input. The icon has no effect while filtering is disabled, because the search input is hidden.
+
+```razor
+@* Shows the case-sensitive icon in the search input *@
+<IgbCombo CaseSensitiveIcon="true" />
+
+@* Turns filtering off, which also hides the search input *@
+<IgbCombo DisableFiltering="true" />
 ```
 
 #### Filtering Options
 
-The Ignite UI for Blazor [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) exposes one more filtering property that allows passing configuration of both `FilterKey` and `CaseSensitive` options. The `FilterKey` indicates which data source field should be used for filtering the list of options. The `CaseSensitive` option indicates if the filtering should be case-sensitive or not.
+The [`filteringOptions`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=filteringOptions) property configures how the Blazor Combo matches the search text:
 
-The following code snippet shows how to filter the cities from our data source by country instead of name. We are also making the filtering case-sensitive by default:
+- `filterKey` - the data field to search in. Defaults to the field set by `displayKey`.
+- `caseSensitive` - whether the search is case-sensitive. Defaults to `false`. The case-sensitive icon toggles this value.
+- `matchDiacritics` - whether accented letters match only themselves, so that `é` doesn't match `e`. Defaults to `false`.
 
-### Grouping
+In Blazor, set these options through an `IgbFilteringOptions` object, as `FilterKey`, `CaseSensitive` and `MatchDiacritics`.
 
-Defining a [`GroupKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupKey) option will group the items, according to the provided key:
-
-```razor
-<IgbCombo GroupKey="region" />
-```
-
-**Note:** 
-The [`GroupKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupKey) property will only have effect if your data source consists of complex objects.
-
-#### Sorting Direction
-
-The ComboBox component also exposes an option for setting whether groups should be sorted in ascending or descending order. By default, the sorting order is ascending:
+The following snippet searches the region of each state instead of its name, and makes the search case-sensitive:
 
 ```razor
-<IgbCombo GroupSorting="desc" />
-```
+<IgbCombo FilteringOptions="@filteringOptions" />
 
-### Label
-
-The [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule) label can be set easily using the [`Label`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=label) property:
-
-```razor
-<IgbCombo Label="Cities" />
-```
-
-### Placeholder
-
-A placeholder text can be specified for both the ComboBox component input and the search input placed inside the dropdown menu:
-
-```razor
-<IgbCombo Placeholder="Pick a city" PlaceholderSearch="Search for a city" />
-```
-
-### Autofocus
-
-If you want your ComboBox to be automatically focused on page load you can use the following code:
-
-```razor
-<IgbCombo Autofocus="true" />
+@code {
+    private IgbFilteringOptions filteringOptions = new IgbFilteringOptions
+    {
+        FilterKey = "Region",
+        CaseSensitive = true
+    };
+}
 ```
 
 ### Search Input Focus
 
-The ComboBox search input is focused by default. To disable this feature and move the focus to the list of options use the [`AutofocusList`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=autofocusList) property as shown below:
+When the dropdown of the Blazor Combo opens, its search input receives focus.
+
+Set [`autofocusList`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=autofocusList) to focus the list of options instead. On mobile devices, this keeps the software keyboard from opening with the dropdown.
 
 ```razor
 <IgbCombo AutofocusList="true" />
 ```
 
-### Required
+### Grouping
 
-The ComboBox can be marked as required by setting the required property.
+Set [`groupKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupKey) to a field of the data items to group the options of the Blazor Combo under a header for each value of that field:
+
+In Blazor, the key is the name of the C# property, such as `Region`:
 
 ```razor
-<IgbCombo Required="true" />
+<IgbCombo GroupKey="Region" />
 ```
 
-### Disable ComboBox
+**Note:** 
+The [`groupKey`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupKey) property takes effect only when the data items are objects.
 
-You can disable the ComboBox using the [`Disabled`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=disabled) property:
+#### Sorting Direction
+
+The [`groupSorting`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=groupSorting) property sets the order of the groups in the Blazor Combo: `asc` (the default) sorts them in ascending order, `desc` in descending order, and `none` keeps them in the order their first items appear in the data. The items inside each group keep their order in the data.
+
+In Blazor, set it to a `GroupingDirection` value: `Asc`, `Desc` or `None`.
 
 ```razor
-<IgbCombo Disabled="true" />
+<IgbCombo GroupSorting="GroupingDirection.Desc" />
+```
+
+### Clear Button
+
+The Blazor Combo shows a clear button in its input while at least one option is selected, and clicking the button clears the selection. Set [`disableClear`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=disableClear) to hide the button:
+
+```razor
+<IgbCombo DisableClear="true" />
+```
+
+### Autofocus
+
+Set [`autofocus`](mcp:get_api_reference?platform=blazor&component=IgbComboModule&member=autofocus) to focus the Blazor Combo when the page loads:
+
+```razor
+<IgbCombo Autofocus="true" />
 ```
 
 ## API References
 
-[`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule)<br />
+See the complete Blazor Combo API reference:
+
+- [`IgbCombo`](mcp:get_api_reference?platform=blazor&component=IgbComboModule)
 
 ## Additional Resources
 
+Use the following Blazor resources to learn more about the Combo:
+
+- [Combo Overview](./overview.md)
+- [Combo Templates](./templates.md)
+- [Single Selection Combo](./single-selection.md)
 - [Ignite UI for Blazor **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-blazor)
 - [Ignite UI for Blazor **GitHub**](https://github.com/IgniteUI/igniteui-blazor)

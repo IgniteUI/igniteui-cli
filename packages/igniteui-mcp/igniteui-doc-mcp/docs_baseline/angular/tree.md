@@ -687,7 +687,7 @@ $custom-tree-theme: tree-theme(
 
 ### Styling with Tailwind
 
-You can style the tree using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the tree using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the Tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

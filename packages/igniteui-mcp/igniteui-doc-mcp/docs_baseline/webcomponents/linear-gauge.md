@@ -7,16 +7,17 @@ mentionedTypes: ["LinearGauge"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge."
+platformType: xplat
 _tocName: Linear Gauge
 _premium: true
 ---
 # Web Components Linear Gauge Overview
 
-The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge. The `IgcLinearGauge` provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
+The Ignite UI for Web Components linear gauge component allows for visualizing data in the form of a linear gauge. The `IgcLinearGaugeComponent` provides a simple and concise view of a value compared against a scale and one or more ranges. It supports one scale, one set of tick marks and one set of labels. The component has also a built-in support for animated transitions. This animation is easily customizable by setting the `transitionDuration` property. The features of the linear gauge component include configurable orientation and direction, configurable visual elements such as the needle, and more.
 
 ## Web Components Linear Gauge Example
 
-The following sample demonstrates how setting multiple properties on the same `IgcLinearGauge` can transform it to completely different linear gauge.
+The following sample demonstrates how setting multiple properties on the same `IgcLinearGaugeComponent` can transform it to completely different linear gauge.
 
 ```css
 /* shared styles are loaded from: */
@@ -34,14 +35,15 @@ npm install --save igniteui-webcomponents-gauges
 
 ## Component Modules
 
-The `IgcLinearGauge` requires the following modules:
+The `IgcLinearGaugeComponent` requires the following modules:
 
 ```ts
+import { ModuleManager } from 'igniteui-webcomponents-core';
 import { IgcLinearGaugeModule } from 'igniteui-webcomponents-gauges';
-
+// ...
 ModuleManager.register(
     IgcLinearGaugeModule
-    );
+);
 ```
 
 ## Usage
@@ -50,23 +52,25 @@ The following code demonstrates how create a linear gauge containing a needle an
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=5 value=43
-    maximum-value=55>
+    height="30px"
+    width="700px"
+    minimum-value="5"
+    maximum-value="55"
+    value="43">
     <igc-linear-graph-range
-        start-value=0
-        end-value=15
-        brush="red">
+        start-value="0"
+        end-value="15"
+        brush="Red">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-        start-value=50
-        end-value=30
-         brush="yellow">
+        start-value="15"
+        end-value="30"
+        brush="Yellow">
     </igc-linear-graph-range>
-     <igc-linear-graph-range
-        start-value=30
-        end-value=55
-        brush="green">
+    <igc-linear-graph-range
+        start-value="30"
+        end-value="55"
+        brush="Green">
     </igc-linear-graph-range>
 </igc-linear-gauge>
 ```
@@ -76,26 +80,27 @@ The following code demonstrates how create a linear gauge containing a needle an
 This is the primary measure displayed by the linear gauge component and is visualized as a bar or you can customize it to show almost any shape as is demonstrated below.
 
 ```html
-  <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0
-    maximum-value=100
-    interval=10
-    value=50
-    is-needle-dragging-enabled=true
+<igc-linear-gauge
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    is-needle-dragging-enabled="true"
     needle-shape="Custom"
     needle-brush="DodgerBlue"
-    needle-out-line="DodgerBlue"
-    needle-stroke-thickness=1
-    needle-breadth=15
-    needle-inner-extent=0.35
-    needle-outer-extent=0.65
-    needle-outer-point-extent=0.8
-    needle-inner-point-extent=0.325
-    needle-inner-point-width=0
-    needle-outer-point-width=0.3
-    needle-inner-base-width=0
-    needle-outer-base-width=0.07>
+    needle-outline="DodgerBlue"
+    needle-stroke-thickness="1"
+    needle-breadth="15"
+    needle-inner-extent="0.35"
+    needle-outer-extent="0.65"
+    needle-outer-point-extent="0.8"
+    needle-inner-point-extent="0.325"
+    needle-inner-point-width="0"
+    needle-outer-point-width="0.3"
+    needle-inner-base-width="0"
+    needle-outer-base-width="0.07">
 </igc-linear-gauge>
 ```
 
@@ -106,25 +111,24 @@ This is the primary measure displayed by the linear gauge component and is visua
 
 ## Highlight Needle
 
-The linear gauge can be modified to show a second needle. This will make the main needle's `Value` appear with a lower opacity. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue`.
+The linear gauge can be modified to show a second needle. This will make the main needle's `IgcLinearGaugeComponent.value` appear with a lower opacity. To enable this first set `highlightValueDisplayMode` to Overlay and then apply a `highlightValue`.
 
 ```html
 <igc-linear-gauge
-    id="gauge"
     height="80px"
-    width="100%"
+    width="400px"
     minimum-value="0"
     maximum-value="100"
-    value="75"
+    value="50"
     interval="10"
     label-interval="10"
     label-extent="0.025"
     labels-pre-terminal="0"
     labels-post-initial="0"
-    needle-brush="blue"
+    needle-brush="Blue"
     highlight-value-display-mode="Overlay"
-    highlight-value=25
-    is-highlight-needle-dragging-enabled=true>
+    highlight-value="25"
+    is-highlight-needle-dragging-enabled="true">
 </igc-linear-gauge>
 ```
 
@@ -139,20 +143,29 @@ The ranges are visual elements that highlight a specified range of values on a s
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0 value=50
-    maximum-value=100 interval=10
-    range-brushes="#a4bd29, #F86232"
-    range-outlines="#a4bd29, #F86232" >
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    range-brushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    range-outlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
     <igc-linear-graph-range
-        start-value=0 end-value=50
-        inner-start-extent=0.075 inner-end-extent=0.075
-        outer-start-extent=0.25 outer-end-extent=0.4>
+        start-value="0"
+        end-value="50"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.25"
+        outer-end-extent="0.4">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-        start-value=50 end-value=100
-        inner-start-extent=0.075 inner-end-extent=0.075
-        outer-start-extent=0.4 outer-end-extent=0.55>
+        start-value="50"
+        end-value="100"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.4"
+        outer-end-extent="0.55">
     </igc-linear-graph-range>
 </igc-linear-gauge>
 ```
@@ -172,21 +185,23 @@ Minor tick marks – The minor tick marks represent helper tick marks, which mig
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0 value=50
-    maximum-value=100
-    interval=10
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
     tick-brush="DodgerBlue"
-    ticks-pre-terminal=0
-    ticks-post-initial=0
-    tick-stroke-thickness=2
-    tick-start-extent=0.25
-    tick-end-extent=0.05
-    minor-tick-count=4
+    ticks-pre-terminal="0"
+    ticks-post-initial="0"
+    tick-stroke-thickness="2"
+    tick-start-extent="0.25"
+    tick-end-extent="0.05"
+    minor-tick-count="4"
     minor-tick-brush="DarkViolet"
-    minor-tick-end-extent=0.05
-    minor-tick-start-extent=0.15
-    minor-tick-stroke-thickness=1>
+    minor-tick-start-extent="0.15"
+    minor-tick-end-extent="0.05"
+    minor-tick-stroke-thickness="1">
 </igc-linear-gauge>
 ```
 
@@ -201,13 +216,16 @@ The labels indicate the measures on the scale.
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0 value=50
-    maximum-value=100 interval=10
-    label-interval=10
-    label-extent=0.025
-    labels-pre-terminal=0
-    labels-post-initial=0
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    label-interval="10"
+    label-extent="0.025"
+    labels-pre-terminal="0"
+    labels-post-initial="0"
     font-brush="DodgerBlue"
     font="11px Verdana">
 </igc-linear-gauge>
@@ -224,14 +242,17 @@ The backing element represents background and border of the linear gauge compone
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0 value=20
-    maximum-value=100 interval=10
-    backing-brush="#bddcfc"
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    backing-brush="rgba(189, 220, 252, 1)"
     backing-outline="DodgerBlue"
-    backing-stroke-thickness=4
-    backing-inner-extent=0
-    backing-outer-extent=1>
+    backing-stroke-thickness="4"
+    backing-inner-extent="0"
+    backing-outer-extent="1">
 </igc-linear-gauge>
 ```
 
@@ -242,21 +263,24 @@ The backing element represents background and border of the linear gauge compone
 
 ## Scale
 
-The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using `IsScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
+The scale is a visual element that highlights the full range of values in the linear gauge. You can customize the appearance and the shape of the scale. It can also be inverted (using `isScaleInverted` property) and all labels will be rendered from right-to-left instead of left-to-right.
 
 ```html
 <igc-linear-gauge
-    height="80px" width="400px"
-    minimum-value=0 value=50
-    maximum-value=100 interval=10
-    isScale-inverted=false
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    is-scale-inverted="false"
     scale-brush="DodgerBlue"
     scale-outline="DarkViolet"
-    scale-stroke-thickness=1
-    scale-inner-extent=0.05
-    scale-outer-extent=0.65
-    scale-start-extent=0.05
-    scale-end-extent=0.95>
+    scale-stroke-thickness="1"
+    scale-inner-extent="0.05"
+    scale-outer-extent="0.65"
+    scale-start-extent="0.05"
+    scale-end-extent="0.95">
 </igc-linear-gauge>
 ```
 
@@ -270,81 +294,84 @@ The scale is a visual element that highlights the full range of values in the li
 For your convenience, all above code snippets are combined into one code block below that you can easily copy to your project and see the linear gauge with all features and visuals enabled.
 
 ```html
-<igc-linear-gauge id="lineargauge"
-    height="80px" width="400px"
-    minimum-value=0
-    maximum-value=100
-
-    label-interval=10
-    label-extent=0.025
-    labels-pre-terminal=0
-    labels-post-initial=0
-    font-brush="Black"
+<igc-linear-gauge
+    height="80px"
+    width="400px"
+    minimum-value="0"
+    maximum-value="100"
+    value="50"
+    interval="10"
+    is-scale-inverted="false"
+    scale-brush="DodgerBlue"
+    scale-outline="DarkViolet"
+    scale-stroke-thickness="1"
+    scale-inner-extent="0.05"
+    scale-outer-extent="0.65"
+    scale-start-extent="0.05"
+    scale-end-extent="0.95"
+    backing-brush="rgba(189, 220, 252, 1)"
+    backing-outline="DodgerBlue"
+    backing-stroke-thickness="4"
+    backing-inner-extent="0"
+    backing-outer-extent="1"
+    label-interval="10"
+    label-extent="0.025"
+    labels-pre-terminal="0"
+    labels-post-initial="0"
+    font-brush="DodgerBlue"
     font="11px Verdana"
-
-    interval=10
-    tick-brush="Black"
-    ticks-pre-terminal=0
-    ticks-post-initial=0
-    tick-stroke-thickness=2
-    tick-start-extent=0.25
-    tick-end-extent=0.05
-
-    minor-tick-count=4
-    minor-tick-brush="Black"
-    minor-tick-end-extent=0.05
-    minor-tick-start-extent=0.15
-    minor-tick-stroke-thickness=1
-
-    value=50
-    is-needle-dragging-enabled=true
+    tick-brush="DodgerBlue"
+    ticks-pre-terminal="0"
+    ticks-post-initial="0"
+    tick-stroke-thickness="2"
+    tick-start-extent="0.25"
+    tick-end-extent="0.05"
+    minor-tick-count="4"
+    minor-tick-brush="DarkViolet"
+    minor-tick-start-extent="0.15"
+    minor-tick-end-extent="0.05"
+    minor-tick-stroke-thickness="1"
+    is-needle-dragging-enabled="true"
     needle-shape="Custom"
-    needle-brush="Black"
-    needle-outline="Black"
-    needle-stroke-thickness=1
-    needle-breadth=15
-    needle-inner-extent=0.35
-    needle-outer-extent=0.65
-    needle-outer-point-extent=0.8
-    needle-inner-point-extent=0.325
-    needle-inner-point-width=0
-    needle-outer-point-width=0.3
-    needle-inner-base-width=0
-    needle-outer-base-width=0.07
-
-    is-scale-inverted=false
-    scale-brush="Gray"
-    scale-outline="Gray"
-    scale-stroke-thickness=1
-    scale-inner-extent=0.05
-    scale-outer-extent=0.65
-    scale-start-extent=0.05
-    scale-end-extent=0.95
-
-    backing-brush="#cecece"
-    backing-outline="#cecece"
-    backing-stroke-thickness=4
-    backing-inner-extent=0
-    backing-outer-extent=1
-
-    range-brushes ="#C62828, #F96232, #FF9800"
-    range-outlines="#C62828, #F96232, #FF9800">
+    needle-brush="DodgerBlue"
+    needle-outline="DodgerBlue"
+    needle-stroke-thickness="1"
+    needle-breadth="15"
+    needle-inner-extent="0.35"
+    needle-outer-extent="0.65"
+    needle-outer-point-extent="0.8"
+    needle-inner-point-extent="0.325"
+    needle-inner-point-width="0"
+    needle-outer-point-width="0.3"
+    needle-inner-base-width="0"
+    needle-outer-base-width="0.07"
+    highlight-value-display-mode="Overlay"
+    highlight-value="25"
+    is-highlight-needle-dragging-enabled="true"
+    range-brushes="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)"
+    range-outlines="rgba(164, 189, 41, 1) rgba(248, 98, 50, 1)">
     <igc-linear-graph-range
-        start-value=0 end-Value=50
-        inner-start-extent=0.075 inner-end-extent=0.075
-        outer-start-extent=0.25 outer-end-extent=0.4>
+        start-value="0"
+        end-value="50"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.25"
+        outer-end-extent="0.4">
     </igc-linear-graph-range>
     <igc-linear-graph-range
-        start-value=50 end-value=100
-        inner-start-extent=0.075 inner-end-extent=0.075
-        outer-start-extent=0.4 outer-end-extent=0.55>
+        start-value="50"
+        end-value="100"
+        inner-start-extent="0.075"
+        inner-end-extent="0.075"
+        outer-start-extent="0.4"
+        outer-end-extent="0.55">
     </igc-linear-graph-range>
 </igc-linear-gauge>
 ```
 
 ## API References
-`IgcLinearGauge`
-`IgcLinearGraphRange`
+`IgcLinearGaugeComponent`
+`IgcLinearGraphRangeComponent`
 ## Additional Resources
 
 You can find more information about other types of gauges in these topics:

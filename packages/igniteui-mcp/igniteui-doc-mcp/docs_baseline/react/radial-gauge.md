@@ -7,12 +7,13 @@ mentionedTypes: ["RadialGauge", "RadialGaugeRange"]
 namespace: Infragistics.Controls.Gauges
 llms:
   description: "The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale."
+platformType: xplat
 _tocName: Radial Gauge
 _premium: true
 ---
 # React Radial Gauge Overview
 
-The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The `IgrRadialGauge` also has built-in support for animated transitions. This animation is easily customizable by setting the `TransitionDuration` property.
+The React radial gauge component provides a number of visual elements, like a needle, tick marks, ranges, and labels, in order to create a predefined shape and scale. The `IgrRadialGauge` also has built-in support for animated transitions. This animation is easily customizable by setting the `transitionDuration` property.
 
 ## React Radial Gauge Example
 
@@ -404,10 +405,13 @@ npm install --save igniteui-react-gauges
 
 The `IgrRadialGauge` requires the following modules:
 
-```ts
+```tsx
 import { IgrRadialGaugeModule } from 'igniteui-react-gauges';
-
-IgrRadialGaugeModule.register();
+// ...
+const mods: any[] = [
+    IgrRadialGaugeModule
+];
+mods.forEach((m) => m.register());
 ```
 
 ## Usage
@@ -415,20 +419,25 @@ IgrRadialGaugeModule.register();
 The following code demonstrates how create a radial gauge containing a needle and three comparative ranges on the scale.
 
 ```tsx
- <IgrRadialGauge height="400px" width="400px"
-    value={25}
-    interval={5}
+<IgrRadialGauge
+    height="400px"
+    width="400px"
     minimumValue={0}
-    maximumValue={100}>
-    <IgrRadialGaugeRange startValue={0}
-                         endValue={30}
-                         brush="red"/>
-    <IgrRadialGaugeRange startValue={30}
-                         endValue={60}
-                         brush="yellow"/>
-    <IgrRadialGaugeRange startValue={60}
-                         endValue={100}
-                         brush="green"/>
+    maximumValue={100}
+    value={25}
+    interval={5}>
+    <IgrRadialGaugeRange
+        startValue={0}
+        endValue={30}
+        brush="Red" />
+    <IgrRadialGaugeRange
+        startValue={30}
+        endValue={60}
+        brush="Yellow" />
+    <IgrRadialGaugeRange
+        startValue={60}
+        endValue={100}
+        brush="Green" />
 </IgrRadialGauge>
 ```
 
@@ -438,22 +447,26 @@ The radial gauge component comes with a backing shape drawn behind the scale tha
 
 The backing element represents background and border of the radial gauge component. It is always the first element rendered and all the rest of elements such as needle, labels, and tick marks are overlay on top of it.
 
-The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the `ScaleStartAngle` and `ScaleEndAngle` properties. This can be set by setting the `BackingShape` property.
+The backing can be circular or fitted. A circular shape creates a 360 degree circle gauge while a fitted shape creates a filled arc segment encompassing the `scaleStartAngle` and `scaleEndAngle` properties. This can be set by setting the `backingShape` property.
 
 ```tsx
 <IgrRadialGauge
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
+    value={50}
+    interval={10}
     backingShape="Fitted"
-    backingBrush="#fcfcfc"
+    backingBrush="rgba(252, 252, 252, 1)"
     backingOutline="DodgerBlue"
     backingOversweep={5}
     backingCornerRadius={10}
     backingStrokeThickness={5}
     backingOuterExtent={0.8}
     backingInnerExtent={0.15}
-    scaleStartAngle={135} scaleEndAngle={45}
-    height="300px" width="300px"
-    minimumValue={0} value={50}
-    maximumValue={80} interval={10} />
+    scaleStartAngle={135}
+    scaleEndAngle={45} />
 ```
 
 ```tsx
@@ -506,10 +519,16 @@ root.render(<RadialGaugeBacking/>);
 
 ## Scale
 
-The scale is visual element that highlights full range of values in the gauge which can be created by supplying `MinimumValue` and `MaximumValue` values. Together with backing, it defines overall shape of gauge. The `ScaleStartAngle` and `ScaleEndAngle` properties define bounds of arc of the scale. While, the `ScaleSweepDirection` property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting `ScaleBrush`, `ScaleStartExtent`, and `ScaleEndExtent` properties.
+The scale is visual element that highlights full range of values in the gauge which can be created by supplying `minimumValue` and `maximumValue` values. Together with backing, it defines overall shape of gauge. The `scaleStartAngle` and `scaleEndAngle` properties define bounds of arc of the scale. While, the `scaleSweepDirection` property specifies whether the scale sweeps in clockwise or counter-clockwise direction. You can customize appearance of the scale by setting `scaleBrush`, `scaleStartExtent`, and `scaleEndExtent` properties.
 
 ```tsx
 <IgrRadialGauge
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
+    value={50}
+    interval={10}
     scaleStartAngle={135}
     scaleEndAngle={45}
     scaleBrush="DodgerBlue"
@@ -517,10 +536,7 @@ The scale is visual element that highlights full range of values in the gauge wh
     scaleOversweep={1}
     scaleOversweepShape="Fitted"
     scaleStartExtent={0.45}
-    scaleEndExtent={0.575}
-    height="300px" width="300px"
-    minimumValue={0} value={50}
-    maximumValue={80} interval={10} />
+    scaleEndExtent={0.575} />
 ```
 
 ```tsx
@@ -569,19 +585,22 @@ root.render(<RadialGaugeScale/>);
 
 ## Labels and Titles
 
-The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the `MinimumValue` and `MaximumValue` properties. You can position labels by setting the `LabelExtent` property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as `FontBrush` and `Font`.
+The radial gauge labels are visual elements displaying numeric values at a specified interval between values of the `minimumValue` and `maximumValue` properties. You can position labels by setting the `labelExtent` property to a fraction, where 0 represents center of gauge and 1 represents outer extent of the gauge backing. Also, you can customize labels setting various styling properties such as `fontBrush` and `IgrRadialGauge.font`.
 
-Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as `TitleExtent`, `TitleAngle`, `SubtitleFontSize`, `HighlightLabelBrush`.
+Each of these labels for the needle have various styling attributes you can apply to change the font, angle, brush and distance from the center of the gauge such as `titleExtent`, `titleAngle`, `subtitleTextStyle`, `highlightLabelBrush`.
 
 ```tsx
 <IgrRadialGauge
-    labelExtent={0.65}
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
+    value={50}
+    interval={10}
     labelInterval={10}
+    labelExtent={0.65}
     font="11px Verdana"
-    fontBrush="DodgerBlue"
-    height="300px" width="300px"
-    minimumValue={0} value={50}
-    maximumValue={80} interval={10} />
+    fontBrush="DodgerBlue" />
 ```
 
 ```tsx
@@ -626,20 +645,19 @@ root.render(<RadialGaugeLabels/>);
 
 ## Title & Subtitle
 
-`TitleText` and `SubtitleText` properties are available and can both be used to display custom text for the needle. Alternatively, `TitleDisplaysValue` and `SubtitleDisplaysValue`, when set to true, will let display the needle's value and override `TitleText` and `SubtitleText`. So you can occupy custom text for the title but show the value via the subtitle and vice versa.
+`titleText` and `subtitleText` properties are available and can both be used to display custom text for the needle. Alternatively, `titleDisplaysValue` and `subtitleDisplaysValue`, when set to true, will let display the needle's value and override `titleText` and `subtitleText`. So you can occupy custom text for the title but show the value via the subtitle and vice versa.
 
-If the highlight needle is shown, as explained below, then custom text can be shown via  `HighlightLabelText`, otherwise `HighlightLabelDisplaysValue` can be enabled and display it's value.
+If the highlight needle is shown, as explained below, then custom text can be shown via  `highlightLabelText`, otherwise `highlightLabelDisplaysValue` can be enabled and display it's value.
 
 ```tsx
 <IgrRadialGauge
     titleText="Global Sales"
-    subtitleText="2024"
-/>
+    subtitleText="2024" />
 ```
 
 ## Optical Scaling
 
-The radial gauge's labels and titles can change it's scaling. To enable this, first set `OpticalScalingEnabled` to true. Then you can set `OpticalScalingSize` which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
+The radial gauge's labels and titles can change it's scaling. To enable this, first set `opticalScalingEnabled` to true. Then you can set `opticalScalingSize` which manages the size at which labels have 100% optical scaling. Labels will have larger fonts when gauge's size is larger. For example, labels will have a 200% larger font size when this property is set to 500 and the gauge px size is doubled to eg. 1000.
 
 ```tsx
 import React from 'react';
@@ -723,22 +741,25 @@ root.render(<RadialGaugeOpticalScaling/>);
 
 ## Tick Marks
 
-Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the `Interval` between the `MinimumValue` and `MaximumValue` properties. Use the `MinorTickCount` property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to `TickStartExtent`, `TickEndExtent`, `MinorTickStartExtent`, and `MinorTickEndExtent` properties.
+Tick marks are thin lines radiating from the center of the radial gauge. There are two types of tick marks: major and minor. Major tick marks are displayed at the `IgrRadialGauge.interval` between the `minimumValue` and `maximumValue` properties. Use the `minorTickCount` property to specify the number of minor tick marks displayed between each major tick mark. You can control the length of tick marks by setting a fraction (between 0 and 1) to `tickStartExtent`, `tickEndExtent`, `minorTickStartExtent`, and `minorTickEndExtent` properties.
 
 ```tsx
 <IgrRadialGauge
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
+    value={50}
+    interval={10}
     tickStartExtent={0.45}
     tickEndExtent={0.575}
     tickStrokeThickness={2}
     tickBrush="DodgerBlue"
     minorTickCount={4}
-    minorTickEndExtent={0.5}
     minorTickStartExtent={0.575}
+    minorTickEndExtent={0.5}
     minorTickStrokeThickness={1}
-    minorTickBrush="DarkViolet"
-    height="300px" width="300px"
-    minimumValue={0} value={50}
-    maximumValue={80} interval={10}/>
+    minorTickBrush="DarkViolet" />
 ```
 
 ```tsx
@@ -788,23 +809,30 @@ root.render(<RadialGaugeTickmarks/>);
 
 ## Ranges
 
-A range highlights a set of continuous values bound by a specified `MinimumValue` and `MaximumValue` properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as `Brush` and `Outline`. Alternatively, you can set `RangeBrushes` and `RangeOutlines` properties to a list of colors for the ranges.
+A range highlights a set of continuous values bound by a specified `minimumValue` and `maximumValue` properties. You can add multiple ranges to the radial gauge by specifying their starting and ending values. Each range has a few customization properties such as `IgrRadialGaugeRange.brush` and `IgrRadialGaugeRange.outline`. Alternatively, you can set `rangeBrushes` and `rangeOutlines` properties to a list of colors for the ranges.
 
 ```tsx
 <IgrRadialGauge
-    height="300px" width="300px"
-    minimumValue={0} value={50}
-    maximumValue={80} interval={10}
-    rangeBrushes ="red, yellow, green"
-    rangeOutlines="red, yellow, green">
-   <IgrRadialGaugeRange
-       startValue={1}  endValue={10} brush="yellow" />
-   <IgrRadialGaugeRange
-       startValue={10}  endValue={25} brush="green" />
-   <IgrRadialGaugeRange
-       startValue={25}  endValue={40} brush="red" />
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
+    value={50}
+    interval={10}
+    rangeBrushes="Red Yellow Green"
+    rangeOutlines="Red Yellow Green">
     <IgrRadialGaugeRange
-       startValue={40}  endValue={80} brush="yellow" />
+        startValue={5}
+        endValue={15}
+        brush="Red" />
+    <IgrRadialGaugeRange
+        startValue={15}
+        endValue={35}
+        brush="Yellow" />
+    <IgrRadialGaugeRange
+        startValue={35}
+        endValue={45}
+        brush="Green" />
 </IgrRadialGauge>
 ```
 
@@ -859,13 +887,18 @@ root.render(<RadialGaugeRanges/>);
 
 Radial gauge needles are visual elements used to signify a gauge set value. Needles are available in one of the several predefined shapes. The needle can have a pivot shape, which is placed in the center of the gauge. The pivot shape also takes one of the predefined shapes. Pivot shapes that include an overlay or an underlay can have a separate pivot brush applied to the shape.
 
-The supported needle shapes and caps are set using the `NeedleShape` and `NeedlePivotShape` properties.
+The supported needle shapes and caps are set using the `needleShape` and `needlePivotShape` properties.
 
-You can enable an interactive mode of the gauge (using `IsNeedleDraggingEnabled` property) and the end-user will be able to change value by dragging the needle between values of `MinimumValue` and `MaximumValue` properties.
+You can enable an interactive mode of the gauge (using `isNeedleDraggingEnabled` property) and the end-user will be able to change value by dragging the needle between values of `minimumValue` and `maximumValue` properties.
 
 ```tsx
 <IgrRadialGauge
+    height="300px"
+    width="300px"
+    minimumValue={0}
+    maximumValue={80}
     value={50}
+    interval={10}
     isNeedleDraggingEnabled={true}
     isNeedleDraggingConstrained={true}
     needleShape="NeedleWithBulb"
@@ -874,13 +907,10 @@ You can enable an interactive mode of the gauge (using `IsNeedleDraggingEnabled`
     needleEndExtent={0.475}
     needleStrokeThickness={1}
     needlePivotShape="CircleOverlay"
-    needlePivotBrush="#9f9fa0"
-    needlePivotOutline="#9f9fa0"
+    needlePivotBrush="rgba(159, 159, 160, 1)"
+    needlePivotOutline="rgba(159, 159, 160, 1)"
     needlePivotWidthRatio={0.2}
-    needlePivotStrokeThickness={1}
-    height="300px" width="300px"
-    minimumValue={0}
-    maximumValue={80} interval={10} />
+    needlePivotStrokeThickness={1} />
 ```
 
 ```tsx
@@ -936,21 +966,23 @@ root.render(<RadialGaugeNeedle/>);
 
 ## Highlight Needle
 
-The radial gauge can be modified to show a second needle. This will make the main needle's `Value` appear with a lower opacity. To enable this first set `HighlightValueDisplayMode` to Overlay and then apply a `HighlightValue`.
+The radial gauge can be modified to show a second needle. This will make the main needle's `IgrRadialGauge.value` appear with a lower opacity. To enable this first set `highlightValueDisplayMode` to Overlay and then apply a `highlightValue`.
 
 ```tsx
 <IgrRadialGauge
-    highlightValueDisplayMode="Overlay"
-    highlightValue="25"
-    isHighlightNeedleDraggingEnabled="true"
-    isNeedleDraggingEnabled="true"
-    titleDisplaysValue="true"
-    label-interval="10"
-    label-extent="0.65"
     height="100%"
     width="100%"
-    minimumValue={0} value={75}
-    maximumValue={80} interval={10}  />
+    minimumValue={0}
+    maximumValue={100}
+    value={30}
+    interval={10}
+    labelInterval={10}
+    labelExtent={0.65}
+    isHighlightNeedleDraggingEnabled={true}
+    highlightValueDisplayMode="Overlay"
+    highlightValue={50}
+    highlightLabelDisplaysValue={true}
+    highlightLabelSnapsToNeedlePivot={true} />
 ```
 
 ```tsx
@@ -1001,19 +1033,43 @@ For your convenience, all above code snippets are combined into one code block b
 
 ```tsx
 <IgrRadialGauge
-    height="300px" width="300px"
+    height="300px"
+    width="300px"
     minimumValue={0}
     maximumValue={80}
+    value={50}
+    interval={10}
+    titleText="Global Sales"
+    subtitleText="2024"
+    backingShape="Fitted"
+    backingBrush="rgba(252, 252, 252, 1)"
+    backingOutline="DodgerBlue"
+    backingOversweep={5}
+    backingCornerRadius={10}
+    backingStrokeThickness={5}
+    backingOuterExtent={0.8}
+    backingInnerExtent={0.15}
     scaleStartAngle={135}
     scaleEndAngle={45}
-    scaleBrush="#c6c6c6"
+    scaleBrush="DodgerBlue"
     scaleSweepDirection="Clockwise"
     scaleOversweep={1}
     scaleOversweepShape="Fitted"
     scaleStartExtent={0.45}
     scaleEndExtent={0.575}
-
-    value={70}
+    labelInterval={10}
+    labelExtent={0.65}
+    font="11px Verdana"
+    fontBrush="DodgerBlue"
+    tickStartExtent={0.45}
+    tickEndExtent={0.575}
+    tickStrokeThickness={2}
+    tickBrush="DodgerBlue"
+    minorTickCount={4}
+    minorTickStartExtent={0.575}
+    minorTickEndExtent={0.5}
+    minorTickStrokeThickness={1}
+    minorTickBrush="DarkViolet"
     isNeedleDraggingEnabled={true}
     isNeedleDraggingConstrained={true}
     needleShape="NeedleWithBulb"
@@ -1022,46 +1078,29 @@ For your convenience, all above code snippets are combined into one code block b
     needleEndExtent={0.475}
     needleStrokeThickness={1}
     needlePivotShape="CircleOverlay"
-    needlePivotBrush="#9f9fa0"
-    needlePivotOutline="#9f9fa0"
+    needlePivotBrush="rgba(159, 159, 160, 1)"
+    needlePivotOutline="rgba(159, 159, 160, 1)"
     needlePivotWidthRatio={0.2}
     needlePivotStrokeThickness={1}
-
-    interval={10}
-    tickStartExtent={0.45}
-    tickEndExtent={0.575}
-    tickStrokeThickness={2}
-    tickBrush="Black"
-    minorTickCount={4}
-    minorTickEndExtent={0.5}
-    minorTickStartExtent={0.575}
-    minorTickStrokeThickness={1}
-    minorTickBrush="Black"
-
-    labelExtent={0.65}
-    labelInterval={10}
-    font="11px Verdana"
-    fontBrush="Black"
-
-    backingShape="Fitted"
-    backingBrush="#ededed"
-    backingOutline="Gray"
-    backingOversweep={5}
-    backingCornerRadius={10}
-    backingStrokeThickness={5}
-    backingOuterExtent={0.8}
-    backingInnerExtent={0.15}
-
-    rangeBrushes ="#a4bd29, #F86232"
-    rangeOutlines="#a4bd29, #F86232">
+    isHighlightNeedleDraggingEnabled={true}
+    highlightValueDisplayMode="Overlay"
+    highlightValue={50}
+    highlightLabelDisplaysValue={true}
+    highlightLabelSnapsToNeedlePivot={true}
+    rangeBrushes="Red Yellow Green"
+    rangeOutlines="Red Yellow Green">
     <IgrRadialGaugeRange
-        startValue={20} endValue={40}
-        innerStartExtent={0.45} innerEndExtent={0.45}
-        outerStartExtent={0.57} outerEndExtent={0.57} />
+        startValue={5}
+        endValue={15}
+        brush="Red" />
     <IgrRadialGaugeRange
-        startValue={40} endValue={60}
-        innerStartExtent={0.45} innerEndExtent={0.45}
-        outerStartExtent={0.57} outerEndExtent={0.57} />
+        startValue={15}
+        endValue={35}
+        brush="Yellow" />
+    <IgrRadialGaugeRange
+        startValue={35}
+        endValue={45}
+        brush="Green" />
 </IgrRadialGauge>
 ```
 

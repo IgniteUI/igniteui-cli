@@ -49,4 +49,4 @@ Having learned about CSS parts and CSS variables and in combination with the oth
 
 ## API References
 
-[`IgcconfigureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)<br />
+[`configureTheme`](mcp:get_api_reference?platform=webcomponents&component=configureTheme)<br />

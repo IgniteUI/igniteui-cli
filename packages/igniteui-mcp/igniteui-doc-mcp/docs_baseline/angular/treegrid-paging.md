@@ -115,7 +115,7 @@ $progressBar-sample-theme: progress-linear-theme(
 }
 ```
 
-Adding a [`igx-paginator`](/paginator) component will control whether the feature is present, you can enable/disable it by using a simple `*ngIf` with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
+Adding a [`igx-paginator`](/paginator) component will control whether the feature is present, you can enable/disable it by using a simple `@if` block with a toggle property. The [`perPage`](mcp:get_api_reference?platform=angular&component=IgxPaginatorComponent&member=perPage) input controls the visible records per page. Let’s update our Tree Grid to enable paging:
 
 ```html
 <igx-tree-grid #treeGrid [data]="data" [height]="'500px'" [width]="'100%'">

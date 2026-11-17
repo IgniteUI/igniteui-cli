@@ -7,6 +7,7 @@ mentionedTypes: ["Treemap", "TreemapOrientation", "TreemapLayoutType", "TreemapH
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for Blazor Treemap chart displays hierarchical (tree-structured) data as a set of nested nodes."
+platformType: xplat
 _tocName: Treemap
 _premium: true
 ---
@@ -134,13 +135,13 @@ There are several common use cases for choosing a Treemap. When you:
 
 - The data source must be an array or a list of data items
 - The data source must contain at least one data item otherwise the map will not render any nodes.
-- All data items must contain at least one data column (e.g. string) which should be mapped to the [`LabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=labelMemberPath) property.
-- All data items must contain at least one numeric data column which should be mapped using the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=valueMemberPath) property.
-- To categorize data into organized tiles you can optionally use [`ParentIdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=parentIdMemberPath) and [`IdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=idMemberPath).
+- All data items must contain at least one data column (e.g. string) which should be mapped to the [`LabelMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LabelMemberPath) property.
+- All data items must contain at least one numeric data column which should be mapped using the [`ValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=ValueMemberPath) property.
+- To categorize data into organized tiles you can optionally use [`ParentIdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=ParentIdMemberPath) and [`IdMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=IdMemberPath).
 
 ## Blazor Treemap Configuration
 
-In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`LayoutType`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=layoutType) and [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=layoutOrientation) properties.
+In the following example, the treemap demonstrates the ability of changing it's algorithmic structure by modifying the [`LayoutType`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutType) and [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) properties.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -284,9 +285,9 @@ public class CountyHierarchicalData
 
 The Treemap chart displays the relative weight of data. It uses a variety of algorithms to help it determine how the layout of its data items should occur:
 
-- `SliceAndDiced` - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
-- `Squarified` - layout tiling algorithm has a better aspect ratio than the `SliceAndDice` and keeps a better order than Squarified.
-- `Stripped` - layout type algorithm obtains the best aspect ratio but the objects are arranged by size.
+- [`SliceAndDice`](mcp:get_api_reference?platform=blazor&component=TreemapLayoutType&member=SliceAndDice) - layout algorithm aims to preserve the initial order at the expense of the aspect ratio.
+- [`Squarified`](mcp:get_api_reference?platform=blazor&component=TreemapLayoutType&member=Squarified) - layout tiling algorithm has a better aspect ratio than the [`SliceAndDice`](mcp:get_api_reference?platform=blazor&component=TreemapLayoutType&member=SliceAndDice) and keeps a better order than Squarified.
+- [`Stripped`](mcp:get_api_reference?platform=blazor&component=TreemapLayoutType&member=Stripped) - layout type algorithm obtains the best aspect ratio but the objects are arranged by size.
 
 The Treemap allows you to choose the algorithm that is best for your requirements, defaulting to use the Squarified method. It also includes the ability to allow you to colorize nodes using two mechanisms:
 
@@ -295,16 +296,18 @@ The Treemap allows you to choose the algorithm that is best for your requirement
 
 ### Layout Orientation
 
-[`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=layoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
+[`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) property enables the user to set the direction in which the nodes of the hierarchy will be expanded.
 
-Note that the [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=layoutOrientation) property works with the layout types SliceAndDice and Strip.
+Note that the [`LayoutOrientation`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=LayoutOrientation) property works with the layout types SliceAndDice and Strip.
 
-- `Horizontal` – the child nodes are going to be stacked horizontally(SliceAndDice).
-- `Vertical` – the child nodes are going to be stacked vertically (SliceAndDice).
+- [`Horizontal`](mcp:get_api_reference?platform=blazor&component=TreemapOrientation&member=Horizontal) – the child nodes are going to be stacked horizontally(SliceAndDice).
+- [`Vertical`](mcp:get_api_reference?platform=blazor&component=TreemapOrientation&member=Vertical) – the child nodes are going to be stacked vertically (SliceAndDice).
 
 ## Blazor Treemap Styling
 
-In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the `NodeStylingScript` event.
+In the following example, the treemap demonstrates the ability of changing the look and feel of the nodes achieved by styling through the [`NodeStyling`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=NodeStyling) event.
+
+Note that on the Blazor platform a styling event must execute synchronously, so the [`NodeStylingScript`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=NodeStylingScript) event variant is used instead and a JavaScript based handler is provided.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -470,7 +473,7 @@ public class CountyHierarchicalData
 
 ### Blazor Treemap Highlighting
 
-In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=highlightingMode)to Brighten or FadeOthers.
+In the following example, the treemap demonstrates the ability of node highlighting. There are two options for this feature. Each node can individually brighten, by decreasing its opacity, or cause all other nodes to trigger the same effect. To enable this feature, set [`HighlightingMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightingMode)to Brighten or FadeOthers.
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -588,10 +591,10 @@ public class CountyHierarchicalData
 
 ## Blazor Treemap Percent based highlighting
 
-- [`HighlightedItemsSource`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=highlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
-- [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=highlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
-- [`HighlightedValueOpacity`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=highlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
-- [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=highlightedValuesDisplayMode): Enables or disables highlighted values.
+- [`HighlightedDataSource`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedDataSource): Specifies the datasource to read highlighted values from. If null, then highlighted values are read from the ItemsSource property.
+- [`HighlightedValueMemberPath`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValueMemberPath): Specifies the name of the property in the datasource where the highlighted values are read.
+- [`HighlightedValueOpacity`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValueOpacity): Controls the opacity of the normal value behind the highlighted value.
+- [`HighlightedValuesDisplayMode`](mcp:get_api_reference?platform=blazor&component=IgbTreemap&member=HighlightedValuesDisplayMode): Enables or disables highlighted values.
   - Auto: The treemap decides what mode to use.
   - Overlay: The treemap displays highlighted values over top the normal value with a slight opacity applied to the normal value.
   - Hidden: The treemap does not show highlighted values.

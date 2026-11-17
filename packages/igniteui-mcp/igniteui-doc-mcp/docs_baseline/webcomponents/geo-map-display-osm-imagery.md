@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The Web Components OpenStreetMapImagery is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world."
+platformType: xplat
 _tocName: Displaying OSM Imagery
 _premium: true
 ---
@@ -22,23 +23,24 @@ By the default, the Ignite UI for Web Components map component already displays 
 ```
 
 ## Code Snippet
-This code example explicitly sets `BackgroundContent` of the map component to the `IgcOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets `backgroundContent` of the map component to the `IgcOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
 
 ```html
-<igc-geographic-map id="geoMap" width="100%" height="100%">
-
+<igc-geographic-map
+    id="map"
+    height="100%"
+    width="100%"
+    zoomable="true">
 </igc-geographic-map>
 ```
 
 ```ts
-import { IgcGeographicMapComponent } from 'igniteui-webcomponents-maps';
-import { IgcOpenStreetMapImagery } from 'igniteui-webcomponents-maps';
+import { IgcGeographicMapComponent, IgcOpenStreetMapImagery } from 'igniteui-webcomponents-maps';
 // ...
-
-let geoMap = document.getElementById("geoMap") as IgcGeographicMapComponent
-
-const mapImagery = new OpenStreetMapImagery();
-this.geoMap.backgroundContent = mapImagery;
+private map: IgcGeographicMapComponent
+var map = this.map = document.getElementById('map') as IgcGeographicMapComponent;
+var osmImagery = new IgcOpenStreetMapImagery();
+map.backgroundContent = osmImagery;
 ```
 
 ## API References

@@ -105,18 +105,17 @@ This sample demonstrates how to create [`IgbNavDrawer`](mcp:get_api_reference?pl
 
 ## Usage
 
-Before using the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(
-  typeof(IgbNavDrawerModule),
-  typeof(IgbNavDrawerHeaderItemModule)
-);
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbNavDrawerModule`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawerModule), the client resource module of the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbNavDrawerModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbNavDrawer`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -245,7 +244,7 @@ To enhance our component a bit, we can use it in conjunction with the [`IgbNavba
     <h2>Home</h2>
 </IgbNavbar>
 
-<IgbNavDrawer @ref="NavDrawerRef">
+<IgbNavDrawer @ref="NavDrawerRef" Position="@Position">
     <IgbNavDrawerHeaderItem>
         Sample Drawer
     </IgbNavDrawerHeaderItem>
@@ -263,48 +262,20 @@ To enhance our component a bit, we can use it in conjunction with the [`IgbNavba
 Let's also add some radio buttons to display all [`position`](mcp:get_api_reference?platform=blazor&component=IgbNavDrawer&member=position) values. This way whenever one gets selected, we will change the position of the drawer.
 
 ```razor
-<IgbRadioGroup id="radio-group" Alignment="ContentOrientation.Horizontal">
-    <IgbRadio Value="Start" LabelPosition="RadioLabelPosition.After" Checked="true" Change="OnRadioOptionClick">Start</IgbRadio>
-    <IgbRadio Value="End" LabelPosition="RadioLabelPosition.After" Change="OnRadioOptionClick">End</IgbRadio>
-    <IgbRadio Value="Top" LabelPosition="RadioLabelPosition.After" Change="OnRadioOptionClick">Top</IgbRadio>
-    <IgbRadio Value="Bottom" LabelPosition="RadioLabelPosition.After" Change="OnRadioOptionClick">Bottom</IgbRadio>
+<IgbRadioGroup id="radio-group" Alignment="ContentOrientation.Horizontal" @bind-Value="position">
+    <IgbRadio name="position" Value="@("Start")">Start</IgbRadio>
+    <IgbRadio name="position" Value="@("End")">End</IgbRadio>
+    <IgbRadio name="position" Value="@("Top")">Top</IgbRadio>
+    <IgbRadio name="position" Value="@("Bottom")">Bottom</IgbRadio>
 </IgbRadioGroup>
 
 @code {
 
     public IgbNavDrawer NavDrawerRef { get; set; }
 
-    public void OnRadioOptionClick(IgbComponentBoolValueChangedEventArgs args)
-    {
-        IgbRadio radio = args.Parent as IgbRadio;
+    private string position = "Start";
 
-        if (this.NavDrawerRef != null)
-        {
-            switch (radio.Value)
-            {
-                case "Start":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Start;
-                        break;
-                    }
-                case "End":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.End;
-                        break;
-                    }
-                case "Top":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Top;
-                        break;
-                    }
-                case "Bottom":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Bottom;
-                        break;
-                    }
-            }
-        }
-    }
+    public NavDrawerPosition Position => Enum.Parse<NavDrawerPosition>(position);
 }
 ```
 
@@ -327,7 +298,7 @@ If all goes well, your component should now look like this:
 
 
 <div class="container vertical" >
-    <IgbNavDrawer @ref="@NavDrawerRef" style="position: relative">
+    <IgbNavDrawer @ref="@NavDrawerRef" Position="@Position" style="position: relative">
         <IgbNavDrawerHeaderItem>
             Sample Drawer
         </IgbNavDrawerHeaderItem>
@@ -344,11 +315,11 @@ If all goes well, your component should now look like this:
     </IgbNavDrawer>
 
     <div id="content" style="width: 100%">
-        <IgbRadioGroup id="radio-group" Alignment="ContentOrientation.Horizontal">
-            <IgbRadio name="position" Value="Start" LabelPosition="ToggleLabelPosition.After" Checked="true" Change="OnRadioOptionClick">Start</IgbRadio>
-            <IgbRadio name="position" Value="End" LabelPosition="ToggleLabelPosition.After" Change="OnRadioOptionClick">End</IgbRadio>
-            <IgbRadio name="position" Value="Top" LabelPosition="ToggleLabelPosition.After" Change="OnRadioOptionClick">Top</IgbRadio>
-            <IgbRadio name="position" Value="Bottom" LabelPosition="ToggleLabelPosition.After" Change="OnRadioOptionClick">Bottom</IgbRadio>
+        <IgbRadioGroup id="radio-group" Alignment="ContentOrientation.Horizontal" @bind-Value="position">
+            <IgbRadio name="position" Value="@("Start")">Start</IgbRadio>
+            <IgbRadio name="position" Value="@("End")">End</IgbRadio>
+            <IgbRadio name="position" Value="@("Top")">Top</IgbRadio>
+            <IgbRadio name="position" Value="@("Bottom")">Bottom</IgbRadio>
         </IgbRadioGroup>
 
         <IgbNavbar>
@@ -370,6 +341,10 @@ If all goes well, your component should now look like this:
 
     public string Title { get; set; } = "Home";
 
+    private string position = "Start";
+
+    public NavDrawerPosition Position => Enum.Parse<NavDrawerPosition>(position);
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender && this.IconRef != null)
@@ -388,38 +363,6 @@ If all goes well, your component should now look like this:
             HomeItemRef.Active = true;
             await this.SearchItemRef.EnsureReady();
             NavDrawerTitlesItemRefs.Add("Search", SearchItemRef);
-        }
-    }
-
-    public void OnRadioOptionClick(IgbRadioChangeEventArgs args)
-    {
-        IgbRadio radio = args.Parent as IgbRadio;
-
-        if (this.NavDrawerRef != null)
-        {
-            switch (radio.Value)
-            {
-                case "Start":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Start;
-                        break;
-                    }
-                case "End":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.End;
-                        break;
-                    }
-                case "Top":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Top;
-                        break;
-                    }
-                case "Bottom":
-                    {
-                        this.NavDrawerRef.Position = NavDrawerPosition.Bottom;
-                        break;
-                    }
-            }
         }
     }
 

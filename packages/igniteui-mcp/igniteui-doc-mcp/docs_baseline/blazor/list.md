@@ -21,10 +21,10 @@ The following example represents a list populated with contacts with a name and 
 
 
 <div class="container vertical">
-    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
-        <IgbRadio name="size" Value="Small" label-position="after" Change="OnRadioOptionClick">Small</IgbRadio>
-        <IgbRadio name="size" Value="Medium" label-position="after" Checked="true" Change="OnRadioOptionClick">Medium</IgbRadio>
-        <IgbRadio name="size" Value="Large" label-position="after" Change="OnRadioOptionClick">Large</IgbRadio>
+    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal" @bind-Value="ListSize">
+        <IgbRadio name="size" Value="@("size-small")">Small</IgbRadio>
+        <IgbRadio name="size" Value="@("size-medium")">Medium</IgbRadio>
+        <IgbRadio name="size" Value="@("size-large")">Large</IgbRadio>
     </IgbRadioGroup>
 
     <IgbList style="margin-top: 10px;" class="@ListSize">
@@ -56,11 +56,6 @@ The following example represents a list populated with contacts with a name and 
 @code {
 
     public string ListSize { get; set; } = "size-medium";
-
-    public void OnRadioOptionClick(IgbRadioChangeEventArgs e)
-    {
-        this.ListSize = $"size-{e.Detail.Value.ToLower()}";
-    }
 }
 ```
 
@@ -68,15 +63,17 @@ The following example represents a list populated with contacts with a name and 
 
 At its core the list web component allows you to easily display a vertical list of items.
 
-Before using the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList), you need to register it as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbListModule));
+builder.Services.AddIgniteUIBlazor();
 ```
 
-You will also need to link an additional CSS file to apply the styling to the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component. The following needs to be placed in the **wwwroot/index.html** file in a **Blazor Web Assembly** project or the **Pages/_Host.cshtml** file in a **Blazor Server** project:
+Registering [`IgbListModule`](mcp:get_api_reference?platform=blazor&component=IgbListModule), the client resource module of the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList), is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbListModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
+
+You will also need to link an additional CSS file to apply the styling to the [`IgbList`](mcp:get_api_reference?platform=blazor&component=IgbList) component. The following needs to be placed in the app's host page (**wwwroot/index.html** in a standalone Blazor WebAssembly or Blazor Hybrid app, **Pages/_Host.cshtml** in a Blazor Server app, **Components/App.razor** in a Blazor Web App):
 
 ```razor
 <link href="_content/IgniteUI.Blazor/themes/light/bootstrap.css" rel="stylesheet" />
@@ -220,39 +217,30 @@ The `end` slot is meant to be used for list items that have some kind of action 
 Let's also allow the user to change the size of the list using the `--ig-size` CSS variable. We will add some radio buttons to display all size values. This way whenever one gets selected, we will change the size of the list.
 
 ```razor
-<IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
-  <IgbRadio Value="Small" label-position="after" Change="OnRadioOptionClick">Small</IgbRadio>
-  <IgbRadio Value="Medium" label-position="after" Change="OnRadioOptionClick">Medium</IgbRadio>
-  <IgbRadio Value="Large" label-position="after" Checked="true" Change="OnRadioOptionClick">Large</IgbRadio>
+<IgbRadioGroup Alignment="@ContentOrientation.Horizontal" @bind-Value="ListSize">
+    <IgbRadio name="size" Value="@("size-small")">Small</IgbRadio>
+    <IgbRadio name="size" Value="@("size-medium")">Medium</IgbRadio>
+    <IgbRadio name="size" Value="@("size-large")">Large</IgbRadio>
 </IgbRadioGroup>
 
-<IgbList style="margin-top: 10px;" Size="@ListSize" />
+<IgbList style="margin-top: 10px;" class="@ListSize" />
 
 @code {
-  public SizableComponentSize ListSize { get; set; }
+    public string ListSize { get; set; } = "size-medium";
+}
+```
 
-  public void OnRadioOptionClick(IgbComponentBoolValueChangedEventArgs e)
-  {
-    IgbRadio radio = e.Parent as IgbRadio;
-    switch (radio.Value)
-    {
-      case "Small":
-      {
-        this.ListSize = SizableComponentSize.Small;
-        break;
-      }
-      case "Medium":
-      {
-        this.ListSize = SizableComponentSize.Medium;
-        break;
-      }
-      case "Large":
-      {
-        this.ListSize = SizableComponentSize.Large;
-        break;
-      }
-    }
-  }
+```css
+.size-small {
+    --ig-size: var(--ig-size-small);
+}
+
+.size-medium {
+    --ig-size: var(--ig-size-medium);
+}
+
+.size-large {
+    --ig-size: var(--ig-size-large);
 }
 ```
 
@@ -263,10 +251,10 @@ The result of implementing the above code should look like the following:
 
 
 <div class="container vertical">
-    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal">
-        <IgbRadio name="size" Value="Small" label-position="after" Change="OnRadioOptionClick">Small</IgbRadio>
-        <IgbRadio name="size" Value="Medium" label-position="after" Checked="true" Change="OnRadioOptionClick">Medium</IgbRadio>
-        <IgbRadio name="size" Value="Large" label-position="after" Change="OnRadioOptionClick">Large</IgbRadio>
+    <IgbRadioGroup Alignment="@ContentOrientation.Horizontal" @bind-Value="ListSize">
+        <IgbRadio name="size" Value="@("size-small")">Small</IgbRadio>
+        <IgbRadio name="size" Value="@("size-medium")">Medium</IgbRadio>
+        <IgbRadio name="size" Value="@("size-large")">Large</IgbRadio>
     </IgbRadioGroup>
 
     <IgbList style="margin-top: 10px;" class="@ListSize">
@@ -298,11 +286,6 @@ The result of implementing the above code should look like the following:
 @code {
 
     public string ListSize { get; set; } = "size-medium";
-
-    public void OnRadioOptionClick(IgbRadioChangeEventArgs e)
-    {
-        this.ListSize = $"size-{e.Detail.Value.ToLower()}";
-    }
 }
 ```
 

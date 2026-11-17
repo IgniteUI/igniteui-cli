@@ -7,6 +7,7 @@ mentionedTypes: ["DataChart", "Series"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Composite Chart, also called a Combo Chart, is visualization that combines different types of chart types in the same plot area."
+platformType: xplat
 _tocName: Composite Chart
 _premium: true
 ---

@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Spreadsheet"]
 llms:
   description: "The Angular Spreadsheet (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more."
+platformType: xplat-unmapped
 _tocName: Spreadsheet
 _premium: true
 ---
 # Angular Spreadsheet Overview
 
-The Angular Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The `IgxSpreadsheet` is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
+The Angular Spreadsheet  (Excel viewer) component is lightweight, feature-rich and supplied with all the necessary options for operating, visualizing, and editing all types of spreadsheet data – scientific, business, financial, and more. All the information can be presented in a tabular format that feels intuitive and easy to navigate across cells, panes, and worksheets. The [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) is complemented by flexible Excel-like interface, detailed charts, and features such as activation, cell editing, conditional formatting, styling, selection, clipboard.
 
 ## Angular Spreadsheet Example
 
@@ -155,7 +156,7 @@ npm install --save igniteui-angular-spreadsheet
 
 ## Component Modules
 
-The `IgxSpreadsheet` requires the following modules:
+The [`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent) requires the following modules:
 
 ```ts
 import { IgxExcelModule } from 'igniteui-angular-excel';
@@ -183,7 +184,7 @@ Now that the Angular spreadsheet module is imported, next is the basic configura
 
 **Note:** 
 
-In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `Workbook`.
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a [`Workbook`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent&member=workbook).
 
 The following demonstrates how to load a workbook into the Angular spreadsheet
 
@@ -206,5 +207,5 @@ ngOnInit() {
 
 ## API References
 
-`IgxSpreadsheet`<br />
-`IgxWorkbook`<br />
+[`IgxSpreadsheet`](mcp:get_api_reference?platform=angular&component=IgxSpreadsheetComponent)<br />
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)<br />

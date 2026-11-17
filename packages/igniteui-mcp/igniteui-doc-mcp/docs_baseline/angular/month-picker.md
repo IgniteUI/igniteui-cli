@@ -336,7 +336,7 @@ $my-calendar-theme: calendar-theme(
 
 ### Styling with Tailwind
 
-You can style the `month picker` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/misc/tailwind-classes) first.
+You can style the `month picker` using our custom Tailwind utility classes. Make sure to [set up Tailwind](/themes/tailwind) first.
 
 Along with the tailwind import in your global stylesheet, you can apply the desired theme utilities as follows:
 

@@ -21,19 +21,15 @@ To use the `IgbHighlight` component, all you need to do is wrap its tags around 
 **Note:** 
 The `IgbHighlight` component searches only DOM text nodes. It does not search input values or content set via the CSS `content` property.
 
-First, you need to install the Ignite UI for Blazor by running the following command:
-
-```cmd
-dotnet add package IgniteUI.Blazor --version 26.1.98
-```
-
-Register the `IgbHighlight` module in the `Program.cs` file as follows:
+Register the Ignite UI for Blazor services:
 
 ```csharp
 // in Program.cs file
 
-builder.Services.AddIgniteUIBlazor(typeof(IgbHighlightModule));
+builder.Services.AddIgniteUIBlazor();
 ```
+
+Registering `IgbHighlightModule`, the client resource module of the `IgbHighlight`, is **optional**: the component loads its resources when it first renders. Listing it in `builder.Services.AddIgniteUIBlazor(typeof(IgbHighlightModule))` can be used to preload resources or to support elements created only on the client (see [Component Modules](../general-getting-started.md#component-modules)).
 
 You also need to reference the corresponding styles based on your project configuration.
 

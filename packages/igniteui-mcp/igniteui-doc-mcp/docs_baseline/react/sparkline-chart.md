@@ -7,6 +7,7 @@ mentionedTypes: ["Sparkline", "SparklineDisplayType", "TrendLineType"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "The Ignite UI for React Sparkline is a lightweight charting control."
+platformType: xplat
 _tocName: Sparkline Chart
 _premium: true
 ---
@@ -16,7 +17,7 @@ The Ignite UI for React Sparkline is a lightweight charting control. It is inten
 
 ## React Sparkline Example
 
-The following example shows all the different types of `IgrSparkline` available. The type is defined by setting the `DisplayType` property. If the `DisplayType` property is not specified, then by default, the `Line` type is displayed.
+The following example shows all the different types of `IgrSparkline` available. The type is defined by setting the `displayType` property. If the `displayType` property is not specified, then by default, the `Line` type is displayed.
 
 ```tsx
 import React from 'react';
@@ -109,7 +110,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<SparklineDisplayTypes/>);
 ```
 
-Like this sample? Get access to our complete React toolkit and start building your own apps in minutes. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download it for free.</a>
+Like this sample? Try the complete Ignite UI for React toolkit and begin building your own apps. <a href="https://www.infragistics.com/products/ignite-ui-react/download">Download free trial.</a>
 
 ## Sparkline Recommendations
 
@@ -137,7 +138,7 @@ The React Sparkline has the ability to mark the data points with elliptical icon
 - The text in the data source fields can be used to display the first and last label on the X-Axis.
 
 ## Sparkline Types
-The React Sparkline supports the following types of sparklines by setting the `DisplayType` property accordingly:
+The React Sparkline supports the following types of sparklines by setting the `displayType` property accordingly:
 
 - `Line`:  Displays the line chart type of Sparkline with numeric data, connecting the data points with line segments. At least two data points must be supplied to visualize the data in Sparkline.
 - `Area`: Displays the Area chart type of Sparkline with numeric data. This is like line type with additional steps of closing the area after each line is drawn. At least two data points must be supplied to visualize the data in Sparkline.
@@ -241,14 +242,14 @@ The React Sparkline allows you to show markers as circular-colored icons on your
 
 Markers in the sparkline can be placed in any combination of the following locations:
 
-- `All`: Display markers for all data points in the sparkline.
-- `Low`: Display markers on the data point of the lowest value. If there are multiple points at the lowest value, it will show on each point with that value.
-- `High`: Display markers on the data point of the highest value. If there are multiple points at the highest value, it will show on each point with that value.
-- `First`: Display a marker on the first data point in the sparkline.
-- `Last`: Display a marker on the last data point in the sparkline.
-- `Negative`: Display markers on the negative data points plotted in the sparkline.
+- `markerVisibility`: Display markers for all data points in the sparkline.
+- `lowMarkerVisibility`: Display markers on the data point of the lowest value. If there are multiple points at the lowest value, it will show on each point with that value.
+- `highMarkerVisibility`: Display markers on the data point of the highest value. If there are multiple points at the highest value, it will show on each point with that value.
+- `firstMarkerVisibility`: Display a marker on the first data point in the sparkline.
+- `lastMarkerVisibility`: Display a marker on the last data point in the sparkline.
+- `negativeMarkerVisibility`: Display markers on the negative data points plotted in the sparkline.
 
-All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties `LowMarkerBrush`, `LowMarkerVisibility`, and `LowMarkerSize`.
+All of the markers mentioned above can be customized using the related marker type's property in aspects of color, visibility, and size. For example, the `Low` markers above will have properties `lowMarkerBrush`, `lowMarkerVisibility`, and `lowMarkerSize`.
 
 ```typescript
 export class SparklineProfitDataItem {
@@ -454,13 +455,13 @@ The normal range feature of the React Sparkline is a horizontal stripe represent
 
 The normal range can be wider than the maximum data point or beyond, and it can also be as thin as the sparkline's `Line` display type, to serve as a threshold indicator, for instance. The width of the normal range is determined by the following three properties, which serve as the minimum settings required for displaying the normal range:
 
-- `NormalRangeVisibility`: Whether the normal range is visible.
-- `NormalRangeMaximum`: The bottom border of the range.
-- `NormalRangeMinimum`: The top border of the range.
+- `normalRangeVisibility`: Whether the normal range is visible.
+- `normalRangeMaximum`: The bottom border of the range.
+- `normalRangeMinimum`: The top border of the range.
 
-By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the `NormalRangeFill` property.
+By default, the normal range is not displayed. When enabled, the normal range shows up with a light gray color appearance, which can also be configured using the `normalRangeFill` property.
 
-You can also configure whether to show the normal range in front of or behind the plotted series in your React Sparkline by setting the `DisplayNormalRangeInFront` property.
+You can also configure whether to show the normal range in front of or behind the plotted series in your React Sparkline by setting the `displayNormalRangeInFront` property.
 
 ```typescript
 export class SparklineMixedDataItem {
@@ -623,9 +624,9 @@ root.render(<Sample/>);
 
 ## Trendlines
 
-The React Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the `IgrTrendLineType` property.
+The React Sparkline has support for a range of trendlines that display as another layer on top of the actual sparkline layer. To display a sparkline, you can use the `TrendLineType` property.
 
-The trendlines are calculated according to the algorithm specified by the `IgrTrendLineType` property using the values of the data the the chart is bound to.
+The trendlines are calculated according to the algorithm specified by the `TrendLineType` property using the values of the data the the chart is bound to.
 
 Trendlines can only be displayed one at a time and by default, the trendline is not displayed.
 
@@ -770,7 +771,7 @@ root.render(<Sample/>);
 
 The React Sparkline can detect unknown values and render the space for unknown values through a specified interpolation algorithm. If your data contains null values and you do not use this feature, meaning no interpolation is specified, the unknown value will not be plotted.
 
-To plot the unknown values, you can set the `UnknownValuePlotting` property of the React Sparkline. The sample below shows the differences between the values of the `UnknownValuePlotting` property, allowing you to toggle it on or off using a checkbox:
+To plot the unknown values, you can set the `unknownValuePlotting` property of the React Sparkline. The sample below shows the differences between the values of the `unknownValuePlotting` property, allowing you to toggle it on or off using a checkbox:
 
 ```typescript
 export class SparklineUnknownDataItem {

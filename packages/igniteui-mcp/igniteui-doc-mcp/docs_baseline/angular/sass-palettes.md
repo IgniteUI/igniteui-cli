@@ -1,169 +1,159 @@
 ---
-title: Palettes
-description:
-keywords: Ignite UI for Angular, UI controls, Angular widgets, web widgets, UI widgets, Angular, Native Angular Components Suite, Native Angular Controls, Native Angular Components Library 
+title: Angular Sass Palettes | Ignite UI for Angular
+description: Ignite UI for Angular Sass palettes are maps of color shades generated from seed colors by the palette function and emitted as CSS variables for every component theme.
+keywords: Ignite UI for Angular, Sass palettes, palette function, color function, contrast-color, color scales, fitted palettes, surface roles, CSS variables
 llms:
-  description: "The Ignite UI for Angular theming engine provides several powerful functions and mixins for generating and retrieving colors."
+  description: "Ignite UI for Angular Sass palettes are maps of color shades that the palette function generates from seed colors and the palette mixin emits as CSS variables."
+last_updated: "2026-10-14"
 _tocName: Palettes
 ---
-# Palettes
+# Palettes with Sass
 
-<div class="highlight">
-The Ignite UI for Angular theming engine provides several powerful functions and mixins for generating and retrieving colors.
-</div>
-<igc-divider></igc-divider>
+Ignite UI for Angular Sass palettes are maps of color shades that the `palette()` function generates from seed colors and the `palette()` mixin emits as CSS variables.
 
 ## Overview
 
-Palettes in the context of Ignite UI for Angular are declared as [Sass Maps](https://sass-lang.com/documentation/values/maps) with the keys of those map being the palette colors (`primary`, `secondary`, `surface`, etc.). Each color is in turn a map itself and has all color variants listed as keys. The values assigned to those color variants are the actual colors used throughout all component themes. All palette maps are generated programmatically by the palette function. The function accepts arguments for `primary`, `secondary`, `surface`, `gray`, `info`, `success`, `warn`, and `error` colors. The `primary` color is usually your brand color. It is mostly used to style static elements, such as the `igx-navbar` component. The `secondary` color is the one used on elements that are actionable, such as buttons, switches, sliders, etc.
-The `surface` color is the one used for background color of some components, such as cards, menus, date/time pickers, banners sheets, etc.. The only required arguments are the ones for `primary`, `secondary` and `surface` colors. We default the colors for `surface`, `gray`, `info`, `success`, `warn`, and `error` to a predefined set of our choosing.
+An Ignite UI for Angular palette is a [Sass map](https://sass-lang.com/documentation/values/maps) keyed by color family: `primary`, `secondary`, `gray`, `surface`, `info`, `success`, `warn`, and `error`. Each family is a map of its shades, and every component theme reads its colors from those shades through `--ig-*` CSS variables.
 
-To get started with your first color palette, create an _scss_ file that would be the base file for your global theme. I will call mine _`_variables.scss`_.
+The `palette()` function builds the whole map from seed colors. With the default `fitted` generator, each family contains these variants:
+
+| Family | Variants |
+|---|---|
+| `primary`, `secondary`, `info`, `success`, `warn`, `error` | `50`–`900`, `A100`, `A200`, `A400`, `A700`, `seed` |
+| `gray` | `50`–`900`, `seed` |
+| `surface` | `base`, `sunken`, `raised`, `overlay`, `container`, `seed` |
+
+Every variant has a matching `-contrast` variant, such as `500-contrast`: black or white, resolved by the browser for readable contrast against that shade. The `primary` color is usually your brand color and styles prominent static elements such as the `igx-navbar`; `secondary` styles actionable elements such as buttons, switches, and sliders; `surface` is the background of components such as cards, menus, and pickers.
+
+To understand how the shades are placed, and why the `surface` family has roles instead of numbers, see [Palette Generation](../palette-generation.md).
+
+## Generate a Palette
+
+Call `palette()` with the three required seeds, `$primary`, `$secondary`, and `$surface`, then pass the result to the `palette()` mixin to emit it as CSS variables:
 
 ```scss
-// _variables.scss
+@use "igniteui-angular/theming" as *;
 
-$melon-palette: palette(
-    $primary: #2ab759,
-    $secondary: #f96a88,
-    $surface: #e5e5e5
+$brand-palette: palette(
+  $primary: #0099ff,
+  $secondary: #df1b74,
+  $surface: #ffffff
+);
+
+:root {
+  @include palette($brand-palette);
+}
+```
+
+The optional seeds are `$gray`, `$info` (`#1377d5`), `$success` (`#4eb862`), `$warn` (`#faa419`), and `$error` (`#ff134a`). The `theme()` mixin includes the `palette()` mixin for you, so include it directly only when you emit a palette on its own, for example to scope a second palette to a class.
+
+**Warning:** 
+Every seed you pass to `palette()` **must be a Sass color**. CSS variables cannot be passed as arguments, because the palette is computed at build time.
+
+The `palette()` mixin also sets the WCAG level the `-contrast` colors are chosen for. Pass `$contrast-level` with `'a'`, `'aa'` (default), or `'aaa'`:
+
+```scss
+:root {
+  @include palette($brand-palette, $contrast-level: 'aaa');
+}
+```
+
+With the `fitted` generator, every shade is emitted as a fixed color:
+
+```css
+:root {
+  --ig-primary-100: rgb(172, 207, 251);
+  --ig-primary-500: rgb(9, 109, 183);
+  --ig-primary-600: rgb(6, 89, 150);
+  --ig-primary-seed: #0099ff;
+  --ig-surface-base: rgb(255, 255, 255);
+  --ig-surface-sunken: rgb(247, 247, 247);
+  /* ... */
+}
+```
+
+Because the shades are fixed, overriding one of these variables in CSS changes only that shade. To change a family, change its seed and rebuild.
+
+## Scales
+
+A scale sets how far a family's shades reach and how they are spaced. Pass `$scales` to `palette()` to replace the defaults: `even` for every family, `material` for `gray`.
+
+Name a preset for one family, or pass one preset for every family:
+
+```scss
+// The grays follow IBM Carbon's rhythm; every other family keeps its default
+$brand-palette: palette(#0099ff, #df1b74, #ffffff, $scales: ('gray': 'carbon'));
+
+// Every family uses the tailwind preset
+$brand-palette: palette(#0099ff, #df1b74, #ffffff, $scales: 'tailwind');
+```
+
+The presets are `even`, `material`, `tailwind`, and `carbon`. [Palette Generation](../palette-generation.md#scale-shapes) compares them.
+
+Describe a scale inline with these keys:
+
+| Key | Value | Effect |
+|---|---|---|
+| `range` | Two contrast ratios, such as `1.1 14` | The contrast of shade `50` and shade `900`. Defaults to the `even` range, `1.182 18.232`. |
+| `curve` | Four numbers, such as `0.5 0 0.8 0.8` | Redistributes the shades along the range, read like a CSS `cubic-bezier()`. Omit it for even spacing. |
+| `anchor` | `'surface'` or `'white'` | What the `gray` range is measured against. Defaults to `'surface'`. Other families are always measured against white. |
+
+```scss
+$brand-palette: palette(
+  #0099ff,
+  #df1b74,
+  #121212,
+  $scales: (
+    'primary': (range: 1.1 14, curve: 0.5 0 0.8 0.8),
+    'gray': (range: 1.1 14, anchor: 'white')
+  )
 );
 ```
 
-**Warning:** 
-The value you pass to `$primary`, `$secondary` and `surface` or any other color **must be of type color**. You cannot pass CSS variables as arguments as those can't be resolved at Sass build-time.
+A bare four-number list is read as a curve over the `even` range. A custom range or curve changes the contrast between shades: check the pairs you use after changing one.
 
-We created a palette that contains variants for all colors in it, including automatically created text contrast colors for each variant. If you haven't checked [the documentation](/themes/palettes) regarding palettes with CSS variables, go check it out now. It contains information about all the color variants of a palette.
+<code-view iframe-src="{environment:demosBaseUrl}/themes/palettes/scales" github-src="themes/palettes/scales" alt="Angular Sass palettes: edit a scale's range, curve, and anchor and copy the Sass"></code-view>
 
-The `palette` function does a lot internally to help you create colors at build-time that you can reuse throughout your `.scss` documents. The function is nice in that it will create a huge map of colors for you, but the algorithm for generating the color variants is very opinionated and may not match your exact needs. Our component themes don't care how the palette is generated, it only cares about the shape of the map.
+## Generators
 
-In case you want to manually create your palette, or create the palette generating function yourself here's what we expect to get as a palette map.
+The `palette()` function has two generators. `fitted`, the default, solves each shade for a contrast target. `legacy` places the seed at `500` and derives the other shades with fixed HSL multipliers, emitted as CSS relative colors of `500`:
 
-```scss
-$handmade-palette: (
-    'primary': (
-        '50': #e6eff8,
-        '50-contrast': black,
-        '100': #bfd7f2,
-        '100-contrast': black,
-        '200': #98bfec,
-        '200-contrast': black,
-        '300': #85b5e9,
-        '300-contrast': white,
-        '400': #73a6e4,
-        '400-contrast': white,
-        '500': #6797de,
-        '500-contrast': white,
-        '600': #3681dd,
-        '600-contrast': white,
-        '700': #357fda,
-        '700-contrast': white,
-        '800': #306dc8,
-        '800-contrast': white,
-        '900': #284ea8,
-        '900-contrast': white,
-        'A100': #98bfec,
-        'A100-contrast': white,
-        'A200': #73a6e4,
-        'A200-contrast': white,
-        'A400': #3681dd,
-        'A400-contrast': white,
-        'A700': #284ea8,
-        'A700-contrast': white
-    ),
-    'secondary': (
-        '50': #fef7e2,
-        '50-contrast': black,
-        '100': #fdeab7,
-        '100-contrast': black,
-        '200': #fbdd89,
-        '200-contrast': black,
-        '300': #fad15c,
-        '300-contrast': black,
-        '400': #f9c63f,
-        '400-contrast': black,
-        '500': #f7bd32,
-        '500-contrast': white,
-        '600': #f6b02d,
-        '600-contrast': white,
-        '700': #f49e2a,
-        '700-contrast': white,
-        '800': #f38e28,
-        '800-contrast': white,
-        '900': #f38e28,
-        '900-contrast': white,
-        'A100': #fbdd89,
-        'A100-contrast': black,
-        'A200': #f9c63f,
-        'A200-contrast': black,
-        'A400': #f6b02d,
-        'A400-contrast': white,
-        'A700': #f38e28,
-        'A700-contrast': white
-    ),
-    'gray': (
-        '50': #fff,
-        '50-contrast': black,
-        '100': #fafafa,
-        '100-contrast': black,
-        '200': #f5f5f5,
-        '200-contrast': black,
-        '300': #f0f0f0,
-        '300-contrast': black,
-        '400': #dedede,
-        '400-contrast': black,
-        '500': #b3b2b2,
-        '500-contrast': black,
-        '600': #979696,
-        '600-contrast': white,
-        '700': #7b7a7a,
-        '700-contrast': white,
-        '800': #404040,
-        '800-contrast': white,
-        '900': #1a1a1a,
-        '900-contrast': white
-    ),
-    'info': (
-        '500': rgb(18, 118, 211),
-        '500-contrast': black
-    ),
-    'success': (
-        '500': rgb(76, 184, 96),
-        '500-contrast': black
-    ),
-    'warn': (
-        '500': rgb(251, 178, 60),
-        '500-contrast': black
-    ),
-    'error': (
-        '500': rgb(255, 20, 75),
-        '500-contrast': black
-    ),
-    'surface': (
-        '500': rgb(255, 255, 255),
-        '500-contrast': black
-    )
-);
-
+```css
+:root {
+  --ig-primary-500: #0099ff;
+  --ig-primary-600: hsl(from var(--ig-primary-500) h calc(s * 1.26) calc(l * 0.89));
+}
 ```
 
-**Warning:** 
-It's important to set the map keys as strings, explicitly between quotation marks - `'primary'`, `'secondary'`, `'gray'`, etc. The same applies for all color variants - `500`, `500-contrast`, etc.
+Keep the `legacy` generator for one palette with `$generator`, or for every `palette()` call in the build by configuring `$shade-generator` before anything else loads the library:
 
-<igc-divider></igc-divider>
+```scss
+// One palette
+$brand-palette: palette(#0099ff, #df1b74, #ffffff, $generator: 'legacy');
+```
+
+```scss
+// Every palette() call in the build
+@use "igniteui-theming" with ($shade-generator: 'legacy');
+@use "igniteui-angular/theming" as *;
+```
+
+A `legacy` palette ignores the `$scales` argument.
+
+<code-view iframe-src="{environment:demosBaseUrl}/themes/palettes/shades" github-src="themes/palettes/shades" alt="Angular Sass palettes: a predefined palette's families through the legacy and fitted generators"></code-view>
 
 ## Predefined Palettes
 
-We provide predefined light and dark palettes, which you can use along with our schemas to create themes for your components:
+Ignite UI for Angular provides predefined light and dark palettes that pair with the matching schemas:
 
-- Light Palettes
+- Light palettes
   - `$light-material-palette`
   - `$light-fluent-excel-palette`
   - `$light-fluent-word-palette`
   - `$light-fluent-palette`
   - `$light-bootstrap-palette`
   - `$light-indigo-palette`
-- Dark Palettes
+- Dark palettes
   - `$dark-material-palette`
   - `$dark-fluent-excel-palette`
   - `$dark-fluent-word-palette`
@@ -171,145 +161,137 @@ We provide predefined light and dark palettes, which you can use along with our 
   - `$dark-bootstrap-palette`
   - `$dark-indigo-palette`
 
-You can mix and match all light palettes with a light schema of your choice and vice versa - all dark palettes with a dark schema that you think will best match your needs and vision.
+Combine any light palette with a light schema, and any dark palette with a dark schema. The predefined palettes are built with the `legacy` generator, so a theme built on one of them keeps its relative-color shades and responds to runtime overrides of the `500` variants.
 
 ## Grayscale Colors
 
-Similar to the `primary`, `secondary` and `surface` colors, you can provide another color to the `palette` function that will be used to generate shades of gray. The default color used to generate the `gray` palette in all light themes is `#000`, or better known as `black`. The `gray` color variants are mainly used for setting text colors across components. Modifying the value is useful when changing the background or surface colors in your application. For instance, if your application uses a darker surface background, setting the `gray` color to `white` is sensible, and will force all text colors to be based on shades of `white`.
-
-To generate a palette that uses `white` for its gray shades:
+The `gray` family supplies most text, border, and disabled colors, and its shades are set against the surface. Pass `$gray` to choose the color the grays are built from:
 
 ```scss
-// Import the Ignite UI themes library first
-$company-color: #2ab759; /* Some green shade I like */
-$secondary-color: #f96a88; /* Watermelon pink */
-$surface-color: #e5e5e5 /* Light gray for backgrounds/ */
-$grayscale-base: #fff; /* Used to generate shades of gray */
-
-$my-color-palette: palette(
-    $primary: $company-color,
-    $secondary: $secondary-color,
-    $surface: $surface-color,
-    $gray: $grayscale-base
+$brand-palette: palette(
+  $primary: #2ab759,
+  $secondary: #f96a88,
+  $surface: #222222,
+  $gray: #ffffff
 );
 ```
 
-<igc-divider></igc-divider>
+When `$gray` is omitted, the gray seed is black on a light surface and white on a dark one. With the default `material` scale, shade `50` is the gray nearest a white or near-black surface and `900` the farthest from it. See [Grays and the Page](../palette-generation.md#grays-and-the-page) for how the gray scale's anchor affects dark themes.
 
-## Colors Variants
+## Color Variants
 
-We provide a function that is easy to remember and use - `color`. It can take up to four arguments - `palette`, `color`, `variant` and `opacity`;
+The `color()` function returns a palette shade. It takes up to four arguments: `$palette`, `$color`, `$variant`, and `$opacity`.
 
 ```scss
-// Get the primary color as CSS variable reference to the 500 color variant
-$my-primary-500: color();
+// A reference to the CSS variable: var(--ig-primary-500)
+$primary-500: color();
 
-// Get the primary color as CSS variable reference to the 600 color variant
-$my-primary-600: color($variant: 600);
+// var(--ig-primary-600)
+$primary-600: color($variant: 600);
 
-// Get the primary color as CSS variable reference to the 600 color variant with .5 opacity
-$my-primary-600-opacity: color($variant: 600, $opacity: .5);
+// The primary 600 shade at 50% opacity, as a CSS relative color
+$primary-600-translucent: color($variant: 600, $opacity: 0.5);
 
-// Get the secondary A700 color variant as a HEX value from $my-palette
-$my-primary-A700: color($my-palette, 'secondary', 'A700');
+// The surface's raised role: var(--ig-surface-raised)
+$raised: color($color: 'surface', $variant: 'raised');
 
-// Get the warn 500 color variant as HEX value from $my-palette
-$my-warning-color: color($my-palette, 'warn');
+// The resolved color of the secondary A700 shade in $brand-palette
+$secondary-a700: color($brand-palette, 'secondary', 'A700');
 
-
-
-.my-awesome-class {
-    background: $my-primary-600;
-    border-color: $my-primary-A700;
-}
-
-.warning-bg {
-    background: $my-warning-color;
+.panel {
+  background: $raised;
+  border-color: $primary-600;
 }
 ```
 
-If you omit the `$palette` argument, you will get a string referencing the corresponding CSS variable variant. If you do not provide `$color` and/or `$variant`, they will be assigned to `primary` and `500` respectively.
-
-<igc-divider></igc-divider>
+Without `$palette`, `color()` returns a reference to the CSS variable, so the value follows whichever palette is emitted at runtime. With `$palette`, it returns the resolved color from that map. `$color` defaults to `primary`, and `$variant` defaults to `500`, or to `base` when `$color` is `surface`.
 
 ## Contrast Text Colors
 
-Similar to how we retrieve color variants, there's a way to get the contrast text color for each of the color variants in the palette with the function `contrast-color`, accepts the same type and number of arguments as the `color` function.
+The `contrast-color()` function returns the contrast color of a shade, and takes the same arguments as `color()`:
 
 ```scss
-$my-primary-800: color($my-palette, 'primary', 600);
-$my-primary-800-text: contrast-color($my-palette, 'primary', 600);
-
-// sample usage
-.my-awesome-article {
-    color: $my-primary-800-text;
-    background: $my-primary-800;
+.callout {
+  background: color($color: 'primary', $variant: 600);
+  color: contrast-color($color: 'primary', $variant: 600);
 }
 ```
 
-<igc-divider></igc-divider>
+The result is a CSS relative color that the browser resolves to black or white at the contrast level set by the `palette()` mixin.
 
 ## Color Classes
 
-We understand that some people prefer to use CSS classes to apply colors to web elements, be it text or background. We have a mixin that allows you to generate CSS classes for each color in the palette.
-
-The mixin takes a few arguments that allow you control the CSS class name as well as the CSS property to pass the palette color to;
+The `color-classes()` mixin generates a CSS class for every shade in the palette, assigning it to the CSS property you choose:
 
 - `$prop` - The CSS property to assign the color to.
-- `$prefix` - A prefix string to be attached to the generated class name. The default is 'igx'.
-- `$suffix` - A suffix string to be attached to the generated class name.
+- `$prefix` - A prefix for the generated class names. Defaults to `'igx'`.
+- `$suffix` - A suffix for the generated class names.
 - `$palette` - The palette to use.
-
-For instance, if you want to generate CSS classes that apply background color to elements, you can do the following:
 
 ```scss
 @include color-classes(
-    $prop: 'background-color',
-    $prefix: 'bg'
+  $prop: 'background-color',
+  $prefix: 'bg'
 );
 ```
 
-The above code will generate CSS classes for each color variant in the palette. For instance, the `500` color variant of the `primary` palette will be given the following class `.bg-primary-500`;
+The `500` shade of `primary` becomes the class `.bg-primary-500`:
 
 ```html
-<div class="bg-primary-500">
-...
-</div>
+<div class="bg-primary-500">...</div>
 ```
 
-<hr/>
+## Custom Palette Maps
 
-## CSS Variables
-
-When reading about the color palette in the [CSS Variables](/themes/palettes) section of the documentation, you would've noticed that all palette colors are included as CSS variables. We do this internally every time we generate a theme using the `theme` mixin. The `theme` calls another mixin in its body - `palette`. It takes a palette and converts the colors in it into CSS variables.
-
-You use this mixin when you want your custom palette colors to be included as CSS variables.
-
-Here's an example:
+Component themes read only the shape of the palette map, so a map you write by hand works as long as it has the keys the themes read. Quote every key, including the numeric variants, and give `surface` its roles:
 
 ```scss
-$my-palette: palette(
-  $primary: #2ab759,
-  $secondary: #f96a88,
-  $surface: #e5e5e5
+$handmade-palette: (
+  'primary': (
+    '50': #e6eff8,
+    '50-contrast': black,
+    // ... '100' through '900', then 'A100', 'A200', 'A400', 'A700', each with a '-contrast' entry
+    '500': #6797de,
+    '500-contrast': white,
+  ),
+  // 'secondary', 'gray', 'info', 'success', 'warn', and 'error' follow the same pattern
+  'surface': (
+    'base': #ffffff,
+    'base-contrast': black,
+    'sunken': #f7f7f7,
+    'sunken-contrast': black,
+    'raised': #ffffff,
+    'raised-contrast': black,
+    'overlay': #ffffff,
+    'overlay-contrast': black,
+    'container': rgba(0, 0, 0, 0.03),
+    'container-contrast': black,
+  ),
 );
-
-@include palette($my-palette);
 ```
 
-## API Reference
+The Ignite UI for Angular 22.3.0 component themes read the numbered shades of the color families and of `gray`, the accent shades of `primary` and `secondary`, and the `base` surface role. The other surface roles are there for your own styles. Include every variant listed in [Overview](#overview), so that styles which read the rest still resolve.
 
-- `Palettes`
-- `Getting Palette Colors`
-- `Getting Contrast Colors`
-- `Generating Color Classes`
-- [Schemas](/themes/sass/schemas)
+## Troubleshooting
+
+**Why does overriding `--ig-primary-500` not update the other primary shades?** A palette generated with the `fitted` generator emits fixed colors. Change the seed passed to `palette()` and rebuild, or generate the palette with `$generator: 'legacy'` to keep runtime derivation from `500`.
+
+**How do I migrate references to `--ig-surface-500` or `color($color: 'surface', $variant: 500)`?** The numbered surface shades are deprecated in favor of the roles. Every palette still emits them, so the references keep working while you migrate. Use `base` for the page or component background, `raised` or `overlay` for layers above it, `sunken` for layers set into it, and `container` for a translucent fill. `color($color: 'surface')` already returns `base`.
+
+**Why does the build print `Shade "gray-900" wanted 18.232:1 but its hue only reaches …`?** The scale asks for more contrast than the color and its anchor allow, typically a surface-anchored gray scale on a dark surface. The generator used the closest shade it could reach. Lower the top of the `range`, or set `anchor: 'white'`.
+
+## API References
+
+- `palette() function`
+- `color() function`
+- `contrast-color() function`
+- `color-classes() mixin`
 
 ## Additional Resources
 
-<hr/>
-
-Our community is active and always welcoming to new ideas.
-
+- [Palette Generation](../palette-generation.md)
+- [Palettes](../palettes.md)
+- [Schemas](./schemas.md)
+- [Global Themes](./global-themes.md)
 - [Ignite UI for Angular **Forums**](https://www.infragistics.com/community/forums/f/ignite-ui-for-angular)
 - [Ignite UI for Angular **GitHub**](https://github.com/IgniteUI/igniteui-angular)

@@ -144,7 +144,7 @@ export default function QrCodeOverview() {
 }
 
 // rendering above component to the React DOM
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeOverview />);
 ```
 
@@ -283,7 +283,7 @@ export default function QrCodeErrorCorrection() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeErrorCorrection />);
 ```
 
@@ -362,7 +362,7 @@ export default function QrCodeSize() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeSize />);
 ```
 
@@ -412,7 +412,7 @@ export default function QrCodeLogo() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeLogo />);
 ```
 
@@ -491,7 +491,7 @@ export default function QrCodeDotShapes() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeDotShapes />);
 ```
 
@@ -558,7 +558,7 @@ export default function QrCodeCornerShapes() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeCornerShapes />);
 ```
 
@@ -720,7 +720,7 @@ export default function QrCodeStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeStyling />);
 ```
 
@@ -873,7 +873,7 @@ export default function QrCodeTailwindStyling() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(<QrCodeTailwindStyling />);
 ```
 

@@ -25,36 +25,28 @@ The following React Dropdown List example demonstrates the use of simple interac
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class DropDownOverview extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);           
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown>
-                    <div slot="target">
-                        <IgrButton><span>Options</span></IgrButton>
-                    </div>
-                    <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
-                </IgrDropdown>
-            </div>
-        );
-    }
+export default function DropDownOverview() {
+    return (
+        <div className="container sample center">
+            <IgrDropdown>
+                <div slot="target">
+                    <IgrButton><span>Options</span></IgrButton>
+                </div>
+                <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
+                <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
+                <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownOverview/>);
 ```
 
@@ -97,52 +89,38 @@ The React Dropdown list is positioned relatively to its target. The `target` slo
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
+import { useRef, type MouseEvent } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class DropDownTarget extends React.Component<any, any> {
+export default function DropDownTarget() {
+    const dropdownRef = useRef<IgrDropdown>(null);
 
-    public dropdownRef: IgrDropdown;
-
-    constructor(props: any) {
-        super(props);
-        this.onDropDownRef = this.onDropDownRef.bind(this);
+    function onClick(event: MouseEvent<IgrButton>) {
+        if (!dropdownRef.current) { return; }
+        dropdownRef.current.toggle(event.currentTarget);
     }
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <div className="options horizontal">
-                    <IgrButton onClick={(e)=>this.onClick(e)}><span>First Target</span></IgrButton>
-                    <IgrButton onClick={(e)=>this.onClick(e)} style={{marginLeft: "20px"}}><span>Second Target</span></IgrButton>
+    return (
+        <div className="container sample center">
+            <div className="options horizontal">
+                <IgrButton onClick={(e)=>onClick(e)}><span>First Target</span></IgrButton>
+                <IgrButton onClick={(e)=>onClick(e)} style={{marginLeft: "20px"}}><span>Second Target</span></IgrButton>
 
-                    <IgrDropdown ref={this.onDropDownRef} sameWidth={true}>
-                        <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
-                        <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
-                        <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
-                    </IgrDropdown>
-                </div>
+                <IgrDropdown ref={dropdownRef} sameWidth={true}>
+                    <IgrDropdownItem><span>Option 1</span></IgrDropdownItem>
+                    <IgrDropdownItem><span>Option 2</span></IgrDropdownItem>
+                    <IgrDropdownItem><span>Option 3</span></IgrDropdownItem>
+                </IgrDropdown>
             </div>
-        );
-    }
-
-    public onDropDownRef(dropdown: IgrDropdown){
-        if (!dropdown) { return; }
-        this.dropdownRef = dropdown;
-    }
-
-    public onClick(event: any) {
-        if(this.dropdownRef){
-            this.dropdownRef.toggle(event.currentTarget);
-        }
-    }
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownTarget/>);
 ```
 
@@ -164,64 +142,54 @@ igc-dropdown::part(list) {
 }
 ```
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
-export default class DropDownPosition extends React.Component<any, any> {
+export default function DropDownPosition() {
+    const dropdownRef = useRef<IgrDropdown>(null);
 
-    public dropdownRef: IgrDropdown;
-
-    constructor(props: any) {
-        super(props);
-        this.onDropDownRef = this.onDropDownRef.bind(this);     
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown ref={this.onDropDownRef} distance={5} onChange={(e)=>this.onChange(e)} placement="bottom">
-                    <div slot="target">
-                        <IgrButton><span>Options</span></IgrButton>
-                    </div>
-                    <IgrDropdownItem><span>top</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>topstart</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>topend</span></IgrDropdownItem>
-                    <IgrDropdownItem selected><span>bottom</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>bottomstart</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>bottomend</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>right</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>rightstart</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>rightend</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>left</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>leftstart</span></IgrDropdownItem>
-                    <IgrDropdownItem><span>leftend</span></IgrDropdownItem>
-                </IgrDropdown>
-            </div>
-        );
-    }
-
-    public onDropDownRef(dropdown: IgrDropdown){
+    // Move the dropdown to the placement named by the selected item.
+    function onChange(event: CustomEvent<IgrDropdownItem>) {
+        const dropdown = dropdownRef.current;
         if (!dropdown) { return; }
-        this.dropdownRef = dropdown;
-    }
 
-    public onChange(event: any): void {
-        if(this.dropdownRef){
-            for (let i = 1; i < event.target.children.length; i++) {
-                let item = event.target.children[i];
-                if (item.selected){
-                    this.dropdownRef.placement = item.value;
-                }
+        const items = (event.target as IgrDropdown).children;
+        for (let i = 1; i < items.length; i++) {
+            const item = items[i] as IgrDropdownItem;
+            if (item.selected) {
+                dropdown.placement = item.value as IgrDropdown['placement'];
             }
         }
     }
+
+    return (
+        <div className="container sample center">
+            <IgrDropdown ref={dropdownRef} distance={5} onChange={(e)=>onChange(e)} placement="bottom">
+                <div slot="target">
+                    <IgrButton><span>Options</span></IgrButton>
+                </div>
+                <IgrDropdownItem><span>top</span></IgrDropdownItem>
+                <IgrDropdownItem><span>topstart</span></IgrDropdownItem>
+                <IgrDropdownItem><span>topend</span></IgrDropdownItem>
+                <IgrDropdownItem selected><span>bottom</span></IgrDropdownItem>
+                <IgrDropdownItem><span>bottomstart</span></IgrDropdownItem>
+                <IgrDropdownItem><span>bottomend</span></IgrDropdownItem>
+                <IgrDropdownItem><span>right</span></IgrDropdownItem>
+                <IgrDropdownItem><span>rightstart</span></IgrDropdownItem>
+                <IgrDropdownItem><span>rightend</span></IgrDropdownItem>
+                <IgrDropdownItem><span>left</span></IgrDropdownItem>
+                <IgrDropdownItem><span>leftstart</span></IgrDropdownItem>
+                <IgrDropdownItem><span>leftend</span></IgrDropdownItem>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownPosition/>);
 ```
 
@@ -254,7 +222,6 @@ The [`Value`](mcp:get_api_reference?platform=react&component=IgrDropdownItem&mem
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem, IgrIcon, registerIconFromText } from 'igniteui-react';
@@ -264,52 +231,42 @@ const hotelIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' vie
 const groceryIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-1.45-5c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6z'/></svg>";
 const restaurantIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M16 6v8h3v8h2V2c-2.76 0-5 2.24-5 4zm-5 3H9V2H7v7H5V2H3v7c0 2.21 1.79 4 4 4v9h2v-9c2.21 0 4-1.79 4-4V2h-2v7z'/></svg>";
 
-export default class DropDownItem extends React.Component<any, any> {
+registerIconFromText("hotel", hotelIconText, "material");
+registerIconFromText("grocery", groceryIconText, "material");
+registerIconFromText("restaurant", restaurantIconText, "material");
 
-    public hotelIcon: IgrIcon;
-    public groceryIcon: IgrIcon;
-    public restaurantIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("hotel", hotelIconText, "material");
-        registerIconFromText("grocery", groceryIconText, "material");
-        registerIconFromText("restaurant", restaurantIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown>
-                    <div slot="target">
-                        <IgrButton><span>Category</span></IgrButton>
-                    </div>
-                    <IgrDropdownItem>
-                        <span slot="prefix">
-                            <IgrIcon name="hotel" collection="material"></IgrIcon>
-                        </span>
-                        <span>Hotel</span>
-                    </IgrDropdownItem>
-                    <IgrDropdownItem disabled>
-                        <span slot="prefix">
-                            <IgrIcon name="grocery" collection="material"></IgrIcon>
-                        </span>
-                        <span>Grocery</span>
-                    </IgrDropdownItem>
-                    <IgrDropdownItem selected>
-                        <span slot="prefix">
-                            <IgrIcon name="restaurant" collection="material"></IgrIcon>
-                        </span>
-                        <span>Restaurant</span>
-                    </IgrDropdownItem>
-                </IgrDropdown>
-            </div>
-        );
-    }
+export default function DropDownItem() {
+    return (
+        <div className="container sample center">
+            <IgrDropdown>
+                <div slot="target">
+                    <IgrButton><span>Category</span></IgrButton>
+                </div>
+                <IgrDropdownItem>
+                    <span slot="prefix">
+                        <IgrIcon name="hotel" collection="material"></IgrIcon>
+                    </span>
+                    <span>Hotel</span>
+                </IgrDropdownItem>
+                <IgrDropdownItem disabled>
+                    <span slot="prefix">
+                        <IgrIcon name="grocery" collection="material"></IgrIcon>
+                    </span>
+                    <span>Grocery</span>
+                </IgrDropdownItem>
+                <IgrDropdownItem selected>
+                    <span slot="prefix">
+                        <IgrIcon name="restaurant" collection="material"></IgrIcon>
+                    </span>
+                    <span>Restaurant</span>
+                </IgrDropdownItem>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownItem/>);
 ```
 
@@ -322,7 +279,6 @@ You could use the [`IgrDropdownHeader`](mcp:get_api_reference?platform=react&com
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem, IgrIcon, IgrDropdownHeader, registerIconFromText } from 'igniteui-react';
@@ -332,53 +288,43 @@ const ringIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' view
 const vibrateIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M0 15h2V9H0v6zm3 2h2V7H3v10zm19-8v6h2V9h-2zm-3 8h2V7h-2v10zM16.5 3h-9C6.67 3 6 3.67 6 4.5v15c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-15c0-.83-.67-1.5-1.5-1.5zM16 19H8V5h8v14z'/></svg>";
 const silentIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0V0z' fill='none'/><path d='M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm0-15.5c2.49 0 4 2.02 4 4.5v.1l2 2V11c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.24.06-.47.15-.69.23l1.64 1.64c.18-.02.36-.05.55-.05zM5.41 3.35L4 4.76l2.81 2.81C6.29 8.57 6 9.74 6 11v5l-2 2v1h14.24l1.74 1.74 1.41-1.41L5.41 3.35zM16 17H8v-6c0-.68.12-1.32.34-1.9L16 16.76V17z'/></svg>";
 
-export default class DropDownHeader extends React.Component<any, any> {
+registerIconFromText("ring", ringIconText, "material");
+registerIconFromText("vibrate", vibrateIconText, "material");
+registerIconFromText("silent", silentIconText, "material");
 
-    public ringIcon: IgrIcon;
-    public vibrateIcon: IgrIcon;
-    public silentIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("ring", ringIconText, "material");
-        registerIconFromText("vibrate", vibrateIconText, "material");
-        registerIconFromText("silent", silentIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown>
-                    <div slot="target">
-                        <IgrButton><span>Sound</span></IgrButton>
-                    </div>
-                    <IgrDropdownHeader><span>Mode</span></IgrDropdownHeader>
-                    <IgrDropdownItem selected>
-                        <span slot="prefix">
-                            <IgrIcon name="ring" collection="material"></IgrIcon>
-                        </span>
-                        <span>Ring</span>
-                    </IgrDropdownItem>
-                    <IgrDropdownItem>
-                        <span slot="prefix">
-                            <IgrIcon name="vibrate" collection="material"></IgrIcon>
-                        </span>
-                        <span>Vibrate</span>
-                    </IgrDropdownItem>
-                    <IgrDropdownItem>
-                        <span slot="prefix">
-                            <IgrIcon name="silent" collection="material"></IgrIcon>
-                        </span>
-                        <span>Silent</span>
-                    </IgrDropdownItem>
-                </IgrDropdown>
-            </div>
-        );
-    }
+export default function DropDownHeader() {
+    return (
+        <div className="container sample center">
+            <IgrDropdown>
+                <div slot="target">
+                    <IgrButton><span>Sound</span></IgrButton>
+                </div>
+                <IgrDropdownHeader><span>Mode</span></IgrDropdownHeader>
+                <IgrDropdownItem selected>
+                    <span slot="prefix">
+                        <IgrIcon name="ring" collection="material"></IgrIcon>
+                    </span>
+                    <span>Ring</span>
+                </IgrDropdownItem>
+                <IgrDropdownItem>
+                    <span slot="prefix">
+                        <IgrIcon name="vibrate" collection="material"></IgrIcon>
+                    </span>
+                    <span>Vibrate</span>
+                </IgrDropdownItem>
+                <IgrDropdownItem>
+                    <span slot="prefix">
+                        <IgrIcon name="silent" collection="material"></IgrIcon>
+                    </span>
+                    <span>Silent</span>
+                </IgrDropdownItem>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownHeader/>);
 ```
 
@@ -391,7 +337,6 @@ The React Dropdown's items can also be grouped using the [`IgrDropdownGroup`](mc
 /* https://dl.infragistics.com/x/css/samples/shared.v8.css */
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem, IgrIcon, IgrDropdownGroup, registerIconFromText } from 'igniteui-react';
@@ -399,78 +344,70 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const placeIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14 4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2 0 3.32-2.67 7.25-8 11.8-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z'/></svg>";
 
-export default class DropDownGroup extends React.Component<any, any> {
+registerIconFromText("place", placeIconText, "material");
 
-    public placeIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("place", placeIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown>
-                    <div slot="target">
-                        <IgrButton><span>Countries</span></IgrButton>
-                    </div>
-                    <IgrDropdownGroup>
-                        <span slot="label">Europe</span>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Germany</span>
-                            <span slot="suffix">DE</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>France</span>
-                            <span slot="suffix">FR</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Spain</span>
-                            <span slot="suffix">ES</span>
-                        </IgrDropdownItem>
-                    </IgrDropdownGroup>
-                    <IgrDropdownGroup>
-                        <span slot="label">North America</span>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>USA</span>
-                            <span slot="suffix">USA</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Canada</span>
-                            <span slot="suffix">CA</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Mexico</span>
-                            <span slot="suffix">MX</span>
-                        </IgrDropdownItem>
-                    </IgrDropdownGroup>
-                </IgrDropdown>
-            </div>
-        );
-    }
+export default function DropDownGroup() {
+    return (
+        <div className="container sample center">
+            <IgrDropdown>
+                <div slot="target">
+                    <IgrButton><span>Countries</span></IgrButton>
+                </div>
+                <IgrDropdownGroup>
+                    <span slot="label">Europe</span>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Germany</span>
+                        <span slot="suffix">DE</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>France</span>
+                        <span slot="suffix">FR</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Spain</span>
+                        <span slot="suffix">ES</span>
+                    </IgrDropdownItem>
+                </IgrDropdownGroup>
+                <IgrDropdownGroup>
+                    <span slot="label">North America</span>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>USA</span>
+                        <span slot="suffix">USA</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Canada</span>
+                        <span slot="suffix">CA</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Mexico</span>
+                        <span slot="suffix">MX</span>
+                    </IgrDropdownItem>
+                </IgrDropdownGroup>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownGroup/>);
 ```
 
@@ -519,7 +456,6 @@ igc-dropdown-group::part(label) {
 }
 ```
 ```tsx
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrDropdown, IgrButton, IgrDropdownItem, IgrIcon, IgrDropdownGroup, registerIconFromText } from 'igniteui-react';
@@ -527,78 +463,70 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 
 const placeIconText = "<svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px'><path d='M0 0h24v24H0z' fill='none'/><path d='M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14 4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2 0 3.32-2.67 7.25-8 11.8-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z'/></svg>";
 
-export default class DropDownStyling extends React.Component<any, any> {
+registerIconFromText("place", placeIconText, "material");
 
-    public placeIcon: IgrIcon;
-
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("place", placeIconText, "material");
-    }
-
-    public render(): JSX.Element {
-        return (
-            <div className="container sample center">
-                <IgrDropdown>
-                    <div slot="target">
-                        <IgrButton><span>Countries</span></IgrButton>
-                    </div>
-                    <IgrDropdownGroup>
-                        <span slot="label">Europe</span>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Germany</span>
-                            <span slot="suffix">DE</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>France</span>
-                            <span slot="suffix">FR</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem selected>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Spain</span>
-                            <span slot="suffix">ES</span>
-                        </IgrDropdownItem>
-                    </IgrDropdownGroup>
-                    <IgrDropdownGroup>
-                        <span slot="label">North America</span>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>USA</span>
-                            <span slot="suffix">USA</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Canada</span>
-                            <span slot="suffix">CA</span>
-                        </IgrDropdownItem>
-                        <IgrDropdownItem>
-                            <span slot="prefix">
-                                <IgrIcon name="place" collection="material"></IgrIcon>
-                            </span>
-                            <span>Mexico</span>
-                            <span slot="suffix">MX</span>
-                        </IgrDropdownItem>
-                    </IgrDropdownGroup>
-                </IgrDropdown>
-            </div>
-        );
-    }
+export default function DropDownStyling() {
+    return (
+        <div className="container sample center">
+            <IgrDropdown>
+                <div slot="target">
+                    <IgrButton><span>Countries</span></IgrButton>
+                </div>
+                <IgrDropdownGroup>
+                    <span slot="label">Europe</span>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Germany</span>
+                        <span slot="suffix">DE</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>France</span>
+                        <span slot="suffix">FR</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem selected>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Spain</span>
+                        <span slot="suffix">ES</span>
+                    </IgrDropdownItem>
+                </IgrDropdownGroup>
+                <IgrDropdownGroup>
+                    <span slot="label">North America</span>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>USA</span>
+                        <span slot="suffix">USA</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Canada</span>
+                        <span slot="suffix">CA</span>
+                    </IgrDropdownItem>
+                    <IgrDropdownItem>
+                        <span slot="prefix">
+                            <IgrIcon name="place" collection="material"></IgrIcon>
+                        </span>
+                        <span>Mexico</span>
+                        <span slot="suffix">MX</span>
+                    </IgrDropdownItem>
+                </IgrDropdownGroup>
+            </IgrDropdown>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DropDownStyling/>);
 ```
 

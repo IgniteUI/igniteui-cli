@@ -7,6 +7,7 @@ mentionedTypes: ["CategoryChart", "CategoryChartType", "MarkerType", "MarkerSeri
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In Ignite UI for Angular, markers are visual elements that display the values of data points in the chart's plot area."
+platformType: xplat
 _tocName: Chart Markers
 _premium: true
 ---
@@ -16,9 +17,9 @@ In Ignite UI for Angular, markers are visual elements that display the values of
 
 ## Angular Chart Marker Example
 
-In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the `MarkerTypes` property to `Circle` enum value.
+In the following example, the [Line Chart](../types/line-chart.md) is comparing the generation of renewable electricity for the countries Europe, China, and USA over the years of 2009 to 2019 with markers enabled by setting the [`markerTypes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerTypes) property to [`MarkerType.Circle`](mcp:get_api_reference?platform=angular&component=MarkerType&member=Circle) enum value.
 
-The colors of the markers are also managed by setting the `MarkerBrushes` and `MarkerOutlines` properties in the sample below. The markers and `CategoryChart.ChartType` is configurable in this sample by using the drop-downs as well.
+The colors of the markers are also managed by setting the [`markerBrushes`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerBrushes) and [`markerOutlines`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=markerOutlines) properties in the sample below. The markers and [`chartType`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent&member=chartType) is configurable in this sample by using the drop-downs as well.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -176,17 +177,44 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 
 ## Angular Chart Marker Size
 
-You can control the exact device-independent pixel dimensions of data point markers by setting the `MarkerSize` property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
+You can control the exact device-independent pixel dimensions of data point markers by setting the [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxMarkerSeriesComponent&member=markerSize) property on any series that supports markers. This gives you precise control over how large markers appear on screen, regardless of the marker template or style being used.
 
-By default, marker sizing is determined by the series marker template. When you set `MarkerSize` to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting `MarkerSize` back to `NaN` restores the default template-driven sizing.
+By default, marker sizing is determined by the series marker template. When you set [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxMarkerSeriesComponent&member=markerSize) to a specific numeric value, all markers in that series render at that exact device-independent pixel width and height. Setting [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxMarkerSeriesComponent&member=markerSize) back to `NaN` restores the default template-driven sizing.
 
-The `MarkerSize` property is available on all series types that derive from `MarkerSeries`, including `LineSeries`, `SplineSeries`, `AreaSeries`, `ColumnSeries`, `ScatterSeries`, `ScatterLineSeries`, `ScatterSplineSeries`, and polar/radial series types.
+The [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxMarkerSeriesComponent&member=markerSize) property is available on all series types that derive from [`IgxMarkerSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxMarkerSeriesComponent), including [`IgxLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxLineSeriesComponent), [`IgxSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxSplineSeriesComponent), [`IgxAreaSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxAreaSeriesComponent), [`IgxColumnSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxColumnSeriesComponent), [`IgxScatterSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSeriesComponent), [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent), [`IgxScatterSplineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterSplineSeriesComponent), and polar/radial series types.
 
-The following code examples show how to set `MarkerSize` to 30 device-independent pixels on a `ScatterLineSeries` in the `XamDataChart` control:
+The following code examples show how to set [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxScatterSplineSeriesComponent&member=markerSize) to 30 device-independent pixels on a [`IgxScatterLineSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent) in the [`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent) control:
 
-To reset markers to their default template-driven size, set `MarkerSize` to `NaN` (or remove the attribute in markup):
+```html
+<igx-data-chart>
+    <igx-numeric-x-axis
+        #xAxis>
+    </igx-numeric-x-axis>
+    <igx-numeric-y-axis
+        #yAxis>
+    </igx-numeric-y-axis>
+    <igx-scatter-line-series
+        #scatterLineSeries
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
+        xMemberPath="x"
+        yMemberPath="y"
+        markerType="Circle"
+        markerSize=30>
+    </igx-scatter-line-series>
+</igx-data-chart>
+```
 
-The following sample demonstrates `MarkerSize` on scatter series with an interactive editor:
+To reset markers to their default template-driven size, set [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent&member=markerSize) to `NaN` (or remove the attribute in markup):
+
+```html
+<igx-line-series
+    markerType="Circle"
+    markerSize=NaN>
+</igx-line-series>
+```
+
+The following sample demonstrates [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxScatterLineSeriesComponent&member=markerSize) on scatter series with an interactive editor:
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -431,19 +459,17 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 **Note:** 
-For `BubbleSeries`, the `MarkerSize` property does not override the bubble radius, which is controlled by the radius data column and the `RadiusScale`. Bubble sizes remain entirely driven by the data and scale configuration.
+For [`IgxBubbleSeriesComponent`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent), the [`markerSize`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerSize) property does not override the bubble radius, which is controlled by the radius data column and the [`radiusScale`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=radiusScale). Bubble sizes remain entirely driven by the data and scale configuration.
 
 ## Angular Chart Checkmark Marker Type
 
-The Ignite UI for Angular charts include a `Checkmark` option in the `MarkerType` enum. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
+The Ignite UI for Angular charts include a [`MarkerType.Checkmark`](mcp:get_api_reference?platform=angular&component=MarkerType&member=Checkmark) option. This marker renders a V-shaped checkmark icon inside a circle on data points in your chart.
 
-You can apply the `Checkmark` marker type to an individual series by setting its `MarkerType` property to `MarkerType.Checkmark`. To use the checkmark shape for all series in the chart simultaneously, set the chart's `MarkerAutomaticBehavior` property to `MarkerAutomaticBehavior.Checkmark`.
-
-The `SeriesViewer.CheckmarkMarkerTemplate` property defines the marker template used for series with a checkmark marker type, and can be used to customize its appearance across the chart.
+You can apply the [`Checkmark`](mcp:get_api_reference?platform=angular&component=MarkerType&member=Checkmark) marker type to an individual series by setting its [`MarkerType`](mcp:get_api_reference?platform=angular&component=MarkerType) property to [`MarkerType.Checkmark`](mcp:get_api_reference?platform=angular&component=MarkerType&member=Checkmark). To use the checkmark shape for all series in the chart simultaneously, set the chart's [`MarkerAutomaticBehavior`](mcp:get_api_reference?platform=angular&component=MarkerAutomaticBehavior) property to [`MarkerAutomaticBehavior.Checkmark`](mcp:get_api_reference?platform=angular&component=MarkerAutomaticBehavior&member=Checkmark).
 
 ## Angular Chart Marker Templates
 
-In addition to marker properties, you can implement your own marker by setting a function to the  `MarkerTemplate` property of a series rendered in the `IgxCategoryChart` control as it is demonstrated in example below.
+In addition to marker properties, you can implement your own marker by setting a function to the [`markerTemplate`](mcp:get_api_reference?platform=angular&component=IgxBubbleSeriesComponent&member=markerTemplate) property of a series rendered in the [`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent) control as it is demonstrated in example below.
 
 ```typescript
 import { NgModule } from "@angular/core";
@@ -612,4 +638,4 @@ You can find more information about related chart features in these topics:
 - [Chart Highlighting](chart-highlighting.md)
 
 ## API References
-`IgxCategoryChart`
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)

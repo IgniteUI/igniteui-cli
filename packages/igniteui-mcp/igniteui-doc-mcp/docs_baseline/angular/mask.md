@@ -168,7 +168,9 @@ Use the [`includeLiterals`](mcp:get_api_reference?platform=angular&component=Igx
         [includeLiterals]="includeLiterals" />
 </igx-input-group>
 
-<p *ngIf="socialSecurityNumber.length > 0">Value: {{ socialSecurityNumber }}</p>
+@if (socialSecurityNumber.length > 0) {
+    <p>Value: {{ socialSecurityNumber }}</p>
+}
 ```
 
 ```typescript

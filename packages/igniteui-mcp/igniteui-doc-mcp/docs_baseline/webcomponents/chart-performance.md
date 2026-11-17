@@ -3,10 +3,11 @@ title: "Web Components Chart Performance | Data Visualization | Infragistics"
 description: Infragistics' Web Components Chart Performance
 keywords: "Web Components Charts, Performance, Infragistics"
 license: commercial
-mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType"]
+mentionedTypes: ["DomainChart", "CategoryChart", "FinancialChart", "DataChart", "FinancialChartVolumeType", "FinancialChartZoomSliderType", "FinancialChartYAxisMode", "NumericAxisBase"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "Web Components charts are optimized for high performance of rendering millions of data points and updating them every few milliseconds."
+platformType: xplat
 _tocName: Chart Performance
 _premium: true
 ---
@@ -20,7 +21,7 @@ The following examples demonstrates two high performance scenarios of Web Compon
 
 ## Web Components Chart with High-Frequency
 
-In High-Frequency scenario, the Web Components Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) in High-Frequency scenario.
+In High-Frequency scenario, the Web Components Charts can render data items that are updating in real time or at specified milliseconds intervals. You will experience no lag, no screen-flicker, and no visual delays, even as you interact with the chart on a touch-device. The following sample demonstrates the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) in High-Frequency scenario.
 
 ```typescript
 export class CategoryChartSharedData {
@@ -94,7 +95,7 @@ export class CategoryChartSharedData {
 
 ## Web Components Chart with High-Volume
 
-In High-Volume scenario, the Web Components Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) in High-Volume scenario.
+In High-Volume scenario, the Web Components Charts can render 1 million of data points while the chart keeps providing smooth performance when end-users tries zooming in/out or navigating chart content. The following sample demonstrates the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) in High-Volume scenario.
 
 ```typescript
 export class CategoryChartSharedData {
@@ -172,7 +173,7 @@ This section lists guidelines and chart features that add to the overhead and pr
 
 ### Data Size
 
-If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) with one of the following type of series which where designed for specially for that purpose.
+If you need to plot data sources with large number of data points (e.g. 10,000+), we recommend using Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) with one of the following type of series which where designed for specially for that purpose.
 
 - [Scatter HD Chart](../types/scatter-chart.md#web-components-scatter-high-density-chart) instead of [Category Point Chart](../types/point-chart.md) or [Scatter Marker Chart](../types/scatter-chart.md#web-components-scatter-marker-chart)
 - [Scatter Polyline Chart](../types/shape-chart.md#web-components-scatter-polyline-chart) instead of [Category Line Chart](../types/line-chart.md#web-components-line-chart-example) or [Scatter Line Chart](../types/scatter-chart.md#web-components-scatter-line-chart)
@@ -180,7 +181,7 @@ If you need to plot data sources with large number of data points (e.g. 10,000+)
 
 ### Data Structure
 
-Although Web Components charts support rendering of multiple data sources by binding array of arrays of data points to [`ItemsSource`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=DataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
+Although Web Components charts support rendering of multiple data sources by binding array of arrays of data points to [`dataSource`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=dataSource) property. It is much faster for charts if multiple data sources are flatten into single data source where each data item contains multiple data columns rather just one data column. For example:
 
 ```ts
 this.CategoryChart.dataSource = FlattenDataSource.create();
@@ -211,18 +212,18 @@ export class MultiDataSources {
 
 ### Data Filtering
 
-Web Components [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and the [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`IncludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=includedProperties) and [`ExcludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=excludedProperties) to filter only those data columns that you actually want to render. For example,
+Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) and the [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) controls have built-in data adapter that analyzes your data and generates chart series for you. However, it works faster if you use [`includedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=includedProperties) and [`excludedProperties`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=excludedProperties) to filter only those data columns that you actually want to render. For example,
 
 ```ts
-this.Chart.includedProperties = [ "Year", "USA", "RUS" ];
-this.Chart.excludedProperties = [ "CHN",  "FRN", "GER" ];
+this.Chart.includedProperties = ["Year", "USA", "RUS"];
+this.Chart.excludedProperties = ["CHN", "FRN", "GER"];
 ```
 
 ## Chart Performance Guidelines
 
 ### Chart Types
 
-Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`CategoryChart.ChartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property of Web Components [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) or the [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
+Simpler chart types such as [Line Chart](../types/line-chart.md) have faster performance than using [Spline Chart](../types/spline-chart.md) because of the complex interpolation of spline lines between data points. Therefore, you should use [`IgcCategoryChartComponent.chartType`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=chartType) property of Web Components [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) or the [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control to select type of chart that renders faster. Alternatively, you can change a type of series to a faster series in Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control.
 
 The following table lists chart types in order from the fastest performance to slower performance in each group of charts:
 
@@ -266,27 +267,28 @@ This code snippet shows how to remove markers from the Web Components charts.
 
 ```ts
 // on CategoryChart or FinancialChart
-this.Chart.markerTypes.clear();
-this.Chart.markerTypes.add(MarkerType.None);
+this.Chart.markerTypes = [MarkerType.None];
+```
 
+```ts
 // on LineSeries of DataChart
 this.LineSeries.markerType = MarkerType.None;
-
 ```
 
 ### Chart Resolution
 
-Setting the [`Resolution`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
+Setting the [`IgcDomainChartComponent.resolution`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=resolution) property to a higher value will improve performance, but it will lower the graphical fidelity of lines of plotted series. As such, it can be increased up until the fidelity is unacceptable.
 
 This code snippet shows how to decrease resolution in the Web Components charts.
 
 ```ts
-// on CategoryChart or FinancialChart:
-this.Chart.Resolution = 10;
+// on CategoryChart
+this.Chart.resolution = 10;
+```
 
-// on LineSeries of DataChart:
-this.LineSeries.Resolution = 10;
-
+```ts
+// on LineSeries of DataChart
+this.LineSeries.resolution = 10;
 ```
 
 ### Chart Overlays
@@ -302,21 +304,24 @@ Enabling [Chart Trendlines](chart-trendlines.md) will slightly decrease performa
 Usage of x-axis with DateTime support is not recommended if spaces between data points, based on the amount of time span between them, are not important. Instead, ordinal/category axis should be used because it is more efficient in the way it coalesces data. Also, ordinal/category axis doesn’t perform any sorting on the data like the time-based x-axis does.
 
 **Note:** 
-The [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) already uses ordinal/category axis so there is no need to change its properties.
+The [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) already uses ordinal/category axis so there is no need to change its properties.
 
-This code snippet shows how to ordinal/category x-axis in the [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) and [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls.
+This code snippet shows how to ordinal/category x-axis in the [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) and [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) controls.
 
 ```html
-<igc-financial-chart x-axis-mode="Ordinal"></igc-financial-chart>
-
+<igc-financial-chart
+    x-axis-mode="Ordinal">
+</igc-financial-chart>
 <igc-data-chart>
-    <igc-category-x-axis label="Time"></igc-category-x-axis>
+    <igc-category-x-axis
+        label="Time">
+    </igc-category-x-axis>
 </igc-data-chart>
 ```
 
 ### Axis Intervals
 
-By default, Web Components charts will automatically calculate [`YAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`YAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
+By default, Web Components charts will automatically calculate [`yAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisInterval) based on range of your data. Therefore, you should avoid setting axis interval especially to a small value to prevent rendering of too many of axis gridlines and axis labels. Also, you might want to consider increasing [`yAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisInterval) property to a larger value than the automatically calculated axis interval if you do not need many axis gridlines or axis labels.
 
 **Note:** 
 We do not recommend setting axis minor interval as it will decrease chart performance.
@@ -324,19 +329,30 @@ We do not recommend setting axis minor interval as it will decrease chart perfor
 This code snippet shows how to set axis major interval in the Web Components charts.
 
 ```html
-<igc-category-chart x-axis-interval="5" y-axis-interval="50"></igc-category-chart>
+<igc-category-chart
+    x-axis-interval="5"
+    y-axis-interval="50">
+</igc-category-chart>
 
-<igc-financial-chart x-axis-interval="5" y-axis-interval="50"></igc-financial-chart>
+<igc-financial-chart
+    y-axis-interval="50">
+</igc-financial-chart>
 
 <igc-data-chart>
-    <igc-category-x-axis name="xAxis" interval="5"></igc-category-x-axis>
-    <igc-numeric-y-axis name="yAxis" interval="50"></igc-numeric-y-axis>
+    <igc-category-x-axis
+        id="xAxis"
+        interval="5">
+    </igc-category-x-axis>
+    <igc-numeric-y-axis
+        id="yAxis"
+        interval="50">
+    </igc-numeric-y-axis>
 </igc-data-chart>
 ```
 
 ### Axis Scale
 
-Setting the [`YAxisIsLogarithmic`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
+Setting the [`yAxisIsLogarithmic`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisIsLogarithmic) property to false is recommended for higher performance, as fewer operations are needed than calculating axis range and values of axis labels in logarithmic scale.
 
 ### Axis Labels Visibility
 
@@ -345,31 +361,47 @@ In the same way as Markers, axis labels are also expensive because they use temp
 This code snippet shows how to hide axis labels in the Web Components charts.
 
 ```html
-<igc-category-chart x-axis-label-visibility="Collapsed" y-axis-label-visibility="Collapsed">
+<igc-category-chart
+    x-axis-label-visibility="Collapsed"
+    y-axis-label-visibility="Collapsed">
 </igc-category-chart>
 
-<igc-financial-chart x-axis-label-visibility="Collapsed" y-axis-label-visibility="Collapsed">
+<igc-financial-chart
+    x-axis-label-visibility="Collapsed"
+    y-axis-label-visibility="Collapsed">
 </igc-financial-chart>
 
 <igc-data-chart>
-    <igc-category-x-axis name="xAxis" label-visibility="Collapsed"></igc-category-x-axis>
-    <igc-numeric-y-axis name="yAxis" label-visibility="Collapsed"></igc-numeric-y-axis>
+    <igc-category-x-axis
+        id="xAxis"
+        label-visibility="Collapsed">
+    </igc-category-x-axis>
+    <igc-numeric-y-axis
+        id="yAxis"
+        label-visibility="Collapsed">
+    </igc-numeric-y-axis>
 </igc-data-chart>
 ```
 
 ### Axis Labels Abbreviation
 
-Although, the Web Components charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`YAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`YAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTitle) to a string that represents factor used used to abbreviate your data values.
+Although, the Web Components charts support abbreviation of large numbers (e.g. 10,000+) displayed in axis labels when [`yAxisAbbreviateLargeNumbers`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisAbbreviateLargeNumbers) is set to true. We recommend, instead pre-processing large values in your data items by dividing them a common factor and then setting [`yAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTitle) to a string that represents factor used used to abbreviate your data values.
 
 This code snippet shows how to set axis title in the Web Components charts.
 
 ```html
-<igc-category-chart y-axis-title="In millions of Dollars"></igc-category-chart>
+<igc-category-chart
+    y-axis-title="In millions of Dollars">
+</igc-category-chart>
 
-<igc-financial-chart y-axis-title="In millions of Dollars"></igc-financial-chart>
+<igc-financial-chart
+    y-axis-title="In millions of Dollars">
+</igc-financial-chart>
 
 <igc-data-chart>
-    <igc-numeric-y-axis title="In millions of Dollars"></igc-numeric-y-axis>
+    <igc-numeric-y-axis
+        title="In millions of Dollars">
+    </igc-numeric-y-axis>
 </igc-data-chart>
 ```
 
@@ -380,13 +412,25 @@ At runtime, the Web Components charts adjust extent of labels on y-axis based on
 The following code snippet shows how to set a fixed extent for labels on y-axis in the Web Components charts.
 
 ```html
-<igc-category-chart x-axis-label-extent="50" y-axis-label-extent="50"></igc-category-chart>
+<igc-category-chart
+    x-axis-extent="50"
+    y-axis-extent="50">
+</igc-category-chart>
 
-<igc-financial-chart x-axis-label-extent="50" y-axis-label-extent="50"></igc-financial-chart>
+<igc-financial-chart
+    x-axis-extent="50"
+    y-axis-extent="50">
+</igc-financial-chart>
 
 <igc-data-chart>
-    <igc-category-x-axis name="xAxis" label-extent="50"></igc-category-x-axis>
-    <igc-numeric-y-axis name="yAxis" label-extent="50"></igc-numeric-y-axis>
+    <igc-category-x-axis
+        id="xAxis"
+        label-extent="50">
+    </igc-category-x-axis>
+    <igc-numeric-y-axis
+        id="yAxis"
+        label-extent="50">
+    </igc-numeric-y-axis>
 </igc-data-chart>
 ```
 
@@ -394,49 +438,49 @@ The following code snippet shows how to set a fixed extent for labels on y-axis 
 
 Enabling additional axis visuals (e.g. axis titles) or changing their default values might decrease performance in the Web Components charts.
 
-For example, changing these properties on the [`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) or [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control:
+For example, changing these properties on the [`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent) or [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control:
 
 | Axis Visual          | X-Axis Properties | Y-Axis Properties |
 | ---------------------|-------------------|------------------- |
-| All Axis Visual      | [`XAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisInterval)<br />  [`XAxisMinorInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMinorInterval) | [`YAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisInterval)<br />  [`YAxisMinorInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMinorInterval) |
-| Axis Tickmarks       | [`XAxisTickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisTickStroke) <br />  [`XAxisTickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisTickStrokeThickness)<br />  [`XAxisTickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisTickLength)<br />  | [`YAxisTickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTickStroke) <br />  [`YAxisTickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTickStrokeThickness)<br />  [`YAxisTickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTickLength)<br /> |
-| Axis Major Gridlines | [`XAxisMajorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMajorStroke)<br />  [`XAxisMajorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMajorStrokeThickness)<br />   | [`YAxisMajorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMajorStroke)<br />  [`YAxisMajorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMajorStrokeThickness)<br /> |
-| Axis Minor Gridlines | [`XAxisMinorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMinorStroke)<br />  [`XAxisMinorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMinorStrokeThickness)<br />   | [`YAxisMinorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMinorStroke)<br />  [`YAxisMinorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisMinorStrokeThickness)<br /> |
-| Axis Main Line       | [`XAxisStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisStroke)<br />  [`XAxisStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisStrokeThickness)<br />   | [`YAxisStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisStroke)<br />  [`YAxisStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisStrokeThickness)<br /> |
-| Axis Titles          | [`XAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisTitle)<br />  [`XAxisTitleAngle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisTitleAngle)<br />    | [`YAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTitle)<br />  [`YAxisTitleAngle`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisTitleAngle)<br /> |
-| Axis Strips          | [`XAxisStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisStrip)<br />   | [`YAxisStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=yAxisStrip)<br /> |
+| All Axis Visual      | [`xAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisInterval)<br />  [`xAxisMinorInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent&member=xAxisMinorInterval) | [`yAxisInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisInterval)<br />  [`yAxisMinorInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMinorInterval) |
+| Axis Tickmarks       | [`xAxisTickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisTickStroke) <br />  [`xAxisTickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisTickStrokeThickness)<br />  [`xAxisTickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisTickLength)<br />  | [`yAxisTickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTickStroke) <br />  [`yAxisTickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTickStrokeThickness)<br />  [`yAxisTickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTickLength)<br /> |
+| Axis Major Gridlines | [`xAxisMajorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisMajorStroke)<br />  [`xAxisMajorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisMajorStrokeThickness)<br />   | [`yAxisMajorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMajorStroke)<br />  [`yAxisMajorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMajorStrokeThickness)<br /> |
+| Axis Minor Gridlines | [`xAxisMinorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisMinorStroke)<br />  [`xAxisMinorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisMinorStrokeThickness)<br />   | [`yAxisMinorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMinorStroke)<br />  [`yAxisMinorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMinorStrokeThickness)<br /> |
+| Axis Main Line       | [`xAxisStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisStroke)<br />  [`xAxisStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisStrokeThickness)<br />   | [`yAxisStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisStroke)<br />  [`yAxisStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisStrokeThickness)<br /> |
+| Axis Titles          | [`xAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisTitle)<br />  [`xAxisTitleAngle`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisTitleAngle)<br />    | [`yAxisTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTitle)<br />  [`yAxisTitleAngle`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisTitleAngle)<br /> |
+| Axis Strips          | [`xAxisStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=xAxisStrip)<br />   | [`yAxisStrip`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisStrip)<br /> |
 
-Or changing properties of an [`IgcAxis`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent) in the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control:
+Or changing properties of an [`IgcAxisComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent) in the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control:
 
 | Axis Visual          | Axis Properties |
 | ---------------------|------------------- |
-| All Axis Visuals     | `Interval`, `MinorInterval` |
-| Axis Tickmarks       | [`TickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickStroke) , [`TickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickStrokeThickness), [`TickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickLength) |
-| Axis Major Gridlines | [`MajorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=majorStroke), [`MajorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=majorStrokeThickness) |
-| Axis Minor Gridlines | [`MinorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=minorStroke), [`MinorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=minorStrokeThickness) |
-| Axis Main Line       | [`Stroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=stroke), [`StrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=strokeThickness) |
-| Axis Titles          | [`Title`](mcp:get_api_reference?platform=webcomponents&component=IgcDomainChartComponent&member=chartTitle), `TitleAngle` |
-| Axis Strips          | [`Strip`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=strip) |
+| All Axis Visuals     | [`interval`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericAxisBaseComponent&member=interval), [`minorInterval`](mcp:get_api_reference?platform=webcomponents&component=IgcNumericAxisBaseComponent&member=minorInterval) |
+| Axis Tickmarks       | [`tickStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickStroke), [`tickStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickStrokeThickness), [`tickLength`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=tickLength) |
+| Axis Major Gridlines | [`majorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=majorStroke), [`majorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=majorStrokeThickness) |
+| Axis Minor Gridlines | [`minorStroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=minorStroke), [`minorStrokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=minorStrokeThickness) |
+| Axis Main Line       | [`IgcAxisComponent.stroke`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=stroke), [`strokeThickness`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=strokeThickness) |
+| Axis Titles          | [`chartTitle`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=chartTitle), [`titleAngle`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=titleAngle) |
+| Axis Strips          | [`IgcAxisComponent.strip`](mcp:get_api_reference?platform=webcomponents&component=IgcAxisComponent&member=strip) |
 
 ## Performance in Financial Chart
 
-In addition to above performance guidelines, the Web Components [`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control has the following unique features that affect performance.
+In addition to above performance guidelines, the Web Components [`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent) control has the following unique features that affect performance.
 
 ### Y-Axis Mode
 
-Setting the [`YAxisMode`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMode) option to `Numeric` is recommended for higher performance, as fewer operations are needed than using [`PercentChange`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=percentChange) mode.
+Setting the [`yAxisMode`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=yAxisMode) option to [`Numeric`](mcp:get_api_reference?platform=webcomponents&component=FinancialChartYAxisMode&member=Numeric) is recommended for higher performance, as fewer operations are needed than using [`IgcLineSeriesComponent.percentChange`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent&member=percentChange) mode.
 
 ### Chart Panes
 
-Setting a lot of panes using [`IndicatorTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=indicatorTypes) and [`OverlayTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=overlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
+Setting a lot of panes using [`indicatorTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=indicatorTypes) and [`overlayTypes`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=overlayTypes) options, might decrease performance and it is recommended to use a few financial indicators and one financial overlay.
 
 ### Zoom Slider
 
-Setting the [`ZoomSliderType`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=zoomSliderType) option to [`None`](mcp:get_api_reference?platform=webcomponents&component=FinancialChartVolumeType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
+Setting the [`zoomSliderType`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=zoomSliderType) option to [`None`](mcp:get_api_reference?platform=webcomponents&component=FinancialChartZoomSliderType&member=None) will improve chart performance and enable more vertical space for other indicators and the volume pane.
 
 ### Volume Type
 
-Setting the [`VolumeType`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=volumeType) property can have the following impact on chart performance:
+Setting the [`volumeType`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent&member=volumeType) property can have the following impact on chart performance:
 
 - [`None`](mcp:get_api_reference?platform=webcomponents&component=FinancialChartVolumeType&member=None) - is the least expensive since it does not display the volume pane.
 - [`Line`](mcp:get_api_reference?platform=webcomponents&component=FinancialChartVolumeType&member=Line) - is more expensive volume type to render and it is recommended when rendering a lot of data points or when plotting a lot of data sources.
@@ -445,26 +489,26 @@ Setting the [`VolumeType`](mcp:get_api_reference?platform=webcomponents&componen
 
 ## Performance in Data Chart
 
-In addition to the general performance guidelines, the Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control has the following unique features that affect performance.
+In addition to the general performance guidelines, the Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control has the following unique features that affect performance.
 
 ### Axes Collection
 
-Adding too many axis to the [`Axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Axes) collection of the [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
+Adding too many axis to the [`axes`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=axes) collection of the [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control will decrease chart performance and we recommend [Sharing Axes](chart-axis-layouts.md#axis-sharing-example) between series.
 
 ### Series Collection
 
-Also, adding a lot of series to the [`Series`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent&member=Series) collection of the Web Components [`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
+Also, adding a lot of series to the [`IgcSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcSeriesComponent) collection of the Web Components [`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent) control will add overhead to rendering because each series has its own rendering canvas. This is especially important if you have more than 10 series in the Data Chart. We recommend combining multiple data sources into flatten data source (see [Data Structure](#data-structure) section) and then using conditional styling feature of the following series:
 
 | Slower Performance Scenario | Faster Scenario with Conditional Styling |
 | ----------------------------|---------------------------------------- |
-| 10+ of [`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)         | Single [`IgcScatterLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent) |
-| 20+ of [`IgcLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)         | Single [`IgcScatterPolylineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolylineSeriesComponent) |
-| 10+ of [`IgcScatterLineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent)  | Single [`IgcScatterPolylineSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolylineSeriesComponent) |
-| 10+ of [`IgcPointSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPointSeriesComponent)        | Single [`IgcScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent) |
-| 20+ of [`IgcPointSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcPointSeriesComponent)        | Single [`IgcHighDensityScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
-| 20+ of [`IgcScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent)      | Single [`IgcHighDensityScatterSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
-| 10+ of [`IgcAreaSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcAreaSeriesComponent)         | Single [`IgcScatterPolygonSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolygonSeriesComponent) |
-| 10+ of [`IgcColumnSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent)       | Single [`IgcScatterPolygonSeries`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolygonSeriesComponent) |
+| 10+ of [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)         | Single [`IgcScatterLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent) |
+| 20+ of [`IgcLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcLineSeriesComponent)         | Single [`IgcScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolylineSeriesComponent) |
+| 10+ of [`IgcScatterLineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterLineSeriesComponent)  | Single [`IgcScatterPolylineSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolylineSeriesComponent) |
+| 10+ of [`IgcPointSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPointSeriesComponent)        | Single [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent) |
+| 20+ of [`IgcPointSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcPointSeriesComponent)        | Single [`IgcHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
+| 20+ of [`IgcScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterSeriesComponent)      | Single [`IgcHighDensityScatterSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcHighDensityScatterSeriesComponent) |
+| 10+ of [`IgcAreaSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcAreaSeriesComponent)         | Single [`IgcScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolygonSeriesComponent) |
+| 10+ of [`IgcColumnSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcColumnSeriesComponent)       | Single [`IgcScatterPolygonSeriesComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcScatterPolygonSeriesComponent) |
 
 ## Additional Resources
 
@@ -493,6 +537,6 @@ You can find more information about related chart types in these topics:
 - [Chart Trendlines](chart-trendlines.md)
 
 ## API References
-[`IgcCategoryChart`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
-[`IgcFinancialChart`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
-[`IgcDataChart`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)
+[`IgcCategoryChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcCategoryChartComponent)
+[`IgcFinancialChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcFinancialChartComponent)
+[`IgcDataChartComponent`](mcp:get_api_reference?platform=webcomponents&component=IgcDataChartComponent)

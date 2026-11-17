@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The Angular OpenStreetMapImagery is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world."
+platformType: xplat
 _tocName: Displaying OSM Imagery
 _premium: true
 ---
 # Angular Displaying Imagery from Open Street Maps
 
-The Angular `IgxOpenStreetMapImagery` is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
+The Angular [`IgxOpenStreetMapImagery`](mcp:get_api_reference?platform=angular&component=IgxOpenStreetMapImagery) is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world. It provides geographic imagery tiles of the world only in road map style without any configuration options. This geographic imagery service can be accessed directly on <a href="http://www.openstreetmap.org" target="_blank">www.OpenStreetMap.org</a> web site.
 By the default, the Ignite UI for Angular map component already displays geographic imagery from the Open Street Maps. Therefore, there is no need to configure the control to display geographic imagery from the Open Street Maps.
 
 ## Angular Displaying Imagery from Open Street Maps Example
@@ -88,25 +89,25 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## Code Snippet
-This code example explicitly sets `BackgroundContent` of the map component to the `IgxOpenStreetMapImagery` object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets [`backgroundContent`](mcp:get_api_reference?platform=angular&component=IgxGeographicMapComponent&member=backgroundContent) of the map component to the [`IgxOpenStreetMapImagery`](mcp:get_api_reference?platform=angular&component=IgxOpenStreetMapImagery) object which provides geographic imagery from  OpenStreetMap© contributors.
 
 ```html
-<igx-geographic-map #map
-    width="100%"
+<igx-geographic-map
+    #map
     height="100%"
-    zoomable="true" >
+    width="100%"
+    zoomable="true">
 </igx-geographic-map>
 ```
 
 ```ts
-import { IgxGeographicMapComponent } from 'igniteui-angular-maps';
-import { IgxOpenStreetMapImagery } from 'igniteui-angular-maps';
+import { IgxGeographicMapComponent, IgxOpenStreetMapImagery } from 'igniteui-angular-maps';
 // ...
-public map: IgxGeographicMapComponent;
-
-const tileSource = new IgxOpenStreetMapImagery();
-this.map.backgroundContent = tileSource;
+@ViewChild("map", { static: true } )
+private map: IgxGeographicMapComponent
+var osmImagery = new IgxOpenStreetMapImagery();
+this.map.backgroundContent = osmImagery;
 ```
 
 ## API References
-`IgxOpenStreetMapImagery`
+[`IgxOpenStreetMapImagery`](mcp:get_api_reference?platform=angular&component=IgxOpenStreetMapImagery)

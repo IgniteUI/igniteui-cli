@@ -424,7 +424,7 @@ export class MyComponent implements OnInit {
 
 Related topics:
 
-- [Combo](/combo)
+- [Combo](/inputs/combo/overview)
 - [Select](/select)
 - [Input Group](/input-group)
 - [Date Picker](/date-picker)

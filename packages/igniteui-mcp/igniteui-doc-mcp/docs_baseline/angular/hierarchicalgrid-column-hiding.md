@@ -250,7 +250,7 @@ $custom-button: flat-button-theme(
 **Note:** 
 Instead of hardcoding the color values like we just did, we can achieve greater flexibility in terms of colors by using the `palette` and `color` functions. Please refer to [`Palettes`](/themes/sass/palettes) topic for detailed guidance on how to use them.
 
-In this example we only changed the text-color of the flat buttons and the button disabled color, but the `button-theme` provides way more parameters to control the button style.
+In this example we only changed the text-color of the flat buttons and the button disabled color, but the `flat-button-theme` provides way more parameters to control the button style.
 
 The last step is to apply each component theme with `tokens()`:
 

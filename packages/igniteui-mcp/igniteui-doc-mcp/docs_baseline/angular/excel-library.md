@@ -6,12 +6,13 @@ license: commercial
 mentionedTypes: ["Workbook", "Worksheet", "Cell", "Formula"]
 llms:
   description: "The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like Workbook, Worksheet, Cell, Formula and many more."
+platformType: xplat-unmapped
 _tocName: Excel Library
 _premium: true
 ---
 # Angular Excel Library Overview
 
-The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like `IgxWorkbook`, `IgxWorksheet`, `Cell`, `IgxFormula` and many more. The Infragistics Angular Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
+The Infragistics Angular Excel Library allows you to work with spreadsheet data using familiar Microsoft® Excel® spreadsheet objects like [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook), [`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet), [`Cell`](mcp:get_api_reference?platform=angular&component=WorksheetCell), [`Formula`](mcp:get_api_reference?platform=angular&component=Formula) and many more. The Infragistics Angular Excel Library makes it easy for you to represent the data of your application in an Excel spreadsheet as well as transfer data from Excel into your application.
 
 ## Angular Excel Library Example
 
@@ -354,9 +355,9 @@ The Excel Library does not support the Excel Binary Workbook (.xlsb) format at t
 
 Now that the Excel Library module is imported, next step is to load a workbook.
 
-In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a `IgxWorkbook`.
+In the following code snippet, an external [ExcelUtility](./excel-utility.md) class is used to save and load a [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook).
 
-In order to load and save `IgxWorkbook` objects, you can utilize the `Save` method of the actual `IgxWorkbook` object, as well as its static `Load` method.
+In order to load and save [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) objects, you can utilize the [`Workbook.save`](mcp:get_api_reference?platform=angular&component=Workbook&member=save) method of the actual [`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook) object, as well as its static [`Workbook.load`](mcp:get_api_reference?platform=angular&component=Workbook&member=load) method.
 
 ```ts
 import { Workbook } from "igniteui-angular-excel";
@@ -372,7 +373,7 @@ ExcelUtility.save(workbook, "fileName");
 
 Due to the size of the Excel Library, it's recommended to disable the source map generation.
 
-Modify `angular.json` by setting the `vendorSourceMap` option under architect => build => options and under serve => options:
+Modify [`Workbook.angular.json`](mcp:get_api_reference?platform=angular&component=Workbook&member=angular.json) by setting the [`Workbook.vendorSourceMap`](mcp:get_api_reference?platform=angular&component=Workbook&member=vendorSourceMap) option under architect => build => options and under serve => options:
 
 ```ts
     "architect": {
@@ -401,5 +402,5 @@ Modify `angular.json` by setting the `vendorSourceMap` option under architect =>
 ```
 
 ## API References
-`IgxWorksheet`
-`IgxWorkbook`
+[`Worksheet`](mcp:get_api_reference?platform=angular&component=Worksheet)
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)

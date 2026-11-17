@@ -4,7 +4,7 @@ description: "The Ignite UI for Blazor CLI scaffolds Blazor projects, adds pre-c
 keywords: "Blazor cli, command line interface, Ignite UI for Blazor, Infragistics"
 mentionedTypes: []
 license: MIT
-last_updated: "2026-04-21"
+last_updated: "2026-10-01"
 llms:
   description: "The Ignite UI CLI (igniteui-cli) is a standalone global command-line tool for creating and scaffolding Blazor applications with Ignite UI for Blazor."
 _tocName: Ignite UI CLI
@@ -180,6 +180,8 @@ To list all available templates in the current project:
 ```cmd
 ig list
 ```
+
+The list is project-aware and reflects the project's framework and type.
 
 For a guided walkthrough of the component addition wizard, see [Step-by-Step Guide Using Ignite UI CLI](./general-step-by-step-guide-using-cli.md#add-view).
 

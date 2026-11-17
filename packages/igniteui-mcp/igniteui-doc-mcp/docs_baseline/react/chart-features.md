@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
 llms:
   description: "The Ignite UI for React Charts allow you to display many different features to portray the full data story to be told with your chart."
+platformType: xplat
 _tocName: Chart Features
 ---
 # React Chart Features

@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["FinancialChart", "CategoryChart", "DataChart"]
 llms:
   description: "The Ignite UI for Angular Charts allow you to display many different features to portray the full data story to be told with your chart."
+platformType: xplat
 _tocName: Chart Features
 _premium: true
 ---
@@ -1522,6 +1523,6 @@ https://dl.infragistics.com/x/css/samples/shared.v8.css
 ```
 
 ## API References
-`IgxFinancialChart`
-`IgxCategoryChart`
-`IgxDataChart`
+[`IgxFinancialChartComponent`](mcp:get_api_reference?platform=angular&component=IgxFinancialChartComponent)
+[`IgxCategoryChartComponent`](mcp:get_api_reference?platform=angular&component=IgxCategoryChartComponent)
+[`IgxDataChartComponent`](mcp:get_api_reference?platform=angular&component=IgxDataChartComponent)

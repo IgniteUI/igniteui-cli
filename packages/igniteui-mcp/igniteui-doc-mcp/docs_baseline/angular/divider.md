@@ -108,7 +108,7 @@ Now that you have the Ignite UI for Angular Divider module or component imported
 
 ### Vertical Divider
 
-By adding the [`vertical`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective&member=vertical) attribute and setting its value to `true`, you can change the direction of the divider from horizontal to vertical.
+By adding the [`vertical`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent&member=vertical) attribute and setting its value to `true`, you can change the direction of the divider from horizontal to vertical.
 
 ```html
 <igx-divider [vertical]="true"></igx-divider>
@@ -168,7 +168,7 @@ export class DividerVerticalComponent {
 ### Dashed Divider
 
 The default style of the divider is a `solid` line but it can also be `dashed`.
-To change the default look simply use the [`type`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective&member=type) attribute of the divider and set its value to `dashed`.
+To change the default look simply use the [`type`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent&member=type) attribute of the divider and set its value to `dashed`.
 
 ```html
 <igx-divider type="dashed"></igx-divider>
@@ -220,7 +220,7 @@ export class DividerDashedComponent {
 ### Inset Divider
 
 The divider can be set in on both sides.
-To inset the divider, set the [`middle`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective&member=middle) attribute of the divider to `true` and provider the desired [`inset`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective&member=inset) value, the divider will start shrinking from both ends.
+To inset the divider, set the [`middle`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent&member=middle) attribute of the divider to `true` and provider the desired [`inset`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent&member=inset) value, the divider will start shrinking from both ends.
 
 **Keep in mind that you have to add unit(px,rem,%...) at the end of the value otherwise, it will not work.**
 
@@ -302,11 +302,11 @@ export class DividerInsetComponent {
 }
 ```
 
-If the value of the [`middle`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective&member=middle) attribute is set to a false value, or if the attribute is omitted altogether, the divider will set in only on the left.
+If the value of the [`middle`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent&member=middle) attribute is set to a false value, or if the attribute is omitted altogether, the divider will set in only on the left.
 
 ## API References
 <hr/>
-- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerDirective)
+- [`IgxDivider`](mcp:get_api_reference?platform=angular&component=IgxDividerComponent)
 - `IgxDividerComponent Styles`
 ## Additional Resources
 

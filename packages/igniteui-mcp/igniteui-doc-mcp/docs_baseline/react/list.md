@@ -130,8 +130,6 @@ import { IgrList, IgrListHeader, IgrListItem } from 'igniteui-react';
 import 'igniteui-webcomponents/themes/light/bootstrap.css';
 ```
 
-Before using the [`IgrList`](mcp:get_api_reference?platform=react&component=IgrList), you need to register it as follows:
-
 For a complete introduction to the Ignite UI for React, read the [**Getting Started**](../general-getting-started.md) topic.
 
 ### Add List Items

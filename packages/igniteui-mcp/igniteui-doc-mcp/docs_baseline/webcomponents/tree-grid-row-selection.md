@@ -59,9 +59,9 @@ export class EmployeesFlatData extends Array<EmployeesFlatDataItem> {
 ```
 
 ## Setup
-In order to setup row selection in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), you just need to set the [`IgcTreeGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowSelection) property. This property accepts [`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
+In order to setup row selection in the [`IgcTreeGrid`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent), you just need to set the [`IgcTreeGrid.rowSelection`](mcp:get_api_reference?platform=webcomponents&component=IgcTreeGridComponent&member=rowSelection) property. This property accepts [`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) values.
 
-[`IgcGridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
+[`GridSelectionMode`](mcp:get_api_reference?platform=webcomponents&component=GridSelectionMode) exposes the following modes:
 
 - **None**
 - **Single**

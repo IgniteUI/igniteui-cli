@@ -1,5 +1,5 @@
 ---
-title: "Button Component"
+title: "Button"
 description: Get started with the Web Components Button Component. Select button variants, configure sizes, define styling, and gain flexibility through the Web Components Button OnClick event.
 keywords: "Web Components, UI controls, web widgets, UI widgets, Web Components Button Components, Infragistics"
 mentionedTypes: ["Button", "ButtonBase"]

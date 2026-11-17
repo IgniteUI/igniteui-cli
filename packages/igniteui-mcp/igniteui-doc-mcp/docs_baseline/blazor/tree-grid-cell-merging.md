@@ -130,7 +130,7 @@ Cell merging in the grid is controlled at two levels:
 
 ### Grid Merge Mode
 
-The grid exposes a [`IgbTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellMergeMode) property that accepts values from the [`IgbGridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode) enum:
+The grid exposes a [`IgbTreeGrid.cellMergeMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellMergeMode) property that accepts values from the [`GridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode) enum:
 - `always` - Merges any adjacent cells that meet the merging condition, regardless of sort state.
 - `onSort` - Merges adjacent cells only when the column is sorted **(default value)**.
 
@@ -190,7 +190,7 @@ If a merged cell is clicked, the closest cell from the merge sequence will becom
 ## API References
 [`IgbTreeGrid`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid)
 [`CellMergeMode`](mcp:get_api_reference?platform=blazor&component=IgbTreeGrid&member=cellMergeMode)
-[`IgbGridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode)
+[`GridCellMergeMode`](mcp:get_api_reference?platform=blazor&component=GridCellMergeMode)
 [`IgbGridMergeStrategy`](mcp:get_api_reference?platform=blazor&component=IgbGridMergeStrategy)
 [`IgbDefaultMergeStrategy`](mcp:get_api_reference?platform=blazor&component=IgbDefaultMergeStrategy)
 ## Additional Resources

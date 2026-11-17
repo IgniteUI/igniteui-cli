@@ -13,7 +13,7 @@ _tocName: Date Time Input
 The Ignite UI for React Date Time Input allows the user to set and edit the date and time in a chosen input element. The user can edit both date and time portions using an editable masked input. Additionally, one can specify a desired display and input format, as well as min and max values to utilize validation.
 
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIcon, IgrDateTimeInput, DatePart, registerIconFromText } from 'igniteui-react';
@@ -23,44 +23,32 @@ const upIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const downIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
 const clearIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
-export default class DateTimeInputOverview extends React.Component<any, any> {
+registerIconFromText("up", upIconText, "material");
+registerIconFromText("down", downIconText, "material");
+registerIconFromText("clear", clearIconText, "material");
 
-    private dateTimeInput: IgrDateTimeInput;
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("up", upIconText, "material");
-        registerIconFromText("down", downIconText, "material");
-        registerIconFromText("clear", clearIconText, "material");
-        this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
-    }
+export default function DateTimeInputOverview() {
+    const inputRef = useRef<IgrDateTimeInput>(null);
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDateTimeInput ref={this.dateTimeInputRef}>
-                    <span slot="prefix" onClick={() => this.dateTimeInput.clear()}>
-                    <IgrIcon name="clear" collection="material" />
-                    </span>
-                    <span slot="suffix" onClick={() => this.dateTimeInput.stepUp(DatePart.Month)}>
-                    <IgrIcon name="up" collection="material" />
-                    </span>
-                    <span slot='suffix' onClick={() => this.dateTimeInput.stepDown(DatePart.Month)}>
-                    <IgrIcon name="down" collection="material" />
-                    </span> 
-                </IgrDateTimeInput>
-            </div>
-        );
-    }
-
-    public dateTimeInputRef(input: IgrDateTimeInput) {
-        if (!input) { return; }
-        this.dateTimeInput = input;
-    }
-
+    return (
+        <div className="container sample">
+            <IgrDateTimeInput ref={inputRef}>
+                <span slot="prefix" onClick={() => inputRef.current!.clear()}>
+                <IgrIcon name="clear" collection="material" />
+                </span>
+                <span slot="suffix" onClick={() => inputRef.current!.stepUp(DatePart.Month)}>
+                <IgrIcon name="up" collection="material" />
+                </span>
+                <span slot='suffix' onClick={() => inputRef.current!.stepDown(DatePart.Month)}>
+                <IgrIcon name="down" collection="material" />
+                </span> 
+            </IgrDateTimeInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DateTimeInputOverview/>);
 ```
 
@@ -151,7 +139,7 @@ To set a specific input format, pass it as a string to the [`IgrDateTimeInput`](
 If all went well, you should see the following in your browser:
 
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIcon, IgrDateTimeInput, DatePart, registerIconFromText } from 'igniteui-react';
@@ -160,44 +148,33 @@ import 'igniteui-webcomponents/themes/light/bootstrap.css';
 const upIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>';
 const downIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
 const clearIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-export default class DateTimeInputInputFormatDisplayFormat extends React.Component<any, any> {
 
-    private dateTimeInput: IgrDateTimeInput;
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("up", upIconText, "material");
-        registerIconFromText("down", downIconText, "material");
-        registerIconFromText("clear", clearIconText, "material");
-        this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
-    }
+registerIconFromText("up", upIconText, "material");
+registerIconFromText("down", downIconText, "material");
+registerIconFromText("clear", clearIconText, "material");
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDateTimeInput ref={this.dateTimeInputRef} inputFormat="dd-MM-yy" displayFormat="medium">
-                    <span slot="prefix" onClick={() => this.dateTimeInput.clear()}>
-                    <IgrIcon name="clear" collection="material" />
-                    </span>
-                    <span slot="suffix" onClick={() => this.dateTimeInput.stepUp(DatePart.Date)}>
-                    <IgrIcon name="up" collection="material" />
-                    </span>
-                    <span slot='suffix' onClick={() => this.dateTimeInput.stepDown(DatePart.Date)}>
-                    <IgrIcon name="down" collection="material" />
-                    </span> 
-                </IgrDateTimeInput>
-            </div>
-        );
-    }
+export default function DateTimeInputInputFormatDisplayFormat() {
+    const inputRef = useRef<IgrDateTimeInput>(null);
 
-    public dateTimeInputRef(input: IgrDateTimeInput) {
-        if (!input) { return; }
-        this.dateTimeInput = input;
-    }
-
+    return (
+        <div className="container sample">
+            <IgrDateTimeInput ref={inputRef} inputFormat="dd-MM-yy" displayFormat="medium">
+                <span slot="prefix" onClick={() => inputRef.current!.clear()}>
+                <IgrIcon name="clear" collection="material" />
+                </span>
+                <span slot="suffix" onClick={() => inputRef.current!.stepUp(DatePart.Date)}>
+                <IgrIcon name="up" collection="material" />
+                </span>
+                <span slot='suffix' onClick={() => inputRef.current!.stepDown(DatePart.Date)}>
+                <IgrIcon name="down" collection="material" />
+                </span> 
+            </IgrDateTimeInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DateTimeInputInputFormatDisplayFormat/>);
 ```
 
@@ -263,7 +240,7 @@ You can specify [`Min`](mcp:get_api_reference?platform=react&component=IgrDateTi
 If all went well, the component will be `invalid` if the value is greater or lower than the given dates. Check out the example below:
 
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIcon, IgrDateTimeInput, DatePart, registerIconFromText } from 'igniteui-react';
@@ -273,57 +250,52 @@ const upIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const downIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
 const clearIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
-export default class DateTimeInputMinMaxValue extends React.Component<any, any> {
+registerIconFromText("up", upIconText, "material");
+registerIconFromText("down", downIconText, "material");
+registerIconFromText("clear", clearIconText, "material");
 
-    private dateTimeInput: IgrDateTimeInput;
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("up", upIconText, "material");
-        registerIconFromText("down", downIconText, "material");
-        registerIconFromText("clear", clearIconText, "material");
-        this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
-    }
+export default function DateTimeInputMinMaxValue() {
+    const inputRef = useRef<IgrDateTimeInput>(null);
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDateTimeInput ref={this.dateTimeInputRef} max={new Date(2024, 6, 25)}>
-                    <span slot="prefix" onClick={() => this.dateTimeInput.clear()}>
-                    <IgrIcon name="clear" collection="material" />
-                    </span>
-                    <span slot="suffix" onClick={() => this.dateTimeInput.stepUp(DatePart.Month)}>
-                    <IgrIcon name="up" collection="material" />
-                    </span>
-                    <span slot='suffix' onClick={() => this.dateTimeInput.stepDown(DatePart.Month)}>
-                    <IgrIcon name="down" collection="material" />
-                    </span> 
-                </IgrDateTimeInput>
-            </div>
-        );
-    }
-
-    public dateTimeInputRef(input: IgrDateTimeInput) {
+    // Set min imperatively once the element is attached.
+    function onInputRef(input: IgrDateTimeInput | null) {
         if (!input) { return; }
         input.min = new Date(2021, 0, 1);
-        this.dateTimeInput = input;
+        inputRef.current = input;
     }
+
+    return (
+        <div className="container sample">
+            <IgrDateTimeInput ref={onInputRef} max={new Date(2024, 6, 25)}>
+                <span slot="prefix" onClick={() => inputRef.current!.clear()}>
+                <IgrIcon name="clear" collection="material" />
+                </span>
+                <span slot="suffix" onClick={() => inputRef.current!.stepUp(DatePart.Month)}>
+                <IgrIcon name="up" collection="material" />
+                </span>
+                <span slot='suffix' onClick={() => inputRef.current!.stepDown(DatePart.Month)}>
+                <IgrIcon name="down" collection="material" />
+                </span> 
+            </IgrDateTimeInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DateTimeInputMinMaxValue/>);
 ```
 
 ## Step up/down
 
-The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepDown) methods. They increment or decrement a specific [`IgrDatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date and time and can be used in a couple of ways.
+The [`IgrDateTimeInput`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput) exposes public [`StepUp`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepUp) and [`StepDown`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=stepDown) methods. They increment or decrement a specific [`DatePart`](mcp:get_api_reference?platform=react&component=DatePart) of the currently set date and time and can be used in a couple of ways.
 
 In the first scenario, if no specific DatePart is passed to the method, a default DatePart will increment or decrement, based on the specified [`InputFormat`](mcp:get_api_reference?platform=react&component=IgrDateTimeInput&member=inputFormat) and the internal component implementation. In the second scenario, you can explicitly specify what DatePart to manipulate as it may suite different requirements. Also, both methods accept an optional `delta` parameter of type number which can be used to set the stepUp/stepDown step.
 
 Try it in the example below:
 
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIcon, IgrDateTimeInput, DatePart, registerIconFromText } from 'igniteui-react';
@@ -333,44 +305,32 @@ const upIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const downIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
 const clearIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
-export default class DateTimeInputStepUpDown extends React.Component<any, any> {
+registerIconFromText("up", upIconText, "material");
+registerIconFromText("down", downIconText, "material");
+registerIconFromText("clear", clearIconText, "material");
 
-    private dateTimeInput: IgrDateTimeInput;
-      
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("up", upIconText, "material");
-        registerIconFromText("down", downIconText, "material");
-        registerIconFromText("clear", clearIconText, "material");
-        this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
-    }
+export default function DateTimeInputStepUpDown() {
+    const inputRef = useRef<IgrDateTimeInput>(null);
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDateTimeInput ref={this.dateTimeInputRef}>
-                    <span slot="prefix" onClick={() => this.dateTimeInput.clear()}>
-                    <IgrIcon name="clear" collection="material" />
-                    </span>
-                    <span slot="suffix" onClick={() => this.dateTimeInput.stepUp(DatePart.Month, 3)}>
-                    <IgrIcon name="up" collection="material" />
-                    </span>
-                    <span slot='suffix' onClick={() => this.dateTimeInput.stepDown(DatePart.Date, 2)}>
-                    <IgrIcon name="down" collection="material" />
-                    </span> 
-                </IgrDateTimeInput>
-            </div>
-        );
-    }
-
-    public dateTimeInputRef(input: IgrDateTimeInput) {
-        if (!input) { return; }
-        this.dateTimeInput = input;
-    }
+    return (
+        <div className="container sample">
+            <IgrDateTimeInput ref={inputRef}>
+                <span slot="prefix" onClick={() => inputRef.current!.clear()}>
+                <IgrIcon name="clear" collection="material" />
+                </span>
+                <span slot="suffix" onClick={() => inputRef.current!.stepUp(DatePart.Month, 3)}>
+                <IgrIcon name="up" collection="material" />
+                </span>
+                <span slot='suffix' onClick={() => inputRef.current!.stepDown(DatePart.Date, 2)}>
+                <IgrIcon name="down" collection="material" />
+                </span> 
+            </IgrDateTimeInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DateTimeInputStepUpDown/>);
 ```
 
@@ -427,7 +387,7 @@ igc-date-time-input {
   }
 ```
 ```tsx
-import React from 'react';
+import { useRef } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { IgrIcon, IgrDateTimeInput, DatePart, registerIconFromText } from 'igniteui-react';
@@ -437,44 +397,32 @@ const upIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 const downIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>';
 const clearIconText = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
-export default class DateTimeInputStyling extends React.Component<any, any> {
+registerIconFromText("up", upIconText, "material");
+registerIconFromText("down", downIconText, "material");
+registerIconFromText("clear", clearIconText, "material");
 
-    private dateTimeInput: IgrDateTimeInput;
-    constructor(props: any) {
-        super(props);
-        registerIconFromText("up", upIconText, "material");
-        registerIconFromText("down", downIconText, "material");
-        registerIconFromText("clear", clearIconText, "material");
-        this.dateTimeInputRef = this.dateTimeInputRef.bind(this);
-    }
+export default function DateTimeInputStyling() {
+    const inputRef = useRef<IgrDateTimeInput>(null);
 
-    public render(): JSX.Element {
-        return (
-            <div className="container sample">
-                <IgrDateTimeInput ref={this.dateTimeInputRef}>
-                    <span slot="prefix" onClick={() => this.dateTimeInput.clear()}>
-                    <IgrIcon name="clear" collection="material" />
-                    </span>
-                    <span slot="suffix" onClick={() => this.dateTimeInput.stepUp(DatePart.Month)}>
-                    <IgrIcon name="up" collection="material" />
-                    </span>
-                    <span slot='suffix' onClick={() => this.dateTimeInput.stepDown(DatePart.Month)}>
-                    <IgrIcon name="down" collection="material" />
-                    </span> 
-                </IgrDateTimeInput>
-            </div>
-        );
-    }
-
-    public dateTimeInputRef(input: IgrDateTimeInput) {
-        if (!input) { return; }
-        this.dateTimeInput = input;
-    }
-
+    return (
+        <div className="container sample">
+            <IgrDateTimeInput ref={inputRef}>
+                <span slot="prefix" onClick={() => inputRef.current!.clear()}>
+                <IgrIcon name="clear" collection="material" />
+                </span>
+                <span slot="suffix" onClick={() => inputRef.current!.stepUp(DatePart.Month)}>
+                <IgrIcon name="up" collection="material" />
+                </span>
+                <span slot='suffix' onClick={() => inputRef.current!.stepDown(DatePart.Month)}>
+                <IgrIcon name="down" collection="material" />
+                </span> 
+            </IgrDateTimeInput>
+        </div>
+    );
 }
 
-// rendering above class to the React DOM
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// rendering above component to the React DOM
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(<DateTimeInputStyling/>);
 ```
 

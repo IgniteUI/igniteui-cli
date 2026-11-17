@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["GeographicMap"]
 llms:
   description: "The Blazor OpenStreetMapImagery is a free geographic imagery mapping service created collaboratively by OpenStreetMap© contributors from around the world."
+platformType: xplat
 _tocName: Displaying OSM Imagery
 _premium: true
 ---
@@ -50,21 +51,22 @@ By the default, the Ignite UI for Blazor map component already displays geograph
 ```
 
 ## Code Snippet
-This code example explicitly sets [`BackgroundContent`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=backgroundContent) of the map component to the [`IgbOpenStreetMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbOpenStreetMapImagery) object which provides geographic imagery from  OpenStreetMap© contributors.
+This code example explicitly sets [`BackgroundContent`](mcp:get_api_reference?platform=blazor&component=IgbGeographicMap&member=BackgroundContent) of the map component to the [`IgbOpenStreetMapImagery`](mcp:get_api_reference?platform=blazor&component=IgbOpenStreetMapImagery) object which provides geographic imagery from  OpenStreetMap© contributors.
 
 ```razor
-<IgbGeographicMap Height="100%" Width="100%" Zoomable="true"
-    BackgroundContent="OSMImagery" />
+<IgbGeographicMap
+    @ref="map"
+    Height="100%"
+    Width="100%"
+    Zoomable="true" />
+```
 
-@code {
-
-    public IgbOpenStreetMapImagery OSMImagery;
-
-    protected override void OnInitialized()
-    {
-        this.OSMImagery = new IgbOpenStreetMapImagery();
-    }
-}
+```razor
+private IgbGeographicMap map;
+var map = this.map;
+var osmImagery = new IgbOpenStreetMapImagery();
+osmImagery.Name = "osmImagery";
+map.BackgroundContent = osmImagery;
 ```
 
 ## API References

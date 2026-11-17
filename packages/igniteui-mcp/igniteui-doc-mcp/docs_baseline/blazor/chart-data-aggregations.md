@@ -4,21 +4,23 @@ description: Infragistics' Blazor Data Aggregations
 keywords: Blazor Charts, Markers, Infragistics
 license: commercial
 
+mentionedTypes: ["DomainChart", "CategoryChart"]
 namespace: Infragistics.Controls.Charts
 llms:
   description: "In the Ignite UI for Blazor CategoryChart control Data Aggregations feature allows you to group data in the chart by unique values on the XAxis and then sort those groups."
+platformType: xplat
 _tocName: Chart Data Aggregations
 _premium: true
 ---
 # Blazor Data Aggregations
 
-In the Ignite UI for Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control Data Aggregations feature allows you to group data in the chart by unique values on the [`XAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMemberPath) and then sort those groups. You may then apply summaries which will be reflected by the range of the [`YAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=yAxisMemberPath) and will be displayed in the tooltip when hovering the series.
+In the Ignite UI for Blazor [`IgbCategoryChart`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart) control Data Aggregations feature allows you to group data in the chart by the unique values of a data member on the X-axis and then sort those groups. You may then apply summaries which will be reflected by the range of the Y-axis and will be displayed in the tooltip when hovering the series.
 
 ## Blazor Data Aggregations Example
 
-The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member of the [`XAxis`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=xAxisMemberPath) and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
+The following example depicts a [Column Chart](../types/column-chart.md) that groups by the Country member on the X-axis and can be changed to other properties within each data item such as Product, MonthName, and Year to aggregate the sales data. Also a summary and sort option is available to get a desirable order for the grouped property.
 
-Note, the abbreviated functions found within the dropdowns for [`InitialSummaries`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=initialSummaries) and [`GroupSorts`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=groupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
+Note, the abbreviated functions found within the dropdowns for [`InitialSummaries`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=InitialSummaries) and [`GroupSorts`](mcp:get_api_reference?platform=blazor&component=IgbCategoryChart&member=GroupSorts) have be applied as shown to get a correct result based on the property you assign. eg. Sum(sales) as Sales | Sales Desc
 
 ```razor
 @using IgniteUI.Blazor.Controls
@@ -189,6 +191,15 @@ public class SalesData
         // ... 1039 more items
     }
 }
+```
+
+```razor
+<IgbCategoryChart
+    @ref="chart"
+    DataSource="SalesData"
+    InitialGroups="Country"
+    InitialSummaries="Sum(Sales) as Sales"
+    GroupSorts="Sales Desc" />
 ```
 
 ## API References

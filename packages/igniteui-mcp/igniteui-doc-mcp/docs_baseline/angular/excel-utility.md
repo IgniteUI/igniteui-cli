@@ -6,6 +6,7 @@ license: commercial
 mentionedTypes: ["Workbook", "WorkbookFormat", "WorkbookSaveOptions"]
 llms:
   description: "Describes the ExcelUtility helper used to load, save, and convert workbook data with the Ignite UI for Angular Excel Library."
+platformType: xplat-unmapped
 _tocName: Excel Utility
 _premium: true
 ---
@@ -116,6 +117,6 @@ export class ExcelUtility {
 ```
 
 ## API References
-`IgxWorkbookFormat`
-`IgxWorkbookSaveOptions`
-`IgxWorkbook`
+[`WorkbookFormat`](mcp:get_api_reference?platform=angular&component=WorkbookFormat)
+[`WorkbookSaveOptions`](mcp:get_api_reference?platform=angular&component=WorkbookSaveOptions)
+[`Workbook`](mcp:get_api_reference?platform=angular&component=Workbook)
