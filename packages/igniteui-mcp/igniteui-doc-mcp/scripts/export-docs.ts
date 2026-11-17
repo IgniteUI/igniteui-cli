@@ -105,10 +105,10 @@ function untrackedFiles(lang: string): Set<string> {
 }
 
 /**
- * Angular's sync step copies xplat-generated pages into docs/angular/src/content:
- * it overwrites some tracked files and adds untracked ones. Undo both so the
- * submodule is left clean enough for switch-submodules.sh to pull. Untracked
- * files that existed before the run are left alone.
+ * Angular's generate step expands grids_templates into docs/angular/src/content,
+ * overwriting tracked files and adding untracked ones. Undo both so the submodule
+ * is left clean enough for switch-submodules.sh to pull. Untracked files that
+ * existed before the run are left alone.
  */
 function restoreAngularContent(lang: string, untrackedBefore: Set<string>) {
   const contentPath = `docs/angular/src/content/${lang}`;
@@ -125,7 +125,7 @@ function restoreAngularContent(lang: string, untrackedBefore: Set<string>) {
     }
   }
   if (modified.length || added.length) {
-    console.error(`  Cleaned up the Angular sync step: restored ${modified.length} tracked file(s), removed ${added.length} added file(s)`);
+    console.error(`  Cleaned up the Angular generate step: restored ${modified.length} tracked file(s), removed ${added.length} added file(s)`);
   }
 }
 
@@ -133,9 +133,24 @@ function generate(cfg: FrameworkConfig, lang: string) {
   console.error(`Generating ${cfg.platform} content (lang: ${lang})...`);
   run(join(XPLAT, "scripts", "generate.mjs"), [`--platform=${cfg.platform}`, `--lang=${lang}`], XPLAT);
   if (cfg.platform === "Angular") {
-    run(join(ANGULAR, "scripts", "sync-generated.mjs"), [`--lang=${lang}`], ANGULAR);
     run(join(ANGULAR, "scripts", "generate.mjs"), [`--lang=${lang}`], ANGULAR);
   }
+}
+
+/**
+ * The Angular site overlays docs/xplat/generated/Angular on its own content tree
+ * instead of copying it in: a generated page wins over an authored one with the
+ * same path, except under grids/ and changelog/, which stay Angular-owned
+ * (igniteui-documentation scripts/lib/angular-content-roots.mjs).
+ */
+const ANGULAR_OVERLAY_EXCLUDED = /^(grids|changelog)\//;
+
+function resolveSource(cfg: FrameworkConfig, lang: string, href: string): string {
+  if (cfg.platform === "Angular" && !ANGULAR_OVERLAY_EXCLUDED.test(href)) {
+    const overlay = join(XPLAT, "generated", "Angular", lang, "components", href);
+    if (existsSync(overlay)) return overlay;
+  }
+  return join(contentDir(cfg, lang), href);
 }
 
 function readToc(cfg: FrameworkConfig, lang: string): TocEntry[] {
@@ -167,6 +182,14 @@ function readEnvironment(cfg: FrameworkConfig, lang: string): Record<string, str
 
 function stripImages(content: string): string {
   return content.replace(/!\[[^\]]*\]\([^)]*\)/g, "");
+}
+
+/**
+ * A page upstream lists in the TOC before writing it: its body is a bare TODO.
+ * Exported, it compresses to frontmatter and headings and ships as an empty doc.
+ */
+function isPlaceholder(content: string): boolean {
+  return /^[ \t]*TODO[ \t]*$/m.test(content.replace(/^(```|~~~)[\s\S]*?^\1[ \t]*$/gm, ""));
 }
 
 function rewriteMdxLinks(content: string): string {
@@ -213,17 +236,17 @@ function main() {
     const entries = readToc(cfg, lang);
     console.error(`  Found ${entries.length} ${cfg.platform} entries in toc.json`);
 
-    const sourceDir = contentDir(cfg, lang);
     mkdirSync(outputDir, { recursive: true });
 
     const usedNames = new Map<string, string>();
     const writtenFiles = new Set<string>();
     const sidecar = new TocSidecar(framework, ROOT);
     let skipped = 0;
+    let placeholders = 0;
 
     for (const tocEntry of entries) {
       const entry = { ...tocEntry, name: resolveTokens(tocEntry.name, replacements).trim() };
-      const sourcePath = join(sourceDir, entry.href);
+      const sourcePath = resolveSource(cfg, lang, entry.href);
       if (!existsSync(sourcePath)) {
         console.error(`[WARN] File not found for toc entry "${entry.name}": ${entry.href}`);
         skipped++;
@@ -232,6 +255,11 @@ function main() {
 
       let content = readFileSync(sourcePath, "utf-8").replace(/^﻿/, "");
       content = content.replace(/^<!--[\s\S]*?-->\s*/, "");
+      if (isPlaceholder(content)) {
+        console.error(`[WARN] Placeholder page skipped for toc entry "${entry.name}": ${entry.href}`);
+        placeholders++;
+        continue;
+      }
       content = convertMdx(content, options);
       content = stripImages(content);
       content = rewriteMdxLinks(content);
@@ -259,6 +287,7 @@ function main() {
     console.error(`\nDone!`);
     console.error(`  Files exported: ${writtenFiles.size}`);
     console.error(`  Skipped (not found): ${skipped}`);
+    console.error(`  Skipped (placeholder): ${placeholders}`);
     console.error(`  Samples: ${stats.samples}`);
     console.error(`  API links: ${stats.apiLinksResolved}/${stats.apiLinks} resolved (${resolvedPct}%)`);
     if (topUnresolved.length) {
