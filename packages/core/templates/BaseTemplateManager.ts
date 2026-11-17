@@ -105,9 +105,15 @@ export abstract class BaseTemplateManager {
 
 	/** Read config and load custom templates based on type */
 	private loadExternalTemplates() {
-		const config = ProjectConfig.getConfig();
+		let entries: string[];
+		try {
+			entries = ProjectConfig.getConfig().customTemplates;
+		} catch {
+			// a config that doesn't parse fails the command that reads it; `ig doctor` reports it
+			return;
+		}
 		const customTemplates: Template[] = [];
-		for (const entry of config.customTemplates) {
+		for (const entry of entries) {
 			const [protocol, value] = entry.split(/(^[^:]+):/).filter(x => x);
 
 			let templateDir = protocol === "file" || protocol === "path"

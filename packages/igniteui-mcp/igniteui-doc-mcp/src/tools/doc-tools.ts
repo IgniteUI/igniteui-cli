@@ -30,9 +30,13 @@ const SEARCH_STOPWORDS = new Set([
 
 // Quote a plain term for FTS4, or pass through a prefix query (grid*). Bare
 // asterisks have no prefix and would be an FTS4 syntax error — drop them.
+// A prefix term with anything but word characters is quoted too ("row-edit*"),
+// because unquoted FTS4 reads a leading "-" as NOT and rejects other punctuation.
 function quoteOrPrefixTerm(term: string): string | null {
   if (term.endsWith('*')) {
-    return /[^*]/.test(term) ? term : null;
+    if (/^[\p{L}\p{N}_]+\*$/u.test(term)) return term;
+    const prefix = term.replace(/\*/g, '');
+    return prefix ? `"${prefix}*"` : null;
   }
   return `"${term}"`;
 }
