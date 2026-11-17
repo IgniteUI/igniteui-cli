@@ -76,7 +76,7 @@ The server exposes six core tools built using the `@modelcontextprotocol/sdk` an
 - On HTTP 404: does **not** throw or propagate an exception — returns a structured MCP tool-level error response (see Error Response Contract below)
 - On any other HTTP error status: throws, which the MCP transport surfaces as an unhandled tool error
 - In local mode, successful responses reconstruct YAML frontmatter including `component`, `toc_name`, `keywords`, `summary`, and `premium` when present
-- In local mode, adds a `package` line after `component` with the package and version of the doc's components in the bundled API reference (e.g. `package: igniteui-react-grids@19.9.1`); omitted when none of them is in the API reference. Remote-mode responses carry no `package` line, because the backend returns the doc body without frontmatter
+- In local mode, adds a `package` line after `component` with the package and version of the doc's components in the bundled API reference (e.g. `package: igniteui-react-grids@19.9`); omitted when none of them is in the API reference. Remote-mode responses carry no `package` line, because the backend returns the doc body without frontmatter
 
 **Schema**:
 - `framework`: Enum (angular|react|blazor|webcomponents) — required
@@ -158,7 +158,7 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 - Output is text, not structured JSON
 - Returns an empty-query message immediately if the input is blank
 
-**Return**: Up to 10 ranked text results, each tagged with the package and version it describes (e.g. `igniteui-react-grids@19.9.1`). Use the exact `component` name and `platform` from a result to call `get_api_reference`.
+**Return**: Up to 10 ranked text results, each tagged with the package and version it describes (e.g. `igniteui-react-grids@19.9`). Use the exact `component` name and `platform` from a result to call `get_api_reference`.
 
 ### **get_api_reference**
 **Purpose**: Retrieve the full API reference for one Ignite UI component or class. Supports Angular, React, Web Components, and Blazor. Component name matching is case-insensitive.
