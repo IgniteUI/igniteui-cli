@@ -88,20 +88,22 @@ export function normalizeDocName(name: string): string {
  * Per-framework alias maps: normalized kebab-case name → actual doc key.
  *
  * Covers cases where the doc key cannot be derived mechanically:
- *   - Combo Box overview is keyed as "overview" not "combo" / "combo-box"
+ *   - Combo Box overview is keyed as "combo-overview" not "combo" / "combo-box"
  *   - Combo sub-docs use bare generic names: "features", "templates", "single-selection"
  *   - Grid overview is "grid-grid" or "data-grid", not "grid"
  *   - Several components append "-overview" or "-chart" suffix
  *   - "radio" covers both Radio and Radio Group
  *   - "slider" covers both Slider and Range Slider
+ *
+ * An alias applies only when no doc has the requested name (see resolveDoc), and
+ * every target must name a doc in the bundled database; doc-tools.test.ts checks both.
  */
-const DOC_ALIASES: Record<string, Record<string, string>> = {
+export const DOC_ALIASES: Record<string, Record<string, string>> = {
     react: {
         // Combo Box
-        combo: 'overview',
-        'combo-box': 'overview',
-        combobox: 'overview',
-        'combo-overview': 'overview',
+        combo: 'combo-overview',
+        'combo-box': 'combo-overview',
+        combobox: 'combo-overview',
         'combo-features': 'features',
         'combobox-features': 'features',
         'combo-templates': 'templates',
@@ -119,7 +121,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization
         virtualization: 'grid-virtualization',
-        'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
         // Non-obvious renames
@@ -128,18 +129,18 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'radio-and-radio-group': 'radio',
         'range-slider': 'slider',
         dashboard: 'dashboard-tile',
-        themes: 'themes-overview',
-        theme: 'themes-overview',
+        themes: 'overview',
+        theme: 'overview',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
         'geographic-map-features': 'geo-map',
-        // grids/theming-grid moved under grids/grid/ in igniteui-documentation
-        'theming-grid': 'grid-theming-grid',
+        'theming-grid': 'grid-theming',
     },
     angular: {
         // Combo Box
-        'combo-box': 'combo',
-        combobox: 'combo',
+        combo: 'combo-overview',
+        'combo-box': 'combo-overview',
+        combobox: 'combo-overview',
         // Grid types
         grid: 'grid-grid',
         'hierarchical-grid': 'hierarchicalgrid-hierarchical-grid',
@@ -150,7 +151,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization — Angular uses different naming convention (hierarchicalgrid-, treegrid-)
         virtualization: 'grid-virtualization',
-        'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
         'hierarchical-grid-virtualization': 'hierarchicalgrid-virtualization',
@@ -164,16 +164,16 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'igx-for-of': 'for-of',
         // Non-obvious renames
         treemap: 'types-treemap-chart',
-        'radio-group': 'radio-button',
-        'range-slider': 'slider',
+        'radio-group': 'radio',
+        'range-slider': 'slider-slider',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
     },
     webcomponents: {
         // Combo Box
-        combo: 'overview',
-        'combo-box': 'overview',
-        combobox: 'overview',
+        combo: 'combo-overview',
+        'combo-box': 'combo-overview',
+        combobox: 'combo-overview',
         // Grid types
         grid: 'data-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
@@ -185,7 +185,6 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization
         virtualization: 'grid-virtualization',
-        'virtual-scroll': 'grid-virtualization',
         'virtual-scrolling': 'grid-virtualization',
         'grid-performance': 'grid-virtualization',
         // Non-obvious renames
@@ -194,13 +193,13 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'range-slider': 'slider',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
-        'theming-grid': 'grid-theming-grid',
+        'theming-grid': 'grid-theming',
     },
     blazor: {
         // Combo Box
-        combo: 'overview',
-        'combo-box': 'overview',
-        combobox: 'overview',
+        combo: 'combo-overview',
+        'combo-box': 'combo-overview',
+        combobox: 'combo-overview',
         // Grid types
         grid: 'data-grid',
         'hierarchical-grid': 'hierarchical-grid-overview',
@@ -219,7 +218,7 @@ const DOC_ALIASES: Record<string, Record<string, string>> = {
         'range-slider': 'slider',
         'geographic-map': 'geo-map',
         'geo-map-overview': 'geo-map',
-        'theming-grid': 'grid-theming-grid',
+        'theming-grid': 'grid-theming',
     },
 };
 
@@ -322,7 +321,7 @@ export interface ResolvedDoc {
 
 /**
  * Resolve a caller-supplied doc name to actual doc content for get_doc.
- * Applies normalizeDocName + applyDocAlias, then the Angular compact grid
+ * Tries the normalized name as given, then its alias, then the Angular compact grid
  * prefix rewrite (tree-grid-x → treegrid-x), then a generic grid- prefix
  * fallback for bare feature names (e.g. "sorting" → "grid-sorting").
  * As a last resort, runs a full-text search and serves the top hit — this
@@ -335,8 +334,14 @@ export async function resolveDoc(
   framework: string,
   name: string,
 ): Promise<ResolvedDoc> {
-  const resolvedName = applyDocAlias(framework, normalizeDocName(name.trim()));
-  let { text, found } = await docsProvider.getDoc(framework, resolvedName);
+  const normalizedName = normalizeDocName(name.trim());
+  const aliasedName = applyDocAlias(framework, normalizedName);
+  let resolvedName = normalizedName;
+  let { text, found } = await docsProvider.getDoc(framework, normalizedName);
+  if (!found && aliasedName !== normalizedName) {
+    resolvedName = aliasedName;
+    ({ text, found } = await docsProvider.getDoc(framework, aliasedName));
+  }
   let servedName = resolvedName;
 
   if (!found) {

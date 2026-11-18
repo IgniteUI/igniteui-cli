@@ -1,5 +1,9 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import initSqlJs from 'sql.js';
 import { describe, expect, it } from 'vitest';
 import {
+  DOC_ALIASES,
   addPackageVersions,
   applyCompactGridPrefix,
   applyDocAlias,
@@ -193,12 +197,12 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('angular', 'accordion')).toBe('accordion');
   });
 
-  it('resolves react combo to overview', () => {
-    expect(applyDocAlias('react', 'combo')).toBe('overview');
+  it('resolves react combo to combo-overview', () => {
+    expect(applyDocAlias('react', 'combo')).toBe('combo-overview');
   });
 
-  it('resolves react combo-box to overview', () => {
-    expect(applyDocAlias('react', 'combo-box')).toBe('overview');
+  it('resolves react combo-box to combo-overview', () => {
+    expect(applyDocAlias('react', 'combo-box')).toBe('combo-overview');
   });
 
   it('resolves react grid to data-grid', () => {
@@ -209,8 +213,8 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('react', 'hierarchical-grid')).toBe('hierarchical-grid-overview');
   });
 
-  it('resolves angular combo-box to combo', () => {
-    expect(applyDocAlias('angular', 'combo-box')).toBe('combo');
+  it('resolves angular combo-box to combo-overview', () => {
+    expect(applyDocAlias('angular', 'combo-box')).toBe('combo-overview');
   });
 
   it('resolves angular hierarchical-grid correctly', () => {
@@ -221,8 +225,8 @@ describe('applyDocAlias', () => {
     expect(applyDocAlias('angular', 'grid')).toBe('grid-grid');
   });
 
-  it('resolves webcomponents combo to overview', () => {
-    expect(applyDocAlias('webcomponents', 'combo')).toBe('overview');
+  it('resolves webcomponents combo to combo-overview', () => {
+    expect(applyDocAlias('webcomponents', 'combo')).toBe('combo-overview');
   });
 
   it('resolves webcomponents grid to data-grid', () => {
@@ -251,7 +255,48 @@ describe('applyDocAlias', () => {
 
   it('IgrCombo normalizes then aliases correctly for react', () => {
     const normalized = normalizeDocName('IgrCombo');
-    expect(applyDocAlias('react', normalized)).toBe('overview');
+    expect(applyDocAlias('react', normalized)).toBe('combo-overview');
+  });
+});
+
+describe('DOC_ALIASES against the bundled database', async () => {
+  const dbPath = fileURLToPath(new URL('../../../db/igniteui-docs.db', import.meta.url));
+  const SQL = await initSqlJs();
+  const db = new SQL.Database(readFileSync(dbPath));
+  const docNames = (framework: string) =>
+    new Set(
+      (db.exec('SELECT filename FROM docs WHERE framework = ?', [framework])[0]?.values ?? []).map((row) =>
+        String(row[0]).replace(/.md$/, ''),
+      ),
+    );
+
+  for (const [framework, aliases] of Object.entries(DOC_ALIASES)) {
+    const names = docNames(framework);
+
+    it(`${framework}: every alias points to an existing doc`, () => {
+      const missing = Object.entries(aliases)
+        .filter(([, target]) => !names.has(target))
+        .map(([alias, target]) => `${alias} -> ${target}`);
+      expect(missing).toEqual([]);
+    });
+
+    it(`${framework}: no alias renames an existing doc`, () => {
+      const shadowing = Object.entries(aliases)
+        .filter(([alias, target]) => alias !== target && names.has(alias))
+        .map(([alias, target]) => `${alias} -> ${target}`);
+      expect(shadowing).toEqual([]);
+    });
+  }
+
+  it.each(['react', 'webcomponents', 'blazor', 'angular'])('%s: combo names resolve to the Combo doc', (framework) => {
+    for (const name of ['combo', 'combo-box', 'combobox']) {
+      expect(applyDocAlias(framework, name)).toBe('combo-overview');
+    }
+    const [[tocName]] = db.exec('SELECT toc_name FROM docs WHERE framework = ? AND filename = ?', [
+      framework,
+      'combo-overview.md',
+    ])[0].values;
+    expect(tocName).toBe('Combo');
   });
 });
 
@@ -277,6 +322,20 @@ describe('resolveDoc', () => {
       },
     };
   }
+
+  it('serves a doc with the exact requested name even when an alias exists for it', async () => {
+    const p = makeProvider({ grid: 'EXACT', 'data-grid': 'ALIASED' });
+    const r = await resolveDoc(p, 'react', 'grid');
+    expect(r).toMatchObject({ found: true, servedName: 'grid', text: 'EXACT', fuzzy: false });
+  });
+
+  it('falls back to the alias when no doc has the requested name', async () => {
+    const p = makeProvider({ overview: 'THEMES', 'combo-overview': 'COMBO' });
+    for (const name of ['combo', 'IgrCombo', 'combo-box']) {
+      const r = await resolveDoc(p, 'react', name);
+      expect(r).toMatchObject({ found: true, servedName: 'combo-overview', text: 'COMBO', fuzzy: false });
+    }
+  });
 
   it('resolves a direct name', async () => {
     const p = makeProvider({ accordion: 'ACC' });
