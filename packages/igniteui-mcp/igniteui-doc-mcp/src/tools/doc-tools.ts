@@ -121,7 +121,7 @@ export const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization
         virtualization: 'grid-virtualization',
-        'virtual-scrolling': 'grid-virtualization',
+        'virtual-scrolling': 'virtual-scroll',
         'grid-performance': 'grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',
@@ -151,7 +151,7 @@ export const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization — Angular uses different naming convention (hierarchicalgrid-, treegrid-)
         virtualization: 'grid-virtualization',
-        'virtual-scrolling': 'grid-virtualization',
+        'virtual-scrolling': 'virtual-scroll',
         'grid-performance': 'grid-virtualization',
         'hierarchical-grid-virtualization': 'hierarchicalgrid-virtualization',
         'tree-grid-virtualization': 'treegrid-virtualization',
@@ -185,7 +185,7 @@ export const DOC_ALIASES: Record<string, Record<string, string>> = {
         zoomslider: 'zoomslider-overview',
         // Virtualization
         virtualization: 'grid-virtualization',
-        'virtual-scrolling': 'grid-virtualization',
+        'virtual-scrolling': 'virtual-scroll',
         'grid-performance': 'grid-virtualization',
         // Non-obvious renames
         treemap: 'treemap-chart',

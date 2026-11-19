@@ -37,7 +37,7 @@ No pagination — the full result set is returned in one call.
 
   get_doc: `Retrieve the full markdown content of one specific Ignite UI component doc by its exact name. The name is kebab-case without the .md extension (e.g. "grid-editing", "combo-overview", "accordion").
 
-For grid feature docs, the bare feature name works without the "grid-" prefix — e.g. "sorting" resolves to "grid-sorting", "remote-data-operations" resolves to "grid-remote-data-operations". Common aliases are also handled: "virtualization" → "grid-virtualization", "virtual-scroll" → "grid-virtualization". For completely unknown names, use list_components or search_docs to discover the exact name first.
+For grid feature docs, the bare feature name works without the "grid-" prefix — e.g. "sorting" resolves to "grid-sorting", "remote-data-operations" resolves to "grid-remote-data-operations". Common aliases are also handled: "virtualization" → "grid-virtualization", "combo-box" → "combo-overview". For completely unknown names, use list_components or search_docs to discover the exact name first.
 
 Returns YAML frontmatter (component, package, keywords, summary) followed by the complete markdown body with code samples, tables, and links. The \`package\` line (e.g. "igniteui-react-grids@19.9") names the package and release of the doc's components in the bundled API reference; compare it with the version in the project's package.json or .csproj, because an older release may lack what the doc describes. It is omitted when the doc lists no component from the API reference.
 
