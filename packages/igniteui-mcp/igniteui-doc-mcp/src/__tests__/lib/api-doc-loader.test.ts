@@ -340,6 +340,33 @@ describe('ApiDocLoader', () => {
       expect(loader.getBases(grid).map(e => e.component)).toEqual(['IgxGridBaseDirective', 'IgxRoot<T, U>']);
     });
 
+    it('getBases takes a base from the own package when another package ships the same name', () => {
+      const file = (pkg: string, entries: string[]) => [`Package: ${pkg}`, '', ...entries, ''].join('\n');
+      const base = (member: string) => `### [IgbComboBase](https://example.com/base)\n\n- **${member}**: string\n`;
+      const files: Record<string, string> = {
+        'pkg-full': file('pkg-full', [
+          '### [IgbSelect](https://example.com/select)\nExtends: IgbComboBase, IgbShared\n',
+          base('FullOnly'),
+        ]),
+        'pkg-lite': file('pkg-lite', [base('LiteOnly'), '### [IgbShared](https://example.com/shared)\n']),
+      };
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return Object.keys(files) as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-full') || s.endsWith('pkg-lite')) return ['1.0.0'] as unknown as ReturnType<typeof readdirSync>;
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      mockReadFileSync.mockImplementation((p) => files[String(p).includes('pkg-full') ? 'pkg-full' : 'pkg-lite']);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+
+      expect(loader.get('angular', 'IgbComboBase')?.package).toBe('pkg-lite');
+      const bases = loader.getBases(loader.get('angular', 'IgbSelect')!);
+      expect(bases.map(e => `${e.package}:${e.component}`)).toEqual(['pkg-full:IgbComboBase', 'pkg-lite:IgbShared']);
+      expect(bases[0].content).toContain('FullOnly');
+    });
+
     it('getBases is empty for an entry without an Extends line', () => {
       const loader = createLoadedLoader();
       expect(loader.getBases(loader.get('angular', 'IgxGridComponent')!)).toEqual([]);

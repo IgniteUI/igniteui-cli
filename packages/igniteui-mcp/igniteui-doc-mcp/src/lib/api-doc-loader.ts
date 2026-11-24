@@ -60,6 +60,8 @@ export class ApiDocLoader {
   private docsByBaseName = new Map<string, DocEntry>();
   // Every package a name appears in; the exact-name map keeps only the last one loaded.
   private packagesByKey = new Map<string, Set<string>>();
+  // Each package's own entry for a name, so a base type resolves inside the package that extends it.
+  private docsByPackage = new Map<string, DocEntry>();
   private versionsByPackage = new Map<string, string>();
   private platformConfigs: PlatformConfig[];
 
@@ -185,6 +187,10 @@ export class ApiDocLoader {
           };
           this.docs.set(key, entry);
           this.indexBaseName(config.key, componentName, entry);
+          const packageKey = this.packageKey(config.key, packageName, componentName);
+          if (!this.docsByPackage.has(packageKey) || stripGenerics(componentName) === componentName) {
+            this.docsByPackage.set(packageKey, entry);
+          }
           const packages = this.packagesByKey.get(key) ?? new Set<string>();
           this.packagesByKey.set(key, packages.add(packageName));
           count++;
@@ -247,6 +253,10 @@ export class ApiDocLoader {
     }
   }
 
+  private packageKey(platform: string, packageName: string | undefined, name: string): string {
+    return `${platform}:${packageName}:${stripGenerics(name).toLowerCase()}`;
+  }
+
   /**
    * Exact lookup first; then a case-insensitive, generic-stripped lookup so
    * "IgbCombo" (or "igbcombo") resolves to the indexed "IgbCombo<T>".
@@ -262,6 +272,8 @@ export class ApiDocLoader {
    * Every entry the given one inherits members from, nearest first. An entry lists
    * only the inherited members whose declaring type has no entry of its own; the
    * rest are in the entries named on its "Extends:" line, and in theirs in turn.
+   * A base is taken from the entry's own package when that package has it: another
+   * package can ship the same name with different members.
    */
   getBases(entry: DocEntry): DocEntry[] {
     const bases: DocEntry[] = [];
@@ -269,7 +281,9 @@ export class ApiDocLoader {
     const queue = [entry];
     for (let current = queue.shift(); current; current = queue.shift()) {
       for (const name of current.extends ?? []) {
-        const base = this.get(current.platform, name);
+        const base =
+          this.docsByPackage.get(this.packageKey(current.platform, current.package, name)) ??
+          this.get(current.platform, name);
         if (!base || seen.has(base)) continue;
         seen.add(base);
         bases.push(base);
