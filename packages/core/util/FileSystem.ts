@@ -33,9 +33,11 @@ export class FsFileSystem implements IFileSystem {
 		}
 	}
 
-	public glob(dirPath: string, pattern: string): string[] {
+	public glob(dirPath: string, pattern: string, ignorePatterns?: string[]): string[] {
 		// NB!: glob 8+ patterns use `\` as escape only, so ensure posix-style:
 		const globPattern = path.join(dirPath, pattern).replace(/\\/g, "/");
-		return glob.sync(globPattern, { nodir: true });
+		// anchored to dirPath, so a project that itself lives under e.g. a `dist` folder is not ignored
+		const ignore = ignorePatterns?.map(p => path.join(dirPath, "**", p, "**").replace(/\\/g, "/"));
+		return glob.sync(globPattern, { nodir: true, ignore });
 	}
 }
