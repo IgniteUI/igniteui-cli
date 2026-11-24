@@ -96,43 +96,21 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 			break;
 		case "react":
 		case "webcomponents":
+			// the root package.json is always updated, so its own sources are too
+			workspaces.push(path.join(rootPath, "src"));
+
+			// fs.glob returns files only, so workspace patterns are not expanded to folders here;
+			// they stay in the search root and are matched together with the file patterns below
 			if (pkgJSON.workspaces) {
 				pkgJSON.workspaces.forEach((w: string) => {
-					// Handle workspace patterns that may contain globs
-					if (w.includes("*")) {
-						// Use glob to expand the workspace pattern
-						const expandedWorkspaces = fs.glob(rootPath, w);
-						expandedWorkspaces.forEach(expandedWorkspace => {
-							// Only add if it's a directory
-							if (fs.directoryExists(expandedWorkspace)) {
-								workspaces.push(expandedWorkspace);
-							}
-						});
-					} else {
-						// Direct workspace path
-						const workspacePath = path.join(rootPath, w);
-						if (fs.directoryExists(workspacePath)) {
-							workspaces.push(workspacePath);
-						}
+					const workspacePath = path.join(rootPath, w);
+					if (w.includes("*") || fs.directoryExists(workspacePath)) {
+						workspaces.push(workspacePath);
 					}
 				});
-			} else {
-				// For React and WebComponents projects without explicit workspaces,
-				// check for common project patterns like projects/* in addition to src/
-				workspaces.push(path.join(rootPath, "src"));
-
-				// Check for projects/* pattern common in React demo/example repositories
-				// Only check if projects directory exists to avoid unnecessary glob calls
-				const projectsDir = path.join(rootPath, "projects");
-				if (fs.directoryExists(projectsDir)) {
-					const projectsPattern = "projects/*";
-					const projectsWorkspaces = fs.glob(rootPath, projectsPattern);
-					projectsWorkspaces.forEach(projectPath => {
-						if (fs.directoryExists(projectPath)) {
-							workspaces.push(projectPath);
-						}
-					});
-				}
+			} else if (fs.directoryExists(path.join(rootPath, "projects"))) {
+				// projects/* is common in React and Web Components demo/example repositories
+				workspaces.push(path.join(rootPath, "projects", "*"));
 			}
 			break;
 		default:
@@ -140,12 +118,13 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 	}
 
 	// once all workspaces are gotten, get all files for all workspaces
+	const ignored = ['node_modules', 'dist'];
 	for (const workspace of workspaces) {
-		logicFiles.push(...fs.glob(workspace, `**/*.${logicFilesExtension}`));
+		logicFiles.push(...fs.glob(workspace, `**/*.${logicFilesExtension}`, ignored));
 		for (const styleExtension of styleExtensions) {
-			styleFiles.push(...fs.glob(workspace, `**/*.${styleExtension}`));
+			styleFiles.push(...fs.glob(workspace, `**/*.${styleExtension}`, ignored));
 		}
-		pkgJsonFiles.push(...fs.glob(workspace, `**/package.json`));
+		pkgJsonFiles.push(...fs.glob(workspace, `**/package.json`, ignored));
 	}
 
 	// For React and WebComponents projects, also include vite.config.ts files
@@ -156,11 +135,21 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		}
 	}
 
-	updateFileImports(logicFiles, styleFiles, upgradeable, fs);
 	if (shouldUpgradeHTML) {
-		updateHTMLImports(htmlFiles, upgradeable, fs);
+		for (const workspace of workspaces) {
+			const filePaths = fs.glob(workspace, `**/*.html`, ignored);
+			if (filePaths && filePaths.length > 0) {
+				htmlFiles.push(...filePaths);
+			}
+		}
 	}
-	updatePackageJsonFiles(pkgJsonFiles, upgradeable, fs);
+
+	// overlapping workspace patterns can match the same file more than once
+	updateFileImports([...new Set(logicFiles)], [...new Set(styleFiles)], upgradeable, fs);
+	if (shouldUpgradeHTML) {
+		updateHTMLImports([...new Set(htmlFiles)], upgradeable, fs);
+	}
+	updatePackageJsonFiles([...new Set(pkgJsonFiles)], upgradeable, fs);
 	createNpmrc(rootPath, fs);
 	updateWorkflows(fs);
 
@@ -241,6 +230,9 @@ function updatePackageJsonFiles(
 	for (const pkgJsonFile of pkgJsonFiles) {
 		const fileString = fs.readFile(pkgJsonFile);
 		const pkgJSON = JSON.parse(fileString);
+		if (!pkgJSON.dependencies) {
+			continue;
+		}
 		for (const packageDef of packageDefs) {
 			if (!pkgJSON.dependencies.hasOwnProperty(packageDef.trial)) {
 				continue;
