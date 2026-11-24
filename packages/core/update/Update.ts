@@ -135,10 +135,19 @@ export async function updateWorkspace(rootPath: string): Promise<boolean> {
 		}
 	}
 
+	if (shouldUpgradeHTML) {
+		for (const workspace of workspaces) {
+			const filePaths = fs.glob(workspace, `**/*.html`, ignored);
+			if (filePaths && filePaths.length > 0) {
+				htmlFiles.push(...filePaths);
+			}
+		}
+	}
+
 	// overlapping workspace patterns can match the same file more than once
 	updateFileImports([...new Set(logicFiles)], [...new Set(styleFiles)], upgradeable, fs);
 	if (shouldUpgradeHTML) {
-		updateHTMLImports(htmlFiles, upgradeable, fs);
+		updateHTMLImports([...new Set(htmlFiles)], upgradeable, fs);
 	}
 	updatePackageJsonFiles([...new Set(pkgJsonFiles)], upgradeable, fs);
 	createNpmrc(rootPath, fs);
@@ -221,6 +230,9 @@ function updatePackageJsonFiles(
 	for (const pkgJsonFile of pkgJsonFiles) {
 		const fileString = fs.readFile(pkgJsonFile);
 		const pkgJSON = JSON.parse(fileString);
+		if (!pkgJSON.dependencies) {
+			continue;
+		}
 		for (const packageDef of packageDefs) {
 			if (!pkgJSON.dependencies.hasOwnProperty(packageDef.trial)) {
 				continue;

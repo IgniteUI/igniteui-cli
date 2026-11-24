@@ -565,7 +565,7 @@ import { IgxGridComponent } from '@infragistics/igniteui-angular';`}, {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -737,7 +737,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should update package.json files from workspaces with glob patterns", async () => {
@@ -854,8 +854,8 @@ export default function Home() {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
 			expect(fsSpy.glob).toHaveBeenCalledWith(path.join("projects", "*"), "**/package.json", ["node_modules", "dist"]);
-			// root package.json, html, vite.config.ts + logic, style and package.json files for src and for projects/*
-			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
+			// root package.json, html, vite.config.ts + logic, style, package.json and html files for src and for projects/*
+			expect(fsSpy.glob).toHaveBeenCalledTimes(11);
 		});
 
 		it("Should update vite.config.ts file correctly", async () => {
@@ -944,7 +944,7 @@ export default defineConfig({
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should detect and update React projects with projects/* structure but no explicit workspaces", async () => {
@@ -1036,8 +1036,8 @@ export const GridComponent = () => {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
 			expect(fsSpy.glob).toHaveBeenCalledWith(path.join("projects", "*"), "**/*.tsx", ["node_modules", "dist"]);
-			// root package.json, html, vite.config.ts + logic, style and package.json files for src and for projects/*
-			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
+			// root package.json, html, vite.config.ts + logic, style, package.json and html files for src and for projects/*
+			expect(fsSpy.glob).toHaveBeenCalledTimes(11);
 		});
 	});
 
@@ -1128,7 +1128,7 @@ export const GridComponent = () => {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -1310,7 +1310,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1430,7 +1430,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(18);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(21);
 		});
 
 		it("Should update vite.config.ts file correctly", async () => {
@@ -1523,7 +1523,7 @@ export default defineConfig(({ mode }) => {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
 		});
 	});
 
@@ -1531,6 +1531,10 @@ export default defineConfig(({ mode }) => {
 	describe("Workspace folders on disk", () => {
 		const trialImport = `import { ModuleManager } from "igniteui-webcomponents-core";\n`;
 		const licensedImport = `import { ModuleManager } from "@infragistics/igniteui-webcomponents-core";\n`;
+		const trialLink = `<link rel="stylesheet" href="node_modules/igniteui-webcomponents-core/styles.css">
+`;
+		const licensedLink = `<link rel="stylesheet" href="node_modules/@infragistics/igniteui-webcomponents-core/styles.css">
+`;
 		const packageJson = (extra: object = {}) => JSON.stringify({
 			name: "test",
 			dependencies: { "igniteui-webcomponents-core": "^7.0.0" },
@@ -1556,9 +1560,12 @@ export default defineConfig(({ mode }) => {
 			spyOn(Util, "log");
 
 			write("src/main.ts", trialImport);
+			write("node_modules/dep/index.ts", trialImport);
 			write("projects/app/package.json", packageJson());
+			write("projects/app/index.html", trialLink);
 			write("projects/app/src/app.ts", trialImport);
 			write("projects/app/node_modules/dep/index.ts", trialImport);
+			write("projects/tools/package.json", JSON.stringify({ name: "tools", devDependencies: {} }));
 			write("projects/charts/bar-chart/package.json", packageJson());
 			write("projects/charts/bar-chart/src/index.ts", trialImport);
 		});
@@ -1572,10 +1579,12 @@ export default defineConfig(({ mode }) => {
 			expect(read("package.json")).toContain("@infragistics/igniteui-webcomponents-core");
 			expect(read("src/main.ts")).toEqual(licensedImport);
 			expect(read("projects/app/package.json")).toContain("@infragistics/igniteui-webcomponents-core");
+			expect(read("projects/app/index.html")).toEqual(licensedLink);
 			expect(read("projects/app/src/app.ts")).toEqual(licensedImport);
 			expect(read("projects/charts/bar-chart/package.json")).toContain("@infragistics/igniteui-webcomponents-core");
 			expect(read("projects/charts/bar-chart/src/index.ts")).toEqual(licensedImport);
 			expect(read("projects/app/node_modules/dep/index.ts")).toEqual(trialImport);
+			expect(read("node_modules/dep/index.ts")).toEqual(trialImport);
 		};
 
 		it("Should update projects/* folders when there are no workspaces", async () => {
@@ -1586,6 +1595,12 @@ export default defineConfig(({ mode }) => {
 
 		it("Should update folders matched by workspaces glob patterns", async () => {
 			write("package.json", packageJson({ workspaces: ["projects/*", "projects/charts/*"] }));
+			expect(await updateWorkspace(rootPath)).toEqual(true);
+			expectAllUpdated();
+		});
+
+		it("Should skip node_modules matched by a workspaces pattern itself", async () => {
+			write("package.json", packageJson({ workspaces: ["*", "projects/*", "projects/charts/*"] }));
 			expect(await updateWorkspace(rootPath)).toEqual(true);
 			expectAllUpdated();
 		});

@@ -41,19 +41,16 @@ export class NgTreeFileSystem implements IFileSystem {
 		};
 
 		if (ignorePatterns?.length) {
-			const recurse = (dir: DirEntry): void => {
-				for (const subdirPath of dir.subdirs) {
+			const recurse = (current: DirEntry): void => {
+				for (const file of current.subfiles) {
+					const filePath = path.posix.join(current.path, file);
+					if (minimatch(path.posix.relative(dir.path, filePath), pattern)) {
+						entries.push(filePath);
+					}
+				}
+				for (const subdirPath of current.subdirs) {
 					if (ignorePatterns.every(p => !minimatch(subdirPath, p))) {
-						const subDir = dir.dir(subdirPath);
-						if (subDir.subdirs.length) {
-							recurse(subDir);
-							continue;
-						}
-						for (const file of dir.subfiles) {
-							if (minimatch(file, pattern) && ignorePatterns.every(p => !minimatch(file, p))) {
-								entries.push(path.posix.normalize(`${dir.path}/${file}`));
-							}
-						}
+						recurse(current.dir(subdirPath));
 					}
 				}
 			};
