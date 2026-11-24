@@ -1,6 +1,9 @@
+import * as nodeFs from "fs";
+import * as os from "os";
+import * as path from "path";
 import { PackageManager } from "../../packages/core/packages/PackageManager";
 import { Config, IFileSystem } from "../../packages/core/types";
-import { App, ProjectConfig, Util } from "../../packages/core/util";
+import { App, FsFileSystem, ProjectConfig, Util } from "../../packages/core/util";
 import * as pkgResolve from "../../packages/core/update/package-resolve";
 import { updateWorkspace } from "../../packages/core/update/Update";
 
@@ -562,7 +565,7 @@ import { IgxGridComponent } from '@infragistics/igniteui-angular';`}, {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(1);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -734,7 +737,7 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should update package.json files from workspaces with glob patterns", async () => {
@@ -826,24 +829,11 @@ export default function Home() {
 				return dirPath.includes("projects/charts") || dirPath.includes("projects") || dirPath.endsWith("/src");
 			});
 
-			// Mock glob to simulate finding workspace directories and files
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
-				if (pattern === "projects/*") {
-					return ["projects/charts"];
-				} else if (pattern === "package.json") {
+				if (pattern === "package.json") {
 					return ["package.json"];
-				} else if (pattern === "**/*.tsx") {
-					if (dirPath.includes("charts")) {
-						return [];
-					}
-					return [];
-				} else if (pattern === "**/*.css") {
-					return [];
-				} else if (pattern === "**/package.json") {
-					if (dirPath.includes("charts")) {
-						return ["./projects/charts/package.json"];
-					}
-					return [];
+				} else if (pattern === "**/package.json" && dirPath.includes("projects")) {
+					return ["./projects/charts/package.json"];
 				}
 				return [];
 			});
@@ -863,8 +853,9 @@ export default function Home() {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			// Expect: 1 for projects/*, 1 for package.json files at root, 1 for logic files, 1 for style files, 1 for package.json in workspace, 1 for vite.config.ts
-			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
+			expect(fsSpy.glob).toHaveBeenCalledWith(path.join("projects", "*"), "**/package.json", ["node_modules", "dist"]);
+			// root package.json, html, vite.config.ts + logic, style, package.json and html files for src and for projects/*
+			expect(fsSpy.glob).toHaveBeenCalledTimes(11);
 		});
 
 		it("Should update vite.config.ts file correctly", async () => {
@@ -953,7 +944,7 @@ export default defineConfig({
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(6);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(7);
 		});
 
 		it("Should detect and update React projects with projects/* structure but no explicit workspaces", async () => {
@@ -1022,23 +1013,11 @@ export const GridComponent = () => {
 			(fsSpy.glob as jasmine.Spy).and.callFake((dirPath: string, pattern: string) => {
 				if (pattern === "package.json") {
 					return ["package.json"];
-				} else if (pattern === "projects/*") {
-					return ["projects/erp-hierarchical-grid", "projects/finance-grid"];
-				} else if (pattern === "**/*.tsx") {
-					if (dirPath.includes("erp-hierarchical-grid")) {
-						return ["projects/erp-hierarchical-grid/src/app.tsx"];
-					} else if (dirPath.includes("finance-grid")) {
-						return ["projects/finance-grid/src/components/GridComponent.tsx"];
-					} else if (dirPath.endsWith("/src")) {
-						return []; // src directory has no tsx files
-					}
-					return [];
-				} else if (pattern === "**/*.css") {
-					return [];
-				} else if (pattern === "**/package.json") {
-					return [];
-				} else if (pattern === "vite.config.ts") {
-					return [];
+				} else if (pattern === "**/*.tsx" && dirPath.includes("projects")) {
+					return [
+						"projects/erp-hierarchical-grid/src/app.tsx",
+						"projects/finance-grid/src/components/GridComponent.tsx"
+					];
 				}
 				return [];
 			});
@@ -1056,8 +1035,9 @@ export const GridComponent = () => {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			// Expect calls for: package.json, projects/*, src tsx files, src css files, src package.json, vite.config.ts, erp-hierarchical-grid tsx files, erp-hierarchical-grid css files, erp-hierarchical-grid package.json, finance-grid tsx files, finance-grid css files, finance-grid package.json
-			expect(fsSpy.glob).toHaveBeenCalledTimes(13);
+			expect(fsSpy.glob).toHaveBeenCalledWith(path.join("projects", "*"), "**/*.tsx", ["node_modules", "dist"]);
+			// root package.json, html, vite.config.ts + logic, style, package.json and html files for src and for projects/*
+			expect(fsSpy.glob).toHaveBeenCalledTimes(11);
 		});
 	});
 
@@ -1148,7 +1128,7 @@ export const GridComponent = () => {
 				}
 			}));
 			expect(fsSpy.writeFile).toHaveBeenCalledTimes(2);
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
 		});
 
 		it("Should update import paths in files correctly", async () => {
@@ -1330,7 +1310,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
 		});
 
 		it("Should update package.json files from workspaces", async () => {
@@ -1426,6 +1406,9 @@ export default class App extends LitElement {
 			(fsSpy.glob as jasmine.Spy).and.returnValues // per workspace
 				([ "package.json" ], // root package.json
 				[], //index.html
+				[], // src logic files
+				[], [], [], // src for each style extension
+				[], // src package.json
 				[], // projectA logic files
 				[], [], [], // projectA for each style extension
 				[ "./projectA/package.json" ], // projectA package.json
@@ -1447,7 +1430,7 @@ export default class App extends LitElement {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(13);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(21);
 		});
 
 		it("Should update vite.config.ts file correctly", async () => {
@@ -1540,7 +1523,94 @@ export default defineConfig(({ mode }) => {
 			for (const fileEntry of mockFileArray) {
 				expect((fsSpy.writeFile as jasmine.Spy)).toHaveBeenCalledWith(fileEntry.path, fileEntry.expected);
 			}
-			expect(fsSpy.glob).toHaveBeenCalledTimes(8);
+			expect(fsSpy.glob).toHaveBeenCalledTimes(9);
+		});
+	});
+
+	// The specs above mock glob; these run against real folders, see #1858
+	describe("Workspace folders on disk", () => {
+		const trialImport = `import { ModuleManager } from "igniteui-webcomponents-core";\n`;
+		const licensedImport = `import { ModuleManager } from "@infragistics/igniteui-webcomponents-core";\n`;
+		const trialLink = `<link rel="stylesheet" href="node_modules/igniteui-webcomponents-core/styles.css">
+`;
+		const licensedLink = `<link rel="stylesheet" href="node_modules/@infragistics/igniteui-webcomponents-core/styles.css">
+`;
+		const packageJson = (extra: object = {}) => JSON.stringify({
+			name: "test",
+			dependencies: { "igniteui-webcomponents-core": "^7.0.0" },
+			...extra
+		});
+		let rootPath: string;
+		let originalCwd: string;
+
+		const write = (filePath: string, content: string) => {
+			const fullPath = path.join(rootPath, filePath);
+			nodeFs.mkdirSync(path.dirname(fullPath), { recursive: true });
+			nodeFs.writeFileSync(fullPath, content);
+		};
+		const read = (filePath: string) => nodeFs.readFileSync(path.join(rootPath, filePath), "utf8");
+
+		beforeEach(() => {
+			originalCwd = process.cwd();
+			rootPath = nodeFs.mkdtempSync(path.join(os.tmpdir(), "ig-update-spec-"));
+			process.chdir(rootPath);
+			spyOn(App.container, "get").and.returnValue(new FsFileSystem());
+			spyOn(ProjectConfig, "getConfig").and.returnValue({ project: { framework: "webcomponents" } } as unknown as Config);
+			spyOn(PackageManager, "ensureRegistryUser").and.returnValue(true);
+			spyOn(Util, "log");
+
+			write("src/main.ts", trialImport);
+			write("node_modules/dep/index.ts", trialImport);
+			write("projects/app/package.json", packageJson());
+			write("projects/app/index.html", trialLink);
+			write("projects/app/src/app.ts", trialImport);
+			write("projects/app/node_modules/dep/index.ts", trialImport);
+			write("projects/tools/package.json", JSON.stringify({ name: "tools", devDependencies: {} }));
+			write("projects/charts/bar-chart/package.json", packageJson());
+			write("projects/charts/bar-chart/src/index.ts", trialImport);
+		});
+
+		afterEach(() => {
+			process.chdir(originalCwd);
+			nodeFs.rmSync(rootPath, { recursive: true, force: true });
+		});
+
+		const expectAllUpdated = () => {
+			expect(read("package.json")).toContain("@infragistics/igniteui-webcomponents-core");
+			expect(read("src/main.ts")).toEqual(licensedImport);
+			expect(read("projects/app/package.json")).toContain("@infragistics/igniteui-webcomponents-core");
+			expect(read("projects/app/index.html")).toEqual(licensedLink);
+			expect(read("projects/app/src/app.ts")).toEqual(licensedImport);
+			expect(read("projects/charts/bar-chart/package.json")).toContain("@infragistics/igniteui-webcomponents-core");
+			expect(read("projects/charts/bar-chart/src/index.ts")).toEqual(licensedImport);
+			expect(read("projects/app/node_modules/dep/index.ts")).toEqual(trialImport);
+			expect(read("node_modules/dep/index.ts")).toEqual(trialImport);
+		};
+
+		it("Should update projects/* folders when there are no workspaces", async () => {
+			write("package.json", packageJson());
+			expect(await updateWorkspace(rootPath)).toEqual(true);
+			expectAllUpdated();
+		});
+
+		it("Should update folders matched by workspaces glob patterns", async () => {
+			write("package.json", packageJson({ workspaces: ["projects/*", "projects/charts/*"] }));
+			expect(await updateWorkspace(rootPath)).toEqual(true);
+			expectAllUpdated();
+		});
+
+		it("Should skip node_modules matched by a workspaces pattern itself", async () => {
+			write("package.json", packageJson({ workspaces: ["*", "projects/*", "projects/charts/*"] }));
+			expect(await updateWorkspace(rootPath)).toEqual(true);
+			expectAllUpdated();
+		});
+
+		it("Should update only the listed folders for workspaces without patterns", async () => {
+			write("package.json", packageJson({ workspaces: ["projects/app"] }));
+			expect(await updateWorkspace(rootPath)).toEqual(true);
+			expect(read("src/main.ts")).toEqual(licensedImport);
+			expect(read("projects/app/src/app.ts")).toEqual(licensedImport);
+			expect(read("projects/charts/bar-chart/src/index.ts")).toEqual(trialImport);
 		});
 	});
 });

@@ -104,6 +104,28 @@ describe("NgTreeFileSystem", () => {
 			expect(results.some(r => r.includes("node_modules"))).toBeFalse();
 		});
 
+		it("should return files from every level when ignorePatterns are passed", () => {
+			tree.create("/src/main.ts", "");
+			tree.create("/src/node_modules/lib/index.ts", "");
+
+			const results = fs.glob("/src", "**/*.ts", ["node_modules"]);
+			expect(results.sort()).toEqual([
+				"/src/app/app.component.ts",
+				"/src/app/app.module.ts",
+				"/src/app/shared/shared.component.ts",
+				"/src/environments/environment.prod.ts",
+				"/src/environments/environment.ts",
+				"/src/main.ts"
+			]);
+		});
+
+		it("should match the pattern relative to dirPath when ignorePatterns are passed", () => {
+			tree.create("/package.json", "");
+			tree.create("/src/package.json", "");
+
+			expect(fs.glob("", "package.json", ["node_modules"])).toEqual(["/package.json"]);
+		});
+
 		it("should return an empty array when dirPath does not exist", () => {
 			const results = fs.glob("/nonexistent", "**/*.ts");
 			expect(results).toEqual([]);
