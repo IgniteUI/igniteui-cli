@@ -782,6 +782,7 @@ class where # is a number from 0 to count - 1.
 - static **register**(): void
 
 ### [IgcXInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-inputs/7.1.0/classes/IgcXInputComponent)
+Extends: IgcXInputGroupItemComponent
 
 - **constructor**(): IgcXInputComponent
 - static **htmlTagName**: `string`
@@ -1047,6 +1048,7 @@ Or adding and removing style mappings from the manual style mappings collection 
 - static **_createFromInternal**(internal: any): IgcXInputGroupItemComponent
 
 ### [IgcXLabelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-inputs/7.1.0/classes/IgcXLabelComponent)
+Extends: IgcXInputGroupItemComponent
 
 - **constructor**(): IgcXLabelComponent
 - static **htmlTagName**: `string`
@@ -1088,6 +1090,7 @@ Or adding and removing style mappings from the manual style mappings collection 
 - static **register**(): void
 
 ### [IgcXPrefixComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-inputs/7.1.0/classes/IgcXPrefixComponent)
+Extends: IgcXInputGroupItemComponent
 
 - **constructor**(): IgcXPrefixComponent
 - static **htmlTagName**: `string`
@@ -1141,6 +1144,7 @@ Or adding and removing style mappings from the manual style mappings collection 
 - static **register**(): void
 
 ### [IgcXSuffixComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-inputs/7.1.0/classes/IgcXSuffixComponent)
+Extends: IgcXInputGroupItemComponent
 
 - **constructor**(): IgcXSuffixComponent
 - static **htmlTagName**: `string`

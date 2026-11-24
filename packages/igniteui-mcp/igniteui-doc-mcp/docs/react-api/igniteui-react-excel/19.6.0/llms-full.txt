@@ -9,6 +9,7 @@ Version: 19.6
 ## Classes
 
 ### [AnyValueDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/AnyValueDataValidationRule)
+Extends: DataValidationRule
 Represents a data validation rule which allows any value to be set on the target cells.
 This would be used to provide an input message to the user when the cell was selected.
 
@@ -39,6 +40,7 @@ Represents an arithmetic error.
 - static **$t**: `Type`
 
 ### [ArrayFormula](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ArrayFormula)
+Extends: Formula
 Represents an array formula for a group of cells.
 <p class="body">
 Array formulas are similar to regular formula in that they have the same grammar. However, array formulas must be set
@@ -91,6 +93,7 @@ Represents a two-dimensional array of [[ExcelCalcValue]] instances used in calcu
 - **item**(a: number, b: number): ExcelCalcValue — Gets the [[ExcelCalcValue]] at the specified index.
 
 ### [AverageConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/AverageConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether a cell's value is above or below the average or standard deviation
 for the associated range.
@@ -107,6 +110,7 @@ Applicable only when the [[aboveBelow]] property is set
 to 'AboveStandardDeviation' or 'BelowStandardDeviation'.
 
 ### [AverageFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/AverageFilter)
+Extends: DynamicValuesFilter
 Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.
 
 - **constructor**(a: number, b: IFilterable, c: AverageFilterType): AverageFilter
@@ -119,6 +123,7 @@ were found when applying the filter.
 AboveAverage to show cells above the average of the data range; BelowAverage to show cells below the average.
 
 ### [Axis](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Axis)
+Extends: ChartObject
 Represents a single axis in a chart.
 <p class="body">
 To change the color of the ticklines, use the [[ChartLineBase.fill]] property.
@@ -240,6 +245,7 @@ units per major unit, set majorUnit to 1 and minorUnit to .2.
 </p>
 
 ### [AxisCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/AxisCollection)
+Extends: ChartObject
 A collection of [[Axis]] objects for a [[WorksheetChart]]
 
 - **constructor**(a: IChartObject): AxisCollection
@@ -259,6 +265,7 @@ A collection of [[Axis]] objects for a [[WorksheetChart]]
 - static **staticInit**(): void
 
 ### [BlanksConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/BlanksConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value is not set.
 <p class="body">
@@ -455,6 +462,7 @@ right = 0.0, bottom = 1.0.
 - static **createSolidFill**(solidColor: any): CellFillPattern — Creates a solid color fill that can be applied to a cell.
 
 ### [CellFillGradient](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CellFillGradient)
+Extends: CellFill
 Abstract base class for a gradient fill of a cell.
 
 - **constructor**(a: CellFillGradientStop[]): CellFillGradient
@@ -481,6 +489,7 @@ edges of the cell.
 - **getHashCode**(): number — Gets the hash code for the [[CellFillGradientStop]].
 
 ### [CellFillLinearGradient](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CellFillLinearGradient)
+Extends: CellFillGradient
 An immutable object which represents a linear gradient fill for a cell.
 
 - **constructor**(angle: number, stops: CellFillGradientStop[]): CellFillLinearGradient
@@ -490,6 +499,7 @@ An immutable object which represents a linear gradient fill for a cell.
 - **getHashCode**(): number — Gets the hash code for the [[CellFillLinearGradient]].
 
 ### [CellFillPattern](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CellFillPattern)
+Extends: CellFill
 An immutable object which represents a solid or pattern fill for a cell.
 
 - **constructor**(backgroundColorInfo: WorkbookColorInfo, patternColorInfo: WorkbookColorInfo, patternStyle: FillPatternStyle): CellFillPattern
@@ -508,6 +518,7 @@ An immutable object which represents a solid or pattern fill for a cell.
 - **getHashCode**(): number — Gets the hash code for the [[CellFillPattern]].
 
 ### [CellFillRectangularGradient](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CellFillRectangularGradient)
+Extends: CellFillGradient
 An immutable object which represents a rectangular gradient fill for a cell.
 
 - **constructor**(left: number, top: number, right: number, bottom: number, stops: CellFillGradientStop[]): CellFillRectangularGradient
@@ -530,12 +541,14 @@ Exposes the information necessary for drawing an icon for a specific cell.
 - **showValue**: `boolean` — Returns whether the cell value is to be shown along with the data bar (read-only).
 
 ### [ChartArea](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartArea)
+Extends: ChartAreaBase
 Represents the area in which the chart is displayed.
 
 - **constructor**(a: IChartObject): ChartArea
 - static **$t**: `Type`
 
 ### [ChartAreaBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartAreaBase)
+Extends: ChartObject
 Base class for chart area elements
 
 - **constructor**(a: IChartObject): ChartAreaBase
@@ -563,6 +576,7 @@ To make the area transparent, assign an instance of the
 - static **staticInit**(): void
 
 ### [ChartBorder](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartBorder)
+Extends: ChartLineBase
 Represents the border of a chart element.
 <p class="body">
 The color of the border is controlled by the [[ChartLineBase.fill]] property.
@@ -580,6 +594,7 @@ solid, dashed, dotted, etc.
 - static **staticInit**(): void
 
 ### [ChartDropLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartDropLines)
+Extends: ChartLineBase
 Exposes properties which control the fill and width
 of the drop lines in a stock chart.
 
@@ -587,6 +602,7 @@ of the drop lines in a stock chart.
 - static **$t**: `Type`
 
 ### [ChartEmptyFill](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartEmptyFill)
+Extends: ChartFillBase
 Placeholder which indicates that no fill should be
 rendered for the associated chart element.
 <p class="body">
@@ -603,12 +619,14 @@ Use this class to ensure that no fill is rendered for the associated chart eleme
 - static **$t**: `Type`
 
 ### [ChartFillBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartFillBase)
+Extends: ChartObject
 Base class for objects which relate to the background fill of a chart element.
 
 - **constructor**(a: IChartObject): ChartFillBase
 - static **$t**: `Type`
 
 ### [ChartGradientFill](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartGradientFill)
+Extends: ChartFillBase
 Represents a gradient fill for a chart element.
 
 - **constructor**(gradientType: GradientType, stops: IEnumerable$1<GradientStop>, angle?: number): ChartGradientFill
@@ -635,6 +653,7 @@ of the containing element to the top right corner.
 associated with this gradient, ordered by their [[GradientStop.position]].
 
 ### [ChartGridLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartGridLines)
+Extends: ChartLineBase
 Represents the major/minor gridlines for an [[Axis]].
 <p class="body">
 The color of the grid lines is controlled by the [[ChartLineBase.fill]] property.
@@ -651,6 +670,7 @@ The width of the grid lines is controlled by the [[ChartLineBase.widthInPoints]]
 represents a major or minor gridline.
 
 ### [ChartHighLowLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartHighLowLines)
+Extends: ChartLineBase
 Exposes properties which control the fill and width of the lines
 which depict the high and low values in a stock chart.
 
@@ -658,6 +678,7 @@ which depict the high and low values in a stock chart.
 - static **$t**: `Type`
 
 ### [ChartLabelBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartLabelBase)
+Extends: ChartTextAreaBase
 Base class for chart elements which behave as a label.
 
 - **constructor**(a: IChartObject): ChartLabelBase
@@ -667,6 +688,7 @@ Base class for chart elements which behave as a label.
 - static **staticInit**(): void
 
 ### [ChartLine](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartLine)
+Extends: ChartLineBase
 Exposes properties which control the appearance of a line in a [[Series]].
 
 - **constructor**(): ChartLine
@@ -675,6 +697,7 @@ Exposes properties which control the appearance of a line in a [[Series]].
 - static **staticInit**(): void
 
 ### [ChartLineBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartLineBase)
+Extends: ChartObject
 Represents a <see cref="ChartBorder">border</see> or
 <see cref="ChartTickLines">tick line</see>.
 
@@ -701,6 +724,7 @@ The owner or null if this object is owned directly by the Chart
 - **worksheet**: `Worksheet` — The owning worksheet (read-only)
 
 ### [ChartPatternFill](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartPatternFill)
+Extends: ChartFillBase
 Represents a pattern color fill for a chart element.
 
 - **constructor**(backgroundColor: WorkbookColorInfo, foregroundColor: WorkbookColorInfo, pattern: PatternType): ChartPatternFill
@@ -710,6 +734,7 @@ Represents a pattern color fill for a chart element.
 - **pattern**: `PatternType` — Returns the pattern style of the fill.
 
 ### [ChartSeriesLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartSeriesLines)
+Extends: ChartLineBase
 Exposes properties which control the fill and width of the lines
 which connect the first and second plot areas in a 'bar of pie'
 or 'pie of pie' chart.
@@ -718,6 +743,7 @@ or 'pie of pie' chart.
 - static **$t**: `Type`
 
 ### [Chartsheet](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Chartsheet)
+Extends: Sheet
 A sheet in a Mirosoft Excel workbook that displays a single chart.
 
 - **constructor**(a: string, b: Workbook, c: number): Chartsheet
@@ -746,12 +772,14 @@ is currently true and the 'allowEditObjects' is null, then the property will con
 - static **staticInit**(): void
 
 ### [ChartsheetDisplayOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartsheetDisplayOptions)
+Extends: ChartsheetDisplayOptionsBase
 Class which exposes the display options which can only be controlled through the chartsheet.
 
 - **constructor**(a: Chartsheet): ChartsheetDisplayOptions
 - static **$t**: `Type`
 
 ### [ChartsheetDisplayOptionsBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartsheetDisplayOptionsBase)
+Extends: DisplayOptionsBase
 Base class for the display options for a chart sheet that are used for the display as well as its custom view.
 
 - **constructor**(a: Chartsheet): ChartsheetDisplayOptionsBase
@@ -765,6 +793,7 @@ The magnification level of the chartsheet in the current View.
 - **sizeWithWindow**: `boolean` — Gets or sets whether the chart should be resized to match the size of the chart sheet window.
 
 ### [ChartsheetPrintOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartsheetPrintOptions)
+Extends: PrintOptionsBase
 Class which exposes the various print options available for a chartsheet which can be saved with both a
 chartsheet and a custom view.
 <p class="body">
@@ -775,6 +804,7 @@ This class provides a way to control how a chartsheet is printed.
 - static **$t**: `Type`
 
 ### [ChartsheetProtection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartsheetProtection)
+Extends: SheetProtection
 Provides information about the types of changes that are disabled when the associated Chartsheet is protected.
 
 - **constructor**(a: Chartsheet): ChartsheetProtection
@@ -783,6 +813,7 @@ Provides information about the types of changes that are disabled when the assoc
 - **allowEditObjects**: `boolean` — Returns a boolean indicating if objects such as shapes and controls may be created or changed when the chartsheet is protected.
 
 ### [ChartSolidFill](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartSolidFill)
+Extends: ChartFillBase
 Represents a solid color fill for a chart element.
 
 - **constructor**(color: WorkbookColorInfo): ChartSolidFill
@@ -790,6 +821,7 @@ Represents a solid color fill for a chart element.
 - **color**: `WorkbookColorInfo` — Returns the color which is applied to the fill.
 
 ### [ChartTextAreaBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartTextAreaBase)
+Extends: ChartObject
 Represents the text area of a chart element.
 
 - **constructor**(a: IChartObject): ChartTextAreaBase
@@ -885,6 +917,7 @@ the bounds of the containing element.
 - static **staticInit**(): void
 
 ### [ChartTickLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartTickLines)
+Extends: ChartLineBase
 Represents the tick lines for an [[Axis]].
 <p class="body">
 The color of the tick line is controlled by the [[ChartLineBase.fill]] property.
@@ -899,6 +932,7 @@ The width of the tick line is controlled by the [[ChartLineBase.widthInPoints]] 
 - static **$t**: `Type`
 
 ### [ChartTitle](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ChartTitle)
+Extends: ChartTextAreaBase
 Represents the title of a [[WorksheetChart]] or [[Axis]].
 
 - **constructor**(): ChartTitle
@@ -907,6 +941,7 @@ Represents the title of a [[WorksheetChart]] or [[Axis]].
 - static **staticInit**(): void
 
 ### [ColorScaleConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ColorScaleConditionalFormat)
+Extends: ThresholdConditionBase
 Exposes properties which control the coloring of a [[WorksheetCell]]
 based on the cell's value as relative to minimum, midpoint, and maximum threshold values.
 <p class="body">
@@ -1007,6 +1042,7 @@ minimum threshold, and will cause an exception to be thrown:
 </p>
 
 ### [ColorScaleCriterion](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ColorScaleCriterion)
+Extends: CriterionBase
 Defines the criterion for a [[ColorScaleConditionalFormat]] threshold.
 
 - **constructor**(a: ColorScaleConditionalFormat, b: ColorScaleCriterionThreshold): ColorScaleCriterion
@@ -1019,6 +1055,7 @@ This property returns null if not explicitly set by the caller.
 - **toString**(): string — Returns the string representation of this instance.
 
 ### [ComboChartGroup](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ComboChartGroup)
+Extends: ChartObject
 Exposes chart-level properties for [[Series]] which appear within a combo chart.
 
 - **constructor**(a: ComboChartGroupCollection, b: ChartType, c: AxisGroup, d: boolean): ComboChartGroup
@@ -1061,6 +1098,7 @@ The valid range for this property is between -100 and 100, inclusive.
 - static **staticInit**(): void
 
 ### [ComboChartGroupCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ComboChartGroupCollection)
+Extends: ChartObject
 A collection of [[ComboChartGroup]] objects for a [[WorksheetChart]]
 <p class="body">
 This collection is used to apply chart-specific properties to [[Series]] which
@@ -1101,6 +1139,7 @@ instance exists.
 - static **staticInit**(): void
 
 ### [ConditionalFormatBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ConditionalFormatBase)
+Extends: ConditionBase
 Abstract base class for classes which control
 the visual attributes of a [[WorksheetCell]],
 based on whether the cell's value meets a logical condition.
@@ -1513,6 +1552,7 @@ value for which the [[value]] is not applicable, use the
 </p>
 
 ### [CustomDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomDataValidationRule)
+Extends: LimitedValueDataValidationRule
 Represents a data validation rule which allows any formula to be used to validate the value applied to a cell.
 
 - **constructor**(): CustomDataValidationRule
@@ -1602,6 +1642,7 @@ Any reference is allowed.
 </p>
 
 ### [CustomFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomFilter)
+Extends: Filter
 Represents a filter which can filter data based on one or two custom conditions.
 This filter type allows you to specify one or two filter conditions which have a comparison operator and value.
 These two filter conditions can be combined with a logical and or a logical or operation.
@@ -1650,6 +1691,7 @@ the condition value using the comparison operator.
 - **getHashCode**(): number — Gets the hash code for the [[CustomFilterCondition]].
 
 ### [CustomListSortCondition](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomListSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on a custom, ordered list of values.
 <p class="body">
 When the sort direction is ascending, the data range is sorted with the cells in the custom list appearing first, in the order they
@@ -1808,6 +1850,7 @@ print settings of the sheet. After setting properties, the [[apply]] method of t
 </p>
 
 ### [CustomViewChartDisplayOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomViewChartDisplayOptions)
+Extends: ChartsheetDisplayOptionsBase
 Class which exposes the chartsheet display options which can only be controlled through the custom view.
 
 - **constructor**(a: Chartsheet, b: CustomView): CustomViewChartDisplayOptions
@@ -1830,6 +1873,7 @@ The custom view at the specified index.
 - **removeAt**(index: number): void — Removes the custom view at the specified index from the collection.
 
 ### [CustomViewDisplayOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomViewDisplayOptions)
+Extends: DisplayOptions
 Class which exposes the worksheet display options which can only be controlled through the custom view.
 
 - **constructor**(a: Worksheet, b: CustomView): CustomViewDisplayOptions
@@ -1842,6 +1886,7 @@ whereas a value of 200 indicates a zoom that is twice the normal viewing magnifi
 The magnification level of the worksheet in the current View.
 
 ### [CustomViewWindowOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/CustomViewWindowOptions)
+Extends: WindowOptions
 Represents the workbook window options which are saved with custom views.
 <p class="body">
 The properties explicitly defined on this class and not inherited from the base class,
@@ -1902,6 +1947,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [DataBarConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DataBarConditionalFormat)
+Extends: ThresholdConditionBase
 Exposes properties which displays data bars in a [[WorksheetCell]]
 based on the cell's value as relative to the associated range.
 <p class="body">
@@ -1966,6 +2012,7 @@ use this property to prevent the cell value from appearing.
 </p>
 
 ### [DataLabel](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DataLabel)
+Extends: ChartLabelBase
 Represents the label of a specific [[DataPoint]].
 
 - **constructor**(): DataLabel
@@ -2033,6 +2080,7 @@ chart area.
 - static **staticInit**(): void
 
 ### [DataPoint](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DataPoint)
+Extends: ChartObject
 Represents the a specific data point in a [[series]].
 <p class="body">
 This class encapsulates an individual point of data in a [[series]].
@@ -2181,6 +2229,7 @@ This property is only applicable for waterfall charts.
 - static **staticInit**(): void
 
 ### [DataPointCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DataPointCollection)
+Extends: ChartObject
 A collection of [[DataPoint]]s for a [[series]]
 
 - **constructor**(a: IChartObject): DataPointCollection
@@ -2297,6 +2346,7 @@ If any rules in the collection are not applied to any cells after this operation
 - static **staticInit**(): void
 
 ### [DatePeriodFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DatePeriodFilter)
+Extends: DynamicValuesFilter
 Represents a filter which can filter dates in a specific period.
 <p class="body">
 This filter allows dates to be filtered in if they are in a specific month or quarter of any year.
@@ -2322,6 +2372,7 @@ Represents a range of dates.
 - static **$t**: `Type`
 
 ### [DateRangeFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DateRangeFilter)
+Extends: DynamicValuesFilter
 Abstract base class for filters which filter dates based on whether they are within a specified range of dates or not.
 
 - **constructor**(a: number, b: IFilterable): DateRangeFilter
@@ -2332,6 +2383,7 @@ Abstract base class for filters which filter dates based on whether they are wit
 - **start**: `Date` — Gets the inclusive start date of the filtered in date range.
 
 ### [DateTimeConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DateTimeConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether a cell's date/time value falls within a given range of time.
 <p class="body">
@@ -2355,6 +2407,7 @@ defines the range of time against which cell values are compared when
 evaluating this condition.
 
 ### [DiamondShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DiamondShape)
+Extends: WorksheetShapeWithText
 Represents the diamond shape.
 
 - **constructor**(): DiamondShape
@@ -2363,6 +2416,7 @@ Represents the diamond shape.
 - static **$t**: `Type`
 
 ### [DisplayOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DisplayOptions)
+Extends: DisplayOptionsBase
 Abstract base class which exposes the various display options available for a worksheet which can be
 saved with both a worksheet and a custom view.
 <p class="body">
@@ -2481,6 +2535,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [DisplayUnitLabel](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DisplayUnitLabel)
+Extends: ChartTextAreaBase
 Represents a unit label on an axis in a chart.
 
 - **constructor**(): DisplayUnitLabel
@@ -2510,6 +2565,7 @@ Display text values are compared case-insensitively.
 - static **staticInit**(): void
 
 ### [DivideByZeroException](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DivideByZeroException)
+Extends: ArithmeticException
 Represents an error in which a division by zero occurred during calculations.
 
 - **constructor**(message: string, innerException: BaseError): DivideByZeroException
@@ -2769,6 +2825,7 @@ A string specifying the title of the document.
 - **LE_InvalidPasswordException_DefaultMessage**: `string`
 
 ### [DuplicateConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DuplicateConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether a cell's value is unique or duplicated across the associated range.
 <p class="body">
@@ -2782,6 +2839,7 @@ the associated range.
 - static **$t**: `Type`
 
 ### [DynamicValuesFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/DynamicValuesFilter)
+Extends: Filter
 Abstract base class for all filter types which filter data based on a dynamic condition, such as the data present in the filtered
 data range, the date when the filter was applied, or the date when the filter is evaluated.
 
@@ -2789,6 +2847,7 @@ data range, the date when the filter was applied, or the date when the filter is
 - static **$t**: `Type`
 
 ### [EllipseShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/EllipseShape)
+Extends: WorksheetShapeWithText
 Represents the ellipse shape.
 
 - **constructor**(): EllipseShape
@@ -2797,12 +2856,14 @@ Represents the ellipse shape.
 - static **$t**: `Type`
 
 ### [EndOfStreamException](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/EndOfStreamException)
+Extends: IOException
 Represents an error in which an attempt was made to read past the end of a stream of data.
 
 - **constructor**(message: string, innerException: BaseError): EndOfStreamException
 - static **$t**: `Type`
 
 ### [ErrorBars](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ErrorBars)
+Extends: ChartObject
 Represents the error bars on a chart series.
 <para>
 Error bars indicate the degree of uncertainty for chart data. Only series in area, bar, column, line, and scatter groups on a 2-D chart can have error bars. Only series in scatter groups can have x and y error bars. This object isn't a collection. There's no object that represents a single error bar; you either have x error bars or y error bars turned on for all points in a series or you have them turned off.
@@ -2827,6 +2888,7 @@ A point is a graphical unit equal to 1/72", i.e., there are 72 points in one inc
 </p>
 
 ### [ErrorsConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ErrorsConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value is in error.
 <p class="body">
@@ -28819,6 +28881,7 @@ as so it corrects the date values.
 - **WorksheetShapeSerialization_ShapeName**: `string`
 
 ### [FillFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FillFilter)
+Extends: Filter
 Represents a filter which will filter cells based on their background fills.
 <p class="body">
 This filter specifies a single [[CellFill]]. Cells of with this fill will be visible in the data range.
@@ -28834,6 +28897,7 @@ Cells of with this fill will be visible in the the data range. All other cells w
 The CellFill by which the cells should be filtered.
 
 ### [FillSortCondition](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FillSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on their background fill.
 <p class="body">
 This sort condition specifies a single [[CellFill]]. Cells of this color will be moved to the beginning of the data range
@@ -28903,6 +28967,7 @@ A collection of fixed date groups.
 - static **staticInit**(): void
 
 ### [FixedValuesFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FixedValuesFilter)
+Extends: Filter
 Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.
 
 - **constructor**(a: IFilterable): FixedValuesFilter
@@ -28923,6 +28988,7 @@ may hide some of the matching cells.
 </p>
 
 ### [FontColorFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FontColorFilter)
+Extends: Filter
 Represents a filter which will filter cells based on their font colors.
 <p class="body">
 This filter specifies a single color. Cells with this color font will be visible in the data range. All other cells
@@ -28938,6 +29004,7 @@ Cells of this font color will be visible in the the data range. All other cells 
 The WorkbookColorInfo which describes the color by which the cells should be filtered.
 
 ### [FontColorSortCondition](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FontColorSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on their fonts colors.
 <p class="body">
 This sort condition specifies a single color. Cells of this color will be moved to the beginning of the data range for the ascending
@@ -29129,6 +29196,7 @@ This will return the same value as [[unformattedString]].
 </p>
 
 ### [FormattedStringFont](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FormattedStringFont)
+Extends: FormattedFontBase
 Controls the formatting of a range of characters in a [[formattedString]].
 <p class="body">
 The formatting of the string is controlled in a similar fashion as it would be in Microsoft Excel. In Excel, the user
@@ -29207,6 +29275,7 @@ will be thrown. It will be thrown later when one of the formatting properties of
 - **toString**(): string — Returns the string that represents the [[FormattedText]], which is the unformatted string.
 
 ### [FormattedTextFont](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FormattedTextFont)
+Extends: FormattedFontBase
 Controls the formatting of a range of characters in .
 <p class="body">
 The formatting of the string is controlled in a similar fashion as it would be in Microsoft Excel. In Excel, the user
@@ -29322,6 +29391,7 @@ This essentially performs a case-insensitive string comparison, ignoring the whi
 - static **staticInit**(): void
 
 ### [FormulaConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FormulaConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value meets the criteria defined by a <see cref="Excel.Formula">formula</see>.
 
@@ -29352,6 +29422,7 @@ The formula string which had the error being parsed.
 - **portionWithError**: `string` — Gets the portion of the formula which contains the error.
 
 ### [FrozenPaneSettings](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/FrozenPaneSettings)
+Extends: PaneSettingsBase
 Class which controls the way frozen panes are arranged and used for a worksheet.
 <p class="note">
 <B>Note:</B> Frozen and unfrozen panes cannot be used simultaneously, so depending whether the panes are
@@ -29451,6 +29522,7 @@ positions; for four, use .25, .5, .75, and 1.0, etc.
 </p>
 
 ### [HeartShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/HeartShape)
+Extends: WorksheetShapeWithText
 Represents the heart shape.
 
 - **constructor**(): HeartShape
@@ -29521,6 +29593,7 @@ The row at the specified index.
 - **removeAt**(index: number): void — Removes the row at the specified index in the collection.
 
 ### [HorizontalPageBreak](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/HorizontalPageBreak)
+Extends: PageBreak
 Represents a horizontal page break in a [[Worksheet]].
 
 - **constructor**(firstRowOnPage: number): HorizontalPageBreak
@@ -29531,12 +29604,14 @@ Represents a horizontal page break in a [[Worksheet]].
 - **firstRowOnPage**: `number` — Gets the 0-based index of the first row on the page after this break.
 
 ### [HorizontalPageBreakCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/HorizontalPageBreakCollection)
+Extends: PageBreakCollection$1
 A collection of horizontal page breaks on a [[Worksheet]].
 
 - **constructor**(a: PrintOptions): HorizontalPageBreakCollection
 - static **$t**: `Type`
 
 ### [IconCriterion](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IconCriterion)
+Extends: CriterionBase
 Defines the criterion for an [[IconSetConditionalFormat]] threshold.
 <p class="body">
 This class provides the ability to override the default behavior of the
@@ -29600,6 +29675,7 @@ as defined by the parent condition and this instance's <i>Threshold</i>.
 identifies the icon set that includes this icon (read-only).
 
 ### [IconFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IconFilter)
+Extends: Filter
 Represents a filter which can filter cells based on their conditional formatting icon.
 <p class="body">
 This filter allows cells to be filtered in if their conditional formatting icon matches the criteria.
@@ -29611,6 +29687,7 @@ This filter allows cells to be filtered in if their conditional formatting icon 
 - **iconSet**: `FormatConditionIconSet` — The icon's index in the associated icon set or null for 'NoCellIcon' (read-only).
 
 ### [IconSetConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IconSetConditionalFormat)
+Extends: ThresholdConditionBase
 Exposes properties which displays icons in a [[WorksheetCell]]
 based on the cell's value as relative to threshold values.
 <p class="body">
@@ -29694,6 +29771,7 @@ property.
 specified 'index'.
 
 ### [IconSortCondition](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IconSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on a specific conditioanl formmat icon.
 <p class="body">
 This sort condition specifies a single icon. Cells with this icon will be moved to the beginning of the data range for the ascending
@@ -29731,6 +29809,7 @@ Represents an error in I/O processing.
 - static **$t**: `Type`
 
 ### [IrregularSeal1Shape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IrregularSeal1Shape)
+Extends: WorksheetShapeWithText
 Represents the irregular seal 1 shape.
 
 - **constructor**(): IrregularSeal1Shape
@@ -29739,6 +29818,7 @@ Represents the irregular seal 1 shape.
 - static **$t**: `Type`
 
 ### [IrregularSeal2Shape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/IrregularSeal2Shape)
+Extends: WorksheetShapeWithText
 Represents the irregular seal 2 shape.
 
 - **constructor**(): IrregularSeal2Shape
@@ -29753,6 +29833,7 @@ Represents an error in which a keyed collection was accessed with a key which do
 - static **$t**: `Type`
 
 ### [LeaderLines](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LeaderLines)
+Extends: ChartLineBase
 Represents leader lines on a chart. Leader lines connect data labels to data points.
 <para class="note">
 <b>Note:</b> this object is not a collection and there is no object that represents a single leader line.
@@ -29764,6 +29845,7 @@ Represents leader lines on a chart. Leader lines connect data labels to data poi
 - static **$t**: `Type`
 
 ### [Legend](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Legend)
+Extends: ChartObject
 Represents the legend in a chart. Each chart can have only one legend.
 
 - **constructor**(): Legend
@@ -29849,6 +29931,7 @@ legend entry associated with a trendline.
 </p>
 
 ### [LegendEntries](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LegendEntries)
+Extends: ChartObject
 A collection of [[LegendEntry]]s for a [[WorksheetChart]]
 
 - **constructor**(a: IChartObject): LegendEntries
@@ -29862,6 +29945,7 @@ A collection of [[LegendEntry]]s for a [[WorksheetChart]]
 - **item**(a: number): LegendEntry — Indexer (read-only)
 
 ### [LegendEntry](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LegendEntry)
+Extends: ChartObject
 Represents a legend entry in a chart legend.
 <p class="body">
 <b>NOTE: </b> Legend entries are not supported for the following chart types:
@@ -29910,6 +29994,7 @@ in the legend.
 - **del**(): void — Marks the entry as being deleted.
 
 ### [LightningBoltShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LightningBoltShape)
+Extends: WorksheetShapeWithText
 Represents the lightning bolt shape.
 
 - **constructor**(): LightningBoltShape
@@ -29918,6 +30003,7 @@ Represents the lightning bolt shape.
 - static **$t**: `Type`
 
 ### [LimitedValueDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LimitedValueDataValidationRule)
+Extends: DataValidationRule
 Base class for all data validations rules which prevent certain values form being applied to a cell.
 
 - **constructor**(): LimitedValueDataValidationRule
@@ -29927,6 +30013,7 @@ True if a null value can be set on the cell; False otherwise.
 - **isEquivalentTo**(other: DataValidationRule): boolean — Indicates if this rule is structurally equivalent to another.
 
 ### [LineShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/LineShape)
+Extends: WorksheetShape
 Represents the line shape.
 
 - **constructor**(): LineShape
@@ -29935,6 +30022,7 @@ Represents the line shape.
 - static **$t**: `Type`
 
 ### [ListDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ListDataValidationRule)
+Extends: LimitedValueDataValidationRule
 Represents a data validation rule which allows a value from a list of accepted values to be applied to a cell.
 
 - **constructor**(): ListDataValidationRule
@@ -30092,6 +30180,7 @@ Any reference is allowed.
 </p>
 
 ### [NamedReference](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/NamedReference)
+Extends: NamedReferenceBase
 Represents a named reference defined in the workbook.
 <p class="body">
 Named references allow for names to be used in formulas instead of complex formulas or cell references.
@@ -30287,6 +30376,7 @@ the cell value is positive or negative.
 </p>
 
 ### [NoBlanksConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/NoBlanksConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value is not set.
 <p class="body">
@@ -30303,6 +30393,7 @@ To negate this condition, use the [[NoBlanksConditionalFormat]] class.
 - static **$t**: `Type`
 
 ### [NoErrorsConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/NoErrorsConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value is in error.
 <p class="body">
@@ -30319,6 +30410,7 @@ To negate this condition, use the [[ErrorsConditionalFormat]] class.
 - static **$t**: `Type`
 
 ### [OneConstraintDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/OneConstraintDataValidationRule)
+Extends: ValueConstraintDataValidationRule
 Represents a data validation rule which can validate the cell value against a single constraint value or formula.
 
 - **constructor**(): OneConstraintDataValidationRule
@@ -30453,6 +30545,7 @@ Any reference is allowed.
 </p>
 
 ### [OperatorConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/OperatorConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's value meets the criteria defined by a logical operator.
 
@@ -30535,6 +30628,7 @@ equals sign (=).
 </p>
 
 ### [OrderedSortCondition](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/OrderedSortCondition)
+Extends: SortCondition
 Represents an ordered sort condition, which can sort data in either an ascending or descending manner.
 
 - **constructor**(): OrderedSortCondition
@@ -30595,6 +30689,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [PentagonShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/PentagonShape)
+Extends: WorksheetShapeWithText
 Represents the pentagon shape.
 
 - **constructor**(): PentagonShape
@@ -30603,6 +30698,7 @@ Represents the pentagon shape.
 - static **$t**: `Type`
 
 ### [PlotArea](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/PlotArea)
+Extends: ChartAreaBase
 Represents the area in which the chart series is plotted.
 
 - **constructor**(a: IChartObject): PlotArea
@@ -30658,6 +30754,7 @@ If any page breaks are contained in the removed print area, they will be removed
 - static **staticInit**(): void
 
 ### [PrintOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/PrintOptions)
+Extends: PrintOptionsBase
 Class which exposes the various print options available for a worksheet which can be saved with both a
 worksheet and a custom view.
 <p class="body">
@@ -31107,6 +31204,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [RankConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RankConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether a cell's value is within the top or bottom rank of values across the
 associated range.
@@ -31164,6 +31262,7 @@ between 1 and 100, inclusively.
 the top or bottom of the ranking across the associated range.
 
 ### [RectangleShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RectangleShape)
+Extends: WorksheetShapeWithText
 Represents the rectangle shape.
 
 - **constructor**(): RectangleShape
@@ -31172,6 +31271,7 @@ Represents the rectangle shape.
 - static **$t**: `Type`
 
 ### [RelativeDateRangeFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RelativeDateRangeFilter)
+Extends: DateRangeFilter
 Represents a filter which can filter date cells based on dates relative to the when the filter was applied.
 <p class="body">
 The RelativeDateRangeFilter allows you to filter in dates which are in the previous, current, or next time period
@@ -31201,6 +31301,7 @@ Represents an index relative to a region
 - **compareTo**(obj: RelativeIndex): number — Compares this instance of a [[RelativeIndex]] to another.
 
 ### [RelativeIndexSortSettings](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RelativeIndexSortSettings)
+Extends: SortSettings$1
 Represents the settings which apply to sorting a region of values based on indices relative to either the Worksheet's [[Worksheet.filterSettings]] or [[Worksheet.sortSettings]] region.
 
 - **constructor**(a: ISortSettingsOwner, b: any): RelativeIndexSortSettings
@@ -31218,6 +31319,7 @@ Represents a range of contiguous rows or columns which should be repeated at the
 - **toString**(): string — Gets the string representation of the range.
 
 ### [RightTriangleShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RightTriangleShape)
+Extends: WorksheetShapeWithText
 Represents the right triangle shape.
 
 - **constructor**(): RightTriangleShape
@@ -31256,12 +31358,14 @@ The worksheet to which the row or column belongs.
 - **getResolvedCellFormat**(): IWorksheetCellFormat — Gets the resolved cell formatting for the cells in the row or column.
 
 ### [RowColumnCollectionBase$1](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/RowColumnCollectionBase$1)
+Extends: WorksheetItemCollection$1
 Base class for row collection and column collection.
 
 - **constructor**($t: Type, a: Worksheet, b: number): RowColumnCollectionBase$1<T>
 - static **$t**: `Type`
 
 ### [Series](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Series)
+Extends: ChartObject
 An object that represents a specific series in a chart
 
 - **constructor**(a: IChartObject): Series
@@ -31511,6 +31615,7 @@ and are not supported for other chart types.
 </p>
 
 ### [SeriesCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/SeriesCollection)
+Extends: ChartObject
 A collection of [[Series]] for a [[WorksheetChart]]
 
 - **constructor**(a: IChartObject): SeriesCollection
@@ -31531,6 +31636,7 @@ A collection of [[Series]] for a [[WorksheetChart]]
 - static **staticInit**(): void
 
 ### [SeriesDataLabels](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/SeriesDataLabels)
+Extends: DataLabel
 Defines the properties for all <see cref="DataLabel">data labels</see>
 displayed for this [[Series]].
 <p class="body">
@@ -31597,6 +31703,7 @@ Defines the name of a series
 - **toString**(): string — Gets the string representation of the [[SeriesName]].
 
 ### [SeriesValues](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/SeriesValues)
+Extends: SeriesValuesBase
 Defines a set of values in a series
 
 - **constructor**(values: IEnumerable): SeriesValues
@@ -31625,6 +31732,7 @@ Abstract base class for the fill of a shape.
 - static **fromColorInfo**(solidColorInfo: WorkbookColorInfo): ShapeFill — Creates an instance to describe a solid fill outline.
 
 ### [ShapeFillSolid](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ShapeFillSolid)
+Extends: ShapeFill
 Represents a shape fill with a solid color.
 
 - **constructor**(): ShapeFillSolid
@@ -31643,6 +31751,7 @@ Abstract base class for the outline of a shape.
 - static **fromColorInfo**(solidColorInfo: WorkbookColorInfo): ShapeOutline — Creates an instance to describe a solid color outline.
 
 ### [ShapeOutlineSolid](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ShapeOutlineSolid)
+Extends: ShapeOutline
 Represents a shape outline with a solid color.
 
 - **constructor**(): ShapeOutlineSolid
@@ -31929,6 +32038,7 @@ Table style names are compared case-insensitively.
 - static **staticInit**(): void
 
 ### [StraightConnector1Shape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/StraightConnector1Shape)
+Extends: WorksheetShape
 Represents the straight connector 1 shape.
 
 - **constructor**(): StraightConnector1Shape
@@ -31937,6 +32047,7 @@ Represents the straight connector 1 shape.
 - static **$t**: `Type`
 
 ### [TextOperatorConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TextOperatorConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether the cell's text value meets the criteria defined by a string and a
 [[FormatConditionTextOperator]] value.
@@ -31967,6 +32078,7 @@ equals sign (=).
 </p>
 
 ### [ThresholdConditionBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ThresholdConditionBase)
+Extends: ConditionBase
 Base class for the [[DataBarConditionalFormat]], [[IconSetConditionalFormat]],
 and [[ColorScaleConditionalFormat]] classes.
 
@@ -31981,6 +32093,7 @@ this condition applies.
 <para class="note"><b>Note:</b> the formula should return a boolean result. When the formula is applied to cells in the region if the formula returns false then those cells will not be included in the formatting.</para>
 
 ### [TickLabels](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TickLabels)
+Extends: ChartObject
 Represents the tick-mark labels associated with tick marks on a chart [[Axis]].
 
 - **constructor**(a: IChartObject): TickLabels
@@ -32020,6 +32133,7 @@ is set to <i>Horizontal</i>.
 <p class="body">Note that the [[rotation]] property is only applicable when this property is set to <i>Horizontal</i>.</p>
 
 ### [TopOrBottomFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TopOrBottomFilter)
+Extends: DynamicValuesFilter
 Represents a filter which can filter in cells in the upper or lower portion of the sorted values.
 
 - **constructor**(a: number, b: IFilterable): TopOrBottomFilter
@@ -32039,6 +32153,7 @@ a Type of BottomPercentage will filter in the bottom 15 percent of values.
 The number or percentage of items which should be filtered in.
 
 ### [Trendline](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Trendline)
+Extends: ChartObject
 Represents a [[Series]] trendline.
 
 - **constructor**(a: TrendlineCollection): Trendline
@@ -32085,6 +32200,7 @@ property is set to <i>MovingAverage</i>.
 - **trendlineType**: `TrendlineType` — Specifies the type of trendline, i.e., linear, exponential, polynomial, etc.
 
 ### [TrendlineCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TrendlineCollection)
+Extends: ChartObject
 A collection of [[Trendline]] objects belonging to the same [[Series]].
 
 - **constructor**(a: IChartObject): TrendlineCollection
@@ -32107,6 +32223,7 @@ ordinal position within the collection.
 - static **staticInit**(): void
 
 ### [TrendlineLabel](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TrendlineLabel)
+Extends: ChartLabelBase
 Represents a [[Trendline]] label.
 
 - **constructor**(): TrendlineLabel
@@ -32118,12 +32235,14 @@ default R-squared function is displayed within the label.
 - static **staticInit**(): void
 
 ### [TrendlineLine](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TrendlineLine)
+Extends: ChartLine
 Represents the title of a [[WorksheetChart]] or [[Axis]].
 
 - **constructor**(): TrendlineLine
 - static **$t**: `Type`
 
 ### [TwoConstraintDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/TwoConstraintDataValidationRule)
+Extends: ValueConstraintDataValidationRule
 Represents a data validation rule which can validate the cell value against two constraint values or formulas.
 
 - **constructor**(): TwoConstraintDataValidationRule
@@ -32438,6 +32557,7 @@ Any reference is allowed.
 </p>
 
 ### [UnfrozenPaneSettings](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/UnfrozenPaneSettings)
+Extends: PaneSettingsBase
 Class which controls the way unfrozen panes are arranged and used for a worksheet.
 <p class="note">
 <B>Note:</B> Frozen and unfrozen panes cannot be used simultaneously, so depending whether the panes are
@@ -32478,6 +32598,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [UniqueConditionalFormat](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/UniqueConditionalFormat)
+Extends: ConditionalFormatBase
 Exposes properties which control the visual attributes of a [[WorksheetCell]]
 based on whether a cell's value is unique across the associated range.
 <p class="body">
@@ -32491,6 +32612,7 @@ the associated range.
 - static **$t**: `Type`
 
 ### [UnknownShape](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/UnknownShape)
+Extends: WorksheetShapeWithText
 Represents an unsupported shape which has been loaded from a workbook file.
 <p class="body">
 This class is used for round-tripping purposes, so unsupported shapes which have been
@@ -32508,6 +32630,7 @@ obsolete in future versions when all shape types are supported.
 no data with the shape.
 
 ### [UpDownBar](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/UpDownBar)
+Extends: ChartObject
 Represents the bar which depicts gain or loss on a stock chart.
 
 - **constructor**(a: UpDownBars, b: UpDownBarType): UpDownBar
@@ -32519,6 +32642,7 @@ the bar, as well as whether a border appears.
 which defines the fill properties for the bar.
 
 ### [UpDownBars](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/UpDownBars)
+Extends: ChartObject
 Represents the bars which depict gain or loss on a stock chart.
 
 - **constructor**(): UpDownBars
@@ -32530,6 +32654,7 @@ of the down bars for a stock chart.
 of the up bars for a stock chart.
 
 ### [ValueConstraintDataValidationRule](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/ValueConstraintDataValidationRule)
+Extends: LimitedValueDataValidationRule
 Base class for all data validations rules which compare the cell value against one or more constraint when determining
 the validity of the cell value.
 
@@ -32544,6 +32669,7 @@ the constraint. For example, the ValidationCriteria.WholeNumber value will not a
 - **isEquivalentTo**(other: DataValidationRule): boolean — Indicates if this rule is structurally equivalent to another.
 
 ### [VerticalPageBreak](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/VerticalPageBreak)
+Extends: PageBreak
 Represents a vertical page break in a [[Worksheet]].
 
 - **constructor**(firstColumOnPage: number): VerticalPageBreak
@@ -32554,12 +32680,14 @@ Represents a vertical page break in a [[Worksheet]].
 - **firstColumnOnPage**: `number` — Gets the 0-based index of the first column on the page after this break.
 
 ### [VerticalPageBreakCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/VerticalPageBreakCollection)
+Extends: PageBreakCollection$1
 A collection of horizontal page breaks on a [[Worksheet]].
 
 - **constructor**(a: PrintOptions): VerticalPageBreakCollection
 - static **$t**: `Type`
 
 ### [Wall](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Wall)
+Extends: ChartObject
 Represents the walls and floor of a 3-D chart.
 This object isn't a collection. There's no object
 that represents a single wall; you must return all
@@ -33108,6 +33236,7 @@ Assigning a value of null to this property implies that the associated color has
 as a fractional number.
 
 ### [WorkbookLoadOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorkbookLoadOptions)
+Extends: WorkbookOptionsBase
 Contains the options related to loading a workbook from a file or stream.
 
 - **constructor**(): WorkbookLoadOptions
@@ -33146,6 +33275,7 @@ Provides information about the types of changes that are disabled when the assoc
 - **allowEditWindows**: `boolean` — Returns a boolean indicating if the Workbook windows may be modified when the Workbook is protected.
 
 ### [WorkbookSaveOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorkbookSaveOptions)
+Extends: WorkbookOptionsBase
 Contains the options related to saving a workbook to a file or stream.
 
 - **constructor**(): WorkbookSaveOptions
@@ -33207,6 +33337,7 @@ The style with the specified name or null if no style with that name exists.
 - static **staticInit**(): void
 
 ### [WorkbookWindowOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorkbookWindowOptions)
+Extends: WindowOptions
 Represents the window options which are saved with the workbook.
 <p class="body">
 The properties explicitly defined on this class and not inherited from the base class,
@@ -33246,6 +33377,7 @@ The defaults used for each setting are the same defaults with which Microsoft Ex
 </p>
 
 ### [Worksheet](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/Worksheet)
+Extends: Sheet
 Represents one worksheet in a Microsoft Excel workbook.
 <p class="body">
 An Excel worksheet is essentially a table with a limited number of rows and columns. To create new worksheet, use
@@ -33788,6 +33920,7 @@ already exists, using this property is equivalent to using the WorksheetRow.GetT
 - static **isCellTypeSupported**(cellType: Type): boolean — Returns True if a particular type of value can be exported to excel.
 
 ### [WorksheetCellCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetCellCollection)
+Extends: RowColumnCollectionBase$1
 A collection of cells in a row.
 <p class="body">
 Cells in this collection are lazily created (they are only created and added to the collection when they are accessed).
@@ -33806,6 +33939,7 @@ the maximum column count, and pass in each index to the collection's indexer.
 The cell at the specified column index in the owning row.
 
 ### [WorksheetCellComment](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetCellComment)
+Extends: WorksheetShape
 Represents a comment for a cell.
 <p class="body">
 Comments cannot be added to a worksheet's or a shape group's shapes collection. Instead, they must be set directly on the cell
@@ -33836,6 +33970,7 @@ return an empty formatted string.
 The formatted text of the comment.
 
 ### [WorksheetChart](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetChart)
+Extends: WorksheetShapeGroupBase
 Represents a group of shapes in a worksheet.  This group is also a shape which can be
 positioned and contained within another group or on a worksheet.
 
@@ -34237,6 +34372,7 @@ with the worksheet to remove as their scope, they will be removed from the [[Wor
 </p>
 
 ### [WorksheetColumn](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetColumn)
+Extends: RowColumnBase
 Represents a column in a Microsoft Excel worksheet.
 
 - **constructor**(a: Worksheet, b: number): WorksheetColumn
@@ -34271,6 +34407,7 @@ Setting a value of NaN will reset the column width so that the column uses the d
 </p>
 
 ### [WorksheetColumnCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetColumnCollection)
+Extends: RowColumnCollectionBase$1
 A collection of columns in a worksheet.
 <p class="body">
 Columns in this collection are lazily created (they are only created and added to the collection when they are accessed).
@@ -34397,6 +34534,7 @@ Once a data table is removed from the collection, it can no longer be used.
 - static **staticInit**(): void
 
 ### [WorksheetDisplayOptions](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetDisplayOptions)
+Extends: DisplayOptions
 Class which exposes the display options which can only be controlled through the worksheet.
 
 - **constructor**(a: Worksheet, b: boolean): WorksheetDisplayOptions
@@ -34565,6 +34703,7 @@ The hyperlink at the specified index.
 - static **staticInit**(): void
 
 ### [WorksheetImage](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetImage)
+Extends: WorksheetShape
 Represents any image on the worksheet except the background image.
 
 - **constructor**(): WorksheetImage
@@ -34588,6 +34727,7 @@ been created.
 - **[iterator]**(): EnumeratorWrapper<T>
 
 ### [WorksheetMergedCellsRegion](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetMergedCellsRegion)
+Extends: WorksheetRegion
 Represents a merged region of cells, or cells which share a value and format and appear as one cell when
 viewed in Microsoft Excel.
 <p class="body">
@@ -34712,6 +34852,7 @@ The range at the specified index.
 - **removeAt**(index: number): void — Removes the range at the specified index from the collection.
 
 ### [WorksheetProtection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetProtection)
+Extends: SheetProtection
 Provides information about the types of changes that are disabled when the associated Worksheet is protected.
 <p class="body">When a Worksheet is protected, the contents of unprotected cells may be edited by the end-user. One way to unprotect a
 cell is to change the [[IWorksheetCellFormat.locked]] property to false. Such cells may be edited by all users. Another way to
@@ -34921,6 +35062,7 @@ position of the region.
 - **toString**(cellReferenceMode: CellReferenceMode, includeWorksheetName: boolean, useRelativeColumn: boolean, useRelativeRow: boolean): string — Gets the string representation of the range of cells in the region.
 
 ### [WorksheetRow](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetRow)
+Extends: RowColumnBase
 Represents a row in a Microsoft Excel worksheet.
 
 - **constructor**(a: Worksheet, b: number): WorksheetRow
@@ -35110,6 +35252,7 @@ The value of the cell.
 - **validateCellValue**(columnIndex: number): boolean — Returns a boolean indicating if the value of the cell is valid considering its associated [[WorksheetCell.dataValidationRule]]
 
 ### [WorksheetRowCollection](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetRowCollection)
+Extends: RowColumnCollectionBase$1
 A collection of rows in a worksheet.
 <p class="body">
 Rows in this collection are lazily created (they are only created and added to the collection when they are accessed).
@@ -35275,6 +35418,7 @@ The shape at the specified index.
 - static **staticInit**(): void
 
 ### [WorksheetShapeGroup](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetShapeGroup)
+Extends: WorksheetShapeGroupBase
 Represents a group of shapes in a worksheet.  This group is also a shape which can be
 positioned and contained within another group or on a worksheet.
 
@@ -35284,6 +35428,7 @@ positioned and contained within another group or on a worksheet.
 - static **$t**: `Type`
 
 ### [WorksheetShapeGroupBase](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetShapeGroupBase)
+Extends: WorksheetShape
 Represents a group of shapes in a worksheet.  This group is also a shape which can be
 positioned and contained within another group or on a worksheet.
 
@@ -35298,6 +35443,7 @@ The shape at the specified index.
 The collection of shapes contained in the group.
 
 ### [WorksheetShapeWithText](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetShapeWithText)
+Extends: WorksheetShape
 Abstract base class for all shapes that can display text.
 <p class="body">
 Primitive shapes, such as polygons, and cell comments can display regular text or text with mixed formatting and are derived from this class.
@@ -35312,6 +35458,7 @@ Primitive shapes, such as polygons, and cell comments can display regular text o
 The formatted text of the shape.
 
 ### [WorksheetSortSettings](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetSortSettings)
+Extends: RelativeIndexSortSettings
 Exposes methods to identify a region in the wroksheet and to apply sort criteria to that region.
 
 - **constructor**(a: Worksheet, b: any): WorksheetSortSettings
@@ -35328,6 +35475,7 @@ Exposes methods to identify a region in the wroksheet and to apply sort criteria
 <p class="note"><b>Note:</b> setting the region will clear any applied filters or sort criteria.</p>
 
 ### [WorksheetTable](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/WorksheetTable)
+Extends: NamedReferenceBase
 Represents a region of cells formatted as a table.
 <p class="body">
 Tables assist in managing and analyzing a range of related data. This management can be done separately from the rest of the
@@ -35826,6 +35974,7 @@ the same style settings which can then be changed.
 </p>
 
 ### [XValues](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/XValues)
+Extends: SeriesValuesBase
 Defines a set of values in a series
 
 - **constructor**(values: IEnumerable): XValues
@@ -35838,6 +35987,7 @@ Defines a set of values in a series
 - **getValues**(): any[] — Returns the actual values for this [[XValues]] instance.
 
 ### [YearToDateFilter](https://www.infragistics.com/api/react/igniteui-react-excel/19.6.0/classes/YearToDateFilter)
+Extends: DateRangeFilter
 Represents a filter which can filter in date cells if the dates occur between the start of the current year
 and the time when the filter is evaluated.
 

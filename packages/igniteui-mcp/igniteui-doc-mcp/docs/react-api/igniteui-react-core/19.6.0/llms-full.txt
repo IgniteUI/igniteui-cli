@@ -54,6 +54,7 @@ Version: 19.6
 - static **referenceEquals**(a: any, b: any): boolean
 
 ### [BaseError](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/BaseError)
+Extends: Base
 
 - **constructor**(initNumber?: number, rest: any[]): BaseError
 - static **$t**: `Type`
@@ -70,6 +71,7 @@ Version: 19.6
 - static **isResponseTypeSupported**(responseType: any): boolean
 
 ### [Calendar](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Calendar)
+Extends: Base
 
 - **constructor**(): Calendar
 - static **$t**: `Type`
@@ -101,6 +103,7 @@ Version: 19.6
 - **updateQuery**(q: any): void
 
 ### [CompareInfo](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/CompareInfo)
+Extends: Base
 
 - **constructor**(): CompareInfo
 - static **$t**: `Type`
@@ -195,6 +198,7 @@ Version: 19.6
 - static **toUInt64**(v: any, provider?: IFormatProvider): number
 
 ### [CultureInfo](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/CultureInfo)
+Extends: Base
 
 - **constructor**(name: string): CultureInfo
 - static **$t**: `Type`
@@ -2316,6 +2320,7 @@ Version: 19.6
 - **TRIAL_VERSION**: `string`
 
 ### [DateTimeFormat](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/DateTimeFormat)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): DateTimeFormat
 - static **$t**: `Type`
@@ -2340,11 +2345,13 @@ Version: 19.6
 - static **en**(map: Map<string, any>): Generator<any, void, unknown>
 
 ### [Enum](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Enum)
+Extends: Base
 
 - **constructor**(): Enum
 - static **$t**: `Type`
 
 ### [EnumBox](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/EnumBox)
+Extends: Enum
 
 - **constructor**(value: number, type: Type): EnumBox
 - readonly **value**: `number`
@@ -2396,12 +2403,14 @@ Version: 19.6
 - static **tryParse$1**($tEnum: Type, value: string, ignoreCase: boolean, result: TEnum): any
 
 ### [EventArgs](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/EventArgs)
+Extends: Base
 
 - **constructor**(): EventArgs
 - static **$t**: `Type`
 - static **empty**: `EventArgs`
 
 ### [FormatException](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/FormatException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): FormatException
 - static **$t**: `Type`
@@ -2496,6 +2505,7 @@ The base class for generic data sources.
 - **rootCreated**(rootRef: any): void
 
 ### [IgrContentChildCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrContentChildCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgrContentChildCollection
 
@@ -2561,6 +2571,7 @@ Represent info about series values
 - **toString**(): string — Converts this object to a string
 
 ### [IgrDataLegendSummaryColumn](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrDataLegendSummaryColumn)
+Extends: IgrDataLegendSeriesValueInfo
 Represent a column in summary row
 
 - **constructor**(): IgrDataLegendSummaryColumn
@@ -2572,6 +2583,7 @@ Represent a column in summary row
 - **addValue**(value: number): void — Add a value in the summary column
 
 ### [IgrDataSeriesCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrDataSeriesCollection)
+Extends: IgCollection
 
 - **constructor**(list?: DataSeries[]): IgrDataSeriesCollection
 
@@ -2584,6 +2596,7 @@ Provides information about a schema change event.
 - **schema**: `IDataSourceSchema` — Represents the current schema for the data provider.
 
 ### [IgrDataSourceGroupDescription](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrDataSourceGroupDescription)
+Extends: IgrDataSourceSortDescription
 
 - **constructor**(): IgrDataSourceGroupDescription
 
@@ -2676,6 +2689,7 @@ Provides information about a schema change event that has occurred.
 - **removeAt**(index: number): IgrDataSourceSummaryDescription
 
 ### [IgrDateTimeFormatSpecifier](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrDateTimeFormatSpecifier)
+Extends: IgrFormatSpecifier
 
 - **constructor**(): IgrDateTimeFormatSpecifier
 - **calendar**: `string`
@@ -2752,10 +2766,12 @@ Represents a colleciton of filter expressions.
 - **getLocalCulture**(): string
 
 ### [IgrFormatSpecifierCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrFormatSpecifierCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgrFormatSpecifier[]): IgrFormatSpecifierCollection
 
 ### [IgrGenericVirtualDataSource](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrGenericVirtualDataSource)
+Extends: IgrBaseGenericDataSource
 The base class for generic data sources.
 
 - **constructor**(): IgrGenericVirtualDataSource
@@ -2889,6 +2905,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **stopPropagation**(): void — Prevent the event from bubbling up.
 
 ### [IgrNumberFormatSpecifier](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrNumberFormatSpecifier)
+Extends: IgrFormatSpecifier
 
 - **constructor**(): IgrNumberFormatSpecifier
 - **compactDisplay**: `string`
@@ -2912,6 +2929,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **useGrouping**: `boolean`
 
 ### [IgrObjectCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrObjectCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgrObjectCollection
 
@@ -3082,6 +3100,7 @@ Represents a record of data from a Shapefile (.shp and .dbf).
 - static **register**(): void
 
 ### [IgrSizeDefinitionCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrSizeDefinitionCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgrGridLayoutSizeDefinition[]): IgrSizeDefinitionCollection
 
@@ -3123,6 +3142,7 @@ A class that exposes style realted properties.
 - **render**(): CElement<any, Component<any, any, any>>
 
 ### [IgrToolCommandArgumentCollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrToolCommandArgumentCollection)
+Extends: IgCollection
 
 - **constructor**(list?: ToolCommandArgument[]): IgrToolCommandArgumentCollection
 
@@ -3165,11 +3185,13 @@ Class for converting Itf files into enumerable triangulations.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrUploadDataCompletedEventArgs](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrUploadDataCompletedEventArgs)
+Extends: IgrAsyncCompletedEventArgs
 
 - **constructor**(): IgrUploadDataCompletedEventArgs
 - **result**: `number[]`
 
 ### [IgrUploadStringCompletedEventArgs](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/IgrUploadStringCompletedEventArgs)
+Extends: IgrAsyncCompletedEventArgs
 
 - **constructor**(): IgrUploadStringCompletedEventArgs
 - **result**: `string`
@@ -3197,6 +3219,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **ensureStylablePatched**(prot: any): void
 
 ### [NotSupportedException](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/NotSupportedException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): NotSupportedException
 - static **$t**: `Type`
@@ -3204,12 +3227,14 @@ Class for converting Itf files into enumerable triangulations.
 - **init2**(initNumber: number, message: string, innerException: any): void
 
 ### [Nullable](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Nullable)
+Extends: Base
 
 - **constructor**(): Nullable
 - static **$t**: `Type`
 - static **getUnderlyingType**(nullableType: Type): Type
 
 ### [Nullable$1](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Nullable$1)
+Extends: Base
 
 - **constructor**($t: Type, value: T): Nullable$1<T>
 - readonly **isNullable**: `true`
@@ -3229,6 +3254,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **nullableEquals**(v1: any, v2: any): boolean
 
 ### [NumberFormatInfo](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/NumberFormatInfo)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): NumberFormatInfo
 - static **$t**: `Type`
@@ -3283,6 +3309,7 @@ Class for converting Itf files into enumerable triangulations.
 - **then**(pass: any, fail: any): PromiseWrapper
 
 ### [PropertyChangedEventArgs](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/PropertyChangedEventArgs)
+Extends: Base
 
 - **constructor**(propertyName: string): PropertyChangedEventArgs
 - static **$t**: `Type`
@@ -3396,6 +3423,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **getPropertyGetter**: `any`
 
 ### [Stream](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Stream)
+Extends: Base
 
 - **constructor**(): Stream
 - static **$t**: `Type`
@@ -3415,6 +3443,7 @@ Class for converting Itf files into enumerable triangulations.
 - **writeByte**(value: number): void
 
 ### [SystemException](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/SystemException)
+Extends: BaseError
 
 - **constructor**(initNumber: number, rest: any[]): SystemException
 - static **$t**: `Type`
@@ -3422,6 +3451,7 @@ Class for converting Itf files into enumerable triangulations.
 - **init2**(initNumber: number, message: string, innerException: any): void
 
 ### [Thread](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Thread)
+Extends: Base
 
 - **constructor**(): Thread
 - static **$t**: `Type`
@@ -3429,6 +3459,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **currentThread**: `Thread`
 
 ### [Type](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/Type)
+Extends: Base
 
 - **constructor**(instanceConstructor: Function, identifier: string, baseType?: Type, interfaces?: Type[], staticInitializer?: any): Type
 - **_$nullNullable**: `any`
@@ -3481,6 +3512,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **registerCons**(typeName: string, type: Function): void
 
 ### [ValueType](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/classes/ValueType)
+Extends: Base
 
 - **constructor**(): ValueType
 - static **$t**: `Type`
@@ -3605,6 +3637,7 @@ Class for converting Itf files into enumerable triangulations.
 - **dataContext**: `IgrDataContext`
 
 ### [ICollection](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/ICollection)
+Extends: IEnumerable
 
 - **count**: `number`
 - **isSynchronized**: `boolean`
@@ -3612,6 +3645,7 @@ Class for converting Itf files into enumerable triangulations.
 - **copyTo**: `any`
 
 ### [ICollection$1](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/ICollection$1)
+Extends: IEnumerable$1, IEnumerable
 
 - **count**: `number`
 - **isReadOnly**: `boolean`
@@ -3659,6 +3693,7 @@ Class for converting Itf files into enumerable triangulations.
 - **getEnumeratorObject**: `any`
 
 ### [IEnumerable$1](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/IEnumerable$1)
+Extends: IEnumerable
 
 - **getEnumerator**: `any`
 
@@ -3669,6 +3704,7 @@ Class for converting Itf files into enumerable triangulations.
 - **reset**: `any`
 
 ### [IEnumerator$1](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/IEnumerator$1)
+Extends: IEnumerator, IDisposable
 
 - **current**: `T`
 - **moveNext**: `any`
@@ -3786,6 +3822,7 @@ Class for converting Itf files into enumerable triangulations.
 - **owner**: `any`
 
 ### [IList](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/IList)
+Extends: ICollection
 
 - **isFixedSize**: `boolean`
 - **isReadOnly**: `boolean`
@@ -3800,6 +3837,7 @@ Class for converting Itf files into enumerable triangulations.
 - **removeAt**: `any`
 
 ### [IList$1](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/IList$1)
+Extends: ICollection$1, IEnumerable$1, IEnumerable
 
 - **indexOf**: `any`
 - **insert**: `any`
@@ -3842,11 +3880,13 @@ Class for converting Itf files into enumerable triangulations.
 - **y**: `number`
 
 ### [XmlAttribute](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlAttribute)
+Extends: XmlNode
 
 - **childNodes**: `XmlNodeList`
 - **cloneNode**: `any`
 
 ### [XmlDocument](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlDocument)
+Extends: XmlElement
 
 - **childNodes**: `XmlNodeList`
 - **documentElement**: `XmlElement`
@@ -3856,9 +3896,11 @@ Class for converting Itf files into enumerable triangulations.
 - **importNode**: `any`
 
 ### [XmlElement](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlElement)
+Extends: XmlNode
 
 
 ### [XmlLinkedNode](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlLinkedNode)
+Extends: XmlNode
 
 
 ### [XmlNamedNodeMap](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlNamedNodeMap)
@@ -3886,6 +3928,7 @@ Class for converting Itf files into enumerable triangulations.
 - **setAttributeNode**: `any`
 
 ### [XmlNodeList](https://www.infragistics.com/api/react/igniteui-react-core/19.6.0/interfaces/XmlNodeList)
+Extends: XmlNamedNodeMap
 
 - **length**: `number`
 - **item**: `any`

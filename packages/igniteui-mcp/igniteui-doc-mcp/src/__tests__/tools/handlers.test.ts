@@ -24,6 +24,7 @@ function makeLoader(overrides: Partial<ApiDocLoader> = {}): ApiDocLoader {
     search: vi.fn().mockReturnValue([]),
     load: vi.fn(),
     getStats: vi.fn(),
+    getBases: () => [],
     getPackageVersions: (entry: DocEntry) =>
       entry.package ? [entry.version ? `${entry.package}@${entry.version}` : entry.package] : [],
     ...overrides,
@@ -313,6 +314,119 @@ describe('createGetApiReferenceHandler', () => {
       expect(result.isError).toBeUndefined();
       expect(result.content[0].text).toContain('.checked (property)');
       expect(result.content[0].text).not.toContain('**click()**');
+    });
+
+    describe('dotted and call-style input', () => {
+      // Only the bare component name is an entry, as with the real loader.
+      const byName = () => makeLoader({
+        get: vi.fn((_platform: string, name: string) => name === 'IgcCheckboxComponent' ? makeCheckboxEntry() : undefined),
+      });
+
+      it('parses "Component.member" passed in `component`', async () => {
+        const result = await createGetApiReferenceHandler(byName())({
+          platform: 'webcomponents',
+          component: 'IgcCheckboxComponent.checked',
+          section: 'all',
+        });
+
+        expect(result.isError).toBeUndefined();
+        expect(result.content[0].text).toContain('IgcCheckboxComponent.checked (property)');
+      });
+
+      it('explicit `member` wins over a dotted suffix in `component`', async () => {
+        const result = await createGetApiReferenceHandler(byName())({
+          platform: 'webcomponents',
+          component: 'IgcCheckboxComponent.disabled',
+          section: 'all',
+          member: 'checked',
+        });
+
+        expect(result.content[0].text).toContain('.checked (property)');
+      });
+
+      it('reports the whole name when the part before the dot is not a component', async () => {
+        const result = await createGetApiReferenceHandler(byName())({
+          platform: 'webcomponents',
+          component: 'IgcBogus.checked',
+          section: 'all',
+        });
+
+        expect(result.isError).toBe(true);
+        expect(result.content[0].text).toContain('"IgcBogus.checked" not found');
+        expect(result.content[0].text).toContain('search_api');
+      });
+
+      it('drops an owner prefix and call parentheses from `member`', async () => {
+        const handler = createGetApiReferenceHandler(byName());
+        const prefixed = await handler({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all', member: 'IgcCheckboxComponent.checked',
+        });
+        const called = await handler({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all', member: 'checked()',
+        });
+
+        expect(prefixed.content[0].text).toContain('.checked (property)');
+        expect(called.content[0].text).toContain('.checked (property)');
+      });
+    });
+
+    describe('inherited members', () => {
+      const baseEntry = makeEntry({
+        component: 'IgcCheckboxBaseComponent',
+        platform: 'webcomponents',
+        content: '### [IgcCheckboxBaseComponent](url)\n\n- **name**: `string` — The name attribute.\n',
+      });
+      const withBase = () => makeLoader({
+        get: vi.fn().mockReturnValue(makeCheckboxEntry()),
+        getBases: () => [baseEntry],
+      });
+
+      it('finds a member on a base type and names where it came from', async () => {
+        const result = await createGetApiReferenceHandler(withBase())({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all', member: 'name',
+        });
+
+        expect(result.isError).toBeUndefined();
+        expect(result.content[0].text).toContain('IgcCheckboxComponent.name (property, inherited from IgcCheckboxBaseComponent)');
+        expect(result.content[0].text).toContain('**name**');
+      });
+
+      it('prefers the member on the component itself', async () => {
+        const result = await createGetApiReferenceHandler(withBase())({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all', member: 'checked',
+        });
+
+        expect(result.content[0].text).toContain('IgcCheckboxComponent.checked (property):');
+      });
+
+      it('names the base types it searched when the member is on none of them', async () => {
+        const result = await createGetApiReferenceHandler(withBase())({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all', member: 'nonexistent',
+        });
+
+        expect(result.isError).toBe(true);
+        expect(result.content[0].text).toContain('not found on IgcCheckboxComponent or its base types (IgcCheckboxBaseComponent)');
+        expect(result.content[0].text).toContain('search_api');
+      });
+
+      it('points the full entry and a section to the base types', async () => {
+        const handler = createGetApiReferenceHandler(withBase());
+        const full = await handler({ platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all' });
+        const section = await handler({ platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'methods' });
+
+        for (const result of [full, section]) {
+          expect(result.content[0].text).toContain('Inherited members are not listed above. They are in: IgcCheckboxBaseComponent.');
+        }
+      });
+
+      it('adds no note when the entry has no base types', async () => {
+        const loader = makeLoader({ get: vi.fn().mockReturnValue(makeCheckboxEntry()) });
+        const result = await createGetApiReferenceHandler(loader)({
+          platform: 'webcomponents', component: 'IgcCheckboxComponent', section: 'all',
+        });
+
+        expect(result.content[0].text).toBe(checkboxContent);
+      });
     });
   });
 });

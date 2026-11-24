@@ -9,6 +9,7 @@ Version: 7.1
 ## Classes
 
 ### [IgcArcGISOnlineMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcArcGISOnlineMapImagery)
+Extends: IgcGeographicMapImagery
 UI element class used to display ArcGIS Online Map imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgcArcGISOnlineMapImagery
@@ -24,6 +25,7 @@ UI element class used to display ArcGIS Online Map imagery in the IgxGeographicM
 The is provided to the end-user to allow them to reteive tokens on their onw.
 
 ### [IgcAzureMapsImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcAzureMapsImagery)
+Extends: IgcGeographicMapImagery
 UI element class used to display AzureMaps imagery in the GeographicMap.
 
 - **constructor**(): IgcAzureMapsImagery
@@ -41,6 +43,7 @@ Note that not all tilesets support this option and those that do might have rest
 For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#uri-parameters.
 
 ### [IgcBingMapsMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcBingMapsMapImagery)
+Extends: IgcGeographicMapImagery
 UI element class used to display BingMapsMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgcBingMapsMapImagery
@@ -60,12 +63,14 @@ For example: Aerial, AerialWithLabels, or Road map style.
 - **requestMapSettings**(): void — Will Connect to the Bing Rest API and retrieve the required TilePath and Subdomains from the service.  This requires a valid API key to already be set.
 
 ### [IgcCustomMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcCustomMapImagery)
+Extends: IgcGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgcCustomMapImagery
 - **getTileImageUri**: `any` — Raised when URI for tiles should be provided
 
 ### [IgcGeographicContourLineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicContourLineSeriesComponent)
+Extends: IgcGeographicXYTriangulatingSeriesComponent
 Represents a class for Geographic Contour Series displayed on a map.
 
 - **constructor**(): IgcGeographicContourLineSeriesComponent
@@ -83,6 +88,7 @@ Represents a class for Geographic Contour Series displayed on a map.
 - static **register**(): void
 
 ### [IgcGeographicHighDensityScatterSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicHighDensityScatterSeriesComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a HighDensityScatterSeries.
 
@@ -223,6 +229,7 @@ The default value for this property is 1.0, which means the series will always b
 - **styleUpdated**(): void — Called when this series' Style is updated.
 
 ### [IgcGeographicMarkerSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMarkerSeriesBaseComponent)
+Extends: IgcGeographicMarkerSeriesComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicMarkerSeriesBaseComponent
@@ -231,6 +238,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicMarkerSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicMarkerSeriesComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicMarkerSeriesComponent
@@ -255,6 +263,7 @@ choose a representative set.
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicPolylineSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicPolylineSeriesComponent)
+Extends: IgcGeographicShapeSeriesBaseComponent
 Series class used for displaying multiple polylines, in a geographic context, for datasources which contain multiple lists of points.
 
 - **constructor**(): IgcGeographicPolylineSeriesComponent
@@ -272,6 +281,7 @@ Series class used for displaying multiple polylines, in a geographic context, fo
 - static **register**(): void
 
 ### [IgcGeographicProportionalSymbolSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicProportionalSymbolSeriesBaseComponent)
+Extends: IgcGeographicMarkerSeriesBaseComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicProportionalSymbolSeriesBaseComponent
@@ -280,6 +290,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicProportionalSymbolSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicProportionalSymbolSeriesComponent)
+Extends: IgcGeographicMarkerSeriesComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -316,6 +327,7 @@ This setting applies only if multiple series are using the same RadiusScale.
 - static **register**(): void
 
 ### [IgcGeographicScatterAreaSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicScatterAreaSeriesComponent)
+Extends: IgcGeographicXYTriangulatingSeriesComponent
 Series class which draws a colored 2D surface, in a geographic context, based on a triangulation of XY data with numeric values assigned to each point.
 
 - **constructor**(): IgcGeographicScatterAreaSeriesComponent
@@ -333,6 +345,7 @@ Series class which draws a colored 2D surface, in a geographic context, based on
 - static **register**(): void
 
 ### [IgcGeographicShapeSeriesBaseBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesBaseBaseComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicShapeSeriesBaseBaseComponent
@@ -341,6 +354,7 @@ Base class for hosting chart series in a IgxGeographicMap.Component
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicShapeSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesBaseComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Base class for series which render polygons on a map.
 
 - **constructor**(): IgcGeographicShapeSeriesBaseComponent
@@ -368,6 +382,7 @@ To be consistent with the Shapefile technical description, it is expected that e
 - **findByName**(name: string): any
 
 ### [IgcGeographicShapeSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicShapeSeriesComponent)
+Extends: IgcGeographicShapeSeriesBaseComponent
 Series class which renders polygons as Paths, in a geographic context, based on lists of points in the ItemsSource.
 
 - **constructor**(): IgcGeographicShapeSeriesComponent
@@ -397,6 +412,7 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - static **register**(): void
 
 ### [IgcGeographicSymbolSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicSymbolSeriesBaseComponent)
+Extends: IgcGeographicMarkerSeriesBaseComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicSymbolSeriesBaseComponent
@@ -405,6 +421,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicSymbolSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicSymbolSeriesComponent)
+Extends: IgcGeographicMarkerSeriesComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -426,6 +443,7 @@ This is the geographic equivalent of a ScatterSeries.
 - static **register**(): void
 
 ### [IgcGeographicTileSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicTileSeriesComponent)
+Extends: IgcGeographicShapeSeriesBaseComponent
 Series class used for displaying a tile set, and using shapes to define the areas that should be rendered.
 
 - **constructor**(): IgcGeographicTileSeriesComponent
@@ -441,6 +459,7 @@ Series class used for displaying a tile set, and using shapes to define the area
 - static **register**(): void
 
 ### [IgcGeographicXYTriangulatingSeriesBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicXYTriangulatingSeriesBaseComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(): IgcGeographicXYTriangulatingSeriesBaseComponent
@@ -449,6 +468,7 @@ Base class for hosting chart series in a IgxGeographicMap.Component
 - **disconnectedCallback**(): void
 
 ### [IgcGeographicXYTriangulatingSeriesComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcGeographicXYTriangulatingSeriesComponent)
+Extends: IgcGeographicMapSeriesHostComponent
 Base class for geographic series which triangulate XY data prior to rendering.
 
 - **constructor**(): IgcGeographicXYTriangulatingSeriesComponent
@@ -471,6 +491,7 @@ This property is optional.  If it is left as null, the triangulation will be cre
 - **constructor**(): IgcImageTilesReadyEventArgs
 
 ### [IgcOpenStreetMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcOpenStreetMapImagery)
+Extends: IgcGeographicMapImagery
 UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgcOpenStreetMapImagery
@@ -481,6 +502,7 @@ UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.C
 - **constructor**(list?: string[]): IgcSubDomainsCollection
 
 ### [IgcTileGeneratorMapImagery](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-maps/7.1.0/classes/IgcTileGeneratorMapImagery)
+Extends: IgcGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgcTileGeneratorMapImagery

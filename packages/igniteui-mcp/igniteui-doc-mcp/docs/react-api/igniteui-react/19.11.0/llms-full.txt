@@ -2085,12 +2085,14 @@ Represents a sort operation for a given column.
 - **key**: `K` — The target column.
 
 ### [ChatAttachmentRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatAttachmentRenderContext)
+Extends: ChatMessageRenderContext
 The context object for renderers that deal with a specific attachment within a message.
 It extends the message context with the attachment data.
 
 - **attachment**: `IgcChatMessageAttachment` — The specific attachment being rendered.
 
 ### [ChatInputRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatInputRenderContext)
+Extends: ChatRenderContext
 The context object for renderers that deal with the chat input area.
 It extends the base context with input-specific properties.
 
@@ -2098,6 +2100,7 @@ It extends the base context with input-specific properties.
 - **value**: `string` — The current value of the input field.
 
 ### [ChatMessageRenderContext](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/ChatMessageRenderContext)
+Extends: ChatRenderContext
 The context object for renderers that deal with a specific chat message.
 It extends the base context with the message data.
 
@@ -2443,9 +2446,23 @@ Default is "below-messages".
 - **cancel?**: `string`
 - **currentMonth?**: `string`
 - **done?**: `string`
+- **endDate?**: `string`
 - **last30Days?**: `string`
 - **last7Days?**: `string`
+- **nextMonth?**: `string`
+- **nextYear?**: `string`
+- **nextYears?**: `string`
+- **previousMonth?**: `string`
+- **previousYear?**: `string`
+- **previousYears?**: `string`
+- **selectDate?**: `string`
+- **selectedDate?**: `string`
+- **selectMonth?**: `string`
+- **selectRange?**: `string`
+- **selectYear?**: `string`
 - **separator?**: `string`
+- **startDate?**: `string`
+- **weekLabel?**: `string`
 - **yearToDate?**: `string`
 
 ### [IgrFilteredEvent](https://www.infragistics.com/api/react/igniteui-react/19.11/interfaces/IgrFilteredEvent)

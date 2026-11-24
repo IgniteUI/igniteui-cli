@@ -47,6 +47,12 @@ export function snapshotVersion(content: string, folderName: string): string | u
   return [header, folderName].find(v => v && /^\d/.test(v))?.replace(/-.*$/, '');
 }
 
+/** Names on the "Extends: A, B<T, U>" line that follows an entry heading. */
+export function parseExtendsLine(line: string | undefined): string[] | undefined {
+  const names = line?.match(/^Extends:\s+(.+?)\s*$/)?.[1].split(/\s*,\s*(?![^<]*>)/).filter(Boolean);
+  return names?.length ? names : undefined;
+}
+
 export class ApiDocLoader {
   private docs = new Map<string, DocEntry>();
   // Secondary index keyed by lower-cased, generic-stripped name ("blazor:igbcombo"
@@ -54,6 +60,8 @@ export class ApiDocLoader {
   private docsByBaseName = new Map<string, DocEntry>();
   // Every package a name appears in; the exact-name map keeps only the last one loaded.
   private packagesByKey = new Map<string, Set<string>>();
+  // Each package's own entry for a name, so a base type resolves inside the package that extends it.
+  private docsByPackage = new Map<string, DocEntry>();
   private versionsByPackage = new Map<string, string>();
   private platformConfigs: PlatformConfig[];
 
@@ -150,6 +158,8 @@ export class ApiDocLoader {
 
           // Extract first line of prose as summary (skip the heading itself)
           const bodyLines = chunk.split('\n').slice(1);
+          const baseNames = parseExtendsLine(bodyLines[0]);
+          if (baseNames) bodyLines.shift();
           const summaryLine = bodyLines.find(l => l.trim() && !l.startsWith('-') && !l.startsWith('#')) ?? '';
 
           // Keywords: component name parts split by camelCase
@@ -173,9 +183,14 @@ export class ApiDocLoader {
             platform: config.key,
             package: packageName,
             version: packageVersion,
+            extends: baseNames,
           };
           this.docs.set(key, entry);
           this.indexBaseName(config.key, componentName, entry);
+          const packageKey = this.packageKey(config.key, packageName, componentName);
+          if (!this.docsByPackage.has(packageKey) || stripGenerics(componentName) === componentName) {
+            this.docsByPackage.set(packageKey, entry);
+          }
           const packages = this.packagesByKey.get(key) ?? new Set<string>();
           this.packagesByKey.set(key, packages.add(packageName));
           count++;
@@ -238,6 +253,10 @@ export class ApiDocLoader {
     }
   }
 
+  private packageKey(platform: string, packageName: string | undefined, name: string): string {
+    return `${platform}:${packageName}:${stripGenerics(name).toLowerCase()}`;
+  }
+
   /**
    * Exact lookup first; then a case-insensitive, generic-stripped lookup so
    * "IgbCombo" (or "igbcombo") resolves to the indexed "IgbCombo<T>".
@@ -247,6 +266,31 @@ export class ApiDocLoader {
       this.docs.get(`${platform}:${name}`) ??
       this.docsByBaseName.get(`${platform}:${stripGenerics(name).toLowerCase()}`)
     );
+  }
+
+  /**
+   * Every entry the given one inherits members from, nearest first. An entry lists
+   * only the inherited members whose declaring type has no entry of its own; the
+   * rest are in the entries named on its "Extends:" line, and in theirs in turn.
+   * A base is taken from the entry's own package when that package has it: another
+   * package can ship the same name with different members.
+   */
+  getBases(entry: DocEntry): DocEntry[] {
+    const bases: DocEntry[] = [];
+    const seen = new Set<DocEntry>([entry]);
+    const queue = [entry];
+    for (let current = queue.shift(); current; current = queue.shift()) {
+      for (const name of current.extends ?? []) {
+        const base =
+          this.docsByPackage.get(this.packageKey(current.platform, current.package, name)) ??
+          this.get(current.platform, name);
+        if (!base || seen.has(base)) continue;
+        seen.add(base);
+        bases.push(base);
+        queue.push(base);
+      }
+    }
+    return bases;
   }
 
   /** All packages that ship the entry's symbol, e.g. IgbCombo → IgniteUI.Blazor and IgniteUI.Blazor.Lite. */

@@ -9,11 +9,13 @@ Version: 26.1
 ## Classes
 
 ### [AnyValueDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/AnyValueDataValidationRule)
+Extends: DataValidationRule
 Represents a data validation rule which allows any value to be set on the target cells. This would be used to provide an input message to the user when the cell was selected.
 
 - **constructor**(): void
 
 ### [ArrayFormula](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ArrayFormula)
+Extends: Formula
 Represents an array formula for a group of cells.
 
 - **CellRange**: `WorksheetRegion` — Gets the cells to which the array formula is applied.
@@ -39,18 +41,21 @@ Represents a two-dimensional array of instances used in calculations.
 - **GetLength**(dimension: int): int — Gets the number of elements in the specified dimension of the array.
 
 ### [AverageConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/AverageConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether a cell's value is above or below the average or standard deviation for the associated range.
 
 - **AboveBelow**: `FormatConditionAboveBelow` — Returns or sets a value which determines the manner in which cell values are compared against the average or standard deviation for the associated range.
 - **NumericStandardDeviation**: `int` — Returns or sets the numeric standard deviation for this condition. Applicable only when the property is set to 'AboveStandardDeviation' or 'BelowStandardDeviation'.
 
 ### [AverageFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/AverageFilter)
+Extends: DynamicValuesFilter, Filter
 Represents a filter which can filter data based on whether the data is below or above the average of the entire data range.
 
 - **Average**: `double` — Gets the average that was computed the last time the filter was applied or 0 if any errors or all non-numeric values were found when applying the filter.
 - **Type**: `AverageFilterType` — Gets or sets the value indicating whether to filter in values below or above the average of the data range.
 
 ### [Axis](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Axis)
+Extends: ChartObject
 Represents a single axis in a chart.
 
 - **AxisBetweenCategories**: `bool` — True if the value axis crosses the category axis between categories.
@@ -94,6 +99,7 @@ Represents a single axis in a chart.
 - **SetMajorMinorUnit**(majorUnit: double, minorUnit: double): void — Sets the values of the and properties.
 
 ### [AxisCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/AxisCollection)
+Extends: ChartObject
 A collection of objects for a
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -105,6 +111,7 @@ A collection of objects for a
 - **Remove**(type: AxisType, group: AxisGroup): bool — Removes an axis from the collection.
 
 ### [BlanksConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/BlanksConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value is not set.
 
 
@@ -171,6 +178,7 @@ Abstract base class for the fill of a cell.
 - **CreateSolidFill**(solidColorInfo: WorkbookColorInfo): CellFillPattern — Creates a solid color fill that can be applied to a cell.
 
 ### [CellFillGradient](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CellFillGradient)
+Extends: CellFill
 Abstract base class for a gradient fill of a cell.
 
 - **Stops**: `IList<CellFillGradientStop>` — Gets the read-only collection of gradient stops which describe the color transitions and their positions within the gradient.
@@ -188,6 +196,7 @@ Immutable class which describes a color transition in a cell fill gradient.
 - **GetHashCode**(): int — Gets the hash code for the .
 
 ### [CellFillLinearGradient](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CellFillLinearGradient)
+Extends: CellFillGradient, CellFill
 An immutable object which represents a linear gradient fill for a cell.
 
 - **constructor**(angle: double, stops: CellFillGradientStop[]): void
@@ -196,6 +205,7 @@ An immutable object which represents a linear gradient fill for a cell.
 - **GetHashCode**(): int — Gets the hash code for the .
 
 ### [CellFillPattern](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CellFillPattern)
+Extends: CellFill
 An immutable object which represents a solid or pattern fill for a cell.
 
 - **constructor**(backgroundColorInfo: WorkbookColorInfo, patternColorInfo: WorkbookColorInfo, patternStyle: FillPatternStyle): void
@@ -206,6 +216,7 @@ An immutable object which represents a solid or pattern fill for a cell.
 - **GetHashCode**(): int — Gets the hash code for the .
 
 ### [CellFillRectangularGradient](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CellFillRectangularGradient)
+Extends: CellFillGradient, CellFill
 An immutable object which represents a rectangular gradient fill for a cell.
 
 - **constructor**(left: double, top: double, right: double, bottom: double, stops: CellFillGradientStop[]): void
@@ -225,10 +236,12 @@ Exposes the information necessary for drawing an icon for a specific cell.
 - **ShowValue**: `bool` — Returns whether the cell value is to be shown along with the data bar (read-only).
 
 ### [ChartArea](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartArea)
+Extends: ChartAreaBase, ChartObject
 Represents the area in which the chart is displayed.
 
 
 ### [ChartAreaBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartAreaBase)
+Extends: ChartObject
 Base class for chart area elements
 
 - **Border**: `ChartBorder` — Determines the appearance of the border drawn around the chart element area, as well as whether a border appears.
@@ -236,26 +249,31 @@ Base class for chart area elements
 - **RoundedCorners**: `bool` — Detrmines if the chart area is displayed with rounded corners
 
 ### [ChartBorder](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartBorder)
+Extends: ChartLineBase, ChartObject
 Represents the border of a chart element.
 
 - **constructor**(): void
 - **LineStyle**: `BorderLineStyle` — Returns or sets the line style for the border, i.e., solid, dashed, dotted, etc.
 
 ### [ChartDropLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartDropLines)
+Extends: ChartLineBase, ChartObject
 Exposes properties which control the fill and width of the drop lines in a stock chart.
 
 - **constructor**(): void
 
 ### [ChartEmptyFill](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartEmptyFill)
+Extends: ChartFillBase, ChartObject
 Placeholder which indicates that no fill should be rendered for the associated chart element.
 
 - **constructor**(): void
 
 ### [ChartFillBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartFillBase)
+Extends: ChartObject
 Base class for objects which relate to the background fill of a chart element.
 
 
 ### [ChartGradientFill](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartGradientFill)
+Extends: ChartFillBase, ChartObject
 Represents a gradient fill for a chart element.
 
 - **constructor**(gradientType: GradientType, stops: IEnumerable<GradientStop>, angle: double): void
@@ -264,29 +282,34 @@ Represents a gradient fill for a chart element.
 - **GetStops**(): IEnumerable<GradientStop> — Returns an enumerable list containing each associated with this gradient, ordered by their .
 
 ### [ChartGridLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartGridLines)
+Extends: ChartLineBase, ChartObject
 Represents the major/minor gridlines for an .
 
 - **constructor**(): void
 - **GridLineType**: `GridLineType` — Returns a value indicating whether this instance represents a major or minor gridline.
 
 ### [ChartHighLowLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartHighLowLines)
+Extends: ChartLineBase, ChartObject
 Exposes properties which control the fill and width of the lines which depict the high and low values in a stock chart.
 
 - **constructor**(): void
 
 ### [ChartLabelBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartLabelBase)
+Extends: ChartTextAreaBase, ChartObject
 Base class for chart elements which behave as a label.
 
 - **NumberFormat**: `string` — Returns or sets the format to use for numbers.
 - **NumberFormatLinked**: `bool` — True if the number format is linked to the cells (so that the number format changes in the labels when it changes in the cells).
 
 ### [ChartLine](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartLine)
+Extends: ChartLineBase, ChartObject
 Exposes properties which control the appearance of a line in a .
 
 - **constructor**(): void
 - **LineStyle**: `LineStyle` — Returns or sets the style for the line, i.e., solid, dashed, dotted, etc.
 
 ### [ChartLineBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartLineBase)
+Extends: ChartObject
 Represents a or .
 
 - **Fill**: `ChartFillBase` — Returns or sets a derived object which defines the fill color/gradient for the line.
@@ -302,6 +325,7 @@ Abstract base class for objects that are exposed off a
 - **Worksheet**: `Worksheet` — The owning worksheet (read-only)
 
 ### [ChartPatternFill](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartPatternFill)
+Extends: ChartFillBase, ChartObject
 Represents a pattern color fill for a chart element.
 
 - **constructor**(backgroundColor: WorkbookColorInfo, foregroundColor: WorkbookColorInfo, pattern: PatternType): void
@@ -310,11 +334,13 @@ Represents a pattern color fill for a chart element.
 - **Pattern**: `PatternType` — Returns the pattern style of the fill.
 
 ### [ChartSeriesLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartSeriesLines)
+Extends: ChartLineBase, ChartObject
 Exposes properties which control the fill and width of the lines which connect the first and second plot areas in a 'bar of pie' or 'pie of pie' chart.
 
 - **constructor**(): void
 
 ### [Chartsheet](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Chartsheet)
+Extends: Sheet
 A sheet in a Mirosoft Excel workbook that displays a single chart.
 
 - **Chart**: `WorksheetChart` — Returns the displayed in this chartsheet.
@@ -328,10 +354,12 @@ A sheet in a Mirosoft Excel workbook that displays a single chart.
 - **Protect**(password: string, allowEditObjects: bool?, allowEditContents: bool?): void — Protects the Chartsheet with the specified password.
 
 ### [ChartsheetDisplayOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartsheetDisplayOptions)
+Extends: ChartsheetDisplayOptionsBase, DisplayOptionsBase
 Class which exposes the display options which can only be controlled through the chartsheet.
 
 
 ### [ChartsheetDisplayOptionsBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartsheetDisplayOptionsBase)
+Extends: DisplayOptionsBase
 Base class for the display options for a chart sheet that are used for the display as well as its custom view.
 
 - **Magnification**: `int` — Gets or sets the magnification level of the chartsheet.
@@ -339,22 +367,26 @@ Base class for the display options for a chart sheet that are used for the displ
 - **ResetCore**(): void — Resets the display options to their default settings.
 
 ### [ChartsheetPrintOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartsheetPrintOptions)
+Extends: PrintOptionsBase
 Class which exposes the various print options available for a chartsheet which can be saved with both a chartsheet and a custom view.
 
 
 ### [ChartsheetProtection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartsheetProtection)
+Extends: SheetProtection
 Provides information about the types of changes that are disabled when the associated Chartsheet is protected.
 
 - **AllowEditContents**: `bool` — Returns a boolean indicating if the chart is protected when the chartsheet is protected.
 - **AllowEditObjects**: `bool` — Returns a boolean indicating if objects such as shapes and controls may be created or changed when the chartsheet is protected.
 
 ### [ChartSolidFill](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartSolidFill)
+Extends: ChartFillBase, ChartObject
 Represents a solid color fill for a chart element.
 
 - **constructor**(color: WorkbookColorInfo): void
 - **Color**: `WorkbookColorInfo` — Returns the color which is applied to the fill.
 
 ### [ChartTextAreaBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartTextAreaBase)
+Extends: ChartObject
 Represents the text area of a chart element.
 
 - **Border**: `ChartBorder` — Determines the appearance of the border drawn around the text area, as well as whether a border appears.
@@ -375,17 +407,20 @@ Represents the text area of a chart element.
 - **SetFormula**(formula: string, cellReferenceMode: CellReferenceMode?): void — Assigns a new to this instance.
 
 ### [ChartTickLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartTickLines)
+Extends: ChartLineBase, ChartObject
 Represents the tick lines for an .
 
 - **constructor**(): void
 
 ### [ChartTitle](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ChartTitle)
+Extends: ChartTextAreaBase, ChartObject
 Represents the title of a or .
 
 - **constructor**(): void
 - **Overlay**: `bool` — Determines whether the chart title is laid over the plot area.
 
 ### [ColorScaleConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ColorScaleConditionalFormat)
+Extends: ThresholdConditionBase, ConditionBase
 Exposes properties which control the coloring of a based on the cell's value as relative to minimum, midpoint, and maximum threshold values.
 
 - **ColorScaleType**: `ColorScaleType` — Returns a value which identifies this instance as a 2-color or 3-color scale.
@@ -394,12 +429,14 @@ Exposes properties which control the coloring of a based on the cell's value as 
 - **MinimumThreshold**: `ColorScaleCriterion` — Returns a object which defines the properties of the minimum threshold for this instance.
 
 ### [ColorScaleCriterion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ColorScaleCriterion)
+Extends: CriterionBase
 Defines the criterion for a threshold.
 
 - **FormatColor**: `WorkbookColorInfo` — Returns or sets a object which defines the color information for the threshold associated with this instance.
 - **ToString**(): string — Returns the string representation of this instance.
 
 ### [ComboChartGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ComboChartGroup)
+Extends: ChartObject
 Exposes chart-level properties for which appear within a combo chart.
 
 - **AxisGroup**: `AxisGroup` — Returns the value with which this instance was created.
@@ -410,6 +447,7 @@ Exposes chart-level properties for which appear within a combo chart.
 - **SeriesOverlap**: `int?` — Determines the amount by which intersecting overlap, expressed as a percentage of the bar size.
 
 ### [ComboChartGroupCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ComboChartGroupCollection)
+Extends: ChartObject
 A collection of objects for a
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -422,6 +460,7 @@ A collection of objects for a
 - **Remove**(comboChartGroup: ComboChartGroup): bool — Removes the specified from this collection.
 
 ### [ConditionalFormatBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ConditionalFormatBase)
+Extends: ConditionBase
 Abstract base class for classes which control the visual attributes of a , based on whether the cell's value meets a logical condition.
 
 - **constructor**(): void
@@ -490,6 +529,7 @@ Base class for the and classes.
 - **SetValue**(value: double, valueType: FormatConditionValueType): void — Sets the and properties to the specified values.
 
 ### [CustomDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomDataValidationRule)
+Extends: LimitedValueDataValidationRule, DataValidationRule
 Represents a data validation rule which allows any formula to be used to validate the value applied to a cell.
 
 - **constructor**(): void
@@ -500,6 +540,7 @@ Represents a data validation rule which allows any formula to be used to validat
 - **SetFormula**(formula: string, address: string, format: WorkbookFormat, cellReferenceMode: CellReferenceMode, culture: CultureInfo): void — Sets the formula used to validate the value applied to a cell.
 
 ### [CustomFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomFilter)
+Extends: Filter
 Represents a filter which can filter data based on one or two custom conditions.
 
 - **Condition1**: `CustomFilterCondition` — Gets or sets the first condition by which to filter the cells in the data range.
@@ -519,6 +560,7 @@ A filter condition used in a .
 - **GetHashCode**(): int — Gets the hash code for the .
 
 ### [CustomListSortCondition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomListSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on a custom, ordered list of values.
 
 - **constructor**(sortDirection: SortDirection, list: IEnumerable<string>): void
@@ -558,6 +600,7 @@ Represents a custom view in Microsoft Excel.
 - **GetSheetPrintOptions**(sheet: Sheet, createIfNull: bool): PrintOptionsBase — Gets the print options associated with the specified sheet.
 
 ### [CustomViewChartDisplayOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomViewChartDisplayOptions)
+Extends: ChartsheetDisplayOptionsBase, DisplayOptionsBase
 Class which exposes the chartsheet display options which can only be controlled through the custom view.
 
 
@@ -573,12 +616,14 @@ A collection of instances in a workbook.
 - **RemoveAt**(index: int): void — Removes the custom view at the specified index from the collection.
 
 ### [CustomViewDisplayOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomViewDisplayOptions)
+Extends: DisplayOptions, DisplayOptionsBase
 Class which exposes the worksheet display options which can only be controlled through the custom view.
 
 - **MagnificationInCurrentView**: `int` — Gets or sets the magnification level of the worksheet in the current .
 - **ResetCore**(): void — Resets the display options to their default settings.
 
 ### [CustomViewWindowOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/CustomViewWindowOptions)
+Extends: WindowOptions
 Represents the workbook window options which are saved with custom views.
 
 - **BoundsInPixels**: `Rect` — Gets or sets the pixel bounds of the workbook's MDI child window when owning these window options is applied.
@@ -588,6 +633,7 @@ Represents the workbook window options which are saved with custom views.
 - **Reset**(): void — Resets the window options to their default settings.
 
 ### [DataBarConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DataBarConditionalFormat)
+Extends: ThresholdConditionBase, ConditionBase
 Exposes properties which displays data bars in a based on the cell's value as relative to the associated range.
 
 - **AxisColor**: `WorkbookColorInfo` — Returns or sets a object which defines the color of the axis.
@@ -605,6 +651,7 @@ Exposes properties which displays data bars in a based on the cell's value as re
 - **ShowValue**: `bool` — Returns or sets a boolean value indicating whether the cell value is shown along with the data bar.
 
 ### [DataLabel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DataLabel)
+Extends: ChartLabelBase, ChartTextAreaBase, ChartObject
 Represents the label of a specific .
 
 - **constructor**(): void
@@ -622,6 +669,7 @@ Represents the label of a specific .
 - **Width**: `double` — Returns or sets a value that represents the width of the label, expressed as a ratio, relative to the size of the chart area.
 
 ### [DataPoint](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DataPoint)
+Extends: ChartObject
 Represents the a specific data point in a .
 
 - **ApplyPicToEnd**: `ExcelDefaultableBoolean` — Returns or sets a value indicating whether a picture is applied to the end of the point or all points in the series.
@@ -639,6 +687,7 @@ Represents the a specific data point in a .
 - **SetAsTotal**: `bool` — Returns or sets a boolean value indicating whether this data point represents a total or subtotal in a waterfall chart.
 
 ### [DataPointCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DataPointCollection)
+Extends: ChartObject
 A collection of s for a
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -692,28 +741,33 @@ A collection of instances in a worksheet.
 - **TryGetReferences**(rule: DataValidationRule, references: WorksheetReferenceCollection): bool — Gets the references which have the specified rule applied to them or null if the rule is not used on the .
 
 ### [DatePeriodFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DatePeriodFilter)
+Extends: DynamicValuesFilter, Filter
 Represents a filter which can filter dates in a specific period.
 
 - **Type**: `DatePeriodFilterType` — Gets or sets the type of date period to filter in.
 - **Value**: `int` — Gets or sets the 1-based value of the month or quarter to filter in.
 
 ### [DateRangeFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DateRangeFilter)
+Extends: DynamicValuesFilter, Filter
 Abstract base class for filters which filter dates based on whether they are within a specified range of dates or not.
 
 - **End**: `DateTime` — Gets the exclusive end date of the filtered in date range.
 - **Start**: `DateTime` — Gets the inclusive start date of the filtered in date range.
 
 ### [DateTimeConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DateTimeConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether a cell's date/time value falls within a given range of time.
 
 - **DateOperator**: `FormatConditionTimePeriod` — Returns or sets a value which defines the range of time against which cell values are compared when evaluating this condition.
 
 ### [DiamondShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DiamondShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the diamond shape.
 
 - **constructor**(): void
 
 ### [DisplayOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DisplayOptions)
+Extends: DisplayOptionsBase
 Abstract base class which exposes the various display options available for a worksheet which can be saved with both a worksheet and a custom view.
 
 - **FrozenPaneSettings**: `FrozenPaneSettings` — Gets the settings which control the frozen panes in the worksheet.
@@ -740,6 +794,7 @@ Abstract base class which exposes the various display options available for a sh
 - **ResetCore**(): void — Resets the display options to their default settings.
 
 ### [DisplayUnitLabel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DisplayUnitLabel)
+Extends: ChartTextAreaBase, ChartObject
 Represents a unit label on an axis in a chart.
 
 - **constructor**(): void
@@ -771,19 +826,23 @@ Class which exposes the document level properties for a Microsoft Excel file.
 - **Title**: `string` — Gets or sets the title of the document.
 
 ### [DuplicateConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DuplicateConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether a cell's value is unique or duplicated across the associated range.
 
 
 ### [DynamicValuesFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/DynamicValuesFilter)
+Extends: Filter
 Abstract base class for all filter types which filter data based on a dynamic condition, such as the data present in the filtered data range, the date when the filter was applied, or the date when the filter is evaluated.
 
 
 ### [EllipseShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/EllipseShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the ellipse shape.
 
 - **constructor**(): void
 
 ### [ErrorBars](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ErrorBars)
+Extends: ChartObject
 Represents the error bars on a chart series.
 
 - **constructor**(): void
@@ -795,6 +854,7 @@ Represents the error bars on a chart series.
 - **WidthInPoints**: `double` — Determines the width of the line, expressed in points.
 
 ### [ErrorsConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ErrorsConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value is in error.
 
 
@@ -918,11 +978,13 @@ Class used to provide the ability to customize resource strings.
 - **SetCustomizedString**(name: string, customizedText: string): void — Sets a customized string identified by the specified string resource name.
 
 ### [FillFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FillFilter)
+Extends: Filter
 Represents a filter which will filter cells based on their background fills.
 
 - **Fill**: `CellFill` — Gets or sets the by which the cells should be filtered.
 
 ### [FillSortCondition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FillSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on their background fill.
 
 - **constructor**(fill: CellFill): void
@@ -961,6 +1023,7 @@ A collection of fixed date groups.
 - **RemoveAt**(index: int): void — Removes the fixed date group at the specified index.
 
 ### [FixedValuesFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FixedValuesFilter)
+Extends: Filter
 Represents a filter which can filter cells based on specific, fixed values, which are allowed to display.
 
 - **CalendarType**: `CalendarType` — Gets or sets the calendar type used to interpret values in the collection.
@@ -969,11 +1032,13 @@ Represents a filter which can filter cells based on specific, fixed values, whic
 - **IncludeBlanks**: `bool` — Gets or sets the value which indicates whether blank cells should be filtered in.
 
 ### [FontColorFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FontColorFilter)
+Extends: Filter
 Represents a filter which will filter cells based on their font colors.
 
 - **FontColorInfo**: `WorkbookColorInfo` — Gets or sets the which describes the font color by which the cells should be filtered.
 
 ### [FontColorSortCondition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FontColorSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on their fonts colors.
 
 - **constructor**(fontColorInfo: WorkbookColorInfo): void
@@ -1011,6 +1076,7 @@ Represents a string with mixed formatting in a cell or cell comment.
 - **ToString**(): string — Returns the that represents this . This is just the unformatted string.
 
 ### [FormattedStringFont](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FormattedStringFont)
+Extends: FormattedFontBase
 Controls the formatting of a range of characters in a .
 
 - **FormattedString**: `FormattedString` — Gets the formatted string which is controlled by this font.
@@ -1028,6 +1094,7 @@ Represents text with multiple paragraphs and mixed formatting in a shape.
 - **ToString**(): string — Returns the string that represents the , which is the unformatted string.
 
 ### [FormattedTextFont](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FormattedTextFont)
+Extends: FormattedFontBase
 Controls the formatting of a range of characters in .
 
 - **FormattedText**: `FormattedText` — Gets the which is controlled by this font.
@@ -1078,6 +1145,7 @@ Represents a formula for a cell or group of cells.
 - **TryParse**(value: string, cellReferenceMode: CellReferenceMode, culture: CultureInfo, formula: Formula, exception: FormulaParseException): bool — Parses the specified formula value. The return value indicates whether the operation succeeded.
 
 ### [FormulaConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FormulaConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value meets the criteria defined by a .
 
 - **Formula**: `Formula` — Returns or sets the which defines the criteria for this condition.
@@ -1096,6 +1164,7 @@ The exception thrown when a formula parse error occurs.
 - **PortionWithError**: `string` — Gets the portion of the formula which contains the error.
 
 ### [FrozenPaneSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/FrozenPaneSettings)
+Extends: PaneSettingsBase
 Class which controls the way frozen panes are arranged and used for a worksheet.
 
 - **FrozenColumns**: `int` — Gets or sets the number of columns frozen at the left of the worksheet.
@@ -1131,6 +1200,7 @@ Describes the location and color of a transition point in a .
 - **Position**: `float` — Returns the position of this gradient stop, as a number between 0 and 1.
 
 ### [HeartShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/HeartShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the heart shape.
 
 - **constructor**(): void
@@ -1160,6 +1230,7 @@ A collection of hidden instances.
 - **RemoveAt**(index: int): void — Removes the row at the specified index in the collection.
 
 ### [HorizontalPageBreak](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/HorizontalPageBreak)
+Extends: PageBreak
 Represents a horizontal page break in a .
 
 - **constructor**(firstRowOnPage: int): void
@@ -1169,8 +1240,17 @@ Represents a horizontal page break in a .
 ### [HorizontalPageBreakCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/HorizontalPageBreakCollection)
 A collection of horizontal page breaks on a .
 
+- **Count**: `int` — Gets the number of page breaks in this collection.
+- **this[int]**: `T` — Gets the page break at the specified index.
+- **Add**(pageBreak: T): void — Adds a page break to the .
+- **Clear**(): void — Clears the collection of page breaks.
+- **Contains**(pageBreak: T): bool — Determines whether the specified page break exists on the .
+- **IndexOf**(pageBreak: T): int — Gets the 0-based index of the specified page break.
+- **Remove**(pageBreak: T): bool — Removes the specified page break from the .
+- **RemoveAt**(index: int): void — Removes the page break at the specified index.
 
 ### [IconCriterion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IconCriterion)
+Extends: CriterionBase
 Defines the criterion for an threshold.
 
 - **Comparison**: `ThresholdComparison` — Returns or sets a value which determines whether a "greater than" or "greater than or equal to" comparison is made when comparing cell values to the of this instance.
@@ -1178,12 +1258,14 @@ Defines the criterion for an threshold.
 - **IconSet**: `FormatConditionIconSet` — Returns a value which identifies the icon set that includes this icon (read-only).
 
 ### [IconFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IconFilter)
+Extends: Filter
 Represents a filter which can filter cells based on their conditional formatting icon.
 
 - **IconIndex**: `int?` — The icon set (read-only).
 - **IconSet**: `FormatConditionIconSet` — The icon's index in the associated icon set or null for 'NoCellIcon' (read-only).
 
 ### [IconSetConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IconSetConditionalFormat)
+Extends: ThresholdConditionBase, ConditionBase
 Exposes properties which displays icons in a based on the cell's value as relative to threshold values.
 
 - **IconCriteria**: `IconSetCriterionCollection` — Returns a which defines the criteria for this condition.
@@ -1199,6 +1281,7 @@ Collection class for objects of type .
 - **this[int]**: `IconCriterion` — Returns the object corresponding to the specified index.
 
 ### [IconSortCondition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IconSortCondition)
+Extends: SortCondition
 Represents a sort condition which will sort cells based on a specific conditioanl formmat icon.
 
 - **constructor**(iconSet: FormatConditionIconSet, iconIndex: int?): void
@@ -1213,21 +1296,25 @@ a class that wraps a native image
 - **IsEquivalent**(other: ImageWrapper): bool — Detrimes if another image is equivalent
 
 ### [IrregularSeal1Shape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IrregularSeal1Shape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the irregular seal 1 shape.
 
 - **constructor**(): void
 
 ### [IrregularSeal2Shape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/IrregularSeal2Shape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the irregular seal 2 shape.
 
 - **constructor**(): void
 
 ### [LeaderLines](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LeaderLines)
+Extends: ChartLineBase, ChartObject
 Represents leader lines on a chart. Leader lines connect data labels to data points.
 
 - **constructor**(): void
 
 ### [Legend](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Legend)
+Extends: ChartObject
 Represents the legend in a chart. Each chart can have only one legend.
 
 - **constructor**(): void
@@ -1246,6 +1333,7 @@ Represents the legend in a chart. Each chart can have only one legend.
 - **Width**: `double` — Returns or sets a value that represents the width of the legend area, expressed as a fraction of the chart area's width.
 
 ### [LegendEntries](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LegendEntries)
+Extends: ChartObject
 A collection of s for a
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -1255,6 +1343,7 @@ A collection of s for a
 - **IndexOf**(item: LegendEntry): int — Returns the index of the item in the collection
 
 ### [LegendEntry](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LegendEntry)
+Extends: ChartObject
 Represents a legend entry in a chart legend.
 
 - **Font**: `IWorkbookFont` — Returns or sets the for this legend entry. Read-only.
@@ -1262,22 +1351,26 @@ Represents a legend entry in a chart legend.
 - **IsDeleted**: `bool` — Returns or sets a boolean value indicating whether this entry has been removed from the
 
 ### [LightningBoltShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LightningBoltShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the lightning bolt shape.
 
 - **constructor**(): void
 
 ### [LimitedValueDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LimitedValueDataValidationRule)
+Extends: DataValidationRule
 Base class for all data validations rules which prevent certain values form being applied to a cell.
 
 - **AllowNull**: `bool` — Gets or sets the value which indicates whether a null, or blank, value is allowed to be set on a cell.
 - **IsEquivalentTo**(other: DataValidationRule): bool — Indicates if this rule is structurally equivalent to another.
 
 ### [LineShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/LineShape)
+Extends: WorksheetShape
 Represents the line shape.
 
 - **constructor**(): void
 
 ### [ListDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ListDataValidationRule)
+Extends: LimitedValueDataValidationRule, DataValidationRule
 Represents a data validation rule which allows a value from a list of accepted values to be applied to a cell.
 
 - **constructor**(): void
@@ -1291,6 +1384,7 @@ Represents a data validation rule which allows a value from a list of accepted v
 - **TryGetValues**(values: object[]): bool — Tries to obtain the value of the constraint.
 
 ### [NamedReference](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/NamedReference)
+Extends: NamedReferenceBase
 Represents a named reference defined in the workbook.
 
 - **Formula**: `string` — Gets the formula which defines the named reference.
@@ -1337,14 +1431,17 @@ Exposes properties which control the appearance of negative-value .
 - **BarColorType**: `DataBarNegativeBarColorType` — Returns or sets a value which specifies whether the same color as that which is used for the positive data bars is used.
 
 ### [NoBlanksConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/NoBlanksConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value is not set.
 
 
 ### [NoErrorsConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/NoErrorsConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value is in error.
 
 
 ### [OneConstraintDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/OneConstraintDataValidationRule)
+Extends: ValueConstraintDataValidationRule, LimitedValueDataValidationRule, DataValidationRule
 Represents a data validation rule which can validate the cell value against a single constraint value or formula.
 
 - **constructor**(): void
@@ -1369,6 +1466,7 @@ Thrown when a SpreadsheetMLpackage is found to be non-conformant.
 - **Reason**: `OpenPackagingNonConformanceExceptionReason` — Returns the the exception was thrown.
 
 ### [OperatorConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/OperatorConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's value meets the criteria defined by a logical operator.
 
 - **Operand1**: `Formula` — Returns the which defines the criteria for the first operand of this condition.
@@ -1384,6 +1482,7 @@ Exposes properties which control the visual attributes of a based on whether the
 - **SetOperand2Formula**(formula: string, cellReferenceMode: CellReferenceMode?): void — Assigns a to the property.
 
 ### [OrderedSortCondition](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/OrderedSortCondition)
+Extends: SortCondition
 Represents an ordered sort condition, which can sort data in either an ascending or descending manner.
 
 - **constructor**(): void
@@ -1417,11 +1516,13 @@ Abstract base class for classes which control pane settings.
 - **ResetCore**(): void — Resets the pane settings to their defaults.
 
 ### [PentagonShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/PentagonShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the pentagon shape.
 
 - **constructor**(): void
 
 ### [PlotArea](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/PlotArea)
+Extends: ChartAreaBase, ChartObject
 Represents the area in which the chart series is plotted.
 
 - **Height**: `double` — Returns or sets the height of the area, expressed as a fraction of the height of the containing chart element.
@@ -1442,6 +1543,7 @@ Gets the collection of print areas in a or a worksheet's print settings in a .
 - **RemoveAt**(index: int): void — Removes the print area at the specified index from the collection.
 
 ### [PrintOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/PrintOptions)
+Extends: PrintOptionsBase
 Class which exposes the various print options available for a worksheet which can be saved with both a worksheet and a custom view.
 
 - **CenterHorizontally**: `bool` — Gets or sets the value indicating whether the printed pages should be centered horizontally.
@@ -1492,6 +1594,7 @@ Base class which exposes the various print options available for a sheet which c
 - **Reset**(): void — Resets the print options to their default settings.
 
 ### [RankConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RankConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether a cell's value is within the top or bottom rank of values across the associated range.
 
 - **IsPercent**: `bool` — Returns or sets a boolean value indicating whether the is determined by a percentage value.
@@ -1499,11 +1602,13 @@ Exposes properties which control the visual attributes of a based on whether a c
 - **TopBottom**: `FormatConditionTopBottom` — Returns or sets a value indicating whether a cell value must fall within the top or bottom of the ranking across the associated range.
 
 ### [RectangleShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RectangleShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the rectangle shape.
 
 - **constructor**(): void
 
 ### [RelativeDateRangeFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RelativeDateRangeFilter)
+Extends: DateRangeFilter, DynamicValuesFilter, Filter
 Represents a filter which can filter date cells based on dates relative to the when the filter was applied.
 
 - **Duration**: `RelativeDateRangeDuration` — Gets or sets the duration of the full range of accepted dates.
@@ -1522,6 +1627,8 @@ Represents an index relative to a region
 ### [RelativeIndexSortSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RelativeIndexSortSettings)
 Represents the settings which apply to sorting a region of values based on indices relative to either the Worksheet's or region.
 
+- **CaseSensitive**: `bool` — Gets or sets the value which indicates whether strings should be compared case-sensitively when they are sorted.
+- **SortConditions**: `SortConditionCollection<T>` — Gets the collection of sort conditions to use when sorting the region of data.
 - **InitializeRegion**(): void — Initializes the region to null
 
 ### [RepeatTitleRange](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RepeatTitleRange)
@@ -1535,6 +1642,7 @@ Represents a range of contiguous rows or columns which should be repeated at the
 - **ToString**(): string — Gets the string representation of the range.
 
 ### [RightTriangleShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RightTriangleShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents the right triangle shape.
 
 - **constructor**(): void
@@ -1552,8 +1660,10 @@ Abstract base class for worksheet row and worksheet column.
 ### [RowColumnCollectionBase<T>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/RowColumnCollectionBase<T>)
 Base class for row collection and column collection.
 
+- **MaxCount**: `int` — Gets the maximum number of items allowed in this collection.
 
 ### [Series](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Series)
+Extends: ChartObject
 An object that represents a specific series in a chart
 
 - **ApplyPicToEnd**: `bool` — Apply the picture to the end of the series.
@@ -1594,6 +1704,7 @@ An object that represents a specific series in a chart
 - **XValues**: `XValues` — Returns or sets a instance that contains a collection of all the x values in the series.
 
 ### [SeriesCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/SeriesCollection)
+Extends: ChartObject
 A collection of for a
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -1609,6 +1720,7 @@ A collection of for a
 - **RemoveAt**(index: int): void — Removes the series at the specified index
 
 ### [SeriesDataLabels](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/SeriesDataLabels)
+Extends: DataLabel, ChartLabelBase, ChartTextAreaBase, ChartObject
 Defines the properties for all displayed for this .
 
 - **DataLabelsRange**: `Formula` — Returns a which defines the cell range from which part or all of the label text is obtained.
@@ -1624,6 +1736,7 @@ Defines the name of a series
 - **ToString**(): string — Gets the string representation of the .
 
 ### [SeriesValues](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/SeriesValues)
+Extends: SeriesValuesBase
 Defines a set of values in a series
 
 - **constructor**(sheet: Sheet, sourceRange: string, cellReferenceMode: CellReferenceMode?, colorBy: SeriesValuesColorBy): void
@@ -1644,6 +1757,7 @@ Abstract base class for the fill of a shape.
 - **FromColorInfo**(solidColorInfo: WorkbookColorInfo): ShapeFill — Creates an instance to describe a solid fill outline.
 
 ### [ShapeFillSolid](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ShapeFillSolid)
+Extends: ShapeFill
 Represents a shape fill with a solid color.
 
 - **constructor**(): void
@@ -1659,6 +1773,7 @@ Abstract base class for the outline of a shape.
 - **FromColorInfo**(solidColorInfo: WorkbookColorInfo): ShapeOutline — Creates an instance to describe a solid color outline.
 
 ### [ShapeOutlineSolid](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ShapeOutlineSolid)
+Extends: ShapeOutline
 Represents a shape outline with a solid color.
 
 - **constructor**(): void
@@ -1811,11 +1926,13 @@ A collection of standard instances which can be applied to a in a .
 - **this[string]**: `WorksheetTableStyle` — Gets the with the specified name.
 
 ### [StraightConnector1Shape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/StraightConnector1Shape)
+Extends: WorksheetShape
 Represents the straight connector 1 shape.
 
 - **constructor**(): void
 
 ### [TextOperatorConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TextOperatorConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether the cell's text value meets the criteria defined by a string and a value.
 
 - **Text**: `string` — Returns or sets the string value against which cell text is compared.
@@ -1824,6 +1941,7 @@ Exposes properties which control the visual attributes of a based on whether the
 - **SetTextFormula**(formula: string, cellReferenceMode: CellReferenceMode?): void — Assigns a to the property.
 
 ### [ThresholdConditionBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ThresholdConditionBase)
+Extends: ConditionBase
 Base class for the , , and classes.
 
 - **constructor**(): void
@@ -1831,6 +1949,7 @@ Base class for the , , and classes.
 - **SetFormula**(formula: string, cellReferenceMode: CellReferenceMode?): void — Assigns a new to the property.
 
 ### [TickLabels](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TickLabels)
+Extends: ChartObject
 Represents the tick-mark labels associated with tick marks on a chart .
 
 - **Alignment**: `TickLabelAlignment` — Specifies the alignment of the tick labels
@@ -1845,12 +1964,14 @@ Represents the tick-mark labels associated with tick marks on a chart .
 - **TextDirection**: `TextDirection` — Determines the orientation and direction in which text flows.
 
 ### [TopOrBottomFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TopOrBottomFilter)
+Extends: DynamicValuesFilter, Filter
 Represents a filter which can filter in cells in the upper or lower portion of the sorted values.
 
 - **Type**: `TopOrBottomFilterType` — Gets or sets the type of the filter.
 - **Value**: `int` — Gets or sets the number or percentage of value of values which should be filtered in.
 
 ### [Trendline](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Trendline)
+Extends: ChartObject
 Represents a trendline.
 
 - **Backward**: `double` — Specifies the number of periods or units by which the trendline extends backward.
@@ -1865,6 +1986,7 @@ Represents a trendline.
 - **TrendlineType**: `TrendlineType` — Specifies the type of trendline, i.e., linear, exponential, polynomial, etc.
 
 ### [TrendlineCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TrendlineCollection)
+Extends: ChartObject
 A collection of objects belonging to the same .
 
 - **Count**: `int` — Returns the number of items in the collection (read-only)
@@ -1880,6 +2002,7 @@ A collection of objects belonging to the same .
 - **RemoveAt**(index: int): void — Removes the series at the specified index
 
 ### [TrendlineLabel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TrendlineLabel)
+Extends: ChartLabelBase, ChartTextAreaBase, ChartObject
 Represents a label.
 
 - **constructor**(): void
@@ -1887,11 +2010,13 @@ Represents a label.
 - **DisplayRSquared**: `bool` — Returns or sets a boolean value indicating whether the default R-squared function is displayed within the label.
 
 ### [TrendlineLine](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TrendlineLine)
+Extends: ChartLine, ChartLineBase, ChartObject
 Represents the title of a or .
 
 - **constructor**(): void
 
 ### [TwoConstraintDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/TwoConstraintDataValidationRule)
+Extends: ValueConstraintDataValidationRule, LimitedValueDataValidationRule, DataValidationRule
 Represents a data validation rule which can validate the cell value against two constraint values or formulas.
 
 - **constructor**(): void
@@ -1920,6 +2045,7 @@ Represents a data validation rule which can validate the cell value against two 
 - **TryGetUpperConstraint**(value: TimeSpan): bool — Tries to obtain the value of the upper constraint.
 
 ### [UnfrozenPaneSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/UnfrozenPaneSettings)
+Extends: PaneSettingsBase
 Class which controls the way unfrozen panes are arranged and used for a worksheet.
 
 - **FirstColumnInLeftPane**: `int` — Gets or sets the first visible column in the left pane(s) of the worksheet.
@@ -1929,15 +2055,18 @@ Class which controls the way unfrozen panes are arranged and used for a workshee
 - **ResetCore**(): void — Resets the unfrozen pane settings to their defaults.
 
 ### [UniqueConditionalFormat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/UniqueConditionalFormat)
+Extends: ConditionalFormatBase, ConditionBase
 Exposes properties which control the visual attributes of a based on whether a cell's value is unique across the associated range.
 
 
 ### [UnknownShape](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/UnknownShape)
+Extends: WorksheetShapeWithText, WorksheetShape
 Represents an unsupported shape which has been loaded from a workbook file.
 
 - **ClearUnknownData**(): void — Throws an exception because all data in an unknown shape is unknown, and clearing that data would leave no data with the shape.
 
 ### [UpDownBar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/UpDownBar)
+Extends: ChartObject
 Represents the bar which depicts gain or loss on a stock chart.
 
 - **BarType**: `UpDownBarType` — Returns a value which identifies this instance as as up or down bar.
@@ -1945,6 +2074,7 @@ Represents the bar which depicts gain or loss on a stock chart.
 - **Fill**: `ChartFillBase` — Returns or sets a derived object which defines the fill properties for the bar.
 
 ### [UpDownBars](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/UpDownBars)
+Extends: ChartObject
 Represents the bars which depict gain or loss on a stock chart.
 
 - **constructor**(): void
@@ -1953,12 +2083,14 @@ Represents the bars which depict gain or loss on a stock chart.
 - **UpBar**: `UpDownBar` — Returns an instance which controls the appearance of the up bars for a stock chart.
 
 ### [ValueConstraintDataValidationRule](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/ValueConstraintDataValidationRule)
+Extends: LimitedValueDataValidationRule, DataValidationRule
 Base class for all data validations rules which compare the cell value against one or more constraint when determining the validity of the cell value.
 
 - **ValidationCriteria**: `DataValidationCriteria` — Gets or sets the criteria to use when validating the cell value against the constraint(s).
 - **IsEquivalentTo**(other: DataValidationRule): bool — Indicates if this rule is structurally equivalent to another.
 
 ### [VerticalPageBreak](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/VerticalPageBreak)
+Extends: PageBreak
 Represents a vertical page break in a .
 
 - **constructor**(firstColumOnPage: int): void
@@ -1968,8 +2100,17 @@ Represents a vertical page break in a .
 ### [VerticalPageBreakCollection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/VerticalPageBreakCollection)
 A collection of horizontal page breaks on a .
 
+- **Count**: `int` — Gets the number of page breaks in this collection.
+- **this[int]**: `T` — Gets the page break at the specified index.
+- **Add**(pageBreak: T): void — Adds a page break to the .
+- **Clear**(): void — Clears the collection of page breaks.
+- **Contains**(pageBreak: T): bool — Determines whether the specified page break exists on the .
+- **IndexOf**(pageBreak: T): int — Gets the 0-based index of the specified page break.
+- **Remove**(pageBreak: T): bool — Removes the specified page break from the .
+- **RemoveAt**(index: int): void — Removes the page break at the specified index.
 
 ### [Wall](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Wall)
+Extends: ChartObject
 Represents the walls and floor of a 3-D chart. This object isn't a collection. There's no object that represents a single wall; you must return all the walls as a unit.
 
 - **Border**: `ChartBorder` — Determines the appearance of the border drawn around the text area, as well as whether a border appears.
@@ -2116,6 +2257,7 @@ Defines color transforms for a instance.
 - **Shade**: `double?` — Defines the shading for the associated instance, expressed as a fractional number.
 
 ### [WorkbookLoadOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorkbookLoadOptions)
+Extends: WorkbookOptionsBase
 Contains the options related to loading a workbook from a file or stream.
 
 - **constructor**(packageFactory: IPackageFactory): void
@@ -2142,6 +2284,7 @@ Provides information about the types of changes that are disabled when the assoc
 - **AllowEditWindows**: `bool` — Returns a boolean indicating if the Workbook windows may be modified when the Workbook is protected.
 
 ### [WorkbookSaveOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorkbookSaveOptions)
+Extends: WorkbookOptionsBase
 Contains the options related to saving a workbook to a file or stream.
 
 - **constructor**(packageFactory: IPackageFactory): void
@@ -2170,6 +2313,7 @@ A collection of workbook styles, or complex formats which can be easily applied 
 - **Reset**(): void — Resets the collection to its original state by clearing all styles and adding in preset built in styles.
 
 ### [WorkbookWindowOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorkbookWindowOptions)
+Extends: WindowOptions
 Represents the window options which are saved with the workbook.
 
 - **BoundsInTwips**: `Rect` — Gets or sets the bounds of the workbook's MDI child window in twips (1/20th of a point).
@@ -2178,6 +2322,7 @@ Represents the window options which are saved with the workbook.
 - **Reset**(): void — Resets the window options to their default settings.
 
 ### [Worksheet](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/Worksheet)
+Extends: Sheet
 Represents one worksheet in a Microsoft Excel workbook.
 
 - **Columns**: `WorksheetColumnCollection` — Gets the collection of columns in the worksheet.
@@ -2269,6 +2414,7 @@ A collection of cells in a row.
 - **MaxCount**: `int` — Gets the maximum number of items allowed in this collection.
 
 ### [WorksheetCellComment](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetCellComment)
+Extends: WorksheetShape
 Represents a comment for a cell.
 
 - **constructor**(): void
@@ -2278,6 +2424,7 @@ Represents a comment for a cell.
 - **Text**: `FormattedString` — Gets or sets the formatted text of the comment.
 
 ### [WorksheetChart](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetChart)
+Extends: WorksheetShapeGroupBase, WorksheetShape
 Represents a chart.
 
 - **AutoScaling**: `bool` — True if Microsoft Excel scales a 3-D chart so that it's closer in size to the equivalent 2-D chart. The property must be True
@@ -2333,6 +2480,7 @@ A collection of worksheets in a workbook.
 - **RemoveAt**(index: int): void — Removes the worksheet at the specified index from the collection.
 
 ### [WorksheetColumn](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetColumn)
+Extends: RowColumnBase
 Represents a column in a Microsoft Excel worksheet.
 
 - **Index**: `int` — Gets the 0-based index of the column in the worksheet.
@@ -2371,6 +2519,7 @@ A collection of instances on a worksheet.
 - **RemoveAt**(index: int): void — Removes the data table at the specified index from the collection.
 
 ### [WorksheetDisplayOptions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetDisplayOptions)
+Extends: DisplayOptions, DisplayOptionsBase
 Class which exposes the display options which can only be controlled through the worksheet.
 
 - **MagnificationInNormalView**: `int` — Gets or sets the magnification level of the worksheet when it is displayed in normal view.
@@ -2447,6 +2596,7 @@ A collection of instances in a .
 - **RemoveAt**(index: int): void — Removes the hyperlink at the specified index from the collection.
 
 ### [WorksheetImage](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetImage)
+Extends: WorksheetShape
 Represents any image on the worksheet except the background image.
 
 - **constructor**(image: ImageWrapper): void
@@ -2457,6 +2607,7 @@ Abstract base class for collections of the main worksheet elements (rows, column
 - **MaxCount**: `int` — Gets the maximum number of items allowed in this collection.
 
 ### [WorksheetMergedCellsRegion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetMergedCellsRegion)
+Extends: WorksheetRegion
 Represents a merged region of cells, or cells which share a value and format and appear as one cell when viewed in Microsoft Excel.
 
 - **CellFormat**: `IWorksheetCellFormat` — Gets the cell formatting for the merged cell region.
@@ -2509,6 +2660,7 @@ A collection of instances in a
 - **RemoveAt**(index: int): void — Removes the range at the specified index from the collection.
 
 ### [WorksheetProtection](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetProtection)
+Extends: SheetProtection
 Provides information about the types of changes that are disabled when the associated Worksheet is protected.
 
 - **AllowDeletingColumns**: `bool` — Returns a boolean indicating if the deletion of columns is allowed in a protected worksheet.
@@ -2573,6 +2725,7 @@ Represents a rectangular region of cells on a worksheet.
 - **ToString**(cellReferenceMode: CellReferenceMode, includeWorksheetName: bool, useRelativeColumn: bool, useRelativeRow: bool): string — Gets the string representation of the range of cells in the region.
 
 ### [WorksheetRow](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetRow)
+Extends: RowColumnBase
 Represents a row in a Microsoft Excel worksheet.
 
 - **Cells**: `WorksheetCellCollection` — Gets the collection of cells in the row.
@@ -2646,23 +2799,29 @@ A collection of instances in a or .
 - **RemoveAt**(index: int): void — Removes the shape at the specified index from the collection.
 
 ### [WorksheetShapeGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetShapeGroup)
+Extends: WorksheetShapeGroupBase, WorksheetShape
 Represents a group of shapes in a worksheet. This group is also a shape which can be positioned and contained within another group or on a worksheet.
 
 - **constructor**(): void
 
 ### [WorksheetShapeGroupBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetShapeGroupBase)
+Extends: WorksheetShape
 Represents a group of shapes in a worksheet. This group is also a shape which can be positioned and contained within another group or on a worksheet.
 
 - **Shapes**: `WorksheetShapeCollection` — Gets the collection of shapes contained in the group.
 
 ### [WorksheetShapeWithText](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetShapeWithText)
+Extends: WorksheetShape
 Abstract base class for all shapes that can display text.
 
 - **Text**: `FormattedText` — Gets or sets the formatted text of the shape.
 
 ### [WorksheetSortSettings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetSortSettings)
+Extends: RelativeIndexSortSettings
 Exposes methods to identify a region in the wroksheet and to apply sort criteria to that region.
 
+- **CaseSensitive**: `bool` — Gets or sets the value which indicates whether strings should be compared case-sensitively when they are sorted.
+- **SortConditions**: `SortConditionCollection<T>` — Gets the collection of sort conditions to use when sorting the region of data.
 - **Region**: `WorksheetRegion` — Returns the region that the filter settings is applied to (read-only).
 - **SortType**: `WorksheetSortType` — Determines whether columns or rows will be sorted within the region. 'Rows' is the default.
 - **ClearRegion**(): void — Clears the region as well as any existing sort criteria
@@ -2672,6 +2831,7 @@ Exposes methods to identify a region in the wroksheet and to apply sort criteria
 - **SetRegion**(address: string, cellReferenceMode: CellReferenceMode): void — Sets the region where the filter settings should be applied
 
 ### [WorksheetTable](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/WorksheetTable)
+Extends: NamedReferenceBase
 Represents a region of cells formatted as a table.
 
 - **AreaFormats**: `WorksheetTableAreaFormatsCollection<WorksheetTableArea>` — Gets the collection of formats used for each area of the .
@@ -2783,6 +2943,7 @@ Represents a style which can be applied to a .
 - **Clone**(name: string): WorksheetTableStyle — Duplicates the style and returns a deep copy.
 
 ### [XValues](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/XValues)
+Extends: SeriesValuesBase
 Defines a set of values in a series
 
 - **constructor**(sheet: Sheet, formula: string, cellReferenceMode: CellReferenceMode?): void
@@ -2790,6 +2951,7 @@ Defines a set of values in a series
 - **GetValues**(): object[] — Returns the actual values for this instance.
 
 ### [YearToDateFilter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Documents.Excel/26.1.98/classes/YearToDateFilter)
+Extends: DateRangeFilter, DynamicValuesFilter, Filter
 Represents a filter which can filter in date cells if the dates occur between the start of the current year and the time when the filter is evaluated.
 
 

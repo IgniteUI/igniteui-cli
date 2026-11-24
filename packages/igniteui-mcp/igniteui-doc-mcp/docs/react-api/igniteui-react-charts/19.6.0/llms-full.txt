@@ -9,6 +9,7 @@ Version: 19.6
 ## Classes
 
 ### [IgrAbsoluteVolumeOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAbsoluteVolumeOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Absolute Volume Oscillator indicator series.
 Default required members: Volume
 
@@ -117,6 +118,7 @@ this.series.shortPeriod = 10;
 - **i**: `Series`
 
 ### [IgrAccumulationDistributionIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAccumulationDistributionIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Accumulation/Distribution indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -157,6 +159,7 @@ this.chart.series.add(series);
 - **i**: `Series`
 
 ### [IgrAnchoredCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAnchoredCategorySeries)
+Extends: IgrCategorySeries
 Represents the base class for all IgxDataChartComponent anchored category/value series.
 
 The AnchoredCategorySeries represents the base class for all IgxDataChartComponent anchored category/value series.
@@ -455,6 +458,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgrAnchoredRadialSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAnchoredRadialSeries)
+Extends: IgrRadialBase
 Represents the base class for all IgxDataChartComponent anchored radial category series.
 
 - **constructor**(props: P): IgrAnchoredRadialSeries<P>
@@ -487,6 +491,7 @@ The typical, and initial, value for bollinger band periods is 20.
 - **scrollIntoView**(item: any): boolean — Scrolls the specified item into the view.
 
 ### [IgrAnnotationLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAnnotationLayer)
+Extends: IgrSeries
 Represents the base class for annotation layer types. Annotations will usually disable some of the default hover/touch behaviors of the chart when they are introduced to the series collection.
 In return they provide some valuable information as the cursor is moved by hovering over the chart, or performing a press-hold-drag interaction in touch mode.
 
@@ -523,6 +528,7 @@ A world position has x and y values that range from 0 to 1 that represent the gl
 - **i**: `Series`
 
 ### [IgrAreaFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAreaFragment)
+Extends: IgrFragmentBase
 Represents one part of a StackedAreaSeries.
 
 - **constructor**(props: IIgrAreaFragmentProps): IgrAreaFragment
@@ -531,6 +537,7 @@ Represents one part of a StackedAreaSeries.
 - **i**: `Series`
 
 ### [IgrAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAreaSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent area series.
 Displays trend over time or ordered categories.
 Useful when there are many data points and the order is important.
@@ -619,6 +626,7 @@ series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 - **i**: `Series`
 
 ### [IgrAssigningCategoryMarkerStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningCategoryMarkerStyleEventArgs)
+Extends: IgrAssigningCategoryStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 The assigningCategoryMarkerStyle event fired to allow you to override the style of markers for the items in a category or financial series. Only fires if you set isCustomCategoryMarkerStyleAllowed to true for a series.
@@ -650,6 +658,7 @@ public onAssigningCategoryMarkerStyle =( s:IgrCategorySeries, e: AssigningCatego
 - **constructor**(): IgrAssigningCategoryMarkerStyleEventArgs
 
 ### [IgrAssigningCategoryStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningCategoryStyleEventArgs)
+Extends: IgrAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 The AssigningCategoryStyle event fired to allow you to override the style of items in a category or financial series. isCustomCategoryStyleAllowed property needs to be enabled prior to using this event.
@@ -681,56 +690,67 @@ The AssigningCategoryStyle event fired to allow you to override the style of ite
 - **constructor**(): IgrAssigningCategoryStyleEventArgs
 
 ### [IgrAssigningCategoryStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningCategoryStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgrAssigningCategoryStyleEventArgsBase
 
 ### [IgrAssigningPolarMarkerStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningPolarMarkerStyleEventArgs)
+Extends: IgrAssigningPolarStyleEventArgsBase
 Represents event arguments class for the AssigningPolarStyleEvent
 
 - **constructor**(): IgrAssigningPolarMarkerStyleEventArgs
 
 ### [IgrAssigningPolarStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningPolarStyleEventArgs)
+Extends: IgrAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningPolarStyleEvent
 
 - **constructor**(): IgrAssigningPolarStyleEventArgs
 
 ### [IgrAssigningPolarStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningPolarStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgrAssigningPolarStyleEventArgsBase
 
 ### [IgrAssigningRadialMarkerStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningRadialMarkerStyleEventArgs)
+Extends: IgrAssigningRadialStyleEventArgsBase
 Represents event arguments class for the AssigningRadialStyleEvent
 
 - **constructor**(): IgrAssigningRadialMarkerStyleEventArgs
 
 ### [IgrAssigningRadialStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningRadialStyleEventArgs)
+Extends: IgrAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningRadialStyleEvent
 
 - **constructor**(): IgrAssigningRadialStyleEventArgs
 
 ### [IgrAssigningRadialStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningRadialStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgrAssigningRadialStyleEventArgsBase
 
 ### [IgrAssigningScatterMarkerStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningScatterMarkerStyleEventArgs)
+Extends: IgrAssigningScatterStyleEventArgsBase
 Represents event arguments class for the AssigningScatterStyleEvent
 
 - **constructor**(): IgrAssigningScatterMarkerStyleEventArgs
 
 ### [IgrAssigningScatterStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningScatterStyleEventArgs)
+Extends: IgrAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningScatterStyleEvent
 
 - **constructor**(): IgrAssigningScatterStyleEventArgs
 
 ### [IgrAssigningScatterStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningScatterStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgrAssigningScatterStyleEventArgsBase
 
 ### [IgrAssigningSeriesShapeStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningSeriesShapeStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 - **constructor**(): IgrAssigningSeriesShapeStyleEventArgsBase
@@ -776,21 +796,25 @@ Represents event arguments base class for the AssigningCategoryStyleEventArgsBas
 - static **_createFromInternal**(internal: any): IgrAssigningSeriesStyleEventArgsBase
 
 ### [IgrAssigningShapeMarkerStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningShapeMarkerStyleEventArgs)
+Extends: IgrAssigningShapeStyleEventArgsBase
 Represents event arguments class for the AssigningShapeStyleEvent
 
 - **constructor**(): IgrAssigningShapeMarkerStyleEventArgs
 
 ### [IgrAssigningShapeStyleEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningShapeStyleEventArgs)
+Extends: IgrAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningShapeStyleEvent
 
 - **constructor**(): IgrAssigningShapeStyleEventArgs
 
 ### [IgrAssigningShapeStyleEventArgsBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAssigningShapeStyleEventArgsBase)
+Extends: IgrAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgrAssigningShapeStyleEventArgsBase
 
 ### [IgrAverageDirectionalIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAverageDirectionalIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Average Directional indicator series.
 Default required members: High, Low, Close
 
@@ -854,6 +878,7 @@ this.series.period = 14;
 - **i**: `Series`
 
 ### [IgrAverageTrueRangeIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrAverageTrueRangeIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Average True Range indicator series.
 Default required members: High, Low, Close
 
@@ -1535,6 +1560,7 @@ not the set value.
 The OldMinimumValue property is used to gets the minimum value before the range changed.
 
 ### [IgrBarFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrBarFragment)
+Extends: IgrColumnFragment
 Represents one part of a StackedBarSeries.
 
 - **constructor**(props: P): IgrBarFragment<P>
@@ -1552,6 +1578,7 @@ let isVertical: boolean = this.series.isVertical;
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrBarSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrBarSeries)
+Extends: IgrVerticalAnchoredCategorySeries
 Represents a IgxDataChartComponent bar series.
 
 - **constructor**(props: IIgrBarSeriesProps): IgrBarSeries
@@ -1567,6 +1594,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgrBollingerBandsOverlay](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrBollingerBandsOverlay)
+Extends: IgrFinancialOverlay
 Represents a IgxDataChartComponent Bollinger Bands financial overlay series.
 Default required members: High, Low, Close
 
@@ -1691,6 +1719,7 @@ this.series.period = 7;
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 
 ### [IgrBollingerBandWidthIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrBollingerBandWidthIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Bollinger Bandwidth indicator series.
 Represents the normalized width of the Bollinger bands for each provided value.
 For more info see:
@@ -1867,6 +1896,7 @@ Represents a base class for brush scales.
 - static **_createFromInternal**(internal: any): IgrBrushScale
 
 ### [IgrBubbleSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrBubbleSeries)
+Extends: IgrScatterBase
 Represents a IgxDataChartComponent bubble series.
 
 - **constructor**(props: IIgrBubbleSeriesProps): IgrBubbleSeries
@@ -1979,6 +2009,7 @@ Represents event arguments for updating label of callout layer
 - **yValue**: `any` — Gets data Y-value associated with callout layer
 
 ### [IgrCalloutLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCalloutLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(props: IIgrCalloutLayerProps): IgrCalloutLayer
@@ -2137,6 +2168,7 @@ Event arguments for the CalloutStyleUpdating event
 - **yValue**: `any` — Gets Y-position of data item associated with the callout.
 
 ### [IgrCategoryAngleAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryAngleAxis)
+Extends: IgrCategoryAxisBase
 Represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories.
 
 CategoryAngleAxis represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories
@@ -2234,6 +2266,7 @@ Indicates the angle in degress that the chart's 0th angle should be offset.
 - **getUnscaledAngle**(scaledAngle: number): number — Gets the raw axis value from the scaled angle in radians.
 
 ### [IgrCategoryAxisBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryAxisBase)
+Extends: IgrAxis
 Represents the base class for all IgxDataChartComponent category-based axes.
 
  <IgrDataChart
@@ -2342,6 +2375,7 @@ Try setting it on an axis displaying financial series to adjust the spacing on t
 - **unscaleValue**(unscaledValue: number): number — Unscales a value from screen space into axis space.
 
 ### [IgrCategoryChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryChart)
+Extends: IgrXYChart
 Represents a chart with an ordinal X-axis and a numeric Y-axis.
 
 **Ignite UI for React Category Chart** - [Documentation](https://www.infragistics.com/products/ignite-ui-react/react/components/CategoryChart.html)
@@ -2572,6 +2606,7 @@ this.chart.destroy();
 - **render**(): DetailedReactHTMLElement<any, any>
 
 ### [IgrCategoryDateTimeXAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryDateTimeXAxis)
+Extends: IgrTimeAxisBase
 Represents a category-based horizontal X axis that uses a DateTime scale.
 
 CategoryDateTimeXAxis class represents a category-based horizontal X axis that uses a DateTime scale.
@@ -2645,6 +2680,7 @@ The set value is a factor that determines how the minor lines will be displayed.
 - **scrollIntoView**(minimum: Date, maximum: Date): void
 
 ### [IgrCategoryHighlightLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryHighlightLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that targets a category axis, or all category axes in the chart.
 If the axis contains any series that are aligned between major gridlines of the axis (column, waterfall, etc) this will render a shape that fills the current category.
 Otherwise it will render a band with an adjustable thickness at the closest gridline to the pointer position.
@@ -2661,6 +2697,7 @@ Setting UseIterpolation to true will cause the x position in the latter case to 
 - **findByName**(name: string): any
 
 ### [IgrCategoryItemHighlightLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryItemHighlightLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that highlights items in a series that use a category axis
 either by drawing a banded shape at their position, or by rendering a marker at their position.
 Depending on the type of series, the default highlight will be affected. To override
@@ -2682,6 +2719,7 @@ the type of highlight used, you can set the HighlightType property.
 - **findByName**(name: string): any
 
 ### [IgrCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategorySeries)
+Extends: IgrMarkerSeries
 Represents the base class for IgxDataChartComponent category series.
 
 CategorySeries class represents the base class for IgxDataChartComponent category series.
@@ -2795,6 +2833,7 @@ Set UseHighMarkerFidelity when your data has high variation along the y-axis wit
 - **getOffsetValue**(): number — Returns the offset value for this series if grouped on a category axis.
 
 ### [IgrCategoryToolTipLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryToolTipLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays grouped tooltips for series that use a category axis.
 
 - **constructor**(props: IIgrCategoryToolTipLayerProps): IgrCategoryToolTipLayer
@@ -2814,6 +2853,7 @@ Represents an annotation layer that displays grouped tooltips for series that us
 - **hideToolTips**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgrCategoryXAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryXAxis)
+Extends: IgrCategoryAxisBase
 Represents a IgxDataChartComponent category X axis.
 
 CategoryXAxis class represents a IgxDataChartComponent category X axis.
@@ -2909,6 +2949,7 @@ This property is overridden by chart's WindowRect or WindowScaleHorizontal prope
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgrCategoryYAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCategoryYAxis)
+Extends: IgrCategoryAxisBase
 Represents a IgxDataChartComponent category Y axis.
 
 - **constructor**(props: IIgrCategoryYAxisProps): IgrCategoryYAxis
@@ -2943,6 +2984,7 @@ This property is overridden by chart's WindowRect or WindowScaleHorizontal prope
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgrChaikinOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrChaikinOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents the IgxDataChartComponent Chaikin Oscillator indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -3045,6 +3087,7 @@ this.series.shortPeriod = 30;
 - **i**: `Series`
 
 ### [IgrChaikinVolatilityIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrChaikinVolatilityIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Chaikin Volatility indicator series.
 The ChaikinVolatility indicator attempts to show volatility by displaying the spread between
 the high and low values.
@@ -3108,6 +3151,7 @@ Provides data for IgxDataChartComponent mouse button related events.
 - **toString**(): string — Provides a human readable expresion of the event arguments.
 
 ### [IgrChartGroupDescription](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrChartGroupDescription)
+Extends: IgrChartSortDescription
 Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
 - **constructor**(field?: string, sortDirection?: any): IgrChartGroupDescription
@@ -3244,6 +3288,7 @@ Base class for classes which provide colors corresponding to numeric values with
 - static **_createFromInternal**(internal: any): IgrColorScale
 
 ### [IgrColumnFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrColumnFragment)
+Extends: IgrFragmentBase
 Represents one part of a StackedColumnSeries.
 
 - **constructor**(props: P): IgrColumnFragment<P>
@@ -3259,6 +3304,7 @@ Represents one part of a StackedColumnSeries.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrColumnSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrColumnSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent column series.
 Compare values across categories by using vertical rectangles.
 Use it when the order of categories is not important or for displaying
@@ -3308,6 +3354,7 @@ and returns a resulting column of values.
 - **findByName**(name: string): any
 
 ### [IgrCommodityChannelIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCommodityChannelIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Commodity Channel Index indicator series.
 Default required members: High, Low, Close
 
@@ -3381,6 +3428,7 @@ Class used to determine the numeric values of contour lines, given a larger list
 - static **_createFromInternal**(internal: any): IgrContourValueResolver
 
 ### [IgrCrosshairLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCrosshairLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(props: IIgrCrosshairLayerProps): IgrCrosshairLayer
@@ -3421,6 +3469,7 @@ Represents an annotation layer that displays crosshair lines that cross through 
 - **findByName**(name: string): any
 
 ### [IgrCustomContourValueResolver](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCustomContourValueResolver)
+Extends: IgrContourValueResolver
 ContourValueResolver class which fires an event to resolve the contour values.
 
 - **constructor**(props: IIgrCustomContourValueResolverProps): IgrCustomContourValueResolver
@@ -3435,6 +3484,7 @@ Provides data for GetCustomContourValues event.
 - **values**: `number[]`
 
 ### [IgrCustomIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCustomIndicator)
+Extends: IgrStrategyBasedIndicator
 A base class for indicator series with simple calculations that separates the calculation
 responsibility from the other responsibilities of the financial series, this enables
 easier unit testing and decoupling of individual calculation strategies.
@@ -3458,6 +3508,7 @@ StrategyBasedIndicator
 - **constructor**(list?: string[]): IgrCustomIndicatorNameCollection
 
 ### [IgrCustomPaletteBrushScale](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCustomPaletteBrushScale)
+Extends: IgrBrushScale
 Represents a brush scale that uses index-based brush selection mode.
 
 - **constructor**(props: IIgrCustomPaletteBrushScaleProps): IgrCustomPaletteBrushScale
@@ -3466,6 +3517,7 @@ Represents a brush scale that uses index-based brush selection mode.
 - **getBrush1**(index: number, total: number): string
 
 ### [IgrCustomPaletteColorScale](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrCustomPaletteColorScale)
+Extends: IgrColorScale
 ColorScale class for selecting a color from a given palette, or interpolating between adjacent colors in that palette.
 
 - **constructor**(props: IIgrCustomPaletteColorScaleProps): IgrCustomPaletteColorScale
@@ -3476,6 +3528,7 @@ ColorScale class for selecting a color from a given palette, or interpolating be
 - **providePalette**(colors: string[]): void
 
 ### [IgrDataAnnotationAxisLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationAxisLayer)
+Extends: IgrAnnotationLayer
 Represents a base annotation layer that displays annotations over an axis.
 
 - **constructor**(props: P): IgrDataAnnotationAxisLayer<P>
@@ -3519,6 +3572,7 @@ Represents a base annotation layer that displays annotations over an axis.
 - **findByName**(name: string): any
 
 ### [IgrDataAnnotationBandLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationBandLayer)
+Extends: IgrDataAnnotationPointLayer
 Represents an annotation layer that renders bands (line with breadth) at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3600,6 +3654,7 @@ Represents a definition of data annotation displayed by the DataAnnotationShapeL
 - **findByName**(name: string): any
 
 ### [IgrDataAnnotationLineLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationLineLayer)
+Extends: IgrDataAnnotationPointLayer
 Represents an annotation layer that renders lines at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3610,6 +3665,7 @@ EndValueYMemberPath
 - **i**: `Series`
 
 ### [IgrDataAnnotationPointLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationPointLayer)
+Extends: IgrDataAnnotationRangeLayer
 Represents a base of annotation layers that render shapes at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3644,6 +3700,7 @@ EndValueYMemberPath
 - **i**: `Series`
 
 ### [IgrDataAnnotationRangeLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationRangeLayer)
+Extends: IgrDataAnnotationShapeLayer
 Represents a base of annotation layers that render from start/end range
 
 - **constructor**(props: P): IgrDataAnnotationRangeLayer<P>
@@ -3659,6 +3716,7 @@ Represents a base of annotation layers that render from start/end range
 - **i**: `Series`
 
 ### [IgrDataAnnotationRectLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationRectLayer)
+Extends: IgrDataAnnotationPointLayer
 Represents an annotation layer that renders rectangles at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3669,6 +3727,7 @@ EndValueYMemberPath
 - **i**: `Series`
 
 ### [IgrDataAnnotationShapeLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationShapeLayer)
+Extends: IgrDataAnnotationAxisLayer
 Represents a base annotation layer that renders shapes defined by derived data annotation, e.g. line, strip, slice, rect, band
 
 - **constructor**(props: P): IgrDataAnnotationShapeLayer<P>
@@ -3711,6 +3770,7 @@ Represents a base annotation layer that renders shapes defined by derived data a
 - **toWorldY**(y: number): number — Converts pixel Y coordinate (relative to component's height) to world coordinate (0.0 - 1.0)
 
 ### [IgrDataAnnotationSliceLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationSliceLayer)
+Extends: IgrDataAnnotationShapeLayer
 Represents an annotation layer that renders vertical or horizontal slices/lines at values mapped to AnnotationValueMemberPath property
 horizontal slices/lines when TargetAxis is set to Y-axis
 vertical slices/lines when TargetAxis is set to X-axis
@@ -3725,6 +3785,7 @@ vertical slices/lines when TargetAxis is set to X-axis
 - **i**: `Series`
 
 ### [IgrDataAnnotationStripLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataAnnotationStripLayer)
+Extends: IgrDataAnnotationRangeLayer
 Represents an annotation layer that renders vertical or horizontal strips between values mapped to these properties:
 StartValueMemberPath
 EndValueMemberPath
@@ -3745,6 +3806,7 @@ EndValueMemberPath
 - **i**: `Series`
 
 ### [IgrDataChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataChart)
+Extends: IgrSeriesViewer
 Represents a chart area containing axes, series, an optional legend and other hosted content.
 
 - **constructor**(props: IIgrDataChartProps): IgrDataChart
@@ -4219,6 +4281,7 @@ Represents event argument for DataLegendSummaryCalculationCustom
 - **summaryValue**: `number` — Gets or sets summary values displayed below data column
 
 ### [IgrDataPieBaseChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataPieBaseChart)
+Extends: IgrRadialBaseChart
 Represents a base class for PieBase chart control that can plot scatter data
 
 - **constructor**(props: P): IgrDataPieBaseChart<P>
@@ -4281,6 +4344,7 @@ This property is effective only when ValueAxisIsLogarithmic is true.
 - **getOthersContext**(): IgrOthersCategoryContext — Gets the Others context which provides a current list of items in Others slice.
 
 ### [IgrDataPieChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataPieChart)
+Extends: IgrDataPieBaseChart
 Represents a DataPie chart control that can plot DataPie data
 
 - **constructor**(props: IIgrDataPieChartProps): IgrDataPieChart
@@ -4325,6 +4389,7 @@ DataSourceSupportingCalculation class Represents a calculation strategy that use
 - **findByName**(name: string): any
 
 ### [IgrDataToolTipLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDataToolTipLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays grouped tooltips with summaries for series.
 
 - **constructor**(props: IIgrDataToolTipLayerProps): IgrDataToolTipLayer
@@ -4479,6 +4544,7 @@ This property is ignored when setting ValueFormatSpecifiers or ValueFormatString
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgrDetrendedPriceOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrDetrendedPriceOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Detrended Price Oscillator indicator series.
 Default required members: Close
 
@@ -5638,6 +5704,7 @@ Calling this method too often will hinder the performance of the doughnut chart.
 - static **register**(): void
 
 ### [IgrEaseOfMovementIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrEaseOfMovementIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Ease of Movement indicator series.
 The ease of movement indicator by Richard W. Arms, Jr relates the price change of an asset to
 its volume. Normally smoothed with a moving average.
@@ -5666,6 +5733,7 @@ The ease of movment indicator is used to analyze relationships between a price c
 - **i**: `Series`
 
 ### [IgrFastStochasticOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFastStochasticOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Fast Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -5683,6 +5751,7 @@ Represents event arguments for when there are errors parsing the filter string
 - **propertyName**: `string`
 
 ### [IgrFinalValueLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinalValueLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(props: IIgrFinalValueLayerProps): IgrFinalValueLayer
@@ -5768,6 +5837,7 @@ is invalid.
 - **findByName**(name: string): any
 
 ### [IgrFinancialChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialChart)
+Extends: IgrXYChart
 Represents a base class for domain charts with X/Y axes
 
 - **constructor**(props: IIgrFinancialChartProps): IgrFinancialChart
@@ -6182,6 +6252,7 @@ Parameterizes a financial calculation event.
 - **supportingCalculations**: `IgrFinancialCalculationSupportingCalculations` — The supporting calculations to use in the calculation.
 
 ### [IgrFinancialIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialIndicator)
+Extends: IgrFinancialSeries
 Represents the base functionality for a IgxDataChartComponent financial indicator series.
 
 The FinancialIndicator class represents the base functionality for a IgxDataChartComponent financial indicator series.
@@ -6395,6 +6466,7 @@ the central 80% of the visible axis.
 - **constructor**(list?: FinancialIndicatorType[]): IgrFinancialIndicatorTypeCollection
 
 ### [IgrFinancialLegend](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialLegend)
+Extends: IgrLegendBase
 Represents a legend that displays information about each series, most often used in financial charting.
 
 - **constructor**(props: IIgrFinancialLegendProps): IgrFinancialLegend
@@ -6405,6 +6477,7 @@ Represents a legend that displays information about each series, most often used
 - **render**(): DetailedReactHTMLElement<any, HTMLDivElement>
 
 ### [IgrFinancialOverlay](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialOverlay)
+Extends: IgrFinancialSeries
 Represents the base functionality for a IgxDataChartComponent financial overlay series.
 The difference between a FinancialIndicator and a FinancialOverlay is small.
 Overlays are usually drawn against the same axes as the price, but they don't
@@ -6500,6 +6573,7 @@ the central 80% of the visible axis.
 - **constructor**(list?: FinancialOverlayType[]): IgrFinancialOverlayTypeCollection
 
 ### [IgrFinancialPriceSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialPriceSeries)
+Extends: IgrFinancialSeries
 Represents a IgxDataChartComponent financial price series that renders as Candlestick or OHLC representations.
 Default required members: Open, Low, High, Close
 
@@ -6775,6 +6849,7 @@ the central 80% of the visible axis.
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgrFinancialSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFinancialSeries)
+Extends: IgrSeries
 Represents the base class for all financial indicator and overlay series.
 
 The FinancialSeries represents the base class for all financial indicator and overlay series.
@@ -7386,6 +7461,7 @@ number offset= series.getOffsetValue();
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgrForceIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrForceIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Force Index indicator series.
 Default required members: Close, Volume
 
@@ -7461,6 +7537,7 @@ this.series.period = 30;
 - **i**: `Series`
 
 ### [IgrFragmentBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFragmentBase)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents one part of a stacked series.
 
 - **constructor**(props: P): IgrFragmentBase<P>
@@ -7469,6 +7546,7 @@ Represents one part of a stacked series.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrFullStochasticOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrFullStochasticOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Full Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -7732,6 +7810,7 @@ Information about the clicked slice.
 - **position**: `IgPoint` — The position of the mouse relative to the funnel chart.
 
 ### [IgrHierarchicalRingSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrHierarchicalRingSeries)
+Extends: IgrRingSeriesBase
 Represents a
 IgxDoughnutChartComponent hierarchical series.
 
@@ -7740,6 +7819,7 @@ IgxDoughnutChartComponent hierarchical series.
 - **i**: `RingSeriesBase`
 
 ### [IgrHighDensityScatterSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrHighDensityScatterSeries)
+Extends: IgrSeries
 Represents a IgxDataChartComponent series where a high volume of scatter points can be displayed.
 
 - **constructor**(props: IIgrHighDensityScatterSeriesProps): IgrHighDensityScatterSeries
@@ -7785,6 +7865,7 @@ EventArgs class holding information about the dimensions of a hole in a doughnut
 - **radius**: `number` — The radius of the hole.
 
 ### [IgrHorizontalAnchoredCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrHorizontalAnchoredCategorySeries)
+Extends: IgrAnchoredCategorySeries
 Base class for anchored category series with a category x-axis and a numeric y-axis.
 
 Instantiate HorizontalAnchoredCategorySeries
@@ -7900,6 +7981,7 @@ You can use the GetOffsetValue to get the offset value for this series if groupe
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrHorizontalRangeCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrHorizontalRangeCategorySeries)
+Extends: IgrRangeCategorySeries
 Base class for ranged category series with a category X-axis and a numeric Y-axis.
 
 Instantiate HorizontalAnchoredCategorySeries
@@ -8029,6 +8111,7 @@ You can use the GetOffsetValue to get the offset value for this series if groupe
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrHorizontalStackedSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrHorizontalStackedSeriesBase)
+Extends: IgrStackedSeriesBase
 Base class for stacked series with a category x-axis and a numeric y-axis.
 
 - **constructor**(props: P): IgrHorizontalStackedSeriesBase<P>
@@ -8055,6 +8138,7 @@ Base class for stacked series with a category x-axis and a numeric y-axis.
 - **constructor**(list?: IndicatorDisplayType[]): IgrIndicatorDisplayTypeCollection
 
 ### [IgrItemLegend](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrItemLegend)
+Extends: IgrLegendBase
 Represents a legend that displays an item for each point in the series.
 
 You can use the ItemLegend to display a legend item for each data member bound to the BubbleSeries
@@ -8084,6 +8168,7 @@ public onLegendRef(legend: IgrItemLegend) {
 - **render**(): DetailedReactHTMLElement<any, HTMLDivElement>
 
 ### [IgrItemToolTipLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrItemToolTipLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays tooltips for all target series individually.
 
 - **constructor**(props: IIgrItemToolTipLayerProps): IgrItemToolTipLayer
@@ -8103,6 +8188,7 @@ Represents an annotation layer that displays tooltips for all target series indi
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgrItemwiseStrategyBasedIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrItemwiseStrategyBasedIndicator)
+Extends: IgrStrategyBasedIndicator
 Financial indicator base class for doing calculating an itemwize indicator.
 An itemwise indicator's individual values don't depend on any other values in the
 collection so can always be independently recalculated. Also, because of this, the
@@ -8131,6 +8217,7 @@ Event args used byt the LabelFormatOverride Delegate to provide a way to overrid
 - **nativeElement**: `HTMLElement`
 
 ### [IgrLegend](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrLegend)
+Extends: IgrLegendBase
 Represents a legend in a IgxDataChartComponent control.
 
 The Legend helps end-user identify visuals of chart series with contextual information related to the data plotted in the chart control.
@@ -8230,12 +8317,14 @@ Provides data for legend's text content changed event.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrLinearContourValueResolver](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrLinearContourValueResolver)
+Extends: IgrContourValueResolver
 ContourValueResolver class which resolves contour lines to be distributed at linear intervals from the data minimum to the data maximum.
 
 - **constructor**(props: IIgrLinearContourValueResolverProps): IgrLinearContourValueResolver
 - **valueCount**: `number` — Gets or sets how many contour values to return.
 
 ### [IgrLineFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrLineFragment)
+Extends: IgrFragmentBase
 Represents one part of a StackedLineSeries.
 
 - **constructor**(props: IIgrLineFragmentProps): IgrLineFragment
@@ -8244,6 +8333,7 @@ Represents one part of a StackedLineSeries.
 - **i**: `Series`
 
 ### [IgrLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrLineSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent line series.
 Displays trend over time or ordered categories.
 Useful when there are many data points and the order is important.
@@ -8304,6 +8394,7 @@ series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 - **i**: `Series`
 
 ### [IgrMarkerSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMarkerSeries)
+Extends: IgrSeries
 Represents the base class for series containing markers.
 
 MarkerSeries represents the base class for series containing markers.
@@ -8429,6 +8520,7 @@ this.series.markerType = "circle";
 - **constructor**(list?: MarkerType[]): IgrMarkerTypeCollection
 
 ### [IgrMarketFacilitationIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMarketFacilitationIndexIndicator)
+Extends: IgrItemwiseStrategyBasedIndicator
 Represents a IgxDataChartComponent Market Facilitation Index indicator series.
 The Market Facilitation Index (MFI) indicator is represented by
 the difference of the high and the low for a bar divided by the volume.
@@ -8443,6 +8535,7 @@ Example:
 - **i**: `Series`
 
 ### [IgrMassIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMassIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Mass Index indicator series.
 Default required members: High, Low
 
@@ -8478,6 +8571,7 @@ this.series.lowMemberPath="Low" ;
 - **i**: `Series`
 
 ### [IgrMedianPriceIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMedianPriceIndicator)
+Extends: IgrItemwiseStrategyBasedIndicator
 Represents a IgxDataChartComponent Median Price indicator series.
 Default required members: High, Low
 
@@ -8511,6 +8605,7 @@ this.series.lowMemberPath="Low";
 - **i**: `Series`
 
 ### [IgrMoneyFlowIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMoneyFlowIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Money Flow Index indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -8573,6 +8668,7 @@ this.series.period = 14;
 - **i**: `Series`
 
 ### [IgrMovingAverageConvergenceDivergenceIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrMovingAverageConvergenceDivergenceIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Moving Average Convergence/Divergence (MACD) indicator series.
 Default required members: High, Low, Close
 
@@ -8681,6 +8777,7 @@ Example:
 - **i**: `Series`
 
 ### [IgrNegativeVolumeIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNegativeVolumeIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Negative Volume Index indicator (NVI) series.
 Default required members: Close, Volume
 
@@ -8715,6 +8812,7 @@ series.closeMemberPath = "close";
 - **i**: `Series`
 
 ### [IgrNumericAngleAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNumericAngleAxis)
+Extends: IgrNumericAxisBase
 Represents a IgxDataChartComponent angle based axis for polar series.
 
 - **constructor**(props: IIgrNumericAngleAxisProps): IgrNumericAngleAxis
@@ -8728,6 +8826,7 @@ Represents a IgxDataChartComponent angle based axis for polar series.
 - **getUnscaledAngle**(scaledAngle: number): number — Gets the raw axis value back from the angle that would be used on the chart.
 
 ### [IgrNumericAxisBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNumericAxisBase)
+Extends: IgrAxis
 Represents the base class for all IgxDataChartComponent numeric axes.
 
 - **constructor**(props: P): IgrNumericAxisBase<P>
@@ -8974,6 +9073,7 @@ this.yAxis.referenceValue = 30;
 - **unscaleValue**(unscaledValue: number): number — Unscales a value from screen space into axis space.
 
 ### [IgrNumericRadiusAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNumericRadiusAxis)
+Extends: IgrNumericAxisBase
 Represents a IgxDataChartComponent radius axis for polar and radial series.
 
 <IgrDataChart
@@ -9001,6 +9101,7 @@ a value between 0.0 and 1.0.
 - **getUnscaledValue**(scaledValue: number): number — Returns a raw axis value from the world coordinates radius length provided.
 
 ### [IgrNumericXAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNumericXAxis)
+Extends: IgrStraightNumericAxisBase
 Represents a IgxDataChartComponent numeric X axis.
 
 The NumericXAxis treats the data as continuously varying numerical data items. Labels on this axis are placed along the X-axis. The location of labels varies according to the value in a data column that is mapped using the XMemberPath property of Scatter Series or ValueMemberPath property of Bar Series.
@@ -9027,6 +9128,7 @@ this.series.yAxisName = "yAxis";
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgrNumericYAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrNumericYAxis)
+Extends: IgrStraightNumericAxisBase
 Represents a IgxDataChartComponent numeric Y axis.
 
 The NumericYAxis treats the data as continuously varying numerical data items. Labels on this axis are placed along the Y-axis. Location of labels varies according to the value in a data column that is mapped using the YMemberPath property for Scatter Series or ValueMemberPath property for Category Series.
@@ -9065,6 +9167,7 @@ this.series.yAxisName = "yAxis";
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgrOnBalanceVolumeIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrOnBalanceVolumeIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent On Balance Bolume indicator series.
 Default required members: Close, Volume
 
@@ -9104,6 +9207,7 @@ this.series.closeMemberPath = "close";
 - **i**: `Series`
 
 ### [IgrOrdinalTimeXAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrOrdinalTimeXAxis)
+Extends: IgrCategoryXAxis
 A horizontal axis that uses an ordinal DateTime scale.
 On an ordinal time axis, datapoints are aligned according to their order in the ItemsSource, like a category axis.
 
@@ -9242,6 +9346,7 @@ Represents an event arguments for styling Overlay Text
 - **verticalPadding**: `number` — Gets or sets Vertical Padding for the overlay text
 
 ### [IgrPercentagePriceOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPercentagePriceOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent percentage price oscillator series.
 Default required members: High, Low, Volume
 
@@ -9329,6 +9434,7 @@ this.series.shortPeriod = 10;
 - **i**: `Series`
 
 ### [IgrPercentageVolumeOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPercentageVolumeOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Percentage Volume Oscillator (PVO) series.
 Default required members: Volume
 
@@ -9420,6 +9526,7 @@ this.series.shortPeriod = 30;
 - **i**: `Series`
 
 ### [IgrPercentChangeYAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPercentChangeYAxis)
+Extends: IgrNumericYAxis
 A horizontal axis that uses a DateTime scale.
 
 You can use the PercentChangeYAxis show percentage values.
@@ -9436,6 +9543,7 @@ You can use the PercentChangeYAxis show percentage values.
 - **i**: `Axis`
 
 ### [IgrPieChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPieChart)
+Extends: IgrPieChartBase
 Represents the base class for the pie chart.
 
 - **constructor**(props: IIgrPieChartProps): IgrPieChart
@@ -9596,6 +9704,7 @@ Provides data for IgxDataChartComponent mouse button related events.
 - **viewer**: `IgrSeriesViewer` — Gets the Chart associated with the current event.
 
 ### [IgrPointSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPointSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent point series.
 
 You can use the PointSeries plot a value along a category or date.
@@ -9626,6 +9735,7 @@ series1.valueMemberPath = "USA";
 - **i**: `Series`
 
 ### [IgrPolarAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarAreaSeries)
+Extends: IgrPolarLineSeriesBase
 Represents a IgxDataChartComponent polar area series.
 
 - **constructor**(props: IIgrPolarAreaSeriesProps): IgrPolarAreaSeries
@@ -9635,6 +9745,7 @@ Null and Double.NaN are two examples of unknown values.
 - **i**: `Series`
 
 ### [IgrPolarBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarBase)
+Extends: IgrMarkerSeries
 Represents the base class from which all IgxDataChartComponent polar series are derived.
 
 - **constructor**(props: P): IgrPolarBase<P>
@@ -9690,6 +9801,7 @@ spiral based interpolation.
 - **scrollIntoView**(item: any): boolean — Scrolls the requested item into view, if possible.
 
 ### [IgrPolarLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarLineSeries)
+Extends: IgrPolarLineSeriesBase
 Represents a IgxDataChartComponent polar line series.
 
 - **constructor**(props: IIgrPolarLineSeriesProps): IgrPolarLineSeries
@@ -9699,12 +9811,14 @@ Null and Double.NaN are two examples of unknown values.
 - **i**: `Series`
 
 ### [IgrPolarLineSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarLineSeriesBase)
+Extends: IgrPolarBase
 Represents the base class from which all IgxDataChartComponent polar line series are derived.
 
 - **constructor**(props: P): IgrPolarLineSeriesBase<P>
 - **i**: `Series`
 
 ### [IgrPolarScatterSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarScatterSeries)
+Extends: IgrPolarBase
 Represents a IgxDataChartComponent polar scatter series.
 
 - **constructor**(props: IIgrPolarScatterSeriesProps): IgrPolarScatterSeries
@@ -9712,6 +9826,7 @@ Represents a IgxDataChartComponent polar scatter series.
 - **i**: `Series`
 
 ### [IgrPolarSplineAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarSplineAreaSeries)
+Extends: IgrPolarLineSeriesBase
 Represents a IgxDataChartComponent polar spline area series.
 
 - **constructor**(props: IIgrPolarSplineAreaSeriesProps): IgrPolarSplineAreaSeries
@@ -9721,6 +9836,7 @@ Represents a IgxDataChartComponent polar spline area series.
 - **i**: `Series`
 
 ### [IgrPolarSplineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPolarSplineSeries)
+Extends: IgrPolarLineSeriesBase
 Represents a IgxDataChartComponent polar spline series.
 
 - **constructor**(props: IIgrPolarSplineSeriesProps): IgrPolarSplineSeries
@@ -9729,6 +9845,7 @@ Represents a IgxDataChartComponent polar spline series.
 - **i**: `Series`
 
 ### [IgrPositiveVolumeIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPositiveVolumeIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Positive Volume Index (PVI) indicator series.
 Default required members: Close, Volume
 
@@ -9765,6 +9882,7 @@ series.closeMemberPath = "close";
 - **i**: `Series`
 
 ### [IgrPriceChannelOverlay](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPriceChannelOverlay)
+Extends: IgrFinancialOverlay
 Represents a IgxDataChartComponent Financial Price Channel Overlay series.
 Default required members: High, Low
 
@@ -9832,6 +9950,7 @@ this.series.period = 14;
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 
 ### [IgrPriceVolumeTrendIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrPriceVolumeTrendIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Price Volume Trend Indicator series.
 Default required members: Volume, Close
 
@@ -9878,6 +9997,7 @@ Provides information about the progressive load progress of the HighDensityScatt
 - **nativeElement**: `HTMLElement`
 
 ### [IgrProportionalCategoryAngleAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrProportionalCategoryAngleAxis)
+Extends: IgrCategoryAngleAxis
 Represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories.
 
 - **constructor**(props: P): IgrProportionalCategoryAngleAxis<P>
@@ -9900,6 +10020,7 @@ Represents a IgxDataChartComponent category angle axis. Useful for displaying ra
 - **isOthersValue**(index: number): boolean
 
 ### [IgrRadialAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialAreaSeries)
+Extends: IgrAnchoredRadialSeries
 Represents a IgxDataChartComponent radial area series.
 
 - **constructor**(props: IIgrRadialAreaSeriesProps): IgrRadialAreaSeries
@@ -9909,6 +10030,7 @@ Null and Double.NaN are two examples of unknown values.
 - **i**: `Series`
 
 ### [IgrRadialBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialBase)
+Extends: IgrMarkerSeries
 Represents the base class for all IgxDataChartComponent radial series
 
 - **constructor**(props: P): IgrRadialBase<P>
@@ -9960,6 +10082,7 @@ Note: Transitions are not currently supported for stacked series.
 - **scrollIntoView**(item: any): boolean — Scrolls the specified item into the view.
 
 ### [IgrRadialBaseChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialBaseChart)
+Extends: IgrDomainChart
 Represents a base class for domain charts with X/Y axes
 
 - **constructor**(props: P): IgrRadialBaseChart<P>
@@ -10052,6 +10175,7 @@ Represents a base class for domain charts with X/Y axes
 - **provideContainer**(container: any): void — Called by the UI framework to provide a UI container for rendering this control.
 
 ### [IgrRadialColumnSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialColumnSeries)
+Extends: IgrAnchoredRadialSeries
 Represents a IgxDataChartComponent radial column series.
 Compare values across categories by using radial rectangles.
 
@@ -10066,6 +10190,7 @@ Compare values across categories by using radial rectangles.
 call ApplyTemplate.
 
 ### [IgrRadialLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialLineSeries)
+Extends: IgrAnchoredRadialSeries
 Represents a IgxDataChartComponent radial line series.
 
 - **constructor**(props: IIgrRadialLineSeriesProps): IgrRadialLineSeries
@@ -10077,6 +10202,7 @@ Null and Double.NaN are two examples of unknown values.
 call ApplyTemplate.
 
 ### [IgrRadialPieSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRadialPieSeries)
+Extends: IgrAnchoredRadialSeries
 Represents a IgxDataChartComponent radial pie series.
 Compare values across categories by using radial pie slices.
 
@@ -10094,6 +10220,7 @@ in and halfway out.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrRangeAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRangeAreaSeries)
+Extends: IgrHorizontalRangeCategorySeries
 Represents a IgxDataChartComponent range area series.
 
 The RangeAreaSeries class represents the range area series of the IgxDataChartComponent.
@@ -10132,6 +10259,7 @@ var x= series.isAreaOrLine;
 - **i**: `Series`
 
 ### [IgrRangeBarSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRangeBarSeries)
+Extends: IgrVerticalRangeCategorySeries
 Represents a IgxDataChartComponent range bar series.
 
 - **constructor**(props: IIgrRangeBarSeriesProps): IgrRangeBarSeries
@@ -10144,6 +10272,7 @@ Represents a IgxDataChartComponent range bar series.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrRangeCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRangeCategorySeries)
+Extends: IgrCategorySeries
 Represents the base class for all IgxDataChartComponent ranged category/value series.
 
 The RangeCategorySeries represents the base class for all IgxDataChartComponent ranged category/value series.
@@ -10234,6 +10363,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgrRangeColumnSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRangeColumnSeries)
+Extends: IgrHorizontalRangeCategorySeries
 Represents a IgxDataChartComponent range column series.
 
 The RangeColumnSeries class represents range column series of the IgxDataChartComponent.
@@ -10321,6 +10451,7 @@ var x =series.getItemSpan();
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrRateOfChangeAndMomentumIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRateOfChangeAndMomentumIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Rate of Change and Momentum indicator series.
 Default required members: Close
 
@@ -10391,6 +10522,7 @@ this.series.period = 30;
 - **nativeElement**: `HTMLElement`
 
 ### [IgrRelativeStrengthIndexIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRelativeStrengthIndexIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Relative Strength Index indicator series.
 Default required members: Close
 
@@ -10510,6 +10642,7 @@ Arcs.
 - **renderArcs**(): boolean — Renders the arcs.
 
 ### [IgrRingSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrRingSeries)
+Extends: IgrRingSeriesBase
 Represents one ring in
 IgxDoughnutChartComponent series.
 
@@ -10592,6 +10725,7 @@ The default zero value is equivalent to 3 o'clock.
 - **constructor**(list?: IgrRingSeriesBase<IIgrRingSeriesBaseProps>[]): IgrRingSeriesCollection
 
 ### [IgrScaleLegend](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScaleLegend)
+Extends: IgrLegendBase
 Represents a legend that indicates the size and the color scale for a collection of series.
 
 - **constructor**(props: IIgrScaleLegendProps): IgrScaleLegend
@@ -10609,6 +10743,7 @@ Typically, the reference value is the initial value of the series.  The referenc
 - **findByName**(name: string): any
 
 ### [IgrScatterAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterAreaSeries)
+Extends: IgrScatterTriangulationSeries
 Series class which draws a colored 2D surface based on a triangulation of XY data with numeric values assigned to each point.
 
 - **constructor**(props: IIgrScatterAreaSeriesProps): IgrScatterAreaSeries
@@ -10627,6 +10762,7 @@ Series class which draws a colored 2D surface based on a triangulation of XY dat
 - **updateActualColorScale**(): void — Updates ActualColorScale properties when the ColorScale property has changed
 
 ### [IgrScatterBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterBase)
+Extends: IgrMarkerSeries
 Represents the base class for all IgxDataChartComponent scatter series
 
 - **constructor**(props: P): IgrScatterBase<P>
@@ -10684,6 +10820,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgrScatterContourSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterContourSeries)
+Extends: IgrScatterTriangulationSeries
 Series class for rendering isarithmic contours based on a triangulation of X+Y+Value points in the ItemsSource.
 
 - **constructor**(props: IIgrScatterContourSeriesProps): IgrScatterContourSeries
@@ -10700,6 +10837,7 @@ Series class for rendering isarithmic contours based on a triangulation of X+Y+V
 - **getMemberPathValue**(memberPathName: string): string — Gets the value of a requested member path from the series.
 
 ### [IgrScatterLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterLineSeries)
+Extends: IgrScatterBase
 Represents a IgxDataChartComponent scatter line series
 
 - **constructor**(props: IIgrScatterLineSeriesProps): IgrScatterLineSeries
@@ -10709,6 +10847,7 @@ Null and Double.NaN are two examples of unknown values.
 - **i**: `Series`
 
 ### [IgrScatterPolygonSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterPolygonSeries)
+Extends: IgrShapeSeriesBase
 Series class which renders polygons as Paths based on lists of points in the ItemsSource.
 
 - **constructor**(props: IIgrScatterPolygonSeriesProps): IgrScatterPolygonSeries
@@ -10734,6 +10873,7 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **getSeriesValueMarkerBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value marker bounding box within the series that has the best value match for the world position provided.
 
 ### [IgrScatterPolylineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterPolylineSeries)
+Extends: IgrShapeSeriesBase
 Series class used for displaying multiple polylines for datasources which contain multiple lists of points.
 
 - **constructor**(props: IIgrScatterPolylineSeriesProps): IgrScatterPolylineSeries
@@ -10743,6 +10883,7 @@ Series class used for displaying multiple polylines for datasources which contai
 - **findByName**(name: string): any
 
 ### [IgrScatterSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterSeries)
+Extends: IgrScatterBase
 Represents a IgxDataChartComponent scatter series
 
 - **constructor**(props: IIgrScatterSeriesProps): IgrScatterSeries
@@ -10750,6 +10891,7 @@ Represents a IgxDataChartComponent scatter series
 - **i**: `Series`
 
 ### [IgrScatterSplineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterSplineSeries)
+Extends: IgrScatterBase
 Represents a IgxDataChartComponent scatter spline series
 
 - **constructor**(props: IIgrScatterSplineSeriesProps): IgrScatterSplineSeries
@@ -10758,6 +10900,7 @@ Represents a IgxDataChartComponent scatter spline series
 - **i**: `Series`
 
 ### [IgrScatterTriangulationSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrScatterTriangulationSeries)
+Extends: IgrSeries
 Base class for series which triangulate XY data prior to rendering.
 
 - **constructor**(props: P): IgrScatterTriangulationSeries<P>
@@ -10796,6 +10939,7 @@ Provides data for the SelectedItemChanged event.
 - **oldItem**: `any` — The previously selected item.
 
 ### [IgrSelectedItemChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSelectedItemChangingEventArgs)
+Extends: IgrSelectedItemChangedEventArgs
 Provides data for the SelectedItemChanging event.
 
 - **constructor**(): IgrSelectedItemChangingEventArgs
@@ -10811,6 +10955,7 @@ Provides data for the SelectedItemsChanged event.
 - **oldItems**: `IgrObjectCollection` — A list of the previously selected items.
 
 ### [IgrSelectedItemsChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSelectedItemsChangingEventArgs)
+Extends: IgrSelectedItemsChangedEventArgs
 Provides data for the SelectedItemsChanging event.
 
 - **constructor**(): IgrSelectedItemsChangingEventArgs
@@ -12803,12 +12948,14 @@ Provides data for the SelectedItemsChanged event.
 - **oldItems**: `IgrChartSelectedItemCollection` — A list of the previously selected items.
 
 ### [IgrSeriesViewerSelectedSeriesItemsChangingEventArgs](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSeriesViewerSelectedSeriesItemsChangingEventArgs)
+Extends: IgrSeriesViewerSelectedSeriesItemsChangedEventArgs
 Provides data for the SelectedItemsChanging event.
 
 - **constructor**(): IgrSeriesViewerSelectedSeriesItemsChangingEventArgs
 - **cancel**: `boolean` — Set this to true in order to stop the SelectedItems collection from changing.
 
 ### [IgrShapeSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrShapeSeriesBase)
+Extends: IgrSeries
 Series class for rendering polygons.
 
 - **constructor**(props: P): IgrShapeSeriesBase<P>
@@ -12907,6 +13054,7 @@ Contains PieChart click event data.
 - **startAngle**: `number` — Gets the start angle of the slice.
 
 ### [IgrSlowStochasticOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSlowStochasticOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Slow Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -13048,6 +13196,7 @@ This can be set to a formatted string, such as "{0:n}", or it can be set to a Da
 - static **_createFromInternal**(internal: any): IgrSparkline
 
 ### [IgrSplineAreaFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineAreaFragment)
+Extends: IgrSplineFragmentBase
 Represents one part of a StackedSplineAreaSeries.
 
 - **constructor**(props: IIgrSplineAreaFragmentProps): IgrSplineAreaFragment
@@ -13057,6 +13206,7 @@ Represents one part of a StackedSplineAreaSeries.
 - **i**: `Series`
 
 ### [IgrSplineAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineAreaSeries)
+Extends: IgrSplineSeriesBase
 Represents a IgxDataChartComponent spline area series.
 
  <IgrDataChart
@@ -13085,6 +13235,7 @@ series.valueMemberPath = "Value";
 - **i**: `Series`
 
 ### [IgrSplineFragment](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineFragment)
+Extends: IgrSplineFragmentBase
 Represents one part of a StackedSplineSeries.
 
 - **constructor**(props: IIgrSplineFragmentProps): IgrSplineFragment
@@ -13093,6 +13244,7 @@ Represents one part of a StackedSplineSeries.
 - **i**: `Series`
 
 ### [IgrSplineFragmentBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineFragmentBase)
+Extends: IgrSplineSeriesBase
 Represents one part in a StackedSplineSeries or StackedSplineAreaSeries.
 
 - **constructor**(props: P): IgrSplineFragmentBase<P>
@@ -13101,6 +13253,7 @@ Represents one part in a StackedSplineSeries or StackedSplineAreaSeries.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrSplineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineSeries)
+Extends: IgrSplineSeriesBase
 Represents a IgxDataChartComponent spline series.
 
  <IgrDataChart
@@ -13127,6 +13280,7 @@ series.valueMemberPath = "Value";
 - **i**: `Series`
 
 ### [IgrSplineSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrSplineSeriesBase)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents the base class for all IgxDataChartComponent spline series.
 
 - **constructor**(props: P): IgrSplineSeriesBase<P>
@@ -13150,6 +13304,7 @@ this.series.splineType = SplineType.Clamped;
 - **i**: `Series`
 
 ### [IgrStacked100AreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100AreaSeries)
+Extends: IgrStackedAreaSeries
 Represents a stacked area series, where values are presented as percentages of the total.
 
 - **constructor**(props: P): IgrStacked100AreaSeries<P>
@@ -13157,6 +13312,7 @@ Represents a stacked area series, where values are presented as percentages of t
 - **i**: `Series`
 
 ### [IgrStacked100BarSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100BarSeries)
+Extends: IgrStackedBarSeries
 Represents a IgxDataChartComponent stacked100 bar series.
 
 - **constructor**(props: P): IgrStacked100BarSeries<P>
@@ -13164,6 +13320,7 @@ Represents a IgxDataChartComponent stacked100 bar series.
 - **i**: `Series`
 
 ### [IgrStacked100ColumnSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100ColumnSeries)
+Extends: IgrStackedColumnSeries
 Represents a IgxDataChartComponent stacked100 column series.
 
 - **constructor**(props: P): IgrStacked100ColumnSeries<P>
@@ -13171,6 +13328,7 @@ Represents a IgxDataChartComponent stacked100 column series.
 - **i**: `Series`
 
 ### [IgrStacked100LineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100LineSeries)
+Extends: IgrStackedLineSeries
 Represents a IgxDataChartComponent stacked100 line series.
 
 - **constructor**(props: P): IgrStacked100LineSeries<P>
@@ -13178,6 +13336,7 @@ Represents a IgxDataChartComponent stacked100 line series.
 - **i**: `Series`
 
 ### [IgrStacked100SplineAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100SplineAreaSeries)
+Extends: IgrStackedSplineAreaSeries
 Represents a IgxDataChartComponent stacked100 spline area series.
 
 - **constructor**(props: P): IgrStacked100SplineAreaSeries<P>
@@ -13185,6 +13344,7 @@ Represents a IgxDataChartComponent stacked100 spline area series.
 - **i**: `Series`
 
 ### [IgrStacked100SplineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStacked100SplineSeries)
+Extends: IgrStackedSplineSeries
 Represents a IgxDataChartComponent stacked100 spline series.
 
 - **constructor**(props: P): IgrStacked100SplineSeries<P>
@@ -13192,6 +13352,7 @@ Represents a IgxDataChartComponent stacked100 spline series.
 - **i**: `Series`
 
 ### [IgrStackedAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedAreaSeries)
+Extends: IgrHorizontalStackedSeriesBase
 Represents a IgxDataChartComponent stacked area series.
 
 - **constructor**(props: P): IgrStackedAreaSeries<P>
@@ -13199,6 +13360,7 @@ Represents a IgxDataChartComponent stacked area series.
 - **i**: `Series`
 
 ### [IgrStackedBarSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedBarSeries)
+Extends: IgrVerticalStackedSeriesBase
 Represents a IgxDataChartComponent stacked bar series.
 
 - **constructor**(props: P): IgrStackedBarSeries<P>
@@ -13215,6 +13377,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgrStackedColumnSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedColumnSeries)
+Extends: IgrHorizontalStackedSeriesBase
 Represents a IgxDataChartComponent stacked column series.
 
 - **constructor**(props: P): IgrStackedColumnSeries<P>
@@ -13378,6 +13541,7 @@ StackedFragmentSeries.ShadowBlur is applied.
 - static **_createFromInternal**(internal: any): IgrStackedFragmentSeries
 
 ### [IgrStackedLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedLineSeries)
+Extends: IgrHorizontalStackedSeriesBase
 Represents a stacked series, where the points in each series are connected with a line.
 
 - **constructor**(props: P): IgrStackedLineSeries<P>
@@ -13385,6 +13549,7 @@ Represents a stacked series, where the points in each series are connected with 
 - **i**: `Series`
 
 ### [IgrStackedSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedSeriesBase)
+Extends: IgrCategorySeries
 Represents a base class for stacked series.
 
 - **constructor**(props: P): IgrStackedSeriesBase<P>
@@ -13443,6 +13608,7 @@ Provides data for IgxDataChartComponent stacked series.
 - **transitionEasingFunction**: `any` — Gets or sets the animation easing function for the series.
 
 ### [IgrStackedSplineAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedSplineAreaSeries)
+Extends: IgrHorizontalStackedSeriesBase
 Represents a IgxDataChartComponent stacked spline area series.
 
 - **constructor**(props: P): IgrStackedSplineAreaSeries<P>
@@ -13452,6 +13618,7 @@ Represents a IgxDataChartComponent stacked spline area series.
 - **i**: `Series`
 
 ### [IgrStackedSplineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStackedSplineSeries)
+Extends: IgrHorizontalStackedSeriesBase
 Represents a IgxDataChartComponent stacked spline series.
 
 - **constructor**(props: P): IgrStackedSplineSeries<P>
@@ -13460,6 +13627,7 @@ Represents a IgxDataChartComponent stacked spline series.
 - **i**: `Series`
 
 ### [IgrStandardDeviationIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStandardDeviationIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Standard Deviation indicator series.
 Default required members: High, Low, Close
 
@@ -13498,6 +13666,7 @@ The typical, and initial, value for STDEV periods is 20.
 - **i**: `Series`
 
 ### [IgrStepAreaSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStepAreaSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent step area series.
 
 <IgrDataChart
@@ -13530,6 +13699,7 @@ Represents a IgxDataChartComponent step area series.
 - **i**: `Series`
 
 ### [IgrStepLineSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStepLineSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent step line series.
 
 <IgrDataChart
@@ -13562,6 +13732,7 @@ Represents a IgxDataChartComponent step line series.
 - **i**: `Series`
 
 ### [IgrStochRSIIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStochRSIIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent StochRSI indicator series.
 Default required members: Close
 
@@ -13612,6 +13783,7 @@ this.series.period = 10;
 - **i**: `Series`
 
 ### [IgrStraightNumericAxisBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStraightNumericAxisBase)
+Extends: IgrNumericAxisBase
 Defines a set of basic methods and properties used to create a StraightNumeric axis.
 
 - **constructor**(props: P): IgrStraightNumericAxisBase<P>
@@ -13638,6 +13810,7 @@ this.yAxis.scaleMode = NumericScaleMode.Logarithmic;
 - **i**: `Axis`
 
 ### [IgrStrategyBasedIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrStrategyBasedIndicator)
+Extends: IgrFinancialIndicator
 A base class for indicator series with simple calculations that separates the calculation
 responsibility from the other responsibilities of the financial series, this enables
 easier unit testing and decoupling of individual calculation strategies.
@@ -13666,6 +13839,7 @@ StrategyBasedIndicator
 - **ensureShapeStyle**(): void
 
 ### [IgrTimeAxisBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTimeAxisBase)
+Extends: IgrCategoryAxisBase
 Represents an category-based horizontal X axis that uses a DateTime scale.
 
 Represents horizontal axis that uses a DateTime scale.
@@ -13939,6 +14113,7 @@ Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
 - **constructor**(list?: IgrTimeAxisLabelFormat<IIgrTimeAxisLabelFormatProps>[]): IgrTimeAxisLabelFormatCollection
 
 ### [IgrTimeXAxis](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTimeXAxis)
+Extends: IgrTimeAxisBase
 A horizontal axis that uses a DateTime scale.
 
 The TimeXAxis is a horizontal axis that uses a DateTime scale.
@@ -14159,6 +14334,7 @@ Represents a style to apply to a treemap node.
 - static **_createFromInternal**(internal: any): IgrTreemapNodeStyle
 
 ### [IgrTreemapNodeStyleMapping](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTreemapNodeStyleMapping)
+Extends: IgrTreemapNodeStyle
 Represents a style to apply to a set of nodes in the treemap.
 
 - **constructor**(props: IIgrTreemapNodeStyleMappingProps): IgrTreemapNodeStyleMapping
@@ -14195,6 +14371,7 @@ default highlight styling.
 - **value**: `number`
 
 ### [IgrTrendLineLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTrendLineLayer)
+Extends: IgrAnnotationLayer
 Represents the class of the value overlay. The value overlay is a line or circle representing a value on an axis.
 
 - **constructor**(props: IIgrTrendLineLayerProps): IgrTrendLineLayer
@@ -14218,6 +14395,7 @@ The typical, and initial, value for trend line period is 7.
 - **constructor**(list?: TrendLineType[]): IgrTrendLineTypeCollection
 
 ### [IgrTRIXIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTRIXIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent TRIX indicator series.
 Default required members: Close
 
@@ -14293,6 +14471,7 @@ this.series.period = 30;
 - **i**: `Series`
 
 ### [IgrTypicalPriceIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrTypicalPriceIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Typical Price indicator series.
 The typical price indicator is represented as a arithmetic average
 of the High, Low, and Close for a day.
@@ -14331,6 +14510,7 @@ this.chart.series.add(series);
 - **i**: `Series`
 
 ### [IgrUltimateOscillatorIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUltimateOscillatorIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Ultimate Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -14392,6 +14572,7 @@ this.chart.series.add(series);
 - **nativeElement**: `HTMLElement`
 
 ### [IgrUserAnnotationLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserAnnotationLayer)
+Extends: IgrSeries
 Represents an user annotation layer that can define UserPointAnnotation, UserSliceAnnotation, UserStripAnnotation
 
 - **constructor**(props: IIgrUserAnnotationLayerProps): IgrUserAnnotationLayer
@@ -14424,6 +14605,7 @@ Information about the user annotation content which is being created or updated.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrUserAnnotationToolTipLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserAnnotationToolTipLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays tooltips for all target series individually.
 
 - **constructor**(props: IIgrUserAnnotationToolTipLayerProps): IgrUserAnnotationToolTipLayer
@@ -14440,6 +14622,7 @@ Represents an annotation layer that displays tooltips for all target series indi
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgrUserAxisAnnotation](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserAxisAnnotation)
+Extends: IgrUserBaseAnnotation
 Represents an user annotation for rendering annotation of axis label
 
 - **constructor**(): IgrUserAxisAnnotation
@@ -14487,6 +14670,7 @@ Represents base class for all user annotations, e.g. UserPointAnnotation, UserSl
 - static **_createFromInternal**(internal: any): IgrUserBaseAnnotation
 
 ### [IgrUserPointAnnotation](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserPointAnnotation)
+Extends: IgrUserBaseAnnotation
 Represents an user annotation for rendering data point annotation on a series
 
 - **constructor**(): IgrUserPointAnnotation
@@ -14506,6 +14690,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrUserShapeAnnotation](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserShapeAnnotation)
+Extends: IgrUserAxisAnnotation
 Represents base class for rendering an annotation with shape of slice of strip
 
 - **constructor**(): IgrUserShapeAnnotation
@@ -14535,6 +14720,7 @@ Represents base class for rendering an annotation with shape of slice of strip
 - **valueDisplayMode**: `DataAnnotationDisplayMode` — Gets or sets display mode of label in the center annotation.
 
 ### [IgrUserSliceAnnotation](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserSliceAnnotation)
+Extends: IgrUserShapeAnnotation
 Represents an user annotation for rendering data slice annotation
 
 - **constructor**(): IgrUserSliceAnnotation
@@ -14547,6 +14733,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrUserStripAnnotation](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrUserStripAnnotation)
+Extends: IgrUserShapeAnnotation
 Represents an user annotation for rendering data strip annotation
 
 - **constructor**(): IgrUserStripAnnotation
@@ -14571,6 +14758,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **nativeElement**: `HTMLElement`
 
 ### [IgrValueBrushScale](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrValueBrushScale)
+Extends: IgrBrushScale
 Represents a brush scale that uses value-based brush selection.
 
 - **constructor**(props: IIgrValueBrushScaleProps): IgrValueBrushScale
@@ -14581,6 +14769,7 @@ Represents a brush scale that uses value-based brush selection.
 - **minimumValue**: `number` — Gets or sets the minimum value for this scale.
 
 ### [IgrValueLayer](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrValueLayer)
+Extends: IgrAnnotationLayer
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(props: IIgrValueLayerProps): IgrValueLayer
@@ -14655,6 +14844,7 @@ modes that target multiple series.
 - **constructor**(list?: ValueLayerValueMode[]): IgrValueModeCollection
 
 ### [IgrValueOverlay](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrValueOverlay)
+Extends: IgrSeries
 Represents the class of the value overlay. The value overlay is a line or circle representing a value on an axis.
 
 - **constructor**(props: IIgrValueOverlayProps): IgrValueOverlay
@@ -14711,6 +14901,7 @@ Represents the class of the value overlay. The value overlay is a line or circle
 - **scrollIntoView**(item: any): boolean — Requests that the provided item should be brought into view if possible.
 
 ### [IgrVerticalAnchoredCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrVerticalAnchoredCategorySeries)
+Extends: IgrAnchoredCategorySeries
 Represents a vertically laid out category based series.
 
 - **constructor**(props: P): IgrVerticalAnchoredCategorySeries<P>
@@ -14736,6 +14927,7 @@ Represents a vertically laid out category based series.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrVerticalRangeCategorySeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrVerticalRangeCategorySeries)
+Extends: IgrRangeCategorySeries
 Base class for ranged category series with a numeric X-axis and a category Y-axis.
 
 - **constructor**(props: P): IgrVerticalRangeCategorySeries<P>
@@ -14771,6 +14963,7 @@ vertical series must read world.Y instead.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgrVerticalStackedSeriesBase](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrVerticalStackedSeriesBase)
+Extends: IgrStackedSeriesBase
 Base class for stacked series with a numeric x-axis and a category y-axis.
 
 - **constructor**(props: P): IgrVerticalStackedSeriesBase<P>
@@ -14788,6 +14981,7 @@ Base class for stacked series with a numeric x-axis and a category y-axis.
 - **getOffsetValue**(): number — Returns the offset value for this series if grouped on a category axis.
 
 ### [IgrWaterfallSeries](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrWaterfallSeries)
+Extends: IgrHorizontalAnchoredCategorySeries
 Represents a IgxDataChartComponent waterfall column series.
 
 WaterfallSeries belongs to a group of CategorySeries and it is rendered using a collection of vertical columns that show the difference between consecutive data points.
@@ -14928,6 +15122,7 @@ let itemSpan: number = series.GetItemSpan();
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgrWeightedCloseIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrWeightedCloseIndicator)
+Extends: IgrItemwiseStrategyBasedIndicator
 Represents a IgxDataChartComponent Weigted Close indicator series.
 The weighted close indicator shows an average of the high low and close
 for a day but with the closing price counted twice in the average.
@@ -14968,6 +15163,7 @@ this.chart.series.add(series);
 - **i**: `Series`
 
 ### [IgrWilliamsPercentRIndicator](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrWilliamsPercentRIndicator)
+Extends: IgrStrategyBasedIndicator
 Represents a IgxDataChartComponent Williams %R indicator series.
 Default required members: High, Low, Close
 
@@ -15034,6 +15230,7 @@ this.series.period = 30;
 - **i**: `Series`
 
 ### [IgrXYChart](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/classes/IgrXYChart)
+Extends: IgrDomainChart
 Represents a base class for domain charts with X/Y axes
 
 - **constructor**(props: P): IgrXYChart<P>
@@ -15885,6 +16082,7 @@ to appear blurry.
 ## Interfaces
 
 ### [IIgrAbsoluteVolumeOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAbsoluteVolumeOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **longPeriod?**: `string | number` — Gets or sets the short moving average period for the current AbsoluteVolumeOscillatorIndicator object.
 The typical, and initial, value for long AVO periods is 30.
@@ -15946,9 +16144,11 @@ You can use the ShortPeriod to set the short moving average period.
 this.series.shortPeriod = 10;
 
 ### [IIgrAccumulationDistributionIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAccumulationDistributionIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrAnchoredCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAnchoredCategorySeriesProps)
+Extends: IIgrCategorySeriesProps
 
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this series.
 
@@ -16203,6 +16403,7 @@ The ValueMemberPath property is used for the value mapping property of the curre
  </IgrDataChart>
 
 ### [IIgrAnchoredRadialSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAnchoredRadialSeriesProps)
+Extends: IIgrRadialBaseProps
 
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this series.
 - **highlightedValueMemberPath?**: `string` — Gets or sets the value mapping property for the current series object.
@@ -16221,6 +16422,7 @@ The typical, and initial, value for bollinger band periods is 20.
 - **valueMemberPath?**: `string` — Gets or sets the item path that provides the values for the current series.
 
 ### [IIgrAnnotationLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAnnotationLayerProps)
+Extends: IIgrSeriesProps
 
 - **actualAppearanceMode?**: `string | AnnotationAppearanceMode` — Gets or sets the mode used for shifting the annotation layer color based on the target series.
 - **actualDashArray?**: `string | number[]` — Gets or sets the mode used for shifting the annotation layer color based on the target series.
@@ -16249,9 +16451,11 @@ A world position has x and y values that range from 0 to 1 that represent the gl
 - **verticalShiftAmount?**: `string | number` — Gets or sets the percentage amount to shift the appearance mode by. Value must range between -1.0 to 1.0.
 
 ### [IIgrAreaFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAreaFragmentProps)
+Extends: IIgrFragmentBaseProps
 
 
 ### [IIgrAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAreaSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
@@ -16294,6 +16498,7 @@ Null and Double.NaN are two examples of unknown values.
 series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 
 ### [IIgrAverageDirectionalIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAverageDirectionalIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current AverageDirectionalIndexIndicator object.
 The typical, and initial, value for AverageDirectionalIndexIndicator periods is 14.
@@ -16323,6 +16528,7 @@ You can use the Period to set the moving average.
 this.series.period = 14;
 
 ### [IIgrAverageTrueRangeIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrAverageTrueRangeIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current AverageTrueRangeSeries object.
 The typical, and initial, value for AverageTrueRange periods is 14.
@@ -16799,14 +17005,17 @@ before resolving collisions, etc.
 - **usePerLabelHeightMeasurement?**: `string | boolean` — Gets or sets whether to use label height measurement when determining the initial number of labels to render, before resolving collisions, etc.
 
 ### [IIgrBarFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrBarFragmentProps)
+Extends: IIgrColumnFragmentProps
 
 
 ### [IIgrBarSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrBarSeriesProps)
+Extends: IIgrVerticalAnchoredCategorySeriesProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the bar.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the bar.
 
 ### [IIgrBollingerBandsOverlayProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrBollingerBandsOverlayProps)
+Extends: IIgrFinancialOverlayProps
 
 - **multiplier?**: `string | number` — Gets or sets the moving average period for the current BollingerBandOverlay object.
 The typical, and initial, value for Bollinger band multipliers is 2.
@@ -16887,6 +17096,7 @@ You can use the period property for moving average of the current BollingerBandO
 this.series.period = 7;
 
 ### [IIgrBollingerBandWidthIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrBollingerBandWidthIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **multiplier?**: `string | number` — Gets or sets the multiplier for the Bollinger Band width.
 The typical, and initial, value for Bollinger Band width multiplier is 2.
@@ -16998,6 +17208,7 @@ this.series.period = 14;
 - **propertyUpdated?**: `any` — Event raised when a property (including "effective" and non-dependency property) value changes.
 
 ### [IIgrBubbleSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrBubbleSeriesProps)
+Extends: IIgrScatterBaseProps
 
 - **fillMemberAsLegendLabel?**: `string` — Gets or sets the label displayed before series' fill value in the Data Legend.
 - **fillMemberAsLegendUnit?**: `string` — Gets or sets the unit displayed after series' fill value in the Data Legend.
@@ -17020,6 +17231,7 @@ This setting applies only if the current series has a FillScale set and it overr
 This setting applies only if multiple series are using the same RadiusScale.
 
 ### [IIgrCalloutLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCalloutLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **allowedPositions?**: `string | IgrCalloutPlacementPositionsCollection` — Gets or sets the allowed positions that the callout layer is allowed to use.
 - **autoCalloutLabelPrecision?**: `string | number` — Gets or sets the precision to use when values are used for the auto callout labels.
@@ -17095,6 +17307,7 @@ This property is not used when the CalloutExpandsAxisBufferEnabled property is f
 - **yMemberPath?**: `string` — Gets or sets the label mapping property for the callouts.
 
 ### [IIgrCategoryAngleAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryAngleAxisProps)
+Extends: IIgrCategoryAxisBaseProps
 
 - **actualInterval?**: `string | number` — Gets the effective value for the current Interval.
 
@@ -17171,6 +17384,7 @@ Indicates the angle in degress that the chart's 0th angle should be offset.
 </IgrDataChart>
 
 ### [IIgrCategoryAxisBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryAxisBaseProps)
+Extends: IIgrAxisProps
 
 - **dataSource?**: `any`
 - **gap?**: `string | number` — Gets or sets the amount of space between adjacent categories for the current axis object.
@@ -17243,6 +17457,7 @@ Try setting it on an axis displaying financial series to adjust the spacing on t
  </IgrDataChart>
 
 ### [IIgrCategoryChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryChartProps)
+Extends: IIgrXYChartProps
 
 - **autoExpandMarginExtraPadding?**: `string | number` — Gets or sets the extra amount the series viewer should auto expand margins to accommodate the initial horizontal axis labels.
 - **autoExpandMarginMaximumValue?**: `string | number` — Gets or sets the maximum amount the series viewer should auto expand margins to accommodate the initial horizontal axis labels.
@@ -17440,6 +17655,7 @@ YAxisMinorInterval determines how often to show a minor gridline along the y-axi
 </IgrCategoryChart>
 
 ### [IIgrCategoryDateTimeXAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryDateTimeXAxisProps)
+Extends: IIgrTimeAxisBaseProps
 
 - **actualInterval?**: `string | number` — Gets the effective value for the current Interval.
 - **actualMinorInterval?**: `string | number` — Gets the effective value for the current MinorInterval.
@@ -17487,6 +17703,7 @@ The set value is a factor that determines how the minor lines will be displayed.
 - **unevenlySpacedLabels?**: `string | boolean` — Gets or sets whether the axis labels can be unevenly spaced
 
 ### [IIgrCategoryHighlightLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryHighlightLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **bandHighlightWidth?**: `string | number` — Gets or sets the width to use for the highlight region if drawing a band rather than filling a category.
 - **targetAxis?**: `IgrCategoryAxisBase<IIgrCategoryAxisBaseProps>` — Gets or sets the axis to target this annotation to. If null, this annotation targets all category axes simultaneously.
@@ -17494,6 +17711,7 @@ The set value is a factor that determines how the minor lines will be displayed.
 - **useInterpolation?**: `string | boolean` — Gets or sets whether to use value interpolation when drawing a line through the best value for the pointer position.
 
 ### [IIgrCategoryItemHighlightLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryItemHighlightLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **bandHighlightWidth?**: `string | number` — Gets or sets the width to use for the highlight region if highlighting items in a grid aligned series (line, spline, etc), with a banded shape.
 - **highlightType?**: `string | CategoryItemHighlightType` — Gets or sets which type of highlight shape to use when highlighting items.
@@ -17507,6 +17725,7 @@ The set value is a factor that determines how the minor lines will be displayed.
 - **useInterpolation?**: `string | boolean` — Gets or sets whether to use value interpolation when drawing a line through the best value for the pointer position.
 
 ### [IIgrCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategorySeriesProps)
+Extends: IIgrMarkerSeriesProps
 
 - **assigningCategoryMarkerStyle?**: `any` — Event raised when Assigning Category Marker Style
 - **assigningCategoryStyle?**: `any` — Event raised when Assigning Category Style
@@ -17585,6 +17804,7 @@ Set UseHighMarkerFidelity when your data has high variation along the y-axis wit
       this.columnSeries2.useHighMarkerFidelity= "true";
 
 ### [IIgrCategoryToolTipLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryToolTipLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **targetAxis?**: `IgrAxis<IIgrAxisProps>` — Gets or sets the Axis to target this annotation to. If null, this annotation layer will not render content.
 - **targetAxisName?**: `string` — Gets or sets the name to use to resolve targetAxis from markup.
@@ -17595,6 +17815,7 @@ Set UseHighMarkerFidelity when your data has high variation along the y-axis wit
 - **useInterpolation?**: `string | boolean` — Gets or sets whether to use value interpolation when drawing the tooltips.
 
 ### [IIgrCategoryXAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryXAxisProps)
+Extends: IIgrCategoryAxisBaseProps
 
 - **actualInterval?**: `string | number` — Gets the effective value for the current Interval.
 
@@ -17657,6 +17878,7 @@ Chart will automatically zoom in until series item has specified pixel span.
 This property is overridden by chart's WindowRect or WindowScaleHorizontal properties
 
 ### [IIgrCategoryYAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCategoryYAxisProps)
+Extends: IIgrCategoryAxisBaseProps
 
 - **actualInterval?**: `string | number` — Gets the effective value for the current Interval.
 - **actualMinorInterval?**: `string | number` — Gets the effective value for the current MinorInterval.
@@ -17680,6 +17902,7 @@ Chart will automatically zoom in until series item has specified pixel span.
 This property is overridden by chart's WindowRect or WindowScaleHorizontal properties
 
 ### [IIgrChaikinOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrChaikinOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **longPeriod?**: `string | number` — Gets or sets the long moving average period for the current ChaikinOscillatorIndicator object.
 The typical, and initial, value for long CHO periods is 10.
@@ -17741,6 +17964,7 @@ this.series.shortPeriod = 30;
  </IgrDataChart>
 
 ### [IIgrChaikinVolatilityIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrChaikinVolatilityIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current ChaikinVolatilityIndicator object.
 The typical, and initial, value for ChaikinVolatilityIndicator periods is 10.
@@ -17774,17 +17998,20 @@ this.series.longPeriod = 30;
 - **propertyUpdated?**: `any` — Event raised when a property (including "effective" and non-dependency property) value changes.
 
 ### [IIgrColumnFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrColumnFragmentProps)
+Extends: IIgrFragmentBaseProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the column.
 
 ### [IIgrColumnSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrColumnSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 - **consolidatedColumnVerticalPosition?**: `string | ConsolidatedItemsPosition` — The positioning logic to use for columns which have been consolidated into a single visual element.
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the column.
 
 ### [IIgrCommodityChannelIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCommodityChannelIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current CCISeries object.
 The typical, and initial, value for CCI periods is 20.
@@ -17815,6 +18042,7 @@ this.series.period = 30;
 - **children?**: `any`
 
 ### [IIgrCrosshairLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCrosshairLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **horizontalLineStroke?**: `string` — Gets or sets the color to use for the horizontal line. Leave null for an automatic value.
 - **horizontalLineVisibility?**: `any` — Gets or sets whether to display the horizontal line.
@@ -17849,25 +18077,30 @@ this.series.period = 30;
 - **yAxisAnnotationTextColor?**: `string` — Gets or sets the color to use for the y axis annotation text. Leave unset for an automatic value.
 
 ### [IIgrCustomContourValueResolverProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCustomContourValueResolverProps)
+Extends: IIgrContourValueResolverProps
 
 - **getCustomContourValues?**: `any` — Event raised when retrieving the contour values.
 
 ### [IIgrCustomIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCustomIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **basedOnColumns**: `any` — Event raised when the basedOnColumns values need to be computed.
 - **indicator**: `any` — Event raised when the indicator values need to be computed.
 
 ### [IIgrCustomPaletteBrushScaleProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCustomPaletteBrushScaleProps)
+Extends: IIgrBrushScaleProps
 
 - **brushSelectionMode?**: `string | BrushSelectionMode` — Gets or sets the brush selection mode.
 
 ### [IIgrCustomPaletteColorScaleProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrCustomPaletteColorScaleProps)
+Extends: IIgrColorScaleProps
 
 - **interpolationMode?**: `string | ColorScaleInterpolationMode` — The approach to use when getting a color from the palette.
 - **maximumValue?**: `string | number` — The highest value to assign a color.  Any given value greater than this value will be made Transparent.
 - **minimumValue?**: `string | number` — The lowest value to assign a color.  Any given value less than this value will be made Transparent.
 
 ### [IIgrDataAnnotationAxisLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationAxisLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **annotationBackground?**: `string` — Gets or sets the color used for backing of the axis annotation.
 - **annotationBackgroundMatchLayer?**: `string | boolean` — Gets or sets whether the annotation background matches brush of the layer
@@ -17904,13 +18137,16 @@ this.series.period = 30;
 - **targetMode?**: `string | DataAnnotationTargetMode` — Gets or sets the mode for targeting axes present in the chart. Defaults to targeting all category-axes present in the chart
 
 ### [IIgrDataAnnotationBandLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationBandLayerProps)
+Extends: IIgrDataAnnotationPointLayerProps
 
 - **annotationBreadthMemberPath?**: `string` — Gets or sets name of data column with breath/size of shape annotations.
 
 ### [IIgrDataAnnotationLineLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationLineLayerProps)
+Extends: IIgrDataAnnotationPointLayerProps
 
 
 ### [IIgrDataAnnotationPointLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationPointLayerProps)
+Extends: IIgrDataAnnotationRangeLayerProps
 
 - **annotationBadgeBackgroundXMemberPath?**: `string` — Gets or sets a member path for background of the badge annotations on x-axis.
 - **annotationBadgeBackgroundYMemberPath?**: `string` — Gets or sets a member path for background of the badge annotations on y-axis.
@@ -17938,6 +18174,7 @@ this.series.period = 30;
 - **startValueYMemberPath?**: `string` — Gets or sets name of data column with y-positions for the start of annotations.
 
 ### [IIgrDataAnnotationRangeLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationRangeLayerProps)
+Extends: IIgrDataAnnotationShapeLayerProps
 
 - **centerLabelBackground?**: `string` — Gets or sets the background used for displaying the center annotation label.
 - **centerLabelBorderColor?**: `string` — Gets or sets the border color used for displaying the center annotation label.
@@ -17950,9 +18187,11 @@ this.series.period = 30;
 - **startLabelTextColor?**: `string` — Gets or sets the text color used for displaying the start annotation label.
 
 ### [IIgrDataAnnotationRectLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationRectLayerProps)
+Extends: IIgrDataAnnotationPointLayerProps
 
 
 ### [IIgrDataAnnotationShapeLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationShapeLayerProps)
+Extends: IIgrDataAnnotationAxisLayerProps
 
 - **annotationShapeVisible?**: `string | boolean` — Gets or sets whether to draw shape of annotations in the plot area
 - **isTargetingHorizontalAxis?**: `string | boolean` — Gets whether the annotation layer is currently targeting horizontal axis.
@@ -17986,6 +18225,7 @@ this.series.period = 30;
 - **stylingShapeAnnotation?**: `any` — Event raised when updating style of annotation
 
 ### [IIgrDataAnnotationSliceLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationSliceLayerProps)
+Extends: IIgrDataAnnotationShapeLayerProps
 
 - **annotationBadgeBackgroundMemberPath?**: `string` — Gets or sets a member path for background of the badge annotations on an axis.
 - **annotationBadgeEnabledMemberPath?**: `string` — Gets or sets a member path for visibility of the badge annotations on an axis.
@@ -17995,6 +18235,7 @@ this.series.period = 30;
 - **annotationValueMemberPath?**: `string` — Gets or sets name of data column with values used to position annotations.
 
 ### [IIgrDataAnnotationStripLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataAnnotationStripLayerProps)
+Extends: IIgrDataAnnotationRangeLayerProps
 
 - **annotationBadgeBackgroundMemberPath?**: `string` — Gets or sets a member path for background of the badge annotations on an axis.
 - **annotationBadgeEnabledMemberPath?**: `string` — Gets or sets a member path for visibility of the badge annotations on an axis.
@@ -18010,6 +18251,7 @@ this.series.period = 30;
 - **startValueMemberPath?**: `string` — Gets or sets name of data column with positions for the start of annotations.
 
 ### [IIgrDataChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataChartProps)
+Extends: IIgrSeriesViewerProps
 
 - **actualPlotAreaMarginBottom?**: `string | number` — Gets the actual resolved bottom plot area margin;
 - **actualPlotAreaMarginLeft?**: `string | number` — Gets the actual resolved left plot area margin;
@@ -18301,6 +18543,7 @@ This property is ignored when setting ValueFormatSpecifiers or ValueFormatString
 - **width?**: `string`
 
 ### [IIgrDataPieBaseChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataPieBaseChartProps)
+Extends: IIgrRadialBaseChartProps
 
 - **angleAxisFavorLabellingScaleEnd?**: `string | boolean` — Gets or sets whether to favor labelling the end of the scale.
 - **angleAxisInterval?**: `string | number` — Gets or sets the frequency of displayed labels along the X-axis.
@@ -18356,6 +18599,7 @@ This property is effective only when ValueAxisIsLogarithmic is true.
 - **valueMemberPath?**: `string` — Gets or sets the overridden value member path to use.
 
 ### [IIgrDataPieChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataPieChartProps)
+Extends: IIgrDataPieBaseChartProps
 
 - **chartType?**: `string | DataPieChartType` — Gets or sets the type of chart series to generate from the data.
 - **dataSource?**: `any[]` — Gets or sets the data for the chart to use. This can be overriden at the series and axis level.
@@ -18373,6 +18617,7 @@ This can be set to one of the known values "linear" or "cubic," or it can be set
 - **width?**: `string`
 
 ### [IIgrDataToolTipLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDataToolTipLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **actualGroupedPositionModeX?**: `any` — Gets the actual resolved tooltip position mode on the X axis for grouped series.
 - **actualGroupedPositionModeY?**: `any` — Gets the actual resolved tooltip position mode on the Y axis for grouped series.
@@ -18505,6 +18750,7 @@ This property is ignored when setting ValueFormatSpecifiers or ValueFormatString
 - **valueTextWhenMissingData?**: `string` — Gets or sets text displayed when data column is missing a value, e.g. "no data"
 
 ### [IIgrDetrendedPriceOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrDetrendedPriceOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current DetrendedPriceOscillatorIndicator object.
 The typical, and initial, value for DPO periods is 20.
@@ -19431,14 +19677,17 @@ to appear blurry.
 - **width?**: `string`
 
 ### [IIgrEaseOfMovementIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrEaseOfMovementIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrFastStochasticOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFastStochasticOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current FastStochasticOscillatorIndicator object.
 The typical, and initial, value for FastStochasticOscillatorIndicator periods is 14.
 
 ### [IIgrFinalValueLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinalValueLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **axisAnnotationBackground?**: `string` — Gets or sets the color to use for the axis annotation backing. Leave unset for an automatic value.
 - **axisAnnotationBackgroundCornerRadius?**: `string | number` — Gets or sets the corner radius to use for the axis annotation backing. Leave unset for an automatic value.
@@ -19455,6 +19704,7 @@ The typical, and initial, value for FastStochasticOscillatorIndicator periods is
 - **targetSeriesName?**: `string` — Gets or sets the name of the series to target this annotation to. If null, this annotation targets all series simultaneously.
 
 ### [IIgrFinancialChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialChartProps)
+Extends: IIgrXYChartProps
 
 - **applyCustomIndicators?**: `any` — Event raised by the chart when custom indicator data is needed from the application.
 During series rendering, event will be raised once for each value in the CustomIndicatorNames collection.
@@ -19802,6 +20052,7 @@ Use the ZoomSliderType property to set a type of all series that will be rendere
 - **zoomSliderXAxisMajorStrokeThickness?**: `string | number` — Gets or sets thickness of major gridlines on x-axis of the zoom slider pane
 
 ### [IIgrFinancialIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialIndicatorProps)
+Extends: IIgrFinancialSeriesProps
 
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this indicator.
 
@@ -19976,9 +20227,11 @@ Use TrendLineType property to get the trend type for the current indicator serie
 series.trendLineType= TrendLineType.CubicFit;
 
 ### [IIgrFinancialLegendProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialLegendProps)
+Extends: IIgrLegendBaseProps
 
 
 ### [IIgrFinancialOverlayProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialOverlayProps)
+Extends: IIgrFinancialSeriesProps
 
 - **ignoreFirst?**: `string | number` — Gets or sets the number of values to hide at the beginning of the indicator.
 
@@ -20021,6 +20274,7 @@ Use the IgnoreFirst property to sets the number of values to hide at the beginni
  series.ignoreFirst=2;
 
 ### [IIgrFinancialPriceSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialPriceSeriesProps)
+Extends: IIgrFinancialSeriesProps
 
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this FinancialPriceSeries.
 
@@ -20239,6 +20493,7 @@ Use the TrendLineType property for the trend type of the current financial serie
 series.trendLineType= "CubicFit";
 
 ### [IIgrFinancialSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFinancialSeriesProps)
+Extends: IIgrSeriesProps
 
 - **assigningCategoryStyle?**: `any` — Event raised when Assigning Category Style
 
@@ -20769,6 +21024,7 @@ Use YAxis property to set the effective y-axis for the current FinancialSeries o
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrForceIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrForceIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current AverageTrueRangeSeries object.
 The typical, and initial, value for ForceIndiex periods is 0.
@@ -20802,9 +21058,11 @@ You can use the period property to get the moving average period of the current 
 this.series.period = 30;
 
 ### [IIgrFragmentBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFragmentBaseProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 
 ### [IIgrFullStochasticOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrFullStochasticOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current FullStochasticOscillatorIndicator object.
 The typical, and initial, value for FullStochasticOscillatorIndicator periods is 14.
@@ -20956,10 +21214,12 @@ Use ui.selected to check if slice became selected.
 - **width?**: `string`
 
 ### [IIgrHierarchicalRingSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrHierarchicalRingSeriesProps)
+Extends: IIgrRingSeriesBaseProps
 
 - **childrenMemberPath?**: `string` — Gets or sets the property name that contains the children items collection.
 
 ### [IIgrHighDensityScatterSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrHighDensityScatterSeriesProps)
+Extends: IIgrSeriesProps
 
 - **heatMaximum?**: `string | number` — Gets or sets the value that maps to the maximum heat color.
 - **heatMaximumColor?**: `string` — Gets or sets the color to use for the maximum end of the scale.
@@ -20982,6 +21242,7 @@ Use ui.selected to check if slice became selected.
 - **yMemberPath?**: `string` — Gets or sets the y value mapping property for the current series object.
 
 ### [IIgrHorizontalAnchoredCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrHorizontalAnchoredCategorySeriesProps)
+Extends: IIgrAnchoredCategorySeriesProps
 
 - **xAxis?**: `IgrCategoryAxisBase<IIgrCategoryAxisBaseProps>` — Gets or sets the effective x-axis for this series.
 
@@ -21037,6 +21298,7 @@ this.columnSeries1.valueMemberPath = "USA";
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrHorizontalRangeCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrHorizontalRangeCategorySeriesProps)
+Extends: IIgrRangeCategorySeriesProps
 
 - **highMemberAsLegendLabel?**: `string` — Gets or sets the label displayed before series' High value in the Data Legend.
 - **highMemberAsLegendUnit?**: `string` — Gets or sets the unit displayed after series' High value in the Data Legend.
@@ -21096,6 +21358,7 @@ this.columnSeries1.valueMemberPath = "USA";
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrHorizontalStackedSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrHorizontalStackedSeriesBaseProps)
+Extends: IIgrStackedSeriesBaseProps
 
 - **xAxis?**: `IgrCategoryAxisBase<IIgrCategoryAxisBaseProps>` — Gets or sets the effective x-axis for this series.
 - **xAxisName?**: `string` — Gets or sets the name to use to resolve xAxis from markup.
@@ -21103,12 +21366,14 @@ this.columnSeries1.valueMemberPath = "USA";
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrItemLegendProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrItemLegendProps)
+Extends: IIgrLegendBaseProps
 
 - **orientation?**: `string | LegendOrientation` — Gets or sets the current Legend object's orientation.
 - **textColor?**: `string` — Gets or sets color of text
 - **textStyle?**: `string` — Gets or sets style of text.
 
 ### [IIgrItemToolTipLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrItemToolTipLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **skipUnknownValues?**: `string | boolean` — Gets or sets whether to skip past unknown values when searching for series values.
 - **targetSeries?**: `IgrSeries<IIgrSeriesProps>` — Gets or sets the series to target this annotation to. If null, this annotation targets all series simultaneously.
@@ -21119,6 +21384,7 @@ this.columnSeries1.valueMemberPath = "USA";
 - **useInterpolation?**: `string | boolean` — Gets or sets whether to use value interpolation when drawing the tooltips.
 
 ### [IIgrItemwiseStrategyBasedIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrItemwiseStrategyBasedIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrLegendBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrLegendBaseProps)
@@ -21134,6 +21400,7 @@ in this Legend.
 - **legendTextContentChanged?**: `any` — Event raised when this legend's required size changes.
 
 ### [IIgrLegendProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrLegendProps)
+Extends: IIgrLegendBaseProps
 
 - **orientation?**: `string | LegendOrientation` — Gets or sets the current Legend object's orientation.
 
@@ -21149,13 +21416,16 @@ in this Legend.
             textStyle= "9pt Verdana" />
 
 ### [IIgrLinearContourValueResolverProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrLinearContourValueResolverProps)
+Extends: IIgrContourValueResolverProps
 
 - **valueCount?**: `string | number` — Gets or sets how many contour values to return.
 
 ### [IIgrLineFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrLineFragmentProps)
+Extends: IIgrFragmentBaseProps
 
 
 ### [IIgrLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrLineSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
@@ -21181,6 +21451,7 @@ series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 	unknownValuePlotting:"LinearInterpolate"/>
 
 ### [IIgrMarkerSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMarkerSeriesProps)
+Extends: IIgrSeriesProps
 
 - **actualMarkerBrush?**: `string` — Gets the effective marker brush for the current series object.
 
@@ -21267,15 +21538,19 @@ this.series.markerType = "circle";
  </IgrDataChart>
 
 ### [IIgrMarketFacilitationIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMarketFacilitationIndexIndicatorProps)
+Extends: IIgrItemwiseStrategyBasedIndicatorProps
 
 
 ### [IIgrMassIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMassIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrMedianPriceIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMedianPriceIndicatorProps)
+Extends: IIgrItemwiseStrategyBasedIndicatorProps
 
 
 ### [IIgrMoneyFlowIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMoneyFlowIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current MoneyFlowIndexIndicator object.
 The typical, and initial, value for MoneyFlowIndexIndicator periods is 14.
@@ -21304,6 +21579,7 @@ this.series.period = 14;
  </IgrDataChart>
 
 ### [IIgrMovingAverageConvergenceDivergenceIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrMovingAverageConvergenceDivergenceIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **longPeriod?**: `string | number` — Gets or sets the long moving average period for the current MovingAverageConvergenceDivergenceIndicator object.
 The typical, and initial, value for long MACD periods is 30.
@@ -21376,9 +21652,11 @@ Example:
  </IgrDataChart>
 
 ### [IIgrNegativeVolumeIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNegativeVolumeIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrNumericAngleAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNumericAngleAxisProps)
+Extends: IIgrNumericAxisBaseProps
 
 - **companionAxisLabelMode?**: `string | AxisAngleLabelMode` — Gets or sets the mode axis labels will operate for the companion axis.
 - **companionAxisStartAngleOffset?**: `string | number` — Gets or sets angle in degress that the chart's 0th angle should be offset for the companion axis
@@ -21386,6 +21664,7 @@ Example:
 - **startAngleOffset?**: `string | number` — Indicates the angle in degress that the chart's 0th angle should be offset.
 
 ### [IIgrNumericAxisBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNumericAxisBaseProps)
+Extends: IIgrAxisProps
 
 - **abbreviatedLabelFormat?**: `string` — Gets or sets the label format string to use for the label.
 - **abbreviatedLabelFormatSpecifiers?**: `any[]` — Gets or sets the format specifiers to use with the AbbreviatedLabelFormat string.
@@ -21611,6 +21890,7 @@ this.yAxis.referenceValue = 30;
 - **shouldApplyMaxPrecisionWhenZoomed?**: `string | boolean` — Gets or sets the the maximum precision to use for the auto interval.
 
 ### [IIgrNumericRadiusAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNumericRadiusAxisProps)
+Extends: IIgrNumericAxisBaseProps
 
 - **innerRadiusExtentScale?**: `string | number` — Defines the percentage of the maximum radius extent to leave blank at the center of the chart. Should be
 a value between 0.0 and 1.0.
@@ -21618,15 +21898,19 @@ a value between 0.0 and 1.0.
 a value between 0.0 and 1.0.
 
 ### [IIgrNumericXAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNumericXAxisProps)
+Extends: IIgrStraightNumericAxisBaseProps
 
 
 ### [IIgrNumericYAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrNumericYAxisProps)
+Extends: IIgrStraightNumericAxisBaseProps
 
 
 ### [IIgrOnBalanceVolumeIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrOnBalanceVolumeIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrOrdinalTimeXAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrOrdinalTimeXAxisProps)
+Extends: IIgrCategoryXAxisProps
 
 - **dateTimeMemberPath?**: `string` — Gets or sets the DateTime mapping property for the axis.
 - **labellingMode?**: `string | TimeAxisLabellingMode` — Gets or sets the labelling mode to use when the automatic label formats are applied.
@@ -21641,6 +21925,7 @@ This property can be used to constrain the items displayed on the axis, within t
 - **items?**: `any[]` — Gets the items in the others category.
 
 ### [IIgrPercentagePriceOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPercentagePriceOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **longPeriod?**: `string | number` — Gets or sets the long moving average period for the current PercentagePriceOscillatorIndicator object.
 The typical, and initial, value for long PVO periods is 30.
@@ -21694,6 +21979,7 @@ this.series.shortPeriod = 10;
  </IgrDataChart>
 
 ### [IIgrPercentageVolumeOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPercentageVolumeOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **longPeriod?**: `string | number` — Gets or sets the short moving average period for the current PercentageVolumeOscillatorIndicator object.
 The typical, and initial, value for long PVO periods is 30.
@@ -21749,6 +22035,7 @@ this.series.shortPeriod = 30;
  </IgrDataChart>
 
 ### [IIgrPercentChangeYAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPercentChangeYAxisProps)
+Extends: IIgrNumericYAxisProps
 
 
 ### [IIgrPieChartBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPieChartBaseProps)
@@ -21839,6 +22126,7 @@ The default zero value is equivalent to 3 o'clock.
 - **valueMemberPath?**: `string` — Gets or Sets the property name that contains the values.
 
 ### [IIgrPieChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPieChartProps)
+Extends: IIgrPieChartBaseProps
 
 - **dataSource?**: `any[]` — Gets or sets the data for the chart to use. This can be overriden at the series and axis level.
 - **height?**: `string`
@@ -21846,14 +22134,17 @@ The default zero value is equivalent to 3 o'clock.
 - **width?**: `string`
 
 ### [IIgrPointSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPointSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 
 ### [IIgrPolarAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarAreaSeriesProps)
+Extends: IIgrPolarLineSeriesBaseProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IIgrPolarBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarBaseProps)
+Extends: IIgrMarkerSeriesProps
 
 - **actualItemSearchMode?**: `string | ScatterItemSearchMode`
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this series.
@@ -21892,28 +22183,35 @@ is used to draw the trend line for the current series object.
 spiral based interpolation.
 
 ### [IIgrPolarLineSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarLineSeriesBaseProps)
+Extends: IIgrPolarBaseProps
 
 
 ### [IIgrPolarLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarLineSeriesProps)
+Extends: IIgrPolarLineSeriesBaseProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IIgrPolarScatterSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarScatterSeriesProps)
+Extends: IIgrPolarBaseProps
 
 
 ### [IIgrPolarSplineAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarSplineAreaSeriesProps)
+Extends: IIgrPolarLineSeriesBaseProps
 
 - **stiffness?**: `string | number` — Gets or sets the Stiffness property.
 
 ### [IIgrPolarSplineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPolarSplineSeriesProps)
+Extends: IIgrPolarLineSeriesBaseProps
 
 - **stiffness?**: `string | number` — Gets or sets the Stiffness property.
 
 ### [IIgrPositiveVolumeIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPositiveVolumeIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrPriceChannelOverlayProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPriceChannelOverlayProps)
+Extends: IIgrFinancialOverlayProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current PriceChannelOverlay object.
 The typical, and initial, value for Bollinger band periods is 14.
@@ -21943,9 +22241,11 @@ this.series.period = 14;
  </IgrDataChart>
 
 ### [IIgrPriceVolumeTrendIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrPriceVolumeTrendIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrProportionalCategoryAngleAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrProportionalCategoryAngleAxisProps)
+Extends: IIgrCategoryAngleAxisProps
 
 - **othersCategoryText?**: `string` — Gets or sets the label of the Others slice.
 - **othersCategoryThreshold?**: `string | number` — Gets or sets the threshold value that determines if categories are grouped into the Others category.
@@ -21953,11 +22253,13 @@ this.series.period = 14;
 - **valueMemberPath?**: `string` — Gets or sets the Value mapping property for the axis.
 
 ### [IIgrRadialAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialAreaSeriesProps)
+Extends: IIgrAnchoredRadialSeriesProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IIgrRadialBaseChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialBaseChartProps)
+Extends: IIgrDomainChartProps
 
 - **actualAngleAxisLabelTextColor?**: `string` — Gets the actual color of labels on the X-axis
 - **actualValueAxisLabelTextColor?**: `string` — Gets the actual color of labels on the Y-axis
@@ -22041,6 +22343,7 @@ Null and Double.NaN are two examples of unknown values.
 - **valueAxisTitleTopMargin?**: `string | number` — Gets or sets the top margin of a title on the Y-axis
 
 ### [IIgrRadialBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialBaseProps)
+Extends: IIgrMarkerSeriesProps
 
 - **angleAxis?**: `IgrCategoryAngleAxis<IIgrCategoryAngleAxisProps>` — Gets the effective angle axis for the current series object.
 - **angleAxisName?**: `string` — Gets or sets the name to use to resolve angleAxis from markup.
@@ -22076,16 +22379,19 @@ Note: Transitions are not currently supported for stacked series.
 - **valueAxisName?**: `string` — Gets or sets the name to use to resolve valueAxis from markup.
 
 ### [IIgrRadialColumnSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialColumnSeriesProps)
+Extends: IIgrAnchoredRadialSeriesProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the column.
 
 ### [IIgrRadialLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialLineSeriesProps)
+Extends: IIgrAnchoredRadialSeriesProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IIgrRadialPieSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRadialPieSeriesProps)
+Extends: IIgrAnchoredRadialSeriesProps
 
 - **legendEmptyValuesMode?**: `any` — Determines display mode for zero values in the legend.
 - **legendLabelMemberPath?**: `string` — Gets or sets the property name that contains the legend labels.
@@ -22095,14 +22401,17 @@ Null and Double.NaN are two examples of unknown values.
 in and halfway out.
 
 ### [IIgrRangeAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRangeAreaSeriesProps)
+Extends: IIgrHorizontalRangeCategorySeriesProps
 
 
 ### [IIgrRangeBarSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRangeBarSeriesProps)
+Extends: IIgrVerticalRangeCategorySeriesProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the bar.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the bar.
 
 ### [IIgrRangeCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRangeCategorySeriesProps)
+Extends: IIgrCategorySeriesProps
 
 - **highlightedHighMemberPath?**: `string` — Gets or sets the highlighted High value mapping property for the current series object.
 - **highlightedLowMemberPath?**: `string` — Gets or sets the highlighted low value mapping property for the current series object.
@@ -22159,6 +22468,7 @@ series1.highMemberPath = "High";
 series1.lowMemberPath  = "Low";
 
 ### [IIgrRangeColumnSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRangeColumnSeriesProps)
+Extends: IIgrHorizontalRangeCategorySeriesProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
 
@@ -22208,6 +22518,7 @@ Use the RadiusY property for the y-radius of the ellipse that is used to round t
 series.radiusY=10;
 
 ### [IIgrRateOfChangeAndMomentumIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRateOfChangeAndMomentumIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current AverageTrueRangeSeries object.
 The typical, and initial, value for AverageTrueRange periods is 14.
@@ -22239,6 +22550,7 @@ The typical, and initial, value for AverageTrueRange periods is 14.
 this.series.period = 30;
 
 ### [IIgrRelativeStrengthIndexIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRelativeStrengthIndexIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current RelativeStrengthIndexIndicator object.
 The typical, and initial, value for RSI periods is 14.
@@ -22321,15 +22633,18 @@ The default zero value is equivalent to 3 o'clock.
 - **valueMemberPath?**: `string` — Gets or Sets the property name that contains the values.
 
 ### [IIgrRingSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrRingSeriesProps)
+Extends: IIgrRingSeriesBaseProps
 
 - **explodedSlices?**: `IgrIndexCollection`
 - **ring?**: `IgrRing` — Gets reference to the ring data.
 - **selectedSlices?**: `IgrIndexCollection`
 
 ### [IIgrScaleLegendProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScaleLegendProps)
+Extends: IIgrLegendBaseProps
 
 
 ### [IIgrScatterAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterAreaSeriesProps)
+Extends: IIgrScatterTriangulationSeriesProps
 
 - **actualColorScale?**: `IgrColorScale<IIgrColorScaleProps>` — Gets actual color scale that is set on ColorScale property or default ColorScale
 - **colorMemberAsLegendLabel?**: `string` — Gets or sets the label displayed before series color value in the Data Legend.
@@ -22338,6 +22653,7 @@ The default zero value is equivalent to 3 o'clock.
 - **colorScale?**: `IgrColorScale<IIgrColorScaleProps>` — Gets or sets ColorScale used to resolve the color values of points in the series.
 
 ### [IIgrScatterBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterBaseProps)
+Extends: IIgrMarkerSeriesProps
 
 - **actualItemSearchMode?**: `string | ScatterItemSearchMode`
 - **actualTrendLineBrush?**: `string` — Gets the effective TrendLineBrush for this series.
@@ -22373,6 +22689,7 @@ The typical, and initial, value for trend line period is 7.
 - **yMemberPath?**: `string` — Gets or sets the value mapping property for the current series object.
 
 ### [IIgrScatterContourSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterContourSeriesProps)
+Extends: IIgrScatterTriangulationSeriesProps
 
 - **actualFillScale?**: `IgrValueBrushScale` — Gets actual fill scale that is set on the FillScale property or default FillScale
 - **fillScale?**: `IgrValueBrushScale` — Gets or sets the ValueBrushScale to use when determining Brushes for each contour line, based on the values found in ValueMemberPath.
@@ -22382,11 +22699,13 @@ The typical, and initial, value for trend line period is 7.
 - **valueResolver?**: `IgrContourValueResolver<IIgrContourValueResolverProps>` — Gets or set the ContourValueResolver used to determine the numeric values of contours.
 
 ### [IIgrScatterLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterLineSeriesProps)
+Extends: IIgrScatterBaseProps
 
 - **unknownValuePlotting?**: `any` — Determines how unknown values will be plotted on the chart.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IIgrScatterPolygonSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterPolygonSeriesProps)
+Extends: IIgrShapeSeriesBaseProps
 
 - **actualMarkerBrush?**: `string` — Gets the effective marker brush for the current series object.
 - **actualMarkerOutline?**: `string` — Gets the effective marker outline for the current series object.
@@ -22403,17 +22722,21 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **shapeStyle?**: `any` — The default style to apply to all Shapes in the series.
 
 ### [IIgrScatterPolylineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterPolylineSeriesProps)
+Extends: IIgrShapeSeriesBaseProps
 
 - **shapeStyle?**: `any` — The default style to apply to all Shapes in the series.
 
 ### [IIgrScatterSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterSeriesProps)
+Extends: IIgrScatterBaseProps
 
 
 ### [IIgrScatterSplineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterSplineSeriesProps)
+Extends: IIgrScatterBaseProps
 
 - **stiffness?**: `string | number` — Gets or sets the Stiffness property.
 
 ### [IIgrScatterTriangulationSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrScatterTriangulationSeriesProps)
+Extends: IIgrSeriesProps
 
 - **trianglesSource?**: `any[]` — The source of triangulation data.
 This property is optional.  If it is left as null, the triangulation will be created based on the items in the ItemsSource.  Triangulation is a demanding operation, so the runtime performance will be better when specifying a TriangulationSource, especially when a large number of data items are present.
@@ -24094,6 +24417,7 @@ This property is overridden by the WindowRectMinWidth property
 - **zoomTileCacheSize?**: `string | number` — Gets or sets the maximum number of zoom tiles that the series viewer should cache while in tiled zooming mode.
 
 ### [IIgrShapeSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrShapeSeriesBaseProps)
+Extends: IIgrSeriesProps
 
 - **actualItemSearchMode?**: `string | ShapeItemSearchMode`
 - **assigningShapeMarkerStyle?**: `any` — Event raised when Assigning Shape Marker Style
@@ -24130,6 +24454,7 @@ To be consistent with the Shapefile technical description, it is expected that e
 - **propertyUpdated?**: `any` — Event raised when a property (including "effective" and non-dependency property) value changes.
 
 ### [IIgrSlowStochasticOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSlowStochasticOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current SlowStochasticOscillatorIndicator object.
 The typical, and initial, value for SlowStochasticOscillatorIndicator periods is 14.
@@ -24218,18 +24543,23 @@ This can be set to a formatted string, such as "{0:n}", or it can be set to a Da
 - **width?**: `string`
 
 ### [IIgrSplineAreaFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineAreaFragmentProps)
+Extends: IIgrSplineFragmentBaseProps
 
 
 ### [IIgrSplineAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineAreaSeriesProps)
+Extends: IIgrSplineSeriesBaseProps
 
 
 ### [IIgrSplineFragmentBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineFragmentBaseProps)
+Extends: IIgrSplineSeriesBaseProps
 
 
 ### [IIgrSplineFragmentProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineFragmentProps)
+Extends: IIgrSplineFragmentBaseProps
 
 
 ### [IIgrSplineSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineSeriesBaseProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 - **isSplineShapePartOfRange?**: `string | boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
 - **splineType?**: `string | SplineType` — Gets or sets the type of spline to be rendered.
@@ -24249,35 +24579,45 @@ this.series.splineType = SplineType.Clamped;
  </IgrDataChart>
 
 ### [IIgrSplineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrSplineSeriesProps)
+Extends: IIgrSplineSeriesBaseProps
 
 
 ### [IIgrStacked100AreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100AreaSeriesProps)
+Extends: IIgrStackedAreaSeriesProps
 
 
 ### [IIgrStacked100BarSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100BarSeriesProps)
+Extends: IIgrStackedBarSeriesProps
 
 
 ### [IIgrStacked100ColumnSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100ColumnSeriesProps)
+Extends: IIgrStackedColumnSeriesProps
 
 
 ### [IIgrStacked100LineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100LineSeriesProps)
+Extends: IIgrStackedLineSeriesProps
 
 
 ### [IIgrStacked100SplineAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100SplineAreaSeriesProps)
+Extends: IIgrStackedSplineAreaSeriesProps
 
 
 ### [IIgrStacked100SplineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStacked100SplineSeriesProps)
+Extends: IIgrStackedSplineSeriesProps
 
 
 ### [IIgrStackedAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedAreaSeriesProps)
+Extends: IIgrHorizontalStackedSeriesBaseProps
 
 
 ### [IIgrStackedBarSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedBarSeriesProps)
+Extends: IIgrVerticalStackedSeriesBaseProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the bar.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the bar.
 
 ### [IIgrStackedColumnSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedColumnSeriesProps)
+Extends: IIgrHorizontalStackedSeriesBaseProps
 
 - **radiusX?**: `string | number` — Gets or sets the x-radius of the ellipse that is used to round the corners of the column.
 - **radiusY?**: `string | number` — Gets or sets the y-radius of the ellipse that is used to round the corners of the column.
@@ -24404,6 +24744,7 @@ StackedFragmentSeries.ShadowBlur is applied.
 - **visibility?**: `any` — Gets or sets the Visibility of the stacked fragment.
 
 ### [IIgrStackedLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedLineSeriesProps)
+Extends: IIgrHorizontalStackedSeriesBaseProps
 
 
 ### [IIgrStackedSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedSeriesBaseProps)
@@ -24415,25 +24756,31 @@ StackedFragmentSeries.ShadowBlur is applied.
 - **seriesCreated?**: `any` — Event raised when a new fragment series is automatically generated.
 
 ### [IIgrStackedSplineAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedSplineAreaSeriesProps)
+Extends: IIgrHorizontalStackedSeriesBaseProps
 
 - **isSplineShapePartOfRange?**: `string | boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
 
 ### [IIgrStackedSplineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStackedSplineSeriesProps)
+Extends: IIgrHorizontalStackedSeriesBaseProps
 
 - **isSplineShapePartOfRange?**: `string | boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
 
 ### [IIgrStandardDeviationIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStandardDeviationIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current StandardDeviationIndicator object.
 The typical, and initial, value for STDEV periods is 20.
 
 ### [IIgrStepAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStepAreaSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 
 ### [IIgrStepLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStepLineSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 
 ### [IIgrStochRSIIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStochRSIIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current StochRSIIndicator object.
 The typical, and initial, value for StochRSI periods is 14.
@@ -24456,6 +24803,7 @@ this.series.period = 10;
  </IgrDataChart>
 
 ### [IIgrStraightNumericAxisBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStraightNumericAxisBaseProps)
+Extends: IIgrNumericAxisBaseProps
 
 - **scaleMode?**: `string | NumericScaleMode` — Gets or sets the axis scale mode.
 
@@ -24479,9 +24827,11 @@ this.yAxis.scaleMode = NumericScaleMode.Logarithmic;
  </IgrDataChart>
 
 ### [IIgrStrategyBasedIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrStrategyBasedIndicatorProps)
+Extends: IIgrFinancialIndicatorProps
 
 
 ### [IIgrTimeAxisBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTimeAxisBaseProps)
+Extends: IIgrCategoryAxisBaseProps
 
 - **actualMaximumValue?**: `Date` — Gets the coerced maximum value.
 
@@ -24683,10 +25033,12 @@ Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
 Some common DateTime format strings are: yyyy, MM/dd/yy, and hh:mm:ss.
 
 ### [IIgrTimeXAxisProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTimeXAxisProps)
+Extends: IIgrTimeAxisBaseProps
 
 - **labellingMode?**: `string | TimeAxisLabellingMode` — Gets or sets the labelling mode to use when the automatic label formats are applied.
 
 ### [IIgrTreemapNodeStyleMappingProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTreemapNodeStyleMappingProps)
+Extends: IIgrTreemapNodeStyleProps
 
 - **mappingMode?**: `string | TreemapValueMappingMode` — Gets or sets the mapping mode to use to evaluate whether the mapping applies.
 - **maximumValue?**: `string | number` — Gets or sets the maximum value to which the mapping applies.
@@ -24814,6 +25166,7 @@ to appear blurry.
 - **width?**: `string`
 
 ### [IIgrTrendLineLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTrendLineLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **actualTargetSeries?**: `IgrSeries<IIgrSeriesProps>` — Gets the actual series being targeted by this annotation.
 - **targetSeries?**: `IgrSeries<IIgrSeriesProps>` — Gets or sets the series to target this annotation to.
@@ -24823,6 +25176,7 @@ The typical, and initial, value for trend line period is 7.
 - **trendLineType?**: `any` — Gets or sets the trend type for the current series object.
 
 ### [IIgrTRIXIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTRIXIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current TRIXIndicator object.
 The typical, and initial, value for TRIX periods is 15.
@@ -24865,12 +25219,15 @@ The Period property is used for moving average period of the current TRIXIndicat
 this.series.period = 30;
 
 ### [IIgrTypicalPriceIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrTypicalPriceIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrUltimateOscillatorIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrUltimateOscillatorIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 
 ### [IIgrUserAnnotationLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrUserAnnotationLayerProps)
+Extends: IIgrSeriesProps
 
 - **stylingAxisAnnotation?**: `any` — Event raised when updating style of UserAxisAnnotation
 - **stylingPointAnnotation?**: `any` — Event raised when updating style of UserPointAnnotation
@@ -24879,6 +25236,7 @@ this.series.period = 30;
 - **userAnnotationInformationRequested?**: `any`
 
 ### [IIgrUserAnnotationToolTipLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrUserAnnotationToolTipLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **contentUpdating?**: `any` — Called when the content is being created or updated.
 - **skipUnknownValues?**: `string | boolean` — Gets or sets whether to skip past unknown values when searching for series values.
@@ -24886,6 +25244,7 @@ this.series.period = 30;
 - **targetSeriesName?**: `string` — Gets or sets the name of the series series to target this annotation to. If null, this annotation targets all series simultaneously.
 
 ### [IIgrValueBrushScaleProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrValueBrushScaleProps)
+Extends: IIgrBrushScaleProps
 
 - **isLogarithmic?**: `string | boolean` — Gets or sets whether the scale is logarithmic.
 - **logarithmBase?**: `string | number` — Gets or sets the logarithm base for this scale.
@@ -24893,6 +25252,7 @@ this.series.period = 30;
 - **minimumValue?**: `string | number` — Gets or sets the minimum value for this scale.
 
 ### [IIgrValueLayerProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrValueLayerProps)
+Extends: IIgrAnnotationLayerProps
 
 - **actualValueLayerBrush?**: `string` — Gets the effective brush for the current value layer. Can be null for value
 modes that target multiple series.
@@ -24954,6 +25314,7 @@ modes that target multiple series.
 - **yAxisAnnotationTextColor?**: `string` — Gets or sets the color to use for the y axis annotation text. Leave unset for an automatic value.
 
 ### [IIgrValueOverlayProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrValueOverlayProps)
+Extends: IIgrSeriesProps
 
 - **axis?**: `IgrAxis<IIgrAxisProps>` — Gets or sets the axis used by the value overlay.
 - **axisAnnotationBackground?**: `string` — Gets or sets the color to use for the axis annotation backing. Leave unset for an automatic value.
@@ -24997,6 +25358,7 @@ modes that target multiple series.
 - **value?**: `string | number` — Gets or sets the value of the overlay.
 
 ### [IIgrVerticalAnchoredCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrVerticalAnchoredCategorySeriesProps)
+Extends: IIgrAnchoredCategorySeriesProps
 
 - **xAxis?**: `IgrNumericXAxis` — Gets or sets the effective x-axis for the current CategorySeries object.
 - **xAxisName?**: `string` — Gets or sets the name to use to resolve xAxis from markup.
@@ -25004,6 +25366,7 @@ modes that target multiple series.
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrVerticalRangeCategorySeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrVerticalRangeCategorySeriesProps)
+Extends: IIgrRangeCategorySeriesProps
 
 - **highMemberAsLegendLabel?**: `string` — Gets or sets the label displayed before series' High value in the Data Legend.
 - **highMemberAsLegendUnit?**: `string` — Gets or sets the unit displayed after series' High value in the Data Legend.
@@ -25015,6 +25378,7 @@ modes that target multiple series.
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrVerticalStackedSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrVerticalStackedSeriesBaseProps)
+Extends: IIgrStackedSeriesBaseProps
 
 - **xAxis?**: `IgrNumericXAxis` — Gets or sets the effective x-axis for the current CategorySeries object.
 - **xAxisName?**: `string` — Gets or sets the name to use to resolve xAxis from markup.
@@ -25022,6 +25386,7 @@ modes that target multiple series.
 - **yAxisName?**: `string` — Gets or sets the name to use to resolve yAxis from markup.
 
 ### [IIgrWaterfallSeriesProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrWaterfallSeriesProps)
+Extends: IIgrHorizontalAnchoredCategorySeriesProps
 
 - **negativeBrush?**: `string` — Gets or sets the brush to use for negative portions of the series.
 
@@ -25125,9 +25490,11 @@ series.radiusY = 15;
 this.chart.series.add(series);
 
 ### [IIgrWeightedCloseIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrWeightedCloseIndicatorProps)
+Extends: IIgrItemwiseStrategyBasedIndicatorProps
 
 
 ### [IIgrWilliamsPercentRIndicatorProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrWilliamsPercentRIndicatorProps)
+Extends: IIgrStrategyBasedIndicatorProps
 
 - **period?**: `string | number` — Gets or sets the moving average period for the current StandardDeviationIndicator object.
 The typical, and initial, value for Williams %R periods is 14.
@@ -25159,6 +25526,7 @@ this.series.period = 30;
  </IgrDataChart>
 
 ### [IIgrXYChartProps](https://www.infragistics.com/api/react/igniteui-react-charts/19.6.0/interfaces/IIgrXYChartProps)
+Extends: IIgrDomainChartProps
 
 - **actualXAxisLabelTextColor?**: `string` — Gets the actual color of labels on the X-axis
 - **actualYAxisLabelTextColor?**: `string` — Gets the actual color of labels on the Y-axis

@@ -9,6 +9,7 @@ Version: 22.0
 ## Classes
 
 ### [IgxAlignLinearGraphLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxAlignLinearGraphLabelEventArgs)
+Extends: IgxFormatLinearGraphLabelEventArgs
 Represents event argument for AlignLinearGraphLabel.
 
 - **constructor**(): IgxAlignLinearGraphLabelEventArgs
@@ -19,6 +20,7 @@ Represents event argument for AlignLinearGraphLabel.
 - **width**: `number`
 
 ### [IgxAlignRadialGaugeLabelEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-gauges/22.0.0/classes/IgxAlignRadialGaugeLabelEventArgs)
+Extends: IgxFormatRadialGaugeLabelEventArgs
 Represents event argument for AlignRadialGaugeLabel.
 
 - **constructor**(): IgxAlignRadialGaugeLabelEventArgs

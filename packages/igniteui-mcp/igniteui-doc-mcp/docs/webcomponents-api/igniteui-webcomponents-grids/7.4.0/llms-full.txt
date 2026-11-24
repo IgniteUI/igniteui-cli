@@ -24,11 +24,13 @@ Action Strip provides templatable area for one or more actions.
 - static **register**(): void
 
 ### [IgcBooleanFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcBooleanFilteringOperand)
+Extends: IgcFilteringOperand
 Provides filtering operations for booleans
 
 - **constructor**(): IgcBooleanFilteringOperand
 
 ### [IgcByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcByLevelTreeGridMergeStrategy)
+Extends: IgcDefaultMergeStrategy
 
 - **constructor**(): IgcByLevelTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
@@ -114,6 +116,9 @@ Returns 0 if the column doesn't have a parent.
 If the column is not visible, returns -1.
 - **visibleWhenCollapsed**: `boolean`
 - **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **autosize**(byHeaderOnly?: boolean): void — Autosize the column to the longest currently visible cell value, including the header cell.
 - **move**(index: number): void — Moves a column to the specified visible index.
 If passed index is invalid, or if column would receive a different visible index after moving, moving is not performed.
@@ -124,6 +129,9 @@ Returns true if the column is successfully pinned. Returns false if the column c
 Column cannot be pinned if:
 - Is already pinned
 - index argument is out of range
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - **unpin**(index?: number): boolean — Unpins the column and place it at the provided index in the unpinned area.
 Defaults to index 0 if not provided, or to the initial index in the unpinned area.
 Returns true if the column is successfully unpinned. Returns false if the column cannot be unpinned.
@@ -133,6 +141,7 @@ Column cannot be unpinned if:
 - static **register**(): void
 
 ### [IgcColumnGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcColumnGroupComponent)
+Extends: IgcColumnComponent
 **Ignite UI for Angular Column Group**
 
 - **constructor**(args: any[]): IgcColumnGroupComponent
@@ -158,6 +167,7 @@ Empty without children or if this column is not Group or Layout.
 - static **register**(): void
 
 ### [IgcColumnLayoutComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcColumnLayoutComponent)
+Extends: IgcColumnGroupComponent
 Column layout for declaration of Multi-row Layout
 
 - **constructor**(args: any[]): IgcColumnLayoutComponent
@@ -170,6 +180,7 @@ If the column is not visible, returns -1.
 - static **register**(): void
 
 ### [IgcCsvExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcCsvExporterOptions)
+Extends: IgcExporterOptionsBase
 Objects of this class are used to configure the CSV exporting process.
 
 - **constructor**(fileName: string, fileType: CsvFileTypes): IgcCsvExporterOptions
@@ -184,13 +195,29 @@ both raw data (array) or from an grid.
 Example:
 
 - **constructor**(args: any[]): IgcCsvExporterService
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **export**(grid: IgcGridBaseDirective, options: IgcExporterOptionsBase): void — Method for exporting grid component's data.
+- **exportData**(data: any[], options: IgcExporterOptionsBase): void — Method for exporting any kind of array data.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 
 ### [IgcDateFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateFilteringOperand)
 Provides filtering operations for Dates
 
 - **constructor**(): IgcDateFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgcDateSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateSummaryOperand)
+Extends: IgcSummaryOperand
 
 - **constructor**(): IgcDateSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
@@ -202,6 +229,11 @@ If filtering is applied, returns the latest date value in the filtered data reco
 ### [IgcDateTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDateTimeFilteringOperand)
 
 - **constructor**(): IgcDateTimeFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgcDefaultMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDefaultMergeStrategy)
 
@@ -211,11 +243,13 @@ If filtering is applied, returns the latest date value in the filtered data reco
 - static **instance**(): IgcDefaultMergeStrategy
 
 ### [IgcDefaultTreeGridMergeStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcDefaultTreeGridMergeStrategy)
+Extends: IgcDefaultMergeStrategy
 
 - **constructor**(): IgcDefaultTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
 
 ### [IgcExcelExporterOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcExcelExporterOptions)
+Extends: IgcExporterOptionsBase
 Objects of this class are used to configure the Excel exporting process.
 
 - **constructor**(fileName: string): IgcExcelExporterOptions
@@ -233,8 +267,19 @@ The Ignite UI for Angular Excel Exporter service can export data in Microsoft® 
 Example:
 
 - **constructor**(args: any[]): IgcExcelExporterService
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **export**(grid: IgcGridBaseDirective, options: IgcExporterOptionsBase): void — Method for exporting grid component's data.
+- **exportData**(data: any[], options: IgcExporterOptionsBase): void — Method for exporting any kind of array data.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 
 ### [IgcFilteringExpressionsTree](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcFilteringExpressionsTree)
+Extends: IgcExpressionTree
 
 - **constructor**(): IgcFilteringExpressionsTree
 - **entity**: `string`
@@ -264,9 +309,206 @@ Grid provides a way to present and manipulate tabular data.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **actionStripComponents**: `IgcActionStripToken[]`
+- **addRowEmptyTemplate**: `IgcRenderFunction<void>`
+- **advancedFilteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **allowAdvancedFiltering**: `boolean`
+- **allowFiltering**: `boolean`
+- **autoGenerate**: `boolean`
+- **autoGenerateExclude**: `string[]`
+- **batchEditing**: `boolean`
+- **cellMergeMode**: `GridCellMergeMode`
+- **cellSelection**: `GridSelectionMode`
+- **clipboardOptions**: `IgcClipboardOptions`
+- **columnList**: `IgcColumnComponent[]`
+- **columns**: `IgcColumnComponent[]` — Gets an array of columns.
+- **columnSelection**: `GridSelectionMode`
+- **columnWidth**: `string`
+- **data**: `any[]`
+- **dataCloneStrategy**: `IgcDataCloneStrategy`
+- **dataRowList**: `IgcRowDirective[]` — A list of currently rendered grid row's.
+- **dataView**: `any[]` — Returns the currently transformed paged/filtered/sorted/grouped/pinned/unpinned row data, displayed in the grid.
+- **defaultRowHeight**: `number` — Gets the default row height.
+- **detailTemplate**: `IgcRenderFunction<IgcGridMasterDetailContext>`
+- **dragGhostCustomTemplate**: `IgcRenderFunction<IgcGridRowDragGhostContext>`
+- **dragIndicatorIconTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **dropAreaMessage**: `string`
+- **dropAreaTemplate**: `IgcRenderFunction<void>`
+- **emptyFilteredGridMessage**: `string`
+- **emptyGridMessage**: `string`
+- **emptyGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **excelStyleHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **expansionStates**: `Map<any, boolean>`
+- **filteredData**: `any` — Returns an array of objects containing the filtered data.
+- **filteredSortedData**: `any[]` — Returns an array containing the filtered sorted data.
+- **filteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **filteringLogic**: `FilteringLogic`
+- **filterMode**: `FilterMode`
+- **filterStrategy**: `IgcFilteringStrategy`
+- **groupByRowSelectorTemplate**: `IgcRenderFunction<IgcGroupByRowSelectorTemplateContext>`
+- **groupingExpansionState**: `IgcGroupByExpandState[]`
+- **groupingExpressions**: `IgcGroupingExpression[]`
+- **groupRowTemplate**: `IgcRenderFunction<IgcGroupByRowTemplateContext>`
+- **groupsExpanded**: `boolean`
+- **groupsRecords**: `IgcGroupByRecord[]` — Gets the hierarchical representation of the group by records.
+- **groupStrategy**: `IgcGridGroupingStrategy`
+- **headerCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headerExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headSelectorTemplate**: `IgcRenderFunction<IgcHeadSelectorTemplateContext>`
+- **height**: `string`
+- **hiddenColumnsCount**: `number` — Gets the number of hidden columns.
+- **hideGroupedColumns**: `boolean`
+- **hideRowSelectors**: `boolean`
+- **id**: `string` — The **id** property of the Element interface represents the element's identifier, reflecting the id global attribute.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
+- **isLoading**: `boolean`
+- **lastSearchInfo**: `IgcSearchInfo` — Represents the last search information.
+- **loadingGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **locale**: `string`
+- **mergeStrategy**: `IgcGridMergeStrategy`
+- **moving**: `boolean`
+- **outlet**: `IgcOverlayOutletDirective`
+- **paginationComponents**: `IgcPaginatorComponent[]`
+- **pagingMode**: `GridPagingMode`
+- **pinnedColumns**: `IgcColumnComponent[]` — Gets an array of the pinned columns.
+- **pinnedColumnsCount**: `number` — Gets the number of pinned columns.
+- **pinnedEndColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the right columns.
+- **pinnedRows**: `IgcRowDirective[]` — Gets an array of the pinned rows.
+- **pinnedStartColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the left columns.
+- **pinning**: `IgcPinningConfig`
+- **primaryKey**: `string`
+- **resourceStrings**: `IgcGridResourceStrings`
+- **rowAddTextTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowDraggable**: `boolean`
+- **rowEditable**: `boolean`
+- **rowEditActionsTemplate**: `IgcRenderFunction<IgcGridRowEditActionsTemplateContext>`
+- **rowEditTextTemplate**: `IgcRenderFunction<IgcGridRowEditTextTemplateContext>`
+- **rowExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowHeight**: `number`
+- **rowList**: `IgcRowDirective[]` — A list of grid row.
+- **rowSelection**: `GridSelectionMode`
+- **rowSelectorTemplate**: `IgcRenderFunction<IgcRowSelectorTemplateContext>`
+- **rowStyles**: `IgcGridStyleCSSProperty`
+- **selectedCells**: `IgcCellType[]` — Returns an array of the selected grid cells.
+- **selectedRows**: `any[]`
+- **selectRowOnClick**: `boolean`
+- **shouldGenerate**: `boolean`
+- **showGroupArea**: `boolean`
+- **showSummaryOnCollapse**: `boolean`
+- **snackbarDisplayTime**: `number`
+- **sortAscendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortDescendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortingExpressions**: `IgcSortingExpression[]`
+- **sortingOptions**: `IgcSortingOptions`
+- **sortStrategy**: `IgcGridSortingStrategy`
+- **summaryCalculationMode**: `GridSummaryCalculationMode`
+- **summaryPosition**: `GridSummaryPosition`
+- **summaryRowHeight**: `number`
+- **toolbar**: `IgcGridToolbarComponent[]`
+- **totalItemCount**: `number`
+- **totalRecords**: `number`
+- **transactions**: `TransactionService` — Get transactions service for the grid.
+- **unpinnedColumns**: `IgcColumnComponent[]` — Gets an array of unpinned columns.
+- **validationTooltipTrigger**: `GridValidationTooltipTrigger`
+- **validationTrigger**: `GridValidationTrigger`
+- **virtualizationState**: `IgcForOfState` — Returns the state of the grid virtualization.
+- **visibleColumns**: `IgcColumnComponent[]` — Returns an array of visible columns.
+- **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addRow**(data: any): void — Creates a new grid row and adds the data record to the end of the data source.
+- **beginAddRowById**(rowID: any, asChild?: boolean): void — Enters add mode by spawning the UI under the specified row by rowID.
+- **beginAddRowByIndex**(index: number): void — Enters add mode by spawning the UI at the specified index.
+- **clearCellSelection**(): void — Deselect selected cells.
+- **clearFilter**(name?: string): void — If name is provided, clears the filtering state of the corresponding column.
+- **clearGrouping**(name?: string): void — Clears grouping for particular column, array of columns or all columns.
+- **clearSearch**(): void — Removes all the highlights in the cell.
+- **clearSort**(name?: string): void — If name is provided, clears the sorting state of the corresponding column.
+- **closeAdvancedFilteringDialog**(applyChanges: boolean): void — Closes the advanced filtering dialog.
+- **collapseAll**(): void — Collapses all rows.
+- **collapseRow**(rowID: any): void — Collapses the row by its id.
+- **deleteRow**(rowSelector: any): any — Removes the grid row and the corresponding data record by primary key.
+- **deselectAllColumns**(): void — Deselects all columns
+- **deselectAllRows**(onlyFilterData?: boolean): void — Deselects all rows
+- **deselectColumns**(columns: string[] | IgcColumnComponent[]): void — Deselect specified columns by field.
+- **deselectRows**(rowIDs: any[]): void — Deselect specified rows by ID.
+- **deselectRowsInGroup**(groupRow: IgcGroupByRecord): void — Deselect all rows within a group.
+- **disableSummaries**(columns: string[]): void — Disable summaries for the specified column.
+- **disableSummaries**(expression: IgcSummaryExpression): void — Disable summaries for the specified column.
+- **disableSummaries**(fieldName: string): void — Disable summaries for the specified column.
+- **enableSummaries**(expressions: IgcSummaryExpression[]): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(expression: IgcSummaryExpression): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(fieldName: string, customSummary?: any): void — Enables summaries for the specified column and applies your customSummary.
+- **endEdit**(commit?: boolean, evt?: MouseEvent | KeyboardEvent | FocusEvent): boolean — Finishes the row transactions on the current row and returns whether the grid editing was canceled.
+- **expandAll**(): void — Expands all rows.
+- **expandRow**(rowID: any): void — Expands the row by its id.
+- **filter**(name: string, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation, ignoreCase?: boolean): void — Filters a single column.
+- **filterGlobal**(value: any, condition: IgcFilteringOperation, ignoreCase?: boolean): void — **Deprecated.** Filters all the column in the grid with the same condition.
+- **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the next occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the previous occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **fullyExpandGroup**(groupRow: IgcGroupByRecord): void — Expands the specified group and all of its parent groups.
+- **getCellByColumn**(rowIndex: number, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getCellByKey**(rowSelector: any, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getColumnByName**(name: string): IgcColumnComponent — Returns the column by field name.
+- **getColumnByVisibleIndex**(index: number): IgcColumnComponent
+- **getHeaderGroupWidth**(column: IgcColumnComponent): string — Gets the width to be set on grid header group.
+- **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the next cell,
+according to the current position, that match specific criteria.
+- **getPinnedEndWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPinnedStartWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the previous cell,
+according to the current position, that match specific criteria.
+- **getRowByIndex**(index: number): IgcRowType — Returns the grid row by index.
+- **getRowByKey**(key: any): IgcRowType — Returns grid row object by the specified primary key.
+- **getRowData**(rowSelector: any): any — Returns the data that is contained in the row component.
+- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedRanges**(): IgcGridSelectionRange[] — Get the currently selected ranges in the grid.
+- **groupBy**(expression: IgcGroupingExpression[]): void — Groups by a new column based on the provided expression, or modifies an existing one.
+- **isExpandedGroup**(group: IgcGroupByRecord): boolean — Returns if a group is expanded or not.
+- **isRecordPinnedByIndex**(rowIndex: number): boolean — Returns whether the record is pinned or not.
+- **markForCheck**(): void — Triggers change detection for the grid.
+Calling markForCheck also triggers the grid pipes explicitly, resulting in all updates being processed.
+May degrade performance if used when not needed, or if misused:
+- **moveColumn**(column: IgcColumnComponent, target: IgcColumnComponent, pos?: DropPosition): void — Places a column before or after the specified target column.
+- **navigateTo**(rowIndex: number, visibleColIndex?: number, cb?: any): void — Navigates to a position in the grid based on provided rowindex and visibleColumnIndex.
+- **openAdvancedFilteringDialog**(overlaySettings?: IgcOverlaySettings): void — Opens the advanced filtering dialog.
+- **pinColumn**(columnName: string, index?: number, pinningPosition?: ColumnPinningPosition): boolean — Pins a column by field name.
+- **pinRow**(rowID: any, index?: number): boolean — Pin the row by its id.
+- **recalculateAutoSizes**(): void — Recalculates all widths of columns that have size set to auto.
+- **reflow**(): void — Recalculates grid width/height dimensions.
+- **refreshSearch**(updateActiveInfo?: boolean, endEdit?: boolean): number — Reapplies the existing search.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **selectAllColumns**(): void — Selects all columns
+- **selectAllRows**(onlyFilterData?: boolean): void — Selects all rows
+- **selectColumns**(columns: string[] | IgcColumnComponent[], clearCurrentSelection?: boolean): void — Select specified columns.
+- **selectedColumns**(): IgcColumnComponent[] — Get current selected columns.
+- **selectRange**(arg: IgcGridSelectionRange[]): void — Select range(s) of cells between certain rows and columns of the grid.
+- **selectRows**(rowIDs: any[], clearCurrentSelection?: boolean): void — Select specified rows by ID.
+- **selectRowsInGroup**(groupRow: IgcGroupByRecord, clearPrevSelection?: boolean): void — Select all rows within a group.
+- **sort**(expression: IgcSortingExpression[]): void — Sort a single column.
+- **toggleAllGroupRows**(): void — Toggles the expansion state of all group rows recursively.
+- **toggleColumnVisibility**(args: IgcColumnVisibilityChangedEventArgs): void — Toggles the specified column's visibility.
+- **toggleGroup**(groupRow: IgcGroupByRecord): void — Toggles the expansion state of a group.
+- **toggleRow**(rowID: any): void — Toggles the row by its id.
+- **unpinColumn**(columnName: string, index?: number): boolean — Unpins a column by field name. Returns whether the operation is successful.
+- **unpinRow**(rowID: any): boolean — Unpin the row by its id.
+- **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
+- **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 - static **register**(): void
 
 ### [IgcGridEditingActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridEditingActionsComponent)
+Extends: IgcGridActionsBaseDirective
 Grid Editing Actions for the Action Strip
 
 - **constructor**(): IgcGridEditingActionsComponent
@@ -280,6 +522,7 @@ Grid Editing Actions for the Action Strip
 - static **register**(): void
 
 ### [IgcGridPinningActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridPinningActionsComponent)
+Extends: IgcGridActionsBaseDirective
 Grid Pinning Actions for the Action Strip
 
 - **constructor**(): IgcGridPinningActionsComponent
@@ -296,10 +539,17 @@ State component allows saving and restoring the state of the grid features.
 - static readonly **tagName**: `string` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **options**: `IgcGridStateOptions`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **applyState**(state: IgcGridStateInfo, features?: string[]): void — Restores grid features' state based on the IGridStateInfo object passed as an argument.
 - **applyStateFromString**(state: string, features?: string[]): void — Restores grid features' state based on the serialized IGridState object passed as an argument.
 - **getState**(features?: string[]): IgcGridStateInfo — Gets the state of a feature or states of all grid features, unless a certain feature is disabled through the options property.
 - **getStateAsString**(features?: string[]): string — Gets the state of a feature or states of all grid features, unless a certain feature is disabled through the options property.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcGridToolbarActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarActionsComponent)
@@ -333,11 +583,25 @@ Provides a pre-configured exporter component for the grid.
 - static readonly **tagName**: `string` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **columnListHeight**: `string`
 - **exportCSV**: `boolean`
 - **exportExcel**: `boolean`
 - **exportPDF**: `boolean`
 - **filename**: `string`
+- **overlaySettings**: `IgcOverlaySettings`
+- **prompt**: `string`
+- **title**: `string` — The **HTMLElement.title** property represents the title of the element: the text usually displayed in a 'tooltip' popup when the mouse is over the node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title)
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **export**(type: GridToolbarExporterType): void — Export the grid's data
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcGridToolbarHidingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarHidingComponent)
@@ -345,6 +609,18 @@ Provides a pre-configured column hiding component for the grid.
 
 - **constructor**(args: any[]): IgcGridToolbarHidingComponent
 - static readonly **tagName**: `string`
+- **columnListHeight**: `string`
+- **overlaySettings**: `IgcOverlaySettings`
+- **prompt**: `string`
+- **title**: `string` — The **HTMLElement.title** property represents the title of the element: the text usually displayed in a 'tooltip' popup when the mouse is over the node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title)
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcGridToolbarPinningComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarPinningComponent)
@@ -352,6 +628,18 @@ Provides a pre-configured column pinning component for the grid.
 
 - **constructor**(args: any[]): IgcGridToolbarPinningComponent
 - static readonly **tagName**: `string`
+- **columnListHeight**: `string`
+- **overlaySettings**: `IgcOverlaySettings`
+- **prompt**: `string`
+- **title**: `string` — The **HTMLElement.title** property represents the title of the element: the text usually displayed in a 'tooltip' popup when the mouse is over the node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title)
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcGridToolbarTitleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcGridToolbarTitleComponent)
@@ -369,10 +657,194 @@ Hierarchical grid
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **actionStripComponents**: `IgcActionStripToken[]`
+- **addRowEmptyTemplate**: `IgcRenderFunction<void>`
+- **advancedFilteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **allowAdvancedFiltering**: `boolean`
+- **allowFiltering**: `boolean`
+- **autoGenerate**: `boolean`
+- **autoGenerateExclude**: `string[]`
+- **batchEditing**: `boolean`
+- **cellMergeMode**: `GridCellMergeMode`
+- **cellSelection**: `GridSelectionMode`
 - **childLayoutList**: `IgcRowIslandComponent[]`
+- **clipboardOptions**: `IgcClipboardOptions`
+- **columnList**: `IgcColumnComponent[]`
+- **columns**: `IgcColumnComponent[]` — Gets an array of columns.
+- **columnSelection**: `GridSelectionMode`
+- **columnWidth**: `string`
+- **data**: `any[]`
+- **dataCloneStrategy**: `IgcDataCloneStrategy`
+- **dataRowList**: `IgcRowDirective[]` — A list of currently rendered grid row's.
+- **dataView**: `any[]` — Returns the currently transformed paged/filtered/sorted/grouped/pinned/unpinned row data, displayed in the grid.
+- **defaultRowHeight**: `number` — Gets the default row height.
+- **dragGhostCustomTemplate**: `IgcRenderFunction<IgcGridRowDragGhostContext>`
+- **dragIndicatorIconTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **emptyFilteredGridMessage**: `string`
+- **emptyGridMessage**: `string`
+- **emptyGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **excelStyleHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **expandChildren**: `boolean`
+- **expansionStates**: `Map<any, boolean>`
+- **filteredData**: `any` — Returns an array of objects containing the filtered data.
+- **filteredSortedData**: `any[]` — Returns an array containing the filtered sorted data.
+- **filteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **filteringLogic**: `FilteringLogic`
+- **filterMode**: `FilterMode`
+- **filterStrategy**: `IgcFilteringStrategy`
+- **foreignKey**: `any` — Gets the unique identifier of the parent row. It may be a string or number if primaryKey of the
+parent grid is set or an object reference of the parent record otherwise.
+- **hasChildrenKey**: `string`
+- **headerCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headerExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headSelectorTemplate**: `IgcRenderFunction<IgcHeadSelectorTemplateContext>`
+- **height**: `string`
+- **hiddenColumnsCount**: `number` — Gets the number of hidden columns.
+- **hideRowSelectors**: `boolean`
+- **id**: `string` — The **id** property of the Element interface represents the element's identifier, reflecting the id global attribute.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
+- **isLoading**: `boolean`
+- **lastSearchInfo**: `IgcSearchInfo` — Represents the last search information.
+- **loadingGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **locale**: `string`
+- **mergeStrategy**: `IgcGridMergeStrategy`
+- **moving**: `boolean`
+- **outlet**: `IgcOverlayOutletDirective`
+- **paginationComponents**: `IgcPaginatorComponent[]`
+- **pagingMode**: `GridPagingMode`
+- **pinnedColumns**: `IgcColumnComponent[]` — Gets an array of the pinned columns.
+- **pinnedColumnsCount**: `number` — Gets the number of pinned columns.
+- **pinnedEndColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the right columns.
+- **pinnedRows**: `IgcRowDirective[]` — Gets an array of the pinned rows.
+- **pinnedStartColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the left columns.
+- **pinning**: `IgcPinningConfig`
+- **primaryKey**: `string`
+- **resourceStrings**: `IgcGridResourceStrings`
+- **rootGrid**: `IgcGridBaseDirective`
+- **rowAddTextTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowDraggable**: `boolean`
+- **rowEditable**: `boolean`
+- **rowEditActionsTemplate**: `IgcRenderFunction<IgcGridRowEditActionsTemplateContext>`
+- **rowEditTextTemplate**: `IgcRenderFunction<IgcGridRowEditTextTemplateContext>`
+- **rowExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowHeight**: `number`
+- **rowList**: `IgcRowDirective[]` — A list of grid row.
+- **rowSelection**: `GridSelectionMode`
+- **rowSelectorTemplate**: `IgcRenderFunction<IgcRowSelectorTemplateContext>`
+- **rowStyles**: `IgcGridStyleCSSProperty`
+- **selectedCells**: `IgcCellType[]` — Returns an array of the selected grid cells.
+- **selectedRows**: `any[]`
+- **selectRowOnClick**: `boolean`
+- **shouldGenerate**: `boolean`
+- **showExpandAll**: `boolean`
+- **showSummaryOnCollapse**: `boolean`
+- **snackbarDisplayTime**: `number`
+- **sortAscendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortDescendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortingExpressions**: `IgcSortingExpression[]`
+- **sortingOptions**: `IgcSortingOptions`
+- **sortStrategy**: `IgcGridSortingStrategy`
+- **summaryCalculationMode**: `GridSummaryCalculationMode`
+- **summaryPosition**: `GridSummaryPosition`
+- **summaryRowHeight**: `number`
+- **toolbar**: `IgcGridToolbarComponent[]`
+- **totalItemCount**: `number`
+- **totalRecords**: `number`
+- **transactions**: `TransactionService` — Get transactions service for the grid.
+- **unpinnedColumns**: `IgcColumnComponent[]` — Gets an array of unpinned columns.
+- **validationTooltipTrigger**: `GridValidationTooltipTrigger`
+- **validationTrigger**: `GridValidationTrigger`
+- **virtualizationState**: `IgcForOfState` — Returns the state of the grid virtualization.
+- **visibleColumns**: `IgcColumnComponent[]` — Returns an array of visible columns.
+- **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addRow**(data: any): void — Creates a new grid row and adds the data record to the end of the data source.
+- **beginAddRowById**(rowID: any, asChild?: boolean): void — Enters add mode by spawning the UI under the specified row by rowID.
+- **beginAddRowByIndex**(index: number): void — Enters add mode by spawning the UI at the specified index.
+- **clearCellSelection**(): void — Deselect selected cells.
+- **clearFilter**(name?: string): void — If name is provided, clears the filtering state of the corresponding column.
+- **clearSearch**(): void — Removes all the highlights in the cell.
+- **clearSort**(name?: string): void — If name is provided, clears the sorting state of the corresponding column.
+- **closeAdvancedFilteringDialog**(applyChanges: boolean): void — Closes the advanced filtering dialog.
+- **collapseAll**(): void — Collapses all rows.
+- **collapseRow**(rowID: any): void — Collapses the row by its id.
+- **deleteRow**(rowSelector: any): any — Removes the grid row and the corresponding data record by primary key.
+- **deselectAllColumns**(): void — Deselects all columns
+- **deselectAllRows**(onlyFilterData?: boolean): void — Deselects all rows
+- **deselectColumns**(columns: string[] | IgcColumnComponent[]): void — Deselect specified columns by field.
+- **deselectRows**(rowIDs: any[]): void — Deselect specified rows by ID.
+- **disableSummaries**(columns: string[]): void — Disable summaries for the specified column.
+- **disableSummaries**(expression: IgcSummaryExpression): void — Disable summaries for the specified column.
+- **disableSummaries**(fieldName: string): void — Disable summaries for the specified column.
+- **enableSummaries**(expressions: IgcSummaryExpression[]): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(expression: IgcSummaryExpression): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(fieldName: string, customSummary?: any): void — Enables summaries for the specified column and applies your customSummary.
+- **endEdit**(commit?: boolean, evt?: MouseEvent | KeyboardEvent | FocusEvent): boolean — Finishes the row transactions on the current row and returns whether the grid editing was canceled.
+- **expandAll**(): void — Expands all rows.
+- **expandRow**(rowID: any): void — Expands the row by its id.
+- **filter**(name: string, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation, ignoreCase?: boolean): void — Filters a single column.
+- **filterGlobal**(value: any, condition: IgcFilteringOperation, ignoreCase?: boolean): void — **Deprecated.** Filters all the column in the grid with the same condition.
+- **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the next occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the previous occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **getCellByColumn**(rowIndex: number, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getCellByKey**(rowSelector: any, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getColumnByName**(name: string): IgcColumnComponent — Returns the column by field name.
+- **getColumnByVisibleIndex**(index: number): IgcColumnComponent
+- **getDefaultExpandState**(record: any): boolean
+- **getHeaderGroupWidth**(column: IgcColumnComponent): string — Gets the width to be set on grid header group.
+- **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the next cell,
+according to the current position, that match specific criteria.
+- **getPinnedEndWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPinnedStartWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the previous cell,
+according to the current position, that match specific criteria.
+- **getRowByIndex**(index: number): IgcRowType — Returns the RowType by index.
+- **getRowByKey**(key: any): IgcRowType — Returns the RowType by key.
+- **getRowData**(rowSelector: any): any — Returns the data that is contained in the row component.
+- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedRanges**(): IgcGridSelectionRange[] — Get the currently selected ranges in the grid.
+- **isRecordPinnedByIndex**(rowIndex: number): boolean — Returns whether the record is pinned or not.
+- **markForCheck**(): void — Triggers change detection for the grid.
+Calling markForCheck also triggers the grid pipes explicitly, resulting in all updates being processed.
+May degrade performance if used when not needed, or if misused:
+- **moveColumn**(column: IgcColumnComponent, target: IgcColumnComponent, pos?: DropPosition): void — Places a column before or after the specified target column.
+- **navigateTo**(rowIndex: number, visibleColIndex?: number, cb?: any): void — Navigates to a position in the grid based on provided rowindex and visibleColumnIndex.
+- **openAdvancedFilteringDialog**(overlaySettings?: IgcOverlaySettings): void — Opens the advanced filtering dialog.
+- **pinColumn**(columnName: string, index?: number, pinningPosition?: ColumnPinningPosition): boolean — Pins a column by field name.
+- **pinRow**(rowID: any, index?: number): boolean — Pin the row by its id.
+- **recalculateAutoSizes**(): void — Recalculates all widths of columns that have size set to auto.
+- **reflow**(): void — Recalculates grid width/height dimensions.
+- **refreshSearch**(updateActiveInfo?: boolean, endEdit?: boolean): number — Reapplies the existing search.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **selectAllColumns**(): void — Selects all columns
+- **selectAllRows**(onlyFilterData?: boolean): void — Selects all rows
+- **selectColumns**(columns: string[] | IgcColumnComponent[], clearCurrentSelection?: boolean): void — Select specified columns.
+- **selectedColumns**(): IgcColumnComponent[] — Get current selected columns.
+- **selectRange**(arg: IgcGridSelectionRange[]): void — Select range(s) of cells between certain rows and columns of the grid.
+- **selectRows**(rowIDs: any[], clearCurrentSelection?: boolean): void — Select specified rows by ID.
+- **sort**(expression: IgcSortingExpression[]): void — Sort a single column.
+- **toggleColumnVisibility**(args: IgcColumnVisibilityChangedEventArgs): void — Toggles the specified column's visibility.
+- **toggleRow**(rowID: any): void — Toggles the row by its id.
+- **unpinColumn**(columnName: string, index?: number): boolean — Unpins a column by field name. Returns whether the operation is successful.
+- **unpinRow**(rowID: any): boolean — Unpin the row by its id.
+- **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
+- **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 - static **register**(): void
 
 ### [IgcNoopFilteringStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNoopFilteringStrategy)
+Extends: IgcBaseFilteringStrategy
 
 - **constructor**(): IgcNoopFilteringStrategy
 - **filter**(data: any[], _: IgcFilteringExpressionsTree, __?: IgcFilteringExpressionsTree): any[]
@@ -393,11 +865,13 @@ It performs no sorting and returns the data as it is.
 - static **instance**(): IgcNoopSortingStrategy
 
 ### [IgcNumberFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNumberFilteringOperand)
+Extends: IgcFilteringOperand
 Provides filtering operations for numbers
 
 - **constructor**(): IgcNumberFilteringOperand
 
 ### [IgcNumberSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcNumberSummaryOperand)
+Extends: IgcSummaryOperand
 
 - **constructor**(): IgcNumberSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
@@ -426,9 +900,15 @@ Paginator component description
 - **selectOptions**: `number[]`
 - **totalPages**: `number`
 - **totalRecords**: `number`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **nextPage**(): void — Goes to the next page of the paginator, if the paginator is not already at the last page.
 - **paginate**(val: number): void — Goes to the desired page index.
 - **previousPage**(): void — Goes to the previous page of the paginator, if the paginator is not already at the first page.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcPivotDataSelectorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPivotDataSelectorComponent)
@@ -443,9 +923,16 @@ Pivot Data Selector provides means to configure the pivot state of the Pivot Gri
 - **grid**: `IgcPivotGridComponent`
 - **rowsExpanded**: `boolean`
 - **valuesExpanded**: `boolean`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcPivotDateDimension](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcPivotDateDimension)
+Extends: IgcPivotDimension
 Configuration of a pivot dimension.
 
 - **constructor**(inBaseDimension?: IgcPivotDimension, inOptions?: IgcPivotDateDimensionOptions): IgcPivotDateDimension
@@ -463,33 +950,196 @@ Pivot Grid provides a way to present and manipulate data in a pivot table view.
 - static readonly **tagName**: `string` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **addRowEmptyTemplate**: `IgcRenderFunction<void>`
+- **advancedFilteringExpressionsTree**: `IgcFilteringExpressionsTree`
 - **allDimensions**: `IgcPivotDimension[]` — Gets the full list of dimensions.
+- **allowAdvancedFiltering**: `boolean`
+- **allowFiltering**: `boolean`
+- **autoGenerate**: `boolean`
 - **autoGenerateConfig**: `boolean`
+- **autoGenerateExclude**: `string[]`
+- **batchEditing**: `boolean`
+- **cellMergeMode**: `GridCellMergeMode`
+- **cellSelection**: `GridSelectionMode`
+- **clipboardOptions**: `IgcClipboardOptions`
+- **columnList**: `IgcColumnComponent[]`
+- **columns**: `IgcColumnComponent[]` — Gets an array of columns.
+- **columnSelection**: `GridSelectionMode`
+- **columnWidth**: `string`
 - **data**: `any[]`
+- **dataCloneStrategy**: `IgcDataCloneStrategy`
+- **dataRowList**: `IgcRowDirective[]` — A list of currently rendered grid row's.
+- **dataView**: `any[]` — Returns the currently transformed paged/filtered/sorted/grouped/pinned/unpinned row data, displayed in the grid.
 - **defaultExpandState**: `boolean`
+- **defaultRowHeight**: `number` — Gets the default row height.
 - **dimensionsSortingExpressions**: `IgcSortingExpression[]` — Gets the sorting expressions generated for the dimensions.
+- **dragGhostCustomTemplate**: `IgcRenderFunction<IgcGridRowDragGhostContext>`
+- **dragIndicatorIconTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **emptyFilteredGridMessage**: `string`
+- **emptyGridMessage**: `string`
+- **emptyGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
 - **emptyPivotGridTemplate**: `IgcRenderFunction<void>`
+- **excelStyleHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **expansionStates**: `Map<any, boolean>`
+- **filteredData**: `any` — Returns an array of objects containing the filtered data.
+- **filteredSortedData**: `any[]` — Returns an array containing the filtered sorted data.
+- **filteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **filteringLogic**: `FilteringLogic`
+- **filterMode**: `FilterMode`
+- **filterStrategy**: `IgcFilteringStrategy`
+- **headerCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headerExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headSelectorTemplate**: `IgcRenderFunction<IgcHeadSelectorTemplateContext>`
+- **height**: `string`
+- **hiddenColumnsCount**: `number` — Gets the number of hidden columns.
+- **hideRowSelectors**: `boolean`
+- **isLoading**: `boolean`
+- **lastSearchInfo**: `IgcSearchInfo` — Represents the last search information.
+- **loadingGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **locale**: `string`
+- **mergeStrategy**: `IgcGridMergeStrategy`
+- **moving**: `boolean`
+- **outlet**: `IgcOverlayOutletDirective`
+- **paginationComponents**: `IgcPaginatorComponent[]`
+- **pagingMode**: `GridPagingMode`
+- **pinnedColumns**: `IgcColumnComponent[]` — Gets an array of the pinned columns.
+- **pinnedColumnsCount**: `number` — Gets the number of pinned columns.
+- **pinnedEndColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the right columns.
+- **pinnedRows**: `IgcRowDirective[]` — Gets an array of the pinned rows.
+- **pinnedStartColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the left columns.
+- **pinning**: `IgcPinningConfig`
 - **pivotConfiguration**: `IgcPivotConfiguration`
 - **pivotUI**: `IgcPivotUISettings`
+- **primaryKey**: `string`
+- **resourceStrings**: `IgcGridResourceStrings`
+- **rowAddTextTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
 - **rowDimensionHeaderTemplate**: `IgcRenderFunction<IgcColumnTemplateContext>`
+- **rowDraggable**: `boolean`
+- **rowEditable**: `boolean`
+- **rowEditActionsTemplate**: `IgcRenderFunction<IgcGridRowEditActionsTemplateContext>`
+- **rowEditTextTemplate**: `IgcRenderFunction<IgcGridRowEditTextTemplateContext>`
+- **rowExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowHeight**: `number`
+- **rowList**: `IgcRowDirective[]` — A list of grid row.
+- **rowSelection**: `GridSelectionMode`
+- **rowSelectorTemplate**: `IgcRenderFunction<IgcRowSelectorTemplateContext>`
+- **rowStyles**: `IgcGridStyleCSSProperty`
 - **selectedRows**: `any[]` — Gets/Sets the current selection state.
+- **selectRowOnClick**: `boolean`
+- **shouldGenerate**: `boolean`
+- **showSummaryOnCollapse**: `boolean`
+- **snackbarDisplayTime**: `number`
+- **sortAscendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortDescendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortingExpressions**: `IgcSortingExpression[]`
+- **sortingOptions**: `IgcSortingOptions`
+- **sortStrategy**: `IgcGridSortingStrategy`
+- **summaryCalculationMode**: `GridSummaryCalculationMode`
+- **summaryPosition**: `GridSummaryPosition`
+- **summaryRowHeight**: `number`
 - **superCompactMode**: `boolean`
+- **toolbar**: `IgcGridToolbarComponent[]`
+- **totalRecords**: `number`
+- **transactions**: `TransactionService` — Get transactions service for the grid.
+- **unpinnedColumns**: `IgcColumnComponent[]` — Gets an array of unpinned columns.
+- **validationTooltipTrigger**: `GridValidationTooltipTrigger`
+- **validationTrigger**: `GridValidationTrigger`
 - **valueChipTemplate**: `IgcRenderFunction<IgcPivotGridValueTemplateContext>`
+- **virtualizationState**: `IgcForOfState` — Returns the state of the grid virtualization.
+- **visibleColumns**: `IgcColumnComponent[]` — Returns an array of visible columns.
+- **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addRow**(data: any): void — Creates a new grid row and adds the data record to the end of the data source.
 - **autoSizeRowDimension**(dimension: IgcPivotDimension): void — Auto-sizes row dimension cells.
+- **beginAddRowById**(rowID: any, asChild?: boolean): void — Enters add mode by spawning the UI under the specified row by rowID.
+- **beginAddRowByIndex**(index: number): void — Enters add mode by spawning the UI at the specified index.
+- **clearCellSelection**(): void — Deselect selected cells.
+- **clearFilter**(name?: string): void — If name is provided, clears the filtering state of the corresponding column.
+- **clearSearch**(): void — Removes all the highlights in the cell.
+- **clearSort**(name?: string): void — If name is provided, clears the sorting state of the corresponding column.
+- **closeAdvancedFilteringDialog**(applyChanges: boolean): void — Closes the advanced filtering dialog.
+- **collapseAll**(): void — Collapses all rows.
+- **collapseRow**(rowID: any): void — Collapses the row by its id.
+- **deleteRow**(rowSelector: any): any — Removes the grid row and the corresponding data record by primary key.
+- **deselectAllColumns**(): void — Deselects all columns
+- **deselectAllRows**(onlyFilterData?: boolean): void — Deselects all rows
+- **deselectColumns**(columns: string[] | IgcColumnComponent[]): void — Deselect specified columns by field.
+- **deselectRows**(rowIDs: any[]): void — Deselect specified rows by ID.
+- **disableSummaries**(columns: string[]): void — Disable summaries for the specified column.
+- **disableSummaries**(expression: IgcSummaryExpression): void — Disable summaries for the specified column.
+- **disableSummaries**(fieldName: string): void — Disable summaries for the specified column.
+- **enableSummaries**(expressions: IgcSummaryExpression[]): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(expression: IgcSummaryExpression): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(fieldName: string, customSummary?: any): void — Enables summaries for the specified column and applies your customSummary.
+- **endEdit**(commit?: boolean, evt?: MouseEvent | KeyboardEvent | FocusEvent): boolean — Finishes the row transactions on the current row and returns whether the grid editing was canceled.
+- **expandAll**(): void — Expands all rows.
+- **expandRow**(rowID: any): void — Expands the row by its id.
+- **filter**(name: string, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation, ignoreCase?: boolean): void — Filters a single column.
 - **filterDimension**(dimension: IgcPivotDimension, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation): void — Filters a single IPivotDimension.
+- **filterGlobal**(value: any, condition: IgcFilteringOperation, ignoreCase?: boolean): void — **Deprecated.** Filters all the column in the grid with the same condition.
+- **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the next occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the previous occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **getColumnByName**(name: string): IgcColumnComponent — Returns the column by field name.
+- **getColumnByVisibleIndex**(index: number): IgcColumnComponent
 - **getColumnGroupExpandState**(col: IgcColumnComponent): boolean
+- **getHeaderGroupWidth**(column: IgcColumnComponent): string — Gets the width to be set on grid header group.
+- **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the next cell,
+according to the current position, that match specific criteria.
+- **getPinnedEndWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPinnedStartWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the previous cell,
+according to the current position, that match specific criteria.
+- **getRowData**(rowSelector: any): any — Returns the data that is contained in the row component.
+- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedRanges**(): IgcGridSelectionRange[] — Get the currently selected ranges in the grid.
 - **insertDimensionAt**(dimension: IgcPivotDimension, targetCollectionType: PivotDimensionType, index?: number): void — Inserts dimension in target collection by type at specified index or at the collection's end.
 - **insertValueAt**(value: IgcPivotValue, index?: number): void — Inserts value at specified index or at the end.
+- **isRecordPinnedByIndex**(rowIndex: number): boolean — Returns whether the record is pinned or not.
+- **markForCheck**(): void — Triggers change detection for the grid.
+Calling markForCheck also triggers the grid pipes explicitly, resulting in all updates being processed.
+May degrade performance if used when not needed, or if misused:
+- **moveColumn**(column: IgcColumnComponent, target: IgcColumnComponent, pos?: DropPosition): void — Places a column before or after the specified target column.
 - **moveDimension**(dimension: IgcPivotDimension, targetCollectionType: PivotDimensionType, index?: number): void — Move dimension from its currently collection to the specified target collection by type at specified index or at the collection's end.
 - **moveValue**(value: IgcPivotValue, index?: number): void — Move value from its currently at specified index or at the end.
+- **navigateTo**(rowIndex: number, visibleColIndex?: number, cb?: any): void — Navigates to a position in the grid based on provided rowindex and visibleColumnIndex.
 - **notifyDimensionChange**(regenerateColumns?: boolean): void — Notifies for dimension change.
+- **openAdvancedFilteringDialog**(overlaySettings?: IgcOverlaySettings): void — Opens the advanced filtering dialog.
+- **pinColumn**(columnName: string, index?: number, pinningPosition?: ColumnPinningPosition): boolean — Pins a column by field name.
+- **pinRow**(rowID: any, index?: number, row?: IgcRowType): boolean — Pin the row by its id.
+- **recalculateAutoSizes**(): void — Recalculates all widths of columns that have size set to auto.
+- **reflow**(): void — Recalculates grid width/height dimensions.
+- **refreshSearch**(updateActiveInfo?: boolean, endEdit?: boolean): number — Reapplies the existing search.
 - **removeDimension**(dimension: IgcPivotDimension): void — Removes dimension from its currently collection.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - **removeValue**(value: IgcPivotValue): void — Removes value from collection.
+- **selectAllColumns**(): void — Selects all columns
+- **selectAllRows**(onlyFilterData?: boolean): void — Selects all rows
+- **selectColumns**(columns: string[] | IgcColumnComponent[], clearCurrentSelection?: boolean): void — Select specified columns.
+- **selectedColumns**(): IgcColumnComponent[] — Get current selected columns.
+- **selectRange**(arg: IgcGridSelectionRange[]): void — Select range(s) of cells between certain rows and columns of the grid.
+- **selectRows**(rowIDs: any[], clearCurrentSelection?: boolean): void — Select specified rows by ID.
+- **sort**(expression: IgcSortingExpression[]): void — Sort a single column.
 - **sortDimension**(dimension: IgcPivotDimension, sortDirection: SortingDirection): void — Sort the dimension and its children in the provided direction.
 - **toggleColumn**(col: IgcColumnComponent): void
+- **toggleColumnVisibility**(args: IgcColumnVisibilityChangedEventArgs): void — Toggles the specified column's visibility.
 - **toggleDimension**(dimension: IgcPivotDimension): void — Toggles the dimension's enabled state on or off.
+- **toggleRow**(rowID: any): void — Toggles the row by its id.
 - **toggleRowGroup**(col: IgcColumnComponent, newState: boolean): void
 - **toggleValue**(value: IgcPivotValue): void — Toggles the value's enabled state on or off.
+- **unpinColumn**(columnName: string, index?: number): boolean — Unpins a column by field name. Returns whether the operation is successful.
+- **unpinRow**(rowID: any, row?: IgcRowType): boolean — Unpin the row by its id.
+- **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
+- **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 - static **register**(): void
 
 ### [IgcQueryBuilderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcQueryBuilderComponent)
@@ -510,9 +1160,15 @@ It is used internally in the Advanced Filtering of the Grid.
 - **resourceStrings**: `IgcQueryBuilderResourceStrings`
 - **searchValueTemplate**: `IgcRenderFunction<IgcQueryBuilderSearchValueContext>`
 - **showEntityChangeDialog**: `boolean`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **canCommit**(): boolean — Returns whether the expression tree can be committed in the current state.
 - **commit**(): void — Commits the expression tree in the current state if it is valid. If not throws an exception.
 - **discard**(): void — Discards all unsaved changes to the expression tree.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - static **register**(): void
 
 ### [IgcQueryBuilderHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcQueryBuilderHeaderComponent)
@@ -618,6 +1274,9 @@ Row island
 - **validationTooltipTrigger**: `GridValidationTooltipTrigger`
 - **validationTrigger**: `GridValidationTrigger`
 - **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
 - **addRow**(data: any): void — Creates a new grid row and adds the data record to the end of the data source.
 - **beginAddRowById**(rowID: any, asChild?: boolean): void — Enters add mode by spawning the UI under the specified row by rowID.
 - **beginAddRowByIndex**(index: number): void — Enters add mode by spawning the UI at the specified index.
@@ -670,6 +1329,9 @@ May degrade performance if used when not needed, or if misused:
 - **pinRow**(rowID: any, index?: number, row?: IgcRowType): boolean — Pin the row by its id.
 - **recalculateAutoSizes**(): void — Recalculates all widths of columns that have size set to auto.
 - **refreshSearch**(updateActiveInfo?: boolean, endEdit?: boolean): number — Reapplies the existing search.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - **selectAllColumns**(): void — Selects all columns
 - **selectAllRows**(onlyFilterData?: boolean): void — Selects all rows
 - **selectColumns**(columns: string[] | IgcColumnComponent[], clearCurrentSelection?: boolean): void — Select specified columns.
@@ -686,6 +1348,7 @@ May degrade performance if used when not needed, or if misused:
 - static **register**(): void
 
 ### [IgcStringFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcStringFilteringOperand)
+Extends: IgcFilteringOperand
 Provides filtering operations for strings
 
 - **constructor**(): IgcStringFilteringOperand
@@ -701,8 +1364,14 @@ If filtering is applied, counts only the filtered records.
 ### [IgcTimeFilteringOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcTimeFilteringOperand)
 
 - **constructor**(): IgcTimeFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgcTimeSummaryOperand](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/classes/IgcTimeSummaryOperand)
+Extends: IgcSummaryOperand
 
 - **constructor**(): IgcTimeSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[]
@@ -723,6 +1392,191 @@ Example:
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **actionStripComponents**: `IgcActionStripToken[]`
+- **addRowEmptyTemplate**: `IgcRenderFunction<void>`
+- **advancedFilteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **allowAdvancedFiltering**: `boolean`
+- **allowFiltering**: `boolean`
+- **autoGenerate**: `boolean`
+- **autoGenerateExclude**: `string[]`
+- **batchEditing**: `boolean`
+- **cascadeOnDelete**: `boolean`
+- **cellMergeMode**: `GridCellMergeMode`
+- **cellSelection**: `GridSelectionMode`
+- **childDataKey**: `string`
+- **clipboardOptions**: `IgcClipboardOptions`
+- **columnList**: `IgcColumnComponent[]`
+- **columns**: `IgcColumnComponent[]` — Gets an array of columns.
+- **columnSelection**: `GridSelectionMode`
+- **columnWidth**: `string`
+- **data**: `any[]`
+- **dataCloneStrategy**: `IgcDataCloneStrategy`
+- **dataRowList**: `IgcRowDirective[]` — A list of currently rendered grid row's.
+- **dataView**: `any[]` — Returns the currently transformed paged/filtered/sorted/grouped/pinned/unpinned row data, displayed in the grid.
+- **defaultRowHeight**: `number` — Gets the default row height.
+- **dragGhostCustomTemplate**: `IgcRenderFunction<IgcGridRowDragGhostContext>`
+- **dragIndicatorIconTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **emptyFilteredGridMessage**: `string`
+- **emptyGridMessage**: `string`
+- **emptyGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **excelStyleHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **expansionDepth**: `number`
+- **expansionStates**: `Map<any, boolean>`
+- **filteredData**: `any` — Returns an array of objects containing the filtered data.
+- **filteredSortedData**: `any[]` — Returns an array containing the filtered sorted data.
+- **filteringExpressionsTree**: `IgcFilteringExpressionsTree`
+- **filteringLogic**: `FilteringLogic`
+- **filterMode**: `FilterMode`
+- **filterStrategy**: `IgcFilteringStrategy`
+- **foreignKey**: `string`
+- **hasChildrenKey**: `string`
+- **headerCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headerExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **headSelectorTemplate**: `IgcRenderFunction<IgcHeadSelectorTemplateContext>`
+- **height**: `string`
+- **hiddenColumnsCount**: `number` — Gets the number of hidden columns.
+- **hideRowSelectors**: `boolean`
+- **id**: `string` — The **id** property of the Element interface represents the element's identifier, reflecting the id global attribute.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
+- **isLoading**: `boolean`
+- **lastSearchInfo**: `IgcSearchInfo` — Represents the last search information.
+- **loadChildrenOnDemand**: `any`
+- **loadingGridTemplate**: `IgcRenderFunction<IgcGridTemplateContext>`
+- **locale**: `string`
+- **mergeStrategy**: `IgcGridMergeStrategy`
+- **moving**: `boolean`
+- **outlet**: `IgcOverlayOutletDirective`
+- **paginationComponents**: `IgcPaginatorComponent[]`
+- **pagingMode**: `GridPagingMode`
+- **pinnedColumns**: `IgcColumnComponent[]` — Gets an array of the pinned columns.
+- **pinnedColumnsCount**: `number` — Gets the number of pinned columns.
+- **pinnedEndColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the right columns.
+- **pinnedRows**: `IgcRowDirective[]` — Gets an array of the pinned rows.
+- **pinnedStartColumns**: `IgcColumnComponent[]` — Gets an array of the pinned to the left columns.
+- **pinning**: `IgcPinningConfig`
+- **primaryKey**: `string`
+- **processedRootRecords**: `IgcTreeGridRecord[]`
+- **resourceStrings**: `IgcGridResourceStrings`
+- **rootRecords**: `IgcTreeGridRecord[]`
+- **rowAddTextTemplate**: `IgcRenderFunction<IgcGridEmptyTemplateContext>`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowDraggable**: `boolean`
+- **rowEditable**: `boolean`
+- **rowEditActionsTemplate**: `IgcRenderFunction<IgcGridRowEditActionsTemplateContext>`
+- **rowEditTextTemplate**: `IgcRenderFunction<IgcGridRowEditTextTemplateContext>`
+- **rowExpandedIndicatorTemplate**: `IgcRenderFunction<IgcGridRowTemplateContext>`
+- **rowHeight**: `number`
+- **rowList**: `IgcRowDirective[]` — A list of grid row.
+- **rowLoadingIndicatorTemplate**: `IgcRenderFunction<void>`
+- **rowSelection**: `GridSelectionMode`
+- **rowSelectorTemplate**: `IgcRenderFunction<IgcRowSelectorTemplateContext>`
+- **rowStyles**: `IgcGridStyleCSSProperty`
+- **selectedCells**: `IgcCellType[]` — Returns an array of the selected grid cells.
+- **selectedRows**: `any[]`
+- **selectRowOnClick**: `boolean`
+- **shouldGenerate**: `boolean`
+- **showSummaryOnCollapse**: `boolean`
+- **snackbarDisplayTime**: `number`
+- **sortAscendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortDescendingHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortHeaderIconTemplate**: `IgcRenderFunction<IgcGridHeaderTemplateContext>`
+- **sortingExpressions**: `IgcSortingExpression[]`
+- **sortingOptions**: `IgcSortingOptions`
+- **sortStrategy**: `IgcGridSortingStrategy`
+- **summaryCalculationMode**: `GridSummaryCalculationMode`
+- **summaryPosition**: `GridSummaryPosition`
+- **summaryRowHeight**: `number`
+- **toolbar**: `IgcGridToolbarComponent[]`
+- **totalRecords**: `number`
+- **transactions**: `TransactionService` — Get transactions service for the grid.
+- **unpinnedColumns**: `IgcColumnComponent[]` — Gets an array of unpinned columns.
+- **validationTooltipTrigger**: `GridValidationTooltipTrigger`
+- **validationTrigger**: `GridValidationTrigger`
+- **virtualizationState**: `IgcForOfState` — Returns the state of the grid virtualization.
+- **visibleColumns**: `IgcColumnComponent[]` — Returns an array of visible columns.
+- **width**: `string`
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addRow**(data: any, parentRowID?: any): void — Creates a new tree grid row with the given data. If a parentRowID is not specified, the newly created
+row would be added at the root level. Otherwise, it would be added as a child of the row whose primaryKey matches
+the specified parentRowID. If the parentRowID does not exist, an error would be thrown.
+- **beginAddRowById**(rowID: any, asChild?: boolean): void — Enters add mode by spawning the UI under the specified row by rowID.
+- **beginAddRowByIndex**(index: number, asChild?: boolean): void — Enters add mode by spawning the UI with the context of the specified row by index.
+- **clearCellSelection**(): void — Deselect selected cells.
+- **clearFilter**(name?: string): void — If name is provided, clears the filtering state of the corresponding column.
+- **clearSearch**(): void — Removes all the highlights in the cell.
+- **clearSort**(name?: string): void — If name is provided, clears the sorting state of the corresponding column.
+- **closeAdvancedFilteringDialog**(applyChanges: boolean): void — Closes the advanced filtering dialog.
+- **collapseAll**(): void — Collapses all rows.
+- **collapseRow**(rowID: any): void — Collapses the row by its id.
+- **deleteRow**(rowSelector: any): any — Removes the grid row and the corresponding data record by primary key.
+- **deselectAllColumns**(): void — Deselects all columns
+- **deselectAllRows**(onlyFilterData?: boolean): void — Deselects all rows
+- **deselectColumns**(columns: string[] | IgcColumnComponent[]): void — Deselect specified columns by field.
+- **deselectRows**(rowIDs: any[]): void — Deselect specified rows by ID.
+- **disableSummaries**(columns: string[]): void — Disable summaries for the specified column.
+- **disableSummaries**(expression: IgcSummaryExpression): void — Disable summaries for the specified column.
+- **disableSummaries**(fieldName: string): void — Disable summaries for the specified column.
+- **enableSummaries**(expressions: IgcSummaryExpression[]): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(expression: IgcSummaryExpression): void — Enables summaries for the specified column and applies your customSummary.
+- **enableSummaries**(fieldName: string, customSummary?: any): void — Enables summaries for the specified column and applies your customSummary.
+- **endEdit**(commit?: boolean, evt?: MouseEvent | KeyboardEvent | FocusEvent): boolean — Finishes the row transactions on the current row and returns whether the grid editing was canceled.
+- **expandAll**(): void — Expands all rows.
+- **expandRow**(rowID: any): void — Expands the row by its id.
+- **filter**(name: string, value: any, conditionOrExpressionTree?: IgcFilteringExpressionsTree | IgcFilteringOperation, ignoreCase?: boolean): void — Filters a single column.
+- **filterGlobal**(value: any, condition: IgcFilteringOperation, ignoreCase?: boolean): void — **Deprecated.** Filters all the column in the grid with the same condition.
+- **findNext**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the next occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **findPrev**(text: string, caseSensitive?: boolean, exactMatch?: boolean): number — Finds the previous occurrence of a given string in the grid and scrolls to the cell if it isn't visible.
+- **getCellByColumn**(rowIndex: number, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getCellByKey**(rowSelector: any, columnField: string): IgcCellType — Returns a CellType object that matches the conditions.
+- **getColumnByName**(name: string): IgcColumnComponent — Returns the column by field name.
+- **getColumnByVisibleIndex**(index: number): IgcColumnComponent
+- **getDefaultExpandState**(record: IgcTreeGridRecord): boolean
+- **getHeaderGroupWidth**(column: IgcColumnComponent): string — Gets the width to be set on grid header group.
+- **getNextCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the next cell,
+according to the current position, that match specific criteria.
+- **getPinnedEndWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPinnedStartWidth**(takeHidden?: boolean): number — Gets calculated width of the pinned areas.
+- **getPreviousCell**(currRowIndex: number, curVisibleColIndex: number, callback?: any): IgcCellPosition — Returns ICellPosition which defines the previous cell,
+according to the current position, that match specific criteria.
+- **getRowByIndex**(index: number): IgcRowType — Returns the tree grid row by index.
+- **getRowByKey**(key: any): IgcRowType — Returns the RowType object by the specified primary key.
+- **getRowData**(rowSelector: any): any — Returns the data that is contained in the row component.
+- **getSelectedColumnsData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current columns selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedData**(formatters?: boolean, headers?: boolean): any[] — Returns an array of the current cell selection in the form of [{ column.field: cell.value }, ...].
+- **getSelectedRanges**(): IgcGridSelectionRange[] — Get the currently selected ranges in the grid.
+- **isRecordPinnedByIndex**(rowIndex: number): boolean — Returns whether the record is pinned or not.
+- **markForCheck**(): void — Triggers change detection for the grid.
+Calling markForCheck also triggers the grid pipes explicitly, resulting in all updates being processed.
+May degrade performance if used when not needed, or if misused:
+- **moveColumn**(column: IgcColumnComponent, target: IgcColumnComponent, pos?: DropPosition): void — Places a column before or after the specified target column.
+- **navigateTo**(rowIndex: number, visibleColIndex?: number, cb?: any): void — Navigates to a position in the grid based on provided rowindex and visibleColumnIndex.
+- **openAdvancedFilteringDialog**(overlaySettings?: IgcOverlaySettings): void — Opens the advanced filtering dialog.
+- **pinColumn**(columnName: string, index?: number, pinningPosition?: ColumnPinningPosition): boolean — Pins a column by field name.
+- **pinRow**(rowID: any, index?: number): boolean — Pin the row by its id.
+- **recalculateAutoSizes**(): void — Recalculates all widths of columns that have size set to auto.
+- **reflow**(): void — Recalculates grid width/height dimensions.
+- **refreshSearch**(updateActiveInfo?: boolean, endEdit?: boolean): number — Reapplies the existing search.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **selectAllColumns**(): void — Selects all columns
+- **selectAllRows**(onlyFilterData?: boolean): void — Selects all rows
+- **selectColumns**(columns: string[] | IgcColumnComponent[], clearCurrentSelection?: boolean): void — Select specified columns.
+- **selectedColumns**(): IgcColumnComponent[] — Get current selected columns.
+- **selectRange**(arg: IgcGridSelectionRange[]): void — Select range(s) of cells between certain rows and columns of the grid.
+- **selectRows**(rowIDs: any[], clearCurrentSelection?: boolean): void — Select specified rows by ID.
+- **sort**(expression: IgcSortingExpression[]): void — Sort a single column.
+- **toggleColumnVisibility**(args: IgcColumnVisibilityChangedEventArgs): void — Toggles the specified column's visibility.
+- **toggleRow**(rowID: any): void — Toggles the row by its id.
+- **unpinColumn**(columnName: string, index?: number): boolean — Unpins a column by field name. Returns whether the operation is successful.
+- **unpinRow**(rowID: any): boolean — Unpin the row by its id.
+- **updateCell**(value: any, rowSelector: any, column: string): void — Updates the grid row and the corresponding data record by primary key.
+- **updateRow**(value: any, rowSelector: any): void — Updates the grid row
 - static **register**(): void
 
 ## Interfaces
@@ -732,6 +1586,7 @@ Example:
 - **igx_action_strip_button_more_title?**: `string`
 
 ### [IgcActiveNodeChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcActiveNodeChangeEventArgs)
+Extends: IgcBaseEventArgs
 Emitted when the active node is changed
 
 - **column**: `number` — Represents the column index of the active node
@@ -747,8 +1602,10 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 
 ### [IgcBaseExporter](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseExporter)
 
+- **addEventListener**: `any`
 - **export**: `any`
 - **exportData**: `any`
+- **removeEventListener**: `any`
 
 ### [IgcBaseExporterEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcBaseExporterEventMap)
 
@@ -780,6 +1637,7 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 - **opening**: `CustomEvent<IgcToggleViewCancelableEventArgs>` — Emits an event before the toggle container is opened.
 
 ### [IgcCancelableBrowserEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCancelableBrowserEventArgs)
+Extends: IgcCancelableEventArgs
 
 
 ### [IgcCancelableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCancelableEventArgs)
@@ -839,9 +1697,11 @@ An interface describing settings for clipboard options
 - **widthChange**: `CustomEvent<string>` — Emitted when the column width changes.
 
 ### [IgcColumnEditorOptions](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnEditorOptions)
+Extends: IgcFieldEditorOptions
 
 
 ### [IgcColumnExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnExportingEventArgs)
+Extends: IgcBaseEventArgs
 columnExporting event arguments
 
 - **cancel**: `boolean` — Skip the exporting column when set to true
@@ -852,6 +1712,7 @@ columnExporting event arguments
 - **skipFormatter**: `boolean` — Export the column's data without applying its formatter, when set to true
 
 ### [IgcColumnMovingEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingEndEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to the end of a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -862,6 +1723,7 @@ The ColumnType contains the information (the grid it belongs to, css data, setti
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
 ### [IgcColumnMovingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
@@ -870,15 +1732,18 @@ If the value becomes "true", it returns/exits from the method, instantiating the
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
 ### [IgcColumnMovingStartEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnMovingStartEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to the start of a column moving operation in a grid.
 
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
 ### [IgcColumnPipeArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnPipeArgs)
+Extends: IgcFieldPipeArgs
 
 
 ### [IgcColumnResizeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnResizeEventArgs)
+Extends: IgcBaseEventArgs
 The event arguments when a column is being resized
 
 - **column**: `IgcColumnComponent` — Represents the information of the column that is being resized
@@ -886,6 +1751,7 @@ The event arguments when a column is being resized
 - **prevWidth**: `string` — Represents the old width of the column before the resizing
 
 ### [IgcColumnsAutoGeneratedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnsAutoGeneratedEventArgs)
+Extends: IgcBaseEventArgs
 
 - **columns?**: `IgcColumnComponent[]`
 
@@ -943,6 +1809,7 @@ Whenever a column has been deselected, the array is "refreshed" with the columns
 - **implicit**: `any`
 
 ### [IgcColumnToggledEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnToggledEventArgs)
+Extends: IgcBaseEventArgs
 Event emitted when a checkbox in the checkbox
 list of an column actions component is clicked.
 
@@ -950,6 +1817,7 @@ list of an column actions component is clicked.
 - **column**: `IgcColumnComponent` — The column that is toggled.
 
 ### [IgcColumnVisibilityChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcColumnVisibilityChangedEventArgs)
+Extends: IgcBaseEventArgs
 The event arguments after a column's visibility is changed.
 
 - **column**: `any` — Represents the column the event originated from
@@ -967,10 +1835,12 @@ It contains information about the column and the it's visibility after the opera
 Will be true when hiding and false when showing.
 
 ### [IgcCsvExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCsvExportEndedEventArgs)
+Extends: IgcBaseEventArgs
 
 - **csvData?**: `string`
 
 ### [IgcCsvExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcCsvExporterServiceEventMap)
+Extends: IgcBaseExporterEventMap
 
 - **exportEnded**: `CustomEvent<IgcCsvExportEndedEventArgs>` — This event is emitted when the export process finishes.
 
@@ -994,10 +1864,12 @@ This allows building hierarchical or nested query structures.
 - **name**: `any`
 
 ### [IgcExcelExportEndedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExcelExportEndedEventArgs)
+Extends: IgcBaseEventArgs
 
 - **xlsx?**: `any`
 
 ### [IgcExcelExporterServiceEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcExcelExporterServiceEventMap)
+Extends: IgcBaseExporterEventMap
 
 - **exportEnded**: `CustomEvent<IgcExcelExportEndedEventArgs>` — This event is emitted when the export process finishes.
 
@@ -1106,16 +1978,19 @@ Interface describing filtering operations
 - **value**: `any`
 
 ### [IgcForOfDataChangeEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfDataChangeEventArgs)
+Extends: IgcForOfDataChangingEventArgs
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 
 ### [IgcForOfDataChangingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfDataChangingEventArgs)
+Extends: IgcBaseEventArgs
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 - **containerSize**: `number`
 - **state**: `IgcForOfState`
 
 ### [IgcForOfState](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcForOfState)
+Extends: IgcBaseEventArgs
 
 - **chunkSize?**: `number`
 - **startIndex?**: `number`
@@ -1127,10 +2002,41 @@ Interface describing filtering operations
 ### [IgcGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseComponent)
 Grid provides a way to present and manipulate tabular data.
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
 - **data**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
 - **detailTemplate**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
 - **dropAreaMessage**: `any`
 - **dropAreaTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **groupByRowSelectorTemplate**: `any`
 - **groupingExpansionState**: `any`
 - **groupingExpressions**: `any`
@@ -1138,28 +2044,145 @@ Grid provides a way to present and manipulate tabular data.
 - **groupsExpanded**: `any`
 - **groupsRecords**: `any`
 - **groupStrategy**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
 - **hideGroupedColumns**: `any`
+- **hideRowSelectors**: `any`
 - **id**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
 - **selectedCells**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
 - **showGroupArea**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
 - **totalItemCount**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addEventListener**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
 - **clearGrouping**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
 - **deselectRowsInGroup**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
 - **fullyExpandGroup**: `any`
 - **getCellByColumn**: `any`
 - **getCellByKey**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
 - **getRowByIndex**: `any`
 - **getRowByKey**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
 - **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
 - **groupBy**: `any`
 - **isExpandedGroup**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
 - **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **removeEventListener**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
 - **selectRowsInGroup**: `any`
+- **sort**: `any`
 - **toggleAllGroupRows**: `any`
+- **toggleColumnVisibility**: `any`
 - **toggleGroup**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
 - **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgcGridBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridBaseComponentEventMap)
+Extends: IgcGridBaseDirectiveEventMap
 
 - **dataPreLoad**: `CustomEvent<IgcForOfState>` — Emitted when a new chunk of data is loaded from virtualization.
 - **groupingDone**: `CustomEvent<IgcGroupingDoneEventArgs>` — Emitted when columns are grouped/ungrouped.
@@ -1258,6 +2281,7 @@ Grid provides a way to present and manipulate tabular data.
 - **virtualizationState**: `any`
 - **visibleColumns**: `any`
 - **width**: `any`
+- **addEventListener**: `any`
 - **addRow**: `any`
 - **beginAddRowById**: `any`
 - **beginAddRowByIndex**: `any`
@@ -1303,6 +2327,7 @@ Grid provides a way to present and manipulate tabular data.
 - **recalculateAutoSizes**: `any`
 - **reflow**: `any`
 - **refreshSearch**: `any`
+- **removeEventListener**: `any`
 - **selectAllColumns**: `any`
 - **selectAllRows**: `any`
 - **selectColumns**: `any`
@@ -1374,6 +2399,7 @@ Grid provides a way to present and manipulate tabular data.
 - **validationStatusChange**: `CustomEvent<IgcGridValidationStatusEventArgs>` — Emitted when grid's validation status changes.
 
 ### [IgcGridCellEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridCellEventArgs)
+Extends: IgcBaseEventArgs
 Represents an event argument related to grid cell interactions.
 
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
@@ -1387,6 +2413,7 @@ The event arguments when data from a grid is being copied.
 - **data**: `any`
 
 ### [IgcGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridComponentEventMap)
+Extends: IgcGridBaseComponentEventMap
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`
@@ -1400,6 +2427,7 @@ Examples of such events include: selecting, clicking, double clicking, etc.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
 ### [IgcGridCreatedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridCreatedEventArgs)
+Extends: IgcBaseEventArgs
 
 - **grid**: `IgcHierarchicalGridComponent`
 - **owner**: `IgcRowIslandComponent` — Provides reference to the owner component.
@@ -1407,6 +2435,7 @@ Examples of such events include: selecting, clicking, double clicking, etc.
 - **parentRowData?**: `any`
 
 ### [IgcGridEditDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridEditDoneEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to grid editing completion.
 
 - **cellID?**: `any`
@@ -1462,6 +2491,7 @@ Interface representing the event arguments when a form group is created in the g
 - **owner**: `IgcGridBaseDirective`
 
 ### [IgcGridGroupingStrategy](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridGroupingStrategy)
+Extends: IgcGridSortingStrategy
 Represents a grouping strategy for the grid data, extending the Sorting Strategy interface (contains a sorting method).
 
 - **groupBy**: `any`
@@ -1471,6 +2501,7 @@ Represents a grouping strategy for the grid data, extending the Sorting Strategy
 - **implicit**: `any`
 
 ### [IgcGridKeydownEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridKeydownEventArgs)
+Extends: IgcBaseEventArgs
 Represents an event, emitted when keydown is triggered over element inside grid's body
 This event is fired only if the key combination is supported in the grid.
 
@@ -1497,6 +2528,7 @@ Merge strategy interface.
 - **implicit**: `any`
 
 ### [IgcGridResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridResourceStrings)
+Extends: IgcValidationResourceStrings
 
 - **igx_grid_actions_add_child_label?**: `string`
 - **igx_grid_actions_add_label?**: `string`
@@ -1687,6 +2719,7 @@ Merge strategy interface.
 - **implicit**: `any`
 
 ### [IgcGridRowEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridRowEventArgs)
+Extends: IgcBaseEventArgs
 Represents an event argument related to grid row interactions.
 
 - **event**: `any` — Represents the original event that occurred
@@ -1698,6 +2731,7 @@ Examples of such events include: selecting, clicking, double clicking, etc.
 - **implicit**: `any`
 
 ### [IgcGridScrollEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridScrollEventArgs)
+Extends: IgcBaseEventArgs
 Event emitted when a grid is scrolled.
 
 - **direction**: `string` — The scroll direction - vertical or horizontal.
@@ -1781,12 +2815,14 @@ computes one.
 - **implicit**: `any`
 
 ### [IgcGridToolbarExporterComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridToolbarExporterComponentEventMap)
+Extends: IgcBaseToolbarDirectiveEventMap
 
 - **exportEnded**: `CustomEvent<void>` — Emitted on successful ending of an export operation.
 - **exportStarted**: `CustomEvent<IgcExporterEventArgs>` — Emitted when starting an export operation. Re-emitted additionally
 by the grid itself.
 
 ### [IgcGridToolbarExportEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGridToolbarExportEventArgs)
+Extends: IgcBaseEventArgs
 Represents the arguments for the grid toolbar export event.
 It provides information about the grid instance, exporter service, export options,
 and allows the event to be canceled.
@@ -1863,12 +2899,14 @@ Interface representing the event arguments for the grid validation status change
 - **implicit**: `any`
 
 ### [IgcGroupingDoneEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupingDoneEventArgs)
+Extends: IgcBaseEventArgs
 
 - **expressions**: `IgcSortingExpression[]`
 - **groupedColumns**: `IgcColumnComponent[]`
 - **ungroupedColumns**: `IgcColumnComponent[]`
 
 ### [IgcGroupingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcGroupingExpression)
+Extends: IgcSortingExpression
 
 - **groupingComparer?**: `any`
 
@@ -1901,6 +2939,7 @@ Contains definitions of properties, relevant to the header
 - **selectAll?**: `any`
 
 ### [IgcHierarchicalGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseComponent)
+Extends: IgcHierarchicalGridBaseDirective
 Hierarchical grid
 
 - **data**: `any`
@@ -1920,15 +2959,167 @@ Hierarchical grid
 
 ### [IgcHierarchicalGridBaseDirective](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseDirective)
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
 - **rootGrid**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
 - **showExpandAll**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addEventListener**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
+- **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
+- **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **removeEventListener**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
+- **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgcHierarchicalGridBaseDirectiveEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridBaseDirectiveEventMap)
+Extends: IgcGridBaseDirectiveEventMap
 
 - **dataPreLoad**: `CustomEvent<IgcForOfState>` — Emitted when a new chunk of data is loaded from virtualization.
 
 ### [IgcHierarchicalGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcHierarchicalGridComponentEventMap)
+Extends: IgcHierarchicalGridBaseDirectiveEventMap
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`
@@ -1948,11 +3139,13 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 - **target?**: `HTMLElement | Point` — Attaching target for the component to show
 
 ### [IgcPageCancellableEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPageCancellableEventArgs)
+Extends: IgcCancelableEventArgs
 
 - **current**: `number`
 - **next**: `number`
 
 ### [IgcPageEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPageEventArgs)
+Extends: IgcBaseEventArgs
 
 - **current**: `number`
 - **previous**: `number`
@@ -1993,6 +3186,7 @@ If unpinned, specifies at which index in the unpinned area the column is inserte
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
 
 ### [IgcPinColumnEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPinColumnEventArgs)
+Extends: IgcBaseEventArgs
 The event arguments after a column's pin state is changed.
 insertAtIndexspecifies at which index in the pinned/unpinned area the column was inserted.
 isPinned returns the actual pin state of the column after the operation completed.
@@ -2106,6 +3300,7 @@ Interface describing the Pivot column data.
 - **value**: `any`
 
 ### [IgcPivotGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridComponentEventMap)
+Extends: IgcGridBaseDirectiveEventMap
 
 - **dimensionInit**: `CustomEvent<IgcPivotDimension>` — Emitted when the dimension is initialized.
 - **dimensionsChange**: `CustomEvent<IgcDimensionsChange>` — Emitted when the dimension collection is changed via the grid chip area.
@@ -2115,6 +3310,7 @@ Interface describing the Pivot column data.
 - **valuesChange**: `CustomEvent<IgcValuesChange>` — Emitted when the values collection is changed via the grid chip area.
 
 ### [IgcPivotGridGroupRecord](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcPivotGridGroupRecord)
+Extends: IgcPivotGridRecord
 
 - **height?**: `number`
 - **rowSpan?**: `number`
@@ -2280,6 +3476,7 @@ Available if primaryKey exists
 - **rowKey**: `any`
 
 ### [IgcRowDataEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDataEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
@@ -2311,6 +3508,7 @@ Available if primaryKey exists
 - **update**: `any`
 
 ### [IgcRowDragEndEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowDragEndEventArgs)
+Extends: IgcBaseEventArgs
 Emitted when a dragging operation is finished (when the row is dropped)
 
 - **animation**: `boolean` — animation returns whether the event is animated
@@ -2327,6 +3525,7 @@ The event is cancelable
 - **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgcRowExportingEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowExportingEventArgs)
+Extends: IgcBaseEventArgs
 rowExporting event arguments
 this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 // set args properties here
@@ -2339,11 +3538,165 @@ this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 ### [IgcRowIslandBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowIslandBaseComponent)
 Row island
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
 - **expandChildren**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
+- **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
 - **paginatorTemplate**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
+- **rootGrid**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
+- **showExpandAll**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
 - **toolbarTemplate**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addEventListener**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
+- **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
+- **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **removeEventListener**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
+- **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgcRowIslandBaseComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowIslandBaseComponentEventMap)
+Extends: IgcHierarchicalGridBaseDirectiveEventMap
 
 - **gridCreated**: `CustomEvent<IgcGridCreatedEventArgs>` — Event emitted when a grid is being created based on this row island.
 - **gridInitialized**: `CustomEvent<IgcGridCreatedEventArgs>` — Emitted after a grid is being initialized for this row island.
@@ -2439,6 +3792,7 @@ that have been previously selected, but are no longer
 - **select?**: `any`
 
 ### [IgcRowToggleEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcRowToggleEventArgs)
+Extends: IgcBaseEventArgs
 Represents event arguments related to the row's expansion state being changed in a grid
 
 - **cancel**: `boolean` — The event is cancelable
@@ -2503,6 +3857,7 @@ Scroll strategies determines how the scrolling will be handled in the provided o
 - **detach**: `any`
 
 ### [IgcSearchInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSearchInfo)
+Extends: IgcBaseSearchInfo
 
 - **activeMatchIndex**: `any`
 - **matchInfoCache**: `any`
@@ -2528,6 +3883,7 @@ It can be a single sorting expression or an array of them
 The expression contains information like file name, whether the letter case should be taken into account, etc.
 
 ### [IgcSortingExpression](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcSortingExpression)
+Extends: IgcBaseEventArgs
 
 - **ignoreCase?**: `boolean`
 - **strategy?**: `IgcSortingStrategy`
@@ -2562,10 +3918,12 @@ The expression contains information like file name, whether the letter case shou
 - **id**: `string` — Id of the toggle view
 
 ### [IgcToggleViewEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcToggleViewEventArgs)
+Extends: IgcBaseEventArgs
 
 - **id**: `string` — Id of the toggle view
 
 ### [IgcTreeGridBaseComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcTreeGridBaseComponent)
+Extends: IgcGridBaseDirective
 **Ignite UI for Angular Tree Grid** -
 [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid)
 The Ignite UI Tree Grid displays and manipulates hierarchical data with consistent schema formatted as a table and
@@ -2598,6 +3956,7 @@ Example:
 - **unpinRow**: `any`
 
 ### [IgcTreeGridComponentEventMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-grids/7.4/interfaces/IgcTreeGridComponentEventMap)
+Extends: IgcGridBaseDirectiveEventMap
 
 - **childrenResolved**: `CustomEvent<void>` — Emitted when content children are resolved and collections in grid are updated.
 - **columnsAutogenerated**: `CustomEvent<IgcColumnsAutoGeneratedEventArgs>`

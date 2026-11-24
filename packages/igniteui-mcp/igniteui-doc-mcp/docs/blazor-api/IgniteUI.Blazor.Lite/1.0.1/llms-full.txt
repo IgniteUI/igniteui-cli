@@ -14,6 +14,7 @@ Version: 1.0
 - **Execute**(): void
 
 ### [IgbAccordion](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbAccordion)
+Extends: IgbComponentBase
 The Accordion is a container-based component that can house multiple expansion panels and offers keyboard navigation.
 
 - **constructor**(): void
@@ -64,6 +65,7 @@ The payload of the event.
 - **OldIndex**: `double` — The index of the step that is currently active.
 
 ### [IgbAvatar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbAvatar)
+Extends: IgbComponentBase
 An avatar component is used as a representation of a user identity typically in a user profile.
 
 - **constructor**(): void
@@ -80,6 +82,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbBadge](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBadge)
+Extends: IgbComponentBase
 The badge is a component indicating a status on a related item or an area where some active indication is required.
 
 - **constructor**(): void
@@ -96,6 +99,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbBanner](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBanner)
+Extends: IgbComponentBase
 A non-modal notification banner that displays important, concise messages requiring user acknowledgement. The banner slides into view with an animated grow transition and renders inline, pushing the surrounding page content rather than overlaying it.
 
 - **constructor**(): void
@@ -119,6 +123,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbBaseAlertLike](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBaseAlertLike)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -135,6 +140,7 @@ Base class shared by and .
 - **ToggleAsync**(): Task<bool> — Toggles the open state of the component.
 
 ### [IgbBaseComboBox](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBaseComboBox)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -148,6 +154,7 @@ Base class shared by and .
 - **ToggleAsync**(): Task<bool> — Toggles the open state of the component.
 
 ### [IgbBaseOptionLike<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBaseOptionLike<TValue>)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -157,6 +164,7 @@ Base class shared by and .
 - **Value**: `TValue` — The current value of the item. If not specified, the text content of the item is used.
 
 ### [IgbBreadcrumb](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBreadcrumb)
+Extends: IgbComponentBase
 A single item in an navigation trail.
 
 - **constructor**(): void
@@ -165,6 +173,7 @@ A single item in an navigation trail.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbBreadcrumbs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbBreadcrumbs)
+Extends: IgbComponentBase
 A navigation trail that renders an ordered list of items.
 
 - **constructor**(): void
@@ -178,6 +187,7 @@ Client resource module for and its items.
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbButton)
+Extends: IgbButtonBase, IgbComponentBase
 Represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality. The button supports multiple visual variants, can render as an anchor (<a>) element when is set, and is fully form-associated, acting as a native submit or reset control.
 
 - **constructor**(): void
@@ -185,6 +195,7 @@ Represents a clickable button, used to submit forms or anywhere in a document fo
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbButtonBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbButtonBase)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -208,6 +219,7 @@ Base class shared by and .
 - **FocusComponentAsync**(options: IgbFocusOptions): Task — Sets focus on the button.
 
 ### [IgbButtonGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbButtonGroup)
+Extends: IgbComponentBase
 Groups a series of components together, exposing features such as layout and selection.
 
 - **constructor**(): void
@@ -234,6 +246,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbCalendar<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCalendar<TValue>)
+Extends: IgbCalendarBase, IgbComponentBase
 Represents a calendar that lets users to select a date value in a variety of different ways.
 
 - **constructor**(): void
@@ -258,6 +271,7 @@ Represents a calendar that lets users to select a date value in a variety of dif
 - **GetCurrentValuesAsync**(): Task<TValue[]> — Get the current values of the calendar. Used when is set to or .
 
 ### [IgbCalendarBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCalendarBase)
+Extends: IgbComponentBase
 Base class for .
 
 - **constructor**(): void
@@ -308,6 +322,7 @@ The localized strings used by the calendar views, exposed through the ResourceSt
 - **WeekLabel**: `string` — The header of the week numbers column in the days view. Defaults to Wk.
 
 ### [IgbCard](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCard)
+Extends: IgbComponentBase
 A container component that wraps different elements related to a single subject. The card component provides a flexible container for organizing content such as headers, media, text content, and actions.
 
 - **constructor**(): void
@@ -315,6 +330,7 @@ A container component that wraps different elements related to a single subject.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbCardActions](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCardActions)
+Extends: IgbComponentBase
 A container component for card action items such as buttons or icon buttons. Actions can be positioned at the start, center, or end of the container.
 
 - **constructor**(): void
@@ -328,6 +344,7 @@ A container component for card action items such as buttons or icon buttons. Act
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbCardContent](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCardContent)
+Extends: IgbComponentBase
 A container component for the card's main text content. Nest inside an to display the primary content.
 
 - **constructor**(): void
@@ -340,6 +357,7 @@ A container component for the card's main text content. Nest inside an to displa
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbCardHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCardHeader)
+Extends: IgbComponentBase
 A container component for the card's header section. Displays header content including an optional thumbnail, title, subtitle, and additional content.
 
 - **constructor**(): void
@@ -352,6 +370,7 @@ A container component for the card's header section. Displays header content inc
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbCardMedia](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCardMedia)
+Extends: IgbComponentBase
 A container component for card media content such as images, GIFs, or videos. This component should be nested inside an to display visual content.
 
 - **constructor**(): void
@@ -370,6 +389,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbCarousel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCarousel)
+Extends: IgbComponentBase
 Presents a set of components by sequentially displaying a subset of one or more slides.
 
 - **constructor**(): void
@@ -411,6 +431,7 @@ Presents a set of components by sequentially displaying a subset of one or more 
 - **SelectAsync**(index: double, animationDirection: CarouselAnimationDirection?): Task<bool> — Switches to the slide at the specified index, running any animations.
 
 ### [IgbCarouselIndicator](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCarouselIndicator)
+Extends: IgbComponentBase
 Used when a custom indicator needs to be passed to the component.
 
 - **constructor**(): void
@@ -429,6 +450,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbCarouselSlide](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCarouselSlide)
+Extends: IgbComponentBase
 A single content container within a set of containers nested in an .
 
 - **constructor**(): void
@@ -442,6 +464,7 @@ A single content container within a set of containers nested in an .
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbChat](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbChat)
+Extends: IgbComponentBase
 A chat UI component for displaying messages, attachments, and input interaction.
 
 - **constructor**(): void
@@ -601,6 +624,7 @@ Optional render templates that replace the default rendering of parts of the UI.
 - **SuggestionPrefixScript**: `string` — Name of a client-side function that renders the prefix text shown before suggestions.
 
 ### [IgbCheckbox](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCheckbox)
+Extends: IgbCheckboxBase, IgbComponentBase
 A check box allowing single values to be selected/deselected.
 
 - **constructor**(): void
@@ -608,6 +632,7 @@ A check box allowing single values to be selected/deselected.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbCheckboxBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCheckboxBase)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -666,6 +691,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbChip](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbChip)
+Extends: IgbComponentBase
 Chips help people enter information, make selections, filter content, or trigger actions.
 
 - **constructor**(): void
@@ -691,6 +717,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbCircularGradient](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCircularGradient)
+Extends: IgbComponentBase
 Defines a gradient stop for an component. Nest one or more of these in the gradient slot of an ; each one produces an SVG stop element. , and are applied as the stop-color, offset and stop-opacity of that stop without further validation.
 
 - **constructor**(): void
@@ -706,6 +733,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbCircularProgress](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCircularProgress)
+Extends: IgbProgressBase, IgbComponentBase
 A circular progress indicator used to express unspecified wait time or display the length of a process.
 
 - **constructor**(): void
@@ -718,6 +746,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbColorPicker<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbColorPicker<TValue>)
+Extends: IgbBaseComboBox, IgbComponentBase
 Color input component. The user picks a color with the HSV saturation/value canvas, the hue slider and the optional alpha slider, or types a color string: hex, rgb(a), hsl(a) or a named CSS color. Supports pre-defined swatches and the native EyeDropper API, where the browser provides one.
 
 - **constructor**(): void
@@ -768,6 +797,7 @@ Event arguments for events that carry a color. The meaning of depends on the eve
 - **Detail**: `TValue` — The color carried by the event, in the picker's TValue.
 
 ### [IgbCombo<TValue, TItem>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbCombo<TValue, TItem>)
+Extends: IgbBaseComboBox, IgbComponentBase
 The Combo component is similar to in that it provides a list of options from which the user can make a selection. In contrast to the Select component, the Combo component displays all options in a virtualized list of items, meaning the combo box can simultaneously show thousands of options, where one or more options can be selected. Additionally, users can create custom item templates, allowing for robust data visualization. The Combo component features case-sensitive filtering, grouping, complex data binding, dynamic addition of values and more.
 
 - **constructor**(): void
@@ -842,6 +872,7 @@ The Combo component is similar to in that it provides a list of options from whi
 - **SuspendNotifications**(dataSource: object): void — Stops reporting changes to dataSource until , so many changes can be applied as one update.
 
 ### [IgbComboBoxBaseLike](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbComboBoxBaseLike)
+Extends: IgbBaseComboBox, IgbComponentBase
 Base class shared by , , and .
 
 - **constructor**(): void
@@ -855,6 +886,7 @@ Base class shared by , , and .
 - **Detail**: `IgbComboChangeEventArgsDetail` — Describes the selection change: the new value, the items it affected and the kind of change.
 
 ### [IgbComboChangeEventArgs<TValue, TItem>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbComboChangeEventArgs<TValue, TItem>)
+Extends: IgbComboChangeEventArgs
 Event arguments for the event.
 
 - **constructor**(): void
@@ -869,6 +901,7 @@ Event arguments for the event.
 - **NewValue**: `object[]` — The value of the combo after the change.
 
 ### [IgbComboChangeEventArgsDetail<TValue, TItem>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbComboChangeEventArgsDetail<TValue, TItem>)
+Extends: IgbComboChangeEventArgsDetail
 Describes a selection change of an : the new value, the items it affected and the kind of change.
 
 - **constructor**(): void
@@ -924,6 +957,7 @@ Event arguments for component events that carry an arbitrary data payload. The t
 - **Detail**: `DateTime?` — The date value carried by the event.
 
 ### [IgbComponentDateValueChangedEventArgs<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbComponentDateValueChangedEventArgs<TValue>)
+Extends: IgbComponentDateValueChangedEventArgs
 Event arguments for component events that carry a date payload. The meaning of depends on the event that raises it.
 
 - **constructor**(): void
@@ -954,6 +988,7 @@ The amounts by which each date or time part is incremented or decremented on a s
 - **Year**: `double` — The number of years the year part is spun by.
 
 ### [IgbDatePicker<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDatePicker<TValue>)
+Extends: IgbComboBoxBaseLike, IgbBaseComboBox, IgbComponentBase
 A feature rich component used for entering a date through manual text input or choosing date values from a calendar dialog that pops up.
 
 - **constructor**(): void
@@ -1030,6 +1065,7 @@ Describes a set of dates by combining a range type with the dates it applies to.
 - **RangeType**: `DateRangeType` — The kind of range being described, which determines how is matched.
 
 ### [IgbDateRangePicker<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDateRangePicker<TValue>)
+Extends: IgbComboBoxBaseLike, IgbBaseComboBox, IgbComponentBase
 The Date Range Picker includes a text input and a calendar pop-up, allowing users to easily select start and end dates.
 
 - **constructor**(): void
@@ -1102,6 +1138,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbDateRangePickerResourceStrings](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDateRangePickerResourceStrings)
+Extends: IgbCalendarResourceStrings
 The localized strings used by the date range picker, exposed through .
 
 - **constructor**(): void
@@ -1134,9 +1171,27 @@ Event arguments for the events that carry a date range payload.
 - **Detail**: `IgbDateRangeValueDetail<TValue>` — The date range carried by the event.
 
 ### [IgbDateTimeInput<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDateTimeInput<TValue>)
+Extends: IgbComponentBase
 A date time input is an input field that lets you set and edit the date and time in a chosen input element using customizable display and input formats.
 
 - **constructor**(): void
+- **Outlined**: `bool` — Whether the control will have outlined appearance.
+- **Placeholder**: `string` — The placeholder text of the control.
+- **Label**: `string` — The label for the control.
+- **Name**: `string` — The name of the control, under which its value is submitted with its form. Forms posted to the server, as in static server rendering, bind fields by this name.
+- **InputFormat**: `string` — The date format to apply on the input.
+- **Min**: `TValue` — The minimum value required for the input to remain valid.
+- **Max**: `TValue` — The maximum value required for the input to remain valid.
+- **DisplayFormat**: `string` — Format to display the value in when not editing. Defaults to the locale format if not set.
+- **SpinDelta**: `IgbDatePartDeltas` — Delta values used to increment or decrement each date part on step actions. All values default to 1.
+- **SpinLoop**: `bool` — Sets whether to loop over the currently spun segment.
+- **Locale**: `string` — Gets/Sets the locale used for formatting the display value.
+- **ReadOnly**: `bool` — Makes the control a readonly field.
+- **Mask**: `string` — The mask pattern of the component.
+- **Prompt**: `string` — The prompt symbol to use for unfilled parts of the mask pattern. Defaults to _.
+- **Disabled**: `bool` — The disabled state of the component.
+- **Required**: `bool` — Makes the control a required field in a form context.
+- **Invalid**: `bool` — Sets the control into invalid state (visual state only).
 - **Blur**: `EventCallback<IgbVoidEventArgs>` — Emitted when the component loses focus.
 - **BlurScript**: `string` — Name of a client-side function that handles the event in the browser instead.
 - **Change**: `EventCallback<IgbComponentDateValueChangedEventArgs<TValue>>` — Emitted when the user modifies and commits the component's value.
@@ -1147,6 +1202,24 @@ A date time input is an input field that lets you set and edit the date and time
 - **InputOcurredScript**: `string` — Name of a client-side function that handles the event in the browser instead.
 - **Value**: `TValue` — The value of the input.
 - **ValueChanged**: `EventCallback<TValue>` — Emitted when the Value property changes. Enables two-way binding through .
+- **SelectAsync**(): Task — Selects all the text inside the input.
+- **Select**(): void — Selects all the text inside the input.
+- **FocusComponentAsync**(options: IgbFocusOptions): Task — Sets focus on the control.
+- **FocusComponent**(options: IgbFocusOptions): void — Sets focus on the control.
+- **BlurComponentAsync**(): Task — Removes focus from the control.
+- **BlurComponent**(): void — Removes focus from the control.
+- **ClearAsync**(): Task — Clears the component of any user input.
+- **Clear**(): void — Clears the component of any user input.
+- **SetSelectionRangeAsync**(start: double, end: double, direction: string): Task — Sets the text selection range of the control.
+- **SetSelectionRange**(start: double, end: double, direction: string): void — Sets the text selection range of the control.
+- **SetRangeTextAsync**(replacement: string, start: double, end: double, selectMode: string): Task — Replaces the selected text in the control and re-applies the mask.
+- **SetRangeText**(replacement: string, start: double, end: double, selectMode: string): void — Replaces the selected text in the control and re-applies the mask.
+- **ReportValidityAsync**(): Task<bool> — Checks for validity of the control and shows the browser message if it's invalid.
+- **ReportValidity**(): bool — Checks for validity of the control and shows the browser message if it's invalid.
+- **CheckValidityAsync**(): Task<bool> — Checks for validity of the control and emits the invalid event if it's invalid.
+- **CheckValidity**(): bool — Checks for validity of the control and emits the invalid event if it's invalid.
+- **SetCustomValidityAsync**(message: string): Task — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
+- **SetCustomValidity**(message: string): void — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 - **GetCurrentValue**(): TValue — Returns the current value of the input.
 - **GetCurrentValueAsync**(): Task<TValue> — Returns the current value of the input.
@@ -1164,6 +1237,7 @@ A date time input is an input field that lets you set and edit the date and time
 - **StepUpAsync**(datePart: DatePart?, delta: double): Task — Increments a date/time portion.
 
 ### [IgbDateTimeInputBase<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDateTimeInputBase<TValue>)
+Extends: IgbComponentBase
 Base class for .
 
 - **constructor**(): void
@@ -1210,6 +1284,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbDialog](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDialog)
+Extends: IgbComponentBase
 A modal dialog component built on the native <dialog> element. The dialog traps focus while open and blocks interaction with the rest of the page (modal semantics). It supports animated open/close transitions, an optional backdrop overlay, and multiple content areas through named slots. The component integrates with the Invoker Commands API: an or a native <button> with command="--show" / "--hide" / "--toggle" and commandfor pointing to this element will call the corresponding method declaratively.
 
 - **constructor**(): void
@@ -1238,6 +1313,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbDivider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDivider)
+Extends: IgbComponentBase
 The divider allows the content author to easily create a horizontal or vertical rule as a break between content, to better organize information on a page.
 
 - **constructor**(): void
@@ -1253,6 +1329,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbDropdown](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDropdown)
+Extends: IgbComboBoxBaseLike, IgbBaseComboBox, IgbComponentBase
 Represents a dropdown component.
 
 - **constructor**(): void
@@ -1289,6 +1366,7 @@ Represents a dropdown component.
 - **ToggleAsync**(target_: object): Task<bool> — Toggles the open state of the dropdown, anchoring it to the specified target.
 
 ### [IgbDropdownGroup](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDropdownGroup)
+Extends: IgbComponentBase
 A container for a group of dropdown items.
 
 - **constructor**(): void
@@ -1301,6 +1379,7 @@ A container for a group of dropdown items.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbDropdownHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDropdownHeader)
+Extends: IgbComponentBase
 Represents a header item in a dropdown list.
 
 - **constructor**(): void
@@ -1313,9 +1392,14 @@ Represents a header item in a dropdown list.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbDropdownItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbDropdownItem)
+Extends: IgbComponentBase
 Represents an item in a dropdown list.
 
 - **constructor**(): void
+- **Active**: `bool` — Whether the item is active.
+- **Disabled**: `bool` — Whether the item is disabled.
+- **Selected**: `bool` — Whether the item is selected.
+- **Value**: `TValue` — The current value of the item. If not specified, the text content of the item is used.
 - **DisposeAsync**(): ValueTask
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 - **OnInitializedAsync**(): Task
@@ -1339,6 +1423,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbExpansionPanel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbExpansionPanel)
+Extends: IgbComponentBase
 The Expansion Panel Component provides a way to display information in a toggleable way - compact summary view containing title and description and expanded detail view containing additional content to the summary header.
 
 - **constructor**(): void
@@ -1390,6 +1475,7 @@ Options controlling how a component is focused, passed to the FocusComponent met
 - **PreventScroll**: `bool` — Whether the browser should keep the current scroll position instead of scrolling the newly focused component into view. Defaults to false.
 
 ### [IgbHighlight](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbHighlight)
+Extends: IgbComponentBase
 The highlight component provides efficient searching and highlighting of text projected into it via its default slot. It uses the native CSS Custom Highlight API to apply highlight styles to matched text nodes without modifying the DOM. The component supports case-sensitive matching, programmatic navigation between matches, and automatic scroll-into-view of the active match.
 
 - **constructor**(): void
@@ -1422,6 +1508,7 @@ Options for controlling navigation behavior when moving the active highlight.
 - **PreventScroll**: `bool` — When true, prevents the component from scrolling the new active match into view.
 
 ### [IgbIcon](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbIcon)
+Extends: IgbComponentBase
 The icon component allows visualizing collections of pre-registered SVG icons.
 
 - **constructor**(): void
@@ -1441,6 +1528,7 @@ The icon component allows visualizing collections of pre-registered SVG icons.
 - **SetIconRefAsync**(name: string, collection: string, icon: IgbIconMeta): Task — Sets an icon reference/alias that points to another icon.
 
 ### [IgbIconButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbIconButton)
+Extends: IgbButtonBase, IgbComponentBase
 A button that displays a single icon, designed for compact, icon-only interactions such as toolbar actions, floating action buttons, or inline controls. The icon is sourced from the icon registry via the and properties. Like , it can render as an anchor element when is set and is fully form-associated.
 
 - **constructor**(): void
@@ -1474,9 +1562,24 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbInput](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbInput)
+Extends: IgbComponentBase
 A highly customizable single-line text field for entering and editing data, with support for prefix/suffix content, helper text, form integration, and built-in validation.
 
 - **constructor**(): void
+- **Outlined**: `bool` — Whether the control will have outlined appearance.
+- **Placeholder**: `string` — The placeholder text of the control.
+- **Label**: `string` — The label for the control.
+- **Name**: `string` — The name of the control, under which its value is submitted with its form. Forms posted to the server, as in static server rendering, bind fields by this name.
+- **Disabled**: `bool` — The disabled state of the component.
+- **Required**: `bool` — Makes the control a required field in a form context.
+- **Invalid**: `bool` — Sets the control into invalid state (visual state only).
+- **InputOcurredScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **InputOcurred**: `EventCallback<IgbComponentValueChangedEventArgs>` — Emitted when the control input receives user input.
+- **FocusScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **Focus**: `EventCallback<IgbVoidEventArgs>` — Emitted when the component gains focus.
+- **BlurScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **Blur**: `EventCallback<IgbVoidEventArgs>` — Emitted when the component loses focus.
+- **ValueChanging**: `EventCallback<TValue>` — Emitted as the user types, carrying the current value of the input. Raised alongside , whose payload it unwraps.
 - **Autocomplete**: `string` — The autocomplete attribute of the control.
 - **Autofocus**: `bool` — The autofocus attribute of the control.
 - **Change**: `EventCallback<IgbComponentValueChangedEventArgs>` — Emitted when the control's value changes.
@@ -1493,6 +1596,18 @@ A highly customizable single-line text field for entering and editing data, with
 - **ValidateOnly**: `bool` — Enables validation rules to be evaluated without restricting user input. This applies to the property for string-type inputs, or allows spin buttons to exceed the predefined and limits for number-type inputs.
 - **Value**: `string` — The value of the control.
 - **ValueChanged**: `EventCallback<string>` — Emitted when the Value property changes. Enables two-way binding through .
+- **SelectAsync**(): Task — Selects all the text inside the input.
+- **Select**(): void — Selects all the text inside the input.
+- **FocusComponentAsync**(options: IgbFocusOptions): Task — Sets focus on the control.
+- **FocusComponent**(options: IgbFocusOptions): void — Sets focus on the control.
+- **BlurComponentAsync**(): Task — Removes focus from the control.
+- **BlurComponent**(): void — Removes focus from the control.
+- **ReportValidityAsync**(): Task<bool> — Checks for validity of the control and shows the browser message if it's invalid.
+- **ReportValidity**(): bool — Checks for validity of the control and shows the browser message if it's invalid.
+- **CheckValidityAsync**(): Task<bool> — Checks for validity of the control and emits the invalid event if it's invalid.
+- **CheckValidity**(): bool — Checks for validity of the control and emits the invalid event if it's invalid.
+- **SetCustomValidityAsync**(message: string): Task — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
+- **SetCustomValidity**(message: string): void — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 - **GetCurrentValue**(): string — Returns the current value of the control.
 - **GetCurrentValueAsync**(): Task<string> — Returns the current value of the control.
@@ -1502,6 +1617,7 @@ A highly customizable single-line text field for entering and editing data, with
 - **StepUpAsync**(n: double): Task — Increments the numeric value of the input by one or more steps.
 
 ### [IgbInputBase<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbInputBase<TValue>)
+Extends: IgbComponentBase
 Base class for and .
 
 - **constructor**(): void
@@ -1539,6 +1655,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbLinearProgress](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbLinearProgress)
+Extends: IgbProgressBase, IgbComponentBase
 A linear progress indicator used to express unspecified wait time or display the length of a process.
 
 - **constructor**(): void
@@ -1553,12 +1670,14 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbList](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbList)
+Extends: IgbComponentBase
 Displays a collection of data items in a templatable list format.
 
 - **constructor**(): void
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbListHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbListHeader)
+Extends: IgbComponentBase
 Header list item.
 
 - **constructor**(): void
@@ -1571,6 +1690,7 @@ Header list item.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbListItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbListItem)
+Extends: IgbComponentBase
 The list-item component is a container intended for row items in the list component.
 
 - **constructor**(): void
@@ -1590,9 +1710,24 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbMaskInput](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbMaskInput)
+Extends: IgbComponentBase
 A masked input is an input field where a developer can control user input and format the visible value, based on configurable rules.
 
 - **constructor**(): void
+- **Outlined**: `bool` — Whether the control will have outlined appearance.
+- **Placeholder**: `string` — The placeholder text of the control.
+- **Label**: `string` — The label for the control.
+- **Name**: `string` — The name of the control, under which its value is submitted with its form. Forms posted to the server, as in static server rendering, bind fields by this name.
+- **Disabled**: `bool` — The disabled state of the component.
+- **Required**: `bool` — Makes the control a required field in a form context.
+- **Invalid**: `bool` — Sets the control into invalid state (visual state only).
+- **InputOcurredScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **InputOcurred**: `EventCallback<IgbComponentValueChangedEventArgs>` — Emitted when the control input receives user input.
+- **FocusScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **Focus**: `EventCallback<IgbVoidEventArgs>` — Emitted when the component gains focus.
+- **BlurScript**: `string` — Name of a client-side function that handles the event in the browser instead.
+- **Blur**: `EventCallback<IgbVoidEventArgs>` — Emitted when the component loses focus.
+- **ValueChanging**: `EventCallback<TValue>` — Emitted as the user types, carrying the current value of the input. Raised alongside , whose payload it unwraps.
 - **Change**: `EventCallback<IgbComponentValueChangedEventArgs>` — Emitted when an alteration of the control's value is committed by the user.
 - **ChangeScript**: `string` — Name of a client-side function that handles the event in the browser instead.
 - **Mask**: `string` — The masked pattern of the component.
@@ -1601,6 +1736,18 @@ A masked input is an input field where a developer can control user input and fo
 - **Value**: `string` — The value of the input. Regardless of the current , an empty value returns an empty string.
 - **ValueChanged**: `EventCallback<string>` — Emitted when the property changes. Enables two-way binding through .
 - **ValueMode**: `MaskInputValueMode` — Dictates the behavior when retrieving the value of the control. returns the clean input, for example 5551234567. returns the value with the mask formatting applied, for example (555) 123-4567. Empty values always return an empty string, regardless of the value mode.
+- **SelectAsync**(): Task — Selects all the text inside the input.
+- **Select**(): void — Selects all the text inside the input.
+- **FocusComponentAsync**(options: IgbFocusOptions): Task — Sets focus on the control.
+- **FocusComponent**(options: IgbFocusOptions): void — Sets focus on the control.
+- **BlurComponentAsync**(): Task — Removes focus from the control.
+- **BlurComponent**(): void — Removes focus from the control.
+- **ReportValidityAsync**(): Task<bool> — Checks for validity of the control and shows the browser message if it's invalid.
+- **ReportValidity**(): bool — Checks for validity of the control and shows the browser message if it's invalid.
+- **CheckValidityAsync**(): Task<bool> — Checks for validity of the control and emits the invalid event if it's invalid.
+- **CheckValidity**(): bool — Checks for validity of the control and emits the invalid event if it's invalid.
+- **SetCustomValidityAsync**(message: string): Task — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
+- **SetCustomValidity**(message: string): void — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 - **GetCurrentValue**(): string — Returns the current value of the input. Regardless of the current , an empty value returns an empty string.
 - **GetCurrentValueAsync**(): Task<string> — Returns the current value of the input. Regardless of the current , an empty value returns an empty string.
@@ -1621,6 +1768,7 @@ Marks a module class so the trimmer preserves its public methods whenever the ty
 - **constructor**(): void
 
 ### [IgbNavbar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbNavbar)
+Extends: IgbComponentBase
 A navigation bar component is used to facilitate navigation through a series of hierarchical screens within an app.
 
 - **constructor**(): void
@@ -1633,6 +1781,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbNavDrawer](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbNavDrawer)
+Extends: IgbComponentBase
 A side navigation container that provides quick access between views within an application. For non-relative positions (, , , ) the drawer is rendered as a native <dialog> element, providing modal semantics, automatic focus trapping, and a backdrop. For the position it is rendered inline as a <nav> landmark. When content is provided in the mini slot, a compact icon-only variant is always displayed alongside the main drawer (hidden only while the full drawer is open). The component integrates with the Invoker Commands API: an Ignite UI button or a native <button> with command="--show" / "--hide" / "--toggle" and commandfor pointing to this component will call the corresponding method declaratively.
 
 - **constructor**(): void
@@ -1653,6 +1802,7 @@ A side navigation container that provides quick access between views within an a
 - **ToggleAsync**(): Task<bool> — Toggles the open state of the drawer. Delegates to or depending on the current state.
 
 ### [IgbNavDrawerHeaderItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbNavDrawerHeaderItem)
+Extends: IgbComponentBase
 Represents a navigation drawer header item.
 
 - **constructor**(): void
@@ -1665,6 +1815,7 @@ Represents a navigation drawer header item.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbNavDrawerItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbNavDrawerItem)
+Extends: IgbComponentBase
 Represents a navigation drawer item.
 
 - **constructor**(): void
@@ -1688,6 +1839,7 @@ Client resource module for .
 Event arguments for component events whose payload is a single number.
 
 - **constructor**(): void
+- **Detail**: `TValue` — The numeric payload of the event. Its meaning depends on the event that carries it, for example the new value of the control or the index of the affected item.
 
 ### [IgbNumberEventArgs<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbNumberEventArgs<TValue>)
 Event arguments carrying a typed numeric payload.
@@ -1718,6 +1870,7 @@ The options used to format numbers, mirroring the browser Intl.NumberFormatOptio
 - **UseGrouping**: `NumberFormatGrouping` — When grouping separators, such as thousands separators, are used.
 
 ### [IgbProgressBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbProgressBase)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -1730,6 +1883,7 @@ Base class shared by and .
 - **Variant**: `StyleVariant` — The variant of the control.
 
 ### [IgbQrCode](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbQrCode)
+Extends: IgbComponentBase
 Generates a QR code based on the provided value and options. The component renders an SVG representation of the QR code, which can be customized using various properties.
 
 - **constructor**(): void
@@ -1762,6 +1916,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbRadio<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRadio<TValue>)
+Extends: IgbComponentBase
 The radio component allows the user to select a single option from an available set of options that are listed side by side.
 
 - **constructor**(): void
@@ -1809,6 +1964,7 @@ The payload of the and events.
 - **Value**: `TValue` — The value of the radio button.
 
 ### [IgbRadioGroup<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRadioGroup<TValue>)
+Extends: IgbComponentBase
 Unifies one or more components into a single group.
 
 - **constructor**(): void
@@ -1835,6 +1991,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbRangeSlider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRangeSlider)
+Extends: IgbSliderBase, IgbComponentBase
 A range slider component used to select two numeric values within a range.
 
 - **constructor**(): void
@@ -1868,6 +2025,7 @@ Event arguments for the value events, such as and .
 - **Detail**: `IgbRangeSliderValue` — The lower and upper thumb values of the range slider.
 
 ### [IgbRating<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRating<TValue>)
+Extends: IgbComponentBase
 A rating component that allows users to view and provide ratings using customizable symbols. It supports fractional values, hover previews, keyboard navigation, single-selection mode, and integrates with forms as a number input.
 
 - **constructor**(): void
@@ -1909,6 +2067,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbRatingSymbol](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRatingSymbol)
+Extends: IgbComponentBase
 Used when a custom icon/symbol/element needs to be passed to an component.
 
 - **constructor**(): void
@@ -1928,6 +2087,7 @@ Options controlling how an icon is registered, passed to the RegisterIcon and Re
 - **StripMeta**: `bool` — Whether to strip SVG meta elements (<title> and <desc>) from the icon before storing it. This prevents the native browser tooltip on hover; the title text stays available as the aria-label of the host icon element.
 
 ### [IgbRipple](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbRipple)
+Extends: IgbComponentBase
 A ripple can be applied to an element to represent an interactive surface.
 
 - **constructor**(): void
@@ -1940,6 +2100,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbSelect<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSelect<TValue>)
+Extends: IgbComboBoxBaseLike, IgbBaseComboBox, IgbComponentBase
 Represents a control that provides a menu of options.
 
 - **constructor**(): void
@@ -1992,6 +2153,7 @@ Represents a control that provides a menu of options.
 - **SetCustomValidityAsync**(message: string): Task — Sets a custom validation message for the control. As long as message is not empty, the control is considered invalid.
 
 ### [IgbSelectGroup<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSelectGroup<TValue>)
+Extends: IgbComponentBase
 A container for a group of select items.
 
 - **constructor**(): void
@@ -2006,6 +2168,7 @@ A container for a group of select items.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbSelectHeader](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSelectHeader)
+Extends: IgbComponentBase
 Represents a header item in an component.
 
 - **constructor**(): void
@@ -2018,9 +2181,14 @@ Represents a header item in an component.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbSelectItem<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSelectItem<TValue>)
+Extends: IgbComponentBase
 Represents an item in a select list.
 
 - **constructor**(): void
+- **Active**: `bool` — Whether the item is active.
+- **Disabled**: `bool` — Whether the item is disabled.
+- **Selected**: `bool` — Whether the item is selected.
+- **Value**: `TValue` — The current value of the item. If not specified, the text content of the item is used.
 - **DisposeAsync**(): ValueTask
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 - **OnInitializedAsync**(): Task
@@ -2044,6 +2212,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbSlider<TValue>](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSlider<TValue>)
+Extends: IgbSliderBase, IgbComponentBase
 A slider component used to select numeric value within a range.
 
 - **constructor**(): void
@@ -2070,6 +2239,7 @@ A slider component used to select numeric value within a range.
 - **StepUpAsync**(stepIncrement: double): Task — Increments the value of the slider by stepIncrement * step, where stepIncrement defaults to 1.
 
 ### [IgbSliderBase](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSliderBase)
+Extends: IgbComponentBase
 Base class shared by and .
 
 - **constructor**(): void
@@ -2098,6 +2268,7 @@ Base class shared by and .
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbSliderLabel](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSliderLabel)
+Extends: IgbComponentBase
 Allows formatting the values of the slider as string values. The text content of the slider labels is used for thumb and tick labels.
 
 - **constructor**(): void
@@ -2116,6 +2287,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbSnackbar](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSnackbar)
+Extends: IgbBaseAlertLike, IgbComponentBase
 A snackbar component is used to provide feedback about an operation by showing a brief message at the bottom of the screen. The component integrates with the Invoker Commands API: an Ignite UI button or a native <button> with command="--show" / "--hide" / "--toggle" and commandfor pointing to this component will call the corresponding method declaratively.
 
 - **constructor**(): void
@@ -2131,6 +2303,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbSplitter](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSplitter)
+Extends: IgbComponentBase
 A splitter component that provides a resizable split-pane layout, dividing the view into two panels — start and end — separated by a draggable bar. Panels can be resized by dragging the bar, using keyboard shortcuts, or collapsed/expanded using the built-in collapse buttons or the method. Nested splitters are supported for more complex layouts.
 
 - **constructor**(): void
@@ -2195,6 +2368,7 @@ The payload of the , and events.
 - **StartPanelSize**: `double` — The current size of the start panel in pixels.
 
 ### [IgbStep](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbStep)
+Extends: IgbComponentBase
 A step component used within an to represent an individual step in a wizard-like workflow.
 
 - **constructor**(): void
@@ -2212,6 +2386,7 @@ A step component used within an to represent an individual step in a wizard-like
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbStepper](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbStepper)
+Extends: IgbComponentBase
 A stepper component that provides a wizard-like workflow by dividing content into logical steps.
 
 - **constructor**(): void
@@ -2246,6 +2421,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbSwitch](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbSwitch)
+Extends: IgbCheckboxBase, IgbComponentBase
 Similar to a checkbox, a switch controls the state of a single setting on or off.
 
 - **constructor**(): void
@@ -2258,6 +2434,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbTab](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTab)
+Extends: IgbComponentBase
 A tab nested in an component.
 
 - **constructor**(): void
@@ -2282,6 +2459,7 @@ Event arguments for the event, carrying the instance the event applies to.
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbTabs](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTabs)
+Extends: IgbComponentBase
 Tabs organize and allow navigation between groups of content that are related and at the same level of hierarchy. The component allows the user to navigate between multiple children. It supports keyboard navigation and provides API methods to control the selected tab.
 
 - **constructor**(): void
@@ -2304,6 +2482,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbTextarea](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTextarea)
+Extends: IgbComponentBase
 Represents a multi-line plain-text editing control, useful when you want to allow users to enter a sizeable amount of free-form text, for example a comment on a review or feedback form.
 
 - **constructor**(): void
@@ -2354,6 +2533,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbThemeProvider](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbThemeProvider)
+Extends: IgbComponentBase
 A theme provider component that uses Lit context to provide theme information to descendant components. This component allows you to scope a theme to a specific part of the page. All library components within this provider will use the specified theme instead of the global theme.
 
 - **constructor**(): void
@@ -2368,6 +2548,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbTile](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTile)
+Extends: IgbComponentBase
 The tile component is used within the as a container for displaying various types of information.
 
 - **constructor**(): void
@@ -2422,6 +2603,7 @@ Event arguments for the tile drag and resize events raised by and , such as and 
 - **Detail**: `IgbTile` — The tile the operation applies to.
 
 ### [IgbTileManager](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTileManager)
+Extends: IgbComponentBase
 The tile manager component enables the dynamic arrangement, resizing, and interaction of tiles.
 
 - **constructor**(): void
@@ -2468,6 +2650,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbToast](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbToast)
+Extends: IgbBaseAlertLike, IgbComponentBase
 A toast component is used to show a brief, non-interactive notification.
 
 - **constructor**(): void
@@ -2480,6 +2663,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbToggleButton](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbToggleButton)
+Extends: IgbComponentBase
 The wraps a native button element and exposes additional and properties. It is used in the context of an to facilitate the creation of group/toolbar like UX behaviors.
 
 - **constructor**(): void
@@ -2501,6 +2685,7 @@ The wraps a native button element and exposes additional and properties. It is u
 - **Register**(runtime: IIgniteUIBlazor): void — No-op.
 
 ### [IgbTooltip](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTooltip)
+Extends: IgbComponentBase
 Provides a way to display supplementary information related to an element when a user interacts with it, for example on hover or focus. It offers features such as placement customization, delays, sticky mode, and animations.
 
 - **constructor**(): void
@@ -2539,6 +2724,7 @@ Client resource module for .
 - **Register**(runtime: IIgniteUIBlazor): void — Requests this module's client resources to be loaded into the runtime.
 
 ### [IgbTree](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTree)
+Extends: IgbComponentBase
 The tree allows users to represent hierarchical data in a tree-view structure, maintaining parent-child relationships, as well as to define static tree-view structure without a corresponding data model.
 
 - **constructor**(): void
@@ -2560,6 +2746,7 @@ The tree allows users to represent hierarchical data in a tree-view structure, m
 - **EnsureModulesLoaded**(): void — Requests the client modules this component needs; override to register more through .
 
 ### [IgbTreeItem](https://www.infragistics.com/api/blazor/IgniteUI.Blazor.Lite/1.0.1/classes/IgbTreeItem)
+Extends: IgbComponentBase
 The tree-item component represents a child item of the tree component or another tree item.
 
 - **constructor**(): void

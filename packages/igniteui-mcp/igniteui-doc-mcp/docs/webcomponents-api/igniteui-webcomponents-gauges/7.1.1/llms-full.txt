@@ -9,6 +9,7 @@ Version: 7.1
 ## Classes
 
 ### [IgcAlignLinearGraphLabelEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-gauges/7.1.0/classes/IgcAlignLinearGraphLabelEventArgs)
+Extends: IgcFormatLinearGraphLabelEventArgs
 Represents event argument for AlignLinearGraphLabel.
 
 - **constructor**(): IgcAlignLinearGraphLabelEventArgs
@@ -19,6 +20,7 @@ Represents event argument for AlignLinearGraphLabel.
 - **width**: `number`
 
 ### [IgcAlignRadialGaugeLabelEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-gauges/7.1.0/classes/IgcAlignRadialGaugeLabelEventArgs)
+Extends: IgcFormatRadialGaugeLabelEventArgs
 Represents event argument for AlignRadialGaugeLabel.
 
 - **constructor**(): IgcAlignRadialGaugeLabelEventArgs

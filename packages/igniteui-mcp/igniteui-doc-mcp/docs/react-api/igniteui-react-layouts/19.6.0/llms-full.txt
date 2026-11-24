@@ -627,6 +627,7 @@ overlaid onto the generated actions.
 - static **_createFromInternal**(internal: any): IgrToolAction
 
 ### [IgrToolActionButton](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionButton)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionButtonProps): IgrToolActionButton
@@ -635,6 +636,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionButtonPair](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionButtonPair)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionButtonPairProps): IgrToolActionButtonPair
@@ -678,6 +680,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionCheckbox](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionCheckbox)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionCheckboxProps): IgrToolActionCheckbox
@@ -697,6 +700,7 @@ for more compact display.
 - **exportVisualData**(): any
 
 ### [IgrToolActionCheckboxGroup](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionCheckboxGroup)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionCheckboxGroupProps): IgrToolActionCheckboxGroup
@@ -708,6 +712,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - **exportVisualData**(): any
 
 ### [IgrToolActionCheckboxList](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionCheckboxList)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionCheckboxListProps): IgrToolActionCheckboxList
@@ -734,6 +739,7 @@ Represents base class for all tool actions in toolbar
 - **constructor**(list?: IgrToolAction<IIgrToolActionProps>[]): IgrToolActionCollection
 
 ### [IgrToolActionColorEditor](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionColorEditor)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionColorEditorProps): IgrToolActionColorEditor
@@ -741,6 +747,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionCombo](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionCombo)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionComboProps): IgrToolActionCombo
@@ -769,6 +776,7 @@ Represents base class for all tool actions in toolbar
 - **constructor**(list?: IgrToolActionEventDetail[]): IgrToolActionEventDetailCollection
 
 ### [IgrToolActionFieldSelector](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionFieldSelector)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionFieldSelectorProps): IgrToolActionFieldSelector
@@ -817,6 +825,7 @@ If list provided has custom aggregations the data source is never updated.
 - **constructor**(list?: IgrToolActionFieldSelectorSelectedAggregation[]): IgrToolActionFieldSelectorSelectedAggregationsCollection
 
 ### [IgrToolActionGroupHeader](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionGroupHeader)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionGroupHeaderProps): IgrToolActionGroupHeader
@@ -825,6 +834,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionIconButton](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionIconButton)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: P): IgrToolActionIconButton<P>
@@ -845,6 +855,7 @@ Represents base class for all tool actions in toolbar
 - **openSubMenu**(): void
 
 ### [IgrToolActionIconMenu](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionIconMenu)
+Extends: IgrToolActionIconButton
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: P): IgrToolActionIconMenu<P>
@@ -854,12 +865,14 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionLabel](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionLabel)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionLabelProps): IgrToolActionLabel
 - **exportVisualData**(): any
 
 ### [IgrToolActionNumberInput](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionNumberInput)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionNumberInputProps): IgrToolActionNumberInput
@@ -882,6 +895,7 @@ Represents base class for all tool actions in toolbar
 - **sourceAction**: `IgrToolAction`
 
 ### [IgrToolActionRadio](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionRadio)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionRadioProps): IgrToolActionRadio
@@ -904,6 +918,7 @@ for more compact display.
 - **exportVisualData**(): any
 
 ### [IgrToolActionRadioGroup](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionRadioGroup)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionRadioGroupProps): IgrToolActionRadioGroup
@@ -915,6 +930,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - **exportVisualData**(): any
 
 ### [IgrToolActionSeparator](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionSeparator)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionSeparatorProps): IgrToolActionSeparator
@@ -923,6 +939,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionSubPanel](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionSubPanel)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionSubPanelProps): IgrToolActionSubPanel
@@ -930,6 +947,7 @@ Represents base class for all tool actions in toolbar
 - **exportVisualData**(): any
 
 ### [IgrToolActionTextInput](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/classes/IgrToolActionTextInput)
+Extends: IgrToolAction
 Represents base class for all tool actions in toolbar
 
 - **constructor**(props: IIgrToolActionTextInputProps): IgrToolActionTextInput
@@ -1472,6 +1490,7 @@ If a primary key cannot be inferred from the data source, you may need to provid
 - **valueType?**: `string | PropertyEditorValueType`
 
 ### [IIgrToolActionButtonPairProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionButtonPairProps)
+Extends: IIgrToolActionProps
 
 - **actualLeftIconFill?**: `string` — Gets the actual LeftIcon fill color.
 - **actualLeftIconStroke?**: `string` — Gets the actual LeftIcon stroke color.
@@ -1512,11 +1531,13 @@ If a primary key cannot be inferred from the data source, you may need to provid
 - **rightTitle?**: `string` — Gets or sets the title of the Right button.
 
 ### [IIgrToolActionButtonProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionButtonProps)
+Extends: IIgrToolActionProps
 
 - **cornerRadius?**: `string | number` — Gets or sets the button corner radius.
 - **displayType?**: `string | ToolActionButtonDisplayType` — Gets or sets the display type for the button.
 
 ### [IIgrToolActionCheckboxGroupProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionCheckboxGroupProps)
+Extends: IIgrToolActionProps
 
 - **actualSelectedTextColor?**: `string` — Gets the resolved color for the selected checkbox display text.
 - **selectedTextColor?**: `string` — Gets or sets the color for the selected checkbox display text.
@@ -1525,6 +1546,7 @@ When null, defaults to a lightened version of the ToolPanel's text color.
 When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
 
 ### [IIgrToolActionCheckboxListProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionCheckboxListProps)
+Extends: IIgrToolActionProps
 
 - **actualCheckedBackgroundColor?**: `string` — Gets the actual background color of the checkbox when in the checked state.
 - **actualCheckedBorderColor?**: `string` — Gets the actual border color of the checkbox when in the checked state.
@@ -1543,6 +1565,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - **uncheckedBorderColor?**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
 
 ### [IIgrToolActionCheckboxProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionCheckboxProps)
+Extends: IIgrToolActionProps
 
 - **actualCheckedBackgroundColor?**: `string` — Gets the actual background color of the checkbox when in the checked state.
 - **actualCheckedBorderColor?**: `string` — Gets the actual border color of the checkbox when in the checked state.
@@ -1559,10 +1582,12 @@ for more compact display.
 - **uncheckedBorderColor?**: `string` — Gets or sets the border color of the checkbox when in the unchecked state.
 
 ### [IIgrToolActionColorEditorProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionColorEditorProps)
+Extends: IIgrToolActionProps
 
 - **value?**: `string` — Gets or sets the value for the input.
 
 ### [IIgrToolActionComboProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionComboProps)
+Extends: IIgrToolActionProps
 
 - **dataSource?**: `any` — Gets or sets if the tool action is checked.
 - **displayMemberPath?**: `string` — Gets or sets the field to use to get the displayed values.
@@ -1570,6 +1595,7 @@ for more compact display.
 - **valueMemberPath?**: `string` — Gets or sets the field to use to get the values to use.
 
 ### [IIgrToolActionFieldSelectorProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionFieldSelectorProps)
+Extends: IIgrToolActionProps
 
 - **actualPaddingBottom?**: `string | number`
 - **actualPaddingLeft?**: `string | number`
@@ -1589,11 +1615,13 @@ If list provided has custom aggregations the data source is never updated.
 - **updateDataSource?**: `string | boolean` — Gets or sets if the data source has to be updated when changes are made.
 
 ### [IIgrToolActionGroupHeaderProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionGroupHeaderProps)
+Extends: IIgrToolActionProps
 
 - **actualBackIconColor?**: `string` — Gets the actual back icon color.
 - **backIconColor?**: `string` — Gets or sets the icon color for the back button.
 
 ### [IIgrToolActionIconButtonProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionIconButtonProps)
+Extends: IIgrToolActionProps
 
 - **actualContentPaddingBottom?**: `string | number`
 - **actualContentPaddingLeft?**: `string | number`
@@ -1608,15 +1636,18 @@ If list provided has custom aggregations the data source is never updated.
 - **tooltipDelay?**: `string | number` — Gets or sets how long it takes before the tooltip is displayed (in milliseconds).
 
 ### [IIgrToolActionIconMenuProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionIconMenuProps)
+Extends: IIgrToolActionIconButtonProps
 
 - **actualArrowStroke?**: `string` — Gets the actual stroke color of the arrow icon.
 - **arrowStroke?**: `string` — Gets or sets the stroke color of the arrow icon.
 - **showArrowIcon?**: `string | boolean` — Gets or sets whether the arrow icon should be shown.
 
 ### [IIgrToolActionLabelProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionLabelProps)
+Extends: IIgrToolActionProps
 
 
 ### [IIgrToolActionNumberInputProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionNumberInputProps)
+Extends: IIgrToolActionProps
 
 - **value?**: `string | number` — Gets or sets the value for the input.
 
@@ -1713,6 +1744,7 @@ overlaid onto the generated actions.
 - **width?**: `string | number` — Gets or sets the width to use for this tool action.
 
 ### [IIgrToolActionRadioGroupProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionRadioGroupProps)
+Extends: IIgrToolActionProps
 
 - **actualSelectedTextColor?**: `string` — Gets the resolved color for the selected radio display text.
 - **selectedTextColor?**: `string` — Gets or sets the color for the selected radio display text.
@@ -1721,6 +1753,7 @@ When null, defaults to a lightened version of the ToolPanel's text color.
 When null, defaults to the ToolPanel's cell text style with a slightly smaller font size.
 
 ### [IIgrToolActionRadioProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionRadioProps)
+Extends: IIgrToolActionProps
 
 - **actualCheckedBackgroundColor?**: `string` — Gets the actual background color of the radio when in the checked state.
 - **actualCheckedBorderColor?**: `string` — Gets the actual border color of the radio when in the checked state.
@@ -1740,15 +1773,18 @@ for more compact display.
 - **uncheckedBorderColor?**: `string` — Gets or sets the border color of the radio when in the unchecked state.
 
 ### [IIgrToolActionSeparatorProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionSeparatorProps)
+Extends: IIgrToolActionProps
 
 - **isGroupHeaderSeparator?**: `string | boolean` — Gets or sets whether to use group header styling or regular styling on this separator.
 - **size?**: `string | number` — Gets or sets the size of the separator.
 
 ### [IIgrToolActionSubPanelProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionSubPanelProps)
+Extends: IIgrToolActionProps
 
 - **itemSpacing?**: `string | number` — Gets or sets the spacing between items.
 
 ### [IIgrToolActionTextInputProps](https://www.infragistics.com/api/react/igniteui-react-layouts/19.6.0/interfaces/IIgrToolActionTextInputProps)
+Extends: IIgrToolActionProps
 
 - **value?**: `string` — Gets or sets the value for the input.
 

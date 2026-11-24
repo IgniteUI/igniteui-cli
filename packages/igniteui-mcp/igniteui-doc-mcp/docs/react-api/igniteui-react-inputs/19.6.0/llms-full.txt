@@ -776,6 +776,7 @@ class where # is a number from 0 to count - 1.
 - **updateStyle**(): void
 
 ### [IgrXInput](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/classes/IgrXInput)
+Extends: IgrXInputGroupItem
 
 - **constructor**(props: any): IgrXInput
 - **actualDensity**: `ControlDisplayDensity` — Gets the actual display density to use for the label.
@@ -1036,6 +1037,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - static **_createFromInternal**(internal: any): IgrXInputGroupItem
 
 ### [IgrXLabel](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/classes/IgrXLabel)
+Extends: IgrXInputGroupItem
 
 - **constructor**(props: any): IgrXLabel
 - **actualDensity**: `ControlDisplayDensity` — Gets the actual display density to use for the label.
@@ -1076,6 +1078,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - **updateStyle**(): void
 
 ### [IgrXPrefix](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/classes/IgrXPrefix)
+Extends: IgrXInputGroupItem
 
 - **constructor**(props: IIgrXPrefixProps): IgrXPrefix
 - **ariaLabel**: `string` — Gets or sets the value of the aria-label attribute.
@@ -1126,6 +1129,7 @@ Or adding and removing ranges from the manual ranges collection on the ranges pr
 - **updateStyle**(): void
 
 ### [IgrXSuffix](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/classes/IgrXSuffix)
+Extends: IgrXInputGroupItem
 
 - **constructor**(props: IIgrXSuffixProps): IgrXSuffix
 - **ariaLabel**: `string` — Gets or sets the value of the aria-label attribute.
@@ -1894,6 +1898,7 @@ class where # is a number from 0 to count - 1.
 - **underlineWidth?**: `string | number` — Gets or sets the width to use for the underline element.
 
 ### [IIgrXInputProps](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/interfaces/IIgrXInputProps)
+Extends: IIgrXInputGroupItemProps
 
 - **actualDensity?**: `any` — Gets the actual display density to use for the label.
 - **actualHoverTextColor?**: `string` — Gets the actual hover color to use for the text.
@@ -1929,6 +1934,7 @@ class where # is a number from 0 to count - 1.
 - **value?**: `string` — Gets or sets the value for the input.
 
 ### [IIgrXLabelProps](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/interfaces/IIgrXLabelProps)
+Extends: IIgrXInputGroupItemProps
 
 - **actualDensity?**: `any` — Gets the actual display density to use for the label.
 - **actualHighlightTextColor?**: `string` — Gets the actual color to use for the text color.
@@ -1958,6 +1964,7 @@ class where # is a number from 0 to count - 1.
 - **value?**: `string | boolean` — Gets or sets the value for the label.
 
 ### [IIgrXPrefixProps](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/interfaces/IIgrXPrefixProps)
+Extends: IIgrXInputGroupItemProps
 
 - **ariaLabel?**: `string` — Gets or sets the value of the aria-label attribute.
 - **children?**: `any`
@@ -1979,6 +1986,7 @@ class where # is a number from 0 to count - 1.
 - **rippleDuration?**: `string | number` — Gets or sets the duration to use for the ripple animation.
 
 ### [IIgrXSuffixProps](https://www.infragistics.com/api/react/igniteui-react-inputs/19.6.0/interfaces/IIgrXSuffixProps)
+Extends: IIgrXInputGroupItemProps
 
 - **ariaLabel?**: `string` — Gets or sets the value of the aria-label attribute.
 - **children?**: `any`

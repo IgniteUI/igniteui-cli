@@ -71,7 +71,12 @@ It does not apply to programmatically created panes or layout restorations.
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **direction**: `string` — Gets the direction of the Dock Manager.
 - **isValidDrop**: `boolean` — Whether the last drop/drag target was valid.
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+- **addEventListener**(type: K, listener: any, options?: boolean | AddEventListenerOptions): void
+- **createAndDispatchEvent**(type: K, detail?: D, options?: CustomEventInit<D>): CustomEvent<D>
 - **dropPane**(): Promise<boolean>
+- **emitEvent**(type: K, eventInitDict?: CustomEventInit<D>): boolean
 - **focusPane**(contentId: string): Promise<void>
 - **paneFlyoutToggle**(args: IgcPaneFlyoutEventArgs): CustomEvent<IgcPaneFlyoutEventArgs> — Emitted when an unpinned pane's flyout state changes (opens or closes).
 
@@ -85,6 +90,9 @@ This event does NOT fire when:
 - A pane is initially unpinned (only subsequent flyout open/close actions)
 
 Use this event to show/hide auxiliary UI, update summary views, or respond to unpinned pane visibility changes.
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
+- **removeEventListener**(type: K, listener: any, options?: boolean | EventListenerOptions): void
 - **removePane**(pane: IgcDockManagerPane): Promise<void>
 - static **register**(): void
 
@@ -197,6 +205,7 @@ Describes dock manager resource strings.
 - **sourcePane**: `IgcSplitPane` — Gets the source pane that triggers the resize operation.
 
 ### [IgcFloatingPaneResizeMoveEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-dockmanager/2.3/interfaces/IgcFloatingPaneResizeMoveEventArgs)
+Extends: IgcFloatingPaneResizeEventArgs
 
 - **newHeight**: `number` — Gets the pane's height after the resizing operation.
 - **newLocation**: `IgcDockManagerPoint` — Gets the pane's floating location after the resizing operation.

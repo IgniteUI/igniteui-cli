@@ -192,6 +192,32 @@ The button has several visual variants. It renders as an anchor (<a>)
 element when the href attribute is set. It is form-associated and can
 act as a native submit or reset control.
 
+- **command**: `string` — The command to invoke on the target element specified by commandfor.
+Part of the [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) API.
+Custom commands must start with two dashes (e.g. '--my-command').
+- **download**: `string` — Prompts the browser to download the linked resource rather than navigating
+to it. The optional value is used as the suggested file name.
+Only effective when href is set.
+- **href**: `string` — The URL the button points to. When set, the component renders as an
+<a> element instead of a <button>, enabling navigation on click.
+Use together with target, download, and rel for full anchor semantics.
+A disabled link renders a disabled <button> with the link role, because an
+anchor has no disabled state.
+- **rel**: `string` — The relationship between the current document and the linked URL.
+Accepts a space-separated list of link types (e.g. 'noopener noreferrer').
+Only effective when href is set. When target="_blank" is used,
+setting rel="noopener noreferrer" is strongly recommended for security.
+- **target**: `"_parent" | "_top" | "_self" | "_blank"` — Where to open the linked document. Only effective when href is set.
+- '_self' – current browsing context (default browser behavior).
+- '_blank' – new tab or window.
+- '_parent' – parent browsing context; falls back to _self if none.
+- '_top' – top-level browsing context; falls back to _self if none.
+- **type**: `"button" | "reset" | "submit"` — The type of the button, which determines its behavior and semantics.
+- 'button' – no default action; useful for custom JavaScript handlers.
+- 'submit' – submits the associated form when clicked.
+- 'reset' – resets the associated form fields to their initial values.
+
+Ignored when the button is rendered as a link (i.e. href is set).
 - **variant**: `ButtonVariant` — The variant of the button which determines its visual appearance.
 - contained – filled background; highest visual emphasis (default).
 - outlined – transparent background with a visible border.
@@ -217,6 +243,17 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **commandfor**: `string | null`
+- **commandForElement**: `Element | null` — The target element for the invoker command. Resolved from the commandfor ID.
+- **disabled**: `boolean`
+- **form**: `HTMLFormElement | null` — The <form> element the button is associated with.
+Resolved through the standard form-association mechanism - either the
+closest ancestor <form> or the form referenced by the button's form
+attribute. Returns null when no form is associated.
+Relevant only when type is 'submit' or 'reset'.
+- **blur**(): void — Removes focus from the button.
+- **click**(): void — Simulates a mouse click on the button, triggering its click handler and any associated form action.
+- **focus**(options?: FocusOptions): void — Sets focus on the button.
 
 ### [IgcButtonGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcButtonGroupComponent)
 Groups a series of toggle buttons together, exposing features such as layout and selection.
@@ -244,10 +281,19 @@ In multiple selection mode, the header is always hidden.
 - **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
 - **orientation**: `ContentOrientation` — The orientation of the calendar months when more than one month
 is being shown.
+- **selection**: `CalendarSelection` — The selection mode of the calendar: single, multiple or range.
+A change after the first render clears the value and the values.
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
 - **visibleMonths**: `number` — The number of months displayed in the days view.
 - static readonly **tagName**: `"igc-calendar"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **activeDate**: `string | Date | null | undefined`
+- **disabledDates**: `DateRangeDescriptor[] | undefined`
+- **specialDates**: `DateRangeDescriptor[] | undefined`
+- **value**: `string | Date | null | undefined`
+- **values**: `string | string | Date[] | null | undefined`
+- **weekStart**: `WeekDays | undefined`
 
 ### [IgcCardActionsComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCardActionsComponent)
 A container component for card action items such as buttons or icon buttons.
@@ -492,7 +538,13 @@ the text area.
 ### [IgcCheckboxComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcCheckboxComponent)
 A check box allowing single values to be selected/deselected.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **indeterminate**: `boolean` — Whether the checkbox is in the indeterminate state. A user click clears it.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **labelPosition**: `ToggleLabelPosition` — The label position of the control.
+- **name**: `string` — The name of the control, submitted with the form data.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -513,6 +565,25 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **checked**: `boolean`
+- **defaultChecked**: `boolean`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **required**: `boolean`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
+- **value**: `string`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **click**(): void — Simulates a click on the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 
 ### [IgcChipComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcChipComponent)
 Chips help people enter information, make selections, filter content, or trigger actions.
@@ -543,6 +614,17 @@ stop-color, offset and stop-opacity of that element without validation.
 A circular progress indicator used to express unspecified wait time or display
 the length of a process.
 
+- **animationDuration**: `number` — The duration of the fill animation in milliseconds.
+- **hideLabel**: `boolean` — Whether the default label is hidden.
+- **indeterminate**: `boolean` — Whether the progress is indeterminate. An indeterminate progress has no
+value and does not show the default label.
+- **labelFormat**: `string` — Format string for the default label of the control.
+Placeholders:
+ {0} - current value of the control.
+ {1} - max value of the control.
+- **max**: `number` — The maximum value of the control.
+- **value**: `number` — The value of the control.
+- **variant**: `StyleVariant` — The variant of the control.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -575,11 +657,15 @@ The component supports pre-defined swatches and the native EyeDropper API,
 where the browser provides one. The anchor is a trigger button
 (mode="default") or an editable text field (mode="input").
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **format**: `ColorFormat` — The color format of the string value.
 
 A format change renders value in the new notation. The color does not
 change, so the component emits no igcInput or igcChange.
 - **hideFormats**: `boolean` — Whether the format select is hidden.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
 - **label**: `string` — The label of the component.
 
 In mode="input" the component forwards the label to the anchor input.
@@ -589,6 +675,16 @@ In mode="default" it renders the label as a separate element.
 In "default" mode the anchor is a trigger button. In "input" mode the
 anchor is an editable text field with a color swatch prefix. The prefix
 also opens the picker.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **open**: `boolean` — Whether the component is open.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
 - **showAlpha**: `boolean` — Whether to show the alpha slider and input.
 - **swatches**: `string[]` — Pre-defined color strings. The component renders them as clickable
 swatches below the picker controls. A click on a swatch sets its color as
@@ -596,9 +692,32 @@ the value.
 - static readonly **tagName**: `"igc-color-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **required**: `boolean`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the color picker.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
 - **focus**(options?: FocusOptions): void — Sets focus on the color picker.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
 
 ### [IgcComboComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcComboComponent)
 The combo lets the user select one or more options from a list. Unlike the select, it shows the options in a
@@ -614,6 +733,8 @@ when you send the search to the server.
 - **data**: `T[]` — The data source used to generate the list of options. A new data source
 keeps the selection, also the selected items that it does not hold.
 - **disableClear**: `boolean` — Whether the clear button is hidden.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **disableFiltering**: `boolean` — Whether the filtering of the list of options is disabled. In multiple
 selection mode, it also hides the search input.
 - **groupHeaderTemplate**: `ComboGroupHeaderTemplate<T>` — The template used for the content of each combo group header.
@@ -623,13 +744,25 @@ that the list shows, or deselects them when all of them are selected.
 Only in multiple selection mode with groupKey.
 - **groupSorting**: `GroupingDirection` — The sort order of the groups, by their group value. With none, the
 groups keep the order of the data source.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
 - **itemTemplate**: `ComboItemTemplate<T>` — The template used for the content of each combo item.
 - **label**: `string` — The label of the control.
 - **loading**: `boolean` — Whether the combo loads options. A spinner, which the loading slot can
 replace, then takes the place of the toggle icon, and an empty list shows
 a loading message instead of the empty message.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **open**: `boolean` — Whether the component is open.
 - **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
 - **selectionCommit**: `ComboSelectionCommit` — When the user's changes of the selection apply in multiple selection
 mode. With confirm, they change a pending selection while the list is
 open, and Enter or the Apply button applies it with one igcChange. Any
@@ -646,81 +779,278 @@ data does not hold yet, so the scrollbar shows the full list.
 - static readonly **tagName**: `"igc-combo"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
 - **displayKey**: `any | undefined`
 - **filteringOptions**: `Partial<FilteringOptions<T>>`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
 - **pendingValue**: `ComboValue<T>[]` — The values of the pending selection in the confirm mode of
 selectionCommit, which Enter, the Apply button or commitSelection()
 applies. Without a pending selection, the same as value.
 - **placeholderSearch**: `string | undefined`
+- **required**: `boolean`
 - **selection**: `T[]` — Returns the current selection as an array of objects as provided in the data source.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `ComboValue<T>[]` — The values of the selected items. With a valueKey, each value is that
 field of an item. Without it, each value is the item itself.
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the component.
 - **cancelSelection**(): void — Puts value back as the pending selection of the confirm mode. It does
 not close the list.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
 - **commitSelection**(): void — Applies the pending selection of the confirm mode to value. It does not
 emit igcChange or close the list.
 - **deselect**(items?: Item<T> | Item<T>[]): void — Deselects options in the list by reference or by valueKey value. It
 does not emit igcChange. Without an argument, it deselects all items.
 - **deselectAllItems**(ignoreFilter?: boolean): void — Deselects all the items that the list shows. It does not emit igcChange.
 - **focus**(options?: FocusOptions): void — Sets focus on the component.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
 - **select**(items?: Item<T> | Item<T>[]): void — Selects options in the list by reference or by valueKey value. It does
 not emit igcChange. An object that data does not hold is selected as
 it is. Without an argument, it selects all the items of data, or clears
 the selection in single selection mode.
 - **selectAllItems**(ignoreFilter?: boolean): void — Selects all the items that the list shows. It does not emit igcChange,
 and does nothing in single selection mode.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
 
 ### [IgcDatePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDatePickerComponent)
 A date field where the user types a date or selects one in a calendar.
 The calendar opens in a dropdown or in a dialog.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **disabledDates**: `DateRangeDescriptor[]` — The date ranges that the user cannot select in the calendar.
+A value that includes one of these dates is invalid.
+- **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header. It applies only in dialog mode.
+- **hideHeader**: `boolean` — Whether the calendar hides its header. In dropdown mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
+- **label**: `string` — The label of the picker.
+- **mode**: `PickerMode` — Whether the calendar opens in a dropdown or in a modal dialog.
+In dialog mode, the user cannot type in the input.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **nonEditable**: `boolean` — Whether the user cannot type in the input. The user can still select a date in the calendar.
+- **open**: `boolean` — Whether the component is open.
+- **orientation**: `ContentOrientation` — The orientation of the multiple months displayed in the calendar's days view.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
+- **prompt**: `string` — The prompt symbol to use for unfilled parts of the mask.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change the value or open the calendar.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
+- **specialDates**: `DateRangeDescriptor[]` — The date ranges that the calendar marks as special.
 - static readonly **tagName**: `"igc-date-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **activeDate**: `string | Date | null | undefined`
+- **defaultValue**: `unknown`
+- **displayFormat**: `string`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **inputFormat**: `string`
+- **max**: `string | Date | null | undefined`
+- **min**: `string | Date | null | undefined`
+- **required**: `boolean`
 - **selectionEnd**: `number` — The offset of the end of the text selection in the input, in UTF-16 code
 units.
 - **selectionStart**: `number` — The offset of the start of the text selection in the input, in UTF-16
 code units. Equals selectionEnd when no text is selected.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string | Date | null | undefined`
+- **visibleMonths**: `number`
+- **weekStart**: `WeekDays | undefined`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the picker.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **clear**(): void — Clears the value and the input text of the picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the picker.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
 - **select**(): void — Selects the text in the input of the component.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 - **setRangeText**(replacement: string, start?: number, end?: number, mode?: RangeTextSelectMode): void — Replaces the text from start to end in the input and re-applies the
 mask. Without start and end, replaces the selected text.
 - **setSelectionRange**(start: number, end: number, direction?: SelectionRangeDirection): void — Sets the text selection range in the input of the component.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
 - **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date part by delta, or by 1. Without datePart, it changes the
 part at the cursor or a default part.
 - **stepUp**(datePart?: DatePart, delta?: number): void — Increments a date part by delta, or by 1. Without datePart, it changes the
 part at the cursor or a default part.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
 
 ### [IgcDateRangePickerComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDateRangePickerComponent)
 A date range field where the user types a start and an end date or selects a range in a calendar.
 The calendar opens in a dropdown or in a dialog.
 
 - **customRanges**: `CustomDateRange[]` — The custom date ranges that the picker shows as chips. A click on a chip selects its range.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **disabledDates**: `DateRangeDescriptor[]` — The date ranges that the user cannot select in the calendar.
+A value that includes one of these dates is invalid.
+- **headerOrientation**: `CalendarHeaderOrientation` — The orientation of the calendar header. It applies only in dialog mode.
+- **hideHeader**: `boolean` — Whether the calendar hides its header. In dropdown mode, the header is always hidden.
+- **hideOutsideDays**: `boolean` — Whether the calendar hides the dates that do not belong to the current month.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
+- **label**: `string` — The label of the picker.
 - **labelEnd**: `string` — The label of the end input.
 - **labelStart**: `string` — The label of the start input.
+- **mode**: `PickerMode` — Whether the calendar opens in a dropdown or in a modal dialog.
+In dialog mode, the user cannot type in the input.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **nonEditable**: `boolean` — Whether the user cannot type in the input. The user can still select a date in the calendar.
+- **open**: `boolean` — Whether the component is open.
+- **orientation**: `ContentOrientation` — The orientation of the multiple months displayed in the calendar's days view.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholderEnd**: `string` — The placeholder text of the end input.
 - **placeholderStart**: `string` — The placeholder text of the start input.
+- **prompt**: `string` — The prompt symbol to use for unfilled parts of the mask.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change the value or open the calendar.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
+- **showWeekNumbers**: `boolean` — Whether the calendar shows the week numbers.
+- **specialDates**: `DateRangeDescriptor[]` — The date ranges that the calendar marks as special.
 - **usePredefinedRanges**: `boolean` — Whether the picker shows chips with predefined ranges.
 - **useTwoInputs**: `boolean` — Whether the picker shows the start and the end date in two separate inputs.
 - static readonly **tagName**: `"igc-date-range-picker"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **activeDate**: `string | Date | null | undefined`
+- **defaultValue**: `unknown`
+- **displayFormat**: `string`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **inputFormat**: `string`
+- **max**: `string | Date | null | undefined`
+- **min**: `string | Date | null | undefined`
 - **placeholder**: `string`
+- **required**: `boolean`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string | DateRangeValue | null | undefined`
 - **visibleMonths**: `number` — The number of months displayed in the calendar.
+- **weekStart**: `WeekDays | undefined`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the picker.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **clear**(): void — Clears the value and the input text of the picker.
+- **focus**(options?: FocusOptions): void — Sets focus on the picker.
 - **hasDateParts**(): boolean
 - **hasTimeParts**(): boolean
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
 - **select**(value: DateRangeValue | null): void — Sets the value of the picker to value. It does not emit events.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
 
 ### [IgcDateTimeInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDateTimeInputComponent)
 An input field to enter and edit a date and time value, with configurable input and display formats.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **label**: `string` — The label for the control.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change its value.
+- **spinDelta**: `DatePartDeltas` — The amount by which a step action increments or decrements each date part.
+All values default to 1.
+- **spinLoop**: `boolean` — Whether a spun date part wraps around at its limits.
+When false, the part stops at its minimum or maximum.
 - static readonly **tagName**: `"igc-date-time-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **displayFormat**: `string`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **inputFormat**: `string` — The date format of the input while the user edits the value.
+Without it, the input uses the input format of the locale.
+- **locale**: `string`
+- **mask**: `string` — The mask pattern of the component.
+- **max**: `string | Date | null | undefined`
+- **min**: `string | Date | null | undefined`
+- **prompt**: `string` — The prompt symbol for the unfilled parts of the mask pattern.
+- **required**: `boolean`
+- **selectionEnd**: `number` — The offset of the end of the text selection, in UTF-16 code units.
+- **selectionStart**: `number` — The offset of the start of the text selection, in UTF-16 code units.
+Equals selectionEnd when no text is selected.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `Date | null` — The committed value of the input.
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **clear**(): void — Clears the value and the text of the input.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **hasDateParts**(): boolean — Returns whether the input format has a date part: day, month or year.
+- **hasTimeParts**(): boolean — Returns whether the input format has a time part: hours, minutes or seconds.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **select**(): void — Selects all the text inside the input.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode?: RangeTextSelectMode): void — Replaces the text from start to end in the input and re-applies the mask.
+Without start and end, replaces the selected text. The value updates at once.
+- **setSelectionRange**(start?: number, end?: number, direction?: SelectionRangeDirection): void — Sets the text selection range of the control.
 - **stepDown**(datePart?: DatePart, delta?: number): void — Decrements a date or time part by delta, or by its spinDelta value.
 Without datePart, it changes the part at the cursor or a default part.
 The value updates at once.
@@ -833,8 +1163,19 @@ selects one item from the list.
 - **distance**: `number` — The distance from the target element.
 - **flip**: `boolean` — Whether the dropdown flips to the opposite side of the target when it does not fit in the visible area.
 It flips back when its preferred side has enough space again.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
+- **open**: `boolean` — Whether the component is open.
 - **placement**: `PopoverPlacement` — The preferred placement of the component around the target element.
 - **sameWidth**: `boolean` — Whether the dropdown has the same width as the target.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
 - static readonly **tagName**: `"igc-dropdown"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
@@ -844,6 +1185,9 @@ It flips back when its preferred side has enough space again.
 - **clearSelection**(): void — Clears the current selection of the dropdown.
 - **connectedCallback**(): void
 - **disconnectedCallback**(): void
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
 - **navigateTo**(value: string): IgcDropdownItemComponent | null — Navigates to the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **navigateTo**(index: number): IgcDropdownItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
 - **select**(value: string): IgcDropdownItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
@@ -909,6 +1253,8 @@ loading application code:
 ### [IgcDropdownItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcDropdownItemComponent)
 Represents an item in a dropdown list.
 
+- **selected**: `boolean` — Whether the item is selected. A change also sets active to the same
+value.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -929,6 +1275,9 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **active**: `boolean`
+- **disabled**: `boolean`
+- **value**: `string`
 
 ### [IgcExpansionPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcExpansionPanelComponent)
 Shows a header with a title and a subtitle, and content that the user can
@@ -955,12 +1304,37 @@ A form control that lets the user select one or more files, or a folder.
 - **directory**: `boolean` — Whether the user selects a folder instead of files. The selection then holds
 every file in the folder and its subfolders, and the webkitRelativePath of
 each file gives its path from the folder.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **label**: `string` — The label for the control.
 - **multiple**: `boolean` — Whether the control allows the user to select more than one file.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
 - static readonly **tagName**: `"igc-file-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
 - **files**: `FileList` — The list of selected files.
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **required**: `boolean`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string` — The value of the control.
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **select**(): void — Selects all the text inside the input.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 
 ### [IgcHighlightComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcHighlightComponent)
 Searches the text projected into its default slot and highlights the matches.
@@ -1017,9 +1391,35 @@ attributes. Like the normal button, it can render as an anchor element when
 href is set and is fully form-associated.
 
 - **collection**: `string` — The collection the icon belongs to.
+- **command**: `string` — The command to invoke on the target element specified by commandfor.
+Part of the [Invoker Commands](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) API.
+Custom commands must start with two dashes (e.g. '--my-command').
+- **download**: `string` — Prompts the browser to download the linked resource rather than navigating
+to it. The optional value is used as the suggested file name.
+Only effective when href is set.
+- **href**: `string` — The URL the button points to. When set, the component renders as an
+<a> element instead of a <button>, enabling navigation on click.
+Use together with target, download, and rel for full anchor semantics.
+A disabled link renders a disabled <button> with the link role, because an
+anchor has no disabled state.
 - **mirrored**: `boolean` — Whether the icon is flipped horizontally. Use it for a directional icon
 in a right-to-left layout.
 - **name**: `string` — The name of the icon to display.
+- **rel**: `string` — The relationship between the current document and the linked URL.
+Accepts a space-separated list of link types (e.g. 'noopener noreferrer').
+Only effective when href is set. When target="_blank" is used,
+setting rel="noopener noreferrer" is strongly recommended for security.
+- **target**: `"_parent" | "_top" | "_self" | "_blank"` — Where to open the linked document. Only effective when href is set.
+- '_self' – current browsing context (default browser behavior).
+- '_blank' – new tab or window.
+- '_parent' – parent browsing context; falls back to _self if none.
+- '_top' – top-level browsing context; falls back to _self if none.
+- **type**: `"button" | "reset" | "submit"` — The type of the button, which determines its behavior and semantics.
+- 'button' – no default action; useful for custom JavaScript handlers.
+- 'submit' – submits the associated form when clicked.
+- 'reset' – resets the associated form fields to their initial values.
+
+Ignored when the button is rendered as a link (i.e. href is set).
 - **variant**: `IconButtonVariant` — The variant of the button which determines its visual appearance.
 - contained – filled background; highest visual emphasis (default).
 - outlined – transparent background with a visible border.
@@ -1044,6 +1444,17 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **commandfor**: `string | null`
+- **commandForElement**: `Element | null` — The target element for the invoker command. Resolved from the commandfor ID.
+- **disabled**: `boolean`
+- **form**: `HTMLFormElement | null` — The <form> element the button is associated with.
+Resolved through the standard form-association mechanism - either the
+closest ancestor <form> or the form referenced by the button's form
+attribute. Returns null when no form is associated.
+Relevant only when type is 'submit' or 'reset'.
+- **blur**(): void — Removes focus from the button.
+- **click**(): void — Simulates a mouse click on the button, triggering its click handler and any associated form action.
+- **focus**(options?: FocusOptions): void — Sets focus on the button.
 
 ### [IgcIconComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcIconComponent)
 Shows an SVG icon from a collection of registered icons.
@@ -1063,13 +1474,21 @@ suffix content, helper text, form integration and built-in validation.
 
 - **autocomplete**: `string` — A hint for the browser on how to autofill the control.
 - **autofocus**: `boolean` — Whether the control receives focus automatically.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
 See [relevant MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **label**: `string` — The label for the control.
 - **max**: `number` — The maximum value the control accepts.
 - **maxLength**: `number` — The maximum string length of the control.
 - **min**: `number` — The minimum value the control accepts.
 - **minLength**: `number` — The minimum string length required by the control.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **pattern**: `string` — The regular expression the value is validated against.
+- **placeholder**: `string` — The placeholder text of the control.
 - **readOnly**: `boolean` — Whether the control is read-only.
 - **step**: `number` — The granularity the value must adhere to.
 - **type**: `InputType` — The type of the control.
@@ -1095,12 +1514,29 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **required**: `boolean`
 - **selectionEnd**: `number | null` — The offset of the end of the text selection, in UTF-16 code units.
 null before the first render and for the email and number types.
 - **selectionStart**: `number | null` — The offset of the start of the text selection, in UTF-16 code units.
 Equals selectionEnd when no text is selected. null before the first
 render and for the email and number types, which have no selection.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string` — The value of the control.
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **select**(): void — Selects all the text inside the input.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 - **setRangeText**(replacement: string, start?: number, end?: number, selectMode: RangeTextSelectMode): void — Replaces the text from start to end in the input. Without start and
 end, replaces the selected text.
 - **setSelectionRange**(start?: number, end?: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control.
@@ -1111,8 +1547,19 @@ end, replaces the selected text.
 A linear progress indicator used to express unspecified wait time or display
 the length of a process.
 
+- **animationDuration**: `number` — The duration of the fill animation in milliseconds.
+- **hideLabel**: `boolean` — Whether the default label is hidden.
+- **indeterminate**: `boolean` — Whether the progress is indeterminate. An indeterminate progress has no
+value and does not show the default label.
 - **labelAlign**: `LinearProgressLabelAlign` — The position for the default label of the control.
+- **labelFormat**: `string` — Format string for the default label of the control.
+Placeholders:
+ {0} - current value of the control.
+ {1} - max value of the control.
+- **max**: `number` — The maximum value of the control.
 - **striped**: `boolean` — Whether the fill of the control is striped.
+- **value**: `number` — The value of the control.
+- **variant**: `StyleVariant` — The variant of the control.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1212,6 +1659,15 @@ loading application code:
 ### [IgcMaskInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcMaskInputComponent)
 An input field that restricts user input to a mask pattern and formats the visible value.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **label**: `string` — The label for the control.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **outlined**: `boolean` — Whether the control has an outlined appearance.
+- **placeholder**: `string` — The placeholder text of the control.
+- **readOnly**: `boolean` — Whether the control is read-only. The user cannot change its value.
 - **valueMode**: `MaskInputValueMode` — The format of the value and of the submitted form value:
 
 - raw: The input without the mask literals and prompts (e.g. "5551234567")
@@ -1221,11 +1677,35 @@ An empty value is always an empty string, regardless of the value mode.
 - static readonly **tagName**: `"igc-mask-input"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
 - **mask**: `string` — The mask pattern of the component.
 - **prompt**: `string` — The prompt symbol for the unfilled parts of the mask pattern.
+- **required**: `boolean`
+- **selectionEnd**: `number` — The offset of the end of the text selection, in UTF-16 code units.
+- **selectionStart**: `number` — The offset of the start of the text selection, in UTF-16 code units.
+Equals selectionEnd when no text is selected.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string` — The value of the control.
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
 - **isValidMaskPattern**(): boolean — Returns whether the current masked input is valid according to the mask pattern.
 An empty control is valid. The required validator checks it.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **select**(): void — Selects all the text inside the input.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **setRangeText**(replacement: string, start?: number, end?: number, selectMode?: RangeTextSelectMode): void — Replaces the text from start to end and applies the mask again.
+Without start and end, it replaces the selected text. selectMode
+sets the selection after the change.
+- **setSelectionRange**(start?: number, end?: number, direction?: SelectionRangeDirection): void — Sets the text selection range of the control.
 
 ### [IgcNavbarComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcNavbarComponent)
 A navigation bar component is used to facilitate navigation through
@@ -1405,14 +1885,25 @@ exceeds the maximum canvas size.
 Lets the user select one option from a set. Radios with the same name
 form a group, and only one radio of the group is checked.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
 - **labelPosition**: `ToggleLabelPosition` — The label position of the radio control.
+- **name**: `string` — The name of the control, submitted with the form data.
 - static readonly **tagName**: `"igc-radio"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **checked**: `boolean`
+- **defaultChecked**: `boolean`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
 - **required**: `boolean` — Whether the control is required. A required control that has no value, or
 is not checked, fails validation.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the radio control.
 - **checkValidity**(): boolean — Checks the validity of the whole group. Each invalid radio of the group
 emits invalid.
@@ -1455,13 +1946,70 @@ loading application code:
 ### [IgcRangeSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRangeSliderComponent)
 A range slider component used to select two numeric values within a range.
 
+- **disabled**: `boolean` — Whether the slider is disabled. A disabled slider ignores user interaction.
+- **discreteTrack**: `boolean` — Whether the track shows the steps. It has no effect when step is 0.
+- **hidePrimaryLabels**: `boolean` — Whether the labels of the primary ticks are hidden.
+- **hideSecondaryLabels**: `boolean` — Whether the labels of the secondary ticks are hidden.
+- **hideTooltip**: `boolean` — Whether the thumb tooltip is hidden.
+- **locale**: `string` — The locale used to format the thumb and tick label values in the slider.
+- **primaryTicks**: `number` — The number of primary ticks. It defaults to 0 which means no primary ticks are displayed.
+- **secondaryTicks**: `number` — The number of secondary ticks between two primary ticks. Without primary
+ticks, it is the total number of ticks. The default 0 shows no secondary ticks.
 - **thumbLabelLower**: `string` — The accessible name of the lower thumb.
 - **thumbLabelUpper**: `string` — The accessible name of the upper thumb.
+- **tickLabelRotation**: `SliderTickLabelRotation` — The degrees for the rotation of the tick labels. Defaults to 0.
+- **tickOrientation**: `SliderTickOrientation` — Where the ticks are drawn: before the track (start), after it (end),
+or on both sides (mirror).
+- **valueFormat**: `string` — String format used for the thumb and tick label values in the slider.
+The {0} placeholder holds the formatted number.
+- **valueFormatOptions**: `NumberFormatOptions` — Number format options used for the thumb and tick label values in the slider.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
+using the css tag function, via constructible stylesheets, or
+imported from native CSS module scripts.
+
+Note on Content Security Policy:
+
+Element styles are implemented with <style> tags when the browser doesn't
+support adopted StyleSheets. To use such <style> tags with the style-src
+CSP directive, the style-src value must either include 'unsafe-inline' or
+nonce-<base64-value> with <base64-value> replaced be a server-generated
+nonce.
+
+To provide a nonce to use on generated <style> elements, set
+window.litNonce to a server-generated nonce in your page's HTML, before
+loading application code:
+
+<script>
+  // Generated and unique per request:
+  window.litNonce = 'a1b2c3d4';
+</script>
 - static readonly **tagName**: `"igc-range-slider"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
 - **lower**: `number`
+- **lowerBound**: `number | null | undefined`
+- **max**: `number`
+- **min**: `number`
+- **step**: `number`
 - **upper**: `number`
+- **upperBound**: `number | null | undefined`
+- **blur**(): void — Removes focus from the thumb.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **focus**(options?: FocusOptions): void — Sets focus on the thumb, or on the lower thumb of a range slider. A thumb
+that has the focus keeps it. A disabled slider does not take the focus.
 
 ### [IgcRatingComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcRatingComponent)
 A rating component that allows users to view and provide ratings using customizable symbols.
@@ -1469,12 +2017,17 @@ It supports fractional values, hover previews, keyboard navigation, single-selec
 and integrates with forms as a number input.
 
 - **allowReset**: `boolean` — Whether to reset the rating when the user selects the same value.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **hoverPreview**: `boolean` — Whether to show a preview of the value when hovering over the symbols.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
 - **label**: `string` — The label of the control.
 - **max**: `number` — The maximum value for the rating.
 
 With projected symbols, the maximum value is the number of symbols. A
 maximum below the value also lowers the value.
+- **name**: `string` — The name of the control, submitted with the form data.
 - **readOnly**: `boolean` — Whether the rating is read-only. A read-only rating shows its value but
 ignores user input.
 - **single**: `boolean` — Whether only the symbol at the value is full, instead of all symbols up
@@ -1491,9 +2044,22 @@ Use it for screen readers and for localization.
 - static readonly **tagName**: `"igc-rating"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `number`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the rating.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
 - **focus**(options?: FocusOptions): void — Sets focus on the rating. A disabled rating does not take the focus.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 - **stepDown**(n: number): void — Decrements the value of the control by n steps multiplied by
 the step factor.
 - **stepUp**(n: number): void — Increments the value of the control by n steps multiplied by the
@@ -1568,25 +2134,64 @@ loading application code:
 Represents a control that provides a menu of options.
 
 - **autofocus**: `boolean` — Whether the control takes the focus after its first render.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **distance**: `number` — The distance of the select dropdown from its input.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **keepOpenOnOutsideClick**: `boolean` — Whether the component stays open when the user clicks outside of it.
+- **keepOpenOnSelect**: `boolean` — Whether the component stays open after the user selects an item.
 - **label**: `string` — The label of the control.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **open**: `boolean` — Whether the component is open.
 - **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
 - **placement**: `PopoverPlacement` — The preferred placement of the select dropdown around its input.
+- **scrollStrategy**: `PopoverScrollStrategy` — The behavior of the component when a parent container scrolls.
+
+If the value is hide, the component hides while the anchor is fully out
+of view. hide is the default value.
+
+If the value is scroll, the component stays visible and anchored.
+
+If the value is close, the component closes on each scroll.
 - static readonly **tagName**: `"igc-select"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
 - **groups**: `IgcSelectGroupComponent[]` — Returns the groups of the select component.
 - **items**: `IgcSelectItemComponent[]` — Returns the items of the select component.
+- **required**: `boolean`
 - **selectedItem**: `IgcSelectItemComponent | null` — Returns the selected item from the dropdown or null.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string | undefined`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the component.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
 - **clearSelection**(): void — Resets the current value and selection of the component.
 - **focus**(options?: FocusOptions): void — Sets focus on the component.
+- **hide**(): Promise<boolean> — Closes the component. It does not emit events. The promise resolves to
+false when the component is already closed, or when a later call
+replaces this one.
 - **navigateTo**(value: string): IgcSelectItemComponent | null — Navigates to the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **navigateTo**(index: number): IgcSelectItemComponent | null — Navigates to the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
 - **select**(value: string): IgcSelectItemComponent | null — Selects the item with the specified value. If it exists, returns the found item, otherwise - null.
 - **select**(index: number): IgcSelectItemComponent | null — Selects the item at the specified index. If it exists, returns the found item, otherwise - null.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
+- **show**(): Promise<boolean> — Opens the component. It does not emit events. The promise resolves to
+false when the component is already open, or when a later call replaces
+this one.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open. It
+does not emit events. The promise resolves to true when the state
+changes.
 
 ### [IgcSelectGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectGroupComponent)
 A container for a group of select items.
@@ -1641,6 +2246,8 @@ loading application code:
 ### [IgcSelectItemComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSelectItemComponent)
 Represents an item in a select list.
 
+- **selected**: `boolean` — Whether the item is selected. A change also sets active to the same
+value.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1663,14 +2270,90 @@ loading application code:
 </script>
 - **active**: `boolean` — Whether the item is active. The active item has the visual focus during
 keyboard navigation.
+- **disabled**: `boolean`
+- **value**: `string`
 
 ### [IgcSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSliderComponent)
 A slider component used to select a numeric value within a range.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **discreteTrack**: `boolean` — Whether the track shows the steps. It has no effect when step is 0.
+- **hidePrimaryLabels**: `boolean` — Whether the labels of the primary ticks are hidden.
+- **hideSecondaryLabels**: `boolean` — Whether the labels of the secondary ticks are hidden.
+- **hideTooltip**: `boolean` — Whether the thumb tooltip is hidden.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **locale**: `string` — The locale used to format the thumb and tick label values in the slider.
+- **name**: `string` — The name of the control, submitted with the form data.
+- **primaryTicks**: `number` — The number of primary ticks. It defaults to 0 which means no primary ticks are displayed.
+- **secondaryTicks**: `number` — The number of secondary ticks between two primary ticks. Without primary
+ticks, it is the total number of ticks. The default 0 shows no secondary ticks.
+- **tickLabelRotation**: `SliderTickLabelRotation` — The degrees for the rotation of the tick labels. Defaults to 0.
+- **tickOrientation**: `SliderTickOrientation` — Where the ticks are drawn: before the track (start), after it (end),
+or on both sides (mirror).
+- **valueFormat**: `string` — String format used for the thumb and tick label values in the slider.
+The {0} placeholder holds the formatted number.
+- **valueFormatOptions**: `NumberFormatOptions` — Number format options used for the thumb and tick label values in the slider.
+- static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
+using the css tag function, via constructible stylesheets, or
+imported from native CSS module scripts.
+
+Note on Content Security Policy:
+
+Element styles are implemented with <style> tags when the browser doesn't
+support adopted StyleSheets. To use such <style> tags with the style-src
+CSP directive, the style-src value must either include 'unsafe-inline' or
+nonce-<base64-value> with <base64-value> replaced be a server-generated
+nonce.
+
+To provide a nonce to use on generated <style> elements, set
+window.litNonce to a server-generated nonce in your page's HTML, before
+loading application code:
+
+<script>
+  // Generated and unique per request:
+  window.litNonce = 'a1b2c3d4';
+</script>
 - static readonly **tagName**: `"igc-slider"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **lowerBound**: `number | null | undefined`
+- **max**: `number`
+- **min**: `number`
+- **step**: `number`
+- **upperBound**: `number | null | undefined`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `number`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the thumb.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **focus**(options?: FocusOptions): void — Sets focus on the thumb, or on the lower thumb of a range slider. A thumb
+that has the focus keeps it. A disabled slider does not take the focus.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 - **stepDown**(stepDecrement: number): void — Decrements the value of the slider by stepDecrement * step, where stepDecrement defaults to 1.
 - **stepUp**(stepIncrement: number): void — Increments the value of the slider by stepIncrement * step, where stepIncrement defaults to 1.
 
@@ -1688,9 +2371,62 @@ A button with command="--show", "--hide" or "--toggle" and a
 commandfor that points to this element calls the matching method.
 
 - **actionText**: `string` — The text of the action button.
+- **displayTime**: `number` — The time in milliseconds that the component stays visible. The time
+stops while the pointer or the keyboard focus is in the component, and
+starts again from the full value when both leave. A value of 0 or less
+keeps the component open.
+- **keepOpen**: `boolean` — Whether the component stays open after the displayTime is over.
+- **open**: `boolean` — Whether the component is open.
+
+Setting it skips the fade. Use the show(), hide() and toggle()
+methods for a fade.
+- **position**: `AbsolutePosition` — The position of the component in the viewport or in the container.
+- **positioning**: `NotificationPositioning` — The positioning strategy of the component.
+
+viewport - positions against the viewport, ignoring every ancestor.
+container - positions inside the bounding box of the closest visible
+ancestor, at the place that position sets.
 - static readonly **tagName**: `"igc-snackbar"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **hide**(): Promise<boolean> — Closes the component. Resolves to false when it is already closed or
+fades out, or when open is set to false and then to true during the
+fade-out.
+- **show**(): Promise<boolean> — Opens the component, also during the fade-out of hide(). When it is
+already open, the display time starts again, and the promise resolves to
+false. It also resolves to false when container positioning finds no
+visible ancestor, or when open is set to false during the fade-in.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open.
+Resolves to true when the state changes.
 
 ### [IgcSplitterComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSplitterComponent)
 A splitter component that provides a resizable split-pane layout, dividing the view
@@ -1826,6 +2562,12 @@ horizontal orientation.
 ### [IgcSwitchComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcSwitchComponent)
 Similar to a checkbox, a switch controls the state of a single setting on or off.
 
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
+- **labelPosition**: `ToggleLabelPosition` — The label position of the control.
+- **name**: `string` — The name of the control, submitted with the form data.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -1846,6 +2588,25 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **checked**: `boolean`
+- **defaultChecked**: `boolean`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
+- **required**: `boolean`
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
+- **value**: `string`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
+- **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
+- **click**(): void — Simulates a click on the control.
+- **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 
 ### [IgcTabComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcTabComponent)
 A tab nested in a tabs component. Find-in-page, a text fragment or a link to
@@ -1910,10 +2671,15 @@ for example a comment in a review or feedback form.
 [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize).
 - **autocomplete**: `string` — A hint for the browser on how to autofill the control.
 Refer to [this page](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for additional information.
+- **disabled**: `boolean` — Whether the control is disabled. A disabled control is not validated, and
+the form does not submit its value.
 - **inputMode**: `string` — A hint to the browser for which virtual keyboard layout to display.
 
 [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode)
+- **invalid**: `boolean` — Whether the control shows the invalid state. It changes only the visual
+state, not the validity.
 - **label**: `string` — The label for the control.
+- **name**: `string` — The name of the control, submitted with the form data.
 - **outlined**: `boolean` — Whether the control has an outlined appearance.
 - **placeholder**: `string` — The placeholder text of the control.
 - **readOnly**: `boolean` — Whether the control is read-only.
@@ -1931,17 +2697,31 @@ for explanation of the available values.
 - static readonly **tagName**: `"igc-textarea"` — The **tagName** read-only property of the Element interface returns the tag name of the element on which it's called.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)
+- **defaultValue**: `unknown`
+- **form**: `HTMLFormElement | null` — The form that the control is associated with, or null.
 - **maxLength**: `number`
 - **minLength**: `number`
+- **required**: `boolean`
 - **selectionEnd**: `number` — The offset of the end of the text selection, in UTF-16 code units.
 - **selectionStart**: `number` — The offset of the start of the text selection, in UTF-16 code units.
 Equals selectionEnd when no text is selected.
+- **validationMessage**: `string` — The validation message of the control. It is empty when the control is
+valid.
+- **validity**: `ValidityState` — The validity state of the control.
 - **value**: `string`
+- **willValidate**: `boolean` — Whether the control is a candidate for constraint validation.
 - **blur**(): void — Removes focus from the control.
+- **checkValidity**(): boolean — Checks validity and emits invalid when the control is invalid. Returns
+true when the control is valid.
 - **focus**(options?: FocusOptions): void — Sets focus on the control.
+- **reportValidity**(): boolean — Checks validity. As for a native control, an invalid control emits
+invalid and takes the focus. It shows its own validation messages, not
+the message of the browser. Returns true when the control is valid.
 - **scrollTo**(options?: ScrollToOptions): void — Scrolls the text of the control to the given position.
 - **scrollTo**(x: number, y: number): void — Scrolls the text of the control to the given x and y coordinates.
 - **select**(): void — Selects all text within the control.
+- **setCustomValidity**(message: string): void — Sets a custom validation message. The control is invalid while the message
+is not empty. An empty string removes the custom error.
 - **setRangeText**(replacement: string, start?: number, end?: number, selectMode: RangeTextSelectMode): void — Replaces the text from start to end in the control. Without start and
 end, replaces the selected text.
 - **setSelectionRange**(start: number, end: number, direction: SelectionRangeDirection): void — Sets the text selection range of the control.
@@ -2046,6 +2826,21 @@ The component supports the
 A button with command="--show", "--hide" or "--toggle" and a
 commandfor that points to this element calls the matching method.
 
+- **displayTime**: `number` — The time in milliseconds that the component stays visible. The time
+stops while the pointer or the keyboard focus is in the component, and
+starts again from the full value when both leave. A value of 0 or less
+keeps the component open.
+- **keepOpen**: `boolean` — Whether the component stays open after the displayTime is over.
+- **open**: `boolean` — Whether the component is open.
+
+Setting it skips the fade. Use the show(), hide() and toggle()
+methods for a fade.
+- **position**: `AbsolutePosition` — The position of the component in the viewport or in the container.
+- **positioning**: `NotificationPositioning` — The positioning strategy of the component.
+
+viewport - positions against the viewport, ignoring every ancestor.
+container - positions inside the bounding box of the closest visible
+ancestor, at the place that position sets.
 - static **styles**: `CSSResult[]` — Array of styles to apply to the element. The styles should be defined
 using the css tag function, via constructible stylesheets, or
 imported from native CSS module scripts.
@@ -2066,6 +2861,44 @@ loading application code:
   // Generated and unique per request:
   window.litNonce = 'a1b2c3d4';
 </script>
+- **connectedCallback**(): void — Invoked when the component is added to the document's DOM.
+
+In connectedCallback() you should setup tasks that should only occur when
+the element is connected to the document. The most common of these is
+adding event listeners to nodes external to the element, like a keydown
+event handler added to the window.
+
+connectedCallback() {
+  super.connectedCallback();
+  addEventListener('keydown', this._handleKeydown);
+}
+
+
+Typically, anything done in connectedCallback() should be undone when the
+element is disconnected, in disconnectedCallback().
+- **disconnectedCallback**(): void — Invoked when the component is removed from the document's DOM.
+
+This callback is the main signal to the element that it may no longer be
+used. disconnectedCallback() should ensure that nothing is holding a
+reference to the element (such as event listeners added to nodes external
+to the element), so that it is free to be garbage collected.
+
+disconnectedCallback() {
+  super.disconnectedCallback();
+  window.removeEventListener('keydown', this._handleKeydown);
+}
+
+
+An element may be re-connected after being disconnected.
+- **hide**(): Promise<boolean> — Closes the component. Resolves to false when it is already closed or
+fades out, or when open is set to false and then to true during the
+fade-out.
+- **show**(): Promise<boolean> — Opens the component, also during the fade-out of hide(). When it is
+already open, the display time starts again, and the promise resolves to
+false. It also resolves to false when container positioning finds no
+visible ancestor, or when open is set to false during the fade-in.
+- **toggle**(): Promise<boolean> — Opens the component when it is closed, and closes it when it is open.
+Resolves to true when the state changes.
 
 ### [IgcToggleButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/classes/IgcToggleButtonComponent)
 The toggle button wraps a native button element and exposes additional value and selected properties.
@@ -2300,12 +3133,14 @@ need only the first, approximate scroll can ignore it.
 ## Interfaces
 
 ### [ChatAttachmentRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatAttachmentRenderContext)
+Extends: ChatMessageRenderContext
 The context object for renderers that deal with a specific attachment within a message.
 It extends the message context with the attachment data.
 
 - **attachment**: `IgcChatMessageAttachment` — The specific attachment being rendered.
 
 ### [ChatInputRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatInputRenderContext)
+Extends: ChatRenderContext
 The context object for renderers that deal with the chat input area.
 It extends the base context with input-specific properties.
 
@@ -2313,6 +3148,7 @@ It extends the base context with input-specific properties.
 - **value**: `string` — The current value of the input field.
 
 ### [ChatMessageRenderContext](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/ChatMessageRenderContext)
+Extends: ChatRenderContext
 The context object for renderers that deal with a specific chat message.
 It extends the base context with the message data.
 
@@ -2486,6 +3322,7 @@ Default is "below-messages".
 
 
 ### [IgcDateRangePickerResourceStrings](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents/7.5/interfaces/IgcDateRangePickerResourceStrings)
+Extends: IgcCalendarResourceStrings
 **Deprecated:** since 7.2.0. Use the newly provided ICalendarResourceStrings and IDateRangePickerResourceStrings interfaces, or set global resource strings with the registerI18n method.
 
 

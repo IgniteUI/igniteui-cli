@@ -13,7 +13,7 @@ vi.mock('fs', async () => {
 });
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
-import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames, snapshotVersion } from '../../lib/api-doc-loader.js';
+import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames, parseExtendsLine, snapshotVersion } from '../../lib/api-doc-loader.js';
 import type { PlatformConfig } from '../../config/platforms.js';
 
 const mockExistsSync = vi.mocked(existsSync);
@@ -290,6 +290,86 @@ describe('ApiDocLoader', () => {
         expect(loader.get('blazor', 'DynamicContentInfo')?.component).toBe('DynamicContentInfo');
         expect(loader.get('blazor', 'DynamicContentInfo<T>')?.component).toBe('DynamicContentInfo<T>');
       });
+    });
+  });
+
+  describe('base types', () => {
+    const INHERITANCE_CONTENT = [
+      '### [IgxGridBaseDirective](https://example.com/base)',
+      'Extends: IgxRoot<T, U>, IgxMissing',
+      'Base of every grid.',
+      '',
+      '- **allowFiltering**: `boolean`',
+      '',
+      '### [IgxGridComponent](https://example.com/grid)',
+      'Extends: IgxGridBaseDirective',
+      '',
+      '- **data**: `any[]`',
+      '',
+      '### [IgxRoot<T, U>](https://example.com/root)',
+      'Extends: IgxGridBaseDirective',
+      'Root type.',
+      '',
+    ].join('\n');
+
+    function createInheritanceLoader(): ApiDocLoader {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue(INHERITANCE_CONTENT);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      return loader;
+    }
+
+    it('parses the Extends line, keeping generic argument lists whole', () => {
+      expect(parseExtendsLine('Extends: A, B<T, U>,C')).toEqual(['A', 'B<T, U>', 'C']);
+      expect(parseExtendsLine('Extends IGridDataBindable')).toBeUndefined();
+      expect(parseExtendsLine(undefined)).toBeUndefined();
+    });
+
+    it('stores the bases and keeps the Extends line out of the summary', () => {
+      const loader = createInheritanceLoader();
+      const base = loader.get('angular', 'IgxGridBaseDirective');
+      expect(base?.extends).toEqual(['IgxRoot<T, U>', 'IgxMissing']);
+      expect(base?.summary).toBe('Base of every grid.');
+      expect(loader.get('angular', 'IgxGridComponent')?.summary).toBe('');
+    });
+
+    it('getBases walks the chain nearest first, skipping unknown names and cycles', () => {
+      const loader = createInheritanceLoader();
+      const grid = loader.get('angular', 'IgxGridComponent')!;
+      expect(loader.getBases(grid).map(e => e.component)).toEqual(['IgxGridBaseDirective', 'IgxRoot<T, U>']);
+    });
+
+    it('getBases takes a base from the own package when another package ships the same name', () => {
+      const file = (pkg: string, entries: string[]) => [`Package: ${pkg}`, '', ...entries, ''].join('\n');
+      const base = (member: string) => `### [IgbComboBase](https://example.com/base)\n\n- **${member}**: string\n`;
+      const files: Record<string, string> = {
+        'pkg-full': file('pkg-full', [
+          '### [IgbSelect](https://example.com/select)\nExtends: IgbComboBase, IgbShared\n',
+          base('FullOnly'),
+        ]),
+        'pkg-lite': file('pkg-lite', [base('LiteOnly'), '### [IgbShared](https://example.com/shared)\n']),
+      };
+      setupFsMocks();
+      mockReaddirSync.mockImplementation((p) => {
+        const s = String(p);
+        if (s.endsWith('angular-api')) return Object.keys(files) as unknown as ReturnType<typeof readdirSync>;
+        if (s.endsWith('pkg-full') || s.endsWith('pkg-lite')) return ['1.0.0'] as unknown as ReturnType<typeof readdirSync>;
+        return [] as unknown as ReturnType<typeof readdirSync>;
+      });
+      mockReadFileSync.mockImplementation((p) => files[String(p).includes('pkg-full') ? 'pkg-full' : 'pkg-lite']);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+
+      expect(loader.get('angular', 'IgbComboBase')?.package).toBe('pkg-lite');
+      const bases = loader.getBases(loader.get('angular', 'IgbSelect')!);
+      expect(bases.map(e => `${e.package}:${e.component}`)).toEqual(['pkg-full:IgbComboBase', 'pkg-lite:IgbShared']);
+      expect(bases[0].content).toContain('FullOnly');
+    });
+
+    it('getBases is empty for an entry without an Extends line', () => {
+      const loader = createLoadedLoader();
+      expect(loader.getBases(loader.get('angular', 'IgxGridComponent')!)).toEqual([]);
     });
   });
 

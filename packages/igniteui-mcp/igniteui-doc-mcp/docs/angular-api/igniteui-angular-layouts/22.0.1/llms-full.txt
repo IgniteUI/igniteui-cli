@@ -621,6 +621,7 @@ This should not be called if the data that the grid is bound to is already obser
 - **value**: `any`
 
 ### [IgxToolActionButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionButtonComponent
@@ -634,6 +635,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionButtonPairComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionButtonPairComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionButtonPairComponent
@@ -701,6 +703,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionCheckboxComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionCheckboxComponent
@@ -724,6 +727,7 @@ for more compact display.
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionCheckboxGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxGroupComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionCheckboxGroupComponent
@@ -738,6 +742,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionCheckboxListComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionCheckboxListComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionCheckboxListComponent
@@ -771,6 +776,7 @@ Represents base class for all tool actions in toolbar
 - **constructor**(list?: IgxToolActionComponent[]): IgxToolActionCollection
 
 ### [IgxToolActionColorEditorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionColorEditorComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionColorEditorComponent
@@ -781,6 +787,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionComboComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionComboComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionComboComponent
@@ -974,6 +981,7 @@ overlaid onto the generated actions.
 - **constructor**(list?: IgxToolActionFieldSelectorAggregation[]): IgxToolActionFieldSelectorAggregationsCollection
 
 ### [IgxToolActionFieldSelectorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionFieldSelectorComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionFieldSelectorComponent
@@ -1025,6 +1033,7 @@ If list provided has custom aggregations the data source is never updated.
 - **constructor**(list?: IgxToolActionFieldSelectorSelectedAggregation[]): IgxToolActionFieldSelectorSelectedAggregationsCollection
 
 ### [IgxToolActionGroupHeaderComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionGroupHeaderComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionGroupHeaderComponent
@@ -1036,6 +1045,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionIconButtonComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconButtonComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionIconButtonComponent
@@ -1070,6 +1080,7 @@ Represents base class for all tool actions in toolbar
 - **openSubMenu**(): void
 
 ### [IgxToolActionIconMenuComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionIconMenuComponent)
+Extends: IgxToolActionIconButtonComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionIconMenuComponent
@@ -1083,6 +1094,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionLabelComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionLabelComponent
@@ -1092,6 +1104,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionNumberInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionNumberInputComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionNumberInputComponent
@@ -1119,6 +1132,7 @@ Represents base class for all tool actions in toolbar
 - **sourceAction**: `IgxToolActionComponent`
 
 ### [IgxToolActionRadioComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionRadioComponent
@@ -1151,6 +1165,7 @@ for more compact display.
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionRadioGroupComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionRadioGroupComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionRadioGroupComponent
@@ -1165,6 +1180,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionSeparatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSeparatorComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionSeparatorComponent
@@ -1178,6 +1194,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionSubPanelComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionSubPanelComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionSubPanelComponent
@@ -1189,6 +1206,7 @@ Represents base class for all tool actions in toolbar
 - **ngAfterContentInit**(): void
 
 ### [IgxToolActionTextInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-layouts/22.0.0/classes/IgxToolActionTextInputComponent)
+Extends: IgxToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgxToolActionTextInputComponent

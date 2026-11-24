@@ -9,6 +9,7 @@ Version: 19.6
 ## Classes
 
 ### [IgrArcGISOnlineMapImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrArcGISOnlineMapImagery)
+Extends: IgrGeographicMapImagery
 UI element class used to display ArcGIS Online Map imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgrArcGISOnlineMapImagery
@@ -24,6 +25,7 @@ UI element class used to display ArcGIS Online Map imagery in the IgxGeographicM
 The is provided to the end-user to allow them to reteive tokens on their onw.
 
 ### [IgrAzureMapsImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrAzureMapsImagery)
+Extends: IgrGeographicMapImagery
 UI element class used to display AzureMaps imagery in the GeographicMap.
 
 - **constructor**(): IgrAzureMapsImagery
@@ -41,6 +43,7 @@ Note that not all tilesets support this option and those that do might have rest
 For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#uri-parameters.
 
 ### [IgrBingMapsMapImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrBingMapsMapImagery)
+Extends: IgrGeographicMapImagery
 UI element class used to display BingMapsMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgrBingMapsMapImagery
@@ -60,12 +63,14 @@ For example: Aerial, AerialWithLabels, or Road map style.
 - **requestMapSettings**(): void — Will Connect to the Bing Rest API and retrieve the required TilePath and Subdomains from the service.  This requires a valid API key to already be set.
 
 ### [IgrCustomMapImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrCustomMapImagery)
+Extends: IgrGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgrCustomMapImagery
 - **getTileImageUri**: `any` — Raised when URI for tiles should be provided
 
 ### [IgrGeographicContourLineSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicContourLineSeries)
+Extends: IgrGeographicXYTriangulatingSeries
 Represents a class for Geographic Contour Series displayed on a map.
 
 - **constructor**(props: IIgrGeographicContourLineSeriesProps): IgrGeographicContourLineSeries
@@ -78,6 +83,7 @@ Represents a class for Geographic Contour Series displayed on a map.
 - **findByName**(name: string): any
 
 ### [IgrGeographicHighDensityScatterSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicHighDensityScatterSeries)
+Extends: IgrGeographicMapSeriesHost
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a HighDensityScatterSeries.
 
@@ -208,6 +214,7 @@ The default value for this property is 1.0, which means the series will always b
 - **styleUpdated**(): void — Called when this series' Style is updated.
 
 ### [IgrGeographicMarkerSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicMarkerSeries)
+Extends: IgrGeographicMapSeriesHost
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicMarkerSeries<P>
@@ -227,11 +234,13 @@ If more than the specified number of markerItems are visible, the series will au
 choose a representative set.
 
 ### [IgrGeographicMarkerSeriesBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicMarkerSeriesBase)
+Extends: IgrGeographicMarkerSeries
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicMarkerSeriesBase<P>
 
 ### [IgrGeographicPolylineSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicPolylineSeries)
+Extends: IgrGeographicShapeSeriesBase
 Series class used for displaying multiple polylines, in a geographic context, for datasources which contain multiple lists of points.
 
 - **constructor**(props: IIgrGeographicPolylineSeriesProps): IgrGeographicPolylineSeries
@@ -244,6 +253,7 @@ Series class used for displaying multiple polylines, in a geographic context, fo
 - **ensureShapeStyle**(): void
 
 ### [IgrGeographicProportionalSymbolSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicProportionalSymbolSeries)
+Extends: IgrGeographicMarkerSeries
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -275,11 +285,13 @@ This setting applies only if multiple series are using the same RadiusScale.
 - **findByName**(name: string): any
 
 ### [IgrGeographicProportionalSymbolSeriesBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicProportionalSymbolSeriesBase)
+Extends: IgrGeographicMarkerSeriesBase
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicProportionalSymbolSeriesBase<P>
 
 ### [IgrGeographicScatterAreaSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicScatterAreaSeries)
+Extends: IgrGeographicXYTriangulatingSeries
 Series class which draws a colored 2D surface, in a geographic context, based on a triangulation of XY data with numeric values assigned to each point.
 
 - **constructor**(props: IIgrGeographicScatterAreaSeriesProps): IgrGeographicScatterAreaSeries
@@ -292,6 +304,7 @@ Series class which draws a colored 2D surface, in a geographic context, based on
 - **updateActualColorScale**(): void — Updates ActualColorScale properties using HostedSeries's ColorScale properties
 
 ### [IgrGeographicShapeSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicShapeSeries)
+Extends: IgrGeographicShapeSeriesBase
 Series class which renders polygons as Paths, in a geographic context, based on lists of points in the ItemsSource.
 
 - **constructor**(props: IIgrGeographicShapeSeriesProps): IgrGeographicShapeSeries
@@ -316,6 +329,7 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **ensureShapeStyle**(): void
 
 ### [IgrGeographicShapeSeriesBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicShapeSeriesBase)
+Extends: IgrGeographicMapSeriesHost
 Base class for series which render polygons on a map.
 
 - **constructor**(props: P): IgrGeographicShapeSeriesBase<P>
@@ -340,11 +354,13 @@ To be consistent with the Shapefile technical description, it is expected that e
 - **findByName**(name: string): any
 
 ### [IgrGeographicShapeSeriesBaseBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicShapeSeriesBaseBase)
+Extends: IgrGeographicMapSeriesHost
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicShapeSeriesBaseBase<P>
 
 ### [IgrGeographicSymbolSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicSymbolSeries)
+Extends: IgrGeographicMarkerSeries
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -361,11 +377,13 @@ This is the geographic equivalent of a ScatterSeries.
 - **markerCollisionAvoidance**: `CollisionAvoidanceType` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
 
 ### [IgrGeographicSymbolSeriesBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicSymbolSeriesBase)
+Extends: IgrGeographicMarkerSeriesBase
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicSymbolSeriesBase<P>
 
 ### [IgrGeographicTileSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicTileSeries)
+Extends: IgrGeographicShapeSeriesBase
 Series class used for displaying a tile set, and using shapes to define the areas that should be rendered.
 
 - **constructor**(props: IIgrGeographicTileSeriesProps): IgrGeographicTileSeries
@@ -376,6 +394,7 @@ Series class used for displaying a tile set, and using shapes to define the area
 - **findByName**(name: string): any
 
 ### [IgrGeographicXYTriangulatingSeries](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicXYTriangulatingSeries)
+Extends: IgrGeographicMapSeriesHost
 Base class for geographic series which triangulate XY data prior to rendering.
 
 - **constructor**(props: P): IgrGeographicXYTriangulatingSeries<P>
@@ -389,6 +408,7 @@ This property is optional.  If it is left as null, the triangulation will be cre
 - **triangulationDataSource**: `string`
 
 ### [IgrGeographicXYTriangulatingSeriesBase](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrGeographicXYTriangulatingSeriesBase)
+Extends: IgrGeographicMapSeriesHost
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(props: P): IgrGeographicXYTriangulatingSeriesBase<P>
@@ -404,6 +424,7 @@ Base class for hosting chart series in a IgxGeographicMap.Component
 - **nativeElement**: `HTMLElement`
 
 ### [IgrOpenStreetMapImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrOpenStreetMapImagery)
+Extends: IgrGeographicMapImagery
 UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgrOpenStreetMapImagery
@@ -414,6 +435,7 @@ UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.C
 - **constructor**(list?: string[]): IgrSubDomainsCollection
 
 ### [IgrTileGeneratorMapImagery](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/classes/IgrTileGeneratorMapImagery)
+Extends: IgrGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgrTileGeneratorMapImagery
@@ -431,6 +453,7 @@ Represents a tile series class that can render imagery tiles
 ## Interfaces
 
 ### [IIgrGeographicContourLineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicContourLineSeriesProps)
+Extends: IIgrGeographicXYTriangulatingSeriesProps
 
 - **actualFillScale?**: `any` — Gets actual fill scale that is set on the FillScale property or default FillScale
 - **fillScale?**: `any` — The ValueBrushScale to use when determining Brushes for each contour line, based on the values found in ValueMemberPath.
@@ -439,6 +462,7 @@ Represents a tile series class that can render imagery tiles
 - **valueResolver?**: `any` — The ContourValueResolver used to determine the numeric values of contours.
 
 ### [IIgrGeographicHighDensityScatterSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicHighDensityScatterSeriesProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 - **heatMaximum?**: `string | number` — Gets or sets the value that maps to the maximum heat color.
 - **heatMaximumColor?**: `string` — Gets or sets the color to use for the maximum end of the scale.
@@ -487,9 +511,11 @@ will not cause data to be reimported into the chart.
 The default value for this property is 1.0, which means the series will always be visible.  At a VisibleFromScale setting of 0.0, the series will never be visible.  At a VisibleFromScale setting of 0.5, the series will be visible as long as the map is zoomed in to at least 200%.
 
 ### [IIgrGeographicMarkerSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicMarkerSeriesBaseProps)
+Extends: IIgrGeographicMarkerSeriesProps
 
 
 ### [IIgrGeographicMarkerSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicMarkerSeriesProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 - **actualMarkerBrush?**: `string` — Gets the effective marker brush for the current series object.
 - **actualMarkerOutline?**: `string` — Gets the effective marker outline for the current series object.
@@ -507,6 +533,7 @@ If more than the specified number of markerItems are visible, the series will au
 choose a representative set.
 
 ### [IIgrGeographicPolylineSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicPolylineSeriesProps)
+Extends: IIgrGeographicShapeSeriesBaseProps
 
 - **shapeFill?**: `string` — Gets or sets the fill brush.
 - **shapeOpacity?**: `string | number` — Gets or sets the opacity.
@@ -515,9 +542,11 @@ choose a representative set.
 - **styleShape?**: `any`
 
 ### [IIgrGeographicProportionalSymbolSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicProportionalSymbolSeriesBaseProps)
+Extends: IIgrGeographicMarkerSeriesBaseProps
 
 
 ### [IIgrGeographicProportionalSymbolSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicProportionalSymbolSeriesProps)
+Extends: IIgrGeographicMarkerSeriesProps
 
 - **assigningScatterMarkerStyle?**: `any` — Event raised when Assigning Scatter Marker Style
 - **assigningScatterStyle?**: `any` — Event raised when Assigning Category Style
@@ -544,6 +573,7 @@ This setting applies only if the current series has a FillScale set and it overr
 This setting applies only if multiple series are using the same RadiusScale.
 
 ### [IIgrGeographicScatterAreaSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicScatterAreaSeriesProps)
+Extends: IIgrGeographicXYTriangulatingSeriesProps
 
 - **actualColorScale?**: `any` — Gets actual color scale that is set on ColorScale property or default ColorScale
 - **colorMemberPath?**: `string` — The name of the property on each data item containing a numeric value which can be converted to a color by the ColorScale.
@@ -551,9 +581,11 @@ This setting applies only if multiple series are using the same RadiusScale.
 - **triangulationStatusChanged?**: `any` — Raised when the status of an ongoing Triangulation has changed.
 
 ### [IIgrGeographicShapeSeriesBaseBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicShapeSeriesBaseBaseProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 
 ### [IIgrGeographicShapeSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicShapeSeriesBaseProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 - **assigningShapeMarkerStyle?**: `any` — Event raised when Assigning Shape Marker Style
 - **assigningShapeStyle?**: `any` — Event raised when Assigning Shape Style. Note, if using this event, or highlighting, its best to avoid use of ShapeStyle/StyleShape/ShapeStyleSelector.
@@ -575,6 +607,7 @@ In the case of GeographicPolylineSeries, the resolution is compared to either di
 To be consistent with the Shapefile technical description, it is expected that each list of points is defined as an IEnumerable of IEnumerable of Point, or in other words, a list of lists of points.
 
 ### [IIgrGeographicShapeSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicShapeSeriesProps)
+Extends: IIgrGeographicShapeSeriesBaseProps
 
 - **actualMarkerBrush?**: `string` — Gets the effective marker brush for the current series object.
 - **actualMarkerOutline?**: `string` — Gets the effective marker outline for the current series object.
@@ -595,9 +628,11 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **styleShape?**: `any`
 
 ### [IIgrGeographicSymbolSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicSymbolSeriesBaseProps)
+Extends: IIgrGeographicMarkerSeriesBaseProps
 
 
 ### [IIgrGeographicSymbolSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicSymbolSeriesProps)
+Extends: IIgrGeographicMarkerSeriesProps
 
 - **assigningScatterMarkerStyle?**: `any` — Event raised when Assigning Scatter Marker Style
 - **assigningScatterStyle?**: `any` — Event raised when Assigning Category Style
@@ -610,14 +645,17 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **markerCollisionAvoidance?**: `any` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
 
 ### [IIgrGeographicTileSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicTileSeriesProps)
+Extends: IIgrGeographicShapeSeriesBaseProps
 
 - **imageTilesReady?**: `any` — This event is fired whenever the image tiles transition from a loading state (e.g. some are fading in) to a loaded state.
 - **tileImagery?**: `IgrGeographicMapImagery` — The MapImagery which is used to provide the tiles for display.
 
 ### [IIgrGeographicXYTriangulatingSeriesBaseProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicXYTriangulatingSeriesBaseProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 
 ### [IIgrGeographicXYTriangulatingSeriesProps](https://www.infragistics.com/api/react/igniteui-react-maps/19.6.0/interfaces/IIgrGeographicXYTriangulatingSeriesProps)
+Extends: IIgrGeographicMapSeriesHostProps
 
 - **latitudeMemberPath?**: `string` — The name of the property from which to extract the Latitude for each item in the ItemsSource.
 - **longitudeMemberPath?**: `string` — The name of the property from which to extract the Longitude for each item in the ItemsSource.

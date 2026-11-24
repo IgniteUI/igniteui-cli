@@ -32,6 +32,23 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       }
     }
 
+    // Agents also write the member the way code does: "IgxGridComponent.allowFiltering".
+    // Split only when the whole string is not an entry and the part before the last dot is one.
+    const dot = component.lastIndexOf('.');
+    if (dot > 0 && !docLoader.get(platform, component)) {
+      const owner = component.slice(0, dot).trim();
+      const tail = component.slice(dot + 1).trim();
+      if (tail && (docLoader.get(platform, owner) || findDeprecation(platform, owner))) {
+        component = owner;
+        if (!member) member = tail;
+      }
+    }
+
+    // The same habit in `member`: an owner prefix ("IgxGridComponent.data") or call parentheses ("groupBy()").
+    if (member) {
+      member = member.replace(/\(.*\)$/, '').split('.').pop()?.trim() || undefined;
+    }
+
     // Agents that read `member` as required send placeholders like "*" or ".*"
     // when they want the whole entry. Anything with no letters or digits cannot
     // name a real member, so treat it as omitted rather than failing.
@@ -71,6 +88,10 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
       };
     }
 
+    // An entry leaves the members its documented base types declare to their entries.
+    const bases = docLoader.getBases(entry);
+    const baseNames = bases.map(b => b.component).join(', ');
+
     // Member-targeted lookup takes precedence over section.
     if (member) {
       const match = extractMember(content, member);
@@ -78,25 +99,39 @@ export function createGetApiReferenceHandler(docLoader: ApiDocLoader) {
         const text = `${entry.component}.${match.name} (${match.section}):\n${match.line}`;
         return { content: [{ type: "text", text: withPackage(docLoader, entry, text) }] };
       }
+      for (const base of bases) {
+        const inherited = base.content ? extractMember(base.content, member) : null;
+        if (inherited) {
+          const text = `${entry.component}.${inherited.name} (${inherited.section}, inherited from ${base.component}):\n${inherited.line}`;
+          return { content: [{ type: "text", text: withPackage(docLoader, entry, text) }] };
+        }
+      }
+      const searched = bases.length > 0 ? ` or its base types (${baseNames})` : '';
       return {
         content: [{
           type: "text",
-          text: `Member "${member}" not found on ${entry.component}. Use search_api or call get_api_reference without "member" to see the full entry.`
+          text: `Member "${member}" not found on ${entry.component}${searched}. Use search_api or call get_api_reference without "member" to see the full entry.`
         }],
         isError: true,
       };
     }
+
+    const inheritedNote = bases.length > 0
+      ? `\n\nInherited members are not listed above. They are in: ${baseNames}. ` +
+        `Call get_api_reference for one of those, or pass member="<name>" with component "${entry.component}" to look a member up through all of them.`
+      : '';
 
     // Extract specific section if requested
     if (section !== 'all') {
       const extracted = extractSection(content, section);
       if (extracted) {
         const header = `# ${entry.component} (${entry.platform}) - ${section}\n\n`;
-        return { content: [{ type: "text", text: withPackage(docLoader, entry, header + extracted) }] };
+        return { content: [{ type: "text", text: withPackage(docLoader, entry, header + extracted + inheritedNote) }] };
       }
     }
 
-    return { content: [{ type: "text", text: withPackage(docLoader, entry, content) }] };
+    const full = inheritedNote ? content.trimEnd() + inheritedNote : content;
+    return { content: [{ type: "text", text: withPackage(docLoader, entry, full) }] };
   };
 }
 

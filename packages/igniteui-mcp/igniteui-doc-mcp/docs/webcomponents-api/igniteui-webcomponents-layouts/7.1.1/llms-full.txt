@@ -543,6 +543,7 @@ target has rendered, such as a series' brush coming from its chart's palette.
 - **value**: `any`
 
 ### [IgcToolActionButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionButtonComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionButtonComponent
@@ -556,6 +557,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionButtonPairComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionButtonPairComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionButtonPairComponent
@@ -604,6 +606,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionCheckboxComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionCheckboxComponent
@@ -628,6 +631,7 @@ for more compact display.
 - static **register**(): void
 
 ### [IgcToolActionCheckboxGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxGroupComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionCheckboxGroupComponent
@@ -644,6 +648,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - static **register**(): void
 
 ### [IgcToolActionCheckboxListComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionCheckboxListComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionCheckboxListComponent
@@ -675,6 +680,7 @@ Represents base class for all tool actions in toolbar
 - **constructor**(list?: IgcToolActionComponent[]): IgcToolActionCollection
 
 ### [IgcToolActionColorEditorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionColorEditorComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionColorEditorComponent
@@ -687,6 +693,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionComboComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionComboComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionComboComponent
@@ -841,6 +848,7 @@ overlaid onto the generated actions.
 - **constructor**(list?: IgcToolActionFieldSelectorAggregation[]): IgcToolActionFieldSelectorAggregationsCollection
 
 ### [IgcToolActionFieldSelectorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionFieldSelectorComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionFieldSelectorComponent
@@ -872,6 +880,7 @@ If list provided has custom aggregations the data source is never updated.
 - **constructor**(list?: IgcToolActionFieldSelectorSelectedAggregation[]): IgcToolActionFieldSelectorSelectedAggregationsCollection
 
 ### [IgcToolActionGroupHeaderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionGroupHeaderComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionGroupHeaderComponent
@@ -885,6 +894,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionIconButtonComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionIconButtonComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionIconButtonComponent
@@ -910,6 +920,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionIconMenuComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionIconMenuComponent)
+Extends: IgcToolActionIconButtonComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionIconMenuComponent
@@ -925,6 +936,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionLabelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionLabelComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionLabelComponent
@@ -936,6 +948,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionLabelMenuComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionLabelMenuComponent)
+Extends: IgcToolActionIconMenuComponent
 A labeled row whose trailing button opens a popup panel. Labels nested inside
 a popup continue to use ToolActionLabel and drill down within that popup.
 
@@ -948,6 +961,7 @@ a popup continue to use ToolActionLabel and drill down within that popup.
 - static **register**(): void
 
 ### [IgcToolActionNumberInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionNumberInputComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionNumberInputComponent
@@ -973,6 +987,7 @@ Represents base class for all tool actions in toolbar
 - **sourceAction**: `IgcToolActionComponent`
 
 ### [IgcToolActionRadioComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionRadioComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionRadioComponent
@@ -1004,6 +1019,7 @@ for more compact display.
 - static **register**(): void
 
 ### [IgcToolActionRadioGroupComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionRadioGroupComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionRadioGroupComponent
@@ -1020,6 +1036,7 @@ When null, defaults to the ToolPanel's cell text style with a slightly smaller f
 - static **register**(): void
 
 ### [IgcToolActionSeparatorComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSeparatorComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionSeparatorComponent
@@ -1033,6 +1050,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionSliderComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSliderComponent)
+Extends: IgcToolActionComponent
 A row holding a single-thumb slider over a numeric range.
 The property editor's Slider rows build one of these. The slider is the native slider proxy,
 which the XAML platforms back with a multi slider holding one thumb.
@@ -1050,6 +1068,7 @@ which the XAML platforms back with a multi slider holding one thumb.
 - static **register**(): void
 
 ### [IgcToolActionSubPanelComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionSubPanelComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionSubPanelComponent
@@ -1062,6 +1081,7 @@ Represents base class for all tool actions in toolbar
 - static **register**(): void
 
 ### [IgcToolActionTextInputComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-layouts/7.1.0/classes/IgcToolActionTextInputComponent)
+Extends: IgcToolActionComponent
 Represents base class for all tool actions in toolbar
 
 - **constructor**(): IgcToolActionTextInputComponent

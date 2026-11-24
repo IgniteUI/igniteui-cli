@@ -55,6 +55,7 @@ Version: 7.1
 - static **referenceEquals**(a: any, b: any): boolean
 
 ### [BaseError](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/BaseError)
+Extends: Base
 
 - **constructor**(initNumber?: number, rest: any[]): BaseError
 - static **$t**: `Type`
@@ -71,6 +72,7 @@ Version: 7.1
 - static **isResponseTypeSupported**(responseType: any): boolean
 
 ### [Calendar](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Calendar)
+Extends: Base
 
 - **constructor**(): Calendar
 - static **$t**: `Type`
@@ -102,6 +104,7 @@ Version: 7.1
 - **updateQuery**(q: any): void
 
 ### [CompareInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/CompareInfo)
+Extends: Base
 
 - **constructor**(): CompareInfo
 - static **$t**: `Type`
@@ -192,6 +195,7 @@ Version: 7.1
 - static **toUInt64**(v: any, provider?: IFormatProvider): number
 
 ### [CultureInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/CultureInfo)
+Extends: Base
 
 - **constructor**(name: string): CultureInfo
 - static **$t**: `Type`
@@ -2332,6 +2336,7 @@ Version: 7.1
 - **TRIAL_VERSION**: `string`
 
 ### [DateTimeFormat](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/DateTimeFormat)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): DateTimeFormat
 - static **$t**: `Type`
@@ -2356,11 +2361,13 @@ Version: 7.1
 - static **en**(map: Map<string, any>): Generator<any, void, unknown>
 
 ### [Enum](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Enum)
+Extends: Base
 
 - **constructor**(): Enum
 - static **$t**: `Type`
 
 ### [EnumBox](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/EnumBox)
+Extends: Enum
 
 - **constructor**(value: number, type: Type): EnumBox
 - readonly **value**: `number`
@@ -2412,12 +2419,14 @@ Version: 7.1
 - static **tryParse$1**($tEnum: Type, value: string, ignoreCase: boolean, result: TEnum): any
 
 ### [EventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/EventArgs)
+Extends: Base
 
 - **constructor**(): EventArgs
 - static **$t**: `Type`
 - static **empty**: `EventArgs`
 
 ### [FormatException](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/FormatException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): FormatException
 - static **$t**: `Type`
@@ -2479,6 +2488,7 @@ report and to carry in its next batch of changes.
 - **flexDirection**: `string`
 - **attachedCallback**(): void
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **onChildrenChanged**(children: any[]): void
 - static **register**(): void
 
@@ -2494,6 +2504,7 @@ report and to carry in its next batch of changes.
 - static **isEvent**(obj: any): boolean
 
 ### [IgcContentChildCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcContentChildCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgcContentChildCollection
 
@@ -2557,6 +2568,7 @@ Represent info about series values
 - **toString**(): string — Converts this object to a string
 
 ### [IgcDataLegendSummaryColumn](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataLegendSummaryColumn)
+Extends: IgcDataLegendSeriesValueInfo
 Represent a column in summary row
 
 - **constructor**(): IgcDataLegendSummaryColumn
@@ -2568,6 +2580,7 @@ Represent a column in summary row
 - **addValue**(value: number): void — Add a value in the summary column
 
 ### [IgcDataSeriesAdapterBulkChangeReinferenceRuleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterBulkChangeReinferenceRuleComponent)
+Extends: IgcDataSeriesAdapterReinferenceRuleComponent
 Asks for the data to be analyzed again once enough of it has changed since it was last
 analyzed, either as a number of items or as a share of the items.
 
@@ -2583,6 +2596,7 @@ or less ignores the count.
 - static **register**(): void
 
 ### [IgcDataSeriesAdapterItemCountReinferenceRuleComponent](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterItemCountReinferenceRuleComponent)
+Extends: IgcDataSeriesAdapterReinferenceRuleComponent
 Asks for the data to be analyzed again when the number of items crosses one of a set of
 thresholds, where the analysis can come to a different conclusion: with the default
 thresholds of 1 and 2, between no items, a single item and many.
@@ -2608,6 +2622,7 @@ the change should make it analyze the data again.
 - **shouldReinfer**: `boolean` — Gets or sets whether the change should make the adapter analyze the data again.
 
 ### [IgcDataSeriesAdapterReinferenceRuleCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesAdapterReinferenceRuleCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgcDataSeriesAdapterReinferenceRuleComponent[]): IgcDataSeriesAdapterReinferenceRuleCollection
 
@@ -2628,12 +2643,14 @@ that cannot answer an event synchronously.
 - static **observedAttributes**: `string[]`
 - **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **disconnectedCallback**(): void
 - **findByName**(name: string): any
 - static **_createFromInternal**(internal: any): IgcDataSeriesAdapterReinferenceRuleComponent
 - static **register**(): void
 
 ### [IgcDataSeriesCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSeriesCollection)
+Extends: IgCollection
 
 - **constructor**(list?: DataSeries[]): IgcDataSeriesCollection
 
@@ -2645,6 +2662,7 @@ Provides information about a schema change event.
 - **schema**: `IDataSourceSchema` — Represents the current schema for the data provider.
 
 ### [IgcDataSourceGroupDescription](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDataSourceGroupDescription)
+Extends: IgcDataSourceSortDescription
 
 - **constructor**(): IgcDataSourceGroupDescription
 
@@ -2743,6 +2761,7 @@ Provides information about a schema change event that has occurred.
 - **toArray**(): IgcDataSourceSummaryDescription[]
 
 ### [IgcDateTimeFormatSpecifier](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcDateTimeFormatSpecifier)
+Extends: IgcFormatSpecifier
 
 - **constructor**(): IgcDateTimeFormatSpecifier
 - **calendar**: `string`
@@ -2816,10 +2835,12 @@ Represents a colleciton of filter expressions.
 - **getLocalCulture**(): string
 
 ### [IgcFormatSpecifierCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcFormatSpecifierCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgcFormatSpecifier[]): IgcFormatSpecifierCollection
 
 ### [IgcGenericVirtualDataSource](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcGenericVirtualDataSource)
+Extends: IgcBaseGenericDataSource
 The base class for generic data sources.
 
 - **constructor**(): IgcGenericVirtualDataSource
@@ -2953,6 +2974,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **stopPropagation**(): void — Prevent the event from bubbling up.
 
 ### [IgcNumberFormatSpecifier](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcNumberFormatSpecifier)
+Extends: IgcFormatSpecifier
 
 - **constructor**(): IgcNumberFormatSpecifier
 - **compactDisplay**: `string`
@@ -2976,6 +2998,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **useGrouping**: `boolean`
 
 ### [IgcObjectCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcObjectCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgcObjectCollection
 
@@ -3080,6 +3103,7 @@ was raised.
 - **attributeChangedCallback**(name: string, oldValue: string, newValue: string): void
 - **close**(): void — Closes the popup.
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **destroy**(): void
 - **disconnectedCallback**(): void
 - **exportSerializedVisualModel**(): string — Returns a serialized copy of the exported visual model
@@ -3181,6 +3205,7 @@ Represents a record of data from a Shapefile (.shp and .dbf).
 - **tooltip**: `TemplateFunction`
 - static **htmlTagName**: `string`
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **ensureDefaultTooltip**(gauge: any): void
 - **getLabel**(context: any): any
 - **render**(context: any): void
@@ -3213,6 +3238,7 @@ editor acted on is not acted on twice.
 - **findByName**(name: string): any
 
 ### [IgcSizeDefinitionCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcSizeDefinitionCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgcGridLayoutSizeDefinition[]): IgcSizeDefinitionCollection
 
@@ -3238,11 +3264,13 @@ A class that exposes style realted properties.
 - **template**: `TemplateFunction`
 - **attachedCallback**(): void
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **diconnectedCallBack**(): void
 - **markChanged**(): void
 - static **register**(): void
 
 ### [IgcToolCommandArgumentCollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcToolCommandArgumentCollection)
+Extends: IgCollection
 
 - **constructor**(list?: ToolCommandArgument[]): IgcToolCommandArgumentCollection
 
@@ -3255,6 +3283,7 @@ A class that exposes style realted properties.
 - **template**: `TemplateFunction`
 - **attachedCallback**(): void
 - **connectedCallback**(): void
+- **createShadow**(): ShadowRoot
 - **destroy**(): void
 - **diconnectedCallBack**(): void
 - static **register**(): void
@@ -3286,11 +3315,13 @@ Class for converting Itf files into enumerable triangulations.
 - **currentStatus**: `number` — The current status from 0 to 100 of the progressive triangulation.
 
 ### [IgcUploadDataCompletedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcUploadDataCompletedEventArgs)
+Extends: IgcAsyncCompletedEventArgs
 
 - **constructor**(): IgcUploadDataCompletedEventArgs
 - **result**: `number[]`
 
 ### [IgcUploadStringCompletedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/IgcUploadStringCompletedEventArgs)
+Extends: IgcAsyncCompletedEventArgs
 
 - **constructor**(): IgcUploadStringCompletedEventArgs
 - **result**: `string`
@@ -3330,6 +3361,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **ensureStylablePatched**(prot: any): void
 
 ### [NotSupportedException](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/NotSupportedException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): NotSupportedException
 - static **$t**: `Type`
@@ -3337,12 +3369,14 @@ Class for converting Itf files into enumerable triangulations.
 - **init2**(initNumber: number, message: string, innerException: any): void
 
 ### [Nullable](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Nullable)
+Extends: Base
 
 - **constructor**(): Nullable
 - static **$t**: `Type`
 - static **getUnderlyingType**(nullableType: Type): Type
 
 ### [Nullable$1](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Nullable$1)
+Extends: Base
 
 - **constructor**($t: Type, value: T): Nullable$1<T>
 - readonly **isNullable**: `true`
@@ -3362,6 +3396,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **nullableEquals**(v1: any, v2: any): boolean
 
 ### [NumberFormatInfo](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/NumberFormatInfo)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): NumberFormatInfo
 - static **$t**: `Type`
@@ -3415,6 +3450,7 @@ Class for converting Itf files into enumerable triangulations.
 - **then**(pass: any, fail: any): PromiseWrapper
 
 ### [PropertyChangedEventArgs](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/PropertyChangedEventArgs)
+Extends: Base
 
 - **constructor**(propertyName: string): PropertyChangedEventArgs
 - static **$t**: `Type`
@@ -3432,6 +3468,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **registerElement**(tagName: string, cons: Function): void
 
 ### [Stream](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Stream)
+Extends: Base
 
 - **constructor**(): Stream
 - static **$t**: `Type`
@@ -3451,6 +3488,7 @@ Class for converting Itf files into enumerable triangulations.
 - **writeByte**(value: number): void
 
 ### [SystemException](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/SystemException)
+Extends: BaseError
 
 - **constructor**(initNumber: number, rest: any[]): SystemException
 - static **$t**: `Type`
@@ -3465,6 +3503,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **useLitHtml**(litHtml: any): void
 
 ### [Thread](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Thread)
+Extends: Base
 
 - **constructor**(): Thread
 - static **$t**: `Type`
@@ -3472,6 +3511,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **currentThread**: `Thread`
 
 ### [Type](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/Type)
+Extends: Base
 
 - **constructor**(instanceConstructor: Function, identifier: string, baseType?: Type, interfaces?: Type[], staticInitializer?: any): Type
 - **_$nullNullable**: `any`
@@ -3532,6 +3572,7 @@ will invoke the factory with plain call semantics (no new) and return
 its result. Use this for wasm-Dart bridge factories exposed via
 
 ### [ValueType](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/classes/ValueType)
+Extends: Base
 
 - **constructor**(): ValueType
 - static **$t**: `Type`
@@ -3747,6 +3788,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **namesValuesMap**: `any`
 
 ### [ICollection](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/ICollection)
+Extends: IEnumerable
 
 - **count**: `number`
 - **isSynchronized**: `boolean`
@@ -3754,6 +3796,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **copyTo**: `any`
 
 ### [ICollection$1](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/ICollection$1)
+Extends: IEnumerable$1, IEnumerable
 
 - **count**: `number`
 - **isReadOnly**: `boolean`
@@ -3801,6 +3844,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **getEnumeratorObject**: `any`
 
 ### [IEnumerable$1](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/IEnumerable$1)
+Extends: IEnumerable
 
 - **getEnumerator**: `any`
 
@@ -3811,6 +3855,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **reset**: `any`
 
 ### [IEnumerator$1](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/IEnumerator$1)
+Extends: IEnumerator, IDisposable
 
 - **current**: `T`
 - **moveNext**: `any`
@@ -3859,6 +3904,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **width**: `number`
 
 ### [IList](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/IList)
+Extends: ICollection
 
 - **isFixedSize**: `boolean`
 - **isReadOnly**: `boolean`
@@ -3873,6 +3919,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **removeAt**: `any`
 
 ### [IList$1](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/IList$1)
+Extends: ICollection$1, IEnumerable$1, IEnumerable
 
 - **indexOf**: `any`
 - **insert**: `any`
@@ -3920,11 +3967,13 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **y**: `number`
 
 ### [XmlAttribute](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlAttribute)
+Extends: XmlNode
 
 - **childNodes**: `XmlNodeList`
 - **cloneNode**: `any`
 
 ### [XmlDocument](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlDocument)
+Extends: XmlElement
 
 - **childNodes**: `XmlNodeList`
 - **documentElement**: `XmlElement`
@@ -3934,9 +3983,11 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **importNode**: `any`
 
 ### [XmlElement](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlElement)
+Extends: XmlNode
 
 
 ### [XmlLinkedNode](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlLinkedNode)
+Extends: XmlNode
 
 
 ### [XmlNamedNodeMap](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlNamedNodeMap)
@@ -3964,6 +4015,7 @@ its result. Use this for wasm-Dart bridge factories exposed via
 - **setAttributeNode**: `any`
 
 ### [XmlNodeList](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-core/7.1.0/interfaces/XmlNodeList)
+Extends: XmlNamedNodeMap
 
 - **length**: `number`
 - **item**: `any`

@@ -195,6 +195,7 @@ Represents event arguments for when there are errors parsing the filter string
 - **propertyName**: `string`
 
 ### [IgxDashboardTileGroupDescription](https://www.infragistics.com/api/angular/igniteui-angular-dashboards/22.0.0/classes/IgxDashboardTileGroupDescription)
+Extends: IgxDashboardTileSortDescription
 Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
 - **constructor**(): IgxDashboardTileGroupDescription

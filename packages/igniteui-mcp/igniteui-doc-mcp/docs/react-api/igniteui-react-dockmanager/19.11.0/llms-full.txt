@@ -177,6 +177,8 @@ Describes dock manager resource strings.
 - **oldHeight**: `number` — Gets the pane's height before the resizing operation.
 - **oldLocation**: `IgcDockManagerPoint` — Gets the pane's floating location before the resizing operation.
 - **oldWidth**: `number` — Gets the pane's width before the resizing operation.
+- **resizerLocation**: `IgcResizerLocation` — Gets the edge/corner that is being dragged.
+- **sourcePane**: `IgcSplitPane` — Gets the source pane that triggers the resize operation.
 
 ### [IgrFloatPaneAction](https://www.infragistics.com/api/react/igniteui-react-dockmanager/19.11/interfaces/IgrFloatPaneAction)
 
