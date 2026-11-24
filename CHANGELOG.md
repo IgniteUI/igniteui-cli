@@ -1,3 +1,11 @@
+# 16.0.1 (2026-11-24)
+
+## What's Changed
+* **fix(mcp):** `get_api_reference` now finds members a component inherits. API entries name their documented base types in an `Extends:` line, a member lookup walks those base types (within the entry's own package first) and says where the member was found, and `Component.member` and `member()` are accepted as input. The API snapshots were regenerated. [#1906](https://github.com/IgniteUI/igniteui-cli/pull/1906)
+* **fix(mcp):** `get_doc` no longer serves the wrong doc for an alias: `combo`, `IgrCombo`, `IgbCombo` and `IgcComboComponent` returned the Themes page after the documentation database rebuild. An exact doc name now wins over an alias, the aliases point to the current doc names, and `virtual-scrolling` resolves to the Virtual Scroll doc. [#1904](https://github.com/IgniteUI/igniteui-cli/pull/1904)
+* **fix(cli):** `ig upgrade-packages` and the `upgrade-packages` schematic now update the folders matched by `projects/*` and `workspaces` patterns in React and Web Components projects, including their HTML files, instead of only the root `src`. `node_modules` and `dist` inside workspaces are skipped, and `package.json` files without dependencies no longer cause an error. [#1905](https://github.com/IgniteUI/igniteui-cli/pull/1905)
+* **chore(angular):** Updated the Angular Grid Lite template to `igniteui-grid-lite` `~0.12.0`, matching the peer range of `igniteui-angular` 22.3, so `npm install` no longer fails with `ERESOLVE` in projects that use it. [#1903](https://github.com/IgniteUI/igniteui-cli/pull/1903)
+
 # 16.0.0 (2026-11-17)
 
 ## What's Changed
