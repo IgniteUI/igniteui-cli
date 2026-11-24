@@ -454,6 +454,7 @@ Represents a single cell in the [[Spreadsheet]]
 - static **staticInit**(): void
 
 ### [SpreadsheetCellAreaVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetCellAreaVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for a cell area within the spreadsheet
 
 - **constructor**(): SpreadsheetCellAreaVisualData
@@ -504,6 +505,7 @@ Represents a range of one or more cells.
 Returns and sets formatting information on a range of cells.
 
 - **constructor**(a: RangeWorksheetCellFormatBase): SpreadsheetCellRangeFormat
+- **propertyChanged**: `any`
 - static **$t**: `Type`
 - **alignment**: `HorizontalCellAlignment` — Gets or sets the horizontal alignment of the content in a cell.
 The horizontal alignment of the content in a cell.
@@ -564,6 +566,10 @@ If True, and the row associated with the cell has a default [[WorksheetRow.heigh
 height will automatically be increased to fit wrapped content.
 </p>
 The value which indicates whether text will wrap in a cell.
+- **addListener**(a: ITypedPropertyChangeListener$2<any, string>, b: boolean): void
+- **d**(a: any, b: string, c: any): void
+- **onPropertyValueChanged**(a: any, b: string, c: any): void
+- **removeListener**(a: ITypedPropertyChangeListener$2<any, string>): void
 - **setBorders**(borders: SpreadsheetCellRangeBorders, borderColor: WorkbookColorInfo, borderStyle: CellBorderLineStyle): void — Sets the specified borders for the associated range to the specified style and color.
 
 ### [SpreadsheetChartAdapterBase](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetChartAdapterBase)
@@ -573,6 +579,7 @@ Defines a base class for spreadsheet chart adapters that creates and initializes
 - static **$t**: `Type`
 
 ### [SpreadsheetColumnScrollRegion](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetColumnScrollRegion)
+Extends: SpreadsheetScrollRegion
 Represents one or more [[SpreadsheetPane]] instances in a vertical column
 
 - **constructor**(): SpreadsheetColumnScrollRegion
@@ -691,6 +698,7 @@ Represents one or more [[SpreadsheetPane]] instances in a vertical column
 - **topOrBottomDialogShow**: `string`
 
 ### [SpreadsheetHeaderAreaVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetHeaderAreaVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for a row or column header area within the spreadsheet
 
 - **constructor**(): SpreadsheetHeaderAreaVisualData
@@ -12308,12 +12316,18 @@ Represents the visual data for a list of row or column header areas within the s
 Provides information about a visualization of a group of rows and columns in a [[Worksheet]]
 
 - **constructor**(a: SpreadsheetRowScrollRegion, b: SpreadsheetColumnScrollRegion, c: any, d: ISpreadsheetPaneOwner): SpreadsheetPane
+- **propertyChanged**: `any`
 - static **$t**: `Type`
 - **columnScrollRegion**: `SpreadsheetColumnScrollRegion` — Returns the [[SpreadsheetColumnScrollRegion]] that contains the pane.
 - **rowScrollRegion**: `SpreadsheetRowScrollRegion` — Returns the [[SpreadsheetRowScrollRegion]] that contains the pane.
 - **selection**: `SpreadsheetSelection` — Returns an object that represents the selection within the pane.
 <p class="body"><b>Note:</b> Only the selection of the active pane is rendered.</p>
 - **visibleRange**: `SpreadsheetCellRange` — Returns a range that represents the current visible range.
+- **addListener**(a: ITypedPropertyChangeListener$2<any, string>, b: boolean): void
+- **d**(a: any, b: string, c: any): void
+- **e**(a: any, b: string, c: any): void
+- **onPropertyValueChanged**(a: any, b: string, c: any): void
+- **removeListener**(a: ITypedPropertyChangeListener$2<any, string>): void
 - **scrollCellIntoView**(cell: SpreadsheetCell): void — Used to ensure that a specified cell is fully in view within the [[visibleRange]].
 - **scrollCellIntoView**(cellAddress: string): void — Used to ensure that a specified cell is fully in view within the [[visibleRange]].
 - **scrollColumnIntoView**(index: number): void — Used to ensure that a specified column is fully in view within the [[visibleRange]].
@@ -12322,6 +12336,7 @@ Provides information about a visualization of a group of rows and columns in a [
 - **scrollRowIntoView**(index: number): void — Used to ensure that a specified row is fully in view within the [[visibleRange]].
 
 ### [SpreadsheetRowColumnVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetRowColumnVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for a row or column within the spreadsheet
 
 - **constructor**(): SpreadsheetRowColumnVisualData
@@ -12338,6 +12353,7 @@ Represents the visual data for a list of row or column headers within the spread
 - static **$t**: `Type`
 
 ### [SpreadsheetRowScrollRegion](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetRowScrollRegion)
+Extends: SpreadsheetScrollRegion
 Returns one or more [[SpreadsheetPane]] instances in a horizontal row.
 
 - **constructor**(): SpreadsheetRowScrollRegion
@@ -12347,16 +12363,22 @@ Returns one or more [[SpreadsheetPane]] instances in a horizontal row.
 Base class for the object that represents a row or column of [[SpreadsheetPane]] instances.
 
 - **constructor**(): SpreadsheetScrollRegion
+- **propertyChanged**: `any`
 - static **$t**: `Type`
 - **actualExtent**: `number` — Returns the actual displayed width or height of the area.
 - **endIndex**: `number` — Returns the index of the last visible item including partially visible.
 - **isFrozen**: `boolean` — Returns a boolean indicating if the area supports scrolling.
 - **startIndex**: `number` — Returns the index of the first visible item.
+- **addListener**(a: ITypedPropertyChangeListener$2<any, string>, b: boolean): void
+- **d**(a: any, b: string, c: any): void
+- **onPropertyValueChanged**(a: any, b: string, c: any): void
+- **removeListener**(a: ITypedPropertyChangeListener$2<any, string>): void
 
 ### [SpreadsheetSelection](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetSelection)
 An object that represents the selected items within a [[Spreadsheet]]
 
 - **constructor**(a: Spreadsheet, b: SpreadsheetPane, c: boolean): SpreadsheetSelection
+- **propertyChanged**: `any`
 - static **$t**: `Type`
 - **activeCell**: `SpreadsheetCell` — Returns the cell that represents the active cell.
 - **activeCellRangeIndex**: `number` — Returns the index of the selection group that contains the active cell.
@@ -12369,7 +12391,11 @@ If there are multiple ranges then they are separated by the default union operat
 - **addActiveCellRange**(rangeAddress: string, activeCellAddress: string, extendRangeForMergedCells?: boolean): boolean — Adds a new cell range for the specified cell and makes it the active cell.
 - **addCellRange**(range: SpreadsheetCellRange, extendRangeForMergedCells?: boolean): void — Adds a new range to the end of the [[cellRanges]]
 - **addCellRange**(rangeAddress: string, extendRangeForMergedCells?: boolean): void — Adds a new range to the end of the [[cellRanges]]
+- **addListener**(a: ITypedPropertyChangeListener$2<any, string>, b: boolean): void
 - **clearCellRanges**(): boolean — Resets the [[cellRanges]] to a single range containing only the [[activeCell]]
+- **d**(a: any, b: string, c: any): void
+- **onPropertyValueChanged**(a: any, b: string, c: any): void
+- **removeListener**(a: ITypedPropertyChangeListener$2<any, string>): void
 - **replaceActiveCellRange**(range: SpreadsheetCellRange, activeCell: SpreadsheetCell, extendRangeForMergedCells?: boolean): boolean — Replaces the range containing the [[activeCell]] with the specified range and using the specified cell as the new [[activeCell]].
 - **replaceActiveCellRange**(rangeAddress: string, activeCellAddress: string, extendRangeForMergedCells?: boolean): boolean — Replaces the range containing the [[activeCell]] with the specified range and using the specified cell as the new [[activeCell]].
 - **resetSelection**(ranges: SpreadsheetCellRange[], activeCell: SpreadsheetCell, newActiveRangeIndex: number, extendRangeForMergedCells?: boolean): boolean — Clears the current selection and uses the specified information to reinitialize the selection.
@@ -12381,6 +12407,7 @@ If there are multiple ranges then they are separated by the default union operat
 <p class="note"><b>Note:</b> if the specified range encompasses all the cells in the selection, the selection will be changed to only include the current [[activeCell]].</p>
 
 ### [SpreadsheetTabItemAreaVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetTabItemAreaVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for the area containing the sheet tabs
 
 - **constructor**(): SpreadsheetTabItemAreaVisualData
@@ -12390,6 +12417,7 @@ Represents the visual data for the area containing the sheet tabs
 - **serialize**(): string — Returns a string representation of the visual data
 
 ### [SpreadsheetTabVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetTabVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for a sheet tab within the spreadsheet
 
 - **constructor**(): SpreadsheetTabVisualData
@@ -12410,6 +12438,7 @@ Represents the visual data for a list of sheet tabs within the spreadsheet
 - static **$t**: `Type`
 
 ### [SpreadsheetVisualData](https://www.infragistics.com/api/react/igniteui-react-spreadsheet/19.6.0/classes/SpreadsheetVisualData)
+Extends: SpreadsheetVisualDataBase
 Represents the visual data for the spreadsheet.
 
 - **constructor**(): SpreadsheetVisualData

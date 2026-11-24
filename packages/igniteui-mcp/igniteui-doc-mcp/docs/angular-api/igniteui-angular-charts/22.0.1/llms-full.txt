@@ -9,6 +9,7 @@ Version: 22.0
 ## Classes
 
 ### [IgxAbsoluteVolumeOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAbsoluteVolumeOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Absolute Volume Oscillator indicator series.
 Default required members: Volume
 
@@ -97,6 +98,7 @@ You can use the ShortPeriod to set the short moving average period.
 this.series.shortPeriod = 10;
 
 ### [IgxAccumulationDistributionIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAccumulationDistributionIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Accumulation/Distribution indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -137,6 +139,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxAccumulationDistributionIndicatorComponent, never>`
 
 ### [IgxAnchoredCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAnchoredCategorySeriesComponent)
+Extends: IgxCategorySeriesComponent
 Represents the base class for all IgxDataChartComponent anchored category/value series.
 
 The AnchoredCategorySeries represents the base class for all IgxDataChartComponent anchored category/value series.
@@ -319,6 +322,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgxAnchoredRadialSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAnchoredRadialSeriesComponent)
+Extends: IgxRadialBaseComponent
 Represents the base class for all IgxDataChartComponent anchored radial category series.
 
 - **constructor**(): IgxAnchoredRadialSeriesComponent
@@ -360,6 +364,7 @@ The typical, and initial, value for bollinger band periods is 20.
 - **scrollIntoView**(item: any): boolean — Scrolls the specified item into the view.
 
 ### [IgxAnnotationLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAnnotationLayerComponent)
+Extends: IgxSeriesComponent
 Represents the base class for annotation layer types. Annotations will usually disable some of the default hover/touch behaviors of the chart when they are introduced to the series collection.
 In return they provide some valuable information as the cursor is moved by hovering over the chart, or performing a press-hold-drag interaction in touch mode.
 
@@ -425,6 +430,7 @@ A world position has x and y values that range from 0 to 1 that represent the gl
 - **verticalShiftAmount**: `number` — Gets or sets the percentage amount to shift the appearance mode by. Value must range between -1.0 to 1.0.
 
 ### [IgxAreaFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAreaFragmentComponent)
+Extends: IgxFragmentBaseComponent
 Represents one part of a StackedAreaSeries.
 
 - **constructor**(): IgxAreaFragmentComponent
@@ -436,6 +442,7 @@ Represents one part of a StackedAreaSeries.
 - **isAreaOrLine**: `boolean` — Gets whether the current series shows an area or line shape.
 
 ### [IgxAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAreaSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent area series.
 Displays trend over time or ordered categories.
 Useful when there are many data points and the order is important.
@@ -508,6 +515,7 @@ Null and Double.NaN are two examples of unknown values.
 series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 
 ### [IgxAssigningCategoryMarkerStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningCategoryMarkerStyleEventArgs)
+Extends: IgxAssigningCategoryStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 The assigningCategoryMarkerStyle event fired to allow you to override the style of markers for the items in a category or financial series. Only fires if you set isCustomCategoryMarkerStyleAllowed to true for a series.
@@ -515,6 +523,7 @@ The assigningCategoryMarkerStyle event fired to allow you to override the style 
 - **constructor**(): IgxAssigningCategoryMarkerStyleEventArgs
 
 ### [IgxAssigningCategoryStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningCategoryStyleEventArgs)
+Extends: IgxAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 The AssigningCategoryStyle event fired to allow you to override the style of items in a category or financial series. isCustomCategoryStyleAllowed property needs to be enabled prior to using this event.
@@ -522,56 +531,67 @@ The AssigningCategoryStyle event fired to allow you to override the style of ite
 - **constructor**(): IgxAssigningCategoryStyleEventArgs
 
 ### [IgxAssigningCategoryStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningCategoryStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgxAssigningCategoryStyleEventArgsBase
 
 ### [IgxAssigningPolarMarkerStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningPolarMarkerStyleEventArgs)
+Extends: IgxAssigningPolarStyleEventArgsBase
 Represents event arguments class for the AssigningPolarStyleEvent
 
 - **constructor**(): IgxAssigningPolarMarkerStyleEventArgs
 
 ### [IgxAssigningPolarStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningPolarStyleEventArgs)
+Extends: IgxAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningPolarStyleEvent
 
 - **constructor**(): IgxAssigningPolarStyleEventArgs
 
 ### [IgxAssigningPolarStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningPolarStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgxAssigningPolarStyleEventArgsBase
 
 ### [IgxAssigningRadialMarkerStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningRadialMarkerStyleEventArgs)
+Extends: IgxAssigningRadialStyleEventArgsBase
 Represents event arguments class for the AssigningRadialStyleEvent
 
 - **constructor**(): IgxAssigningRadialMarkerStyleEventArgs
 
 ### [IgxAssigningRadialStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningRadialStyleEventArgs)
+Extends: IgxAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningRadialStyleEvent
 
 - **constructor**(): IgxAssigningRadialStyleEventArgs
 
 ### [IgxAssigningRadialStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningRadialStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgxAssigningRadialStyleEventArgsBase
 
 ### [IgxAssigningScatterMarkerStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningScatterMarkerStyleEventArgs)
+Extends: IgxAssigningScatterStyleEventArgsBase
 Represents event arguments class for the AssigningScatterStyleEvent
 
 - **constructor**(): IgxAssigningScatterMarkerStyleEventArgs
 
 ### [IgxAssigningScatterStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningScatterStyleEventArgs)
+Extends: IgxAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningScatterStyleEvent
 
 - **constructor**(): IgxAssigningScatterStyleEventArgs
 
 ### [IgxAssigningScatterStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningScatterStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgxAssigningScatterStyleEventArgsBase
 
 ### [IgxAssigningSeriesShapeStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningSeriesShapeStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments class for the AssigningCategoryStyleEvent
 
 - **constructor**(): IgxAssigningSeriesShapeStyleEventArgsBase
@@ -640,21 +660,25 @@ Represents event arguments base class for the AssigningCategoryStyleEventArgsBas
 - static **_createFromInternal**(internal: any): IgxAssigningSeriesStyleEventArgsBase
 
 ### [IgxAssigningShapeMarkerStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningShapeMarkerStyleEventArgs)
+Extends: IgxAssigningShapeStyleEventArgsBase
 Represents event arguments class for the AssigningShapeStyleEvent
 
 - **constructor**(): IgxAssigningShapeMarkerStyleEventArgs
 
 ### [IgxAssigningShapeStyleEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningShapeStyleEventArgs)
+Extends: IgxAssigningSeriesShapeStyleEventArgsBase
 Represents event arguments class for the AssigningShapeStyleEvent
 
 - **constructor**(): IgxAssigningShapeStyleEventArgs
 
 ### [IgxAssigningShapeStyleEventArgsBase](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAssigningShapeStyleEventArgsBase)
+Extends: IgxAssigningSeriesStyleEventArgsBase
 Represents event arguments base class for the AssigningCategoryStyleEventArgsBase
 
 - **constructor**(): IgxAssigningShapeStyleEventArgsBase
 
 ### [IgxAverageDirectionalIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAverageDirectionalIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Average Directional indicator series.
 Default required members: High, Low, Close
 
@@ -724,6 +748,7 @@ You can use the Period to set the moving average.
 this.series.period = 14;
 
 ### [IgxAverageTrueRangeIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxAverageTrueRangeIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Average True Range indicator series.
 Default required members: High, Low, Close
 
@@ -1441,6 +1466,7 @@ not the set value.
 The OldMinimumValue property is used to gets the minimum value before the range changed.
 
 ### [IgxBarFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxBarFragmentComponent)
+Extends: IgxColumnFragmentComponent
 Represents one part of a StackedBarSeries.
 
 - **constructor**(): IgxBarFragmentComponent
@@ -1463,6 +1489,7 @@ let isVertical: boolean = this.series.isVertical;
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxBarSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxBarSeriesComponent)
+Extends: IgxVerticalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent bar series.
 
 - **constructor**(): IgxBarSeriesComponent
@@ -1483,6 +1510,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgxBollingerBandsOverlayComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxBollingerBandsOverlayComponent)
+Extends: IgxFinancialOverlayComponent
 Represents a IgxDataChartComponent Bollinger Bands financial overlay series.
 Default required members: High, Low, Close
 
@@ -1560,6 +1588,7 @@ this.series.period = 7;
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 
 ### [IgxBollingerBandWidthIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxBollingerBandWidthIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Bollinger Bandwidth indicator series.
 Represents the normalized width of the Bollinger bands for each provided value.
 For more info see:
@@ -1660,6 +1689,7 @@ Represents a base class for brush scales.
 - static **_createFromInternal**(internal: any): IgxBrushScaleComponent
 
 ### [IgxBubbleSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxBubbleSeriesComponent)
+Extends: IgxScatterBaseComponent
 Represents a IgxDataChartComponent bubble series.
 
 - **constructor**(): IgxBubbleSeriesComponent
@@ -1794,6 +1824,7 @@ Represents event arguments for updating label of callout layer
 - **yValue**: `any` — Gets data Y-value associated with callout layer
 
 ### [IgxCalloutLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCalloutLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(): IgxCalloutLayerComponent
@@ -2013,6 +2044,7 @@ Event arguments for the CalloutStyleUpdating event
 - **yValue**: `any` — Gets Y-position of data item associated with the callout.
 
 ### [IgxCategoryAngleAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryAngleAxisComponent)
+Extends: IgxCategoryAxisBaseComponent
 Represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories.
 
 CategoryAngleAxis represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories
@@ -2080,6 +2112,7 @@ Indicates the angle in degress that the chart's 0th angle should be offset.
 - **getUnscaledAngle**(scaledAngle: number): number — Gets the raw axis value from the scaled angle in radians.
 
 ### [IgxCategoryAxisBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryAxisBaseComponent)
+Extends: IgxAxisComponent
 Represents the base class for all IgxDataChartComponent category-based axes.
 
 <igx-data-chart
@@ -2233,6 +2266,7 @@ Try setting it on an axis displaying financial series to adjust the spacing on t
 - **unscaleValue**(unscaledValue: number): number — Unscales a value from screen space into axis space.
 
 ### [IgxCategoryChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryChartComponent)
+Extends: IgxXYChartComponent
 Represents a chart with an ordinal X-axis and a numeric Y-axis.
 
 **Ignite UI for Angular Category Chart** - [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/CategoryChart.html)
@@ -2528,6 +2562,7 @@ YAxisMinorInterval determines how often to show a minor gridline along the y-axi
 - **updateStyle**(): void
 
 ### [IgxCategoryDateTimeXAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryDateTimeXAxisComponent)
+Extends: IgxTimeAxisBaseComponent
 Represents a category-based horizontal X axis that uses a DateTime scale.
 
 CategoryDateTimeXAxis class represents a category-based horizontal X axis that uses a DateTime scale.
@@ -2596,6 +2631,7 @@ The set value is a factor that determines how the minor lines will be displayed.
 - **scrollIntoView**(minimum: Date, maximum: Date): void
 
 ### [IgxCategoryHighlightLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryHighlightLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that targets a category axis, or all category axes in the chart.
 If the axis contains any series that are aligned between major gridlines of the axis (column, waterfall, etc) this will render a shape that fills the current category.
 Otherwise it will render a band with an adjustable thickness at the closest gridline to the pointer position.
@@ -2614,6 +2650,7 @@ Setting UseIterpolation to true will cause the x position in the latter case to 
 - **findByName**(name: string): any
 
 ### [IgxCategoryItemHighlightLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryItemHighlightLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that highlights items in a series that use a category axis
 either by drawing a banded shape at their position, or by rendering a marker at their position.
 Depending on the type of series, the default highlight will be affected. To override
@@ -2642,6 +2679,7 @@ the type of highlight used, you can set the HighlightType property.
 - **findByName**(name: string): any
 
 ### [IgxCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategorySeriesComponent)
+Extends: IgxMarkerSeriesComponent
 Represents the base class for IgxDataChartComponent category series.
 
 CategorySeries class represents the base class for IgxDataChartComponent category series.
@@ -2787,6 +2825,7 @@ this.chart.series.add(series);
 - **getOffsetValue**(): number — Returns the offset value for this series if grouped on a category axis.
 
 ### [IgxCategoryToolTipLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryToolTipLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays grouped tooltips for series that use a category axis.
 
 - **constructor**(): IgxCategoryToolTipLayerComponent
@@ -2811,6 +2850,7 @@ Represents an annotation layer that displays grouped tooltips for series that us
 - **hideToolTips**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgxCategoryXAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryXAxisComponent)
+Extends: IgxCategoryAxisBaseComponent
 Represents a IgxDataChartComponent category X axis.
 
 CategoryXAxis class represents a IgxDataChartComponent category X axis.
@@ -2935,6 +2975,7 @@ This property is overridden by chart's WindowRect or WindowScaleHorizontal prope
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgxCategoryYAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCategoryYAxisComponent)
+Extends: IgxCategoryAxisBaseComponent
 Represents a IgxDataChartComponent category Y axis.
 
 - **constructor**(): IgxCategoryYAxisComponent
@@ -2982,6 +3023,7 @@ This property is overridden by chart's WindowRect or WindowScaleHorizontal prope
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgxChaikinOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxChaikinOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents the IgxDataChartComponent Chaikin Oscillator indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -3074,6 +3116,7 @@ Set the ShortPeriod property if you wish to change the short moving average peri
 this.series.shortPeriod = 30;
 
 ### [IgxChaikinVolatilityIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxChaikinVolatilityIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Chaikin Volatility indicator series.
 The ChaikinVolatility indicator attempts to show volatility by displaying the spread between
 the high and low values.
@@ -3150,6 +3193,7 @@ Provides data for IgxDataChartComponent mouse button related events.
 - **toString**(): string — Provides a human readable expresion of the event arguments.
 
 ### [IgxChartGroupDescription](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxChartGroupDescription)
+Extends: IgxChartSortDescription
 Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
 - **constructor**(field?: string, sortDirection?: any): IgxChartGroupDescription
@@ -3287,6 +3331,7 @@ Base class for classes which provide colors corresponding to numeric values with
 - static **_createFromInternal**(internal: any): IgxColorScaleComponent
 
 ### [IgxColumnFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxColumnFragmentComponent)
+Extends: IgxFragmentBaseComponent
 Represents one part of a StackedColumnSeries.
 
 - **constructor**(): IgxColumnFragmentComponent
@@ -3307,6 +3352,7 @@ Represents one part of a StackedColumnSeries.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxColumnSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxColumnSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent column series.
 Compare values across categories by using vertical rectangles.
 Use it when the order of categories is not important or for displaying
@@ -3350,6 +3396,7 @@ and returns a resulting column of values.
 - **findByName**(name: string): any
 
 ### [IgxCommodityChannelIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCommodityChannelIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Commodity Channel Index indicator series.
 Default required members: High, Low, Close
 
@@ -3423,6 +3470,7 @@ Class used to determine the numeric values of contour lines, given a larger list
 - static **_createFromInternal**(internal: any): IgxContourValueResolverComponent
 
 ### [IgxCrosshairLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCrosshairLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(): IgxCrosshairLayerComponent
@@ -3487,6 +3535,7 @@ Represents an annotation layer that displays crosshair lines that cross through 
 - **findByName**(name: string): any
 
 ### [IgxCustomContourValueResolverComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCustomContourValueResolverComponent)
+Extends: IgxContourValueResolverComponent
 ContourValueResolver class which fires an event to resolve the contour values.
 
 - **constructor**(): IgxCustomContourValueResolverComponent
@@ -3504,6 +3553,7 @@ Provides data for GetCustomContourValues event.
 - **values**: `number[]`
 
 ### [IgxCustomIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCustomIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Custom Indicator series.
 The indicator value is calculated in the user specified Indicator event handler.
 
@@ -3547,6 +3597,7 @@ this.chart.series.add(series);
 - **constructor**(list?: string[]): IgxCustomIndicatorNameCollection
 
 ### [IgxCustomPaletteBrushScaleComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCustomPaletteBrushScaleComponent)
+Extends: IgxBrushScaleComponent
 Represents a brush scale that uses index-based brush selection mode.
 
 - **constructor**(): IgxCustomPaletteBrushScaleComponent
@@ -3559,6 +3610,7 @@ Represents a brush scale that uses index-based brush selection mode.
 - **getBrush1**(index: number, total: number): string
 
 ### [IgxCustomPaletteColorScaleComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxCustomPaletteColorScaleComponent)
+Extends: IgxColorScaleComponent
 ColorScale class for selecting a color from a given palette, or interpolating between adjacent colors in that palette.
 
 - **constructor**(): IgxCustomPaletteColorScaleComponent
@@ -3575,6 +3627,7 @@ ColorScale class for selecting a color from a given palette, or interpolating be
 - **providePalette**(colors: string[]): void
 
 ### [IgxDataAnnotationAxisLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationAxisLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents a base annotation layer that displays annotations over an axis.
 
 - **constructor**(): IgxDataAnnotationAxisLayerComponent
@@ -3643,6 +3696,7 @@ Represents a base annotation layer that displays annotations over an axis.
 - **findByName**(name: string): any
 
 ### [IgxDataAnnotationBandLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationBandLayerComponent)
+Extends: IgxDataAnnotationPointLayerComponent
 Represents an annotation layer that renders bands (line with breadth) at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3755,6 +3809,7 @@ Represents a definition of data annotation displayed by the DataAnnotationShapeL
 - **findByName**(name: string): any
 
 ### [IgxDataAnnotationLineLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationLineLayerComponent)
+Extends: IgxDataAnnotationPointLayerComponent
 Represents an annotation layer that renders lines at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3766,6 +3821,7 @@ EndValueYMemberPath
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataAnnotationLineLayerComponent, never>`
 
 ### [IgxDataAnnotationPointLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationPointLayerComponent)
+Extends: IgxDataAnnotationRangeLayerComponent
 Represents a base of annotation layers that render shapes at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3807,6 +3863,7 @@ EndValueYMemberPath
 - **startValueYMemberPath**: `string` — Gets or sets name of data column with y-positions for the start of annotations.
 
 ### [IgxDataAnnotationRangeLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationRangeLayerComponent)
+Extends: IgxDataAnnotationShapeLayerComponent
 Represents a base of annotation layers that render from start/end range
 
 - **constructor**(): IgxDataAnnotationRangeLayerComponent
@@ -3823,6 +3880,7 @@ Represents a base of annotation layers that render from start/end range
 - **startLabelTextColor**: `string` — Gets or sets the text color used for displaying the start annotation label.
 
 ### [IgxDataAnnotationRectLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationRectLayerComponent)
+Extends: IgxDataAnnotationPointLayerComponent
 Represents an annotation layer that renders rectangles at locations of x/y values mapped to these properties:
 StartValueXMemberPath
 StartValueYMemberPath
@@ -3834,6 +3892,7 @@ EndValueYMemberPath
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxDataAnnotationRectLayerComponent, never>`
 
 ### [IgxDataAnnotationShapeLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationShapeLayerComponent)
+Extends: IgxDataAnnotationAxisLayerComponent
 Represents a base annotation layer that renders shapes defined by derived data annotation, e.g. line, strip, slice, rect, band
 
 - **constructor**(): IgxDataAnnotationShapeLayerComponent
@@ -3898,6 +3957,7 @@ Represents a base annotation layer that renders shapes defined by derived data a
 - **toWorldY**(y: number): number — Converts pixel Y coordinate (relative to component's height) to world coordinate (0.0 - 1.0)
 
 ### [IgxDataAnnotationSliceLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationSliceLayerComponent)
+Extends: IgxDataAnnotationShapeLayerComponent
 Represents an annotation layer that renders vertical or horizontal slices/lines at values mapped to AnnotationValueMemberPath property
 horizontal slices/lines when TargetAxis is set to Y-axis
 vertical slices/lines when TargetAxis is set to X-axis
@@ -3913,6 +3973,7 @@ vertical slices/lines when TargetAxis is set to X-axis
 - **annotationValueMemberPath**: `string` — Gets or sets name of data column with values used to position annotations.
 
 ### [IgxDataAnnotationStripLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataAnnotationStripLayerComponent)
+Extends: IgxDataAnnotationRangeLayerComponent
 Represents an annotation layer that renders vertical or horizontal strips between values mapped to these properties:
 StartValueMemberPath
 EndValueMemberPath
@@ -3937,6 +3998,7 @@ EndValueMemberPath
 - **startValueMemberPath**: `string` — Gets or sets name of data column with positions for the start of annotations.
 
 ### [IgxDataChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataChartComponent)
+Extends: IgxSeriesViewerComponent
 Represents a chart area containing axes, series, an optional legend and other hosted content.
 
 - **constructor**(_renderer: Renderer2, _elRef: ViewContainerRef, _ngZone: NgZone, _injector: Injector): IgxDataChartComponent
@@ -4609,6 +4671,7 @@ Represents event argument for DataLegendSummaryCalculationCustom
 - **summaryValue**: `number` — Gets or sets summary values displayed below data column
 
 ### [IgxDataPieBaseChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataPieBaseChartComponent)
+Extends: IgxRadialBaseChartComponent
 Represents a base class for PieBase chart control that can plot scatter data
 
 - **constructor**(): IgxDataPieBaseChartComponent
@@ -4706,6 +4769,7 @@ This property is effective only when ValueAxisIsLogarithmic is true.
 - **getOthersContext**(): IgxOthersCategoryContextComponent — Gets the Others context which provides a current list of items in Others slice.
 
 ### [IgxDataPieChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataPieChartComponent)
+Extends: IgxDataPieBaseChartComponent
 Represents a DataPie chart control that can plot DataPie data
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxDataPieChartComponent
@@ -4751,6 +4815,7 @@ DataSourceSupportingCalculation class Represents a calculation strategy that use
 - **findByName**(name: string): any
 
 ### [IgxDataToolTipLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDataToolTipLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays grouped tooltips with summaries for series.
 
 - **constructor**(): IgxDataToolTipLayerComponent
@@ -4990,6 +5055,7 @@ This property is ignored when setting ValueFormatSpecifiers or ValueFormatString
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgxDetrendedPriceOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxDetrendedPriceOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Detrended Price Oscillator indicator series.
 Default required members: Close
 
@@ -6378,6 +6444,7 @@ Calling this method too often will hinder the performance of the doughnut chart.
 - static **register**(): void
 
 ### [IgxEaseOfMovementIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxEaseOfMovementIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Ease of Movement indicator series.
 The ease of movement indicator by Richard W. Arms, Jr relates the price change of an asset to
 its volume. Normally smoothed with a moving average.
@@ -6420,6 +6487,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxEaseOfMovementIndicatorComponent, never>`
 
 ### [IgxFastStochasticOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFastStochasticOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Fast Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -6438,6 +6506,7 @@ Represents event arguments for when there are errors parsing the filter string
 - **propertyName**: `string`
 
 ### [IgxFinalValueLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinalValueLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(): IgxFinalValueLayerComponent
@@ -6542,6 +6611,7 @@ is invalid.
 - **findByName**(name: string): any
 
 ### [IgxFinancialChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialChartComponent)
+Extends: IgxXYChartComponent
 Represents a chart with an ordinal X-axis and a numeric Y-axis.
 
 **Ignite UI for Angular Financial Chart** - [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/FinancialChart.html)
@@ -7018,6 +7088,7 @@ Parameterizes a financial calculation event.
 - **supportingCalculations**: `IgxFinancialCalculationSupportingCalculations` — The supporting calculations to use in the calculation.
 
 ### [IgxFinancialIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialIndicatorComponent)
+Extends: IgxFinancialSeriesComponent
 Represents the base functionality for a IgxDataChartComponent financial indicator series.
 
 The FinancialIndicator class represents the base functionality for a IgxDataChartComponent financial indicator series.
@@ -7247,6 +7318,7 @@ the central 80% of the visible axis.
 - **constructor**(list?: FinancialIndicatorType[]): IgxFinancialIndicatorTypeCollection
 
 ### [IgxFinancialLegendComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialLegendComponent)
+Extends: IgxLegendBaseComponent
 Represents a legend that displays information about each series, most often used in financial charting.
 
 - **constructor**(renderer: Renderer2, elRef: ElementRef, ngZone: NgZone): IgxFinancialLegendComponent
@@ -7259,6 +7331,7 @@ Represents a legend that displays information about each series, most often used
 - **ngOnDestroy**(): void
 
 ### [IgxFinancialOverlayComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialOverlayComponent)
+Extends: IgxFinancialSeriesComponent
 Represents the base functionality for a IgxDataChartComponent financial overlay series.
 The difference between a FinancialIndicator and a FinancialOverlay is small.
 Overlays are usually drawn against the same axes as the price, but they don't
@@ -7345,6 +7418,7 @@ the central 80% of the visible axis.
 - **constructor**(list?: FinancialOverlayType[]): IgxFinancialOverlayTypeCollection
 
 ### [IgxFinancialPriceSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialPriceSeriesComponent)
+Extends: IgxFinancialSeriesComponent
 Represents a IgxDataChartComponent financial price series that renders as Candlestick or OHLC representations.
 Default required members: Open, Low, High, Close
 
@@ -7601,6 +7675,7 @@ the central 80% of the visible axis.
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgxFinancialSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFinancialSeriesComponent)
+Extends: IgxSeriesComponent
 Represents the base class for all financial indicator and overlay series.
 
 The FinancialSeries represents the base class for all financial indicator and overlay series.
@@ -8094,6 +8169,7 @@ number offset= series.getOffsetValue();
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgxForceIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxForceIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Force Index indicator series.
 Default required members: Close, Volume
 
@@ -8159,6 +8235,7 @@ You can use the period property to get the moving average period of the current 
 this.series.period = 30;
 
 ### [IgxFragmentBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFragmentBaseComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents one part of a stacked series.
 
 - **constructor**(): IgxFragmentBaseComponent
@@ -8169,6 +8246,7 @@ Represents one part of a stacked series.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxFullStochasticOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxFullStochasticOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Full Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -8460,6 +8538,7 @@ Information about the clicked slice.
 - **position**: `IgPoint` — The position of the mouse relative to the funnel chart.
 
 ### [IgxHierarchicalRingSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxHierarchicalRingSeriesComponent)
+Extends: IgxRingSeriesBaseComponent
 Represents a
 IgxDoughnutChartComponent hierarchical series.
 
@@ -8469,6 +8548,7 @@ IgxDoughnutChartComponent hierarchical series.
 - **childrenMemberPath**: `string` — Gets or sets the property name that contains the children items collection.
 
 ### [IgxHighDensityScatterSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxHighDensityScatterSeriesComponent)
+Extends: IgxSeriesComponent
 Represents a IgxDataChartComponent series where a high volume of scatter points can be displayed.
 
 - **constructor**(): IgxHighDensityScatterSeriesComponent
@@ -8521,6 +8601,7 @@ EventArgs class holding information about the dimensions of a hole in a doughnut
 - **radius**: `number` — The radius of the hole.
 
 ### [IgxHorizontalAnchoredCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxHorizontalAnchoredCategorySeriesComponent)
+Extends: IgxAnchoredCategorySeriesComponent
 Base class for anchored category series with a category x-axis and a numeric y-axis.
 
 Instantiate HorizontalAnchoredCategorySeries
@@ -8633,6 +8714,7 @@ You can use the GetOffsetValue to get the offset value for this series if groupe
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxHorizontalRangeCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxHorizontalRangeCategorySeriesComponent)
+Extends: IgxRangeCategorySeriesComponent
 Base class for ranged category series with a category X-axis and a numeric Y-axis.
 
 Instantiate HorizontalAnchoredCategorySeries
@@ -8753,6 +8835,7 @@ You can use the GetOffsetValue to get the offset value for this series if groupe
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxHorizontalStackedSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxHorizontalStackedSeriesBaseComponent)
+Extends: IgxStackedSeriesBaseComponent
 Base class for stacked series with a category x-axis and a numeric y-axis.
 
 - **constructor**(): IgxHorizontalStackedSeriesBaseComponent
@@ -8779,6 +8862,7 @@ Base class for stacked series with a category x-axis and a numeric y-axis.
 - **constructor**(list?: IndicatorDisplayType[]): IgxIndicatorDisplayTypeCollection
 
 ### [IgxItemLegendComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxItemLegendComponent)
+Extends: IgxLegendBaseComponent
 Represents a legend that displays an item for each point in the series.
 
 You can use the ItemLegend to display a legend item for each data member bound to the BubbleSeries
@@ -8800,6 +8884,7 @@ You can use the ItemLegend to display a legend item for each data member bound t
 - **ngOnDestroy**(): void
 
 ### [IgxItemToolTipLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxItemToolTipLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays tooltips for all target series individually.
 
 - **constructor**(): IgxItemToolTipLayerComponent
@@ -8826,6 +8911,7 @@ Represents an annotation layer that displays tooltips for all target series indi
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgxItemwiseStrategyBasedIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxItemwiseStrategyBasedIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Financial indicator base class for doing calculating an itemwize indicator.
 An itemwise indicator's individual values don't depend on any other values in the
 collection so can always be independently recalculated. Also, because of this, the
@@ -8870,6 +8956,7 @@ Represents the base class for a legend in IgxDataChartComponent.
 - **simulateMouseLeave**(): void
 
 ### [IgxLegendComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxLegendComponent)
+Extends: IgxLegendBaseComponent
 Represents a legend in a IgxDataChartComponent control.
 
 The Legend helps end-user identify visuals of chart series with contextual information related to the data plotted in the chart control.
@@ -8939,6 +9026,7 @@ Provides data for legend's text content changed event.
 - **constructor**(): IgxLegendTextContentChangedEventArgs
 
 ### [IgxLinearContourValueResolverComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxLinearContourValueResolverComponent)
+Extends: IgxContourValueResolverComponent
 ContourValueResolver class which resolves contour lines to be distributed at linear intervals from the data minimum to the data maximum.
 
 - **constructor**(): IgxLinearContourValueResolverComponent
@@ -8948,6 +9036,7 @@ ContourValueResolver class which resolves contour lines to be distributed at lin
 - **valueCount**: `number` — Gets or sets how many contour values to return.
 
 ### [IgxLineFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxLineFragmentComponent)
+Extends: IgxFragmentBaseComponent
 Represents one part of a StackedLineSeries.
 
 - **constructor**(): IgxLineFragmentComponent
@@ -8959,6 +9048,7 @@ Represents one part of a StackedLineSeries.
 - **isLineOnly**: `boolean` — Gets whether the current series shows only line shapes.
 
 ### [IgxLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxLineSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent line series.
 Displays trend over time or ordered categories.
 Useful when there are many data points and the order is important.
@@ -9028,6 +9118,7 @@ Null and Double.NaN are two examples of unknown values.
 series.unknownValuePlotting = UnknownValuePlotting.LinearInterpolate;
 
 ### [IgxMarkerSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMarkerSeriesComponent)
+Extends: IgxSeriesComponent
 Represents the base class for series containing markers.
 
 MarkerSeries represents the base class for series containing markers.
@@ -9217,6 +9308,7 @@ this.series.markerType = "circle";
 - **constructor**(list?: MarkerType[]): IgxMarkerTypeCollection
 
 ### [IgxMarketFacilitationIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMarketFacilitationIndexIndicatorComponent)
+Extends: IgxItemwiseStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Market Facilitation Index indicator series.
 The Market Facilitation Index (MFI) indicator is represented by
 the difference of the high and the low for a bar divided by the volume.
@@ -9252,6 +9344,7 @@ Example:
 - **defaultDisplayType**: `IndicatorDisplayType` — Gets default display type for the current Financial Indicator
 
 ### [IgxMassIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMassIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Mass Index indicator series.
 Default required members: High, Low
 
@@ -9292,6 +9385,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxMassIndexIndicatorComponent, never>`
 
 ### [IgxMedianPriceIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMedianPriceIndicatorComponent)
+Extends: IgxItemwiseStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Median Price indicator series.
 Default required members: High, Low
 
@@ -9332,6 +9426,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxMedianPriceIndicatorComponent, never>`
 
 ### [IgxMoneyFlowIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMoneyFlowIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Money Flow Index indicator series.
 Default required members: Close, Low, High, Volume
 
@@ -9410,6 +9505,7 @@ Example:
 this.series.period = 14;
 
 ### [IgxMovingAverageConvergenceDivergenceIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxMovingAverageConvergenceDivergenceIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Moving Average Convergence/Divergence (MACD) indicator series.
 Default required members: High, Low, Close
 
@@ -9546,6 +9642,7 @@ Example:
 </igx-data-chart>
 
 ### [IgxNegativeVolumeIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNegativeVolumeIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Negative Volume Index indicator (NVI) series.
 Default required members: Close, Volume
 
@@ -9585,6 +9682,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxNegativeVolumeIndexIndicatorComponent, never>`
 
 ### [IgxNumericAngleAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNumericAngleAxisComponent)
+Extends: IgxNumericAxisBaseComponent
 Represents a IgxDataChartComponent angle based axis for polar series.
 
 - **constructor**(): IgxNumericAngleAxisComponent
@@ -9604,6 +9702,7 @@ Represents a IgxDataChartComponent angle based axis for polar series.
 - **getUnscaledAngle**(scaledAngle: number): number — Gets the raw axis value back from the angle that would be used on the chart.
 
 ### [IgxNumericAxisBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNumericAxisBaseComponent)
+Extends: IgxAxisComponent
 Represents the base class for all IgxDataChartComponent numeric axes.
 
 - **constructor**(): IgxNumericAxisBaseComponent
@@ -9871,6 +9970,7 @@ this.yAxis.referenceValue = 30;
 - **unscaleValue**(unscaledValue: number): number — Unscales a value from screen space into axis space.
 
 ### [IgxNumericRadiusAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNumericRadiusAxisComponent)
+Extends: IgxNumericAxisBaseComponent
 Represents a IgxDataChartComponent radius axis for polar and radial series.
 
 <igx-data-chart
@@ -9900,6 +10000,7 @@ a value between 0.0 and 1.0.
 - **getUnscaledValue**(scaledValue: number): number — Returns a raw axis value from the world coordinates radius length provided.
 
 ### [IgxNumericXAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNumericXAxisComponent)
+Extends: IgxStraightNumericAxisBaseComponent
 Represents a IgxDataChartComponent numeric X axis.
 
 The NumericXAxis treats the data as continuously varying numerical data items. Labels on this axis are placed along the X-axis. The location of labels varies according to the value in a data column that is mapped using the XMemberPath property of Scatter Series or ValueMemberPath property of Bar Series.
@@ -9923,6 +10024,7 @@ The NumericXAxis treats the data as continuously varying numerical data items. L
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgxNumericYAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxNumericYAxisComponent)
+Extends: IgxStraightNumericAxisBaseComponent
 Represents a IgxDataChartComponent numeric Y axis.
 
 The NumericYAxis treats the data as continuously varying numerical data items. Labels on this axis are placed along the Y-axis. Location of labels varies according to the value in a data column that is mapped using the YMemberPath property for Scatter Series or ValueMemberPath property for Category Series.
@@ -9951,6 +10053,7 @@ The NumericYAxis treats the data as continuously varying numerical data items. L
 - **scrollRangeIntoView**(minimum: number, maximum: number): void
 
 ### [IgxOnBalanceVolumeIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxOnBalanceVolumeIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent On Balance Bolume indicator series.
 Default required members: Close, Volume
 
@@ -9991,6 +10094,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxOnBalanceVolumeIndicatorComponent, never>`
 
 ### [IgxOrdinalTimeXAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxOrdinalTimeXAxisComponent)
+Extends: IgxCategoryXAxisComponent
 A horizontal axis that uses an ordinal DateTime scale.
 On an ordinal time axis, datapoints are aligned according to their order in the ItemsSource, like a category axis.
 
@@ -10165,6 +10269,7 @@ Represents an event arguments for styling Overlay Text
 - **verticalPadding**: `number` — Gets or sets Vertical Padding for the overlay text
 
 ### [IgxPercentagePriceOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPercentagePriceOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent percentage price oscillator series.
 Default required members: High, Low, Volume
 
@@ -10262,6 +10367,7 @@ You can use the ShortPeriod to set the short moving average period.
 this.series.shortPeriod = 10;
 
 ### [IgxPercentageVolumeOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPercentageVolumeOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Percentage Volume Oscillator (PVO) series.
 Default required members: Volume
 
@@ -10359,6 +10465,7 @@ You can use the ShortPeriod to set the short moving average period.
 this.series.shortPeriod = 30;
 
 ### [IgxPercentChangeYAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPercentChangeYAxisComponent)
+Extends: IgxNumericYAxisComponent
 A horizontal axis that uses a DateTime scale.
 
 You can use the PercentChangeYAxis show percentage values.
@@ -10526,6 +10633,7 @@ This should not be called if the data that the pie chart is bound to is already 
 - static **_createFromInternal**(internal: any): IgxPieChartBaseComponent
 
 ### [IgxPieChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPieChartComponent)
+Extends: IgxPieChartBaseComponent
 Represents Infragistics IgxPieChartComponent control.
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxPieChartComponent
@@ -10582,6 +10690,7 @@ Provides data for IgxDataChartComponent mouse button related events.
 - **viewer**: `IgxSeriesViewerComponent` — Gets the Chart associated with the current event.
 
 ### [IgxPointSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPointSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent point series.
 
 You can use the PointSeries plot a value along a category or date.
@@ -10616,6 +10725,7 @@ this.chart.series.add(series);
 - **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
 
 ### [IgxPolarAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarAreaSeriesComponent)
+Extends: IgxPolarLineSeriesBaseComponent
 Represents a IgxDataChartComponent polar area series.
 
 - **constructor**(): IgxPolarAreaSeriesComponent
@@ -10628,6 +10738,7 @@ Represents a IgxDataChartComponent polar area series.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IgxPolarBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarBaseComponent)
+Extends: IgxMarkerSeriesComponent
 Represents the base class from which all IgxDataChartComponent polar series are derived.
 
 - **constructor**(): IgxPolarBaseComponent
@@ -10695,6 +10806,7 @@ spiral based interpolation.
 - **scrollIntoView**(item: any): boolean — Scrolls the requested item into view, if possible.
 
 ### [IgxPolarLineSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarLineSeriesBaseComponent)
+Extends: IgxPolarBaseComponent
 Represents the base class from which all IgxDataChartComponent polar line series are derived.
 
 - **constructor**(): IgxPolarLineSeriesBaseComponent
@@ -10702,6 +10814,7 @@ Represents the base class from which all IgxDataChartComponent polar line series
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxPolarLineSeriesBaseComponent, never>`
 
 ### [IgxPolarLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarLineSeriesComponent)
+Extends: IgxPolarLineSeriesBaseComponent
 Represents a IgxDataChartComponent polar line series.
 
 - **constructor**(): IgxPolarLineSeriesComponent
@@ -10714,6 +10827,7 @@ Represents a IgxDataChartComponent polar line series.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IgxPolarScatterSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarScatterSeriesComponent)
+Extends: IgxPolarBaseComponent
 Represents a IgxDataChartComponent polar scatter series.
 
 - **constructor**(): IgxPolarScatterSeriesComponent
@@ -10723,6 +10837,7 @@ Represents a IgxDataChartComponent polar scatter series.
 - **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
 
 ### [IgxPolarSplineAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarSplineAreaSeriesComponent)
+Extends: IgxPolarLineSeriesBaseComponent
 Represents a IgxDataChartComponent polar spline area series.
 
 - **constructor**(): IgxPolarSplineAreaSeriesComponent
@@ -10736,6 +10851,7 @@ Represents a IgxDataChartComponent polar spline area series.
 - **stiffness**: `number` — Gets or sets the Stiffness property.
 
 ### [IgxPolarSplineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPolarSplineSeriesComponent)
+Extends: IgxPolarLineSeriesBaseComponent
 Represents a IgxDataChartComponent polar spline series.
 
 - **constructor**(): IgxPolarSplineSeriesComponent
@@ -10747,6 +10863,7 @@ Represents a IgxDataChartComponent polar spline series.
 - **stiffness**: `number` — Gets or sets the Stiffness property.
 
 ### [IgxPositiveVolumeIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPositiveVolumeIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Positive Volume Index (PVI) indicator series.
 Default required members: Close, Volume
 
@@ -10786,6 +10903,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxPositiveVolumeIndexIndicatorComponent, never>`
 
 ### [IgxPriceChannelOverlayComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPriceChannelOverlayComponent)
+Extends: IgxFinancialOverlayComponent
 Represents a IgxDataChartComponent Financial Price Channel Overlay series.
 Default required members: High, Low
 
@@ -10857,6 +10975,7 @@ this.series.period = 14;
 - **getSeriesValue**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): number
 
 ### [IgxPriceVolumeTrendIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxPriceVolumeTrendIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Price Volume Trend Indicator series.
 Default required members: Volume, Close
 
@@ -10903,6 +11022,7 @@ Provides information about the progressive load progress of the HighDensityScatt
 - **currentStatus**: `number` — The current status from 0 to 100 of the progressive load.
 
 ### [IgxProportionalCategoryAngleAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxProportionalCategoryAngleAxisComponent)
+Extends: IgxCategoryAngleAxisComponent
 Represents a IgxDataChartComponent category angle axis. Useful for displaying radial categories.
 
 - **constructor**(): IgxProportionalCategoryAngleAxisComponent
@@ -10933,6 +11053,7 @@ Represents a IgxDataChartComponent category angle axis. Useful for displaying ra
 - **isOthersValue**(index: number): boolean
 
 ### [IgxRadialAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialAreaSeriesComponent)
+Extends: IgxAnchoredRadialSeriesComponent
 Represents a IgxDataChartComponent radial area series.
 
 - **constructor**(): IgxRadialAreaSeriesComponent
@@ -10945,6 +11066,7 @@ Represents a IgxDataChartComponent radial area series.
 Null and Double.NaN are two examples of unknown values.
 
 ### [IgxRadialBaseChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialBaseChartComponent)
+Extends: IgxDomainChartComponent
 Represents a base class for domain charts with X/Y axes
 
 - **constructor**(): IgxRadialBaseChartComponent
@@ -11090,6 +11212,7 @@ Represents a base class for domain charts with X/Y axes
 - **provideContainer**(container: any): void — Called by the UI framework to provide a UI container for rendering this control.
 
 ### [IgxRadialBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialBaseComponent)
+Extends: IgxMarkerSeriesComponent
 Represents the base class for all IgxDataChartComponent radial series
 
 - **constructor**(): IgxRadialBaseComponent
@@ -11155,6 +11278,7 @@ Note: Transitions are not currently supported for stacked series.
 - **scrollIntoView**(item: any): boolean — Scrolls the specified item into the view.
 
 ### [IgxRadialColumnSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialColumnSeriesComponent)
+Extends: IgxAnchoredRadialSeriesComponent
 Represents a IgxDataChartComponent radial column series.
 Compare values across categories by using radial rectangles.
 
@@ -11174,6 +11298,7 @@ Compare values across categories by using radial rectangles.
 call ApplyTemplate.
 
 ### [IgxRadialLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialLineSeriesComponent)
+Extends: IgxAnchoredRadialSeriesComponent
 Represents a IgxDataChartComponent radial line series.
 
 - **constructor**(): IgxRadialLineSeriesComponent
@@ -11188,6 +11313,7 @@ Null and Double.NaN are two examples of unknown values.
 call ApplyTemplate.
 
 ### [IgxRadialPieSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRadialPieSeriesComponent)
+Extends: IgxAnchoredRadialSeriesComponent
 Represents a IgxDataChartComponent radial pie series.
 Compare values across categories by using radial pie slices.
 
@@ -11212,6 +11338,7 @@ in and halfway out.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxRangeAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRangeAreaSeriesComponent)
+Extends: IgxHorizontalRangeCategorySeriesComponent
 Represents a IgxDataChartComponent range area series.
 
 The RangeAreaSeries class represents the range area series of the IgxDataChartComponent.
@@ -11255,6 +11382,7 @@ Use the IsAreaOrLine property to check if the current series shows an area or li
 var x= series.isAreaOrLine;
 
 ### [IgxRangeBarSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRangeBarSeriesComponent)
+Extends: IgxVerticalRangeCategorySeriesComponent
 Represents a IgxDataChartComponent range bar series.
 
 - **constructor**(): IgxRangeBarSeriesComponent
@@ -11272,6 +11400,7 @@ Represents a IgxDataChartComponent range bar series.
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxRangeCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRangeCategorySeriesComponent)
+Extends: IgxCategorySeriesComponent
 Represents the base class for all IgxDataChartComponent ranged category/value series.
 
 The RangeCategorySeries represents the base class for all IgxDataChartComponent ranged category/value series.
@@ -11367,6 +11496,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgxRangeColumnSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRangeColumnSeriesComponent)
+Extends: IgxHorizontalRangeCategorySeriesComponent
 Represents a IgxDataChartComponent range column series.
 
 The RangeColumnSeries class represents range column series of the IgxDataChartComponent.
@@ -11470,6 +11600,7 @@ var x =series.getItemSpan();
 - **getSeriesValueBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxRateOfChangeAndMomentumIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRateOfChangeAndMomentumIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Rate of Change and Momentum indicator series.
 Default required members: Close
 
@@ -11548,6 +11679,7 @@ this.series.period = 30;
 - **constructor**(): IgxRefreshCompletedEventArgs
 
 ### [IgxRelativeStrengthIndexIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRelativeStrengthIndexIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Relative Strength Index indicator series.
 Default required members: Close
 
@@ -11743,6 +11875,7 @@ The default zero value is equivalent to 3 o'clock.
 - **constructor**(list?: IgxRingSeriesBaseComponent[]): IgxRingSeriesCollection
 
 ### [IgxRingSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxRingSeriesComponent)
+Extends: IgxRingSeriesBaseComponent
 Represents one ring in
 IgxDoughnutChartComponent series.
 
@@ -11757,6 +11890,7 @@ IgxDoughnutChartComponent series.
 - **sychronizeCollections**(): void
 
 ### [IgxScaleLegendComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScaleLegendComponent)
+Extends: IgxLegendBaseComponent
 Represents a legend that indicates the size and the color scale for a collection of series.
 
 - **constructor**(): IgxScaleLegendComponent
@@ -11775,6 +11909,7 @@ Typically, the reference value is the initial value of the series.  The referenc
 - **findByName**(name: string): any
 
 ### [IgxScatterAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterAreaSeriesComponent)
+Extends: IgxScatterTriangulationSeriesComponent
 Series class which draws a colored 2D surface based on a triangulation of XY data with numeric values assigned to each point.
 
 - **constructor**(): IgxScatterAreaSeriesComponent
@@ -11795,6 +11930,7 @@ Series class which draws a colored 2D surface based on a triangulation of XY dat
 - **updateActualColorScale**(): void — Updates ActualColorScale properties when the ColorScale property has changed
 
 ### [IgxScatterBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterBaseComponent)
+Extends: IgxMarkerSeriesComponent
 Represents the base class for all IgxDataChartComponent scatter series
 
 - **constructor**(): IgxScatterBaseComponent
@@ -11863,6 +11999,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgxScatterContourSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterContourSeriesComponent)
+Extends: IgxScatterTriangulationSeriesComponent
 Series class for rendering isarithmic contours based on a triangulation of X+Y+Value points in the ItemsSource.
 
 - **constructor**(): IgxScatterContourSeriesComponent
@@ -11881,6 +12018,7 @@ Series class for rendering isarithmic contours based on a triangulation of X+Y+V
 - **getMemberPathValue**(memberPathName: string): string — Gets the value of a requested member path from the series.
 
 ### [IgxScatterLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterLineSeriesComponent)
+Extends: IgxScatterBaseComponent
 Represents a IgxDataChartComponent scatter line series
 
 - **constructor**(): IgxScatterLineSeriesComponent
@@ -11893,6 +12031,7 @@ Represents a IgxDataChartComponent scatter line series
 Null and Double.NaN are two examples of unknown values.
 
 ### [IgxScatterPolygonSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterPolygonSeriesComponent)
+Extends: IgxShapeSeriesBaseComponent
 Series class which renders polygons as Paths based on lists of points in the ItemsSource.
 
 - **constructor**(): IgxScatterPolygonSeriesComponent
@@ -11928,6 +12067,7 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **getSeriesValueMarkerBoundingBox**(world: IgPoint): IgRect — If possible, will return the best available value marker bounding box within the series that has the best value match for the world position provided.
 
 ### [IgxScatterPolylineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterPolylineSeriesComponent)
+Extends: IgxShapeSeriesBaseComponent
 Series class used for displaying multiple polylines for datasources which contain multiple lists of points.
 
 - **constructor**(): IgxScatterPolylineSeriesComponent
@@ -11939,6 +12079,7 @@ Series class used for displaying multiple polylines for datasources which contai
 - **findByName**(name: string): any
 
 ### [IgxScatterSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterSeriesComponent)
+Extends: IgxScatterBaseComponent
 Represents a IgxDataChartComponent scatter series
 
 - **constructor**(): IgxScatterSeriesComponent
@@ -11948,6 +12089,7 @@ Represents a IgxDataChartComponent scatter series
 - **hasOnlyMarkers**: `boolean` — Gets whether the series has only marker as visuals
 
 ### [IgxScatterSplineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterSplineSeriesComponent)
+Extends: IgxScatterBaseComponent
 Represents a IgxDataChartComponent scatter spline series
 
 - **constructor**(): IgxScatterSplineSeriesComponent
@@ -11959,6 +12101,7 @@ Represents a IgxDataChartComponent scatter spline series
 - **stiffness**: `number` — Gets or sets the Stiffness property.
 
 ### [IgxScatterTriangulationSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxScatterTriangulationSeriesComponent)
+Extends: IgxSeriesComponent
 Base class for series which triangulate XY data prior to rendering.
 
 - **constructor**(): IgxScatterTriangulationSeriesComponent
@@ -11996,6 +12139,7 @@ Provides data for the SelectedItemChanged event.
 - **oldItem**: `any` — The previously selected item.
 
 ### [IgxSelectedItemChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSelectedItemChangingEventArgs)
+Extends: IgxSelectedItemChangedEventArgs
 Provides data for the SelectedItemChanging event.
 
 - **constructor**(): IgxSelectedItemChangingEventArgs
@@ -12014,6 +12158,7 @@ Provides data for the SelectedItemsChanged event.
 - **oldItems**: `IgxObjectCollection` — A list of the previously selected items.
 
 ### [IgxSelectedItemsChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSelectedItemsChangingEventArgs)
+Extends: IgxSelectedItemsChangedEventArgs
 Provides data for the SelectedItemsChanging event.
 
 - **constructor**(): IgxSelectedItemsChangingEventArgs
@@ -14389,6 +14534,7 @@ Provides data for the SelectedItemsChanged event.
 - **oldItems**: `IgxChartSelectedItemCollection` — A list of the previously selected items.
 
 ### [IgxSeriesViewerSelectedSeriesItemsChangingEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSeriesViewerSelectedSeriesItemsChangingEventArgs)
+Extends: IgxSeriesViewerSelectedSeriesItemsChangedEventArgs
 Provides data for the SelectedItemsChanging event.
 
 - **constructor**(): IgxSeriesViewerSelectedSeriesItemsChangingEventArgs
@@ -14396,6 +14542,7 @@ Provides data for the SelectedItemsChanging event.
 - **cancel**: `boolean` — Set this to true in order to stop the SelectedItems collection from changing.
 
 ### [IgxShapeSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxShapeSeriesBaseComponent)
+Extends: IgxSeriesComponent
 Series class for rendering polygons.
 
 - **constructor**(): IgxShapeSeriesBaseComponent
@@ -14524,6 +14671,7 @@ Contains PieChart click event data.
 - **startAngle**: `number` — Gets the start angle of the slice.
 
 ### [IgxSlowStochasticOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSlowStochasticOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Slow Stochastic Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -14704,6 +14852,7 @@ This can be set to a formatted string, such as "{0:n}", or it can be set to a Da
 - static **_createFromInternal**(internal: any): IgxSparklineComponent
 
 ### [IgxSplineAreaFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineAreaFragmentComponent)
+Extends: IgxSplineFragmentBaseComponent
 Represents one part of a StackedSplineAreaSeries.
 
 - **constructor**(): IgxSplineAreaFragmentComponent
@@ -14717,6 +14866,7 @@ Represents one part of a StackedSplineAreaSeries.
 - **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
 
 ### [IgxSplineAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineAreaSeriesComponent)
+Extends: IgxSplineSeriesBaseComponent
 Represents a IgxDataChartComponent spline area series.
 
 <igx-data-chart
@@ -14744,6 +14894,7 @@ Represents a IgxDataChartComponent spline area series.
 - **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
 
 ### [IgxSplineFragmentBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineFragmentBaseComponent)
+Extends: IgxSplineSeriesBaseComponent
 Represents one part in a StackedSplineSeries or StackedSplineAreaSeries.
 
 - **constructor**(): IgxSplineFragmentBaseComponent
@@ -14754,6 +14905,7 @@ Represents one part in a StackedSplineSeries or StackedSplineAreaSeries.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxSplineFragmentComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineFragmentComponent)
+Extends: IgxSplineFragmentBaseComponent
 Represents one part of a StackedSplineSeries.
 
 - **constructor**(): IgxSplineFragmentComponent
@@ -14765,6 +14917,7 @@ Represents one part of a StackedSplineSeries.
 - **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
 
 ### [IgxSplineSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineSeriesBaseComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents the base class for all IgxDataChartComponent spline series.
 
 - **constructor**(): IgxSplineSeriesBaseComponent
@@ -14798,6 +14951,7 @@ Represents the base class for all IgxDataChartComponent spline series.
 this.series.splineType = SplineType.Clamped;
 
 ### [IgxSplineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxSplineSeriesComponent)
+Extends: IgxSplineSeriesBaseComponent
 Represents a IgxDataChartComponent spline series.
 
 <igx-data-chart
@@ -14823,6 +14977,7 @@ Represents a IgxDataChartComponent spline series.
 - **isSpline**: `boolean` — Gets whether the current series shows a spline shape.
 
 ### [IgxStacked100AreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100AreaSeriesComponent)
+Extends: IgxStackedAreaSeriesComponent
 Represents a stacked area series, where values are presented as percentages of the total.
 
 - **constructor**(): IgxStacked100AreaSeriesComponent
@@ -14832,6 +14987,7 @@ Represents a stacked area series, where values are presented as percentages of t
 - **isPercentBased**: `boolean`
 
 ### [IgxStacked100BarSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100BarSeriesComponent)
+Extends: IgxStackedBarSeriesComponent
 Represents a IgxDataChartComponent stacked100 bar series.
 
 - **constructor**(): IgxStacked100BarSeriesComponent
@@ -14841,6 +14997,7 @@ Represents a IgxDataChartComponent stacked100 bar series.
 - **isPercentBased**: `boolean`
 
 ### [IgxStacked100ColumnSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100ColumnSeriesComponent)
+Extends: IgxStackedColumnSeriesComponent
 Represents a IgxDataChartComponent stacked100 column series.
 
 - **constructor**(): IgxStacked100ColumnSeriesComponent
@@ -14850,6 +15007,7 @@ Represents a IgxDataChartComponent stacked100 column series.
 - **isPercentBased**: `boolean`
 
 ### [IgxStacked100LineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100LineSeriesComponent)
+Extends: IgxStackedLineSeriesComponent
 Represents a IgxDataChartComponent stacked100 line series.
 
 - **constructor**(): IgxStacked100LineSeriesComponent
@@ -14859,6 +15017,7 @@ Represents a IgxDataChartComponent stacked100 line series.
 - **isPercentBased**: `boolean`
 
 ### [IgxStacked100SplineAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100SplineAreaSeriesComponent)
+Extends: IgxStackedSplineAreaSeriesComponent
 Represents a IgxDataChartComponent stacked100 spline area series.
 
 - **constructor**(): IgxStacked100SplineAreaSeriesComponent
@@ -14868,6 +15027,7 @@ Represents a IgxDataChartComponent stacked100 spline area series.
 - **isPercentBased**: `boolean`
 
 ### [IgxStacked100SplineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStacked100SplineSeriesComponent)
+Extends: IgxStackedSplineSeriesComponent
 Represents a IgxDataChartComponent stacked100 spline series.
 
 - **constructor**(): IgxStacked100SplineSeriesComponent
@@ -14877,6 +15037,7 @@ Represents a IgxDataChartComponent stacked100 spline series.
 - **isPercentBased**: `boolean`
 
 ### [IgxStackedAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedAreaSeriesComponent)
+Extends: IgxHorizontalStackedSeriesBaseComponent
 Represents a IgxDataChartComponent stacked area series.
 
 - **constructor**(): IgxStackedAreaSeriesComponent
@@ -14886,6 +15047,7 @@ Represents a IgxDataChartComponent stacked area series.
 - **isArea**: `boolean` — Gets whether the current series shows an area shape.
 
 ### [IgxStackedBarSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedBarSeriesComponent)
+Extends: IgxVerticalStackedSeriesBaseComponent
 Represents a IgxDataChartComponent stacked bar series.
 
 - **constructor**(): IgxStackedBarSeriesComponent
@@ -14907,6 +15069,7 @@ The series is scrolled by the minimum amount required to place the specified dat
 the central 80% of the visible axis.
 
 ### [IgxStackedColumnSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedColumnSeriesComponent)
+Extends: IgxHorizontalStackedSeriesBaseComponent
 Represents a IgxDataChartComponent stacked column series.
 
 - **constructor**(): IgxStackedColumnSeriesComponent
@@ -15134,6 +15297,7 @@ StackedFragmentSeries.ShadowBlur is applied.
 - static **_createFromInternal**(internal: any): IgxStackedFragmentSeriesComponent
 
 ### [IgxStackedLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedLineSeriesComponent)
+Extends: IgxHorizontalStackedSeriesBaseComponent
 Represents a stacked series, where the points in each series are connected with a line.
 
 - **constructor**(): IgxStackedLineSeriesComponent
@@ -15143,6 +15307,7 @@ Represents a stacked series, where the points in each series are connected with 
 - **isLineOnly**: `boolean` — Gets whether the current series shows only line shapes.
 
 ### [IgxStackedSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedSeriesBaseComponent)
+Extends: IgxCategorySeriesComponent
 Represents a base class for stacked series.
 
 - **constructor**(): IgxStackedSeriesBaseComponent
@@ -15212,6 +15377,7 @@ Provides data for IgxDataChartComponent stacked series.
 - **transitionEasingFunction**: `any` — Gets or sets the animation easing function for the series.
 
 ### [IgxStackedSplineAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedSplineAreaSeriesComponent)
+Extends: IgxHorizontalStackedSeriesBaseComponent
 Represents a IgxDataChartComponent stacked spline area series.
 
 - **constructor**(): IgxStackedSplineAreaSeriesComponent
@@ -15225,6 +15391,7 @@ Represents a IgxDataChartComponent stacked spline area series.
 - **isSplineShapePartOfRange**: `boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
 
 ### [IgxStackedSplineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStackedSplineSeriesComponent)
+Extends: IgxHorizontalStackedSeriesBaseComponent
 Represents a IgxDataChartComponent stacked spline series.
 
 - **constructor**(): IgxStackedSplineSeriesComponent
@@ -15236,6 +15403,7 @@ Represents a IgxDataChartComponent stacked spline series.
 - **isSplineShapePartOfRange**: `boolean` — Gets or sets whether to include the spline shape in the axis range requested of the axis.
 
 ### [IgxStandardDeviationIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStandardDeviationIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Standard Deviation indicator series.
 Default required members: High, Low, Close
 
@@ -15279,6 +15447,7 @@ let series = new IgxStandardDeviatioIndicatorComponent();
 The typical, and initial, value for STDEV periods is 20.
 
 ### [IgxStepAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStepAreaSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent step area series.
 
 <igx-data-chart
@@ -15317,6 +15486,7 @@ Represents a IgxDataChartComponent step area series.
 - **isStep**: `boolean` — Gets whether the current series shows step shapes.
 
 ### [IgxStepLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStepLineSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent step line series.
 
 <igx-data-chart
@@ -15355,6 +15525,7 @@ Represents a IgxDataChartComponent step line series.
 - **isStep**: `boolean` — Gets whether the current series shows step shapes.
 
 ### [IgxStochRSIIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStochRSIIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent StochRSI indicator series.
 Default required members: Close
 
@@ -15415,6 +15586,7 @@ The typical, and initial, value for StochRSI periods is 14.
 this.series.period = 10;
 
 ### [IgxStraightNumericAxisBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStraightNumericAxisBaseComponent)
+Extends: IgxNumericAxisBaseComponent
 Defines a set of basic methods and properties used to create a StraightNumeric axis.
 
 - **constructor**(): IgxStraightNumericAxisBaseComponent
@@ -15446,6 +15618,7 @@ ScaleMode can be used on numeric axes to allow scaling data values using built-i
 this.yAxis.scaleMode = NumericScaleMode.Logarithmic;
 
 ### [IgxStrategyBasedIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxStrategyBasedIndicatorComponent)
+Extends: IgxFinancialIndicatorComponent
 A base class for indicator series with simple calculations that separates the calculation
 responsibility from the other responsibilities of the financial series, this enables
 easier unit testing and decoupling of individual calculation strategies.
@@ -15477,6 +15650,7 @@ StrategyBasedIndicator
 - **ensureShapeStyle**(): void
 
 ### [IgxTimeAxisBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTimeAxisBaseComponent)
+Extends: IgxCategoryAxisBaseComponent
 Represents an category-based horizontal X axis that uses a DateTime scale.
 
 Represents horizontal axis that uses a DateTime scale.
@@ -15773,6 +15947,7 @@ when the year is repeated.
 - static **_createFromInternal**(internal: any): IgxTimeAxisLabelFormatComponent
 
 ### [IgxTimeXAxisComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTimeXAxisComponent)
+Extends: IgxTimeAxisBaseComponent
 A horizontal axis that uses a DateTime scale.
 
 The TimeXAxis is a horizontal axis that uses a DateTime scale.
@@ -16076,6 +16251,7 @@ Represents a style to apply to a treemap node.
 - **constructor**(list?: IgxTreemapNodeStyleMappingComponent[]): IgxTreemapNodeStyleMappingCollection
 
 ### [IgxTreemapNodeStyleMappingComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTreemapNodeStyleMappingComponent)
+Extends: IgxTreemapNodeStyleComponent
 Represents a style to apply to a set of nodes in the treemap.
 
 - **constructor**(): IgxTreemapNodeStyleMappingComponent
@@ -16121,6 +16297,7 @@ default highlight styling.
 - **value**: `number`
 
 ### [IgxTrendLineLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTrendLineLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents the class of the value overlay. The value overlay is a line or circle representing a value on an axis.
 
 - **constructor**(): IgxTrendLineLayerComponent
@@ -16148,6 +16325,7 @@ The typical, and initial, value for trend line period is 7.
 - **constructor**(list?: TrendLineType[]): IgxTrendLineTypeCollection
 
 ### [IgxTRIXIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTRIXIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent TRIX indicator series.
 Default required members: Close
 
@@ -16215,6 +16393,7 @@ The Period property is used for moving average period of the current TRIXIndicat
 this.series.period = 30;
 
 ### [IgxTypicalPriceIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxTypicalPriceIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Typical Price indicator series.
 The typical price indicator is represented as a arithmetic average
 of the High, Low, and Close for a day.
@@ -16256,6 +16435,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxTypicalPriceIndicatorComponent, never>`
 
 ### [IgxUltimateOscillatorIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUltimateOscillatorIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Ultimate Oscillator indicator series.
 Default required members: High, Low, Close
 
@@ -16320,6 +16500,7 @@ this.chart.series.add(series);
 - **annotationInfo**: `IgxUserAnnotationInformation`
 
 ### [IgxUserAnnotationLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserAnnotationLayerComponent)
+Extends: IgxSeriesComponent
 Represents an user annotation layer that can define UserPointAnnotation, UserSliceAnnotation, UserStripAnnotation
 
 - **constructor**(): IgxUserAnnotationLayerComponent
@@ -16356,6 +16537,7 @@ Information about the user annotation content which is being created or updated.
 - **content**: `any`
 
 ### [IgxUserAnnotationToolTipLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserAnnotationToolTipLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays tooltips for all target series individually.
 
 - **constructor**(): IgxUserAnnotationToolTipLayerComponent
@@ -16377,6 +16559,7 @@ Represents an annotation layer that displays tooltips for all target series indi
 - **hideToolTipsImmediate**(): void — Hides any tooltips presented by the layer, if any.
 
 ### [IgxUserAxisAnnotation](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserAxisAnnotation)
+Extends: IgxUserBaseAnnotation
 Represents an user annotation for rendering annotation of axis label
 
 - **constructor**(): IgxUserAxisAnnotation
@@ -16431,6 +16614,7 @@ Represents base class for all user annotations, e.g. UserPointAnnotation, UserSl
 - static **_createFromInternal**(internal: any): IgxUserBaseAnnotation
 
 ### [IgxUserPointAnnotation](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserPointAnnotation)
+Extends: IgxUserBaseAnnotation
 Represents an user annotation for rendering data point annotation on a series
 
 - **constructor**(): IgxUserPointAnnotation
@@ -16449,6 +16633,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **annotation**: `IgxUserPointAnnotation` — The annotation to style.
 
 ### [IgxUserShapeAnnotation](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserShapeAnnotation)
+Extends: IgxUserAxisAnnotation
 Represents base class for rendering an annotation with shape of slice of strip
 
 - **constructor**(): IgxUserShapeAnnotation
@@ -16495,6 +16680,7 @@ Represents base class for rendering an annotation with shape of slice of strip
 - **valueDisplayMode**: `DataAnnotationDisplayMode` — Gets or sets display mode of label in the center annotation.
 
 ### [IgxUserSliceAnnotation](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserSliceAnnotation)
+Extends: IgxUserShapeAnnotation
 Represents an user annotation for rendering data slice annotation
 
 - **constructor**(): IgxUserSliceAnnotation
@@ -16506,6 +16692,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **annotation**: `IgxUserSliceAnnotation` — The annotation to style.
 
 ### [IgxUserStripAnnotation](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxUserStripAnnotation)
+Extends: IgxUserShapeAnnotation
 Represents an user annotation for rendering data strip annotation
 
 - **constructor**(): IgxUserStripAnnotation
@@ -16533,6 +16720,7 @@ Represents the event arguments for the UserAxisAnnotation styling events.
 - **annotation**: `IgxUserStripAnnotation` — The annotation to style.
 
 ### [IgxValueBrushScaleComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxValueBrushScaleComponent)
+Extends: IgxBrushScaleComponent
 Represents a brush scale that uses value-based brush selection.
 
 - **constructor**(): IgxValueBrushScaleComponent
@@ -16550,6 +16738,7 @@ Represents a brush scale that uses value-based brush selection.
 - **minimumValue**: `number` — Gets or sets the minimum value for this scale.
 
 ### [IgxValueLayerComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxValueLayerComponent)
+Extends: IgxAnnotationLayerComponent
 Represents an annotation layer that displays crosshair lines that cross through the closest value of the target series under the cursor.
 
 - **constructor**(): IgxValueLayerComponent
@@ -16659,6 +16848,7 @@ modes that target multiple series.
 - **constructor**(list?: ValueLayerValueMode[]): IgxValueModeCollection
 
 ### [IgxValueOverlayComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxValueOverlayComponent)
+Extends: IgxSeriesComponent
 Represents the class of the value overlay. The value overlay is a line or circle representing a value on an axis.
 
 - **constructor**(): IgxValueOverlayComponent
@@ -16742,6 +16932,7 @@ Represents the class of the value overlay. The value overlay is a line or circle
 - **scrollIntoView**(item: any): boolean — Requests that the provided item should be brought into view if possible.
 
 ### [IgxVerticalAnchoredCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxVerticalAnchoredCategorySeriesComponent)
+Extends: IgxAnchoredCategorySeriesComponent
 Represents a vertically laid out category based series.
 
 - **constructor**(): IgxVerticalAnchoredCategorySeriesComponent
@@ -16766,6 +16957,7 @@ Represents a vertically laid out category based series.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxVerticalRangeCategorySeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxVerticalRangeCategorySeriesComponent)
+Extends: IgxRangeCategorySeriesComponent
 Base class for ranged category series with a numeric X-axis and a category Y-axis.
 
 - **constructor**(): IgxVerticalRangeCategorySeriesComponent
@@ -16801,6 +16993,7 @@ vertical series must read world.Y instead.
 - **getSeriesValuePosition**(world: IgPoint, useInterpolation: boolean, skipUnknowns: boolean): IgPoint
 
 ### [IgxVerticalStackedSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxVerticalStackedSeriesBaseComponent)
+Extends: IgxStackedSeriesBaseComponent
 Base class for stacked series with a numeric x-axis and a category y-axis.
 
 - **constructor**(): IgxVerticalStackedSeriesBaseComponent
@@ -16817,6 +17010,7 @@ Base class for stacked series with a numeric x-axis and a category y-axis.
 - **getOffsetValue**(): number — Returns the offset value for this series if grouped on a category axis.
 
 ### [IgxWaterfallSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxWaterfallSeriesComponent)
+Extends: IgxHorizontalAnchoredCategorySeriesComponent
 Represents a IgxDataChartComponent waterfall column series.
 
 WaterfallSeries belongs to a group of CategorySeries and it is rendered using a collection of vertical columns that show the difference between consecutive data points.
@@ -16969,6 +17163,7 @@ let itemSpan: number = series.GetItemSpan();
 - **setNegativeColors**(negativeBrush: string, negativeOutline: string): void
 
 ### [IgxWeightedCloseIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxWeightedCloseIndicatorComponent)
+Extends: IgxItemwiseStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Weigted Close indicator series.
 The weighted close indicator shows an average of the high low and close
 for a day but with the closing price counted twice in the average.
@@ -17009,6 +17204,7 @@ this.chart.series.add(series);
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxWeightedCloseIndicatorComponent, never>`
 
 ### [IgxWilliamsPercentRIndicatorComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxWilliamsPercentRIndicatorComponent)
+Extends: IgxStrategyBasedIndicatorComponent
 Represents a IgxDataChartComponent Williams %R indicator series.
 Default required members: High, Low, Close
 
@@ -17076,6 +17272,7 @@ The typical, and initial, value for Williams %R periods is 14.
 this.series.period = 30;
 
 ### [IgxXYChartComponent](https://www.infragistics.com/api/angular/igniteui-angular-charts/22.0.0/classes/IgxXYChartComponent)
+Extends: IgxDomainChartComponent
 Represents a base class for domain charts with X/Y axes
 
 - **constructor**(): IgxXYChartComponent

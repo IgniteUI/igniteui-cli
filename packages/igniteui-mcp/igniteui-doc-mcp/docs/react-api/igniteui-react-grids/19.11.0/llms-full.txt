@@ -23,11 +23,18 @@ Could be used to set if the Action Strip will be initially hidden.
 Provides filtering operations for booleans
 
 - **constructor**(): IgcBooleanFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrByLevelTreeGridMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrByLevelTreeGridMergeStrategy)
 
 - **constructor**(): IgcByLevelTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
+- **merge**(data: any[], field: string, comparer: any, result: any[], activeRowIndexes: number[], isDate?: boolean, isTime?: boolean, grid?: IgcGridBaseDirective): any[]
+- static **instance**(): IgcDefaultMergeStrategy
 
 ### [IgrColumn](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrColumn)
 **Ignite UI for Angular Column** -  [Documentation](https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid#columns-configuration)  The Ignite UI Column is used within an igx-grid element to define what data the column will show. Features such as sorting,  filtering & editing are enabled at the column level.  You can also provide a template containing custom content inside  the column using ng-template which will be used for all cells within the column.
@@ -406,7 +413,17 @@ Column cannot be unpinned if:
 Objects of this class are used to configure the CSV exporting process.
 
 - **constructor**(fileName: string, fileType: CsvFileTypes): IgcCsvExporterOptions
+- **alwaysExportHeaders**: `boolean`
+- **exportSummaries**: `boolean`
+- **fileName**: `string`
 - **fileType**: `CsvFileTypes`
+- **freezeHeaders**: `boolean`
+- **ignoreColumnsOrder**: `boolean`
+- **ignoreColumnsVisibility**: `boolean`
+- **ignoreFiltering**: `boolean`
+- **ignoreGrouping**: `boolean`
+- **ignoreMultiColumnHeaders**: `boolean`
+- **ignoreSorting**: `boolean`
 - **valueDelimiter**: `string`
 
 ### [IgrCsvExporterService](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrCsvExporterService)
@@ -417,16 +434,25 @@ both raw data (array) or from an grid.
 Example:
 
 - **constructor**(args: any[]): IgcCsvExporterService
+- **export**(grid: IgcGridBaseDirective, options: IgcExporterOptionsBase): void — Method for exporting grid component's data.
+- **exportData**(data: any[], options: IgcExporterOptionsBase): void — Method for exporting any kind of array data.
 
 ### [IgrDateFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrDateFilteringOperand)
 Provides filtering operations for Dates
 
 - **constructor**(): IgcDateFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrDateSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrDateSummaryOperand)
 
 - **constructor**(): IgcDateSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
+- static **count**(data: any[]): number — Counts all the records in the data source.
+If filtering is applied, counts only the filtered records.
 - static **earliest**(data: any[]): any — Returns the earliest date value in the data records.
 If filtering is applied, returns the latest date value in the filtered data records.
 - static **latest**(data: any[]): any — Returns the latest date value in the data records.
@@ -435,6 +461,11 @@ If filtering is applied, returns the latest date value in the filtered data reco
 ### [IgrDateTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrDateTimeFilteringOperand)
 
 - **constructor**(): IgcDateTimeFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrDefaultMergeStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrDefaultMergeStrategy)
 
@@ -447,14 +478,26 @@ If filtering is applied, returns the latest date value in the filtered data reco
 
 - **constructor**(): IgcDefaultTreeGridMergeStrategy
 - **comparer**(prevRecord: any, record: any, field: string, isDate?: boolean, isTime?: boolean): boolean
+- **merge**(data: any[], field: string, comparer: any, result: any[], activeRowIndexes: number[], isDate?: boolean, isTime?: boolean, grid?: IgcGridBaseDirective): any[]
+- static **instance**(): IgcDefaultMergeStrategy
 
 ### [IgrExcelExporterOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrExcelExporterOptions)
 Objects of this class are used to configure the Excel exporting process.
 
 - **constructor**(fileName: string): IgcExcelExporterOptions
+- **alwaysExportHeaders**: `boolean`
 - **columnWidth**: `number`
 - **exportAsTable**: `boolean`
+- **exportSummaries**: `boolean`
+- **fileName**: `string`
+- **freezeHeaders**: `boolean`
+- **ignoreColumnsOrder**: `boolean`
+- **ignoreColumnsVisibility**: `boolean`
+- **ignoreFiltering**: `boolean`
+- **ignoreGrouping**: `boolean`
+- **ignoreMultiColumnHeaders**: `boolean`
 - **ignorePinning**: `boolean`
+- **ignoreSorting**: `boolean`
 - **rowHeight**: `number`
 - **worksheetName**: `string`
 
@@ -466,6 +509,8 @@ The Ignite UI for Angular Excel Exporter service can export data in Microsoft® 
 Example:
 
 - **constructor**(args: any[]): IgcExcelExporterService
+- **export**(grid: IgcGridBaseDirective, options: IgcExporterOptionsBase): void — Method for exporting grid component's data.
+- **exportData**(data: any[], options: IgcExporterOptionsBase): void — Method for exporting any kind of array data.
 
 ### [IgrFilteringExpressionsTree](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrFilteringExpressionsTree)
 
@@ -958,6 +1003,9 @@ May degrade performance if used when not needed, or if misused:
 
 - **constructor**(): IgcNoopFilteringStrategy
 - **filter**(data: any[], _: IgcFilteringExpressionsTree, __?: IgcFilteringExpressionsTree): any[]
+- **findMatchByExpression**(rec: any, expr: IgcFilteringExpression, isDate?: boolean, isTime?: boolean, grid?: IgcGridBaseDirective): boolean
+- **getFilterItems**(column: IgcColumnComponent, tree: IgcFilteringExpressionsTree): Promise<IgcFilterItem[]>
+- **matchRecord**(rec: any, expressions: IgcFilteringExpressionsTree | IgcFilteringExpression, grid?: IgcGridBaseDirective, entity?: string): boolean
 - static **instance**(): IgcNoopFilteringStrategy
 
 ### [IgrNoopPivotDimensionsStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrNoopPivotDimensionsStrategy)
@@ -978,6 +1026,11 @@ It performs no sorting and returns the data as it is.
 Provides filtering operations for numbers
 
 - **constructor**(): IgcNumberFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrNumberSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrNumberSummaryOperand)
 
@@ -985,6 +1038,8 @@ Provides filtering operations for numbers
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[] — Executes the static methods and returns summary result[]`.
 - static **average**(data: any[]): number — Returns the average numeric value in the data provided data records.
 If filtering is applied, returns the average numeric value in the filtered data records.
+- static **count**(data: any[]): number — Counts all the records in the data source.
+If filtering is applied, counts only the filtered records.
 - static **max**(data: any[]): number — Returns the maximum numeric value in the provided data records.
 If filtering is applied, returns the maximum value in the filtered data records.
 - static **min**(data: any[]): number — Returns the minimum numeric value in the provided data records.
@@ -1028,10 +1083,24 @@ Get
 Configuration of a pivot dimension.
 
 - **constructor**(inBaseDimension?: IgcPivotDimension, inOptions?: IgcPivotDateDimensionOptions): IgcPivotDateDimension
+- **childLevel**: `IgcPivotDimension` — Allows defining a hierarchy when multiple sub groups need to be extracted from single member.
 - **dataType**: `GridColumnDataType` — Gets/Sets data type
 - **displayName**: `string` — Display name to show instead of the field name of this value. *
+- **filter**: `IgcFilteringExpressionsTree` — A predefined or defined via the igxPivotSelector filter expression tree for the current dimension to be applied in the filter pipe.
+- **headerFormatter**: `any` — Optional function to format the display value of a dimension header.
+Unlike memberFunction, this does not affect the data key used for grouping or sorting —
+it is applied when rendering the dimension header text (both row and column dimension headers).
+When set, the return value of this function is shown instead of the raw dimension value.
+Return null or undefined to fall back to the raw value.
+- **horizontalSummary**: `boolean`
+- **level**: `number` — Level of the dimension.
+- **memberFunction**: `any` — Function that extracts the value
+- **sortable**: `boolean` — Enable/disable sorting for a particular dimension. True by default.
+- **sortDirection**: `SortingDirection` — The sorting direction of the current dimension. Determines the order in which the values will appear in the related dimension.
+- **width**: `string` — The width of the dimension cells to be rendered.Can be pixel, % or "auto".
 - **baseDimension**: `IgcPivotDimension`
 - **enabled**: `boolean` — Enables/Disables a particular dimension from pivot structure.
+- **memberName**: `string`
 - **options**: `IgcPivotDateDimensionOptions`
 - **resourceStrings**: `IgcGridResourceStrings`
 
@@ -1424,7 +1493,12 @@ May degrade performance if used when not needed, or if misused:
 Provides filtering operations for strings
 
 - **constructor**(): IgcStringFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
 - static **applyIgnoreCase**(a: string, ignoreCase: boolean): string — Applies case sensitivity on strings if provided
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrSummaryOperand)
 
@@ -1436,11 +1510,18 @@ If filtering is applied, counts only the filtered records.
 ### [IgrTimeFilteringOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrTimeFilteringOperand)
 
 - **constructor**(): IgcTimeFilteringOperand
+- **operations**: `IgcFilteringOperation[]`
+- **append**(operation: IgcFilteringOperation): void — Adds a new condition to the filtering operations.
+- **condition**(name: string): IgcFilteringOperation — Returns an instance of the condition with the specified name.
+- **conditionList**(): string[] — Returns an array of names of the conditions which are visible in the filtering UI
+- static **instance**(): IgcFilteringOperand
 
 ### [IgrTimeSummaryOperand](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/classes/IgrTimeSummaryOperand)
 
 - **constructor**(): IgcTimeSummaryOperand
 - **operate**(data?: any[], allData?: any[], fieldName?: string, groupRecord?: IgcGroupByRecord): IgcSummaryResult[]
+- static **count**(data: any[]): number — Counts all the records in the data source.
+If filtering is applied, counts only the filtered records.
 - static **earliestTime**(data: any[]): any — Returns the earliest time value in the data records. Compare only the time part of the date.
 If filtering is applied, returns the earliest time value in the filtered data records.
 - static **latestTime**(data: any[]): any — Returns the latest time value in the data records. Compare only the time part of the date.
@@ -1744,6 +1825,7 @@ Emitted when the active node is changed
 - **column**: `number` — Represents the column index of the active node
 - **level?**: `number` — Optional
 Represents the hierarchical level of the active node
+- **owner?**: `any` — Provides reference to the owner component.
 - **row**: `number` — Represents the row index of the active node
 - **tag**: `GridKeydownTargetType` — Represents the type of the active node.
 The GridKeydownTargetType is an enum or that specifies the possible target types
@@ -1774,6 +1856,7 @@ The GridKeydownTargetType is an enum or that specifies the possible target types
 
 ### [IgrCancelableBrowserEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrCancelableBrowserEventArgsDetail)
 
+- **cancel**: `boolean` — Provides the ability to cancel the event.
 
 ### [IgrCancelableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrCancelableEventArgsDetail)
 
@@ -1826,6 +1909,8 @@ An interface describing settings for clipboard options
 
 ### [IgrColumnEditorOptions](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnEditorOptions)
 
+- **dateTimeFormat?**: `string` — A custom input format string used for the built-in editors of date/time columns.
+See the Editing section under https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/column-types#datetime-date-and-time
 
 ### [IgrColumnExportingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnExportingEventArgsDetail)
 columnExporting event arguments
@@ -1835,6 +1920,7 @@ columnExporting event arguments
 - **field**: `string` — Contains the exporting column field name
 - **grid?**: `IgcGridBaseDirective` — A reference to the grid owner.
 - **header**: `string` — Contains the exporting column header
+- **owner?**: `any` — Provides reference to the owner component.
 - **skipFormatter**: `boolean` — Export the column's data without applying its formatter, when set to true
 
 ### [IgrColumnMovingEndEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnMovingEndEventArgsDetail)
@@ -1842,6 +1928,7 @@ Represents event arguments related to the end of a column moving operation in a 
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
 If the value becomes "true", it returns/exits from the method, instantiating the interface
+- **owner?**: `any` — Provides reference to the owner component.
 - **source**: `IgcColumnComponent` — The source of the event represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 - **target**: `IgcColumnComponent` — The target of the event represents the column, the source is being moved to.
@@ -1852,28 +1939,43 @@ Represents event arguments related to a column moving operation in a grid
 
 - **cancel**: `boolean` — cancel returns whether the event has been intercepted and stopped
 If the value becomes "true", it returns/exits from the method, instantiating the interface
+- **owner?**: `any` — Provides reference to the owner component.
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
 ### [IgrColumnMovingStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnMovingStartEventArgsDetail)
 Represents event arguments related to the start of a column moving operation in a grid.
 
+- **owner?**: `any` — Provides reference to the owner component.
 - **source**: `IgcColumnComponent` — Represents the column that is being moved.
 The ColumnType contains the information (the grid it belongs to, css data, settings, etc.) of the column in its properties
 
 ### [IgrColumnPipeArgs](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnPipeArgs)
 
+- **currencyCode?**: `string` — The currency code of type string, default value undefined
+- **digitsInfo?**: `string` — Decimal representation options, specified by a string in the following format:
+{minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}.
+minIntegerDigits: The minimum number of integer digits before the decimal point. Default is 1.
+minFractionDigits: The minimum number of digits after the decimal point. Default is 0.
+maxFractionDigits: The maximum number of digits after the decimal point. Default is 3.
+- **display?**: `string` — Allow us to display currency 'symbol' or 'code' or 'symbol-narrow' or our own string.
+The value is of type string. By default is set to 'symbol'
+- **format?**: `string` — The date/time components that a date column will display, using predefined options or a custom format string.
+- **timezone?**: `string` — A timezone offset (such as '+0430'), or a standard UTC/GMT or continental US timezone abbreviation.
+- **weekStart?**: `number` — The first week day to be displayed in calendar when filtering or editing a date column
 
 ### [IgrColumnResizeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnResizeEventArgsDetail)
 The event arguments when a column is being resized
 
 - **column**: `IgcColumnComponent` — Represents the information of the column that is being resized
 - **newWidth**: `string` — Represents the new width, the column is being resized to
+- **owner?**: `any` — Provides reference to the owner component.
 - **prevWidth**: `string` — Represents the old width of the column before the resizing
 
 ### [IgrColumnsAutoGeneratedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnsAutoGeneratedEventArgsDetail)
 
 - **columns?**: `IgcColumnComponent[]`
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrColumnSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnSelectionEventArgsDetail)
 The event arguments when the selection state of a column is being changed
@@ -1934,6 +2036,7 @@ list of an column actions component is clicked.
 
 - **checked**: `boolean` — The checked state after the action.
 - **column**: `IgcColumnComponent` — The column that is toggled.
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrColumnVisibilityChangedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnVisibilityChangedEventArgsDetail)
 The event arguments after a column's visibility is changed.
@@ -1941,6 +2044,7 @@ The event arguments after a column's visibility is changed.
 - **column**: `any` — Represents the column the event originated from
 - **newValue**: `boolean` — The new hidden state that the column will have, if operation is successful.
 Will be true when hiding and false when showing.
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrColumnVisibilityChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrColumnVisibilityChangingEventArgsDetail)
 The event arguments when a column's visibility is changed.
@@ -1955,6 +2059,7 @@ Will be true when hiding and false when showing.
 ### [IgrCsvExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrCsvExportEndedEventArgsDetail)
 
 - **csvData?**: `string`
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrDataCloneStrategy](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrDataCloneStrategy)
 
@@ -1977,6 +2082,7 @@ This allows building hierarchical or nested query structures.
 
 ### [IgrExcelExportEndedEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrExcelExportEndedEventArgsDetail)
 
+- **owner?**: `any` — Provides reference to the owner component.
 - **xlsx?**: `any`
 
 ### [IgrExporterEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrExporterEventArgsDetail)
@@ -2086,16 +2192,21 @@ Interface describing filtering operations
 ### [IgrForOfDataChangeEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrForOfDataChangeEventArgsDetail)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
+- **containerSize**: `number`
+- **owner?**: `any` — Provides reference to the owner component.
+- **state**: `IgcForOfState`
 
 ### [IgrForOfDataChangingEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrForOfDataChangingEventArgsDetail)
 **Deprecated:** Use IForOfDataChangeEventArgs instead.
 
 - **containerSize**: `number`
+- **owner?**: `any` — Provides reference to the owner component.
 - **state**: `IgcForOfState`
 
 ### [IgrForOfState](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrForOfState)
 
 - **chunkSize?**: `number`
+- **owner?**: `any` — Provides reference to the owner component.
 - **startIndex?**: `number`
 
 ### [IgrGridActionsBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridActionsBaseDirective)
@@ -2108,10 +2219,41 @@ The **HTMLElement** interface represents any HTML element. Some elements directl
 ### [IgrGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridBaseComponent)
 Grid provides a way to present and manipulate tabular data.
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
 - **data**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
 - **detailTemplate**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
 - **dropAreaMessage**: `any`
 - **dropAreaTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **groupByRowSelectorTemplate**: `any`
 - **groupingExpansionState**: `any`
 - **groupingExpressions**: `any`
@@ -2119,26 +2261,140 @@ Grid provides a way to present and manipulate tabular data.
 - **groupsExpanded**: `any`
 - **groupsRecords**: `any`
 - **groupStrategy**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
 - **hideGroupedColumns**: `any`
+- **hideRowSelectors**: `any`
 - **id**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
 - **selectedCells**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
 - **showGroupArea**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
 - **totalItemCount**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
 - **clearGrouping**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
 - **deselectRowsInGroup**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
 - **fullyExpandGroup**: `any`
 - **getCellByColumn**: `any`
 - **getCellByKey**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
 - **getRowByIndex**: `any`
 - **getRowByKey**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
 - **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
 - **groupBy**: `any`
 - **isExpandedGroup**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
 - **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
 - **selectRowsInGroup**: `any`
+- **sort**: `any`
 - **toggleAllGroupRows**: `any`
+- **toggleColumnVisibility**: `any`
 - **toggleGroup**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
 - **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgrGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridBaseDirective)
 
@@ -2297,6 +2553,7 @@ Represents an event argument related to grid cell interactions.
 - **cell**: `IgcCellType` — Represents the grid cell that triggered the event.
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrGridClipboardEvent](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridClipboardEvent)
 The event arguments when data from a grid is being copied.
@@ -2378,6 +2635,7 @@ Interface representing the event arguments when a form group is created in the g
 Represents a grouping strategy for the grid data, extending the Sorting Strategy interface (contains a sorting method).
 
 - **groupBy**: `any`
+- **sort**: `any`
 
 ### [IgrGridHeaderTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridHeaderTemplateContext)
 
@@ -2391,6 +2649,7 @@ This event is fired only if the key combination is supported in the grid.
 cancel returns whether the event has been intercepted and stopped
 If the value becomes "true", it returns/exits from the method, instantiating the interface
 - **event**: `any` — Represents the original event, that occurred.
+- **owner?**: `any` — Provides reference to the owner component.
 - **target**: `any` — Represents the information and details of the object itself
 - **targetType**: `GridKeydownTargetType` — The targetType represents the type of the targeted object. For example a cell or a row
 
@@ -2448,6 +2707,8 @@ Merge strategy interface.
 - **igx_grid_advanced_filter_ungroup?**: `string`
 - **igx_grid_advanced_filter_value_placeholder?**: `string`
 - **igx_grid_complex_filter?**: `string`
+- **igx_grid_disabled_date_validation_error?**: `string`
+- **igx_grid_email_validation_error?**: `string`
 - **igx_grid_emptyFilteredGrid_message?**: `string`
 - **igx_grid_emptyGrid_message?**: `string`
 - **igx_grid_excel_add_to_filter?**: `string`
@@ -2533,6 +2794,12 @@ Merge strategy interface.
 - **igx_grid_groupByArea_select_message?**: `string`
 - **igx_grid_hiding_check_all_label?**: `string`
 - **igx_grid_hiding_uncheck_all_label?**: `string`
+- **igx_grid_mask_validation_error?**: `string`
+- **igx_grid_max_length_validation_error?**: `string`
+- **igx_grid_max_validation_error?**: `string`
+- **igx_grid_min_length_validation_error?**: `string`
+- **igx_grid_min_validation_error?**: `string`
+- **igx_grid_pattern_validation_error?**: `string`
 - **igx_grid_pinned_row_indicator?**: `string`
 - **igx_grid_pinning_check_all_label?**: `string`
 - **igx_grid_pinning_uncheck_all_label?**: `string`
@@ -2560,11 +2827,13 @@ Merge strategy interface.
 - **igx_grid_pivot_selector_rows?**: `string`
 - **igx_grid_pivot_selector_values?**: `string`
 - **igx_grid_pivot_value_drop_chip?**: `string`
+- **igx_grid_required_validation_error?**: `string`
 - **igx_grid_row_edit_btn_cancel?**: `string`
 - **igx_grid_row_edit_btn_done?**: `string`
 - **igx_grid_row_edit_text?**: `string`
 - **igx_grid_snackbar_addrow_actiontext?**: `string`
 - **igx_grid_snackbar_addrow_label?**: `string`
+- **igx_grid_step_validation_error?**: `string`
 - **igx_grid_summary_average?**: `string`
 - **igx_grid_summary_count?**: `string`
 - **igx_grid_summary_earliest?**: `string`
@@ -2584,6 +2853,7 @@ Merge strategy interface.
 - **igx_grid_toolbar_hiding_title?**: `string`
 - **igx_grid_toolbar_pinning_button_tooltip?**: `string`
 - **igx_grid_toolbar_pinning_title?**: `string`
+- **igx_grid_url_validation_error?**: `string`
 
 ### [IgrGridRowDragGhostContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridRowDragGhostContext)
 
@@ -2604,6 +2874,7 @@ Represents an event argument related to grid row interactions.
 
 - **event**: `any` — Represents the original event that occurred
 Examples of such events include: selecting, clicking, double clicking, etc.
+- **owner?**: `any` — Provides reference to the owner component.
 - **row**: `IgcRowType` — Represents the grid row that triggered the event.
 
 ### [IgrGridRowTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridRowTemplateContext)
@@ -2615,6 +2886,7 @@ Event emitted when a grid is scrolled.
 
 - **direction**: `string` — The scroll direction - vertical or horizontal.
 - **event**: `any` — The original browser scroll event.
+- **owner?**: `any` — Provides reference to the owner component.
 - **scrollPosition**: `number` — The new scroll position
 
 ### [IgrGridSelectionRange](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridSelectionRange)
@@ -2706,6 +2978,7 @@ and methods for preparing the data from the elements for exporting
 - **options**: `IgcExporterOptionsBase` — Represents the different settings, that can be given to an export
 The type (an abstract class exporter options base) has properties for column settings
 (whether they should be ignored) as well as method for generating a file name
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrGridToolbarTemplateContext](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGridToolbarTemplateContext)
 
@@ -2771,10 +3044,16 @@ Interface representing the event arguments for the grid validation status change
 
 - **expressions**: `IgcSortingExpression[]`
 - **groupedColumns**: `IgcColumnComponent[]`
+- **owner?**: `any` — Provides reference to the owner component.
 - **ungroupedColumns**: `IgcColumnComponent[]`
 
 ### [IgrGroupingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGroupingExpression)
 
+- **ignoreCase?**: `boolean`
+- **owner?**: `any` — Provides reference to the owner component.
+- **strategy?**: `IgcSortingStrategy`
+- **dir**: `any`
+- **fieldName**: `any`
 - **groupingComparer?**: `any`
 
 ### [IgrGroupingState](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrGroupingState)
@@ -2808,28 +3087,324 @@ Contains definitions of properties, relevant to the header
 ### [IgrHierarchicalGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrHierarchicalGridBaseComponent)
 Hierarchical grid
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
 - **data**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
 - **expandChildren**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **foreignKey**: `any`
+- **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
 - **id**: `any` — The **id** property of the Element interface represents the element's identifier, reflecting the id global attribute.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
+- **rootGrid**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
 - **selectedCells**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
+- **showExpandAll**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
 - **totalItemCount**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
 - **getCellByColumn**: `any`
 - **getCellByKey**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
 - **getDefaultExpandState**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
 - **getRowByIndex**: `any`
 - **getRowByKey**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
 - **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
 - **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
 - **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgrHierarchicalGridBaseDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrHierarchicalGridBaseDirective)
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
 - **rootGrid**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
 - **showExpandAll**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
+- **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
+- **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
+- **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IGridResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IGridResourceStrings)
 
@@ -2870,6 +3445,8 @@ Hierarchical grid
 - **grid_advanced_filter_ungroup?**: `string`
 - **grid_advanced_filter_value_placeholder?**: `string`
 - **grid_complex_filter?**: `string`
+- **grid_disabled_date_validation_error?**: `string`
+- **grid_email_validation_error?**: `string`
 - **grid_emptyFilteredGrid_message?**: `string`
 - **grid_emptyGrid_message?**: `string`
 - **grid_excel_add_to_filter?**: `string`
@@ -2955,6 +3532,12 @@ Hierarchical grid
 - **grid_groupByArea_select_message?**: `string`
 - **grid_hiding_check_all_label?**: `string`
 - **grid_hiding_uncheck_all_label?**: `string`
+- **grid_mask_validation_error?**: `string`
+- **grid_max_length_validation_error?**: `string`
+- **grid_max_validation_error?**: `string`
+- **grid_min_length_validation_error?**: `string`
+- **grid_min_validation_error?**: `string`
+- **grid_pattern_validation_error?**: `string`
 - **grid_pinned_row_indicator?**: `string`
 - **grid_pinning_check_all_label?**: `string`
 - **grid_pinning_uncheck_all_label?**: `string`
@@ -2982,11 +3565,13 @@ Hierarchical grid
 - **grid_pivot_selector_rows?**: `string`
 - **grid_pivot_selector_values?**: `string`
 - **grid_pivot_value_drop_chip?**: `string`
+- **grid_required_validation_error?**: `string`
 - **grid_row_edit_btn_cancel?**: `string`
 - **grid_row_edit_btn_done?**: `string`
 - **grid_row_edit_text?**: `string`
 - **grid_snackbar_addrow_actiontext?**: `string`
 - **grid_snackbar_addrow_label?**: `string`
+- **grid_step_validation_error?**: `string`
 - **grid_summary_average?**: `string`
 - **grid_summary_count?**: `string`
 - **grid_summary_earliest?**: `string`
@@ -3006,6 +3591,7 @@ Hierarchical grid
 - **grid_toolbar_hiding_title?**: `string`
 - **grid_toolbar_pinning_button_tooltip?**: `string`
 - **grid_toolbar_pinning_title?**: `string`
+- **grid_url_validation_error?**: `string`
 
 ### [IgrOverlayOutletDirective](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrOverlayOutletDirective)
 Mark an element as an igxOverlay outlet container.
@@ -3023,12 +3609,14 @@ Directive instance is exported as overlay-outlet to be assigned to templates var
 
 ### [IgrPageCancellableEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPageCancellableEventArgsDetail)
 
+- **cancel**: `boolean` — Provides the ability to cancel the event.
 - **current**: `number`
 - **next**: `number`
 
 ### [IgrPageEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPageEventArgsDetail)
 
 - **current**: `number`
+- **owner?**: `any` — Provides reference to the owner component.
 - **previous**: `number`
 
 ### [IgrPaginatorResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPaginatorResourceStrings)
@@ -3069,6 +3657,7 @@ isPinned returns the actual pin state of the column after the operation complete
 If unpinned, specifies at which index in the unpinned area the column is inserted.
 - **isPinned**: `boolean` — Returns the actual pin state of the column.
 If pinning/unpinning is successful, value of isPinned will change accordingly when read in the "-ing" and "-ed" event.
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrPinningConfig](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPinningConfig)
 An interface describing settings for row/column pinning position.
@@ -3167,8 +3756,13 @@ Interface describing the Pivot column data.
 
 ### [IgrPivotGridGroupRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPivotGridGroupRecord)
 
+- **dataIndex?**: `number` — The index of the record in the total view
 - **height?**: `number`
+- **level?**: `number` — Record level*
+- **records?**: `any[]` — List of original data records associated with the current pivoted data. *
 - **rowSpan?**: `number`
+- **totalRecordDimensionName?**: `string` — If set, it specifies the name of the dimension, that has total record enabled.
+- **dimensions**: `any`
 
 ### [IgrPivotGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrPivotGridRecord)
 
@@ -3331,6 +3925,7 @@ Represents event arguments related to events, that can occur for rows in a grid
 Example for events: adding, deleting, selection, transaction, etc.
 
 - **data**: `any` — **Deprecated:** Use the rowData property instead.
+- **owner?**: `any` — Provides reference to the owner component.
 - **primaryKey**: `any` — **Deprecated:** Use the rowKey property instead. Represents the unique key, the row can be associated with.
 Available if primaryKey exists
 - **rowData**: `any`
@@ -3363,6 +3958,7 @@ Emitted when a dragging operation is finished (when the row is dropped)
 - **animation**: `boolean` — animation returns whether the event is animated
 - **dragData**: `IgcRowType` — Represents the information of the row that is being dragged.
 - **dragDirective**: `any` — Represents the drag directive or information associated with the drag operation
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrRowDragStartEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrRowDragStartEventArgsDetail)
 Emitted when a dragging operation is starting (when the row is "picked")
@@ -3380,15 +3976,167 @@ this.exporterService.rowExporting.subscribe((args: IRowExportingEventArgs) => {
 })
 
 - **cancel**: `boolean` — Skip the exporting row when set to true
+- **owner?**: `any` — Provides reference to the owner component.
 - **rowData**: `any` — Contains the exporting row data
 - **rowIndex**: `number` — Contains the exporting row index
 
 ### [IgrRowIslandBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrRowIslandBaseComponent)
 Row island
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
 - **expandChildren**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
+- **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
 - **paginatorTemplate**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
+- **resourceStrings**: `any`
+- **rootGrid**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
+- **showExpandAll**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
 - **toolbarTemplate**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
+- **addRow**: `any`
+- **beginAddRowById**: `any`
+- **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
+- **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
+- **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
+- **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
+- **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
+- **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgrRowSelectionEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrRowSelectionEventArgsDetail)
 The event arguments when the selection state of a row is being changed
@@ -3426,6 +4174,7 @@ cancel returns whether the event has been intercepted and stopped
 If the value becomes "true", it returns/exits from the method, instantiating the interface
 - **expanded**: `boolean` — Returns the state of the row after the operation has ended
 Indicating whether the row is being expanded (true) or collapsed (false)
+- **owner?**: `any` — Provides reference to the owner component.
 - **rowID**: `any` — **Deprecated:** Use the rowKey property instead. Represents the ID of the row that emitted the event (which state is changed)
 - **rowKey**: `any`
 
@@ -3485,7 +4234,12 @@ Scroll strategies determines how the scrolling will be handled in the provided o
 ### [IgrSearchInfo](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrSearchInfo)
 
 - **activeMatchIndex**: `any`
+- **caseSensitive**: `any`
+- **content**: `any`
+- **exactMatch**: `any`
+- **matchCount**: `any`
 - **matchInfoCache**: `any`
+- **searchText**: `any`
 
 ### [IgrSize](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrSize)
 
@@ -3510,6 +4264,7 @@ The expression contains information like file name, whether the letter case shou
 ### [IgrSortingExpression](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrSortingExpression)
 
 - **ignoreCase?**: `boolean`
+- **owner?**: `any` — Provides reference to the owner component.
 - **strategy?**: `IgcSortingStrategy`
 - **dir**: `any`
 - **fieldName**: `any`
@@ -3544,6 +4299,7 @@ The expression contains information like file name, whether the letter case shou
 ### [IgrToggleViewEventArgsDetail](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrToggleViewEventArgsDetail)
 
 - **id**: `string` — Id of the toggle view
+- **owner?**: `any` — Provides reference to the owner component.
 
 ### [IgrTreeGridBaseComponent](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrTreeGridBaseComponent)
 **Ignite UI for Angular Tree Grid** -
@@ -3552,32 +4308,173 @@ The Ignite UI Tree Grid displays and manipulates hierarchical data with consiste
 provides features such as sorting, filtering, editing, column pinning, paging, column moving and hiding.
 Example:
 
+- **addRowEmptyTemplate**: `any`
+- **advancedFilteringExpressionsTree**: `any`
+- **allowAdvancedFiltering**: `any`
+- **allowFiltering**: `any`
+- **autoGenerate**: `any`
+- **autoGenerateExclude**: `any`
+- **batchEditing**: `any`
 - **cascadeOnDelete**: `any`
+- **cellMergeMode**: `any`
+- **cellSelection**: `any`
 - **childDataKey**: `any`
+- **clipboardOptions**: `any`
+- **columnList**: `any`
+- **columns**: `any`
+- **columnSelection**: `any`
+- **columnWidth**: `any`
 - **data**: `any`
+- **dataCloneStrategy**: `any`
+- **dataRowList**: `any`
+- **dataView**: `any`
+- **defaultRowHeight**: `any`
+- **dragGhostCustomTemplate**: `any`
+- **dragIndicatorIconTemplate**: `any`
+- **emptyFilteredGridMessage**: `any`
+- **emptyGridMessage**: `any`
+- **emptyGridTemplate**: `any`
+- **excelStyleHeaderIconTemplate**: `any`
 - **expansionDepth**: `any`
+- **expansionStates**: `any`
+- **filteredData**: `any`
+- **filteredSortedData**: `any`
+- **filteringExpressionsTree**: `any`
+- **filteringLogic**: `any`
+- **filterMode**: `any`
+- **filterStrategy**: `any`
 - **foreignKey**: `any`
 - **hasChildrenKey**: `any`
+- **headerCollapsedIndicatorTemplate**: `any`
+- **headerExpandedIndicatorTemplate**: `any`
+- **headSelectorTemplate**: `any`
+- **height**: `any`
+- **hiddenColumnsCount**: `any`
+- **hideRowSelectors**: `any`
 - **id**: `any` — The **id** property of the Element interface represents the element's identifier, reflecting the id global attribute.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
+- **isLoading**: `any`
+- **lastSearchInfo**: `any`
 - **loadChildrenOnDemand**: `any`
+- **loadingGridTemplate**: `any`
+- **locale**: `any`
+- **mergeStrategy**: `any`
+- **moving**: `any`
+- **outlet**: `any`
+- **paginationComponents**: `any`
+- **pagingMode**: `any`
+- **pinnedColumns**: `any`
+- **pinnedColumnsCount**: `any`
+- **pinnedEndColumns**: `any`
+- **pinnedRows**: `any`
+- **pinnedStartColumns**: `any`
+- **pinning**: `any`
+- **primaryKey**: `any`
 - **processedRootRecords**: `any`
+- **resourceStrings**: `any`
 - **rootRecords**: `any`
+- **rowAddTextTemplate**: `any`
+- **rowClasses**: `any`
+- **rowCollapsedIndicatorTemplate**: `any`
+- **rowDraggable**: `any`
+- **rowEditable**: `any`
+- **rowEditActionsTemplate**: `any`
+- **rowEditTextTemplate**: `any`
+- **rowExpandedIndicatorTemplate**: `any`
+- **rowHeight**: `any`
+- **rowList**: `any`
 - **rowLoadingIndicatorTemplate**: `any`
+- **rowSelection**: `any`
+- **rowSelectorTemplate**: `any`
+- **rowStyles**: `any`
 - **selectedCells**: `any`
+- **selectedRows**: `any`
+- **selectRowOnClick**: `any`
+- **shouldGenerate**: `any`
+- **showSummaryOnCollapse**: `any`
+- **snackbarDisplayTime**: `any`
+- **sortAscendingHeaderIconTemplate**: `any`
+- **sortDescendingHeaderIconTemplate**: `any`
+- **sortHeaderIconTemplate**: `any`
+- **sortingExpressions**: `any`
+- **sortingOptions**: `any`
+- **sortStrategy**: `any`
+- **summaryCalculationMode**: `any`
+- **summaryPosition**: `any`
+- **summaryRowHeight**: `any`
+- **toolbar**: `any`
+- **totalRecords**: `any`
+- **transactions**: `any`
+- **unpinnedColumns**: `any`
+- **validationTooltipTrigger**: `any`
+- **validationTrigger**: `any`
+- **virtualizationState**: `any`
+- **visibleColumns**: `any`
+- **width**: `any`
 - **addRow**: `any`
+- **beginAddRowById**: `any`
 - **beginAddRowByIndex**: `any`
+- **clearCellSelection**: `any`
+- **clearFilter**: `any`
+- **clearSearch**: `any`
+- **clearSort**: `any`
+- **closeAdvancedFilteringDialog**: `any`
 - **collapseAll**: `any`
+- **collapseRow**: `any`
+- **deleteRow**: `any`
+- **deselectAllColumns**: `any`
+- **deselectAllRows**: `any`
+- **deselectColumns**: `any`
+- **deselectRows**: `any`
+- **disableSummaries**: `any`
+- **enableSummaries**: `any`
+- **endEdit**: `any`
 - **expandAll**: `any`
+- **expandRow**: `any`
+- **filter**: `any`
+- **filterGlobal**: `any`
+- **findNext**: `any`
+- **findPrev**: `any`
 - **getCellByColumn**: `any`
 - **getCellByKey**: `any`
+- **getColumnByName**: `any`
+- **getColumnByVisibleIndex**: `any`
 - **getDefaultExpandState**: `any`
+- **getHeaderGroupWidth**: `any`
+- **getNextCell**: `any`
+- **getPinnedEndWidth**: `any`
+- **getPinnedStartWidth**: `any`
+- **getPreviousCell**: `any`
 - **getRowByIndex**: `any`
 - **getRowByKey**: `any`
+- **getRowData**: `any`
+- **getSelectedColumnsData**: `any`
 - **getSelectedData**: `any`
+- **getSelectedRanges**: `any`
+- **isRecordPinnedByIndex**: `any`
+- **markForCheck**: `any`
+- **moveColumn**: `any`
+- **navigateTo**: `any`
+- **openAdvancedFilteringDialog**: `any`
+- **pinColumn**: `any`
 - **pinRow**: `any`
+- **recalculateAutoSizes**: `any`
+- **reflow**: `any`
+- **refreshSearch**: `any`
+- **selectAllColumns**: `any`
+- **selectAllRows**: `any`
+- **selectColumns**: `any`
+- **selectedColumns**: `any`
+- **selectRange**: `any`
+- **selectRows**: `any`
+- **sort**: `any`
+- **toggleColumnVisibility**: `any`
+- **toggleRow**: `any`
+- **unpinColumn**: `any`
 - **unpinRow**: `any`
+- **updateCell**: `any`
+- **updateRow**: `any`
 
 ### [IgrTreeGridRecord](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IgrTreeGridRecord)
 
@@ -3701,7 +4598,73 @@ Event emitted when values list is changed.
 - **query_builder_where_label?**: `string`
 
 ### [IResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/IResourceStrings)
+Extends: IGridResourceStrings, IActionStripResourceStrings, IBannerResourceStrings, ICalendarResourceStrings, ICarouselResourceStrings, IChipResourceStrings, IComboResourceStrings, IDatePickerResourceStrings, IDateRangePickerResourceStrings, IFileInputResourceStrings, IListResourceStrings, IPaginatorResourceStrings, IQueryBuilderResourceStrings, ITimePickerResourceStrings, ITreeResourceStrings
 
+- **chat_attach_files?**: `string`
+- **chat_attachment_label?**: `string`
+- **chat_attachments_list_label?**: `string`
+- **chat_file_input_label?**: `string`
+- **chat_input_label?**: `string`
+- **chat_message_copied?**: `string`
+- **chat_reaction_copy?**: `string`
+- **chat_reaction_dislike?**: `string`
+- **chat_reaction_like?**: `string`
+- **chat_reaction_regenerate?**: `string`
+- **chat_remove_attachment?**: `string`
+- **chat_send_message?**: `string`
+- **chat_suggestions_header?**: `string`
+- **color_picker_alpha?**: `string`
+- **color_picker_alpha_value?**: `string`
+- **color_picker_canvas_label?**: `string`
+- **color_picker_canvas_value?**: `string`
+- **color_picker_copy?**: `string`
+- **color_picker_dialog_label?**: `string`
+- **color_picker_eye_dropper?**: `string`
+- **color_picker_format?**: `string`
+- **color_picker_hue?**: `string`
+- **color_picker_open?**: `string`
+- **color_picker_value?**: `string`
+- **copy_to_clipboard_error?**: `string`
+- **copy_to_clipboard_label?**: `string`
+- **copy_to_clipboard_success?**: `string`
+- **dialog_default_action?**: `string`
+- **disabled_date_validation_error?**: `string`
+- **dock_manager_close?**: `string`
+- **dock_manager_documents?**: `string`
+- **dock_manager_maximize?**: `string`
+- **dock_manager_minimize?**: `string`
+- **dock_manager_more_options?**: `string`
+- **dock_manager_more_tabs?**: `string`
+- **dock_manager_panes?**: `string`
+- **dock_manager_pin?**: `string`
+- **dock_manager_unpin?**: `string`
+- **email_validation_error?**: `string`
+- **mask_validation_error?**: `string`
+- **max_length_validation_error?**: `string`
+- **max_validation_error?**: `string`
+- **min_length_validation_error?**: `string`
+- **min_validation_error?**: `string`
+- **pattern_validation_error?**: `string`
+- **required_validation_error?**: `string`
+- **speech_to_text_error?**: `string`
+- **speech_to_text_error_audio_capture?**: `string`
+- **speech_to_text_error_language_not_supported?**: `string`
+- **speech_to_text_error_network?**: `string`
+- **speech_to_text_error_no_speech?**: `string`
+- **speech_to_text_error_not_allowed?**: `string`
+- **speech_to_text_listening?**: `string`
+- **speech_to_text_start?**: `string`
+- **speech_to_text_stop?**: `string`
+- **speech_to_text_stopped?**: `string`
+- **speech_to_text_unsupported?**: `string`
+- **splitter_resize_panes?**: `string`
+- **step_validation_error?**: `string`
+- **tile_enter_fullscreen?**: `string`
+- **tile_exit_fullscreen?**: `string`
+- **tile_maximize?**: `string`
+- **tile_restore?**: `string`
+- **tooltip_close?**: `string`
+- **url_validation_error?**: `string`
 
 ### [ITimePickerResourceStrings](https://www.infragistics.com/api/react/igniteui-react-grids/19.11/interfaces/ITimePickerResourceStrings)
 

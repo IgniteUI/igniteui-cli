@@ -18,7 +18,7 @@ export const getApiReferenceSchema = z.object({
     .trim()
     .max(MAX_COMPONENT_LENGTH, `Member name must be at most ${MAX_COMPONENT_LENGTH} characters`)
     .optional()
-    .describe('Optional member name (property, method, or event) to return only that entry instead of the full component. Examples: "checked", "click", "igcChange". Takes precedence over "section" when both are supplied. Omit it (do not pass an empty string) to get the full component or section; an empty/whitespace value is treated as omitted.')
+    .describe('Optional member name (property, method, or event) to return only that entry instead of the full component. Examples: "checked", "click", "igcChange". Inherited members are found too. Takes precedence over "section" when both are supplied. Omit it (do not pass an empty string) to get the full component or section; an empty/whitespace value is treated as omitted.')
 });
 
 export const searchApiSchema = z.object({

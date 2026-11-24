@@ -218,6 +218,7 @@ describe("Unit - MCP runtime", () => {
 					content: apiContent
 				}),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -242,6 +243,7 @@ describe("Unit - MCP runtime", () => {
 					content: "# IgcGridComponent\n\n## Properties\n- height: string"
 				}),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -263,6 +265,7 @@ describe("Unit - MCP runtime", () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue({ component: "IgrGrid", platform: "react", content: apiContent }),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 			const handler = createGetApiReferenceHandler(docLoader);
@@ -278,6 +281,7 @@ describe("Unit - MCP runtime", () => {
 			const docLoader = {
 				get: jasmine.createSpy().and.returnValue(undefined),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -300,6 +304,7 @@ describe("Unit - MCP runtime", () => {
 					content: ""
 				}),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -333,6 +338,7 @@ describe("Unit - MCP runtime", () => {
 					].join("\n")
 				}),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -361,6 +367,7 @@ describe("Unit - MCP runtime", () => {
 						content: "The grid supports row selection and keyboard navigation."
 					}
 				]),
+				getBases: () => [],
 				getPackageVersions: () => ["igniteui-webcomponents@7.4.1"]
 			};
 
@@ -379,6 +386,7 @@ describe("Unit - MCP runtime", () => {
 		it("returns a no-results response when API search finds nothing", async () => {
 			const docLoader = {
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 
@@ -403,6 +411,7 @@ describe("Unit - MCP runtime", () => {
 					content: fullContent
 				}),
 				search: jasmine.createSpy().and.returnValue([]),
+				getBases: () => [],
 				getPackageVersions: () => []
 			};
 

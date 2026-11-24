@@ -981,6 +981,7 @@ class where # is a number from 0 to count - 1.
 - **updateStyle**(): void
 
 ### [IgxXInputComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXInputComponent)
+Extends: IgxXInputGroupItemComponent
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXInputComponent
 - **_childTemplateRef**: `TemplateRef<any>`
@@ -1374,6 +1375,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - static **_createFromInternal**(internal: any): IgxXInputGroupItemComponent
 
 ### [IgxXLabelComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXLabelComponent)
+Extends: IgxXInputGroupItemComponent
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXLabelComponent
 - **_childTemplateRef**: `TemplateRef<any>`
@@ -1422,6 +1424,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **updateStyle**(): void
 
 ### [IgxXPrefixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXPrefixComponent)
+Extends: IgxXInputGroupItemComponent
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXPrefixComponent
 - **_childTemplateRef**: `TemplateRef<any>`
@@ -1478,6 +1481,7 @@ Or adding and removing stye mappings from the manual style mapping collection on
 - **updateStyle**(): void
 
 ### [IgxXSuffixComponent](https://www.infragistics.com/api/angular/igniteui-angular-inputs/22.0.0/classes/IgxXSuffixComponent)
+Extends: IgxXInputGroupItemComponent
 
 - **constructor**(renderer: Renderer2, _elRef: ViewContainerRef, ngZone: NgZone, injector: Injector): IgxXSuffixComponent
 - **_childTemplateRef**: `TemplateRef<any>`

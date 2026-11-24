@@ -61,9 +61,11 @@ Use this when you already know the exact component name — from the user's code
 
 Returns a \`Package: <name>@<version>\` line (e.g. "Package: igniteui-angular@22.2") naming the release the entry was read from (followed by an \`Also in:\` line when other packages ship the same name with a definition that can differ), then formatted markdown with the class/interface summary, properties (with types and descriptions), methods (with signatures), and events. Compare that version with the one the project depends on: members can be missing from an older release. Use section="properties", "methods", or "events" to retrieve only that section and reduce response size. Defaults to section="all".
 
-Supply member="<name>" (e.g. "checked", "click", "igcChange") to return only a single property/method/event line instead of the full entry — useful when the user is asking about one specific member. Takes precedence over section when both are supplied.
+Supply member="<name>" (e.g. "checked", "click", "igcChange") to return only a single property/method/event line instead of the full entry — the cheapest call, and the one to use when the question is about one specific member. It also searches the component's base types, so it finds inherited members (e.g. allowFiltering on IgxGridComponent, declared on IgxGridBaseDirective) and says which type declares them. Takes precedence over section when both are supplied.
 
-Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found, or if a supplied member name does not exist on the component.
+A full entry lists the members the type declares itself. When it inherits more, the entry has an \`Extends:\` line and ends with a note naming the base types that hold the rest: look those up, or use member.
+
+Component name must be ≤128 characters. Returns isError with a suggestion to use search_api if not found, or if a supplied member name does not exist on the component or its base types.
 `,
 
   search_api: `Search Ignite UI API entries by keyword, feature name, or partial component name. Returns up to 10 results ranked by relevance across all four frameworks: angular, react, webcomponents, and blazor.

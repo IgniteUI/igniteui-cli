@@ -166,13 +166,16 @@ Doc "<name>" not found for framework "<framework>". Use list_components to see a
 **Logic**:
 - Requires the exact component name (obtained from user code or an `search_api` result)
 - Accepts an optional `section` parameter to retrieve a subset of the API and reduce response size
-- Returns `isError: true` with a prompt to use `search_api` if the component is not found
+- Accepts an optional `member` parameter to return a single property, method or event line; the lookup also covers the component's base types, so inherited members are found, and it takes precedence over `section`
+- A full entry lists the members the type declares itself; when it inherits more, the entry has an `Extends:` line and ends with a note naming the base types that hold the rest
+- Returns `isError: true` with a prompt to use `search_api` if the component is not found, or if `member` is not found on the component or its base types
 - If an exact case-sensitive match is not found, performs a case-insensitive lookup within the selected platform before returning an error
 
 **Schema**:
 - `component`: String — exact component or class name; max 128 characters — required
 - `platform`: Enum (angular|react|webcomponents|blazor) — required
 - `section`: Enum (all|properties|methods|events) — optional; defaults to `all`
+- `member`: String — property, method or event name; max 128 characters — optional
 
 **Return**: A `Package: <name>@<version>` line naming the release the entry was read from, an `Also in:` line when other packages ship the same name (their definition can differ), then formatted Markdown for the requested API entry. The full entry (`section="all"`) includes the class/interface summary, properties with types and descriptions, methods with signatures, and events.
 

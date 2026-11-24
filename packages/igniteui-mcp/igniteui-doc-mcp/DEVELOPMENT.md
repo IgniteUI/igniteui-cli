@@ -547,7 +547,7 @@ npx @modelcontextprotocol/inspector ig mcp           # via CLI (after build:mcp-
 | `get_doc` | `framework` (required), `name` (required) | Return full markdown content of a specific doc. `name` is without `.md` extension. The frontmatter has a `package` line with the package and version of the doc's components in the bundled API reference (local mode only: the remote backend returns no frontmatter) |
 | `search_docs` | `query` (required), `framework` (required) | FTS4 full-text search with Porter stemming. Returns top 20 results with snippet excerpts |
 | `get_project_setup_guide` | `framework` (required) | Return setup guides for creating a new Ignite UI project. For Angular/React/WC: CLI docs. For Blazor: dotnet + NuGet guides |
-| `get_api_reference` | `platform` (required), `component` (required), `section?`, `member?` | Retrieve API reference for a component or class. With no optional args, returns the full entry. Pass `section="properties\|methods\|events"` for one section, or `member="<name>"` to return just one property/method/event line. `member` takes precedence over `section`. Also tolerates `component="Name#member"` shorthand. Every response starts with a `Package: <name>@<version>` line. |
+| `get_api_reference` | `platform` (required), `component` (required), `section?`, `member?` | Retrieve API reference for a component or class. With no optional args, returns the full entry. Pass `section="properties\|methods\|events"` for one section, or `member="<name>"` to return just one property/method/event line. `member` takes precedence over `section` and also finds inherited members through the entry's `Extends:` chain. Also tolerates `component="Name#member"` and `component="Name.member"` shorthand. Every response starts with a `Package: <name>@<version>` line. |
 | `search_api` | `framework` (required), `query` (required) | Search API entries by keyword, feature, or partial component name. Returns up to 10 results ranked by match count, each tagged with the package and version it describes (e.g. `igniteui-react-grids@19.9`) |
 
 #### get_project_setup_guide
@@ -579,9 +579,11 @@ Returns framework-specific setup guides for creating a new Ignite UI project.
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `platform` | Yes | `angular`, `react`, `webcomponents`, or `blazor` |
-| `component` | Yes | Exact component or class name (case-insensitive). Also accepts `Name#member` shorthand — the `#member` suffix is split off into the `member` field when `member` is not already supplied. |
+| `component` | Yes | Exact component or class name (case-insensitive). Also accepts `Name#member` and `Name.member` shorthand — the suffix is split off into the `member` field when `member` is not already supplied. |
 | `section` | No | `properties`, `methods`, `events`, or `all` (default). Ignored when `member` is set. |
-| `member` | No | Property/method/event name (e.g. `checked`, `click`, `igcChange`). Returns one line. Returns `isError` if the member is not found. |
+| `member` | No | Property/method/event name (e.g. `checked`, `click`, `igcChange`). Returns one line. An owner prefix (`IgxGridComponent.data`) or call parentheses (`groupBy()`) are dropped. Returns `isError` if the member is not found on the component or its base types. |
+
+**Inherited members.** An entry in `llms-full.txt` lists the members the type declares, plus inherited ones whose declaring type has no entry of its own (mixins, non-exported base classes). The rest stay in the base type's entry, which the line after the heading names: `Extends: IgxGridBaseDirective`. A `member` lookup that misses on the entry walks that chain (`ApiDocLoader.getBases`) and answers `IgxGridComponent.allowFiltering (property, inherited from IgxGridBaseDirective)`. A full entry or section ends with a note listing the base types. The `Extends:` line is written by `src/data/llms-utils.ts` in the api-docs repo; API docs generated before that change have no such line and inherited members are not found.
 
 **Examples:**
 

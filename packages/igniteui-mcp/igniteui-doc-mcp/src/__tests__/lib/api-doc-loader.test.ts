@@ -13,7 +13,7 @@ vi.mock('fs', async () => {
 });
 
 import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
-import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames, snapshotVersion } from '../../lib/api-doc-loader.js';
+import { ApiDocLoader, ApiDocsInitializationError, compareVersionNames, parseExtendsLine, snapshotVersion } from '../../lib/api-doc-loader.js';
 import type { PlatformConfig } from '../../config/platforms.js';
 
 const mockExistsSync = vi.mocked(existsSync);
@@ -290,6 +290,59 @@ describe('ApiDocLoader', () => {
         expect(loader.get('blazor', 'DynamicContentInfo')?.component).toBe('DynamicContentInfo');
         expect(loader.get('blazor', 'DynamicContentInfo<T>')?.component).toBe('DynamicContentInfo<T>');
       });
+    });
+  });
+
+  describe('base types', () => {
+    const INHERITANCE_CONTENT = [
+      '### [IgxGridBaseDirective](https://example.com/base)',
+      'Extends: IgxRoot<T, U>, IgxMissing',
+      'Base of every grid.',
+      '',
+      '- **allowFiltering**: `boolean`',
+      '',
+      '### [IgxGridComponent](https://example.com/grid)',
+      'Extends: IgxGridBaseDirective',
+      '',
+      '- **data**: `any[]`',
+      '',
+      '### [IgxRoot<T, U>](https://example.com/root)',
+      'Extends: IgxGridBaseDirective',
+      'Root type.',
+      '',
+    ].join('\n');
+
+    function createInheritanceLoader(): ApiDocLoader {
+      setupFsMocks();
+      mockReadFileSync.mockReturnValue(INHERITANCE_CONTENT);
+      const loader = new ApiDocLoader([FIXTURE_CONFIG]);
+      loader.load();
+      return loader;
+    }
+
+    it('parses the Extends line, keeping generic argument lists whole', () => {
+      expect(parseExtendsLine('Extends: A, B<T, U>,C')).toEqual(['A', 'B<T, U>', 'C']);
+      expect(parseExtendsLine('Extends IGridDataBindable')).toBeUndefined();
+      expect(parseExtendsLine(undefined)).toBeUndefined();
+    });
+
+    it('stores the bases and keeps the Extends line out of the summary', () => {
+      const loader = createInheritanceLoader();
+      const base = loader.get('angular', 'IgxGridBaseDirective');
+      expect(base?.extends).toEqual(['IgxRoot<T, U>', 'IgxMissing']);
+      expect(base?.summary).toBe('Base of every grid.');
+      expect(loader.get('angular', 'IgxGridComponent')?.summary).toBe('');
+    });
+
+    it('getBases walks the chain nearest first, skipping unknown names and cycles', () => {
+      const loader = createInheritanceLoader();
+      const grid = loader.get('angular', 'IgxGridComponent')!;
+      expect(loader.getBases(grid).map(e => e.component)).toEqual(['IgxGridBaseDirective', 'IgxRoot<T, U>']);
+    });
+
+    it('getBases is empty for an entry without an Extends line', () => {
+      const loader = createLoadedLoader();
+      expect(loader.getBases(loader.get('angular', 'IgxGridComponent')!)).toEqual([]);
     });
   });
 

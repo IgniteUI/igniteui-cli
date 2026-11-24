@@ -146,6 +146,7 @@ Version: 22.0
 - static **referenceEquals**(a: any, b: any): boolean
 
 ### [BaseError](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/BaseError)
+Extends: Base
 
 - **constructor**(initNumber?: number, rest: any[]): BaseError
 - static **$t**: `Type`
@@ -162,6 +163,7 @@ Version: 22.0
 - static **isResponseTypeSupported**(responseType: any): boolean
 
 ### [Calendar](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Calendar)
+Extends: Base
 
 - **constructor**(): Calendar
 - static **$t**: `Type`
@@ -193,6 +195,7 @@ Version: 22.0
 - **updateQuery**(q: any): void
 
 ### [CompareInfo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/CompareInfo)
+Extends: Base
 
 - **constructor**(): CompareInfo
 - static **$t**: `Type`
@@ -280,6 +283,7 @@ Version: 22.0
 - static **toUInt64**(v: any, provider?: IFormatProvider): number
 
 ### [CultureInfo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/CultureInfo)
+Extends: Base
 
 - **constructor**(name: string): CultureInfo
 - static **$t**: `Type`
@@ -2401,6 +2405,7 @@ Version: 22.0
 - **TRIAL_VERSION**: `string`
 
 ### [DateTimeFormat](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/DateTimeFormat)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): DateTimeFormat
 - static **$t**: `Type`
@@ -2425,11 +2430,13 @@ Version: 22.0
 - static **en**(map: Map<string, any>): Generator<any, void, unknown>
 
 ### [Enum](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Enum)
+Extends: Base
 
 - **constructor**(): Enum
 - static **$t**: `Type`
 
 ### [EnumBox](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/EnumBox)
+Extends: Enum
 
 - **constructor**(value: number, type: Type): EnumBox
 - readonly **value**: `number`
@@ -2481,12 +2488,14 @@ Version: 22.0
 - static **tryParse$1**($tEnum: Type, value: string, ignoreCase: boolean, result: TEnum): any
 
 ### [EventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/EventArgs)
+Extends: Base
 
 - **constructor**(): EventArgs
 - static **$t**: `Type`
 - static **empty**: `EventArgs`
 
 ### [FormatException](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/FormatException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): FormatException
 - static **$t**: `Type`
@@ -2596,6 +2605,7 @@ The base class for generic data sources.
 - static **register**(): void
 
 ### [IgxContentChildCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxContentChildCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgxContentChildCollection
 
@@ -2676,6 +2686,7 @@ Represent info about series values
 - **toString**(): string — Converts this object to a string
 
 ### [IgxDataLegendSummaryColumn](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataLegendSummaryColumn)
+Extends: IgxDataLegendSeriesValueInfo
 Represent a column in summary row
 
 - **constructor**(): IgxDataLegendSummaryColumn
@@ -2690,6 +2701,7 @@ Represent a column in summary row
 - **addValue**(value: number): void — Add a value in the summary column
 
 ### [IgxDataSeriesCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSeriesCollection)
+Extends: IgCollection
 
 - **constructor**(list?: DataSeries[]): IgxDataSeriesCollection
 
@@ -2702,6 +2714,7 @@ Provides information about a schema change event.
 - **schema**: `IDataSourceSchema` — Represents the current schema for the data provider.
 
 ### [IgxDataSourceGroupDescription](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDataSourceGroupDescription)
+Extends: IgxDataSourceSortDescription
 
 - **constructor**(): IgxDataSourceGroupDescription
 
@@ -2808,6 +2821,7 @@ Provides information about a schema change event that has occurred.
 - **toArray**(): IgxDataSourceSummaryDescription[]
 
 ### [IgxDateTimeFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxDateTimeFormatSpecifier)
+Extends: IgxFormatSpecifier
 
 - **constructor**(): IgxDateTimeFormatSpecifier
 - static **ngAcceptInputType_fractionalSecondDigits**: `string | number`
@@ -2885,10 +2899,12 @@ Represents a colleciton of filter expressions.
 - **getLocalCulture**(): string
 
 ### [IgxFormatSpecifierCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxFormatSpecifierCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgxFormatSpecifier[]): IgxFormatSpecifierCollection
 
 ### [IgxGenericVirtualDataSource](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxGenericVirtualDataSource)
+Extends: IgxBaseGenericDataSource
 The base class for generic data sources.
 
 - **constructor**(): IgxGenericVirtualDataSource
@@ -3084,6 +3100,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **stopPropagation**(): void — Prevent the event from bubbling up.
 
 ### [IgxNumberFormatSpecifier](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxNumberFormatSpecifier)
+Extends: IgxFormatSpecifier
 
 - **constructor**(): IgxNumberFormatSpecifier
 - static **ngAcceptInputType_maximumFractionDigits**: `string | number`
@@ -3113,6 +3130,7 @@ The flags indicate which combination of CTRL, SHIFT, and ALT keys was pressed.
 - **useGrouping**: `boolean`
 
 ### [IgxObjectCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxObjectCollection)
+Extends: IgCollection
 
 - **constructor**(list?: any[]): IgxObjectCollection
 
@@ -3341,6 +3359,7 @@ Represents a record of data from a Shapefile (.shp and .dbf).
 - static **register**(): void
 
 ### [IgxSizeDefinitionCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxSizeDefinitionCollection)
+Extends: IgCollection
 
 - **constructor**(list?: IgxGridLayoutSizeDefinition[]): IgxSizeDefinitionCollection
 
@@ -3371,6 +3390,7 @@ A class that exposes style realted properties.
 - static **register**(): void
 
 ### [IgxToolCommandArgumentCollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxToolCommandArgumentCollection)
+Extends: IgCollection
 
 - **constructor**(list?: ToolCommandArgument[]): IgxToolCommandArgumentCollection
 
@@ -3413,12 +3433,14 @@ Class for converting Itf files into enumerable triangulations.
 - **currentStatus**: `number` — The current status from 0 to 100 of the progressive triangulation.
 
 ### [IgxUploadDataCompletedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxUploadDataCompletedEventArgs)
+Extends: IgxAsyncCompletedEventArgs
 
 - **constructor**(): IgxUploadDataCompletedEventArgs
 - static **ngAcceptInputType_result**: `string | number[]`
 - **result**: `number[]`
 
 ### [IgxUploadStringCompletedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/IgxUploadStringCompletedEventArgs)
+Extends: IgxAsyncCompletedEventArgs
 
 - **constructor**(): IgxUploadStringCompletedEventArgs
 - **result**: `string`
@@ -3446,6 +3468,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **ensureStylablePatched**(prot: any): void
 
 ### [NotSupportedException](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/NotSupportedException)
+Extends: SystemException
 
 - **constructor**(initNumber: number, rest: any[]): NotSupportedException
 - static **$t**: `Type`
@@ -3453,12 +3476,14 @@ Class for converting Itf files into enumerable triangulations.
 - **init2**(initNumber: number, message: string, innerException: any): void
 
 ### [Nullable](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Nullable)
+Extends: Base
 
 - **constructor**(): Nullable
 - static **$t**: `Type`
 - static **getUnderlyingType**(nullableType: Type): Type
 
 ### [Nullable$1](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Nullable$1)
+Extends: Base
 
 - **constructor**($t: Type, value: T): Nullable$1<T>
 - readonly **isNullable**: `true`
@@ -3478,6 +3503,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **nullableEquals**(v1: any, v2: any): boolean
 
 ### [NumberFormatInfo](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/NumberFormatInfo)
+Extends: Base
 
 - **constructor**(cultureName: string, isInvariant: boolean): NumberFormatInfo
 - static **$t**: `Type`
@@ -3532,6 +3558,7 @@ Class for converting Itf files into enumerable triangulations.
 - **then**(pass: any, fail: any): PromiseWrapper
 
 ### [PropertyChangedEventArgs](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/PropertyChangedEventArgs)
+Extends: Base
 
 - **constructor**(propertyName: string): PropertyChangedEventArgs
 - static **$t**: `Type`
@@ -3543,6 +3570,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **getPropertyGetter**: `any`
 
 ### [Stream](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Stream)
+Extends: Base
 
 - **constructor**(): Stream
 - static **$t**: `Type`
@@ -3562,6 +3590,7 @@ Class for converting Itf files into enumerable triangulations.
 - **writeByte**(value: number): void
 
 ### [SystemException](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/SystemException)
+Extends: BaseError
 
 - **constructor**(initNumber: number, rest: any[]): SystemException
 - static **$t**: `Type`
@@ -3569,6 +3598,7 @@ Class for converting Itf files into enumerable triangulations.
 - **init2**(initNumber: number, message: string, innerException: any): void
 
 ### [Thread](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Thread)
+Extends: Base
 
 - **constructor**(): Thread
 - static **$t**: `Type`
@@ -3576,6 +3606,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **currentThread**: `Thread`
 
 ### [Type](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/Type)
+Extends: Base
 
 - **constructor**(instanceConstructor: Function, identifier: string, baseType?: Type, interfaces?: Type[], staticInitializer?: any): Type
 - **_$nullNullable**: `any`
@@ -3628,6 +3659,7 @@ Class for converting Itf files into enumerable triangulations.
 - static **registerCons**(typeName: string, type: Function): void
 
 ### [ValueType](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/classes/ValueType)
+Extends: Base
 
 - **constructor**(): ValueType
 - static **$t**: `Type`
@@ -3748,6 +3780,7 @@ Class for converting Itf files into enumerable triangulations.
 - **namesValuesMap**: `any`
 
 ### [ICollection](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/ICollection)
+Extends: IEnumerable
 
 - **count**: `number`
 - **isSynchronized**: `boolean`
@@ -3755,6 +3788,7 @@ Class for converting Itf files into enumerable triangulations.
 - **copyTo**: `any`
 
 ### [ICollection$1](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/ICollection$1)
+Extends: IEnumerable$1, IEnumerable
 
 - **count**: `number`
 - **isReadOnly**: `boolean`
@@ -3802,6 +3836,7 @@ Class for converting Itf files into enumerable triangulations.
 - **getEnumeratorObject**: `any`
 
 ### [IEnumerable$1](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/IEnumerable$1)
+Extends: IEnumerable
 
 - **getEnumerator**: `any`
 
@@ -3812,6 +3847,7 @@ Class for converting Itf files into enumerable triangulations.
 - **reset**: `any`
 
 ### [IEnumerator$1](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/IEnumerator$1)
+Extends: IEnumerator, IDisposable
 
 - **current**: `T`
 - **moveNext**: `any`
@@ -3860,6 +3896,7 @@ Class for converting Itf files into enumerable triangulations.
 - **width**: `number`
 
 ### [IList](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/IList)
+Extends: ICollection
 
 - **isFixedSize**: `boolean`
 - **isReadOnly**: `boolean`
@@ -3874,6 +3911,7 @@ Class for converting Itf files into enumerable triangulations.
 - **removeAt**: `any`
 
 ### [IList$1](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/IList$1)
+Extends: ICollection$1, IEnumerable$1, IEnumerable
 
 - **indexOf**: `any`
 - **insert**: `any`
@@ -3916,11 +3954,13 @@ Class for converting Itf files into enumerable triangulations.
 - **y**: `number`
 
 ### [XmlAttribute](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlAttribute)
+Extends: XmlNode
 
 - **childNodes**: `XmlNodeList`
 - **cloneNode**: `any`
 
 ### [XmlDocument](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlDocument)
+Extends: XmlElement
 
 - **childNodes**: `XmlNodeList`
 - **documentElement**: `XmlElement`
@@ -3930,9 +3970,11 @@ Class for converting Itf files into enumerable triangulations.
 - **importNode**: `any`
 
 ### [XmlElement](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlElement)
+Extends: XmlNode
 
 
 ### [XmlLinkedNode](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlLinkedNode)
+Extends: XmlNode
 
 
 ### [XmlNamedNodeMap](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlNamedNodeMap)
@@ -3960,6 +4002,7 @@ Class for converting Itf files into enumerable triangulations.
 - **setAttributeNode**: `any`
 
 ### [XmlNodeList](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/interfaces/XmlNodeList)
+Extends: XmlNamedNodeMap
 
 - **length**: `number`
 - **item**: `any`
@@ -4342,6 +4385,7 @@ Enumerates the available property types on a data source schema.
 - **ShortValue** = 4 — The property if of type short.
 - **SingleValue** = 7 — The property is of type single.
 - **StringValue** = 0 — The property is of type string.
+- **UriValue** = 12 — The property is a uri type.
 
 ### [DataSourceSectionHeaderDisplayMode](https://www.infragistics.com/api/angular/igniteui-angular-core/22.0.0/enums/DataSourceSectionHeaderDisplayMode)
 Enumerates possible display modes for section headers.

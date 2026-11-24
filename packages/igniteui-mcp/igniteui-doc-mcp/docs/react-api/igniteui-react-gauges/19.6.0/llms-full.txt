@@ -9,6 +9,7 @@ Version: 19.6
 ## Classes
 
 ### [IgrAlignLinearGraphLabelEventArgs](https://www.infragistics.com/api/react/igniteui-react-gauges/19.6.0/classes/IgrAlignLinearGraphLabelEventArgs)
+Extends: IgrFormatLinearGraphLabelEventArgs
 Represents event argument for AlignLinearGraphLabel.
 
 - **constructor**(): IgrAlignLinearGraphLabelEventArgs
@@ -19,6 +20,7 @@ Represents event argument for AlignLinearGraphLabel.
 - **width**: `number`
 
 ### [IgrAlignRadialGaugeLabelEventArgs](https://www.infragistics.com/api/react/igniteui-react-gauges/19.6.0/classes/IgrAlignRadialGaugeLabelEventArgs)
+Extends: IgrFormatRadialGaugeLabelEventArgs
 Represents event argument for AlignRadialGaugeLabel.
 
 - **constructor**(): IgrAlignRadialGaugeLabelEventArgs

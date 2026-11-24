@@ -162,6 +162,7 @@ Represents event arguments for when there are errors parsing the filter string
 - **propertyName**: `string`
 
 ### [IgrDashboardTileGroupDescription](https://www.infragistics.com/api/react/igniteui-react-dashboards/19.6.0/classes/IgrDashboardTileGroupDescription)
+Extends: IgrDashboardTileSortDescription
 Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
 - **constructor**(): IgrDashboardTileGroupDescription

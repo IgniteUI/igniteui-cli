@@ -13,6 +13,8 @@ export interface DocEntry {
   package?: string;
   /** Release the entry was generated from (llms-full.txt "Version:" header), e.g. "19.9.1". */
   version?: string;
+  /** Entries holding this type's inherited members (llms-full.txt "Extends:" line), nearest first. */
+  extends?: string[];
 }
 
 export interface SearchHit {

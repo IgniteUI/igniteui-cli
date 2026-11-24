@@ -9,6 +9,7 @@ Version: 22.0
 ## Classes
 
 ### [IgxArcGISOnlineMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxArcGISOnlineMapImagery)
+Extends: IgxGeographicMapImagery
 UI element class used to display ArcGIS Online Map imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgxArcGISOnlineMapImagery
@@ -26,6 +27,7 @@ UI element class used to display ArcGIS Online Map imagery in the IgxGeographicM
 The is provided to the end-user to allow them to reteive tokens on their onw.
 
 ### [IgxAzureMapsImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxAzureMapsImagery)
+Extends: IgxGeographicMapImagery
 UI element class used to display AzureMaps imagery in the GeographicMap.
 
 - **constructor**(): IgxAzureMapsImagery
@@ -44,6 +46,7 @@ Note that not all tilesets support this option and those that do might have rest
 For more information see https://learn.microsoft.com/en-us/rest/api/maps/render/get-map-tile#uri-parameters.
 
 ### [IgxBingMapsMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxBingMapsMapImagery)
+Extends: IgxGeographicMapImagery
 UI element class used to display BingMapsMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgxBingMapsMapImagery
@@ -68,12 +71,14 @@ For example: Aerial, AerialWithLabels, or Road map style.
 - **requestMapSettings**(): void — Will Connect to the Bing Rest API and retrieve the required TilePath and Subdomains from the service.  This requires a valid API key to already be set.
 
 ### [IgxCustomMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxCustomMapImagery)
+Extends: IgxGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgxCustomMapImagery
 - **getTileImageUri**: `EventEmitter<any>` — Raised when URI for tiles should be provided
 
 ### [IgxGeographicContourLineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicContourLineSeriesComponent)
+Extends: IgxGeographicXYTriangulatingSeriesComponent
 Represents a class for Geographic Contour Series displayed on a map.
 
 - **constructor**(): IgxGeographicContourLineSeriesComponent
@@ -89,6 +94,7 @@ Represents a class for Geographic Contour Series displayed on a map.
 - **findByName**(name: string): any
 
 ### [IgxGeographicHighDensityScatterSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicHighDensityScatterSeriesComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a HighDensityScatterSeries.
 
@@ -248,6 +254,7 @@ The default value for this property is 1.0, which means the series will always b
 - **styleUpdated**(): void — Called when this series' Style is updated.
 
 ### [IgxGeographicMarkerSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMarkerSeriesBaseComponent)
+Extends: IgxGeographicMarkerSeriesComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicMarkerSeriesBaseComponent
@@ -255,6 +262,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicMarkerSeriesBaseComponent, never>`
 
 ### [IgxGeographicMarkerSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicMarkerSeriesComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicMarkerSeriesComponent
@@ -281,6 +289,7 @@ If more than the specified number of markerItems are visible, the series will au
 choose a representative set.
 
 ### [IgxGeographicPolylineSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicPolylineSeriesComponent)
+Extends: IgxGeographicShapeSeriesBaseComponent
 Series class used for displaying multiple polylines, in a geographic context, for datasources which contain multiple lists of points.
 
 - **constructor**(): IgxGeographicPolylineSeriesComponent
@@ -298,6 +307,7 @@ Series class used for displaying multiple polylines, in a geographic context, fo
 - **ensureShapeStyle**(): void
 
 ### [IgxGeographicProportionalSymbolSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicProportionalSymbolSeriesBaseComponent)
+Extends: IgxGeographicMarkerSeriesBaseComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicProportionalSymbolSeriesBaseComponent
@@ -305,6 +315,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicProportionalSymbolSeriesBaseComponent, never>`
 
 ### [IgxGeographicProportionalSymbolSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicProportionalSymbolSeriesComponent)
+Extends: IgxGeographicMarkerSeriesComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -348,6 +359,7 @@ This setting applies only if multiple series are using the same RadiusScale.
 - **findByName**(name: string): any
 
 ### [IgxGeographicScatterAreaSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicScatterAreaSeriesComponent)
+Extends: IgxGeographicXYTriangulatingSeriesComponent
 Series class which draws a colored 2D surface, in a geographic context, based on a triangulation of XY data with numeric values assigned to each point.
 
 - **constructor**(): IgxGeographicScatterAreaSeriesComponent
@@ -363,6 +375,7 @@ Series class which draws a colored 2D surface, in a geographic context, based on
 - **updateActualColorScale**(): void — Updates ActualColorScale properties using HostedSeries's ColorScale properties
 
 ### [IgxGeographicShapeSeriesBaseBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesBaseBaseComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicShapeSeriesBaseBaseComponent
@@ -370,6 +383,7 @@ Base class for hosting chart series in a IgxGeographicMap.Component
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicShapeSeriesBaseBaseComponent, never>`
 
 ### [IgxGeographicShapeSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesBaseComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Base class for series which render polygons on a map.
 
 - **constructor**(): IgxGeographicShapeSeriesBaseComponent
@@ -403,6 +417,7 @@ To be consistent with the Shapefile technical description, it is expected that e
 - **findByName**(name: string): any
 
 ### [IgxGeographicShapeSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicShapeSeriesComponent)
+Extends: IgxGeographicShapeSeriesBaseComponent
 Series class which renders polygons as Paths, in a geographic context, based on lists of points in the ItemsSource.
 
 - **constructor**(): IgxGeographicShapeSeriesComponent
@@ -437,6 +452,7 @@ If the MarkerTemplate property is set, the setting of the MarkerType property wi
 - **ensureShapeStyle**(): void
 
 ### [IgxGeographicSymbolSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicSymbolSeriesBaseComponent)
+Extends: IgxGeographicMarkerSeriesBaseComponent
 Base class for creating marker series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicSymbolSeriesBaseComponent
@@ -444,6 +460,7 @@ Base class for creating marker series in a IgxGeographicMap.Component
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicSymbolSeriesBaseComponent, never>`
 
 ### [IgxGeographicSymbolSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicSymbolSeriesComponent)
+Extends: IgxGeographicMarkerSeriesComponent
 Series class for a geographic map with points marked at given locations.
 This is the geographic equivalent of a ScatterSeries.
 
@@ -468,6 +485,7 @@ This is the geographic equivalent of a ScatterSeries.
 - **markerCollisionAvoidance**: `CollisionAvoidanceType` — The desired behavior for markers in this series which are placed too close together for the current view, resulting in a collision.
 
 ### [IgxGeographicTileSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicTileSeriesComponent)
+Extends: IgxGeographicShapeSeriesBaseComponent
 Series class used for displaying a tile set, and using shapes to define the areas that should be rendered.
 
 - **constructor**(): IgxGeographicTileSeriesComponent
@@ -481,6 +499,7 @@ Series class used for displaying a tile set, and using shapes to define the area
 - **findByName**(name: string): any
 
 ### [IgxGeographicXYTriangulatingSeriesBaseComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicXYTriangulatingSeriesBaseComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Base class for hosting chart series in a IgxGeographicMap.Component
 
 - **constructor**(): IgxGeographicXYTriangulatingSeriesBaseComponent
@@ -488,6 +507,7 @@ Base class for hosting chart series in a IgxGeographicMap.Component
 - static **ɵfac**: `ɵɵFactoryDeclaration<IgxGeographicXYTriangulatingSeriesBaseComponent, never>`
 
 ### [IgxGeographicXYTriangulatingSeriesComponent](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxGeographicXYTriangulatingSeriesComponent)
+Extends: IgxGeographicMapSeriesHostComponent
 Base class for geographic series which triangulate XY data prior to rendering.
 
 - **constructor**(): IgxGeographicXYTriangulatingSeriesComponent
@@ -511,6 +531,7 @@ This property is optional.  If it is left as null, the triangulation will be cre
 - **constructor**(): IgxImageTilesReadyEventArgs
 
 ### [IgxOpenStreetMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxOpenStreetMapImagery)
+Extends: IgxGeographicMapImagery
 UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.Component
 
 - **constructor**(): IgxOpenStreetMapImagery
@@ -521,6 +542,7 @@ UI element class used to display OpenStreetMap imagery in the IgxGeographicMap.C
 - **constructor**(list?: string[]): IgxSubDomainsCollection
 
 ### [IgxTileGeneratorMapImagery](https://www.infragistics.com/api/angular/igniteui-angular-maps/22.0.0/classes/IgxTileGeneratorMapImagery)
+Extends: IgxGeographicMapImagery
 Represents a CustomMapImagery MapImagery
 
 - **constructor**(): IgxTileGeneratorMapImagery

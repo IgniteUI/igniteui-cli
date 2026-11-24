@@ -234,6 +234,7 @@ Represents event arguments for when there are errors parsing the filter string
 - **propertyName**: `string`
 
 ### [IgcDashboardTileGroupDescription](https://www.infragistics.com/api/webcomponents/igniteui-webcomponents-dashboards/7.1.0/classes/IgcDashboardTileGroupDescription)
+Extends: IgcDashboardTileSortDescription
 Represents an element in the current grouping applied to a data source or provider. Changes to this object are not observed or expected after it is initially assigned to a collection.
 
 - **constructor**(): IgcDashboardTileGroupDescription
