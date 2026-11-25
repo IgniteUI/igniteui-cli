@@ -227,8 +227,6 @@
 }
 
 @include core();
-@include typography($font-family: $material-typeface, $type-scale: $material-type-scale);
-
 
 $green-palette: palette($primary: #09f, $secondary: #72da67, $surface: #333);
 
