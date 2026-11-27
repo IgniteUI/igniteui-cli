@@ -68,6 +68,18 @@ export function satisfies(version: string, range: string): boolean | null {
 
 export const IGNITEUI_PACKAGE = /^(@infragistics\/|@igniteui\/|igniteui-|ignite-ui(-|$))/;
 
+const NPM_NAME = /^(@[a-z0-9~-][a-z0-9._~-]*\/)?[a-z0-9~-][a-z0-9._~-]*$/;
+
+/** Latest version of a package on its registry, or `null` when it cannot be read. */
+export async function latestVersion(name: string): Promise<string | null> {
+	// the name comes from package.json and ends up in a shell command
+	if (!NPM_NAME.test(name)) {
+		return null;
+	}
+	const latest = await shell.run(`npm view ${name} version`, 15000);
+	return latest && semver.valid(latest) ? latest : null;
+}
+
 export function allDependencies(packageJson: ProjectPackageJson): Record<string, string> {
 	return { ...packageJson.devDependencies, ...packageJson.dependencies };
 }

@@ -11,7 +11,8 @@ import {
 } from "../../packages/cli/lib/doctor/environment";
 import { feedChecks } from "../../packages/cli/lib/doctor/feed";
 import {
-	checkAngularMajor, checkConfig, checkInstalledPackages, checkMixedPackages, checkPackageJson, projectChecks
+	checkAngularMajor, checkConfig, checkInstalledPackages, checkMixedPackages, checkPackageJson, checkPackageVersions,
+	projectChecks
 } from "../../packages/cli/lib/doctor/project";
 import { formatJson, formatText } from "../../packages/cli/lib/doctor/report";
 import { CheckResult, DoctorContext } from "../../packages/cli/lib/doctor/types";
@@ -168,8 +169,8 @@ describe("Unit - Doctor", () => {
 	});
 
 	describe("project", () => {
-		it("skips outside a project", () => {
-			expect(projectChecks(context({ inProject: false }))).toEqual([
+		it("skips outside a project", async () => {
+			expect(await projectChecks(context({ inProject: false }))).toEqual([
 				jasmine.objectContaining({ id: "project", status: "skip" })
 			]);
 		});
@@ -228,6 +229,61 @@ describe("Unit - Doctor", () => {
 			mockFileSystem();
 			const result = checkInstalledPackages(context({ packageJson: { dependencies: { "ignite-ui": "~23.1" } } }));
 			expect(result).toEqual(jasmine.objectContaining({ status: "fail", detail: "ignite-ui is not installed" }));
+		});
+		it("lists the installed Ignite UI packages with the latest version on npm", async () => {
+			mockFileSystem({
+				...installed("igniteui-angular", "22.2.4"), ...installed("igniteui-dockmanager", "2.3.0"),
+				...installed("igniteui-webcomponents", "7.6.0-beta.1")
+			});
+			const latest: Record<string, string> = {
+				"igniteui-angular": "22.3.0", "igniteui-dockmanager": "2.3.0", "igniteui-webcomponents": "7.5.0"
+			};
+			const run = spyOn(shell, "run").and.callFake(async (command: string) => latest[command.split(" ")[2]] ?? null);
+			const results = await checkPackageVersions(context({
+				packageJson: {
+					dependencies: {
+						"igniteui-webcomponents": "next", "igniteui-angular": "~22.2.0", "igniteui-dockmanager": "^2.0.0",
+						"igniteui-angular-charts": "^22.0.0", "rxjs": "^7.0.0"
+					}
+				}
+			}));
+			expect(results).toEqual([
+				jasmine.objectContaining({
+					id: "package-version:igniteui-angular", status: "warn",
+					detail: "igniteui-angular 22.2.4 (latest is 22.3.0)", fix: "Update with: ng update igniteui-angular"
+				}),
+				jasmine.objectContaining({ status: "ok", detail: "igniteui-dockmanager 2.3.0 (latest)" }),
+				jasmine.objectContaining({ status: "ok", detail: "igniteui-webcomponents 7.6.0-beta.1 (latest is 7.5.0)" })
+			]);
+			expect(run).toHaveBeenCalledWith("npm view igniteui-dockmanager version", 15000);
+			expect(run).not.toHaveBeenCalledWith("npm view igniteui-angular-charts version", 15000);
+		});
+		it("shows the installed versions without the latest when offline or when npm does not answer", async () => {
+			mockFileSystem(installed("igniteui-react", "19.5.1"));
+			const packageJson = { dependencies: { "igniteui-react": "^19.5.0" } };
+			const run = spyOn(shell, "run").and.resolveTo(null);
+			expect(await checkPackageVersions(context({ packageJson, offline: true }))).toEqual([jasmine.objectContaining({
+				status: "skip", detail: "igniteui-react 19.5.1 (latest version not checked: --offline)"
+			})]);
+			expect(run).not.toHaveBeenCalled();
+			expect(await checkPackageVersions(context({ packageJson }))).toEqual([jasmine.objectContaining({
+				status: "skip", detail: "igniteui-react 19.5.1 (could not read the latest version from npm)"
+			})]);
+		});
+		it("suggests npm install for packages other than igniteui-angular", async () => {
+			mockFileSystem(installed("igniteui-react", "19.5.1"));
+			spyOn(shell, "run").and.resolveTo("19.11.0");
+			const [result] = await checkPackageVersions(context({ packageJson: { dependencies: { "igniteui-react": "^19.5.0" } } }));
+			expect(result.fix).toBe("Update with: npm install igniteui-react@latest");
+		});
+		it("does not pass a malformed package name to the shell", async () => {
+			mockFileSystem(installed("igniteui-x; echo pwned", "1.0.0"));
+			const run = spyOn(shell, "run");
+			const results = await checkPackageVersions(context({
+				packageJson: { dependencies: { "igniteui-x; echo pwned": "1.0.0" } }
+			}));
+			expect(run).not.toHaveBeenCalled();
+			expect(results[0].status).toBe("skip");
 		});
 		it("skips the package checks without Ignite UI packages", () => {
 			mockFileSystem({ "package.json": { dependencies: { rxjs: "^7.0.0" } } });
