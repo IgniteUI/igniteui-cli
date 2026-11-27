@@ -1,8 +1,9 @@
 import {
 	App, BaseTemplateManager, FEED_ANGULAR, NPM_ANGULAR, ProjectConfig, TEMPLATE_MANAGER, UPGRADEABLE_PACKAGES
 } from "@igniteui/cli-core";
+import * as semver from "semver";
 import { CheckResult, DoctorContext } from "./types";
-import { allDependencies, IGNITEUI_PACKAGE, installedVersion, majorOf, satisfies } from "./util";
+import { allDependencies, IGNITEUI_PACKAGE, installedVersion, latestVersion, majorOf, satisfies } from "./util";
 
 const GROUP = "Project";
 
@@ -85,6 +86,39 @@ export function checkInstalledPackages(context: DoctorContext): CheckResult {
 	return { id, group: GROUP, status: "ok", detail: `${declared.length} Ignite UI package(s) installed` };
 }
 
+/** One result per installed Ignite UI package: its version and whether the registry has a newer one. */
+export function checkPackageVersions(context: DoctorContext): Promise<CheckResult[]> {
+	const names = Object.keys(allDependencies(context.packageJson!)).filter(name => IGNITEUI_PACKAGE.test(name)).sort();
+	const checks: Promise<CheckResult>[] = [];
+	for (const name of names) {
+		const version = installedVersion(name);
+		if (version) {
+			checks.push(checkPackageVersion(context, name, version));
+		}
+	}
+	return Promise.all(checks);
+}
+
+async function checkPackageVersion(context: DoctorContext, name: string, version: string): Promise<CheckResult> {
+	const result: CheckResult = { id: `package-version:${name}`, group: GROUP, status: "ok", detail: `${name} ${version}` };
+	if (context.offline) {
+		return { ...result, status: "skip", detail: `${result.detail} (latest version not checked: --offline)` };
+	}
+
+	const latest = await latestVersion(name);
+	if (!latest || !semver.valid(version)) {
+		return { ...result, status: "skip", detail: `${result.detail} (could not read the latest version from npm)` };
+	}
+	if (semver.lt(version, latest)) {
+		const angular = name === NPM_ANGULAR || name === FEED_ANGULAR;
+		return {
+			...result, status: "warn", detail: `${result.detail} (latest is ${latest})`,
+			fix: angular ? `Update with: ng update ${name}` : `Update with: npm install ${name}@latest`
+		};
+	}
+	return { ...result, detail: `${result.detail} (${semver.eq(version, latest) ? "latest" : `latest is ${latest}`})` };
+}
+
 export function checkMixedPackages(context: DoctorContext): CheckResult {
 	const id = "packages-mixed";
 	const dependencies = allDependencies(context.packageJson!);
@@ -127,14 +161,14 @@ export function checkAngularMajor(context: DoctorContext): CheckResult | null {
 	return { id, group: GROUP, status: "ok", detail: `${igniteui} and @angular/core are both on ${angularMajor}` };
 }
 
-export function projectChecks(context: DoctorContext): CheckResult[] {
+export async function projectChecks(context: DoctorContext): Promise<CheckResult[]> {
 	if (!context.inProject) {
 		return [{ id: "project", group: GROUP, status: "skip", detail: "Not in an Ignite UI project" }];
 	}
 
 	const results = [checkConfig(), checkPackageJson(context)];
 	if (context.packageJson) {
-		results.push(checkInstalledPackages(context), checkMixedPackages(context));
+		results.push(checkInstalledPackages(context), ...await checkPackageVersions(context), checkMixedPackages(context));
 		const angular = context.framework === "angular" ? checkAngularMajor(context) : null;
 		if (angular) {
 			results.push(angular);

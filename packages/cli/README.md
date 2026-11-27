@@ -129,7 +129,7 @@ ig doc grid --open                   # search infragistics.com in the browser in
 The bundled docs cover Angular, React, Web Components and Blazor. For jQuery use `--open`.
 
 ### Check your setup
-`ig doctor` checks the environment (Node.js, npm, git, CLI version), the current project (CLI config, installed Ignite UI packages, trial and licensed packages mixed together, Angular version match), the licensed `@infragistics` feed, and the AI setup written by `ig ai-config`. It changes nothing, prints a fix hint next to each warning or failure, and exits with code 1 when a check fails.
+`ig doctor` checks the environment (Node.js, npm, git, CLI version), the current project (CLI config, installed Ignite UI packages and their versions against the latest on npm, trial and licensed packages mixed together, Angular version match), the licensed `@infragistics` feed, and the AI setup written by `ig ai-config`. It changes nothing, prints a fix hint next to each warning or failure, and exits with code 1 when a check fails.
 ```bash
 ig doctor
 ig doctor --offline    # skip the checks that need the network
